@@ -7,6 +7,10 @@
  */
 
 import { normalizeStoryEventNameForMatch } from '../../../interface-shared/bio-archive/bioArchiveConnectionRanges.js';
+import {
+    normalizeCommentaryEntries,
+    serializeCommentaryEntries,
+} from '../../../interface-shared/storyEventCommentary.js';
 
 /** @typedef {'base'|'incoming'} MergePickSide */
 
@@ -523,6 +527,15 @@ export function normalizeStorySourcesValue(value) {
  * @param {unknown} value
  * @returns {string}
  */
+/**
+ * Canonical commentary array for merge compare / persistence.
+ * @param {unknown} value
+ * @returns {Array<string | { name: string, label?: string, theaterId?: string, lineId?: string }>}
+ */
+export function normalizeStoryCommentaryValue(value) {
+    return serializeCommentaryEntries(normalizeCommentaryEntries(value));
+}
+
 export function serializeStoryFieldForEdit(field, value) {
     if (field === 'headlines' || isStoryStringListField(field, value)) {
         return Array.isArray(value) ? value.map((line) => String(line ?? '')).join('\n') : '';
@@ -540,6 +553,17 @@ export function serializeStoryFieldForEdit(field, value) {
                 }
                 return urls.length ? `${source.text}\n${urls.join('\n')}` : source.text;
             })
+            .join('\n\n');
+    }
+    if (field === 'commentary') {
+        return normalizeCommentaryEntries(value)
+            .map((entry) => {
+                const title = String(entry.label || entry.name || '').trim();
+                const name = String(entry.name || '').trim();
+                if (entry.label && name && entry.label !== name) return `${name}\n${entry.label}`;
+                return title || name;
+            })
+            .filter(Boolean)
             .join('\n\n');
     }
     if (value == null) return '';
@@ -588,6 +612,26 @@ export function parseStoryFieldEdit(field, text, originalValue) {
             else sources.push({ text: textLine, url: urls[0], urls });
         }
         return sources;
+    }
+
+    if (field === 'commentary') {
+        if (!trimmed) return [];
+        try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return normalizeStoryCommentaryValue(parsed);
+        } catch {
+            /* plain blocks below */
+        }
+        /** @type {Array<{ name: string, label?: string }>} */
+        const entries = [];
+        for (const block of raw.split(/\n\s*\n/)) {
+            const lines = block.split('\n').map((line) => line.trim()).filter(Boolean);
+            if (!lines.length) continue;
+            const name = lines[0];
+            const label = lines[1] || '';
+            entries.push(label ? { name, label } : { name });
+        }
+        return normalizeStoryCommentaryValue(entries);
     }
 
     if (trimmed === '' || trimmed === '—') {
@@ -668,6 +712,9 @@ export function resolveFieldEditText(row, field, side) {
 function normalizeEditCompare(field, value) {
     if (field === 'sources' || isStorySourcesField(field, value)) {
         return normalizeStorySourcesValue(value);
+    }
+    if (field === 'commentary') {
+        return normalizeStoryCommentaryValue(value);
     }
     if (
         field === 'secondaryCountryPlaces'

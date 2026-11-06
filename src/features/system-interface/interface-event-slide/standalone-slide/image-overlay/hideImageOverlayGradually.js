@@ -18,6 +18,7 @@ import {
 } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
 import { clearEventSourceMediaEmbed } from './eventSourceMediaOverlay.js';
+import { setImageOverlayFadeTimer } from './imageOverlayFade.js';
 
 export function runHideImageOverlayGradually(slide, durationMs = 600) {
             if (
@@ -47,7 +48,6 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
             const startTime = Date.now();
             const fadeInterval = 50; // Update every 50ms
             
-            
             const fadeTimer = setInterval(() => {
                 const elapsed = Date.now() - startTime;
                 const progress = Math.min(elapsed / durationMs, 1);
@@ -61,14 +61,14 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
                 }
                 
                 if (progress >= 1) {
-                    clearInterval(fadeTimer);
+                    setImageOverlayFadeTimer(slide, null);
                     clearEventSourceMediaEmbed();
                     if (slide && typeof slide === 'object') {
                         slide.activeYouTubeVideoId = '';
                         slide.activePdfSourceUrl = '';
                     }
                     overlay.style.opacity = '0';
-                    overlay.classList.remove('open', 'slide-open', 'fade-in', 'dialogue-theater-stage-overlay');
+                    overlay.classList.remove('open', 'slide-open', 'fade-in', 'fade-out', 'dialogue-theater-stage-overlay');
                     delete overlay.dataset.storyCommentaryDirectPlay;
                     overlay.style.display = 'none';
                     overlay.style.removeProperty('pointer-events');
@@ -76,10 +76,12 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
                     if (img) {
                         img.style.opacity = '0';
                         img.style.display = 'none';
+                        img.classList.remove('fade-in', 'fade-out');
                         img.src = '';
                     }
                     if (toggleBtn) toggleBtn.textContent = 'Show Image';
                     syncMobileEventSlideLayoutForImageHidden();
                 }
             }, fadeInterval);
+            setImageOverlayFadeTimer(slide, fadeTimer);
 }

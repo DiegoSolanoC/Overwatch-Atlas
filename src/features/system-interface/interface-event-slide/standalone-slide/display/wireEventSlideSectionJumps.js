@@ -116,8 +116,8 @@ function offsetTopInHost(el, host) {
 }
 
 /**
- * Remap jump button labels/targets for story vs Dialogue Theater.
- * @param {'story' | 'theater'} mode
+ * Remap jump button labels/targets for story vs bio archive vs Dialogue Theater.
+ * @param {'story' | 'bio' | 'theater'} mode
  * @param {{ isChatter?: boolean }} [opts]
  */
 export function syncEventSlideSectionJumpsMode(mode, opts = {}) {
@@ -143,6 +143,16 @@ export function syncEventSlideSectionJumpsMode(mode, opts = {}) {
       detailsBtn.textContent = 'Dialogue';
       detailsBtn.setAttribute('data-event-section', 'theater-lines');
     }
+  } else if (mode === 'bio') {
+    // Match Gallery: Intel (description) + Connections (list/canvas).
+    storyBtn.hidden = false;
+    detailsBtn.hidden = false;
+    storyBtn.removeAttribute('aria-hidden');
+    detailsBtn.removeAttribute('aria-hidden');
+    storyBtn.textContent = 'Intel';
+    storyBtn.setAttribute('data-event-section', 'story');
+    detailsBtn.textContent = 'Connections';
+    detailsBtn.setAttribute('data-event-section', 'details');
   } else {
     storyBtn.hidden = false;
     detailsBtn.hidden = false;
@@ -158,6 +168,22 @@ export function syncEventSlideSectionJumpsMode(mode, opts = {}) {
     document.getElementById(id)?.classList.remove('is-active');
     document.getElementById(id)?.removeAttribute('aria-current');
   }
+}
+
+/**
+ * Pane headings under the scrollport (Story/Details ↔ Intel/Connections).
+ * @param {'story' | 'bio' | 'theater'} mode
+ */
+export function syncEventSlidePaneHeadingsMode(mode) {
+  const storyHeading = document.getElementById('eventSlideStoryHeading');
+  const detailsHeading = document.getElementById('eventSlideDetailsHeading');
+  if (mode === 'bio') {
+    if (storyHeading) storyHeading.textContent = 'Intel';
+    if (detailsHeading) detailsHeading.textContent = 'Connections';
+    return;
+  }
+  if (storyHeading) storyHeading.textContent = 'Story';
+  if (detailsHeading) detailsHeading.textContent = 'Details';
 }
 
 /**

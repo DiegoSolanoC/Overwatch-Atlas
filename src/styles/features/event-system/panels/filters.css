@@ -2,16 +2,26 @@
    FILTERS PANEL
    ======================================== */
 
-/* Filters Panel (right side) - flexbox layout like event slide */
+/*
+ * Desktop: overlay onto main#content (absolute within .layout-container) — Filters + Music
+ * share this rail. Opening no longer flex-shrinks the stage. Mobile stays fixed slide-in below.
+ */
 .filters-panel {
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: var(--panel-filters-width-collapsed);
     min-width: var(--panel-filters-width-collapsed);
     max-width: var(--panel-filters-width-collapsed);
-    flex: 0 0 var(--panel-filters-width-collapsed);
+    flex: none;
     background: var(--bg-secondary); /* Dark blue for default blue palette */
-    box-shadow: none !important; /* Remove shadow to prevent overlap */
-    transition: width var(--panel-transition), min-width var(--panel-transition), max-width var(--panel-transition), flex-basis var(--panel-transition);
+    box-shadow: none;
+    transition:
+        width var(--panel-transition),
+        min-width var(--panel-transition),
+        max-width var(--panel-transition),
+        box-shadow var(--panel-transition);
     /* Match event-slide: above main stage (event image overlay z-index 500) for protruding resize handle */
     z-index: 540;
     overflow-y: hidden; /* Hide panel scrollbar - only grid scrolls */
@@ -20,13 +30,23 @@
     padding: 0;
     border: none;
     box-sizing: border-box;
+    pointer-events: none; /* collapsed: only resize handle is interactive */
+}
+
+.filters-panel.open,
+.filters-panel .panel-resize-handle {
+    pointer-events: auto;
 }
 
 .filters-panel.open {
     width: var(--user-panel-filters-width, var(--panel-filters-width));
     min-width: var(--user-panel-filters-width, var(--panel-filters-width));
     max-width: var(--user-panel-filters-width, var(--panel-filters-width));
-    flex: 0 0 var(--user-panel-filters-width, var(--panel-filters-width));
+    box-shadow: -6px 0 28px rgba(0, 0, 0, 0.45);
+}
+
+.filters-panel.panel--closing {
+    box-shadow: -6px 0 28px rgba(0, 0, 0, 0.45);
 }
 
 /* Hide panel content when fully collapsed — keep visible while width animates closed */

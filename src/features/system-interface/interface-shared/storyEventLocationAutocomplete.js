@@ -20,8 +20,15 @@ import {
 const PLACE_NAME_DATALIST_ID = 'storyEventPlaceNameList';
 const PLACE_NAME_FIELD_NAME = 'story-event-place-name';
 
-/** @type {{ placeNames: Set<string>, countryByPlaceKey: Map<string, string> } | null} */
+/**
+ * @typedef {{ cityDisplayName: string, locationType: string, lat?: number, lon?: number, x?: number, y?: number, count: number }} PlacePlacement
+ */
+
+/** @type {{ placeNames: Set<string>, countryByPlaceKey: Map<string, string>, placementByPlaceKey: Map<string, PlacePlacement> } | null} */
 let cachedLocationData = null;
+
+/** City-lookup inputs: picking a prior choice also copies coords + location label. */
+const CITY_LOOKUP_INPUT_IDS = new Set(['eventSlideEditCityLookup', 'eventEditCity']);
 
 /**
  * @param {string} text
@@ -81,15 +88,61 @@ function ingestPlaceRow(placeNames, pairCounts, row) {
 }
 
 /**
+ * Remember lat/lon (or x/y) for a prior cityDisplayName so autocomplete can copy placement.
+ * @param {Map<string, PlacePlacement>} placementByPlaceKey
+ * @param {string} cityDisplayName
+ * @param {Object} source
+ */
+function ingestCityPlacement(placementByPlaceKey, cityDisplayName, source) {
+    const placeKey = normalizeKey(cityDisplayName);
+    if (!placeKey || !source || typeof source !== 'object') return;
+
+    const locationType = String(source.locationType || 'earth').trim() || 'earth';
+    /** @type {PlacePlacement} */
+    const entry = {
+        cityDisplayName,
+        locationType,
+        count: 1,
+    };
+
+    if (locationType === 'earth') {
+        if (source.lat == null || source.lon == null) return;
+        const lat = Number(source.lat);
+        const lon = Number(source.lon);
+        if (Number.isNaN(lat) || Number.isNaN(lon)) return;
+        entry.lat = lat;
+        entry.lon = lon;
+    } else {
+        if (source.x == null || source.y == null) return;
+        const x = Number(source.x);
+        const y = Number(source.y);
+        if (Number.isNaN(x) || Number.isNaN(y)) return;
+        entry.x = x;
+        entry.y = y;
+    }
+
+    const prev = placementByPlaceKey.get(placeKey);
+    if (prev) {
+        prev.count += 1;
+        return;
+    }
+    placementByPlaceKey.set(placeKey, entry);
+}
+
+/**
  * @param {Set<string>} placeNames
  * @param {Map<string, { country: string, count: number }>} pairCounts
+ * @param {Map<string, PlacePlacement>} placementByPlaceKey
  * @param {Object} event
  */
-function ingestEvent(placeNames, pairCounts, event) {
+function ingestEvent(placeNames, pairCounts, placementByPlaceKey, event) {
     if (!event || typeof event !== 'object') return;
 
     const city = String(event.cityDisplayName || '').trim();
-    if (city) placeNames.add(city);
+    if (city) {
+        placeNames.add(city);
+        ingestCityPlacement(placementByPlaceKey, city, event);
+    }
 
     const placeKeys = [
         'secondaryCountryPlaces',
@@ -107,7 +160,17 @@ function ingestEvent(placeNames, pairCounts, event) {
     (event.variants || []).forEach((variant) => {
         if (!variant || typeof variant !== 'object') return;
         const variantCity = String(variant.cityDisplayName || '').trim();
-        if (variantCity) placeNames.add(variantCity);
+        if (variantCity) {
+            placeNames.add(variantCity);
+            // Variant may omit coords — fall back to parent event placement fields.
+            ingestCityPlacement(placementByPlaceKey, variantCity, {
+                locationType: variant.locationType || event.locationType,
+                lat: variant.lat !== undefined ? variant.lat : event.lat,
+                lon: variant.lon !== undefined ? variant.lon : event.lon,
+                x: variant.x !== undefined ? variant.x : event.x,
+                y: variant.y !== undefined ? variant.y : event.y,
+            });
+        }
         for (const key of placeKeys) {
             const rows = variant[key];
             if (!Array.isArray(rows)) continue;
@@ -117,7 +180,7 @@ function ingestEvent(placeNames, pairCounts, event) {
 }
 
 /**
- * @returns {{ placeNames: Set<string>, countryByPlaceKey: Map<string, string> }}
+ * @returns {{ placeNames: Set<string>, countryByPlaceKey: Map<string, string>, placementByPlaceKey: Map<string, PlacePlacement> }}
  */
 function getLocationAutocompleteData() {
     if (cachedLocationData) return cachedLocationData;
@@ -125,9 +188,11 @@ function getLocationAutocompleteData() {
     const placeNames = new Set();
     /** @type {Map<string, { country: string, count: number }>} */
     const pairCounts = new Map();
+    /** @type {Map<string, PlacePlacement>} */
+    const placementByPlaceKey = new Map();
 
     for (const event of getTimelineEventsForMining()) {
-        ingestEvent(placeNames, pairCounts, event);
+        ingestEvent(placeNames, pairCounts, placementByPlaceKey, event);
     }
 
     /** @type {Map<string, { country: string, count: number }>} */
@@ -145,8 +210,80 @@ function getLocationAutocompleteData() {
         countryByPlaceKey.set(placeKey, entry.country);
     }
 
-    cachedLocationData = { placeNames, countryByPlaceKey };
+    cachedLocationData = { placeNames, countryByPlaceKey, placementByPlaceKey };
     return cachedLocationData;
+}
+
+/**
+ * @param {string} locationName
+ * @returns {PlacePlacement | null}
+ */
+export function resolvePlacementForPlaceName(locationName) {
+    const key = normalizeKey(locationName);
+    if (!key) return null;
+    return getLocationAutocompleteData().placementByPlaceKey.get(key) || null;
+}
+
+/**
+ * Fill lat/lon (or x/y), location type, and location label from a prior timeline choice.
+ * Falls back to Lookup when no prior coords are known.
+ * @param {string} inputId
+ * @param {string} placeText
+ */
+function applyPriorPlacementForCityLookup(inputId, placeText) {
+    if (!CITY_LOOKUP_INPUT_IDS.has(inputId)) return;
+
+    const placement = resolvePlacementForPlaceName(placeText);
+    if (!placement) {
+        if (inputId === 'eventSlideEditCityLookup') {
+            void window.eventManager?.lookupCitySlide?.();
+        } else if (inputId === 'eventEditCity') {
+            void window.eventManager?.cityLookupService?.lookupCity?.();
+        }
+        return;
+    }
+
+    if (inputId === 'eventSlideEditCityLookup') {
+        const display = document.getElementById('eventSlideEditCityDisplayName');
+        const latInput = document.getElementById('eventSlideEditLat');
+        const lonInput = document.getElementById('eventSlideEditLon');
+        const xInput = document.getElementById('eventSlideEditX');
+        const yInput = document.getElementById('eventSlideEditY');
+        const locTypeInput = document.getElementById('eventSlideEditLocationType');
+
+        if (display) display.value = placement.cityDisplayName;
+        if (locTypeInput) locTypeInput.value = placement.locationType || 'earth';
+
+        if (latInput) latInput.value = '';
+        if (lonInput) lonInput.value = '';
+        if (xInput) xInput.value = '';
+        if (yInput) yInput.value = '';
+
+        if ((placement.locationType || 'earth') === 'earth') {
+            if (latInput && placement.lat != null) latInput.value = String(placement.lat);
+            if (lonInput && placement.lon != null) lonInput.value = String(placement.lon);
+        } else {
+            if (xInput && placement.x != null) xInput.value = String(placement.x);
+            if (yInput && placement.y != null) yInput.value = String(placement.y);
+        }
+
+        window.standaloneEventSlide?.syncLocationTypeUI?.();
+        return;
+    }
+
+    // Modal edit form
+    const display = document.getElementById('eventEditCityDisplayName');
+    const latInput = document.getElementById('eventEditLat');
+    const lonInput = document.getElementById('eventEditLon');
+    const locMgr = window.eventManager?.formService?.locationFieldManager;
+    if (display) display.value = placement.cityDisplayName;
+    if (typeof locMgr?.setLocationType === 'function') {
+        locMgr.setLocationType(placement.locationType || 'earth');
+    }
+    if ((placement.locationType || 'earth') === 'earth') {
+        if (latInput && placement.lat != null) latInput.value = String(placement.lat);
+        if (lonInput && placement.lon != null) lonInput.value = String(placement.lon);
+    }
 }
 
 export function clearStoryEventLocationOptionsCache() {
@@ -243,6 +380,9 @@ function wirePlaceNameField(input, countryInput) {
                 input.value = text;
                 removeList();
                 if (countryInput) syncCountryFromPlaceName(input, countryInput);
+                if (CITY_LOOKUP_INPUT_IDS.has(input.id)) {
+                    applyPriorPlacementForCityLookup(input.id, text);
+                }
             });
             listEl.appendChild(btn);
         });
@@ -279,7 +419,12 @@ export function wirePlaceNameInput(nameInput, countryInput) {
  */
 export function wireStoryEventCityInputs() {
     if (typeof document === 'undefined') return;
-    const ids = ['eventSlideEditCityLookup', 'eventSlideEditCityDisplayName', 'eventEditCityDisplayName'];
+    const ids = [
+        'eventSlideEditCityLookup',
+        'eventSlideEditCityDisplayName',
+        'eventEditCity',
+        'eventEditCityDisplayName',
+    ];
     ids.forEach((id) => {
         const input = document.getElementById(id);
         if (input instanceof HTMLInputElement) wirePlaceNameField(input);
@@ -293,6 +438,7 @@ if (typeof window !== 'undefined') {
         clearStoryEventLocationOptionsCache,
         refreshStoryEventLocationDatalists,
         resolveCountryForPlaceName,
+        resolvePlacementForPlaceName,
         syncCountryFromPlaceName,
     };
 }

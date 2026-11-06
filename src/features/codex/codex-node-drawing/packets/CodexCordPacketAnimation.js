@@ -4,17 +4,17 @@
  */
 
 import {
-    CODEX_EDGE_FILTER_PAD_PX,
     CODEX_PACKET_COUNT_MAX,
     CODEX_PACKET_COUNT_MIN,
     resolveCodexPacketEdgePlan,
+    CODEX_PACKET_LOD_LIGHT_BUDGET,
+    CODEX_PACKET_LOD_LIGHT_ZOOM,
+    CODEX_PACKET_LOD_PAUSE_ZOOM,
     CODEX_PACKET_METEOR_CORE_MIN_PULSE,
     CODEX_PACKET_PULSE_DECAY_MAX_SEC,
     CODEX_PACKET_PULSE_DECAY_MIN_SEC,
     CODEX_PACKET_PULSE_OPACITY_LOW_MULT,
     CODEX_PACKET_PULSE_OPACITY_PEAK_MULT,
-    CODEX_PACKET_PULSE_PAD_LOW_MULT,
-    CODEX_PACKET_PULSE_PAD_PEAK_MULT,
     CODEX_PACKET_PULSE_RISE_MAX_SEC,
     CODEX_PACKET_PULSE_RISE_MIN_SEC,
     CODEX_PACKET_PULSE_WIDTH_LOW_MULT,
@@ -24,7 +24,6 @@ import {
 } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { edgeDirectedKey, codexUnorderedPairKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
-import { appendCordFilteredLineGroup, appendCordPlainLineGroup } from '../svg/CodexCordSvgElements.js';
 
 /** @type {CodexCordPacketRuntime|null} */
 let _rt = null;
@@ -479,64 +478,92 @@ function buildCodexPacketCordPolylinePoints(poly, tTail, tHead) {
     return list;
 }
 
+/** @type {number} */
+let cordAnimFrameSkip = 0;
+
 /**
- * One filtered stroke per cord leg so energy meets at waypoints instead of cutting the corner.
+ * Reuse plain SVG `<line>` children instead of tearing down filtered groups every frame.
+ * Filtered packet rebuilds were starving docks/side panels (~60 Hz DOM + SVG filter invalidation).
  */
-function appendCodexCordPacketAlongCord(pktG, ns, poly, tTail, tHead, {
-    stroke,
-    strokeWidth,
-    strokeOpacity,
-    filterUrl,
-    padStrokeWidth
-}) {
-    const pathPts = buildCodexPacketCordPolylinePoints(poly, tTail, tHead);
-    if (pathPts.length < 2) return;
-    for (let i = 0; i < pathPts.length - 1; i += 1) {
-        const ax = pathPts[i].x;
-        const ay = pathPts[i].y;
-        const bx = pathPts[i + 1].x;
-        const by = pathPts[i + 1].y;
-        if (Math.hypot(bx - ax, by - ay) < 0.4) continue;
-        appendCordFilteredLineGroup(pktG, ns, {
-            x1: ax,
-            y1: ay,
-            x2: bx,
-            y2: by,
-            stroke,
-            strokeWidth,
-            strokeOpacity: String(strokeOpacity),
-            filterUrl,
-            lineClass: 'codex-edge-packet',
-            padStrokeWidth
-        });
+function ensureCodexPacketLineEl(pktG, ns, index, lineClass) {
+    let line = pktG.children[index];
+    if (!line || line.tagName !== 'line') {
+        line = document.createElementNS(ns, 'line');
+        line.setAttribute('stroke-linecap', 'round');
+        if (index < pktG.children.length) {
+            pktG.replaceChild(line, pktG.children[index]);
+        } else {
+            pktG.appendChild(line);
+        }
+    }
+    if (lineClass && !line.classList.contains(lineClass)) {
+        line.setAttribute('class', lineClass);
+    }
+    line.style.display = '';
+    return line;
+}
+
+function hideCodexPacketLinesFrom(pktG, startIndex) {
+    for (let i = startIndex; i < pktG.children.length; i += 1) {
+        const el = pktG.children[i];
+        if (el) el.style.display = 'none';
     }
 }
 
-/** Bright unfiltered core along the same legs as `appendCodexCordPacketAlongCord` (draw after glow). */
-function appendCodexCordMeteorCoreAlongCord(pktG, ns, poly, tTail, tHead, {
+function writeCodexPacketLine(line, x1, y1, x2, y2, stroke, strokeWidth, strokeOpacity) {
+    line.setAttribute('x1', String(x1));
+    line.setAttribute('y1', String(y1));
+    line.setAttribute('x2', String(x2));
+    line.setAttribute('y2', String(y2));
+    line.setAttribute('stroke', stroke);
+    line.setAttribute('stroke-width', String(strokeWidth));
+    line.setAttribute('stroke-opacity', String(strokeOpacity));
+}
+
+/**
+ * Draw packet legs into a recycled line pool. Returns next free line index.
+ */
+function paintCodexPacketLegsIntoPool(pktG, ns, poly, tTail, tHead, lineIndex, {
     stroke,
     strokeWidth,
-    strokeOpacity
+    strokeOpacity,
+    lineClass
 }) {
     const pathPts = buildCodexPacketCordPolylinePoints(poly, tTail, tHead);
-    if (pathPts.length < 2) return;
+    if (pathPts.length < 2) return lineIndex;
+    let idx = lineIndex;
     for (let i = 0; i < pathPts.length - 1; i += 1) {
         const ax = pathPts[i].x;
         const ay = pathPts[i].y;
         const bx = pathPts[i + 1].x;
         const by = pathPts[i + 1].y;
         if (Math.hypot(bx - ax, by - ay) < 0.4) continue;
-        appendCordPlainLineGroup(pktG, ns, {
-            x1: ax,
-            y1: ay,
-            x2: bx,
-            y2: by,
-            stroke,
-            strokeWidth,
-            strokeOpacity: String(strokeOpacity),
-            lineClass: 'codex-edge-packet-meteor-core'
-        });
+        const line = ensureCodexPacketLineEl(pktG, ns, idx, lineClass);
+        writeCodexPacketLine(line, ax, ay, bx, by, stroke, strokeWidth, strokeOpacity);
+        idx += 1;
     }
+    return idx;
+}
+
+function resolveCodexPacketLod() {
+    const zoom = typeof s.codexViewZoom === 'number' ? s.codexViewZoom : 1;
+    const isView = s.codexMode === 'view';
+    if (!isView) {
+        return { pause: false, light: false, budget: Infinity, skipFrames: 0 };
+    }
+    if (zoom <= CODEX_PACKET_LOD_PAUSE_ZOOM) {
+        return { pause: true, light: true, budget: 0, skipFrames: 0 };
+    }
+    if (zoom <= CODEX_PACKET_LOD_LIGHT_ZOOM) {
+        return {
+            pause: false,
+            light: true,
+            budget: CODEX_PACKET_LOD_LIGHT_BUDGET,
+            skipFrames: 1,
+        };
+    }
+    // Zoomed in enough for full pulse motion; still plain strokes (no SVG filters).
+    return { pause: false, light: false, budget: Infinity, skipFrames: 0 };
 }
 
 export function codexStopCordAnimRafOnly() {
@@ -545,17 +572,34 @@ export function codexStopCordAnimRafOnly() {
         cordAnimRafId = 0;
     }
     cordAnimLastTs = 0;
+    cordAnimFrameSkip = 0;
+}
+
+function clearCodexPacketSvgLayer() {
+    const pktG = _rt?.getRoot()?.querySelector('.codex-edges-layer .codex-edge-packets');
+    pktG?.replaceChildren();
 }
 
 /** Start/stop packet RAF when prefs change without a full edge redraw (view mode after initial render). */
 export function applyCodexCordPacketAnimPref() {
     if (!s.codexPacketAnimEnabled) {
         codexStopCordAnimRafOnly();
-        const pktG = _rt?.getRoot()?.querySelector('.codex-edges-layer .codex-edge-packets');
-        pktG?.replaceChildren();
+        clearCodexPacketSvgLayer();
+        return;
+    }
+    const lod = resolveCodexPacketLod();
+    if (lod.pause) {
+        codexStopCordAnimRafOnly();
+        clearCodexPacketSvgLayer();
         return;
     }
     ensureCodexCordAnimationLoop();
+}
+
+/** Call after zoom changes so view-mode LOD can pause/resume without a full redraw. */
+export function syncCodexPacketAnimForViewZoom() {
+    if (!s.codexPacketAnimEnabled) return;
+    applyCodexCordPacketAnimPref();
 }
 
 function codexCordAnimationTick(ts) {
@@ -564,10 +608,25 @@ function codexCordAnimationTick(ts) {
         return;
     }
     cordAnimRafId = requestAnimationFrame(codexCordAnimationTick);
-    if (!_rt) {
-        codexStopCordAnimRafOnly();
+
+    // Pan owns the compositor — skip packet paints until settle.
+    if (s.backgroundPanPointerId != null) {
+        cordAnimLastTs = ts;
         return;
     }
+
+    const lod = resolveCodexPacketLod();
+    if (lod.pause) {
+        clearCodexPacketSvgLayer();
+        cordAnimLastTs = ts;
+        return;
+    }
+
+    if (lod.skipFrames > 0) {
+        cordAnimFrameSkip = (cordAnimFrameSkip + 1) % (lod.skipFrames + 1);
+        if (cordAnimFrameSkip !== 0) return;
+    }
+
     const root = _rt.getRoot();
     if (!root || !document.body.contains(root)) {
         codexStopCordAnimRafOnly();
@@ -582,11 +641,12 @@ function codexCordAnimationTick(ts) {
     cordAnimLastTs = ts;
 
     const ns = 'http://www.w3.org/2000/svg';
-    while (pktG.firstChild) pktG.removeChild(pktG.firstChild);
-
     const visualPrefs = _rt.getVisualPrefs();
+    let lineIndex = 0;
+    let paintedPackets = 0;
 
     cordPacketState.forEach((st) => {
+        if (paintedPackets >= lod.budget) return;
         const edge = { fromId: st.fromId, toId: st.toId };
         if (
             typeof _rt.edgeCordPacketsEnabled === 'function'
@@ -595,6 +655,7 @@ function codexCordAnimationTick(ts) {
             return;
         }
         st.packets.forEach((p) => {
+            if (paintedPackets >= lod.budget) return;
             if (!p.pts || p.pts.length < 2 || p.totalLen < 1e-3) return;
             ensureCodexPacketPulseFields(p);
             p.headT += p.speed * dt;
@@ -632,33 +693,35 @@ function codexCordAnimationTick(ts) {
             const wLow = CODEX_PACKET_PULSE_WIDTH_LOW_MULT;
             const wHigh = CODEX_PACKET_PULSE_WIDTH_PEAK_MULT;
             const effWidth = p.width * (wLow + pulseStr * (wHigh - wLow));
-            const padBase = CODEX_EDGE_FILTER_PAD_PX * visualPrefs.packetThicknessMult;
-            const pLow = CODEX_PACKET_PULSE_PAD_LOW_MULT;
-            const pHigh = CODEX_PACKET_PULSE_PAD_PEAK_MULT;
-            const padW = Math.round(padBase * (pLow + pulseStr * (pHigh - pLow)));
             const tailT = Math.max(0, p.headT - p.lengthT);
             const packetStroke = st.active
                 ? visualPrefs.packetColorActive
                 : visualPrefs.packetColorIdle;
-            appendCodexCordPacketAlongCord(pktG, ns, p, tailT, p.headT, {
+
+            // Plain strokes only — filtered packet groups were the main continuous cost.
+            lineIndex = paintCodexPacketLegsIntoPool(pktG, ns, p, tailT, p.headT, lineIndex, {
                 stroke: packetStroke,
                 strokeWidth: effWidth,
                 strokeOpacity: effOpac,
-                filterUrl: 'url(#codex-edge-packet-pink-soft)',
-                padStrokeWidth: padW
+                lineClass: 'codex-edge-packet',
             });
-            if (pulseStr > CODEX_PACKET_METEOR_CORE_MIN_PULSE) {
+
+            if (!lod.light && pulseStr > CODEX_PACKET_METEOR_CORE_MIN_PULSE) {
                 const coreBoost = pulseStr * pulseStr;
                 const coreW = p.width * (0.38 + 1.05 * pulseStr);
                 const coreOpac = Math.min(1, 0.15 + 0.92 * coreBoost);
-                appendCodexCordMeteorCoreAlongCord(pktG, ns, p, tailT, p.headT, {
+                lineIndex = paintCodexPacketLegsIntoPool(pktG, ns, p, tailT, p.headT, lineIndex, {
                     stroke: '#fff6e8',
                     strokeWidth: coreW,
-                    strokeOpacity: coreOpac
+                    strokeOpacity: coreOpac,
+                    lineClass: 'codex-edge-packet-meteor-core',
                 });
             }
+            paintedPackets += 1;
         });
     });
+
+    hideCodexPacketLinesFrom(pktG, lineIndex);
 }
 
 export function ensureCodexCordAnimationLoop() {
@@ -666,7 +729,13 @@ export function ensureCodexCordAnimationLoop() {
         codexStopCordAnimRafOnly();
         return;
     }
+    if (resolveCodexPacketLod().pause) {
+        codexStopCordAnimRafOnly();
+        clearCodexPacketSvgLayer();
+        return;
+    }
     if (cordAnimRafId) return;
     cordAnimLastTs = 0;
+    cordAnimFrameSkip = 0;
     cordAnimRafId = requestAnimationFrame(codexCordAnimationTick);
 }

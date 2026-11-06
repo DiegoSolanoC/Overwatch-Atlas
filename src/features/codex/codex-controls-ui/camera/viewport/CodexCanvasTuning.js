@@ -59,6 +59,16 @@ export const CODEX_PACKET_COUNT_MAX = 6;
 export const CODEX_PACKET_GLOBAL_BUDGET = 108;
 
 /**
+ * View-mode packet LOD (read-only board survey).
+ * Below pause zoom: stop RAF + clear packet SVG so docks stay responsive when zoomed out.
+ * Below light zoom: plain strokes only, no meteor cores, every-other-frame updates.
+ */
+export const CODEX_PACKET_LOD_PAUSE_ZOOM = 0.42;
+export const CODEX_PACKET_LOD_LIGHT_ZOOM = 0.72;
+/** Cap simulated packets when zoomed out in view mode. */
+export const CODEX_PACKET_LOD_LIGHT_BUDGET = 36;
+
+/**
  * Scale packet density from the number of cords that currently accept packets.
  * @param {number} activeEdgeCount
  * @returns {{ countMin: number, countMax: number, maxEdges: number }}

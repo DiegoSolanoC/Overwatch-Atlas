@@ -240,7 +240,8 @@ export function appendCodexEdgeNodeMaskForElement(mask, ns, el, maskWorldRect, c
 }
 
 /**
- * Fast rectangular cord cutout from saved layout (load path — no PNG decode / layout reads).
+ * Fast rectangular cord cutout from saved layout (legacy — squares off cords under nodes).
+ * Prefer {@link appendCodexEdgeNodeMaskAlphaFromFrame} so load matches settled alpha hex masks.
  * @param {SVGMaskElement} mask
  * @param {string} ns
  * @param {{ left: number, top: number, width: number, height: number, rotationDeg?: number }} frame
@@ -259,6 +260,26 @@ export function appendCodexEdgeNodeMaskBlackRect(mask, ns, frame) {
         rect.setAttribute('transform', `rotate(${frame.rotationDeg} ${cx} ${cy})`);
     }
     mask.appendChild(rect);
+}
+
+/**
+ * Layout-record cord cutout using the same hex alpha PNGs as live DOM masks.
+ * Only three variant URLs — browser caches them; avoids square black-rect choppiness on open.
+ * @param {SVGMaskElement} mask
+ * @param {string} ns
+ * @param {{ left: number, top: number, width: number, height: number, rotationDeg?: number }} frame
+ * @param {string|number} [frameVariant='1']
+ * @param {string} [codexNodeAlphaPath]
+ */
+export function appendCodexEdgeNodeMaskAlphaFromFrame(
+    mask,
+    ns,
+    frame,
+    frameVariant = '1',
+    codexNodeAlphaPath = CODEX_NODE_ALPHA_PATH,
+) {
+    if (!frame || frame.width < 1 || frame.height < 1) return;
+    appendPortraitAlphaMaskImage(mask, ns, frame, String(frameVariant || '1'), codexNodeAlphaPath, 1);
 }
 
 /**

@@ -19,6 +19,8 @@
     transition:
         opacity 0.6s ease,
         background 0.6s ease,
+        left var(--panel-transition, 0.3s ease),
+        right var(--panel-transition, 0.3s ease),
         pointer-events 0s; /* Slower fade for more noticeable effect */
     margin: 0;
     box-sizing: border-box;
@@ -117,7 +119,24 @@
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
 }
 
-/* Desktop: no special positioning needed with flexbox layout */
+/*
+ * Desktop: side panels overlay the stage (no longer flex-shrink main). Keep the hero /
+ * theater frame in the uncovered band so INFO / Filters do not cover the image.
+ * Width follows --user-panel-* so live resize stays in sync with the rails.
+ */
+@media (min-width: 769px) {
+    body:has(#eventSlide.open) .event-image-overlay.open,
+    .event-image-overlay.open.slide-open {
+        left: var(--user-panel-event-width, var(--panel-event-width));
+        width: auto;
+    }
+
+    body:has(#filtersPanel.open) .event-image-overlay.open,
+    body:has(#filtersPanel.panel--closing) .event-image-overlay.open {
+        right: var(--user-panel-filters-width, var(--panel-filters-width));
+        width: auto;
+    }
+}
 
 /* Mobile: Image overlay — top strip; height shared with #eventSlide via custom properties */
 @media (max-width: 768px) {

@@ -389,7 +389,11 @@ async function openHeroArchiveEntryFromCodexHeroName(heroNameFromNode) {
             updateAppStatus(`No Heroes archive entry matches “${String(heroNameFromNode).trim()}”`, 'warning');
             return;
         }
-        slide.showEvent(idx, { eventList: list, keepSlideHistory: true });
+        slide.showEvent(idx, {
+            eventList: list,
+            keepSlideHistory: true,
+            presentationArchiveSource: 'heroes',
+        });
         playSoundEffect('eventClick');
     } catch (err) {
         console.warn('CodexCanvasService: open hero archive from codex node failed', err);

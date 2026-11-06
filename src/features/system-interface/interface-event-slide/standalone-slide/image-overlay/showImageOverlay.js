@@ -23,6 +23,7 @@ import {
     clearEventSourceMediaEmbed,
     shouldIgnoreOverlayClickForSourceMedia,
 } from './eventSourceMediaOverlay.js';
+import { clearImageOverlayFadeTimer } from './imageOverlayFade.js';
 
 export function runShowImageOverlay(slide, imagePath) {
             if (isDialogueTheaterImageOverlayContext()) {
@@ -44,6 +45,7 @@ export function runShowImageOverlay(slide, imagePath) {
             const toggleBtn = document.getElementById('eventImageToggle');
             
             if (overlay && img && imagePath) {
+                clearImageOverlayFadeTimer(slide);
                 clearEventSourceMediaEmbed();
                 if (slide && typeof slide === 'object') {
                     slide.activeYouTubeVideoId = '';
@@ -51,15 +53,18 @@ export function runShowImageOverlay(slide, imagePath) {
                 }
 
                 document.getElementById('dialogueTheaterStage')?.remove();
-                overlay.classList.remove('dialogue-theater-stage-overlay');
+                overlay.classList.remove('dialogue-theater-stage-overlay', 'fade-out');
                 delete overlay.dataset.storyCommentaryDirectPlay;
 
                 img.src = imagePath;
                 img.style.display = 'block';
-                img.style.opacity = '1';
+                img.classList.remove('fade-out', 'fade-in');
+                // Start transparent so .fade-in / CSS opacity transition can run
+                img.style.opacity = '0';
                 overlay.style.display = 'flex';
-                overlay.style.opacity = '1';
+                overlay.style.opacity = '0';
                 overlay.style.removeProperty('pointer-events');
+                overlay.classList.remove('fade-in');
                 overlay.classList.add('open');
                 // Add slide-open class if event slide is open (positions image to the right of panel)
                 if (eventSlide?.classList.contains('open')) {
@@ -70,6 +75,17 @@ export function runShowImageOverlay(slide, imagePath) {
                 if (toggleBtn) toggleBtn.textContent = 'Hide Image';
 
                 syncMobileEventSlideLayoutForImageShown();
+
+                // Paint opacity 0 first, then enable fade-in (matches existing CSS 0.6s transition)
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        if (!overlay.classList.contains('open')) return;
+                        overlay.classList.add('fade-in');
+                        img.classList.add('fade-in');
+                        overlay.style.removeProperty('opacity');
+                        img.style.removeProperty('opacity');
+                    });
+                });
 
                 // Setup click-to-hide handler if not already set (desktop only)
                 if (!overlay.dataset.clickHandlerSet) {

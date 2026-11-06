@@ -32,9 +32,29 @@
     contain: layout style;
 }
 
-/* Optimize during active panning */
+/* Optimize during active panning — keep work off the main thread / GPU fill. */
 .codex-world--panning {
     will-change: transform;
+}
+
+.codex-world--panning .codex-edge-packets {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.codex-world--panning .codex-node {
+    /* Suppress hover transform/filter transitions mid-pan only.
+       Do NOT touch `animation` here — toggling it restarts fade-in on every node at release. */
+    transition: none !important;
+}
+
+/*
+ * Cull skips updates mid-pan, so nodes keep a stale --cv-offscreen class and look like
+ * empty intrinsic boxes when dragged into view. Force paint for the gesture.
+ */
+.codex-world--panning .codex-node--cv-offscreen {
+    content-visibility: visible;
+    pointer-events: none;
 }
 
 /* Full-stage pointer target: contextmenu offsetX/Y are native-local to this box (same space as node left/top). */

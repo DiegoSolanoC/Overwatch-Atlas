@@ -46,6 +46,10 @@ export const s = {
     onCodexTouchStartHandler: /** @type {((e: TouchEvent) => void)|null} */ (null),
     onCodexTouchMoveHandler: /** @type {((e: TouchEvent) => void)|null} */ (null),
     onCodexTouchEndHandler: /** @type {((e: TouchEvent) => void)|null} */ (null),
+    onCodexViewRightPanPointerDown: /** @type {((e: PointerEvent) => void)|null} */ (null),
+    onCodexViewRightPanContextMenu: /** @type {((e: MouseEvent) => void)|null} */ (null),
+    /** Suppress browser contextmenu after a view-mode right-pan gesture. */
+    codexViewRightPanSuppressContextMenu: false,
     backgroundPanPointerPending: /** @type {object|null} */ (null),
     backgroundPanPointerId: /** @type {number|null} */ (null),
     codexToolbarEl: /** @type {HTMLElement|null} */ (null),
@@ -121,6 +125,9 @@ export function resetCanvasSession() {
     s.onCodexTouchStartHandler = null;
     s.onCodexTouchMoveHandler = null;
     s.onCodexTouchEndHandler = null;
+    s.onCodexViewRightPanPointerDown = null;
+    s.onCodexViewRightPanContextMenu = null;
+    s.codexViewRightPanSuppressContextMenu = false;
     s.backgroundPanPointerPending = null;
     s.backgroundPanPointerId = null;
     s.codexToolbarEl = null;

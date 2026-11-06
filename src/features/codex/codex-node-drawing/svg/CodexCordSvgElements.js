@@ -147,7 +147,8 @@ export function appendCordFilteredLineGroup(parent, ns, {
     pad.setAttribute('x2', String(x2));
     pad.setAttribute('y2', String(y2));
     pad.setAttribute('stroke', '#ffffff');
-    pad.setAttribute('stroke-opacity', '0');
+    // Near-zero (not 0): some engines omit opacity-0 strokes from filter bboxes → clipped H/V cords.
+    pad.setAttribute('stroke-opacity', '0.001');
     pad.setAttribute('stroke-width', String(padStrokeWidth));
     pad.setAttribute('stroke-linecap', 'round');
     pad.setAttribute('aria-hidden', 'true');
@@ -211,7 +212,7 @@ export function appendCordFilteredPolygonGroup(parent, ns, {
     pad.setAttribute('points', pointsStr);
     pad.setAttribute('fill', 'none');
     pad.setAttribute('stroke', '#ffffff');
-    pad.setAttribute('stroke-opacity', '0');
+    pad.setAttribute('stroke-opacity', '0.001');
     pad.setAttribute('stroke-width', String(padStrokeWidth));
     pad.setAttribute('stroke-linejoin', 'round');
     pad.setAttribute('aria-hidden', 'true');

@@ -4,6 +4,10 @@ import { s } from '../../../codex-canvas/core/canvasSession.js';
 import { DRAG_THRESHOLD_PX } from '../viewport/CodexCanvasTuning.js';
 import { clearCodexEdgeRedrawSchedule, redrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { scheduleUpdateCodexVirtualScroll } from '../../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
+import {
+    applyCodexCordPacketAnimPref,
+    codexStopCordAnimRafOnly,
+} from '../../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../../codex-canvas/core/canvasConstants.js';
 
 
@@ -39,6 +43,58 @@ function detachCodexViewGestures() {
     s.onCodexTouchMoveHandler = null;
     s.onCodexTouchEndHandler = null;
     s.codexPinchState = null;
+    if (r && s.onCodexViewRightPanPointerDown) {
+        r.removeEventListener('pointerdown', s.onCodexViewRightPanPointerDown, true);
+    }
+    if (r && s.onCodexViewRightPanContextMenu) {
+        r.removeEventListener('contextmenu', s.onCodexViewRightPanContextMenu, true);
+    }
+    s.onCodexViewRightPanPointerDown = null;
+    s.onCodexViewRightPanContextMenu = null;
+    s.codexViewRightPanSuppressContextMenu = false;
+}
+
+/**
+ * View mode only: right-drag pans the board without selecting nodes/cords.
+ * Capture on root so it works over a dense Codex (nodes + hits on top of the bg layer).
+ * @param {PointerEvent} e
+ */
+function onCodexViewModeRightPanPointerDown(e) {
+    if (s.codexMode !== 'view') return;
+    if (e.button !== 2) return;
+    if (!s.root) return;
+
+    const t = e.target;
+    if (t instanceof Element) {
+        if (
+            t.closest('.codex-picker')
+            || t.closest('.codex-toolbar')
+            || t.closest('.codex-visual-panel')
+            || t.closest('.codex-stage-controls')
+            || t.closest('.filter-autocomplete-list')
+        ) {
+            return;
+        }
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+    cancelBackgroundPanPointerPending();
+    api.cancelPointerPending();
+    api.clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
+    s.codexViewRightPanSuppressContextMenu = true;
+    armCodexBackgroundPanPendingFromEvent(e);
+}
+
+/**
+ * Swallow the browser context menu after a view-mode right-pan gesture.
+ * @param {MouseEvent} e
+ */
+function onCodexViewModeRightPanContextMenu(e) {
+    if (!s.codexViewRightPanSuppressContextMenu) return;
+    s.codexViewRightPanSuppressContextMenu = false;
+    e.preventDefault();
+    e.stopPropagation();
 }
 
 function attachCodexViewGestures() {
@@ -84,6 +140,11 @@ function attachCodexViewGestures() {
     s.root.addEventListener('touchmove', s.onCodexTouchMoveHandler, { passive: false, capture: true });
     s.root.addEventListener('touchend', s.onCodexTouchEndHandler, { passive: true, capture: true });
     s.root.addEventListener('touchcancel', s.onCodexTouchEndHandler, { passive: true, capture: true });
+
+    s.onCodexViewRightPanPointerDown = onCodexViewModeRightPanPointerDown;
+    s.onCodexViewRightPanContextMenu = onCodexViewModeRightPanContextMenu;
+    s.root.addEventListener('pointerdown', s.onCodexViewRightPanPointerDown, true);
+    s.root.addEventListener('contextmenu', s.onCodexViewRightPanContextMenu, true);
 }
 
 function cancelBackgroundPanPointerPending() {
@@ -95,7 +156,8 @@ function cancelBackgroundPanPointerPending() {
 }
 
 function armCodexBackgroundPanPendingFromEvent(e) {
-    if (e.button !== 0) return;
+    // Left-drag pan everywhere; view mode also allows right-drag pan (pan only).
+    if (e.button !== 0 && !(e.button === 2 && s.codexMode === 'view')) return;
     s.backgroundPanPointerPending = {
         pointerId: e.pointerId,
         startCX: e.clientX,
@@ -129,6 +191,10 @@ function onBackgroundPanUpMaybe(ev) {
     document.removeEventListener('pointerup', onBackgroundPanUpMaybe, capOpts);
     document.removeEventListener('pointercancel', onBackgroundPanUpMaybe, capOpts);
     s.backgroundPanPointerPending = null;
+    // Right-click without drag still suppresses the following contextmenu once.
+    if (ev.button === 2 && s.codexMode === 'view') {
+        s.codexViewRightPanSuppressContextMenu = true;
+    }
     if (s.codexInteractionMode === 'network') {
         s.networkLinkSourceId = null;
         api.selectCodexNode(null);
@@ -147,29 +213,34 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
     /* Performance: enable GPU optimization for panning */
     if (s.codexWorldEl) s.codexWorldEl.classList.add('codex-world--panning');
 
+    // One-shot: keep edge redraw / packet RAF off for the whole gesture.
+    // Portraits keep hydrating — pausing them left nodes looking blank mid-pan.
+    s.codexSkipAllEdgeRedraws = true;
+    s.codexSkipEdgeRedraw = true;
+    if (s.codexZoomDebounceTimer) {
+        clearTimeout(s.codexZoomDebounceTimer);
+        s.codexZoomDebounceTimer = null;
+    }
+    clearCodexEdgeRedrawSchedule();
+    codexStopCordAnimRafOnly();
+
     const layoutPerVp = api.getCodexBodyLayoutPerViewportPx();
-    const applyClient = (clientX, clientY) => {
-        s.codexViewPanX = origPanX + (clientX - startCX) / layoutPerVp;
-        s.codexViewPanY = origPanY + (clientY - startCY) / layoutPerVp;
+    let pendingCX = firstMoveEv.clientX;
+    let pendingCY = firstMoveEv.clientY;
+    let panRaf = 0;
+
+    const flushPan = () => {
+        panRaf = 0;
+        s.codexViewPanX = origPanX + (pendingCX - startCX) / layoutPerVp;
+        s.codexViewPanY = origPanY + (pendingCY - startCY) / layoutPerVp;
         /* Cords live under .codex-world; pan is CSS translate only — no full SVG rebuild per move. */
         api.applyCodexWorldTransformStyle();
-        /* Skip expensive DOM culling during pan - only run after pan ends */
-        // Set skip flags during pan to prevent edge redraws
-        s.codexSkipAllEdgeRedraws = true;
-        s.codexSkipEdgeRedraw = true;
-        // Cancel any pending debounce timer
-        if (s.codexZoomDebounceTimer) {
-            clearTimeout(s.codexZoomDebounceTimer);
-        }
-        // Schedule debounced redraw after pan completes (skip in View Mode)
-        if (s.codexMode !== 'view') {
-            s.codexZoomDebounceTimer = setTimeout(() => {
-                s.codexSkipAllEdgeRedraws = false;
-                s.codexSkipEdgeRedraw = false;
-                redrawCodexEdges();
-                s.codexZoomDebounceTimer = null;
-            }, 200);
-        }
+    };
+
+    const applyClient = (clientX, clientY) => {
+        pendingCX = clientX;
+        pendingCY = clientY;
+        if (!panRaf) panRaf = requestAnimationFrame(flushPan);
     };
 
     applyClient(firstMoveEv.clientX, firstMoveEv.clientY);
@@ -192,21 +263,47 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
             s.hitLayerEl.releasePointerCapture(pointerId);
         } catch (_) { /* ignore */ }
         if (s.hitLayerEl) s.hitLayerEl.style.cursor = '';
-        /* Performance: cleanup GPU optimization, then sync visibility */
+
+        if (panRaf) {
+            cancelAnimationFrame(panRaf);
+            panRaf = 0;
+            flushPan();
+        }
+
+        /* Drop pan class first so nodes paint normally. */
         if (s.codexWorldEl) s.codexWorldEl.classList.remove('codex-world--panning');
         s.backgroundPanPointerId = null;
-        api.syncCodexNodeDomCullFromView();
-
-        // Skip edge redraws during post-pan virtual scroll to prevent freeze
-        s.codexSkipAllEdgeRedraws = true;
-        s.codexSkipEdgeRedraw = true;
-        scheduleUpdateCodexVirtualScroll();
         clearCodexEdgeRedrawSchedule();
+
+        if (s.codexZoomDebounceTimer) clearTimeout(s.codexZoomDebounceTimer);
+
+        // View mode: board is fully mounted + no cv-cull — only resume packets.
         if (s.codexMode === 'view') {
             s.codexSkipAllEdgeRedraws = false;
             s.codexSkipEdgeRedraw = false;
+            s.codexZoomDebounceTimer = setTimeout(() => {
+                applyCodexCordPacketAnimPref();
+                s.codexZoomDebounceTimer = null;
+            }, 48);
+            return;
         }
-        // Note: Debounce timer is already managed by applyClient during pan
+
+        // Dev mode: virtual-scroll mount/unmount + cull after the gesture.
+        s.codexSkipAllEdgeRedraws = true;
+        s.codexSkipEdgeRedraw = true;
+        scheduleUpdateCodexVirtualScroll();
+        s.codexZoomDebounceTimer = setTimeout(() => {
+            requestAnimationFrame(() => {
+                api.syncCodexNodeDomCullFromView();
+                requestAnimationFrame(() => {
+                    s.codexSkipAllEdgeRedraws = false;
+                    s.codexSkipEdgeRedraw = false;
+                    redrawCodexEdges();
+                    applyCodexCordPacketAnimPref();
+                    s.codexZoomDebounceTimer = null;
+                });
+            });
+        }, 48);
     };
 
     const onMove = (ev) => {

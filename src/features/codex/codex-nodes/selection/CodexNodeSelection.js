@@ -155,21 +155,54 @@ function stripCodexBDescendantGlowFromDom() {
     });
 }
 
+/**
+ * Direct Codex cord neighbors of `fromId` for the green selection glow.
+ * Walks undirected edges; junction / break waypoints may sit on the path, but
+ * other content nodes (hero / npc / faction / country / …) are terminals —
+ * do not continue through them (no multi-hop A→B→C glow on C).
+ * @param {string} fromId
+ * @returns {Set<string>}
+ */
 function getCodexStrictOutgoingDescendantIds(fromId) {
     const result = new Set();
-    const visited = new Set();
+    if (!fromId) return result;
+
+    /** @type {Map<string, { id: string, kind?: string }>} */
+    const byId = new Map();
+    for (let i = 0; i < s.codexAllNodes.length; i++) {
+        const n = s.codexAllNodes[i];
+        if (n?.id) byId.set(n.id, n);
+    }
+
+    const isJunction = (id) => {
+        const n = byId.get(id);
+        if (n?.kind === 'junction') return true;
+        return codexNodeIsJunctionWaypoint(id);
+    };
+
+    /** @type {Map<string, Set<string>>} */
+    const adj = new Map();
+    for (let i = 0; i < s.codexEdges.length; i++) {
+        const e = s.codexEdges[i];
+        if (!e?.fromId || !e?.toId) continue;
+        if (!adj.has(e.fromId)) adj.set(e.fromId, new Set());
+        if (!adj.has(e.toId)) adj.set(e.toId, new Set());
+        adj.get(e.fromId).add(e.toId);
+        adj.get(e.toId).add(e.fromId);
+    }
+
+    const visited = new Set([fromId]);
     const queue = [fromId];
-    visited.add(fromId);
     while (queue.length) {
-        const id = queue.shift();
-        for (let i = 0; i < s.codexEdges.length; i++) {
-            const e = s.codexEdges[i];
-            if (e.fromId !== id) continue;
-            const t = e.toId;
-            if (!t || visited.has(t)) continue;
-            visited.add(t);
-            result.add(t);
-            queue.push(t);
+        const cur = queue.shift();
+        const neighbors = adj.get(cur);
+        if (!neighbors) continue;
+        for (const nb of neighbors) {
+            if (!nb || visited.has(nb)) continue;
+            visited.add(nb);
+            result.add(nb);
+            // Only continue through break / junction waypoints
+            if (isJunction(nb)) queue.push(nb);
         }
     }
     return result;

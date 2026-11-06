@@ -18,6 +18,7 @@ import {
 } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
 import { clearEventSourceMediaEmbed } from './eventSourceMediaOverlay.js';
+import { clearImageOverlayFadeTimer } from './imageOverlayFade.js';
 
 export function runHideImageOverlay(slide) {
             if (
@@ -32,6 +33,8 @@ export function runHideImageOverlay(slide) {
                 stopStoryCommentaryDirectPlay({ restoreEventImage: false });
             }
 
+            clearImageOverlayFadeTimer(slide);
+
             const overlay = document.getElementById('eventImageOverlay');
             const eventSlide = document.getElementById('eventSlide');
             const toggleBtn = document.getElementById('eventImageToggle');
@@ -41,7 +44,7 @@ export function runHideImageOverlay(slide) {
                 slide.activePdfSourceUrl = '';
             }
             if (overlay) {
-                overlay.classList.remove('open', 'dialogue-theater-stage-overlay');
+                overlay.classList.remove('open', 'fade-in', 'fade-out', 'dialogue-theater-stage-overlay');
                 delete overlay.dataset.storyCommentaryDirectPlay;
                 // Only remove slide-open if event slide is closed
                 if (!eventSlide?.classList.contains('open')) {

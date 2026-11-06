@@ -6460,7 +6460,7 @@
       "id": "b298e252-90bb-4582-8d6c-34c001003009",
       "entryType": "dialogue",
       "name": "Deals with Talon",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -7787,7 +7787,7 @@
       "id": "151877ad-cc39-41f3-bb21-e26ad4307908",
       "entryType": "dialogue",
       "name": "Money before Loyalty",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -8725,7 +8725,7 @@
       "id": "106a8910-2ac6-4228-83e9-3a8d06b4db34",
       "entryType": "dialogue",
       "name": "Fighting for Vendetta",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -8854,7 +8854,7 @@
       "id": "045725d5-31ab-40bf-a27d-2236bdfebee8",
       "entryType": "dialogue",
       "name": "Healing and Hurting",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -9175,7 +9175,7 @@
       "id": "4d638a55-7eac-405a-9bfa-21be049bde08",
       "entryType": "dialogue",
       "name": "Fighting Talon",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -9228,7 +9228,7 @@
       "id": "cac88f7f-a365-42cd-abe3-adbba05f8ec5",
       "entryType": "dialogue",
       "name": "Lucky Guess",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -9463,7 +9463,7 @@
       "id": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9",
       "entryType": "dialogue",
       "name": "Out of Talon",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -9688,7 +9688,7 @@
       "id": "1e971b13-c6cf-459b-85a7-fea652e0434c",
       "entryType": "dialogue",
       "name": "Forgetting about me",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -10660,7 +10660,7 @@
       "id": "cf65e9c9-0a4c-4e73-9eec-34947b418da4",
       "entryType": "dialogue",
       "name": "Settling In",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -12171,7 +12171,7 @@
       "id": "da29c54d-1205-4cb0-bb89-ef1e1a29339d",
       "entryType": "dialogue",
       "name": "We lived",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -12453,7 +12453,7 @@
       "id": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
       "entryType": "dialogue",
       "name": "Stayed Retired",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -12678,7 +12678,7 @@
       "id": "eee0676c-7269-4942-afb7-6b1b3e30d225",
       "entryType": "dialogue",
       "name": "Back Home",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -13481,7 +13481,7 @@
       "id": "a3980af2-e387-4eda-b5db-0798785ee4ca",
       "entryType": "dialogue",
       "name": "No Italian",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -14208,7 +14208,7 @@
       "id": "96366250-f815-4ee8-b7bf-ca9732649f22",
       "entryType": "dialogue",
       "name": "Fresh Faces",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -14337,7 +14337,7 @@
       "id": "adf7d755-c9b8-492f-8480-526340db55eb",
       "entryType": "dialogue",
       "name": "Team Choices",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -14781,7 +14781,7 @@
       "id": "b53cd51d-9b27-4eb4-ab2b-ba7929cf77b5",
       "entryType": "dialogue",
       "name": "No Tyrant",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -15707,7 +15707,7 @@
       "id": "16cdbd0f-2897-4ae9-8701-b164a420e721",
       "entryType": "dialogue",
       "name": "Priviledge",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -16136,7 +16136,7 @@
       "id": "df77f106-248e-419f-91ed-13c2f01e0708",
       "entryType": "dialogue",
       "name": "Mission Brief",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -16361,7 +16361,7 @@
       "id": "a22ec657-efd9-4f67-8a5c-507611722dcb",
       "entryType": "dialogue",
       "name": "High Scores",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -16662,7 +16662,7 @@
       "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
       "entryType": "dialogue",
       "name": "Mech Slayer",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch",
@@ -17032,7 +17032,7 @@
       "id": "efc23209-bc09-4e58-8536-fa07c4bd2dc9",
       "entryType": "dialogue",
       "name": "Good Taste",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -17085,7 +17085,7 @@
       "id": "aad0fe73-4231-4b09-8a2f-12088af9ed69",
       "entryType": "dialogue",
       "name": "Tests from Talon",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -17467,7 +17467,7 @@
       "id": "466873a9-1e6f-474a-8688-3555c0804541",
       "entryType": "dialogue",
       "name": "Concerns",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -19319,7 +19319,7 @@
       "id": "8dacbf8e-2528-4de8-8c6a-bd21ad91a8cb",
       "entryType": "dialogue",
       "name": "Working with Vendetta",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -19372,7 +19372,7 @@
       "id": "3c892232-3b34-45dc-858b-2c262445756e",
       "entryType": "dialogue",
       "name": "Prize Hunter",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch",
@@ -19588,7 +19588,7 @@
       "id": "95b9f80c-8176-4b6b-9a1b-bfe100a755af",
       "entryType": "dialogue",
       "name": "Threat to myself and others",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -19631,7 +19631,7 @@
       "id": "c328df98-7b24-4855-b768-f13d9c0d2689",
       "entryType": "dialogue",
       "name": "We can Help",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -19774,7 +19774,7 @@
       "id": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec",
       "entryType": "dialogue",
       "name": "War machine",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -19999,7 +19999,7 @@
       "id": "921ff317-7ba0-4a6c-b988-65eaf50685e0",
       "entryType": "dialogue",
       "name": "Hashimoto Bounties",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -20239,7 +20239,7 @@
       "id": "c354b12e-1020-4d3a-87a1-52fb9edf140e",
       "entryType": "dialogue",
       "name": "Calling the Shots",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -26813,7 +26813,7 @@
       "id": "aaa15cc8-af81-4cb3-b4dc-b5fa35b3618a",
       "entryType": "dialogue",
       "name": "Absolute Victory",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -35148,7 +35148,7 @@
       "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
       "entryType": "dialogue",
       "name": "Boss Changes",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -35191,7 +35191,7 @@
       "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
       "entryType": "dialogue",
       "name": "Overwatch Survived",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -35234,7 +35234,7 @@
       "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
       "entryType": "dialogue",
       "name": "Wildfire",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -36160,7 +36160,7 @@
       "id": "815e2d1e-3334-4ac6-a1b4-0e4974564cf4",
       "entryType": "dialogue",
       "name": "Training Tips",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -37659,7 +37659,7 @@
       "id": "e76d5550-0f65-4643-af31-93b494157200",
       "entryType": "dialogue",
       "name": "Pulling the Trigger",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -39029,7 +39029,7 @@
       "id": "56963687-38de-44ca-9205-4bbc2a76fcde",
       "entryType": "dialogue",
       "name": "Cartoon Superhero",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -39483,7 +39483,7 @@
       "id": "8dc62b9d-f769-4760-8e5d-755251a37733",
       "entryType": "dialogue",
       "name": "Why Withdraw",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -39569,7 +39569,7 @@
       "id": "2c741fe3-823c-4b78-912f-0587e267e977",
       "entryType": "dialogue",
       "name": "Stand Aside",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -40399,7 +40399,7 @@
       "id": "a78f7051-a93d-4fca-8824-6e15b2781a1f",
       "entryType": "dialogue",
       "name": "Cowardice",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -40432,7 +40432,7 @@
       "id": "930d4c6b-3f70-42f0-af4e-3e4999fec397",
       "entryType": "dialogue",
       "name": "Entertaining",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -41378,7 +41378,7 @@
       "id": "25ccdbbe-f706-415d-b243-cccbcee5eb2a",
       "entryType": "dialogue",
       "name": "Worsened Conditions",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -41664,7 +41664,7 @@
       "id": "7c0610e2-1011-4883-973c-0a775a2dc2d4",
       "entryType": "dialogue",
       "name": "You are the Variable",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -42445,7 +42445,7 @@
       "id": "a492d698-3e16-4459-85d0-91dd8b9f9284",
       "entryType": "dialogue",
       "name": "Spotless",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -42564,7 +42564,7 @@
       "id": "6cc84ccd-40aa-4c67-91cf-4252c50bb731",
       "entryType": "dialogue",
       "name": "Sitting out",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -42607,7 +42607,7 @@
       "id": "a7c8280c-6eff-486e-b310-b8511f24c7b3",
       "entryType": "dialogue",
       "name": "Aimless Chaos",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -42736,7 +42736,7 @@
       "id": "0028e7b4-bbd2-4432-9b01-75db1f4930af",
       "entryType": "dialogue",
       "name": "Recruitment tokens",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -42842,7 +42842,7 @@
       "id": "7bfc197b-f878-4ccb-9094-1cefb8ce2505",
       "entryType": "dialogue",
       "name": "Thinking on your feet",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -43431,7 +43431,7 @@
       "id": "2fc69c14-62d0-46b4-be21-82978d4f3386",
       "entryType": "dialogue",
       "name": "Burning the World Down",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -43474,7 +43474,7 @@
       "id": "a6e50044-5bba-4cd4-abaa-c564529dcb3b",
       "entryType": "dialogue",
       "name": "Lab Rat",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -45351,7 +45351,7 @@
       "id": "26e1dc3f-f647-4c6d-87aa-22beba17ff64",
       "entryType": "dialogue",
       "name": "Retribution",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -45384,7 +45384,7 @@
       "id": "6f6970d8-8157-4284-8626-2520249cbe8d",
       "entryType": "dialogue",
       "name": "Serve Another's Vengeance",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -46302,7 +46302,7 @@
       "id": "01e6538b-21f2-4559-b125-767d5d3be0d8",
       "entryType": "dialogue",
       "name": "Psst psst",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -49470,7 +49470,7 @@
       "id": "4df78e4c-a443-4070-b094-f2b2404f0138",
       "entryType": "dialogue",
       "name": "Many Paths",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -49725,7 +49725,7 @@
       "id": "b3f294ec-0104-40ce-9731-e80d672b3620",
       "entryType": "dialogue",
       "name": "Takeover",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -51279,7 +51279,7 @@
       "id": "c9a58edf-26fb-4257-817b-349d7fb66e72",
       "entryType": "dialogue",
       "name": "Getting Homesick",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -51491,7 +51491,7 @@
       "id": "7f8889f2-10da-4390-8848-e14bdfbda5d8",
       "entryType": "dialogue",
       "name": "Old Teammates",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -51544,7 +51544,7 @@
       "id": "e18b5fea-475a-4e5e-a58e-127d053b1c95",
       "entryType": "dialogue",
       "name": "Finding Answers",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -51587,7 +51587,7 @@
       "id": "30f8a334-8d7c-42af-9863-f67b12d17d2f",
       "entryType": "dialogue",
       "name": "Staying informed",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -51726,7 +51726,7 @@
       "id": "fe2ddd85-6d3b-43d4-907f-27431644600f",
       "entryType": "dialogue",
       "name": "Restless",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52183,7 +52183,7 @@
       "id": "a78e2257-ac18-40ce-a3f1-ae952daf3004",
       "entryType": "dialogue",
       "name": "Not so Agreeable",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52322,7 +52322,7 @@
       "id": "c6206dd4-d61b-45cf-977b-4165bbedbe52",
       "entryType": "dialogue",
       "name": "Useful when you show up",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52398,7 +52398,7 @@
       "id": "f597bd2b-9963-4fd5-b208-a61dbe331b83",
       "entryType": "dialogue",
       "name": "Dreaming Big",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52451,7 +52451,7 @@
       "id": "9e2df146-d789-4ce7-8683-567d7ae4b2a6",
       "entryType": "dialogue",
       "name": "Real Monster",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52504,7 +52504,7 @@
       "id": "e667f75e-0c25-4d92-9df2-740011cef090",
       "entryType": "dialogue",
       "name": "Thanks to your Parents",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52570,7 +52570,7 @@
       "id": "4c180eb8-47ba-4589-b9be-eedf059530fa",
       "entryType": "dialogue",
       "name": "Process can't Rush",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -52623,7 +52623,7 @@
       "id": "02a3d02d-ee69-4f2b-9e46-ebc062383765",
       "entryType": "dialogue",
       "name": "Declare your loyalty",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -54147,7 +54147,7 @@
       "id": "c3674b40-e701-4202-af50-a8be82d20589",
       "entryType": "dialogue",
       "name": "Make it Count",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -54385,7 +54385,7 @@
       "id": "9887a224-d2b4-46de-9063-4be66fbfb18d",
       "entryType": "dialogue",
       "name": "Misjudge my Competence",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -54461,7 +54461,7 @@
       "id": "c568b8bf-dda2-497a-bfdf-58422eaf328b",
       "entryType": "dialogue",
       "name": "No Plan",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -54514,7 +54514,7 @@
       "id": "9d39239c-b221-452a-a0cb-46032d8e5a9e",
       "entryType": "dialogue",
       "name": "Great Potential",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -56902,7 +56902,7 @@
       "id": "017ab4df-b0aa-459a-b70c-bf0754ca684b",
       "entryType": "dialogue",
       "name": "Glad you joined",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -164148,7 +164148,7 @@
       "id": "0db66127-b06f-464b-84bf-ecd86553a4f7",
       "entryType": "dialogue",
       "name": "Monument to my leadership",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -164201,7 +164201,7 @@
       "id": "b68a3f0d-0660-49f0-819c-f31aad7ace16",
       "entryType": "dialogue",
       "name": "The harness",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -164995,7 +164995,7 @@
       "id": "c81e6630-b017-4b98-ab0b-9ed25164d0f8",
       "entryType": "dialogue",
       "name": "Lasting impression",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -165147,7 +165147,7 @@
       "id": "81fe664a-af5e-4aa0-8da5-2e0f015bf18b",
       "entryType": "dialogue",
       "name": "Kingdom of wreckage",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -165286,7 +165286,7 @@
       "id": "815db5b9-cf43-4488-b00e-babef29a9304",
       "entryType": "dialogue",
       "name": "Busan fireworks",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -165491,7 +165491,7 @@
       "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
       "entryType": "dialogue",
       "name": "Welcome Resistance",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -165524,7 +165524,7 @@
       "id": "60ede0f3-5e90-48d4-baf5-deecac8731f2",
       "entryType": "dialogue",
       "name": "Condolences",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -167532,7 +167532,7 @@
       "id": "0532130e-8937-44ba-b0ba-33cb0586bf6a",
       "entryType": "dialogue",
       "name": "Focus on Saving the World",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -168965,7 +168965,7 @@
       "id": "1dbf921b-e618-476b-8383-1cd6ad9dedee",
       "entryType": "dialogue",
       "name": "The World will adapt",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -169934,7 +169934,7 @@
       "id": "9694ae8c-a8e5-4a33-b034-bd98984d4db4",
       "entryType": "dialogue",
       "name": "Never Forgotten",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"
@@ -170042,7 +170042,7 @@
       "id": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
       "entryType": "dialogue",
       "name": "Can not Hold Together",
-      "status": "active",
+      "status": "removed",
       "eraName": "",
       "tags": [
         "Overwatch"

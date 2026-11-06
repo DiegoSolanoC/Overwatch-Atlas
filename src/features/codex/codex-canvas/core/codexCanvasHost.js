@@ -35,7 +35,11 @@ import { registerCodexBioPreviewRuntime, unregisterCodexBioPreviewRuntime, previ
 import { registerCodexBioArchiveEdgeSyncRuntime, syncCodexEdgesFromBioArchiveConnections, unregisterCodexBioArchiveEdgeSyncRuntime } from '../../codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';
 import { registerCodexEdgeRedrawRuntime, unregisterCodexEdgeRedrawRuntime, redrawCodexEdges, redrawCodexEdgesDuringLoad, scheduleRedrawCodexEdges, clearCodexEdgeRedrawSchedule } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { registerCodexCordPacketRuntime, unregisterCodexCordPacketRuntime, stopCordAnimAndClearCordPacketState } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
-import { disconnectCodexImageObserver, hydrateCodexPortraitImagesInViewport } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
+import {
+    disconnectCodexImageObserver,
+    hydrateAllCodexPortraitImages,
+    hydrateCodexPortraitImagesInViewport,
+} from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { codexFiltersActive } from '../../codex-nodes/filters/CodexNodeFilterMatch.js';
 import { terminateCodexJsonParseWorker } from '../../codex-data/load/CodexJsonParseWorker.js';
 import { serializeCodexLayoutSnapshot } from '../../codex-data/persistence/CodexLayoutSerialization.js';
@@ -120,6 +124,12 @@ async function runCodexPostOpenPaint() {
 
     const schedulePortraitHydrate = () => {
         if (!s.root) return;
+        // View mode is a static full board — hydrate every portrait so pan never
+        // reveals empty hexes waiting on IntersectionObserver.
+        if (s.codexMode === 'view') {
+            void hydrateAllCodexPortraitImages(s.root);
+            return;
+        }
         hydrateCodexPortraitImagesInViewport(s.root);
     };
     if (typeof requestIdleCallback === 'function') {
@@ -279,6 +289,7 @@ export function initCodexCanvas(rootElement) {
         codexEdgePolyIntersectsRect,
         codexUnionBoundsFromEdgePolys,
         appendCodexJunctionElbowParallelograms: api.appendCodexJunctionElbowParallelograms,
+        appendCodexJunctionElbowParallelogramsChunked: api.appendCodexJunctionElbowParallelogramsChunked,
         appendEdgeGlowFilter,
         appendSoftPacketGlowFilter,
         appendCodexEdgeNodeMask: api.appendCodexEdgeNodeMask,

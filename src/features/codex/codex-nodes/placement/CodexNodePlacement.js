@@ -74,6 +74,16 @@ function applyNodeScale(el, scale, skipRedraw) {
     if (!skipRedraw) redrawCodexEdges();
 }
 
+function armCodexNodeEnterFade(el) {
+    if (!(el instanceof HTMLElement)) return;
+    el.classList.add('codex-node--enter');
+    const clear = () => {
+        el.classList.remove('codex-node--enter');
+        el.removeEventListener('animationend', clear);
+    };
+    el.addEventListener('animationend', clear);
+}
+
 function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
     const el = document.createElement('div');
     el.className = 'codex-node';
@@ -83,6 +93,7 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
     el.dataset.codexNodeId = opts.id || generateNodeId();
 
     el.dataset.codexKind = kind;
+    if (!opts.skipEnterFade) armCodexNodeEnterFade(el);
 
     if (!isCodexNodeBgDefault(opts.bgColor)) {
         el.dataset.codexBgColor = resolveCodexNodeBgColor(opts.bgColor);
@@ -407,7 +418,8 @@ function bindCodexNodeInteraction(el) {
     });
 
     el.addEventListener('pointerenter', () => {
-        if (!el.classList.contains('codex-node--junction')) {
+        // View mode: node BGs are opaque and hide cords already — skip O(N) mask rebuilds on hover.
+        if (!el.classList.contains('codex-node--junction') && s.codexMode !== 'view') {
             animateCodexNodeHoverMaskScale(el, readCodexNodeHoverVisualScale(el), () => {
                 api.syncCodexEdgeNodeMaskDom?.();
             });
@@ -420,7 +432,7 @@ function bindCodexNodeInteraction(el) {
         }
     });
     el.addEventListener('pointerleave', (e) => {
-        if (!el.classList.contains('codex-node--junction')) {
+        if (!el.classList.contains('codex-node--junction') && s.codexMode !== 'view') {
             animateCodexNodeHoverMaskScale(el, 1, () => {
                 api.syncCodexEdgeNodeMaskDom?.();
             });

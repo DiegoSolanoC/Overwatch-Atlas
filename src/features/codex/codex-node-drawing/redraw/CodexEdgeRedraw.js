@@ -24,13 +24,32 @@ import {
     unregisterCodexEdgeDragSyncRuntime,
 } from './CodexEdgeDragSync.js';
 import {
-    appendCodexEdgeNodeMaskBlackRect,
+    appendCodexEdgeNodeMaskAlphaFromFrame,
     appendCodexEdgeNodeMaskForElement,
     createCodexEdgeNodeMaskShell,
     nodeFrameIntersectsRect,
 } from '../svg/CodexNodeFrameSvg.js';
-import { codexNodeFrameFromLayoutRecord } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
+import {
+    CODEX_NODE_ALPHA_PATH,
+    codexNodeFrameFromLayoutRecord,
+} from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
+import { codexFrameVariantForId } from '../../codex-nodes/placement/CodexNodeVisualHash.js';
 import { syncCodexCordPacketStateDuringLoad } from '../packets/CodexCordPacketAnimation.js';
+
+/** Warm Alpha Node1/2/3.png so first cord mask paint isn't empty/square until decode. */
+function preloadCodexNodeAlphaMaskImages() {
+    return Promise.all(
+        [1, 2, 3].map(
+            (v) =>
+                new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => resolve();
+                    img.onerror = () => resolve();
+                    img.src = `${CODEX_NODE_ALPHA_PATH}${v}.png`;
+                }),
+        ),
+    );
+}
 
 /** @type {CodexEdgeRedrawRuntime|null} */
 let _rt = null;
@@ -326,16 +345,22 @@ function finalizeCodexEdgePaint(ctx, progressOpts) {
 
 function scheduleDeferredCodexJunctionDecor(contentRoot, ns, edges) {
     if (!contentRoot || !edges?.length || !_rt) return;
-    // Elbow facets scan edges²; keep them off the critical path after open.
-    if (_rt.getMode?.() === 'view') return;
+    // Paint once (chunked, plain fills, layout coords). Elbows live in world space under
+    // .codex-world CSS transform — pan/zoom must NOT wipe/repaint them.
     const run = () => {
         if (!contentRoot.isConnected || !_rt) return;
+        if (contentRoot.querySelector('g[data-codex-elbow-junction]')) return;
+        const chunked = _rt.appendCodexJunctionElbowParallelogramsChunked;
+        if (typeof chunked === 'function') {
+            void chunked(contentRoot, ns, null, edges);
+            return;
+        }
         _rt.appendCodexJunctionElbowParallelograms(contentRoot, ns, null, edges);
     };
     if (typeof requestIdleCallback === 'function') {
-        requestIdleCallback(run, { timeout: 4000 });
+        requestIdleCallback(run, { timeout: 2500 });
     } else {
-        setTimeout(run, 2000);
+        setTimeout(run, 500);
     }
 }
 
@@ -369,6 +394,11 @@ function scheduleDeferredCodexPostLoadDomCull(ctx) {
 
 async function syncCodexNodeDomCullDuringLoad(nodeList, progressOpts) {
     if (!_rt) return;
+    // View mode keeps a static full board — never apply content-visibility cull.
+    if (_rt.getMode?.() === 'view') {
+        _rt.syncCodexNodeDomCullFromView?.(nodeList);
+        return;
+    }
     const list = Array.from(nodeList || []);
     if (!list.length) return;
 
@@ -553,12 +583,20 @@ async function prepareCodexEdgePaintContextDuringLoad(opts) {
     }
 
     const defs = document.createElementNS(ns, 'defs');
+    // Keep userSpaceOnUse world filters for cords — objectBoundingBox clips H/V strokes
+    // (opacity-0 pad lines often don't expand the filter bbox). Cap layers in view for cost.
+    const viewGlowLayers = mode === 'view'
+        ? Math.min(2, Math.max(1, Math.round(visualPrefs.cordGlowLayers)))
+        : visualPrefs.cordGlowLayers;
+    const viewPacketLayers = mode === 'view'
+        ? 1
+        : visualPrefs.packetGlowLayers;
     const cordFilt = {
         stdDeviation: visualPrefs.cordBlur,
         morphRadius: visualPrefs.cordMorph,
-        blurLayers: visualPrefs.cordGlowLayers,
+        blurLayers: viewGlowLayers,
         viewW: vw,
-        viewH: vh
+        viewH: vh,
     };
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-violet-glow', 'violetBlur', cordFilt);
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-green-glow', 'greenBlur', cordFilt);
@@ -567,9 +605,9 @@ async function prepareCodexEdgePaintContextDuringLoad(opts) {
     _rt.appendSoftPacketGlowFilter(defs, 'codex-edge-packet-pink-soft', 'pktPinkBlur', {
         stdDeviation: visualPrefs.cordBlur * visualPrefs.packetBlurMult,
         morphRadius: visualPrefs.cordMorph * visualPrefs.packetMorphMult,
-        blurLayers: visualPrefs.packetGlowLayers,
+        blurLayers: viewPacketLayers,
         viewW: vw,
-        viewH: vh
+        viewH: vh,
     });
 
     const mask = createCodexEdgeNodeMaskShell(ns, vw, vh, CODEX_EDGES_NODE_ALPHA_MASK_ID);
@@ -591,11 +629,16 @@ async function prepareCodexEdgePaintContextDuringLoad(opts) {
 
     const maskYield = { units: 0 };
     if (useFastLayoutMask && maskRecords) {
+        // Use hex alpha PNGs (not black rects) so cords aren't squared off under nodes on first paint.
+        // Only Alpha Node1/2/3.png — browser-cached after the first decode.
         for (let start = 0; start < maskTotal; start += CODEX_LOAD_MASK_CHUNK) {
             const end = Math.min(start + CODEX_LOAD_MASK_CHUNK, maskTotal);
             for (let i = start; i < end; i++) {
-                const frame = codexNodeFrameFromLayoutRecord(maskRecords[i]);
-                if (frame) appendCodexEdgeNodeMaskBlackRect(mask, ns, frame);
+                const node = maskRecords[i];
+                const frame = codexNodeFrameFromLayoutRecord(node);
+                if (!frame) continue;
+                const variant = node?.id ? codexFrameVariantForId(node.id) : 1;
+                appendCodexEdgeNodeMaskAlphaFromFrame(mask, ns, frame, variant);
             }
             emitRedrawLoadProgress(progressOpts, 'prep', end, maskTotal || 1);
             reportLoadPhaseFraction(progressOpts, 'prep', end, maskTotal || 1);
@@ -781,6 +824,8 @@ async function completeCodexEdgePaintDuringLoad(ctx, opts) {
  * @property {(pts: { x: number, y: number }[], r: object) => boolean} codexEdgePolyIntersectsRect
  * @property {(edgePolys: { pts: { x: number, y: number }[] }[], pad: number) => object|null} codexUnionBoundsFromEdgePolys
  * @property {(parentG: SVGGElement, ns: string, worldCullRect: object|null, edgesForDecor?: { fromId: string, toId: string }[]) => void} appendCodexJunctionElbowParallelograms
+ * @property {(parentG: SVGGElement, ns: string, worldCullRect: object|null, edgesForDecor?: { fromId: string, toId: string }[]) => Promise<number>} [appendCodexJunctionElbowParallelogramsChunked]
+ * @property {(marginPx: number) => object} [getCodexVisibleWorldBoundsExpanded]
  * @property {(defs: SVGDefsElement, id: string, blurResultId: string, opts: object) => void} appendEdgeGlowFilter
  * @property {(defs: SVGDefsElement, id: string, blurResultId: string, opts: object) => void} appendSoftPacketGlowFilter
  * @property {(defs: SVGDefsElement, ns: string, vw: number, vh: number, maskWorldRect?: object|null) => void} appendCodexEdgeNodeMask
@@ -1038,12 +1083,18 @@ export function redrawCodexEdges(opts = {}) {
     }
 
     const defs = document.createElementNS(ns, 'defs');
+    const viewGlowLayers = mode === 'view'
+        ? Math.min(2, Math.max(1, Math.round(visualPrefs.cordGlowLayers)))
+        : visualPrefs.cordGlowLayers;
+    const viewPacketLayers = mode === 'view'
+        ? 1
+        : visualPrefs.packetGlowLayers;
     const cordFilt = {
         stdDeviation: visualPrefs.cordBlur,
         morphRadius: visualPrefs.cordMorph,
-        blurLayers: visualPrefs.cordGlowLayers,
+        blurLayers: viewGlowLayers,
         viewW: vw,
-        viewH: vh
+        viewH: vh,
     };
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-violet-glow', 'violetBlur', cordFilt);
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-green-glow', 'greenBlur', cordFilt);
@@ -1052,9 +1103,9 @@ export function redrawCodexEdges(opts = {}) {
     _rt.appendSoftPacketGlowFilter(defs, 'codex-edge-packet-pink-soft', 'pktPinkBlur', {
         stdDeviation: visualPrefs.cordBlur * visualPrefs.packetBlurMult,
         morphRadius: visualPrefs.cordMorph * visualPrefs.packetMorphMult,
-        blurLayers: visualPrefs.packetGlowLayers,
+        blurLayers: viewPacketLayers,
         viewW: vw,
-        viewH: vh
+        viewH: vh,
     });
     _rt.appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect);
     svg.appendChild(defs);
@@ -1192,6 +1243,9 @@ export async function redrawCodexEdgesDuringLoad(opts = {}) {
         };
         const planYield = { units: 0 };
 
+        // Decode the three hex alpha masks while we plan polylines (parallel with chunked work).
+        const alphaWarm = preloadCodexNodeAlphaMaskImages();
+
         emitRedrawLoadProgress(progressOpts, 'plan', 0, edges.length);
         reportLoadPhaseFraction(progressOpts, 'plan', 0, edges.length);
 
@@ -1209,6 +1263,7 @@ export async function redrawCodexEdgesDuringLoad(opts = {}) {
         }
 
         await yieldCodexLoadRedraw();
+        await alphaWarm;
 
         const paintCtx = await prepareCodexEdgePaintContextDuringLoad({
             force: opts.force !== false,

@@ -72,6 +72,7 @@ function resolveCordAppearanceAttrs(appearance, visualPrefs) {
  * @param {number} vh
  */
 function ensureCodexCordGlowFilters(defs, visualPrefs, vw, vh) {
+    // World-space filters keep H/V cord glows from clipping (opacity-0 pads are unreliable for bbox).
     const cordFilt = {
         stdDeviation: visualPrefs.cordBlur,
         morphRadius: visualPrefs.cordMorph,

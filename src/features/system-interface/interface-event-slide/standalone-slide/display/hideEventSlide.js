@@ -16,6 +16,11 @@ import {
 } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 import { stopStoryCommentaryDirectPlay } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { clearEventSourceMediaEmbed } from '../image-overlay/eventSourceMediaOverlay.js';
+import {
+    syncEventSlidePaneHeadingsMode,
+    syncEventSlideSectionJumpsMode,
+} from './wireEventSlideSectionJumps.js';
+import { clearEventSlideBioConnectionsDisplay } from '../../../interface-shared/bio-archive/eventSlideBioConnectionsDisplay.js';
 
 function restoreHubMenuIfHidden() {
     if (!document.body.classList.contains('app-timeline-default')) return;
@@ -56,8 +61,11 @@ export function runHideEventSlide(slide) {
             }
             
             if (eventSlide) {
-                eventSlide.classList.remove('open');
+                eventSlide.classList.remove('open', 'event-slide--bio-archive');
             }
+            syncEventSlideSectionJumpsMode('story');
+            syncEventSlidePaneHeadingsMode('story');
+            clearEventSlideBioConnectionsDisplay();
             
             // Hide image overlay completely
             clearEventSourceMediaEmbed();

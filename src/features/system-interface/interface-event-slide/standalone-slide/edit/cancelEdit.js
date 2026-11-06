@@ -16,6 +16,7 @@ import {
     updateEventSlideNpcCategoryDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
 
 export function runCancelEdit(slide, editBtn, saveBtn) {
             if (!slide.isEditing) {
@@ -91,10 +92,8 @@ export function runCancelEdit(slide, editBtn, saveBtn) {
             syncNpcCategoryBioPanelVisibility('story');
             syncBioDeleteButtonVisibility('story', false);
             syncHeroBioRolePanelsVisibility('story', undefined, undefined);
-            const archiveSrcAfterCancel =
-                window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const archiveSrcAfterCancel = resolveEventSlideArchiveSource(slide);
             const relAfterCancel = document.getElementById('eventSlideRelevantLocations');
-            const relSectionAfterCancel = document.getElementById('eventRelevantLocationsSection');
             const isBioAfterCancel =
                 archiveSrcAfterCancel === 'heroes'
                 || archiveSrcAfterCancel === 'factions'

@@ -23,6 +23,7 @@ import {
     clearEventSourceMediaEmbed,
     shouldIgnoreOverlayClickForSourceMedia,
 } from './eventSourceMediaOverlay.js';
+import { setImageOverlayFadeTimer } from './imageOverlayFade.js';
 
 export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500) {
             if (isDialogueTheaterImageOverlayContext()) {
@@ -40,6 +41,7 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
             const overlay = document.getElementById('eventImageOverlay');
             const img = document.getElementById('eventImage');
             const eventSlide = document.getElementById('eventSlide');
+            const toggleBtn = document.getElementById('eventImageToggle');
             
             if (!overlay || !img || !imagePath) return;
 
@@ -50,11 +52,12 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
             }
 
             document.getElementById('dialogueTheaterStage')?.remove();
-            overlay.classList.remove('dialogue-theater-stage-overlay');
+            overlay.classList.remove('dialogue-theater-stage-overlay', 'fade-out');
             delete overlay.dataset.storyCommentaryDirectPlay;
 
             img.src = imagePath;
             img.style.display = 'block';
+            img.classList.remove('fade-out');
             img.style.opacity = '0';
             overlay.style.display = 'flex';
             overlay.classList.add('open');
@@ -64,6 +67,8 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
             }
             overlay.style.opacity = '0';
             overlay.style.removeProperty('pointer-events');
+
+            if (toggleBtn) toggleBtn.textContent = 'Hide Image';
 
             syncMobileEventSlideLayoutForImageShown();
 
@@ -83,10 +88,9 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 });
             }
             
-            // Gradual fade-in with progress logging
+            // Gradual fade-in
             const startTime = Date.now();
             const fadeInterval = 50; // Update every 50ms
-            
             
             const fadeTimer = setInterval(() => {
                 const elapsed = Date.now() - startTime;
@@ -99,9 +103,12 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 img.style.opacity = String(opacity);
                 
                 if (progress >= 1) {
-                    clearInterval(fadeTimer);
+                    setImageOverlayFadeTimer(slide, null);
                     overlay.style.opacity = '1';
                     img.style.opacity = '1';
+                    overlay.classList.add('fade-in');
+                    img.classList.add('fade-in');
                 }
             }, fadeInterval);
+            setImageOverlayFadeTimer(slide, fadeTimer);
 }

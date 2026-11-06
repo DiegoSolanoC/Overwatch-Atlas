@@ -281,6 +281,13 @@
     }
 
     function clearBioConnectionsSlideDom() {
+        if (
+            typeof window !== 'undefined'
+            && window.__EventSlideBioConnectionsDisplay
+            && typeof window.__EventSlideBioConnectionsDisplay.clear === 'function'
+        ) {
+            window.__EventSlideBioConnectionsDisplay.clear();
+        }
         var el = typeof document !== 'undefined' ? document.getElementById('eventSlideBioConnections') : null;
         var sec = typeof document !== 'undefined' ? document.getElementById('eventBioConnectionsSection') : null;
         if (el) el.innerHTML = '';
@@ -488,6 +495,19 @@
     }
 
     function updateBioConnectionsSlideFromEvent(ev) {
+        // Prefer Gallery-parity List/Canvas display (Codex + Workshop).
+        if (
+            typeof window !== 'undefined'
+            && window.__EventSlideBioConnectionsDisplay
+            && typeof window.__EventSlideBioConnectionsDisplay.update === 'function'
+        ) {
+            var slideArch = '';
+            if (window.standaloneEventSlide && window.standaloneEventSlide._presentationArchiveSource) {
+                slideArch = String(window.standaloneEventSlide._presentationArchiveSource || '').trim();
+            }
+            void window.__EventSlideBioConnectionsDisplay.update(ev, slideArch || undefined);
+            return;
+        }
         var el = typeof document !== 'undefined' ? document.getElementById('eventSlideBioConnections') : null;
         var sec = typeof document !== 'undefined' ? document.getElementById('eventBioConnectionsSection') : null;
         if (!el || !sec) return;
@@ -495,6 +515,9 @@
             typeof window !== 'undefined' && window.eventManager?.dataService?.getArchiveSource
                 ? window.eventManager.dataService.getArchiveSource()
                 : 'story';
+        if (window.standaloneEventSlide && window.standaloneEventSlide._presentationArchiveSource) {
+            arch = String(window.standaloneEventSlide._presentationArchiveSource || arch).trim() || arch;
+        }
         if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') {
             el.innerHTML = '';
             sec.style.display = 'none';

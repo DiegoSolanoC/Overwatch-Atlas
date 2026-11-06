@@ -389,7 +389,10 @@ body:has(#paginationDock) .codex-visual-panel {
     --codex-node-hover-scale: 1.15;
     transition: transform 0.2s ease-out, filter 0.2s ease-out;
     will-change: transform;
-    /* Smooth fade-in when nodes appear */
+}
+
+/* One-shot enter fade — never kept on permanently (pan CSS must not toggle animation). */
+.codex-node--enter {
     animation: codex-node-fade-in 300ms ease-out;
 }
 
@@ -427,11 +430,17 @@ body:has(#paginationDock) .codex-visual-panel {
     }
 }
 
-/* Large boards: skip rendering/paint for nodes outside the view (class toggled in features/codex/codex-canvas/CodexCanvasEntry). */
+/* Large boards (Dev Mode): skip paint for nodes outside the view. */
 .codex-node--cv-offscreen {
     content-visibility: auto;
     contain-intrinsic-size: 160px 160px;
     pointer-events: none;
+}
+
+/* View Mode: board is static — never blank nodes via content-visibility under pan transform. */
+.codex--view-mode .codex-node--cv-offscreen {
+    content-visibility: visible;
+    pointer-events: auto;
 }
 
 .codex-node__coord-label {

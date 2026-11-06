@@ -38,7 +38,10 @@ import {
     updateEventSlideHeroRoleDisplay,
 } from '../../system-interface/interface-info-display/eventSlideMetaDisplays.js';
 import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
-import { syncEventSlideSectionJumpsMode } from '../../system-interface/interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js';
+import {
+    syncEventSlidePaneHeadingsMode,
+    syncEventSlideSectionJumpsMode,
+} from '../../system-interface/interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js';
 
 /** @type {string|null} */
 let activeConversationId = null;
@@ -565,6 +568,8 @@ export function teardownDialogueTheaterEventSlide() {
     eventSlide?.removeAttribute('data-dialogue-theater-conversation-id');
     if (textEl) textEl.style.display = '';
     syncEventSlideSectionJumpsMode('story');
+    syncEventSlidePaneHeadingsMode('story');
+    document.getElementById('eventSlide')?.classList.remove('event-slide--bio-archive');
 }
 
 export function closeDialogueTheaterInfoPanel() {
@@ -585,6 +590,8 @@ export function closeDialogueTheaterInfoPanel() {
     eventSlide?.classList.remove('open', 'event-slide--dialogue-theater', 'event-slide--inline-editing');
     eventSlide?.removeAttribute('data-dialogue-theater-conversation-id');
     syncEventSlideSectionJumpsMode('story');
+    syncEventSlidePaneHeadingsMode('story');
+    document.getElementById('eventSlide')?.classList.remove('event-slide--bio-archive');
     if (titleEl) titleEl.contentEditable = 'false';
     if (textEl) textEl.style.display = '';
     if (editBtn) editBtn.style.display = '';

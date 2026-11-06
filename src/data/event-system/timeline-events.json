@@ -403,6 +403,12 @@
           "country": "Lucheng",
           "reasoning": "Borda's research would be the base for later developments in Horizon Luanr Colony"
         }
+      ],
+      "commentary": [
+        {
+          "name": "100% Potable",
+          "theaterId": "857cbae6-07c5-40d3-af8f-8c82be1df13e"
+        }
       ]
     },
     {
@@ -446,13 +452,18 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ecopoints",
-          "reasoning": "Future Ecopoints would be built around the Polynesian League"
+          "country": "Polynesian League,",
+          "reasoning": "Nations of the pacific join into the Polynesian league after years of being ignored on the ecological crisis"
         },
         {
           "locationName": "",
           "country": "Deepsea Raiders,",
           "reasoning": "Some groups would later use the byproducts of oceanic chaos to their advantage"
+        },
+        {
+          "locationName": "",
+          "country": "Ecopoints",
+          "reasoning": "Future Ecopoints would be built around the Polynesian League"
         }
       ],
       "npcFilterPlaces": [
@@ -1429,6 +1440,11 @@
           "locationName": "",
           "country": "Deepsea Raiders,",
           "reasoning": "Joined since a young age due to his father"
+        },
+        {
+          "locationName": "",
+          "country": "Polynesian League,",
+          "reasoning": "Polynesian heritage from Samoa, makes him a PL citizen"
         }
       ]
     },
@@ -2695,6 +2711,12 @@
           "locationName": "",
           "country": "Symmetra",
           "reasoning": "Satya Vaswani is Born"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Dancing anxiety",
+          "theaterId": "22a60bfc-21ac-4513-9b88-c8a7da3b6c33"
         }
       ]
     },
@@ -5444,6 +5466,11 @@
           "locationName": "",
           "country": "Anubis Directives, Overwatch,",
           "reasoning": "Overwatch aids in battling remaining warbots and loyalists"
+        },
+        {
+          "locationName": "",
+          "country": "Polynesian League,",
+          "reasoning": "Anubis Loyalist Cell is intercepted moving across the Pacific Ocean"
         }
       ],
       "npcFilterPlaces": [
@@ -5545,7 +5572,14 @@
         }
       ],
       "commentary": [
-        "A Ravager"
+        {
+          "name": "A Ravager",
+          "theaterId": "8dca6a3f-aecd-4fa5-8f35-22f5f47d45dd"
+        },
+        {
+          "name": "A Helpful Human",
+          "theaterId": "b0979249-1ac6-47aa-93ce-e4bb824f8a32"
+        }
       ]
     },
     {
@@ -5826,8 +5860,18 @@
         }
       ],
       "commentary": [
-        "Not a Toy",
-        "Loads of trouble"
+        {
+          "name": "Not a Toy",
+          "theaterId": "fa83363e-3919-43b9-833a-6d0199769235"
+        },
+        {
+          "name": "Loads of trouble",
+          "theaterId": "33f5a636-73d3-4724-b386-ab386fd74dda"
+        },
+        {
+          "name": "A bodyguard",
+          "theaterId": "bbe55a61-d1bb-4ec4-8a0c-9183ed90bb14"
+        }
       ]
     },
     {
@@ -7152,6 +7196,12 @@
           "country": "Dae-Hyun,",
           "reasoning": "Close childhood friend"
         }
+      ],
+      "commentary": [
+        {
+          "name": "16 Bit Hero",
+          "theaterId": "cecfe2f6-6e39-4707-b6cb-7722711fda0f"
+        }
       ]
     },
     {
@@ -7284,6 +7334,11 @@
           "locationName": "",
           "country": "Overwatch, Ecopoints",
           "reasoning": "Approval of the Ecopoint program and multiple bases"
+        },
+        {
+          "locationName": "",
+          "country": "Polynesian League,",
+          "reasoning": "Grants access to Ecopoints Samoa and Zealandia"
         }
       ],
       "headlines": [
@@ -7299,7 +7354,9 @@
       "commentary": [
         {
           "name": "Winston · Antarctic Peninsula — So much data at this eco-Watchpoint! I get the \"shivers\" just thinking about it.",
-          "label": "So much Data"
+          "label": "So much Data",
+          "theaterId": "chatter-winston",
+          "lineId": "4dcd5187-ca26-4007-9c9b-b75b01f07e5d"
         }
       ]
     },
@@ -8102,6 +8159,12 @@
           "country": "Anran,",
           "reasoning": "Now an older sister"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Siblings",
+          "theaterId": "a95a1256-d4cc-4cb3-9be4-04cae1995501"
+        }
       ]
     },
     {
@@ -8772,6 +8835,11 @@
           "locationName": "",
           "country": "Overwatch, Junker Monarchy,",
           "reasoning": "Fiound each other in a fight during a raide at Little River"
+        },
+        {
+          "locationName": "",
+          "country": "Polynesian League,",
+          "reasoning": "Aid Ecopoint: Zealandia in radiation treatment"
         }
       ],
       "headlines": [
@@ -8779,8 +8847,14 @@
         "Melbourn hospotal renames facility in honor to Angela Ziegler"
       ],
       "commentary": [
-        "I got this Rash",
-        "Sorry for your Doctor"
+        {
+          "name": "I got this Rash",
+          "theaterId": "6de31fe8-2edb-403d-ad33-cfb9976600e5"
+        },
+        {
+          "name": "Sorry for your Doctor",
+          "theaterId": "79bd3be5-df60-436d-9991-7cc4f8e1ffdd"
+        }
       ]
     },
     {
@@ -10609,6 +10683,11 @@
           "locationName": "",
           "country": "Deepsea Raiders",
           "reasoning": "An eco terrorist group diisrupting trade and the enviroment of the Super Coral Reefs"
+        },
+        {
+          "locationName": "",
+          "country": "Polynesian League,",
+          "reasoning": "Attempt to stop the Deepsea Raider threat with force"
         }
       ],
       "headlines": [
@@ -10616,7 +10695,10 @@
         "Experts warn against sailing on waters near New Zealand following terrorist raids"
       ],
       "commentary": [
-        "Different Company"
+        {
+          "name": "Different Company",
+          "theaterId": "e8db9842-989a-4957-a6ed-01faa080e02e"
+        }
       ]
     },
     {
@@ -11591,12 +11673,23 @@
           "locationName": "",
           "country": "Deepsea Raiders,",
           "reasoning": "Provided Mauga with cybernetic hearts to save his life"
+        },
+        {
+          "locationName": "",
+          "country": "Polynesian League,",
+          "reasoning": "Reinforce military troops to destroy the Deepsea threat"
         }
       ],
       "yearStart": 2068,
       "commentary": [
-        "Two hearts",
-        "Never Competed"
+        {
+          "name": "Two hearts",
+          "theaterId": "f744aba8-7ba8-47c0-8c63-e23fe8c52eaf"
+        },
+        {
+          "name": "Never Competed",
+          "theaterId": "f56fda67-3ec3-4969-839f-531c6094bb5b"
+        }
       ]
     },
     {
@@ -12172,8 +12265,8 @@
         },
         {
           "locationName": "",
-          "country": "Ecopoints, Pacific Energy Solutions,",
-          "reasoning": "The Polynesian Leage takes control of Ecopoint: Samoa"
+          "country": "Ecopoints, Polynesian League, Pacific Energy Solutions,",
+          "reasoning": "The Polynesian League takes control of Ecopoint: Samoa"
         },
         {
           "locationName": "",
@@ -12616,7 +12709,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Deepsea Raiders,",
+          "country": "Deepsea Raiders, Polynesian League,",
           "reasoning": "Activity dies down after Overwatch leaves the region"
         },
         {
@@ -12637,13 +12730,20 @@
       "commentary": [
         {
           "name": "Mauga · You and me, Baptiste. You and me",
-          "label": "You and Me"
+          "label": "You and Me",
+          "theaterId": "chatter-mauga",
+          "lineId": "958d2c66-556c-4671-b0fb-12b0fc070ca4"
         },
         {
           "name": "Mauga · Loosen up. This is supposed to be fun.",
-          "label": "Loosen up"
+          "label": "Loosen up",
+          "theaterId": "chatter-mauga",
+          "lineId": "1aece83c-0f5a-4deb-a1ad-0fe8289eb0c0"
         },
-        "Rusty"
+        {
+          "name": "Rusty",
+          "theaterId": "e23404eb-c452-4df8-a6ab-d2124c2125c7"
+        }
       ]
     },
     {
@@ -12695,7 +12795,14 @@
         }
       ],
       "commentary": [
-        "Like mother like daughter"
+        {
+          "name": "Like mother like daughter",
+          "theaterId": "331c30ee-2f48-4483-91a3-32c9154652a0"
+        },
+        {
+          "name": "A Hero to us",
+          "theaterId": "19a136f3-02cb-4dd7-a5a8-f4510c8f304e"
+        }
       ]
     },
     {
@@ -17576,6 +17683,12 @@
       "headlines": [
         "First fight breaks on Maximillien's Casino",
         "European Elite investing money and resources on locating Doomfist and arresting him again"
+      ],
+      "commentary": [
+        {
+          "name": "A real pity",
+          "theaterId": "b7de6b6b-822a-46bc-9e1a-714c96b8e8d3"
+        }
       ]
     },
     {
@@ -18268,6 +18381,16 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
             "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
           ]
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Too hard on Wuyang",
+          "theaterId": "ca72356c-e805-4b7d-8bd6-6f6c271bca60"
+        },
+        {
+          "name": "Happy parents",
+          "theaterId": "e39eeb4a-8407-4110-820f-fbfc6528c87f"
         }
       ]
     },
@@ -19802,7 +19925,7 @@
       "name": "Unity",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "No description available.",
+      "description": "Efi and Orisa had become almost like sisters as Orisa's AI continued to grow and learn, but in spite of the project's success, Efi also had other plans for how to defend Numbani. She had modified her Junies to have some of Orisa's battle abilities, including Hardlight projection. If this became a standard, it could help protect every user in the city. In spite of this, however, Orisa herself did not take kindly to this idea, fearing this was her replacement that would leave her without purpose. In spite of Efi's efforts to calm her concerns, their arguments lead Orisa to walk out at perhaps the most inopportune time possible.\n\nJust like in other cities across the world, Null Sector had arrived at Numbani, with Efi getting caught in the crossfire with no signs of Orisa. She used her upgraded Junies to aid civilians who were utterly confused by the attack. Why would Null Sector go after the most Omnic-friendly city in the world and not expect the people to resist? Thankfully, Orisa was able to find them just in time before a larger confrontation, having been stuck fighting troops since the deployment pods started dropping.\n\nOrisa took Efi on her back to gallop his way around the rubble back into the lap, where Efi was able to push the Junie Upgrade as a virus of sorts, causing every Junie unit in the city to swarm into the battlefield and overwhelm Null Sector into retreading. Once the dust settled, they were able to catch up with the news, seeing Overwatch helped in Rio and that other places like Istanbul and Cape Town were getting hit just as badly as Numbani was. Efi felt they could help Overwatch but Orisa continued to abide by her programming. Her objective was to defend Numbani. Efi, however, felt they could do so much more for the world, and that the Junies could now take care of the city. That didn't mean Orisa was obsolete, she was a one-of-a-kind warrior, but she could be used elsewhere. The two awaited the sunset as they debated this change in priorities, until it was time to go home.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -19812,7 +19935,7 @@
         {
           "locationName": "City State of Numbani",
           "country": "Numbani",
-          "reasoning": "",
+          "reasoning": "The Junies defned Numbani from Null Sector",
           "lat": 12.0022,
           "lon": 8.5919
         }
@@ -19821,19 +19944,19 @@
         {
           "locationName": "",
           "country": "Orisa",
-          "reasoning": ""
+          "reasoning": "Fears that the Junies might replace her"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Attacks Numbani in spite of Omnic relationships"
         },
         {
           "locationName": "",
           "country": "Numbani City of Harmony,",
-          "reasoning": ""
+          "reasoning": "Defends themselves from Null Sector"
         }
       ],
       "yearEnd": null,
@@ -19841,10 +19964,13 @@
         {
           "locationName": "",
           "country": "Efi,",
-          "reasoning": ""
+          "reasoning": "Updates the Junies to defend the city"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Swarm of Junior Assistant drones defends Numbani",
+        "Null Sector attacks the city of Harmony"
+      ],
       "sources": [
         {
           "text": "Unity",
@@ -19856,7 +19982,7 @@
       "name": "Rebuilding Ruins",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
-      "description": "No description available.",
+      "description": "Vishkar reacted quickly to the Invasion, seeing it as an opportunity for a construction deal in Paris and any other city that got hit after, but beyond that they thought this level of destruction would finally lure out a certain rebel under the premise of a partnership. After a lengthy lecture on a scripted proposal, Satya was sent to Atlantic Arcology to meet with Niran, who was kind enough to accept the invitation and give her a guided tour around the structure.\n\nSatya was mesmerized by the Arcology and their efforts in taking in Omnic refugees around the world, as well as being able to see her friend once more, but at any time she brought up the offer. Niran would deflect it, until he decided to be more direct about it. He was never going to accept it. Had it been anyone else, he would not have taken them in, but with Satya he wished to sway her into leaving Vishkar. Satya herself had her own reservations about the company, having spent the last couple of years cleaning their messes and believing the lies they told her about Niran's motives, but she also sternly believed that for all their flaws, Vishkar could still be a force for good. Since they did not see eye to eye, Satya cut her visit short, taking the hyper loop home, only to be caught by the panicked crowd coming out of the train.\n\nNull Sector units had taken over the train back in London and used it as a means to infiltrate the Arcology, and Symmetra quickly took action helping the evacuation and neutralizing the enemy by teleporting the train out of the way. As she projected barriers to safeguard the Omnic compound, she began to overextend herself before Niran showed up to her aid. Together they managed to repel the attack and Satya decided to stay behind and help tend to the wounded alongside Niran. The two were able to make amends, but Satya still believed she could change Vishkar from the inside, to which Niran respected her wish, telling her to look into the founder's ideology and how the company strayed away from his wishes, and that if she ever turned around, needed anything or simply wished to talk, she was always welcomed.",
       "image": "",
       "lat": 37.7412,
       "lon": -25.6756,
@@ -19866,21 +19992,21 @@
         {
           "locationName": "Atlantic Arcology",
           "country": "Atlantic Arcology",
-          "reasoning": ""
+          "reasoning": "Satya aids protect the Omnics at the Arcology from the Invasion"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Symmetra, Lifeweaver",
-          "reasoning": ""
+          "reasoning": "Reunite and rekindle in spite of their differences"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Vishkar, Collective, Null Sector",
-          "reasoning": ""
+          "reasoning": "Vishkar attamptes to convice Niran to rejoin them due to the Invasion"
         }
       ],
       "yearEnd": null,
@@ -19888,15 +20014,18 @@
         {
           "locationName": "",
           "country": "Sanjay,",
-          "reasoning": ""
+          "reasoning": "Sends Satya to pitch Niran a way back into Vishkar"
         },
         {
           "locationName": "",
           "country": "Palak,",
-          "reasoning": ""
+          "reasoning": "Niran's colleague at the Arcology"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Omnics flee in masses to the Atlantic Arcology",
+        "Vishkar offers to aid in rebuilding cities affected by the Invasion"
+      ],
       "sources": [
         {
           "text": "Rebuilding Ruins",
@@ -19908,7 +20037,7 @@
       "name": "Liberation",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "No description available.",
+      "description": "By the time Overwhelm arrived in Toronto Null Sector had taken most of the city and rallied up hundreds of Omnics. Vivian was happy to see so many old friends and welcomed the help evacuating any remaining civilians, but their reunion was interrupted by an attack on the evac point, forcing the team to protect the ferries before they took off into the lake.\n\nOnce the ferries were secured, Overwatch answered the distress call of Claire Hopper, a local Omnic part of Wilcox Engineering. As they made their way through the city, they were blasted by the propaganda message of Null Sector's leader, speaking of unity within the Iris, making Genji worry there was a more religious nature to the attack and that perhaps his Master, Zenyatta, might know more about what was going on. The city was filled with a trail of incapacitated Omnic's that had been given head clamps by machines they dubbed subjugators and Subjugators. With Claire's knowledge of the subway system, the team was able to make their way into Overwatch's ship with another civilian joining them, Reggie Buckworth, a local lawyer.\n\nToronto was successfully evacuated but hundreds of Omnics laid inert due to the face clamps the Subjugators attached to them, and Reinhardt's attempts to remove them were not helping. To Winston, this was all the more reason why Overwatch was needed, but Sojourn still had her reservations, and believed that without the proper personnel and legal backing, Overwatch was no more than a small vigilante group. In the end, she agreed to stay with them at least until Null Sector was dealt with, but once the invasion was over, it was time for them to move on from Overwatch.",
       "image": "",
       "lat": 43.6534817,
       "lon": -79.3839347,
@@ -19918,41 +20047,41 @@
         {
           "locationName": "Toronto, Canada",
           "country": "Canada",
-          "reasoning": ""
+          "reasoning": "Overwatch helps evacuate Toronto"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sojourn,",
-          "reasoning": ""
+          "reasoning": "Joins Overwatch to deal with Null Sector"
         },
         {
           "locationName": "",
           "country": "Ramattra,",
-          "reasoning": ""
+          "reasoning": "Preaches of Liberations through inter communication systems"
         },
         {
           "locationName": "",
           "country": "Winston, Reinhardt, Cassidy,",
-          "reasoning": ""
+          "reasoning": "Attempt to convince Vivian to rejoin"
         },
         {
           "locationName": "",
           "country": "D.va, Lúcio, Zarya, Brigitte, Mercy, Tracer, Mei, Genji, Baptiste, Echo, Pharah,",
-          "reasoning": ""
+          "reasoning": "Aid in the evacuation of Toronto"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Subjugates Hundreds"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Evacuates the city"
         }
       ],
       "yearEnd": null,
@@ -19960,10 +20089,13 @@
         {
           "locationName": "",
           "country": "Trembley,",
-          "reasoning": ""
+          "reasoning": "Collaborates to keep Overwatch afloat"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Null Sector leader blasts manifesto across multiple cities around the world.",
+        "Overwatch aids in Toronto's evacuation efford"
+      ],
       "sources": [
         {
           "text": "Invasion, Liberation",
@@ -19973,7 +20105,7 @@
     },
     {
       "name": "Lost Ghosts",
-      "description": "No description available.",
+      "description": "After meeting with Cassidy, Ana regrouped with Jack to continue their crusade against Talon, chasing their operations into Europe, while Talon attempted to hunt them down as well. From Istanbul to Budapest, the old soldiers fought their two-man war against Talon, until the Invasion started, when Jack came in contact with an informant who gave him information about Talon's next assassination attempt. The pair made their way to Zurich, not the first time they had gone there during their skirmishes with Talon, but the attacks from the prior week had left it in ruins. Seeing the destruction left by Null Sector kept Ana uneasy, but coming across a TV showing Fareeha battling in Busan gave her some solace.\n\nAna wasn't quite confident in Jack's informant, believing it could be a trap. They did not even have a name, but after finding a hard drive left in a mausoleum, they now knew the time and the place. That night they reached the suburbs where Null Sector was yet to reach, and found Mirembe, a member of Ana's old unit, now a mother with a child, as she placed him into a panic room, because she too knew Talon had found her. This forced the old soldiers to breach in and intervene, rescuing Mirembe and her son, alerting the authorities that Talon was in the area.\n\nOnce the family was safe, Ana confronted Jack about the nature of his Intel, where he finally explained that the hard drive gave him a secure backdoor to Talon's project files, but he needed proof. Mirembe's name was at the top of the target list. Ana wanted to bring this information to Winston, but Jack feared it would arouse suspicion. She at least wanted to focus on protecting the agents, but Jack felt there was something bigger at play, a conspiracy of such a scale even when someone in Talon is willing to help him out. In the end, they split off with separate copies of the data, with Ana bowing to use the data to protect her people from afar, while Morrison went off to chase ghosts with his informant.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -19991,30 +20123,32 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Jack and Ana track down a hint from an informant within Talon"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ana, Soldier 76",
-          "reasoning": ""
+          "reasoning": "Part ways after copying the data drive with the backdoor to Talon's data"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire, Null Sector,",
-          "reasoning": ""
+          "reasoning": "Talon uses the Null Sector attack as a distraction to execute Overwatch agents"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Talon activity reported in Zurich by ex Overwatch agent"
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Mirembe,",
-          "reasoning": ""
+          "reasoning": "Sees the attack coming and protects her child"
         }
       ]
     },
@@ -20022,7 +20156,7 @@
       "name": "Ironclad Help",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "No description available.",
+      "description": "As the initial wave of Null Sector attacks dissipated, it left behind a trail of Omnics subjugated by head clamps, and any attempt at removal resulted in the death of the individual. Looking for ways to fix the issue, Brigitte suggested taking the Omnics to the Ironclad Workshop, where Torbjörn could take a better look at them. His early analysis revealed that while the machines' functions were all still there, any trace of their memory disappeared, as if their soul had left their body. The concept wasn't easy to grasp for Reinhardt, who soon after almost attacked Bastion, believing him to be a Null Sector unit until Lindholms explained to him that Bastion was now harmless and a member of the family.\n\nIn the middle of the arguments, the neural suppressor began to give off a tracking signal. When suddenly the city's defense systems became alert, in bringing the subjugated to Gothenburg, they lured Null Sector in as well. The Lindholms, Reinhardt and Bastion fought head on, getting several turrets up and ready to defend the city when a Titan unit emerged. Improvising a way to take the Colossus down, Torbjörn commanded everyone back to the workshop where they could get his Mega Canon prototype online, and after buying enough time they were able to shut down the Titan, stopping the attack.\n\nThe brawl reminded the old warriors of their glory days back in the crisis, but in spite of Reinhardt's insistence, Torbjörn did not wish to rejoin Overwatch. Still, he was a grandfather at that point and protecting his family and his city was his foremost priority, but Brigitte, his Sparkplug was more than capable of making her own choices, and he was proud of seeing her continue his legacy with Overwatch. Believing it was time to let the next generation take the mantle, Torbjörn decided to stay behind in Gothenburg working on the neural suppressors, while Bastion and his little bird, Ganymede, could be of better use for Overwatch's new era than him. Reinhardt respected his wishes, promising to keep Bastion in one piece. The three took off, leaving Mister Lindholm behind as he saw his children, flesh and metal, save the world he forged for them decades ago.",
       "image": "",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -20032,35 +20166,38 @@
         {
           "locationName": "Gothenburg, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Ironclad defenses stop an all out attack in Gothenburg"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Reinhardt, Brigitte, Torbjörn,",
-          "reasoning": ""
+          "reasoning": "Torbjörn chooses to stay retire in spite of being inspired by Reinhardt and Brigitte"
         },
         {
           "locationName": "",
           "country": "Bastion,",
-          "reasoning": ""
+          "reasoning": "Is allowed to join Overwatch to help in Torbjörn's stead"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Tracks down subjugated Omnics for capture"
         },
         {
           "locationName": "",
           "country": "Overwatch, Ironclad Guild,",
-          "reasoning": ""
+          "reasoning": "Overwatch brings subjugated Omnics to Torbjörn for study"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Torbjörn Lindholm investigating Neural Supressors placed on Omnics",
+        "Gothenburg attack repelled by Ironclad security systems"
+      ],
       "sources": [
         {
           "text": "Invasion, Ironclad",
@@ -20072,7 +20209,7 @@
       "name": "A Great Day",
       "locationType": "earth",
       "cityDisplayName": "Baltic Sea",
-      "description": "No description available.",
+      "description": "While Null Sector and Talon had allied to plot the invasion, it wasn't a fully open partnership. Doomfist desired Ramattra's technology for himself, and in order to obtain it he sent his operatives to retrieve the power relay from a carrier ship that crashed into the Ocean following the Gothenburg attack. Going behind Ramattra's back required a surgical approach to avoid being spotted, but while Reaper and Sombra agreed to a subtle operation, Mauga had other plans.\n\nWhile Reaper and Sombra infiltrated the ship to get the data on the power relay, Mauga was meant to watch their way out. But he decided to break protocol, taking down the Null Sector army and triggering an explosion. As the others escaped, Sombra stayed behind, attempting to break through the OmniCode of the power relay, only being able to obtain a partial scan by the time she had to escape the sinking ship. Upon reporting to Doomfist, he was not pleased as a partial victory was no victory at all, and what should have been a smooth clandestine operation instead turned out to be a massive wreckage visible from space. When Sombra came to confront Mauga, she was surprised to see he actually had the real Power Relay with him. \n\nWhile Reaper and Sombra pushed him aside, he figured that breaking the communication relay of the ship would mean no one would know what happened to it, so after shooting down the antenna, he stormed in, took the relay, causing the ship to self-destruct, leaving no witnesses or evidence of their assault, while bringing Doomfist not just the data but the actual device itself. Sombra wasn't particularly fond of Mauga, he was a loose canon who acted on his own, but she couldn't deny he delivered results. Without much fun left for him, he took a parachute and jumped off the carrier, leaving behind another great day of mayhem with a gun in each hand and a smile on his face.",
       "image": "",
       "lat": 56,
       "lon": 18,
@@ -20082,35 +20219,32 @@
         {
           "locationName": "Baltic Sea",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Talon attacks sinking Null Sector Carrier"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Mauga, Reaper, Sombra,",
-          "reasoning": ""
+          "reasoning": "Infiltrate Carrier to steal the power relay"
         },
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": ""
+          "reasoning": "Oversees Operation and is disappointed on the initial results"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Null Sector,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
+          "country": "Null Sector, Talon Empire,",
+          "reasoning": "Talon attacks Null Sector behind Ramattra's back"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Sinking Null Sector Carrier explodes in the Baltic Sea"
+      ],
       "sources": [
         {
           "text": "A Great Day",
@@ -20120,7 +20254,7 @@
     },
     {
       "name": "Lucky Man",
-      "description": "No description available.",
+      "description": "After parting ways with Ana, Jack made his way through Zurich to reach the contact point with his informant, taking down any Null Sector troops on his way, but when he reached the meet-up site, he was surprised to see Sombra, a high ranking Talon agent, was his informant. Sombra explained she was more of a freelancer for Talon and this mission was completely off record, because it turns out the things they were both chasing were one and the same, and the answer laid inside a UN storage facility keeping the wreckage of the Zurich HQ. While Morrison trusted none of it, he realized this provided him a chance to take a look at the original crime scene, and it was his best bet to get answers for the fall of Overwatch, so he agreed to work together.\n\nThe Null Sector attack made for great cover as most security was too busy dealing with the invasion to notice the two of them infiltrating inside, where Sombra required Jack to look for a specific piece among the debris, something that stood out. While at first it looked like a fool's errand to Jack, she insisted he knew the HQ better than anyone, he would know if something was out of place. Every piece he scouted brought him back to the day of the explosion, as he struggled to make out what was off, and the more time he spent allowed UN troopers to make their way into the facility now that security was on alert. With the time pressure closing in, Jack grabbed the only thing he didn't recognize, and the two left the facility with seconds to spare.\n\nIn the end, Morrison found a small, heavy rubber-like disc. It was not from Overwatch or the UN, it had to be what they were looking for. Sombra scanned the disc to find a stylized eye with three dots above and below the pupil, the same symbol that had found her all those years ago. This entity or group was not only responsible for the fall of Overwatch, but they spread out across many corners of the world, and a bigger thread than Talon. Sombra took off to analyze the contents of the disc, advising Jack to look into Oasis if he wished to find more. It may only be a symbol, but this discovery vindicated Jack. He always felt that Talon wasn't behind the incident in spite of being the obvious culprit, and his endless chasing across many different high-profile groups finally made sense. The ones behind Overwatch's fall were behind everything.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -20138,41 +20272,39 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Sombra and Jack infiltrate a UN warehouse"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Soldier 76, Sombra",
-          "reasoning": ""
+          "reasoning": "Steal debris from the Zurich HQ leading to the conspiracy behind Overwatch's fall"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "The Invasion keeps the guards occupied long enough to"
         },
         {
           "locationName": "",
-          "country": "The Sombra Collective,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Chernobog Conspiracy,",
-          "reasoning": ""
+          "country": "The Sombra Collective,The Chernobog Conspiracy,",
+          "reasoning": "Sombra links Overwatch's fall to the same group that discovered her years ago"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Robbers infiltrate UN facility during active Null Sector threads",
+        "Vigilante Soldier: 76 seen fighting Null Sector in Zurich"
+      ]
     },
     {
       "name": "Water Fighter",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "No description available.",
+      "description": "Wuyang performed well for his classes at Water College, earning pretty solid grades, especially considering he studied through the ongoing Invasion, but he still felt that he needed to give his parents something to be proud of. He had spent his entire childhood and teenage years preparing to be a fighter just like his sister, so maybe what he needed to do was be more like her.\n\nBehind the scenes, he hatched a plan to marry his years worth of training with his current studies, requesting help from Ming, now a Metal College architect. Wuyang wanted a modified version of the fire staff Ming was working on, only instead of breathing fire like the other weapons, it would use nano filtration and mag lev technology from the Water College. In addition to that, he began training in his spare time, and in between classes he would read and watch Fire College lectures, much to the dismay of his Master Shifu.\n\nBy combining the technology and teachings from both schools, Wuyang was able to come up with innovative uses for water both as a medic and as a fighter. He knew he could never be quite like Anran, but he was tired of living in her shadow, and perhaps this could be his chance to finally stand beside her. It was just a matter of waiting for the right opportunity to put his new tools and techniques to good use, showing the world what he is capable off.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -20182,26 +20314,26 @@
         {
           "locationName": "Chengdu, China",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "Wuyang attempts to combine Fire and Water college classes"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Wuyang",
-          "reasoning": ""
+          "reasoning": "Begins studying Fire College courses in secret"
         },
         {
           "locationName": "",
           "country": "Anran,",
-          "reasoning": ""
+          "reasoning": "Pushes Wuyang to do his best in spite of their parents"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Wuxing University",
-          "reasoning": ""
+          "reasoning": "Wuyang requests a custom made staff from the Metal College"
         }
       ],
       "yearEnd": null,
@@ -20209,10 +20341,12 @@
         {
           "locationName": "",
           "country": "Ming,",
-          "reasoning": ""
+          "reasoning": "Designs Wuyang's new staff from Fire College weaponry blueprints"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Metal College unveils new weaponry for a student's project"
+      ],
       "sources": [
         {
           "text": "Against the Tide",
@@ -20225,8 +20359,8 @@
       ]
     },
     {
-      "name": "Visitor",
-      "description": "No description available.",
+      "name": "Emergency Landing",
+      "description": "After several months of traveling through space entirely on her own, Juno finally reached Earth's orbit, leaving her ship behind and preparing a landing pod. Athena picked up Juno's signal during reentry, and as she approached terminal velocity, Overwatch managed to establish communications, tracking down her position to meet her at the landing site.\n\nJuno landed at a plaza in the town of Dorado, Mexico, where a monument would be erected at the site honoring the arrival of the first Martian born human to planet Earth, and celebrating her journey. The event caught the attention of the world's press, as Lucheng was now forced to answer for Project Red Promise, and the claims this young woman was making of a dying colony.\n\nAfter talking to the locals, it didn't take long for Overwatch to find Juno, who joined the group after hearing of Doctor Zhou's involvement. Mei was shocked to hear that her old college friend was on Mars and had a daughter there, but she was more than eager to help, testing several atmospheric models that could stabilize the atmosphere. However, with the Null Sector Invasion raging on, Overwatch had their hands full, so even if they wanted to help Juno, any progress they made stalled at the news of another attack.",
       "locationType": "marsShip",
       "cityDisplayName": "Red Promise Escape Ship",
       "x": 20,
@@ -20244,21 +20378,31 @@
         {
           "locationName": "Red Promise Escape Ship",
           "country": "Red Promise Colony",
-          "reasoning": ""
+          "reasoning": "Juno's Ship is intercepted by Overwatch"
+        },
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": "Juno lands on Earth making headlines"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Juno",
-          "reasoning": ""
+          "reasoning": "Joins Overwatch seeking help for her family in Mars"
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Mei,",
+          "reasoning": "Find Juno and bring her under Overwatch's wing"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Lucheng Interstellar, Overwatch",
-          "reasoning": ""
+          "reasoning": "Attempt to find time to sort the issue of Mars"
         }
       ],
       "yearEnd": null,
@@ -20266,16 +20410,19 @@
         {
           "locationName": "",
           "country": "Athena,",
-          "reasoning": ""
+          "reasoning": "Intercepts Juno during reentering"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Woman claiming to be from Mars lands on Dorado, Mexico",
+        "Lucheng unveils details on highly classified Red Promise mission following Juno's arrival"
+      ]
     },
     {
       "name": "Vested Interests",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "No description available.",
+      "description": "Talon's stake in the Null Sector Invasion came at a large cost, most of which was paid for by Maximilien's wallet up front. He fundamentally disagrees with Ramattra's cause. As an Omnic who managed to climb the latter and overcome the obstacles human society placed on him, he had the most to lose from Null Sector's Liberation, but this was not the first time he played against the odds. Vendetta had killed multiple council members, to which Akande showed no intent of dealing with her. It was only a matter of time until Max was next on the chopping block.\n\nThe day it finally happened, Marzia broke into his casino's office, bypassing all security, taunting Max as she held the edge of her blade on his neck. But Max attempted to convince her he could be more useful alive. He saw a lot in common between them, both rising from nothing in a world who didn't see their value at the top. Adulation meant little to Marzia when it came from someone at the end of her sword, but Max had prepared this offer since before she arrived.\n\nOn a drive disguised as a poker chip, Max held all the data she needed on the many Talon operatives, and how to make them either fall in line or remove them from the picture. Marzia could have killed him and taken it, but claiming Talon by force would mean little if she didn't manage to establish alliances that could solidify her reign, Max could arrange meetings with her, bring in more allies to the table, and all he asked in return was being spared, and keeping his seat at the table of her new empire. Cautious but tempted, Marzia accepted his deal, ensuring that they were not equals, he was to serve her command, and betrayal would bring his demise.",
       "image": "",
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
@@ -20285,42 +20432,45 @@
         {
           "locationName": "Monte-Carlo, Monaco",
           "country": "Monaco",
-          "reasoning": ""
+          "reasoning": "Maximillien betrays Talon and sets up Vendetta's take over"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Vendetta",
-          "reasoning": ""
+          "reasoning": "Spares Max's life to retain allies against Talon"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "La Coterie,",
-          "reasoning": ""
+          "reasoning": "Falls behind the Bartallotti empire following Max's agreement"
         },
         {
           "locationName": "",
           "country": "Colosseo Gladiatori,",
-          "reasoning": ""
+          "reasoning": "Prepare themselves for a hostile takeover of Talon"
         },
         {
           "locationName": "",
           "country": "Talon,",
-          "reasoning": ""
+          "reasoning": "Continues to ignore Marzia's threads"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
+          "reasoning": "Betrays Akande to save his life"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Robber infiltrates Maxmillien's Casino in Monte Carlo",
+        "La Coterie to fund remodelations in Venice and Rome"
+      ],
       "sources": [
         {
           "text": "Vested Interests",
@@ -20342,7 +20492,7 @@
     },
     {
       "name": "Stalemate",
-      "description": "No description available.",
+      "description": "The initial wave of attacks by Null Sector set the world in chaos, but Ramattra did not account for Overwatch's full return. Their initial efforts across the world combined with the scale of the Invasion led to an increase in support in the public eye, especially with the addition of high profile figures like Fareeha, Lúcio, Zaryanova and D.va, all beloved by their people and internationally, vouching for Overwatch's legitimacy at a time when they were needed more than ever.\n\nAfter the evacuation of Toronto, Vivian collaborated with the IJC and managed to convince them that, in spite of breaking the Petra's Act, this new Overwatch was only temporary, as a means to combat Null Sector. This allowed the group to continue operating essentially as first responders to the Invasion. As a result, the Invasion stagnated for several months of uncertainty, where occasional emerging attacks would be met by Overwatch, doing all they could to repel them.\n\n\nStill, while their interference was inconvenient for Ramattra, it only delayed his plans by a fraction, as his goal was salvation, not devastation. It did not matter how many times Overwatch stopped the invasion, because each time more and more Omnics were captured and subjugated, and in spite of Lindholm's best efforts, no one had figured out how to reverse the procedure without leaving a lifeless body behind. All Ramattra needed to do was continue his attacks, passively increasing the count of Omnics neutralized, until he reached an acceptable number. While it pained him that he couldn't save every single one due to Overwatch's meddling, their sacrifice meant securing a future for the Omnic kind as a whole. Those who were captured would wake up in a new world free from the oppression of humanity.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Secret Omnium",
@@ -20355,34 +20505,37 @@
         {
           "locationName": "Secret Omnium",
           "country": "Antarctica",
-          "reasoning": ""
+          "reasoning": "The Invasion rages on without end as more Omnics are subjugated"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ramattra",
-          "reasoning": ""
+          "reasoning": "Ramattra continues the Invasion for months in spite of setbacks"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Continues to subjugate Omnics around the world"
         },
         {
           "locationName": "",
           "country": "Overwatch, IJC",
-          "reasoning": ""
+          "reasoning": "Overwatch is allowed to remain active while the Invasion thread continues"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Profit from the destruction caused by Null Sector"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Spread out Null Sector attacks reported after initial waves were dispersed",
+        "The IJC allows Overwatch to continue helping as longas Null Sector remains active"
+      ],
       "sources": [
         {
           "text": "Reconcilliation",
@@ -20455,58 +20608,6 @@
       ]
     },
     {
-      "name": "Emergency Landing",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2079,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [
-        {
-          "text": "Control",
-          "url": "https://www.youtube.com/watch?v=zMZAkF7ZFwc"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Juno, Mei,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Winston, Tracer,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Lucheng",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Athena,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": []
-    },
-    {
       "name": "Against the Tide",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
@@ -20552,6 +20653,12 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
             "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
           ]
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Letting go",
+          "theaterId": "78dd7b12-14f5-43c5-b8fb-d54395109310"
         }
       ]
     },
@@ -21422,7 +21529,13 @@
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [],
+      "commentary": [
+        {
+          "name": "Doing a Masters",
+          "theaterId": "78d21f7f-9e98-49ae-a32d-c28188ac46f6"
+        }
+      ]
     },
     {
       "name": "Signs of Life",
@@ -21640,7 +21753,13 @@
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [],
+      "commentary": [
+        {
+          "name": "A lot of Armor",
+          "theaterId": "176ebeba-47c1-4966-bc65-80ec5f1a36b7"
+        }
+      ]
     },
     {
       "name": "Reign of Talon",
@@ -22218,11 +22337,21 @@
           "country": "Athena,",
           "reasoning": "Lost forever during shut down"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Into the thick of it",
+          "theaterId": "ee6d979a-a9af-4aeb-8c87-f9ae16b3d08c"
+        },
+        {
+          "name": "Sprained Knee",
+          "theaterId": "feb813c1-d122-46a2-ad66-89b1040fee36"
+        }
       ]
     },
     {
       "name": "Shelter",
-      "description": "The Drop-ship remained silent for a while as everyone processed what had happened. Having lost Gibraltar, Overwatch was without a base of operations and with an entire army hunting them down, Sojourn knew morale was low, but they had no time to waste. The first priorities now were to find a place to take sanctuary in and figure out what Talon was up to after such a bold, unprecedented attack. Luckily for them, they already had an answer to both, as the Lindholms had been calling Brigitte all night trying to make sure she was okay, and a city as fortified as Gothenburg made the Ironclad Workshop an ideal place to stay, if the Lindholms allowed it. On the other hand, while she had mentioned it to some agents before, Ana was not able to give more details about her arrival. Her information pointed to Doomfist having been killed at the hands of the Gladiator Vendetta, Marzia Bartalotti. The name was enough to send some of the older agents into the past, as the ghost of Antonio continued to haunt over a decade after his death. Blackwatch intel on Antonio did not know he had a daughter, likely due to how much he pushed Marzia away from the business, but regardless, this revelation meant Talon's new leader had a personal score to settle with Overwatch and the attack on Gibraltar made it clear she would stop at nothing to see them go down.\n\n\nThe team would set course to Gothenburg, where they were warmly welcomed by both Torbjörn and Ingrid, although they really questioned Brigitte's habit of picking up cats even while away from home. As everyone got situated and ready to rest, Vivian received news from the IJC.  The UN was aware of the Talon attack, and they wanted to set the record straight as soon as possible. They decided not to prosecute any agents for the recall or their actions during the Null Sector Invasion, but they also determined that reinstating Overwatch to its former position would require too extensive funding, resources and oversight, which they sorely lacked in the aftermath of the Invasion. As such, they decided it would be best to shut Overwatch down again. Osei tried her best to advocate for Vivians case, but in the end, all she managed was to buy them more time. In the wake of Talon's attack in Gibraltar and intel of military escalation going on in Italy, Overwatch was given permission to intervene only under absolute certainty that Talon was involved, otherwise they were in the process of getting decommissioned once more, so if they planned to save the world, they needed to do it fast. \n\n\nThe next day Sojourn withheld the news from the IJC fearing this would affect team morale, and knowing they had to give it their all against Talon, instead she selected a handful agents to be on standby for deployment, while everyone else should co-ordinate with Winston. Efi, ever optimistic began to ponder what it would take to repair Gibraltar's systems if they ever got to return, but it was here where Winston finally broke the news of Athena's loss, and how even if they ever saw to take back the base, it would never be the same again. Torbjörn, seeing the pain of the team and being quite hurt by the attack as an Ex Overwatch member, decided to personally help Overwatch fight back, aiming to one day rebuild Gibraltar together.",
+      "description": "The Drop-ship remained silent for a while as everyone processed what had happened. Having lost Gibraltar, Overwatch was without a base of operations and with an entire army hunting them down, Sojourn knew morale was low, but they had no time to waste. The first priorities now were to find a place to take sanctuary in and figure out what Talon was up to after such a bold, unprecedented attack. Luckily for them, they already had an answer to both, as the Lindholms had been calling Brigitte all night trying to make sure she was okay, and a city as fortified as Gothenburg made the Ironclad Workshop an ideal place to stay, if the Lindholms allowed it. On the other hand, while she had mentioned it to some agents before, Ana was not able to give more details about her arrival. Her information pointed to Doomfist having been killed at the hands of the Gladiator Vendetta, Marzia Bartalotti. The name was enough to send some of the older agents into the past, as the ghost of Antonio continued to haunt over a decade after his death. Blackwatch intel on Antonio did not know he had a daughter, likely due to how much he pushed Marzia away from the business, but regardless, this revelation meant Talon's new leader had a personal score to settle with Overwatch and the attack on Gibraltar made it clear she would stop at nothing to see them go down.\n\nThe team would set course to Gothenburg, where they were warmly welcomed by both Torbjörn and Ingrid, although they really questioned Brigitte's habit of picking up cats even while away from home. As everyone got situated and ready to rest, Vivian received news from the IJC.  The UN was aware of the Talon attack, and they wanted to set the record straight as soon as possible. They decided not to prosecute any agents for the recall or their actions during the Null Sector Invasion, but they also determined that reinstating Overwatch to its former position would require too extensive funding, resources and oversight, which they sorely lacked in the aftermath of the Invasion. As such, they decided it would be best to shut Overwatch down again. Osei tried her best to advocate for Vivians case, but in the end, all she managed was to buy them more time. In the wake of Talon's attack in Gibraltar and intel of military escalation going on in Italy, Overwatch was given permission to intervene only under absolute certainty that Talon was involved, otherwise they were in the process of getting decommissioned once more, so if they planned to save the world, they needed to do it fast. \n\nThe next day Sojourn withheld the news from the IJC fearing this would affect team morale, and knowing they had to give it their all against Talon, instead she selected a handful agents to be on standby for deployment, while everyone else should co-ordinate with Winston. Efi, ever optimistic began to ponder what it would take to repair Gibraltar's systems if they ever got to return, but it was here where Winston finally broke the news of Athena's loss, and how even if they ever saw to take back the base, it would never be the same again. Torbjörn, seeing the pain of the team and being quite hurt by the attack as an Ex Overwatch member, decided to personally help Overwatch fight back, aiming to one day rebuild Gibraltar together.",
       "locationType": "earth",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -22298,6 +22427,12 @@
           "country": "Osai,",
           "reasoning": "Buys Sojourn time but fails to convince the IJC"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Time to Relax",
+          "theaterId": "c47ca5f4-40b0-41c6-9af8-202c2634ec46"
+        }
       ]
     },
     {
@@ -22361,6 +22496,16 @@
           "locationName": "",
           "country": "Overwatch, Ironclad Guild,",
           "reasoning": "Ironcald lets Overwatch use the Workshop for training"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Allergies",
+          "theaterId": "31740f95-cc31-4e2a-8061-e249294b3f9e"
+        },
+        {
+          "name": "Training Confidence",
+          "theaterId": "2290b8bd-f95f-4fed-9bc3-6cd294dfa4aa"
         }
       ]
     },
@@ -23056,6 +23201,12 @@
           "locationName": "",
           "country": "Efi,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Got each other",
+          "theaterId": "e3b6f53e-922f-4bce-b7b5-f1ce085e6b45"
         }
       ]
     },
@@ -23778,7 +23929,8 @@
           "country": "Zephyrus, Maximus,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearStart": 2080
     },
     {
       "name": "Crucible",
@@ -24029,69 +24181,6 @@
       ]
     },
     {
-      "name": "Ultimatum",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 41.8933203,
-      "lon": 12.4829321,
-      "image": "",
-      "cityDisplayName": "Colosseo, Italy",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Colosseo, Italy",
-          "country": "Italy",
-          "reasoning": "",
-          "lat": 41.8933203,
-          "lon": 12.4829321
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Domina,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Emre, Freja,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Colosseo Gladiatori,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vishkar Corporation,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Maximillien,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Reclaiming Gibraltar",
       "description": "No description available.",
       "locationType": "earth",
@@ -24150,6 +24239,69 @@
         {
           "locationName": "",
           "country": "Titus,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Ultimatum",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Colosseo, Italy",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Domina,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Emre, Freja,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Colosseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien,",
           "reasoning": ""
         }
       ]
@@ -24226,6 +24378,72 @@
           "text": "Overwatch Undivided",
           "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jetpack Cat, Winston,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte, Torbjörn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Reinhardt,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Genji,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lúcio, Anran, Wuyang, Juno, Mei, Zarya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mizuki, Cassidy, Baptiste,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Emily,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -24258,6 +24476,42 @@
             "https://www.youtube.com/watch?v=heZa_uk-nus"
           ]
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": "Mission Commander"
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Mercy, Reinhardt, Ana,",
+          "reasoning": "Team 3"
+        },
+        {
+          "locationName": "",
+          "country": "Zarya, Mizuki, Anran, Baptiste, Wuyang,",
+          "reasoning": "Team 1"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire, Colosseo Gladiatori,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zephyrus, Maximus,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -24288,6 +24542,141 @@
           "urls": [
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte3c66b9a14750de5/6ac821a64b66aa4b2591da0d/OW_Bomb_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=-pZ7BtLTPSw"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma, Sombra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte, Juno, Mei, D.va, Orisa, Jetpack Cat, Echo,",
+          "reasoning": "Team 2"
+        },
+        {
+          "locationName": "",
+          "country": "Moira,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reaper, Widowmaker,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "In the Wolf's Mouth",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Colosseo, Italy",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "In the Wolf's Mouth",
+          "url": "https://www.youtube.com/watch?v=gI2tyTGvFag"
+        }
+      ]
+    },
+    {
+      "name": "Final Verdict",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 47.3769,
+      "lon": 8.5417,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
+      "yearStart": 2080
+    },
+    {
+      "name": "All That Follows",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 64.3984222,
+      "lon": -17.3178863,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "All that Follows",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8de40d749d9dbeb2/6ad7cebc626f24ec2dfb147a/Talon_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8de40d749d9dbeb2/6ad7cebc626f24ec2dfb147a/Talon_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=Y062yXbCRKc"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Terms of Justice",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Terms of Justice",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5922e9ee92723f32/6ad7ccf568dfc97b279615a4/LastCall_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5922e9ee92723f32/6ad7ccf568dfc97b279615a4/LastCall_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=-o73kzGkbwo"
           ]
         }
       ]

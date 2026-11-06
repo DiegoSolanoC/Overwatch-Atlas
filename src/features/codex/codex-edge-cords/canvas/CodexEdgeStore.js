@@ -6,7 +6,10 @@ import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/Codex
 import { codexUnorderedPairKey, edgeDirectedKey } from '../topology/CodexGraphPrimitives.js';
 import { hasCodexConnectionBetween as topologyHasUndirectedLink } from '../topology/CodexGraphTopology.js';
 import { playSoundEffect } from '../../codex-canvas/bridge/CodexAppBridge.js';
-import { appendCodexJunctionElbowParallelograms as appendCodexJunctionElbowParallelogramsCore } from '../../codex-node-drawing/junction-decor/CodexJunctionElbowParallelograms.js';
+import {
+    appendCodexJunctionElbowParallelograms as appendCodexJunctionElbowParallelogramsCore,
+    appendCodexJunctionElbowParallelogramsChunked as appendCodexJunctionElbowParallelogramsChunkedCore,
+} from '../../codex-node-drawing/junction-decor/CodexJunctionElbowParallelograms.js';
 import { deleteCodexCordPacketStateForKey } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { redrawCodexEdges, scheduleRedrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import {
@@ -447,15 +450,34 @@ function codexEffectivePacketStrokeRange() {
     return { min: base * 0.97, max: base * 1.03 };
 }
 
-function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = null, edgesOverride = null) {
-    appendCodexJunctionElbowParallelogramsCore(parentG, ns, worldCullRect, {
+function buildCodexElbowPaintContext(edgesOverride = null, extra = {}) {
+    return {
         getRoot: () => s.root,
         getEdges: () => edgesOverride || s.codexEdges,
+        getCodexAllNodes: () => s.codexAllNodes,
         codexNodeElById: api.codexNodeElById,
         getNodeCenterWorldPx: api.getNodeCenterWorldPx,
         edgeCordAppearance: (eIn, eOut) => edgeCordAppearanceForJunctionElbow(eIn, eOut),
-        getCordColorHex: () => s.codexVisualPrefs.cordColor
-    });
+        getCordColorHex: () => s.codexVisualPrefs.cordColor,
+        ...extra,
+    };
+}
+
+function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = null, edgesOverride = null) {
+    appendCodexJunctionElbowParallelogramsCore(parentG, ns, worldCullRect, buildCodexElbowPaintContext(edgesOverride));
+}
+
+/**
+ * View-mode / large-board elbow paint: layout coords, plain fills, idle chunks, optional viewport cull.
+ * @returns {Promise<number>}
+ */
+function appendCodexJunctionElbowParallelogramsChunked(parentG, ns, worldCullRect = null, edgesOverride = null) {
+    return appendCodexJunctionElbowParallelogramsChunkedCore(
+        parentG,
+        ns,
+        worldCullRect,
+        buildCodexElbowPaintContext(edgesOverride, { plainFills: true, skipTitles: true }),
+    );
 }
 
 function codexChainWalkMaxSteps() {
@@ -965,6 +987,7 @@ api.scheduleCodexEdgeNodeMaskSync = scheduleCodexEdgeNodeMaskSync;
 api.syncCodexEdgeNodeMaskDom = syncCodexEdgeNodeMaskDom;
 api.codexEffectivePacketStrokeRange = codexEffectivePacketStrokeRange;
 api.appendCodexJunctionElbowParallelograms = appendCodexJunctionElbowParallelograms;
+api.appendCodexJunctionElbowParallelogramsChunked = appendCodexJunctionElbowParallelogramsChunked;
 api.collectCodexDirectedChainEdgeKeys = collectCodexDirectedChainEdgeKeys;
 api.resolveCodexChainBioEndpoints = resolveCodexChainBioEndpoints;
 api.codexEdgeHoverChainSetsEqual = codexEdgeHoverChainSetsEqual;

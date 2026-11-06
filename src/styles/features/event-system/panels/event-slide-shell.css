@@ -2,19 +2,23 @@
    EVENT SLIDE PANEL
    ======================================== */
 
-/* Event Slide Panel (left side) - flexbox layout */
+/*
+ * Desktop: overlay onto main#content (absolute within .layout-container) so opening
+ * INFO does not flex-shrink/stretch the stage. Mobile keeps fixed slide-up (event-slide-mobile.css).
+ * Pagination dock stays a vertical flex sibling and still shortens the layout band.
+ */
 .event-slide {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: var(--panel-event-width-collapsed);
     min-width: var(--panel-event-width-collapsed);
     max-width: var(--panel-event-width-collapsed);
-    flex: 0 0 var(--panel-event-width-collapsed);
-    /* Allow shrinking inside .layout-container so the inner scrollable is the reader */
+    flex: none;
     min-height: 0;
-    align-self: stretch;
     background: var(--bg-secondary); /* Dark blue for default blue palette */
-    box-shadow: none; /* Remove shadow to prevent overlap */
-    transition: width var(--panel-transition), min-width var(--panel-transition), max-width var(--panel-transition), flex-basis var(--panel-transition);
+    box-shadow: none;
     /* Above main#content stage (.event-image-overlay is z-index 500) so resize chrome can sit on the seam */
     z-index: 540;
     overflow-y: auto;
@@ -28,18 +32,24 @@
         width var(--panel-transition),
         min-width var(--panel-transition),
         max-width var(--panel-transition),
-        flex-basis var(--panel-transition);
+        box-shadow var(--panel-transition);
+    pointer-events: none; /* collapsed 1px strip: only the resize handle receives hits */
+}
+
+.event-slide.open,
+.event-slide .panel-resize-handle {
+    pointer-events: auto;
 }
 
 .event-slide.open {
     width: var(--user-panel-event-width, var(--panel-event-width));
     min-width: var(--user-panel-event-width, var(--panel-event-width));
     max-width: var(--user-panel-event-width, var(--panel-event-width));
-    flex: 0 0 var(--user-panel-event-width, var(--panel-event-width));
     display: flex;
     flex-direction: column;
     /* Title/location stay put; description+details scroll inside #eventSlideScrollable */
     overflow: hidden;
+    box-shadow: 6px 0 28px rgba(0, 0, 0, 0.45);
 }
 
 /* Hide panel content when collapsed */
@@ -72,11 +82,6 @@
     scrollbar-width: var(--scrollbar-firefox-width);
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
-
-/*
- * Desktop pagination dock: no special handling needed since panel is now flexbox sibling
- * Panel will naturally resize with dock changes
- */
 
 /* Close (×) + Back cluster — top-right */
 .event-slide-close-cluster {

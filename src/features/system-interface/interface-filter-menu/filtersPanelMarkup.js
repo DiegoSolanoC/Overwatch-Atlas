@@ -6,8 +6,8 @@
  * HTML; tab switching, chip population, and search filtering are owned by
  * `FiltersPanel.js` and the sibling `buttons/` / `tabs/` / `wiring/` modules.
  *
- * The panel attaches to `.layout-container` when present so it participates
- * in the flexbox layout; it falls back to `<body>` otherwise (TEST harness).
+ * The panel attaches to `.layout-container` when present so it overlays the
+ * main stage inside that positioned box; it falls back to `<body>` otherwise.
  *
  * @returns {HTMLElement} The newly created `#filtersPanel`.
  */

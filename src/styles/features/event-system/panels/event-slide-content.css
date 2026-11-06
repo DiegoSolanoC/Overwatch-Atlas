@@ -1525,3 +1525,59 @@
     background: var(--scrollbar-thumb-hover);
 }
 
+/* Bio archive (Codex / Workshop): Gallery-parity Intel + Connections chrome */
+.event-slide--bio-archive #eventCommentarySection,
+.event-slide--bio-archive #eventSourcesSection,
+.event-slide--bio-archive #eventFiltersSection,
+.event-slide--bio-archive #eventStoryFilterPlacesSection {
+    display: none !important;
+}
+
+.event-slide--bio-archive #eventBioConnectionsSection > .event-filter-header {
+    display: none !important;
+}
+
+.event-slide-bio-conn-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+}
+
+.event-slide-bio-conn-toggle {
+    margin-bottom: clamp(10px, 1.2vh, 14px);
+}
+
+.event-slide-bio-conn-list-wrap {
+    min-width: 0;
+}
+
+.event-slide-bio-conn-empty {
+    margin: 8px 0 0;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.95rem;
+    line-height: 1.35;
+}
+
+.event-slide-bio-conn-empty[hidden] {
+    display: none !important;
+}
+
+.event-slide-bio-conn-canvas {
+    flex: 1 1 auto;
+    min-height: clamp(240px, 42vh, 520px);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.event-slide-bio-conn-canvas[hidden] {
+    display: none !important;
+}
+
+.event-slide-bio-conn-canvas .gallery-conn-canvas__viewport {
+    flex: 1 1 auto;
+    min-height: clamp(200px, 36vh, 460px);
+}
+

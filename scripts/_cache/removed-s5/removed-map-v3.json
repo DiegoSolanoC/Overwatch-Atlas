@@ -1,0 +1,2060 @@
+{
+  "video": "https://www.youtube.com/watch?v=qIJz7O5ZF_E",
+  "claimedTotal": 83,
+  "thresholdUsed": 18,
+  "uniqueMatched": 82,
+  "alreadyRemoved": 0,
+  "interactions": [
+    {
+      "n": 1,
+      "id": "c6206dd4-d61b-45cf-977b-4165bbedbe52",
+      "name": "Useful when you show up",
+      "status": "active",
+      "score": 109.12,
+      "chapterIndex": 1,
+      "chapterTime": "0:00",
+      "chapterTitle": "Moira & Emre",
+      "batch": "S5 launch (first 7)",
+      "heroes": [
+        "Moira",
+        "Emre"
+      ],
+      "preview": "Moira: That serum you retrieved is coming along nicely, Emre. You're rather u / Emre: Well, I'd hate to make your life too easy."
+    },
+    {
+      "n": 2,
+      "id": "30f8a334-8d7c-42af-9863-f67b12d17d2f",
+      "name": "Staying informed",
+      "status": "active",
+      "score": 244.28,
+      "chapterIndex": 2,
+      "chapterTime": "0:10",
+      "chapterTitle": "Moira & Freja",
+      "batch": "S5 launch (first 7)",
+      "heroes": [
+        "Moira",
+        "Freja"
+      ],
+      "preview": "Freja: This serum from Grand Mesa, how's your boss planning to use it? / Moira: You're suddenly interested in what becomes of our bounties, are we? / Freja: No. Just staying informed."
+    },
+    {
+      "n": 3,
+      "id": "e76d5550-0f65-4643-af31-93b494157200",
+      "name": "Pulling the Trigger",
+      "status": "active",
+      "score": 180.84,
+      "chapterIndex": 3,
+      "chapterTime": "0:26",
+      "chapterTitle": "Moira & Reaper",
+      "batch": "S5 launch (first 7)",
+      "heroes": [
+        "Moira",
+        "Reaper"
+      ],
+      "preview": "Reaper: You *really* think Antonio's daughter won't take out everyone involved / Moira: Only one man pulled the trigger that night. I'd be more concerned for "
+    },
+    {
+      "n": 4,
+      "id": "4c180eb8-47ba-4589-b9be-eedf059530fa",
+      "name": "Process can't Rush",
+      "status": "active",
+      "score": 182.04,
+      "chapterIndex": 4,
+      "chapterTime": "0:41",
+      "chapterTitle": "Moira & Vendetta",
+      "batch": "S5 launch (first 7)",
+      "heroes": [
+        "Moira",
+        "Vendetta"
+      ],
+      "preview": "Vendetta: How are your experiments with the enhancement serum progressing? / Moira: Progress cannot be rushed. When I have the results, you'll be the firs / Vendetta: Time is of the essence, Moira."
+    },
+    {
+      "n": 5,
+      "id": "da29c54d-1205-4cb0-bb89-ef1e1a29339d",
+      "name": "We lived",
+      "status": "active",
+      "score": 166.16,
+      "chapterIndex": 5,
+      "chapterTime": "0:55",
+      "chapterTitle": "Brigitte & Reinhardt",
+      "batch": "S5 launch (first 7)",
+      "heroes": [
+        "Brigitte",
+        "Reinhardt"
+      ],
+      "preview": "Brigitte: I didn't think you'd be doing so well after losing Gibraltar. / Reinhardt: I had fond memories of that old place. But what matters is we lived to / Brigitte: And, hey. When we rebuild the Watchpoint, we can make a bunk you *actu"
+    },
+    {
+      "n": 6,
+      "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
+      "name": "Overwatch Survived",
+      "status": "active",
+      "score": 167.08,
+      "chapterIndex": 7,
+      "chapterTime": "1:22",
+      "chapterTitle": "Mauga & Vendetta",
+      "batch": "S5 launch (first 7)",
+      "heroes": [
+        "Mauga",
+        "Vendetta"
+      ],
+      "preview": "Mauga: Hey, Overwatch survived the Gibraltar attack! Told you they weren't go / Vendetta: It is of little consequence. This is only the first step towards their / Mauga: Well, if you wanna make sure the job gets done right next time? You kn"
+    },
+    {
+      "n": 7,
+      "id": "151877ad-cc39-41f3-bb21-e26ad4307908",
+      "name": "Money before Loyalty",
+      "status": "active",
+      "score": 310.36,
+      "chapterIndex": 8,
+      "chapterTime": "1:40",
+      "chapterTitle": "Vendetta & Ashe",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Ashe"
+      ],
+      "preview": "Vendetta: You were surprisingly efficient in Grand Mesa. My empire would make go / Ashe: Deadlock Gang doesn't do charity work. You got an offer? / Vendetta: How unfortunate that you would put money before *loyalty.*"
+    },
+    {
+      "n": 8,
+      "id": "1e971b13-c6cf-459b-85a7-fea652e0434c",
+      "name": "Forgetting about me",
+      "status": "active",
+      "score": 252.56,
+      "chapterIndex": 9,
+      "chapterTime": "1:59",
+      "chapterTitle": "Vendetta & Baptiste",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Baptiste"
+      ],
+      "preview": "Baptiste: I see you're making some changes in Talon... any chance that includes  / Vendetta: I owe you no favors, least of all your life. / Baptiste: Is it a favor, or less work for a very busy woman?"
+    },
+    {
+      "n": 9,
+      "id": "b53cd51d-9b27-4eb4-ab2b-ba7929cf77b5",
+      "name": "No Tyrant",
+      "status": "active",
+      "score": 157,
+      "chapterIndex": 10,
+      "chapterTime": "2:18",
+      "chapterTitle": "Vendetta & Cassidy",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Cassidy"
+      ],
+      "preview": "Cassidy: Your father was a bad man, but he wasn't a tyrant. This ain't what he  / Vendetta: If you think my ambitions end at my father's wants, you're more fool t"
+    },
+    {
+      "n": 10,
+      "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+      "name": "Mech Slayer",
+      "status": "active",
+      "score": 310.56,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "D.Va"
+      ],
+      "preview": "D.va: Do you *really* call yourself a \"mech slayer\"? Hehe. / Vendetta: I don't call myself one. I am one. Your squad must be overdue for a de / D.va: Try it! Tokki and I love crushing sweats."
+    },
+    {
+      "n": 11,
+      "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+      "name": "Welcome Resistance",
+      "status": "active",
+      "score": 137.96,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "D.Va"
+      ],
+      "preview": "D.va: You think MEKA is going to let you take the EMP bomb without a fight? / Vendetta: I welcome your resistance... though I doubt your forces will be a chal"
+    },
+    {
+      "n": 12,
+      "id": "466873a9-1e6f-474a-8688-3555c0804541",
+      "name": "Concerns",
+      "status": "active",
+      "score": 273.92,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "preview": "Domina: Marzia, dear...I have some concerns about your latest enterprise in th / Vendetta: If I desired your advice, I'd have sought you out. / Domina: No need to raise your hackles, darling. I'd simply hate to see them ta"
+    },
+    {
+      "n": 13,
+      "id": "0db66127-b06f-464b-84bf-ecd86553a4f7",
+      "name": "Monument to my leadership",
+      "status": "active",
+      "score": 255.44,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "preview": "Vendetta: I commend you, Vaira. Your company's shielding has proven quite useful / Domina: Of course! Paired with those new armaments, your victory is all but as / Vendetta: When Vishkar rebuilds, I expect a monument to my leadership."
+    },
+    {
+      "n": 14,
+      "id": "c81e6630-b017-4b98-ab0b-9ed25164d0f8",
+      "name": "Lasting impression",
+      "status": "active",
+      "score": 135.88,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "preview": "Domina: That new blade is rather bold, darling. Designed to terrify, is it? / Vendetta: Of course. I always like to leave a lasting impression."
+    },
+    {
+      "n": 15,
+      "id": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec",
+      "name": "War machine",
+      "status": "active",
+      "score": 160.6,
+      "chapterIndex": 13,
+      "chapterTime": "3:58",
+      "chapterTitle": "Vendetta & Emre",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Emre"
+      ],
+      "preview": "Vendetta: When Maximilien promised a war machine, an Overwatch castaway was not  / Emre: Didn't expect this winning smile, did you? **sigh** Max always underse / Vendetta: He described you as lethal. Yet you speak too much, and move unpredict"
+    },
+    {
+      "n": 16,
+      "id": "02a3d02d-ee69-4f2b-9e46-ebc062383765",
+      "name": "Declare your loyalty",
+      "status": "active",
+      "score": 230.44,
+      "chapterIndex": 14,
+      "chapterTime": "4:21",
+      "chapterTitle": "Vendetta & Freja",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Freja"
+      ],
+      "preview": "Vendetta: You've enjoyed Talon's protection long enough. Soon, you must declare  / Freja: And what happens if I don't? / Vendetta: Then I will hunt you down myself."
+    },
+    {
+      "n": 17,
+      "id": "aaa15cc8-af81-4cb3-b4dc-b5fa35b3618a",
+      "name": "Absolute Victory",
+      "status": "active",
+      "score": 204.04,
+      "chapterIndex": 15,
+      "chapterTime": "4:36",
+      "chapterTitle": "Vendetta & Hanzo",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Hanzo"
+      ],
+      "preview": "Vendetta: So this is how the last son of Shimada wields his legacy? Skulking abo / Hanzo: The Hashimoto cannot go unchallenged. It is my duty to protect my home / Vendetta: **laughs** Call it tyranny if you like. At least my victory is absolut"
+    },
+    {
+      "n": 18,
+      "id": "fe2ddd85-6d3b-43d4-907f-27431644600f",
+      "name": "Restless",
+      "status": "active",
+      "score": 197.96,
+      "chapterIndex": 15,
+      "chapterTime": "4:36",
+      "chapterTitle": "Vendetta & Hanzo",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Hanzo"
+      ],
+      "preview": "Hanzo: Backing the Hashimoto was a mistake. The sons of Shimada will not rest / Vendetta: Good. The restless are careless and easy to put down."
+    },
+    {
+      "n": 19,
+      "id": "b3f294ec-0104-40ce-9731-e80d672b3620",
+      "name": "Takeover",
+      "status": "active",
+      "score": 203.88,
+      "chapterIndex": 16,
+      "chapterTime": "5:15",
+      "chapterTitle": "Vendetta & Junker Queen",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Junker Queen"
+      ],
+      "preview": "Junker Queen: Lucky you hitched your wagon to me, wolf girl. I've been dreaming of a / Vendetta: And a spectacle it shall be. Fight loud, and I will handle the afterma"
+    },
+    {
+      "n": 20,
+      "id": "81fe664a-af5e-4aa0-8da5-2e0f015bf18b",
+      "name": "Kingdom of wreckage",
+      "status": "active",
+      "score": 199.44,
+      "chapterIndex": 16,
+      "chapterTime": "5:15",
+      "chapterTitle": "Vendetta & Junker Queen",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Junker Queen"
+      ],
+      "preview": "Vendetta: Do not forget our terms. I won't allow your recklessness to ruin my pl / Junker Queen: You doubtin' me, lady? *(laughs)* I made a kingdom out of wreckage. / Vendetta: And wreckage suits you. Just don't burn down what I've built."
+    },
+    {
+      "n": 21,
+      "id": "a78e2257-ac18-40ce-a3f1-ae952daf3004",
+      "name": "Not so Agreeable",
+      "status": "active",
+      "score": 373.64,
+      "chapterIndex": 17,
+      "chapterTime": "5:45",
+      "chapterTitle": "Vendetta & Lifeweaver",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Lifeweaver"
+      ],
+      "preview": "Lifeweaver: You should be careful making deals with Moira. / Vendetta: I assure you, she and I have an equal partnership. If you're trying to / Lifeweaver: Perhaps, but you should know she's not so agreeable as she appears to "
+    },
+    {
+      "n": 22,
+      "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
+      "name": "Boss Changes",
+      "status": "active",
+      "score": 150.12,
+      "chapterIndex": 18,
+      "chapterTime": "6:04",
+      "chapterTitle": "Vendetta & Mauga",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Mauga"
+      ],
+      "preview": "Mauga: I gotta say, I'm lovin' all the changes lately, boss! **chuckles** Doo / Vendetta: I don't care what you think, so long as you're ready to fight. / Mauga: **laughter** You don't gotta tell me twice!"
+    },
+    {
+      "n": 23,
+      "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
+      "name": "Wildfire",
+      "status": "active",
+      "score": 135.44,
+      "chapterIndex": 18,
+      "chapterTime": "6:04",
+      "chapterTitle": "Vendetta & Mauga",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Mauga"
+      ],
+      "preview": "Vendetta: I sent you to the Outback as a show of force, not to start a wildfire. / Mauga: Don't worry about it, signora. Gunny and I got a little carried away,  / Vendetta: Do you ever *think,* Malosi?!"
+    },
+    {
+      "n": 24,
+      "id": "2c741fe3-823c-4b78-912f-0587e267e977",
+      "name": "Stand Aside",
+      "status": "active",
+      "score": 179.96,
+      "chapterIndex": 19,
+      "chapterTime": "6:38",
+      "chapterTitle": "Vendetta & Ramattra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Ramattra"
+      ],
+      "preview": "Vendetta: You did me a favor by calling your retreat, omnic. It saved me the tro / Ramattra: Of course. I will gladly stand aside while you goad humanity to tear i"
+    },
+    {
+      "n": 25,
+      "id": "a78f7051-a93d-4fca-8824-6e15b2781a1f",
+      "name": "Cowardice",
+      "status": "active",
+      "score": 234.6,
+      "chapterIndex": 20,
+      "chapterTime": "6:53",
+      "chapterTitle": "Vendetta & Reaper",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Reaper"
+      ],
+      "preview": "Vendetta: You ran when you killed my father! You ran from Overwatch, and *now... / Reaper: Call it what you want. It'll keep me alive long enough to kill you som"
+    },
+    {
+      "n": 26,
+      "id": "26e1dc3f-f647-4c6d-87aa-22beba17ff64",
+      "name": "Retribution",
+      "status": "active",
+      "score": 192.4,
+      "chapterIndex": 20,
+      "chapterTime": "6:53",
+      "chapterTitle": "Vendetta & Reaper",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Reaper"
+      ],
+      "preview": "Reaper: I thought you'd know better than to kill Doomfist, since you never shu / Vendetta: Your failed leader was already bleeding allies, and what few remain ca"
+    },
+    {
+      "n": 27,
+      "id": "930d4c6b-3f70-42f0-af4e-3e4999fec397",
+      "name": "Entertaining",
+      "status": "active",
+      "score": 137.36,
+      "chapterIndex": 20,
+      "chapterTime": "6:53",
+      "chapterTitle": "Vendetta & Reaper",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Reaper"
+      ],
+      "preview": "Vendetta: Had you remained with Talon, I might have stayed your execution. / Reaper: **grunt** / Vendetta: Then again... perhaps your judgement was already overdue."
+    },
+    {
+      "n": 28,
+      "id": "4df78e4c-a443-4070-b094-f2b2404f0138",
+      "name": "Many Paths",
+      "status": "active",
+      "score": 381,
+      "chapterIndex": 21,
+      "chapterTime": "7:42",
+      "chapterTitle": "Vendetta & Shion",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Shion"
+      ],
+      "preview": "Vendetta: You have disappointed me, Shion. Your latest failure will not come wit / Shion: Oh, no. Whatever will you do? Put your little pocket knife to my throa / Vendetta: You may not bleed, omnic, but I assure you, there are many paths to de"
+    },
+    {
+      "n": 29,
+      "id": "9d39239c-b221-452a-a0cb-46032d8e5a9e",
+      "name": "Great Potential",
+      "status": "active",
+      "score": 162.08,
+      "chapterIndex": 21,
+      "chapterTime": "7:42",
+      "chapterTitle": "Vendetta & Shion",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Shion"
+      ],
+      "preview": "Vendetta: You may not have accomplished all that I desired, but what you did del / Shion: Potential? I handed you carnage in a pretty package. / Vendetta: It takes more than a honed edge to earn my praise. A weapon must prove"
+    },
+    {
+      "n": 30,
+      "id": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
+      "name": "Can not Hold Together",
+      "status": "active",
+      "score": 262.68,
+      "chapterIndex": 22,
+      "chapterTime": "8:22",
+      "chapterTitle": "Vendetta & Sigma",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sigma"
+      ],
+      "preview": "Vendetta: The EMP is in place, Subject Sigma. Its detonation falls to you / Sigma: No, no, no... No, there is no use. It cannot hold together. It will no / Vendetta: I will not tolerate excuses. Pull your weight, or be cut down like the"
+    },
+    {
+      "n": 31,
+      "id": "7c0610e2-1011-4883-973c-0a775a2dc2d4",
+      "name": "You are the Variable",
+      "status": "active",
+      "score": 235.44,
+      "chapterIndex": 22,
+      "chapterTime": "8:22",
+      "chapterTitle": "Vendetta & Sigma",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sigma"
+      ],
+      "preview": "Vendetta: Fail me, vecchio sciocco, and you'll find I'm less tolerant than my pr / Sigma: Ah, but is failure not an opportunity to reconsider our variables? / Vendetta: Make no mistake: you are the variable here, and I would eliminate you "
+    },
+    {
+      "n": 32,
+      "id": "b68a3f0d-0660-49f0-819c-f31aad7ace16",
+      "name": "The harness",
+      "status": "active",
+      "score": 164.36,
+      "chapterIndex": 22,
+      "chapterTime": "8:22",
+      "chapterTitle": "Vendetta & Sigma",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sigma"
+      ],
+      "preview": "Vendetta: Prepare yourself, Subject Sigma. I will have need of you soon. / Sigma: How soon is soon when time slips away? When moments become millennia? / Vendetta: Enough. Doctor O'Deorain will harness your power when the time is righ"
+    },
+    {
+      "n": 33,
+      "id": "9e2df146-d789-4ce7-8683-567d7ae4b2a6",
+      "name": "Real Monster",
+      "status": "active",
+      "score": 282.08,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "preview": "Sojourn: I'll hand it to you. You've turned Talon into a real monster. / Vendetta: All the better to crush your pathetic resistance. / Sojourn: One thing you ought to know about Overwatch, we don't go down easy."
+    },
+    {
+      "n": 34,
+      "id": "9887a224-d2b4-46de-9063-4be66fbfb18d",
+      "name": "Misjudge my Competence",
+      "status": "active",
+      "score": 262.24,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "preview": "Sojourn: It's time to stand down, Vendetta. Overwatch took out your allies in T / Vendetta: If you believe I cannot survive a single loss, then you have misjudged"
+    },
+    {
+      "n": 35,
+      "id": "9694ae8c-a8e5-4a33-b034-bd98984d4db4",
+      "name": "Never Forgotten",
+      "status": "active",
+      "score": 163.8,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "preview": "Sojourn: I don't care what it takes. This war of yours ends now / Vendetta: History will remember which of us claims victory, and my name will nev"
+    },
+    {
+      "n": 36,
+      "id": "a7c8280c-6eff-486e-b310-b8511f24c7b3",
+      "name": "Aimless Chaos",
+      "status": "active",
+      "score": 130.96,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "preview": "Sojourn: This war you're waging isn't just aimless chaos. What are you planning / Vendetta: Have patience, Commander. I would never spoil the finale."
+    },
+    {
+      "n": 37,
+      "id": "a6e50044-5bba-4cd4-abaa-c564529dcb3b",
+      "name": "Lab Rat",
+      "status": "active",
+      "score": 263.28,
+      "chapterIndex": 24,
+      "chapterTime": "10:11",
+      "chapterTitle": "Vendetta & Sombra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sombra"
+      ],
+      "preview": "Sombra: What are you doing to Sigma? / Vendetta: He is contained, as befits a volatile weapon. / Sombra: He's a person. You can't trap him like some lab rat!"
+    },
+    {
+      "n": 38,
+      "id": "2fc69c14-62d0-46b4-be21-82978d4f3386",
+      "name": "Burning the World Down",
+      "status": "active",
+      "score": 195.56,
+      "chapterIndex": 24,
+      "chapterTime": "10:11",
+      "chapterTitle": "Vendetta & Sombra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Sombra"
+      ],
+      "preview": "Vendetta: That one as selfish as you would reject my cause is unsurprising, but  / Sombra: Of course I left. You're burning the world down! / Vendetta: Flee, then. May you waste your life outrunning your regret."
+    },
+    {
+      "n": 39,
+      "id": "6f6970d8-8157-4284-8626-2520249cbe8d",
+      "name": "Serve Another's Vengeance",
+      "status": "active",
+      "score": 239.52,
+      "chapterIndex": 25,
+      "chapterTime": "10:41",
+      "chapterTitle": "Vendetta & Widowmaker",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Widowmaker"
+      ],
+      "preview": "Vendetta: I'm disappointed you left Talon behind, Amélie. You would have thrived / Widowmaker: I've given my life to Talon. I have no desire to serve another's venge / Vendetta: Mine was not the only revenge I would have chased. A shame you forfeit"
+    },
+    {
+      "n": 40,
+      "id": "3c892232-3b34-45dc-858b-2c262445756e",
+      "name": "Prize Hunter",
+      "status": "active",
+      "score": 298.68,
+      "chapterIndex": 26,
+      "chapterTime": "11:00",
+      "chapterTitle": "Vendetta, Emre & Freja",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Vendetta",
+        "Emre",
+        "Freja"
+      ],
+      "preview": "Vendetta: I see Maximilien's prized hunter is still watching over her quarry. / Freja: It looks that way. / Vendetta: Then I'll take your continued presence here as a sign of allegiance."
+    },
+    {
+      "n": 41,
+      "id": "f597bd2b-9963-4fd5-b208-a61dbe331b83",
+      "name": "Dreaming Big",
+      "status": "active",
+      "score": 238.24,
+      "chapterIndex": 27,
+      "chapterTime": "11:20",
+      "chapterTitle": "Sojourn & Ashe",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Ashe"
+      ],
+      "preview": "Sojourn: I always heard the gangs out west were small-time. Isn't working with  / Ashe: Come on now. Can't fault a girl for dreaming big, can you? / Sojourn: I can fault her for armed robbery."
+    },
+    {
+      "n": 42,
+      "id": "cac88f7f-a365-42cd-abe3-adbba05f8ec5",
+      "name": "Lucky Guess",
+      "status": "active",
+      "score": 235.72,
+      "chapterIndex": 28,
+      "chapterTime": "11:35",
+      "chapterTitle": "Sojourn & Baptiste",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Baptiste"
+      ],
+      "preview": "Sojourn: I saw you cover the western entryway in our last battle. Smart thinkin / Baptiste: Oh, well... I'm just doing what I can to help. / Sojourn: And right before Talon filed in there, too. Almost like you knew their"
+    },
+    {
+      "n": 43,
+      "id": "4d638a55-7eac-405a-9bfa-21be049bde08",
+      "name": "Fighting Talon",
+      "status": "active",
+      "score": 233.52,
+      "chapterIndex": 28,
+      "chapterTime": "11:35",
+      "chapterTitle": "Sojourn & Baptiste",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Baptiste"
+      ],
+      "preview": "Sojourn: It feels like Talon has gone from covert ops to world domination overn / Baptiste: They've done plenty of raids in the past, but nothing nearly this... l / Sojourn: Huh. You have experience fighting Talon?"
+    },
+    {
+      "n": 44,
+      "id": "cf65e9c9-0a4c-4e73-9eec-34947b418da4",
+      "name": "Settling In",
+      "status": "active",
+      "score": 47.72,
+      "chapterIndex": 29,
+      "chapterTime": "12:07",
+      "chapterTitle": "Sojourn & Bastion",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Bastion"
+      ],
+      "preview": "Sojourn: So, Bastion, how are you... settling in? Anything you... need? / Bastion: **straightforward beeps** / Sojourn: Yeah, uh... Sounds good!"
+    },
+    {
+      "n": 45,
+      "id": "e667f75e-0c25-4d92-9df2-740011cef090",
+      "name": "Thanks to your Parents",
+      "status": "active",
+      "score": 214.88,
+      "chapterIndex": 30,
+      "chapterTime": "12:22",
+      "chapterTitle": "Sojourn & Brigitte",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Brigitte"
+      ],
+      "preview": "Sojourn: Give my thanks to your parents for letting us operate out of their hom / Brigitte: Oh, don't worry about that. Mama says it's the quietest the workshop h"
+    },
+    {
+      "n": 46,
+      "id": "adf7d755-c9b8-492f-8480-526340db55eb",
+      "name": "Team Choices",
+      "status": "active",
+      "score": 54.52,
+      "chapterIndex": 31,
+      "chapterTime": "12:35",
+      "chapterTitle": "Sojourn & Cassidy",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Cassidy"
+      ],
+      "preview": "Sojourn: Interesting choices, Cole. A professional gamer, a Russian powerlifter / Cassidy: You like 'em. / Sojourn: **chuckle** I really do."
+    },
+    {
+      "n": 47,
+      "id": "df77f106-248e-419f-91ed-13c2f01e0708",
+      "name": "Mission Brief",
+      "status": "active",
+      "score": 147.16,
+      "chapterIndex": 32,
+      "chapterTime": "12:46",
+      "chapterTitle": "Sojourn & D.Va",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "D.Va"
+      ],
+      "preview": "Sojourn: Did you read the mission brief? / D.va: Huh? Oh, was I supposed to read that? / Sojourn: **sigh** What did I say about teamwork?"
+    },
+    {
+      "n": 48,
+      "id": "c328df98-7b24-4855-b768-f13d9c0d2689",
+      "name": "We can Help",
+      "status": "active",
+      "score": 242.84,
+      "chapterIndex": 33,
+      "chapterTime": "12:59",
+      "chapterTitle": "Sojourn & Emre",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Emre"
+      ],
+      "preview": "Sojourn: Whatever Talon has on you... we can help. You just have to tell me wha / Emre: How many years did we work together, Viv? You should know if I'm not t"
+    },
+    {
+      "n": 49,
+      "id": "815e2d1e-3334-4ac6-a1b4-0e4974564cf4",
+      "name": "Training Tips",
+      "status": "active",
+      "score": 177.64,
+      "chapterIndex": 34,
+      "chapterTime": "13:13",
+      "chapterTitle": "Sojourn & Mei",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Mei"
+      ],
+      "preview": "Sojourn: I saw you training yesterday. Can I give you a tip? / Mei: Um... sure! / Sojourn: Widen your stance. Might feel strange at first, but it keeps you balan"
+    },
+    {
+      "n": 50,
+      "id": "56963687-38de-44ca-9205-4bbc2a76fcde",
+      "name": "Cartoon Superhero",
+      "status": "active",
+      "score": 182.92,
+      "chapterIndex": 35,
+      "chapterTime": "13:27",
+      "chapterTitle": "Sojourn & Orisa",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Orisa"
+      ],
+      "preview": "Orisa: You were Efi's favorite character from the Overwatch cartoon. / Sojourn: Ah... it made me look like a superhero. The reality was... not as insp / Orisa: You gave Efi courage when she needed it most. I am grateful for you, C"
+    },
+    {
+      "n": 51,
+      "id": "8dc62b9d-f769-4760-8e5d-755251a37733",
+      "name": "Why Withdraw",
+      "status": "active",
+      "score": 268.4,
+      "chapterIndex": 36,
+      "chapterTime": "13:46",
+      "chapterTitle": "Sojourn & Ramattra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Ramattra"
+      ],
+      "preview": "Sojourn: Null Sector has a foothold in so many cities... why withdraw your forc / Ramattra: Would you have preferred I destroy humanity? / Sojourn: The way you're consolidating your forces? I think you're still plannin"
+    },
+    {
+      "n": 52,
+      "id": "017ab4df-b0aa-459a-b70c-bf0754ca684b",
+      "name": "Glad you joined",
+      "status": "active",
+      "score": 238.6,
+      "chapterIndex": 37,
+      "chapterTime": "14:07",
+      "chapterTitle": "Sojourn & Sierra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Sierra"
+      ],
+      "preview": "Sojourn: I'm glad you joined us. We're going to need all the help we can get to / Sierra: Hah, my mom always told me to stand up for what's right. And it doesn'"
+    },
+    {
+      "n": 53,
+      "id": "a492d698-3e16-4459-85d0-91dd8b9f9284",
+      "name": "Spotless",
+      "status": "active",
+      "score": 149.72,
+      "chapterIndex": 38,
+      "chapterTime": "14:18",
+      "chapterTitle": "Sojourn & Sombra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Sombra"
+      ],
+      "preview": "Sombra: Vivian Chase. Your Overwatch record was spotless. And your retirement  / Sojourn: It was. And I plan to keep it that way."
+    },
+    {
+      "n": 54,
+      "id": "6cc84ccd-40aa-4c67-91cf-4252c50bb731",
+      "name": "Sitting out",
+      "status": "active",
+      "score": 181.6,
+      "chapterIndex": 39,
+      "chapterTime": "14:29",
+      "chapterTitle": "Sojourn & Tracer",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Tracer"
+      ],
+      "preview": "Sojourn: You're sitting out the next mission, Oxton. Emily made me promise you' / Tracer: Maybe you could look the other way this time? / Sojourn: And get on her bad side? Not a chance."
+    },
+    {
+      "n": 55,
+      "id": "0028e7b4-bbd2-4432-9b01-75db1f4930af",
+      "name": "Recruitment tokens",
+      "status": "active",
+      "score": 289.96,
+      "chapterIndex": 40,
+      "chapterTime": "14:39",
+      "chapterTitle": "Sojourn & Winston",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Winston"
+      ],
+      "preview": "Sojourn: Winston, we need to talk about those recruitment tokens you sent out. / Winston: I'm... sorry. If I'd known what Talon was planning... / Sojourn: You found us the help we needed to get out alive, Winston. Just... may"
+    },
+    {
+      "n": 56,
+      "id": "0532130e-8937-44ba-b0ba-33cb0586bf6a",
+      "name": "Focus on Saving the World",
+      "status": "active",
+      "score": 154.6,
+      "chapterIndex": 40,
+      "chapterTime": "14:39",
+      "chapterTitle": "Sojourn & Winston",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Winston"
+      ],
+      "preview": "Winston: Have you heard from the IJC, Sojourn Surely, these Talon attacks have  / Sojourn: Don't worry about that right now, Winston. Let's focus on saving the w"
+    },
+    {
+      "n": 57,
+      "id": "7bfc197b-f878-4ccb-9094-1cefb8ce2505",
+      "name": "Thinking on your feet",
+      "status": "active",
+      "score": 219.8,
+      "chapterIndex": 41,
+      "chapterTime": "15:14",
+      "chapterTitle": "Sojourn & Wuyang",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Wuyang"
+      ],
+      "preview": "Sojourn: Been thinking we ought to change up your training regimen. / Wuyang: Uh... did I do something wrong? / Sojourn: The opposite. You're great at thinking on your feet. So, let's play to"
+    },
+    {
+      "n": 58,
+      "id": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
+      "name": "Stayed Retired",
+      "status": "active",
+      "score": 225,
+      "chapterIndex": 42,
+      "chapterTime": "15:28",
+      "chapterTitle": "Sojourn, Brigitte & Jetpack Cat",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sojourn",
+        "Brigitte",
+        "Jetpack Cat"
+      ],
+      "preview": "Sojourn: Brigitte, you're one of my best agents. So I'll give you one chance to / Brigitte: I know it seems crazy, but she can help! Can't you, Fika? Aww, good gi / Jetpack Cat: **happy meows**"
+    },
+    {
+      "n": 59,
+      "id": "aad0fe73-4231-4b09-8a2f-12088af9ed69",
+      "name": "Tests from Talon",
+      "status": "active",
+      "score": 220.12,
+      "chapterIndex": 43,
+      "chapterTime": "15:47",
+      "chapterTitle": "Freja & Domina",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Freja",
+        "Domina"
+      ],
+      "preview": "Domina: I'm quite capable of defending you out there, dear. But... should I? / Freja: Wouldn't your \"partner\" want you to protect her assets? / Domina: I expect she'd much prefer I test their resilience."
+    },
+    {
+      "n": 60,
+      "id": "7f8889f2-10da-4390-8848-e14bdfbda5d8",
+      "name": "Old Teammates",
+      "status": "active",
+      "score": 275.04,
+      "chapterIndex": 44,
+      "chapterTime": "16:05",
+      "chapterTitle": "Freja & Emre",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Freja",
+        "Emre"
+      ],
+      "preview": "Emre: You've been off since Grand Mesa. Everything all right? / Freja: I don't know. I guess I didn't expect to see our old teammates. / Emre: I'm sure they'd take you back. You don't have to stick around with Tal"
+    },
+    {
+      "n": 61,
+      "id": "8dacbf8e-2528-4de8-8c6a-bd21ad91a8cb",
+      "name": "Working with Vendetta",
+      "status": "active",
+      "score": 265.92,
+      "chapterIndex": 44,
+      "chapterTime": "16:05",
+      "chapterTitle": "Freja & Emre",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Freja",
+        "Emre"
+      ],
+      "preview": "Freja: Feels worse than I thought it would, working with Vendetta... / Emre: Hold on. We can't both be haunted by our consciences now. / Freja: **laughs** You think you can stop me feeling guilty better than I can?"
+    },
+    {
+      "n": 62,
+      "id": "e18b5fea-475a-4e5e-a58e-127d053b1c95",
+      "name": "Finding Answers",
+      "status": "active",
+      "score": 124.08,
+      "chapterIndex": 44,
+      "chapterTime": "16:05",
+      "chapterTitle": "Freja & Emre",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Freja",
+        "Emre"
+      ],
+      "preview": "Freja: You really think you'll find answers working with Talon? / Emre: I don't know. But, it feels like my only option. / Freja: Then we'll see it through."
+    },
+    {
+      "n": 63,
+      "id": "921ff317-7ba0-4a6c-b988-65eaf50685e0",
+      "name": "Hashimoto Bounties",
+      "status": "active",
+      "score": 253.48,
+      "chapterIndex": 45,
+      "chapterTime": "16:47",
+      "chapterTitle": "Freja & Kiriko",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Freja",
+        "Kiriko"
+      ],
+      "preview": "Kiriko: I have some bounties you might want. Five of them, actually. / Freja: **chuckle** I'm good at what I do, kid, but even I'm not going to mess / Kiriko: All right... Then how are you with rescue missions?"
+    },
+    {
+      "n": 64,
+      "id": "c354b12e-1020-4d3a-87a1-52fb9edf140e",
+      "name": "Calling the Shots",
+      "status": "active",
+      "score": 248.04,
+      "chapterIndex": 46,
+      "chapterTime": "17:03",
+      "chapterTitle": "Freja & Ramattra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Freja",
+        "Ramattra"
+      ],
+      "preview": "Ramattra: You call my people \"bots\", yet you now take orders from one. / Freja: Max isn't my boss. I call the shots as much as he does. / Ramattra: Your self-importance is irksome, but impressively, your denial may be "
+    },
+    {
+      "n": 65,
+      "id": "b298e252-90bb-4582-8d6c-34c001003009",
+      "name": "Deals with Talon",
+      "status": "active",
+      "score": 182,
+      "chapterIndex": 47,
+      "chapterTime": "17:20",
+      "chapterTitle": "Cassidy & Ashe",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Cassidy",
+        "Ashe"
+      ],
+      "preview": "Cassidy: You're makin' deals with Talon, now? You've always been reckless, but  / Ashe: Then you know I've got it under control. You ought'a be smart enough t"
+    },
+    {
+      "n": 66,
+      "id": "c9a58edf-26fb-4257-817b-349d7fb66e72",
+      "name": "Getting Homesick",
+      "status": "active",
+      "score": 197.76,
+      "chapterIndex": 48,
+      "chapterTime": "17:30",
+      "chapterTitle": "Cassidy & Genji",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Cassidy",
+        "Genji"
+      ],
+      "preview": "Cassidy: You getting homesick, too? Huh. Guess we were never good at sticking a / Genji: Maybe not. / Cassidy: Well, wherever you wind up, if you ever need a gunslinger, you can alw"
+    },
+    {
+      "n": 67,
+      "id": "a3980af2-e387-4eda-b5db-0798785ee4ca",
+      "name": "No Italian",
+      "status": "active",
+      "score": 142.88,
+      "chapterIndex": 48,
+      "chapterTime": "17:30",
+      "chapterTitle": "Cassidy & Genji",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Cassidy",
+        "Genji"
+      ],
+      "preview": "Cassidy: Reckon we've got another Bartalotti to stop. Should be easier without  / Genji: And you won't have to speak Italian this time. / Cassidy: Well, don't speak so soon, *\"signore.\"*"
+    },
+    {
+      "n": 68,
+      "id": "96366250-f815-4ee8-b7bf-ca9732649f22",
+      "name": "Fresh Faces",
+      "status": "active",
+      "score": 208.6,
+      "chapterIndex": 49,
+      "chapterTime": "18:02",
+      "chapterTitle": "Cassidy & Reinhardt",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Cassidy",
+        "Reinhardt"
+      ],
+      "preview": "Reinhardt: Look at these fresh faces! What do we owe you for bringing them in, Co / Cassidy: Don't care to keep a ledger these days. Heh. What do you say we call i / Reinhardt: Deal! It's an honor just to fight at their side!"
+    },
+    {
+      "n": 69,
+      "id": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9",
+      "name": "Out of Talon",
+      "status": "active",
+      "score": 280.72,
+      "chapterIndex": 50,
+      "chapterTime": "18:20",
+      "chapterTitle": "Sombra & Baptiste",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sombra",
+        "Baptiste"
+      ],
+      "preview": "Baptiste: Is it true? You're out of Talon? For good? / Sombra: For now. Until someone knocks the new boss down a few pegs. / Baptiste: Well, if you're looking for help... you can always come find me."
+    },
+    {
+      "n": 70,
+      "id": "c568b8bf-dda2-497a-bfdf-58422eaf328b",
+      "name": "No Plan",
+      "status": "active",
+      "score": 234.88,
+      "chapterIndex": 51,
+      "chapterTime": "18:38",
+      "chapterTitle": "Sombra & Doomfist",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sombra",
+        "Doomfist"
+      ],
+      "preview": "Sombra: So, what's the plan to take down Vendetta? / Doomfist: There is no plan. / Sombra: But, you always have a plan. We have to do something."
+    },
+    {
+      "n": 71,
+      "id": "1dbf921b-e618-476b-8383-1cd6ad9dedee",
+      "name": "The World will adapt",
+      "status": "active",
+      "score": 145.48,
+      "chapterIndex": 51,
+      "chapterTime": "18:38",
+      "chapterTitle": "Sombra & Doomfist",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sombra",
+        "Doomfist"
+      ],
+      "preview": "Sombra: I know stopping Vendetta's priority one, but cracking open Grímsvötn f / Doomfist: The world will adapt, as it always has / Sombra: (sigh) Guess I'm glad you're back to your old self, at least"
+    },
+    {
+      "n": 72,
+      "id": "25ccdbbe-f706-415d-b243-cccbcee5eb2a",
+      "name": "Worsened Conditions",
+      "status": "active",
+      "score": 127.12,
+      "chapterIndex": 52,
+      "chapterTime": "19:08",
+      "chapterTitle": "Sombra & Sigma",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Sombra",
+        "Sigma"
+      ],
+      "preview": "Sombra: Are you okay, viejito? You don't look too good. / Sigma: **sigh** I... I am afraid... conditions have... worsened in your absen / Sombra: **sigh** Hang in there, okay? I *promise* I'll get you away from her."
+    },
+    {
+      "n": 73,
+      "id": "815db5b9-cf43-4488-b00e-babef29a9304",
+      "name": "Busan fireworks",
+      "status": "active",
+      "score": 81.64,
+      "chapterIndex": 53,
+      "chapterTime": "19:24",
+      "chapterTitle": "D.Va & Junker Queen",
+      "batch": "Midseason 5",
+      "heroes": [
+        "D.Va",
+        "Junker Queen"
+      ],
+      "preview": "Junker Queen: Reckon Busan's in need of a little fireworks show! / D.va: The only firework show you see will be my missiles blowing up in your "
+    },
+    {
+      "n": 74,
+      "id": "16cdbd0f-2897-4ae9-8701-b164a420e721",
+      "name": "Priviledge",
+      "status": "active",
+      "score": 151.48,
+      "chapterIndex": 54,
+      "chapterTime": "19:32",
+      "chapterTitle": "D.Va & Ramattra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "D.Va",
+        "Ramattra"
+      ],
+      "preview": "Ramattra: It is the privilege of humanity to trifle with every threat. / D.va: I give everything to protect my home. So don't *trifle* with me!"
+    },
+    {
+      "n": 75,
+      "id": "a22ec657-efd9-4f67-8a5c-507611722dcb",
+      "name": "High Scores",
+      "status": "active",
+      "score": 89,
+      "chapterIndex": 55,
+      "chapterTime": "19:42",
+      "chapterTitle": "D.Va & Symmetra",
+      "batch": "Midseason 5",
+      "heroes": [
+        "D.Va",
+        "Symmetra"
+      ],
+      "preview": "D.va: I heard you're a good dancer. You should try to beat my high score in  / Symmetra: Hm. Have you checked the scoreboard recently? / D.va: **gasp** You didn't...!"
+    },
+    {
+      "n": 76,
+      "id": "106a8910-2ac6-4228-83e9-3a8d06b4db34",
+      "name": "Fighting for Vendetta",
+      "status": "active",
+      "score": 149.72,
+      "chapterIndex": 56,
+      "chapterTime": "19:52",
+      "chapterTitle": "Baptiste & Mauga",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Baptiste",
+        "Mauga"
+      ],
+      "preview": "Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, even f / Mauga: Aw, gimme some more credit. You know I only stick around when I'm gett / Baptiste: **sigh** That's exactly what I'm worried about."
+    },
+    {
+      "n": 77,
+      "id": "045725d5-31ab-40bf-a27d-2236bdfebee8",
+      "name": "Healing and Hurting",
+      "status": "active",
+      "score": 33.8,
+      "chapterIndex": 57,
+      "chapterTime": "20:07",
+      "chapterTitle": "Baptiste & Moira",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Baptiste",
+        "Moira"
+      ],
+      "preview": "Baptiste: Healing and hurting... hm. I guess we're not that different. / Moira: Hmph. I assure you, we are nothing alike."
+    },
+    {
+      "n": 78,
+      "id": "efc23209-bc09-4e58-8536-fa07c4bd2dc9",
+      "name": "Good Taste",
+      "status": "active",
+      "score": 137.68,
+      "chapterIndex": 58,
+      "chapterTime": "20:15",
+      "chapterTitle": "Emre & Domina",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Emre",
+        "Domina"
+      ],
+      "preview": "Domina: Oh, another one of Marzia's lackeys. Let's hope you're not as dim as t / Emre: You're insulting me? In *those* shoes? / Domina: Darling! These cost more than *fifty* of you."
+    },
+    {
+      "n": 79,
+      "id": "95b9f80c-8176-4b6b-9a1b-bfe100a755af",
+      "name": "Threat to myself and others",
+      "status": "active",
+      "score": 194.88,
+      "chapterIndex": 59,
+      "chapterTime": "20:30",
+      "chapterTitle": "Emre & Sigma",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Emre",
+        "Sigma"
+      ],
+      "preview": "Emre: Vendetta's got you under lock and key, huh? You must have really set h / Sigma: She claimed I am \"a threat to myself and others\"... though I cannot re / Emre: Yeah. I know the feeling."
+    },
+    {
+      "n": 80,
+      "id": "eee0676c-7269-4942-afb7-6b1b3e30d225",
+      "name": "Back Home",
+      "status": "active",
+      "score": 149.6,
+      "chapterIndex": 60,
+      "chapterTime": "20:45",
+      "chapterTitle": "Torbj÷rn & Brigitte",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Torbjörn",
+        "Brigitte"
+      ],
+      "preview": "Torbjörn: I'm glad to have you back home, Brigitte! / Brigitte: Me, too! I missed you and Mamma. / Torbjörn: Oh, and, while you're here... I'm going to need your help sorting thro"
+    },
+    {
+      "n": 81,
+      "id": "60ede0f3-5e90-48d4-baf5-deecac8731f2",
+      "name": "Condolences",
+      "status": "active",
+      "score": 121.48,
+      "chapterIndex": 61,
+      "chapterTime": "21:02",
+      "chapterTitle": "Torbj÷rn & Lifeweaver",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Torbjörn",
+        "Lifeweaver"
+      ],
+      "preview": "Lifeweaver: Claudio and Hector send their condolences. They know what Gibraltar me / Torbjörn: *(sigh)* Well, when they're done feeling sorry, they could help us put / Lifeweaver: I'll give them a nudge"
+    },
+    {
+      "n": 82,
+      "id": "c3674b40-e701-4202-af50-a8be82d20589",
+      "name": "Make it Count",
+      "status": "active",
+      "score": 229.52,
+      "chapterIndex": 62,
+      "chapterTime": "21:16",
+      "chapterTitle": "Doomfist & Reaper",
+      "batch": "Midseason 5",
+      "heroes": [
+        "Doomfist",
+        "Reaper"
+      ],
+      "preview": "Reaper: What are we waiting for? The more time we waste, the harder it'll be t / Doomfist: I will not approach this fight in overconfidence. We will have one cha"
+    }
+  ],
+  "perChapter": [
+    {
+      "chapterIndex": 1,
+      "time": "0:00",
+      "title": "Moira & Emre",
+      "duration": 10,
+      "matchCount": 1,
+      "matches": [
+        "Useful when you show up"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 2,
+      "time": "0:10",
+      "title": "Moira & Freja",
+      "duration": 16,
+      "matchCount": 1,
+      "matches": [
+        "Staying informed"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 3,
+      "time": "0:26",
+      "title": "Moira & Reaper",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Pulling the Trigger"
+      ],
+      "heroPairCandidates": 6
+    },
+    {
+      "chapterIndex": 4,
+      "time": "0:41",
+      "title": "Moira & Vendetta",
+      "duration": 14,
+      "matchCount": 1,
+      "matches": [
+        "Process can't Rush"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 5,
+      "time": "0:55",
+      "title": "Brigitte & Reinhardt",
+      "duration": 20,
+      "matchCount": 1,
+      "matches": [
+        "We lived"
+      ],
+      "heroPairCandidates": 8
+    },
+    {
+      "chapterIndex": 6,
+      "time": "1:15",
+      "title": "Jetpack Cat & Wuyang",
+      "duration": 7,
+      "matchCount": 0,
+      "matches": [],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 7,
+      "time": "1:22",
+      "title": "Mauga & Vendetta",
+      "duration": 18,
+      "matchCount": 1,
+      "matches": [
+        "Overwatch Survived"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 8,
+      "time": "1:40",
+      "title": "Vendetta & Ashe",
+      "duration": 19,
+      "matchCount": 1,
+      "matches": [
+        "Money before Loyalty"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 9,
+      "time": "1:59",
+      "title": "Vendetta & Baptiste",
+      "duration": 19,
+      "matchCount": 1,
+      "matches": [
+        "Forgetting about me"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 10,
+      "time": "2:18",
+      "title": "Vendetta & Cassidy",
+      "duration": 12,
+      "matchCount": 1,
+      "matches": [
+        "No Tyrant"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 11,
+      "time": "2:30",
+      "title": "Vendetta & D.Va",
+      "duration": 38,
+      "matchCount": 2,
+      "matches": [
+        "Mech Slayer",
+        "Welcome Resistance"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 12,
+      "time": "3:08",
+      "title": "Vendetta & Domina",
+      "duration": 50,
+      "matchCount": 3,
+      "matches": [
+        "Concerns",
+        "Monument to my leadership",
+        "Lasting impression"
+      ],
+      "heroPairCandidates": 4
+    },
+    {
+      "chapterIndex": 13,
+      "time": "3:58",
+      "title": "Vendetta & Emre",
+      "duration": 23,
+      "matchCount": 1,
+      "matches": [
+        "War machine"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 14,
+      "time": "4:21",
+      "title": "Vendetta & Freja",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Declare your loyalty"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 15,
+      "time": "4:36",
+      "title": "Vendetta & Hanzo",
+      "duration": 39,
+      "matchCount": 2,
+      "matches": [
+        "Absolute Victory",
+        "Restless"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 16,
+      "time": "5:15",
+      "title": "Vendetta & Junker Queen",
+      "duration": 30,
+      "matchCount": 2,
+      "matches": [
+        "Takeover",
+        "Kingdom of wreckage"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 17,
+      "time": "5:45",
+      "title": "Vendetta & Lifeweaver",
+      "duration": 19,
+      "matchCount": 1,
+      "matches": [
+        "Not so Agreeable"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 18,
+      "time": "6:04",
+      "title": "Vendetta & Mauga",
+      "duration": 34,
+      "matchCount": 2,
+      "matches": [
+        "Boss Changes",
+        "Wildfire"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 19,
+      "time": "6:38",
+      "title": "Vendetta & Ramattra",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Stand Aside"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 20,
+      "time": "6:53",
+      "title": "Vendetta & Reaper",
+      "duration": 49,
+      "matchCount": 3,
+      "matches": [
+        "Cowardice",
+        "Retribution",
+        "Entertaining"
+      ],
+      "heroPairCandidates": 5
+    },
+    {
+      "chapterIndex": 21,
+      "time": "7:42",
+      "title": "Vendetta & Shion",
+      "duration": 40,
+      "matchCount": 2,
+      "matches": [
+        "Many Paths",
+        "Great Potential"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 22,
+      "time": "8:22",
+      "title": "Vendetta & Sigma",
+      "duration": 57,
+      "matchCount": 3,
+      "matches": [
+        "Can not Hold Together",
+        "You are the Variable",
+        "The harness"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 23,
+      "time": "9:19",
+      "title": "Vendetta & Sojourn",
+      "duration": 52,
+      "matchCount": 4,
+      "matches": [
+        "Real Monster",
+        "Misjudge my Competence",
+        "Never Forgotten",
+        "Aimless Chaos"
+      ],
+      "heroPairCandidates": 4
+    },
+    {
+      "chapterIndex": 24,
+      "time": "10:11",
+      "title": "Vendetta & Sombra",
+      "duration": 30,
+      "matchCount": 2,
+      "matches": [
+        "Lab Rat",
+        "Burning the World Down"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 25,
+      "time": "10:41",
+      "title": "Vendetta & Widowmaker",
+      "duration": 19,
+      "matchCount": 1,
+      "matches": [
+        "Serve Another's Vengeance"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 26,
+      "time": "11:00",
+      "title": "Vendetta, Emre & Freja",
+      "duration": 20,
+      "matchCount": 1,
+      "matches": [
+        "Prize Hunter"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 27,
+      "time": "11:20",
+      "title": "Sojourn & Ashe",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Dreaming Big"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 28,
+      "time": "11:35",
+      "title": "Sojourn & Baptiste",
+      "duration": 32,
+      "matchCount": 2,
+      "matches": [
+        "Lucky Guess",
+        "Fighting Talon"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 29,
+      "time": "12:07",
+      "title": "Sojourn & Bastion",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Settling In"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 30,
+      "time": "12:22",
+      "title": "Sojourn & Brigitte",
+      "duration": 13,
+      "matchCount": 1,
+      "matches": [
+        "Thanks to your Parents"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 31,
+      "time": "12:35",
+      "title": "Sojourn & Cassidy",
+      "duration": 11,
+      "matchCount": 1,
+      "matches": [
+        "Team Choices"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 32,
+      "time": "12:46",
+      "title": "Sojourn & D.Va",
+      "duration": 13,
+      "matchCount": 1,
+      "matches": [
+        "Mission Brief"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 33,
+      "time": "12:59",
+      "title": "Sojourn & Emre",
+      "duration": 14,
+      "matchCount": 1,
+      "matches": [
+        "We can Help"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 34,
+      "time": "13:13",
+      "title": "Sojourn & Mei",
+      "duration": 14,
+      "matchCount": 1,
+      "matches": [
+        "Training Tips"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 35,
+      "time": "13:27",
+      "title": "Sojourn & Orisa",
+      "duration": 19,
+      "matchCount": 1,
+      "matches": [
+        "Cartoon Superhero"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 36,
+      "time": "13:46",
+      "title": "Sojourn & Ramattra",
+      "duration": 21,
+      "matchCount": 1,
+      "matches": [
+        "Why Withdraw"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 37,
+      "time": "14:07",
+      "title": "Sojourn & Sierra",
+      "duration": 11,
+      "matchCount": 1,
+      "matches": [
+        "Glad you joined"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 38,
+      "time": "14:18",
+      "title": "Sojourn & Sombra",
+      "duration": 11,
+      "matchCount": 1,
+      "matches": [
+        "Spotless"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 39,
+      "time": "14:29",
+      "title": "Sojourn & Tracer",
+      "duration": 10,
+      "matchCount": 1,
+      "matches": [
+        "Sitting out"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 40,
+      "time": "14:39",
+      "title": "Sojourn & Winston",
+      "duration": 35,
+      "matchCount": 2,
+      "matches": [
+        "Recruitment tokens",
+        "Focus on Saving the World"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 41,
+      "time": "15:14",
+      "title": "Sojourn & Wuyang",
+      "duration": 14,
+      "matchCount": 1,
+      "matches": [
+        "Thinking on your feet"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 42,
+      "time": "15:28",
+      "title": "Sojourn, Brigitte & Jetpack Cat",
+      "duration": 19,
+      "matchCount": 1,
+      "matches": [
+        "Stayed Retired"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 43,
+      "time": "15:47",
+      "title": "Freja & Domina",
+      "duration": 18,
+      "matchCount": 1,
+      "matches": [
+        "Tests from Talon"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 44,
+      "time": "16:05",
+      "title": "Freja & Emre",
+      "duration": 42,
+      "matchCount": 3,
+      "matches": [
+        "Old Teammates",
+        "Working with Vendetta",
+        "Finding Answers"
+      ],
+      "heroPairCandidates": 6
+    },
+    {
+      "chapterIndex": 45,
+      "time": "16:47",
+      "title": "Freja & Kiriko",
+      "duration": 16,
+      "matchCount": 1,
+      "matches": [
+        "Hashimoto Bounties"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 46,
+      "time": "17:03",
+      "title": "Freja & Ramattra",
+      "duration": 17,
+      "matchCount": 1,
+      "matches": [
+        "Calling the Shots"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 47,
+      "time": "17:20",
+      "title": "Cassidy & Ashe",
+      "duration": 10,
+      "matchCount": 1,
+      "matches": [
+        "Deals with Talon"
+      ],
+      "heroPairCandidates": 16
+    },
+    {
+      "chapterIndex": 48,
+      "time": "17:30",
+      "title": "Cassidy & Genji",
+      "duration": 32,
+      "matchCount": 2,
+      "matches": [
+        "Getting Homesick",
+        "No Italian"
+      ],
+      "heroPairCandidates": 9
+    },
+    {
+      "chapterIndex": 49,
+      "time": "18:02",
+      "title": "Cassidy & Reinhardt",
+      "duration": 18,
+      "matchCount": 1,
+      "matches": [
+        "Fresh Faces"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 50,
+      "time": "18:20",
+      "title": "Sombra & Baptiste",
+      "duration": 18,
+      "matchCount": 1,
+      "matches": [
+        "Out of Talon"
+      ],
+      "heroPairCandidates": 6
+    },
+    {
+      "chapterIndex": 51,
+      "time": "18:38",
+      "title": "Sombra & Doomfist",
+      "duration": 30,
+      "matchCount": 2,
+      "matches": [
+        "No Plan",
+        "The World will adapt"
+      ],
+      "heroPairCandidates": 3
+    },
+    {
+      "chapterIndex": 52,
+      "time": "19:08",
+      "title": "Sombra & Sigma",
+      "duration": 16,
+      "matchCount": 1,
+      "matches": [
+        "Worsened Conditions"
+      ],
+      "heroPairCandidates": 7
+    },
+    {
+      "chapterIndex": 53,
+      "time": "19:24",
+      "title": "D.Va & Junker Queen",
+      "duration": 8,
+      "matchCount": 1,
+      "matches": [
+        "Busan fireworks"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 54,
+      "time": "19:32",
+      "title": "D.Va & Ramattra",
+      "duration": 10,
+      "matchCount": 1,
+      "matches": [
+        "Priviledge"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 55,
+      "time": "19:42",
+      "title": "D.Va & Symmetra",
+      "duration": 10,
+      "matchCount": 1,
+      "matches": [
+        "High Scores"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 56,
+      "time": "19:52",
+      "title": "Baptiste & Mauga",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Fighting for Vendetta"
+      ],
+      "heroPairCandidates": 4
+    },
+    {
+      "chapterIndex": 57,
+      "time": "20:07",
+      "title": "Baptiste & Moira",
+      "duration": 8,
+      "matchCount": 1,
+      "matches": [
+        "Healing and Hurting"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 58,
+      "time": "20:15",
+      "title": "Emre & Domina",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Good Taste"
+      ],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 59,
+      "time": "20:30",
+      "title": "Emre & Sigma",
+      "duration": 15,
+      "matchCount": 1,
+      "matches": [
+        "Threat to myself and others"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 60,
+      "time": "20:45",
+      "title": "Torbj÷rn & Brigitte",
+      "duration": 17,
+      "matchCount": 1,
+      "matches": [
+        "Back Home"
+      ],
+      "heroPairCandidates": 11
+    },
+    {
+      "chapterIndex": 61,
+      "time": "21:02",
+      "title": "Torbj÷rn & Lifeweaver",
+      "duration": 14,
+      "matchCount": 1,
+      "matches": [
+        "Condolences"
+      ],
+      "heroPairCandidates": 2
+    },
+    {
+      "chapterIndex": 62,
+      "time": "21:16",
+      "title": "Doomfist & Reaper",
+      "duration": 13,
+      "matchCount": 1,
+      "matches": [
+        "Make it Count"
+      ],
+      "heroPairCandidates": 2
+    }
+  ],
+  "zeroChapters": [
+    {
+      "chapterIndex": 6,
+      "time": "1:15",
+      "title": "Jetpack Cat & Wuyang",
+      "duration": 7,
+      "matchCount": 0,
+      "matches": [],
+      "heroPairCandidates": 1
+    }
+  ],
+  "underMatchedChapters": [
+    {
+      "chapterIndex": 6,
+      "time": "1:15",
+      "title": "Jetpack Cat & Wuyang",
+      "duration": 7,
+      "matchCount": 0,
+      "matches": [],
+      "heroPairCandidates": 1
+    },
+    {
+      "chapterIndex": 21,
+      "time": "7:42",
+      "title": "Vendetta & Shion",
+      "duration": 40,
+      "matchCount": 2,
+      "matches": [
+        "Many Paths",
+        "Great Potential"
+      ],
+      "heroPairCandidates": 3
+    }
+  ]
+}

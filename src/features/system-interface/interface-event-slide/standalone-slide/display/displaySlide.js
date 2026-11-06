@@ -57,6 +57,15 @@ import { teardownDialogueTheaterEventSlide } from '../../../../dialogue-theater/
 import { stopStoryCommentaryDirectPlay } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { clearEventSourceMediaEmbed, resetSourceMediaMusicDuckState } from '../image-overlay/eventSourceMediaOverlay.js';
 import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
+import {
+    syncEventSlidePaneHeadingsMode,
+    syncEventSlideSectionJumpsMode,
+    wireEventSlideSectionJumps,
+} from './wireEventSlideSectionJumps.js';
+import {
+    clearEventSlideBioConnectionsDisplay,
+    updateEventSlideBioConnectionsDisplay,
+} from '../../../interface-shared/bio-archive/eventSlideBioConnectionsDisplay.js';
 
 export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
         const eventSlide = document.getElementById('eventSlide');
@@ -110,6 +119,7 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
             commentarySectionClear.setAttribute('hidden', 'hidden');
         }
         window.LocationFlagHelpers?.clearBioConnectionsSlideDom?.();
+        clearEventSlideBioConnectionsDisplay();
         if (heroLocEditClear) {
             heroLocEditClear.setAttribute('hidden', '');
             heroLocEditClear.style.display = 'none';
@@ -187,9 +197,18 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
                 window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
                     target
                 );
-                window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(target);
+                void updateEventSlideBioConnectionsDisplay(target, archiveSourceSlide);
             }
         }
+
+        const isBioArchiveChrome =
+            archiveSourceSlide === 'heroes'
+            || archiveSourceSlide === 'factions'
+            || archiveSourceSlide === 'npcs';
+        wireEventSlideSectionJumps();
+        syncEventSlideSectionJumpsMode(isBioArchiveChrome ? 'bio' : 'story');
+        syncEventSlidePaneHeadingsMode(isBioArchiveChrome ? 'bio' : 'story');
+        eventSlide.classList.toggle('event-slide--bio-archive', isBioArchiveChrome);
 
         if (archiveSourceSlide === 'factions') {
             updateEventSlideFactionTypeDisplay(eventData, slide.currentVariantIndex ?? 0);

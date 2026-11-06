@@ -6,13 +6,84 @@ import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/Code
 import { parseMigrateAndDedupeCodexSource } from '../migration/CodexPayloadMigration.js';
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../persistence/CodexLayoutConstants.js';
 import { downloadTextFileAsJson, stringifyCodexLayoutJson } from '../persistence/CodexLayoutSerialization.js';
-import { updateAppStatus, userConfirms } from '../../codex-canvas/bridge/CodexAppBridge.js';
+import { updateAppStatus, userConfirms, getCodexLoadingOverlayLineSetter } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { stopCordAnimAndClearCordPacketState } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
-import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { redrawCodexEdges, redrawCodexEdgesDuringLoad } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { clearCodexVirtualScroll, updateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import { parseCodexJsonInWorker } from '../load/CodexJsonParseWorker.js';
 
+const STRIP_NODE_CHUNK = 80;
 
+function scheduleDeferredCodexWork(fn) {
+    const run = () => {
+        try {
+            fn();
+        } catch (_) {
+            /* ignore */
+        }
+    };
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(run, { timeout: 2500 });
+    } else {
+        setTimeout(run, 0);
+    }
+}
+
+function mirrorImportedLayoutToLocalStorage() {
+    try {
+        const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
+        localStorage.setItem(
+            CODEX_STORAGE_KEY,
+            JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
+        );
+    } catch (_) {
+        /* ignore */
+    }
+}
+
+async function yieldImportPaint() {
+    if (typeof api.yieldCodexBrowserPaint === 'function') {
+        await api.yieldCodexBrowserPaint();
+        return;
+    }
+    await new Promise((resolve) => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => setTimeout(resolve, 0));
+        });
+    });
+}
+
+/**
+ * Tear down the live board without one giant sync DOM wipe (that was part of the import stall).
+ */
+async function stripCodexBoardForFullReplaceChunked() {
+    if (!s.root) return;
+    api.removePicker();
+    s.networkLinkSourceId = null;
+    api.cancelPointerPending();
+    api.cancelBackgroundPanPointerPending();
+    api.selectCodexNode(null);
+    s.codexBulkNodeDeleteArmedAt = 0;
+    stopCordAnimAndClearCordPacketState();
+
+    const world = s.codexWorldEl || s.root;
+    const nodes = Array.from(world.querySelectorAll('.codex-node'));
+    for (let i = 0; i < nodes.length; i += STRIP_NODE_CHUNK) {
+        const end = Math.min(i + STRIP_NODE_CHUNK, nodes.length);
+        for (let j = i; j < end; j += 1) {
+            nodes[j].remove();
+        }
+        if (end < nodes.length) {
+            if (typeof api.yieldBetweenCodexLoadChunks === 'function') {
+                await api.yieldBetweenCodexLoadChunks();
+            } else {
+                await new Promise((r) => requestAnimationFrame(r));
+            }
+        }
+    }
+}
+
+/** Sync variant kept for callers that expect an immediate wipe. */
 function stripCodexBoardForFullReplace() {
     if (!s.root) return;
     api.removePicker();
@@ -26,6 +97,11 @@ function stripCodexBoardForFullReplace() {
     stopCordAnimAndClearCordPacketState();
 }
 
+/**
+ * Replace the live Codex board from imported JSON.
+ * Mirrors `loadCodexState` + post-open paint, with extra yields around strip/migrate
+ * so the page stays interactive during a full replace.
+ */
 async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     if (!s.root) return;
     if (!opts.skipConfirm) {
@@ -35,16 +111,30 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
         if (!ok) return;
     }
 
-    let parsed;
-    try {
-        parsed = JSON.parse(jsonText);
-    } catch (_) {
+    const overlayLine = getCodexLoadingOverlayLineSetter();
+    const setLine = (text) => {
+        if (overlayLine) overlayLine(text);
+        updateAppStatus(text, 'info');
+    };
+
+    setLine('Codex import: parsing file…');
+    await yieldImportPaint();
+    const parseResult = await parseCodexJsonInWorker(jsonText);
+    if (!parseResult.ok) {
         updateAppStatus('Codex import: file is not valid JSON.', 'error');
         return;
     }
 
-    const { nodes, edges, connections, migratedNow } = parseMigrateAndDedupeCodexSource(parsed);
-    stripCodexBoardForFullReplace();
+    setLine('Codex import: preparing layout…');
+    await yieldImportPaint();
+    // Migration/dedupe can be sync-heavy; yield before/after so the status line can paint.
+    const { nodes, edges, connections, migratedNow } = parseMigrateAndDedupeCodexSource(parseResult.data);
+    await yieldImportPaint();
+
+    setLine('Codex import: clearing board…');
+    await stripCodexBoardForFullReplaceChunked();
+    await yieldImportPaint();
+
     s.codexEdges = edges;
     setCodexConnectionsInSession(connections || []);
     s.codexUnsavedEdgeKeys.clear();
@@ -59,63 +149,58 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
      */
     s.codexAllNodes = nodes || [];
     clearCodexVirtualScroll();
+    api.clearCodexTargetedSelection?.();
+    s.codexViewModeInitialRenderDone = false;
     s.codexViewZoom = CODEX_ZOOM_INITIAL;
-    if (!nodes.length) {
-        api.centerCodexViewOnWorldCenter();
-    } else {
-        s.codexViewPanX = 0;
-        s.codexViewPanY = 0;
-    }
-    api.applyCodexWorldTransformStyle();
 
     if (!nodes.length) {
+        api.centerCodexViewOnWorldCenter();
+        api.applyCodexWorldTransformStyle();
         redrawCodexEdges();
         api.markCodexLayoutDirty();
-        try {
-            const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
-            localStorage.setItem(
-                CODEX_STORAGE_KEY,
-                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
-            );
-        } catch (_) {
-            /* ignore */
-        }
+        scheduleDeferredCodexWork(mirrorImportedLayoutToLocalStorage);
         void ensureCodexConnectionPayload(true);
-        /*
-         * Verbatim import: connection metadata travels with the codex JSON.
-         * The bio reconcile runs automatically after a successful Save Codex (saveCodexLayout
-         * line ~2195), so the imported state lands first and reconciliation is applied
-         * against the new, persisted layout.
-         */
         api.updateCodexToolbar();
         updateAppStatus('Codex import: board cleared (empty layout). Save Codex to persist and reconcile with archives.', 'success');
         return;
     }
 
-    await api.placeCodexNodeRecordsInChunks(nodes);
-    /*
-     * api.placeCodexNode(fromSaved) doesn't add to s.codexRenderedNodeIds — populate explicitly so
-     * the next updateCodexVirtualScroll doesn't try to place duplicate DOM elements. Mirrors
-     * the failsafe loop in loadCodexState.
-     */
-    for (const n of nodes) {
-        if (n && n.id) s.codexRenderedNodeIds.add(n.id);
-    }
     api.centerCodexViewOnNodes();
     api.applyCodexWorldTransformStyle();
-    api.syncCodexNodeDomCullFromView();
-    requestAnimationFrame(() => redrawCodexEdges());
-    api.markCodexLayoutDirty();
-    try {
-        const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
-        localStorage.setItem(
-            CODEX_STORAGE_KEY,
-            JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
-        );
-    } catch (_) {
-        /* ignore */
+
+    s.codexSkipAllEdgeRedraws = true;
+    s.codexSkipEdgeRedraw = true;
+
+    setLine(`Codex import: placing ${nodes.length} nodes…`);
+    await yieldImportPaint();
+    if (s.codexMode === 'view' && nodes.length > 0) {
+        await api.placeCodexNodeRecordsInChunks(nodes);
+    } else {
+        updateCodexVirtualScroll();
+        if (s.codexRenderedNodeIds.size === 0 && nodes.length > 0) {
+            await api.placeCodexNodeRecordsInChunks(nodes);
+        }
     }
+
+    api.syncCodexNodeDomCullFromView?.();
+    api.markCodexLayoutDirty();
+
+    s.codexSkipAllEdgeRedraws = false;
+    s.codexSkipEdgeRedraw = false;
+    s.codexViewModeInitialRenderDone = false;
+
+    const edgeCount = s.codexEdges?.length ?? 0;
+    setLine(edgeCount > 0 ? `Codex import: planning connections… 0 / ${edgeCount}` : 'Codex import: preparing…');
+    await yieldImportPaint();
+    await redrawCodexEdgesDuringLoad({
+        force: true,
+        onStatusLine: (line) => setLine(`Codex import: ${line}`),
+    });
+
+    scheduleDeferredCodexWork(mirrorImportedLayoutToLocalStorage);
     void ensureCodexConnectionPayload(true);
+    api.updateCodexToolbar();
+
     if (migratedNow) {
         updateAppStatus(
             'Codex import: layout was upgraded from an older format — use Save Codex to persist.',
@@ -127,10 +212,6 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
             'success'
         );
     }
-    /*
-     * Verbatim import: topology + connection metadata come from the file as-is.
-     */
-    api.updateCodexToolbar();
 }
 
 function exportCodexLayoutJsonDownload() {
@@ -145,4 +226,3 @@ function exportCodexLayoutJsonDownload() {
 api.stripCodexBoardForFullReplace = stripCodexBoardForFullReplace;
 api.importCodexLayoutFromJsonText = importCodexLayoutFromJsonText;
 api.exportCodexLayoutJsonDownload = exportCodexLayoutJsonDownload;
-

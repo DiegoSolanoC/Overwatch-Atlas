@@ -89,6 +89,45 @@ export function migrateNumbaniCountryNodesToFaction(nodes) {
 }
 
 /**
+ * Placeholder hero filter "55" was named Hudson — rewrite imported/saved nodes + connection subjects.
+ * @param {unknown[]} nodes
+ * @param {object[]} [connections]
+ * @returns {{ nodes: unknown[], connections: object[], changed: boolean }}
+ */
+export function migrateHero55ToHudson(nodes, connections) {
+    let changed = false;
+    const nextNodes = Array.isArray(nodes)
+        ? nodes.map((n) => {
+            if (!n || typeof n !== 'object') return n;
+            if (n.kind === 'hero' && String(n.heroName || '').trim() === '55') {
+                changed = true;
+                return { ...n, heroName: 'Hudson' };
+            }
+            return n;
+        })
+        : nodes || [];
+
+    const nextConnections = Array.isArray(connections)
+        ? connections.map((row) => {
+            if (!row || typeof row !== 'object') return row;
+            let next = row;
+            const patch = (key) => {
+                if (String(next[key] || '').trim() !== '55') return;
+                if (next === row) next = { ...row };
+                next[key] = 'Hudson';
+                changed = true;
+            };
+            patch('name');
+            patch('subjectName');
+            patch('linkedName');
+            return next;
+        })
+        : connections || [];
+
+    return { nodes: nextNodes, connections: nextConnections, changed };
+}
+
+/**
  * Drop a direct entity↔entity edge if those two nodes are still connected without it via a path
  * that uses at least one junction (break) node.
  */
@@ -178,6 +217,10 @@ export function parseMigrateAndDedupeCodexSource(sourceObj) {
     const numbaniMig = migrateNumbaniCountryNodesToFaction(nodes);
     nodes = numbaniMig.nodes;
     if (numbaniMig.changed) migratedNow = true;
+    const hudsonMig = migrateHero55ToHudson(nodes, connections);
+    nodes = hudsonMig.nodes;
+    connections = hudsonMig.connections;
+    if (hudsonMig.changed) migratedNow = true;
     const dedupedEdges = dedupeCodexEdgesByNodePair(
         Array.isArray(edges) ? edges.map(normalizeEdgeRecord).filter(Boolean) : []
     );

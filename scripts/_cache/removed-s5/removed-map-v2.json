@@ -1,0 +1,4425 @@
+{
+  "video": "https://www.youtube.com/watch?v=qIJz7O5ZF_E",
+  "claimedTotal": 83,
+  "foundInteractions": 101,
+  "uniqueEntriesMatched": 68,
+  "unmatched": 25,
+  "weak": 14,
+  "interactions": [
+    {
+      "n": 1,
+      "chapterIndex": 1,
+      "chapterTime": "0:00",
+      "chapterTitle": "Moira & Emre",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "S5 launch (first 7)",
+      "start": 4.88,
+      "heroes": [
+        "Moira",
+        "Emre"
+      ],
+      "sample": [
+        "nicely, Emry. You're rather useful when you care to show up.",
+        "you care to show up. >> Well, I'd hate to make your life too",
+        "Well, I'd hate to make your life too easy."
+      ],
+      "entryName": "Useful when you show up",
+      "entryId": "c6206dd4-d61b-45cf-977b-4165bbedbe52",
+      "entryStatus": "active",
+      "score": 17.35,
+      "preview": "Moira: That serum you retrieved is coming along nicely, Emre. You're rat / Emre: Well, I'd hate to make your life too easy.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Useful when you show up",
+          "id": "c6206dd4-d61b-45cf-977b-4165bbedbe52",
+          "score": 17.35,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "chapterIndex": 2,
+      "chapterTime": "0:10",
+      "chapterTitle": "Moira & Freja",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "S5 launch (first 7)",
+      "start": 12.72,
+      "heroes": [
+        "Moira",
+        "Freja"
+      ],
+      "sample": [
+        "This serum from Grand Mesa, how's your boss planning to use it?",
+        "boss planning to use it? >> He's suddenly interested in what becomes",
+        "He's suddenly interested in what becomes of our bounties, are we?"
+      ],
+      "entryName": "Staying informed",
+      "entryId": "30f8a334-8d7c-42af-9863-f67b12d17d2f",
+      "entryStatus": "active",
+      "score": 60.4,
+      "preview": "Freja: This serum from Grand Mesa, how's your boss planning to use it? / Moira: You're suddenly interested in what becomes of our bounties, are w / Freja: No. Just staying informed.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Staying informed",
+          "id": "30f8a334-8d7c-42af-9863-f67b12d17d2f",
+          "score": 60.4,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "chapterIndex": 3,
+      "chapterTime": "0:26",
+      "chapterTitle": "Moira & Reaper",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "S5 launch (first 7)",
+      "start": 26.24,
+      "heroes": [
+        "Moira",
+        "Reaper"
+      ],
+      "sample": [
+        "soon enough. You really think Antonio's daughter",
+        "You really think Antonio's daughter won't take out everyone involved in the",
+        "won't take out everyone involved in the Venice incident?"
+      ],
+      "entryName": "Pulling the Trigger",
+      "entryId": "e76d5550-0f65-4643-af31-93b494157200",
+      "entryStatus": "active",
+      "score": 41.35,
+      "preview": "Reaper: You *really* think Antonio's daughter won't take out everyone inv / Moira: Only one man pulled the trigger that night. I'd be more concerned",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Pulling the Trigger",
+          "id": "e76d5550-0f65-4643-af31-93b494157200",
+          "score": 41.35,
+          "used": true
+        },
+        {
+          "name": "Pain",
+          "id": "a7e7541f-f223-4783-b0af-7bc00f6a027d",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Flattery",
+          "id": "b1ee585a-9f02-46ea-876e-e635304bbc99",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "chapterIndex": 4,
+      "chapterTime": "0:41",
+      "chapterTitle": "Moira & Vendetta",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "S5 launch (first 7)",
+      "start": 42.24,
+      "heroes": [
+        "Moira",
+        "Vendetta"
+      ],
+      "sample": [
+        "well-being. How are your experiments with the enhancement serum progressing?",
+        "with the enhancement serum progressing? Progress cannot be rushed. When I have",
+        "Progress cannot be rushed. When I have the results, you'll be the first to"
+      ],
+      "entryName": "Process can't Rush",
+      "entryId": "4c180eb8-47ba-4589-b9be-eedf059530fa",
+      "entryStatus": "active",
+      "score": 35,
+      "preview": "Vendetta: How are your experiments with the enhancement serum progressing? / Moira: Progress cannot be rushed. When I have the results, you'll be the / Vendetta: Time is of the essence, Moira.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Process can't Rush",
+          "id": "4c180eb8-47ba-4589-b9be-eedf059530fa",
+          "score": 35,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "chapterIndex": 5,
+      "chapterTime": "0:55",
+      "chapterTitle": "Brigitte & Reinhardt",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "S5 launch (first 7)",
+      "start": 54.96,
+      "heroes": [
+        "Brigitte",
+        "Reinhardt"
+      ],
+      "sample": [
+        "new overseer, same impatience. I didn't think you'd be doing so well after",
+        "think you'd be doing so well after losing Jialter.",
+        "losing Jialter. >> I had fond memories of that old place."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Mess it Up Again",
+          "id": "5157db23-64b8-41ba-b1fe-58100fee0c62",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Not getting any Taller",
+          "id": "a115092e-db3f-4836-914c-70c3a78cbd1b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Getting a Helmet",
+          "id": "82540ec2-9297-489d-ac5a-abff00793b18",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "chapterIndex": 5,
+      "chapterTime": "0:55",
+      "chapterTitle": "Brigitte & Reinhardt",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "S5 launch (first 7)",
+      "start": 61.2,
+      "heroes": [
+        "Brigitte",
+        "Reinhardt"
+      ],
+      "sample": [
+        "I had fond memories of that old place. But what matters is we live to fight",
+        "But what matters is we live to fight another day.",
+        "another day. >> And hey, when we rebuild the watch"
+      ],
+      "entryName": "We lived",
+      "entryId": "da29c54d-1205-4cb0-bb89-ef1e1a29339d",
+      "entryStatus": "active",
+      "score": 17,
+      "preview": "Brigitte: I didn't think you'd be doing so well after losing Gibraltar. / Reinhardt: I had fond memories of that old place. But what matters is we liv / Brigitte: And, hey. When we rebuild the Watchpoint, we can make a bunk you ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "We lived",
+          "id": "da29c54d-1205-4cb0-bb89-ef1e1a29339d",
+          "score": 17,
+          "used": true
+        },
+        {
+          "name": "Mess it Up Again",
+          "id": "5157db23-64b8-41ba-b1fe-58100fee0c62",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Not getting any Taller",
+          "id": "a115092e-db3f-4836-914c-70c3a78cbd1b",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "chapterIndex": 6,
+      "chapterTime": "1:15",
+      "chapterTitle": "Jetpack Cat & Wuyang",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "S5 launch (first 7)",
+      "start": 75.36,
+      "heroes": [
+        "Jetpack Cat",
+        "Wuyang"
+      ],
+      "sample": [
+        "worthwhile. >> A Hey little guy, come here.",
+        "Oh. Uh, sorry. Hey, Overwatch survived"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Psst psst",
+          "id": "01e6538b-21f2-4559-b125-767d5d3be0d8",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Scared of Water",
+          "id": "bb677341-a686-4e37-b5f8-ea51515febe4",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Catting me",
+          "id": "c849f0bd-bb7d-4e81-9a96-270ca76d8fc9",
+          "score": 3.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "chapterIndex": 7,
+      "chapterTime": "1:22",
+      "chapterTitle": "Mauga & Vendetta",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "S5 launch (first 7)",
+      "start": 86.32,
+      "heroes": [
+        "Mauga",
+        "Vendetta"
+      ],
+      "sample": [
+        "the Jibralter attack. Told you they weren't going to go down easy.",
+        "weren't going to go down easy. >> It is of little consequence. This is"
+      ],
+      "entryName": "Overwatch Survived",
+      "entryId": "ef3b25a3-b451-4845-9d06-a96c20002719",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Mauga: Hey, Overwatch survived the Gibraltar attack! Told you they weren / Vendetta: It is of little consequence. This is only the first step towards  / Mauga: Well, if you wanna make sure the job gets done right next time? Y",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Overwatch Survived",
+          "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Boss Changes",
+          "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Wildfire",
+          "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "chapterIndex": 7,
+      "chapterTime": "1:22",
+      "chapterTitle": "Mauga & Vendetta",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "S5 launch (first 7)",
+      "start": 90.56,
+      "heroes": [
+        "Mauga",
+        "Vendetta"
+      ],
+      "sample": [
+        "It is of little consequence. This is only the first step towards their",
+        "only the first step towards their destruction.",
+        "destruction. >> Well, if you want to make sure the job"
+      ],
+      "entryName": "Overwatch Survived",
+      "entryId": "ef3b25a3-b451-4845-9d06-a96c20002719",
+      "entryStatus": "active",
+      "score": 71,
+      "preview": "Mauga: Hey, Overwatch survived the Gibraltar attack! Told you they weren / Vendetta: It is of little consequence. This is only the first step towards  / Mauga: Well, if you wanna make sure the job gets done right next time? Y",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Overwatch Survived",
+          "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
+          "score": 71,
+          "used": true
+        },
+        {
+          "name": "Boss Changes",
+          "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Wildfire",
+          "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "chapterIndex": 8,
+      "chapterTime": "1:40",
+      "chapterTitle": "Vendetta & Ashe",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 102.16,
+      "heroes": [
+        "Vendetta",
+        "Ashe"
+      ],
+      "sample": [
+        "You were surprisingly efficient in Grand Mesa. My empire would make good use of",
+        "Mesa. My empire would make good use of such talent. Deadlock gang doesn't do",
+        "such talent. Deadlock gang doesn't do charity work. You got an offer? How"
+      ],
+      "entryName": "Money before Loyalty",
+      "entryId": "151877ad-cc39-41f3-bb21-e26ad4307908",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Vendetta: You were surprisingly efficient in Grand Mesa. My empire would ma / Ashe: Deadlock Gang doesn't do charity work. You got an offer? / Vendetta: How unfortunate that you would put money before *loyalty.*",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Money before Loyalty",
+          "id": "151877ad-cc39-41f3-bb21-e26ad4307908",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "chapterIndex": 8,
+      "chapterTime": "1:40",
+      "chapterTitle": "Vendetta & Ashe",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 109.84,
+      "heroes": [
+        "Vendetta",
+        "Ashe"
+      ],
+      "sample": [
+        "charity work. You got an offer? How unfortunate that you would put money",
+        "unfortunate that you would put money before loyalty.",
+        "before loyalty. >> Oh, loyalty is free for the folks I"
+      ],
+      "entryName": "Money before Loyalty",
+      "entryId": "151877ad-cc39-41f3-bb21-e26ad4307908",
+      "entryStatus": "active",
+      "score": 37.1,
+      "preview": "Vendetta: You were surprisingly efficient in Grand Mesa. My empire would ma / Ashe: Deadlock Gang doesn't do charity work. You got an offer? / Vendetta: How unfortunate that you would put money before *loyalty.*",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Money before Loyalty",
+          "id": "151877ad-cc39-41f3-bb21-e26ad4307908",
+          "score": 37.1,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "chapterIndex": 9,
+      "chapterTime": "1:59",
+      "chapterTitle": "Vendetta & Baptiste",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 119.44,
+      "heroes": [
+        "Vendetta",
+        "Baptiste"
+      ],
+      "sample": [
+        "trust. For the rest, it's half upfront. >> I see you're making some changes in",
+        "I see you're making some changes in Talon. Any chance that includes",
+        "Talon. Any chance that includes forgetting about me?"
+      ],
+      "entryName": "Forgetting about me",
+      "entryId": "1e971b13-c6cf-459b-85a7-fea652e0434c",
+      "entryStatus": "active",
+      "score": 23.7,
+      "preview": "Baptiste: I see you're making some changes in Talon... any chance that incl / Vendetta: I owe you no favors, least of all your life. / Baptiste: Is it a favor, or less work for a very busy woman?",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Forgetting about me",
+          "id": "1e971b13-c6cf-459b-85a7-fea652e0434c",
+          "score": 23.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "chapterIndex": 9,
+      "chapterTime": "1:59",
+      "chapterTitle": "Vendetta & Baptiste",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 132.8,
+      "heroes": [
+        "Vendetta",
+        "Baptiste"
+      ],
+      "sample": [
+        "Is it a favor or less work for a very busy woman?",
+        "busy woman? >> Executing traitors isn't work. It's",
+        "Executing traitors isn't work. It's pleasure."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Forgetting about me",
+          "id": "1e971b13-c6cf-459b-85a7-fea652e0434c",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "chapterIndex": 10,
+      "chapterTime": "2:18",
+      "chapterTitle": "Vendetta & Cassidy",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 138.24,
+      "heroes": [
+        "Vendetta",
+        "Cassidy"
+      ],
+      "sample": [
+        "pleasure. Your father was a bad man, but he wasn't",
+        "Your father was a bad man, but he wasn't a tyrant. This ain't what he would have",
+        "a tyrant. This ain't what he would have wanted."
+      ],
+      "entryName": "No Tyrant",
+      "entryId": "b53cd51d-9b27-4eb4-ab2b-ba7929cf77b5",
+      "entryStatus": "active",
+      "score": 11.7,
+      "preview": "Cassidy: Your father was a bad man, but he wasn't a tyrant. This ain't wha / Vendetta: If you think my ambitions end at my father's wants, you're more f",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "No Tyrant",
+          "id": "b53cd51d-9b27-4eb4-ab2b-ba7929cf77b5",
+          "score": 11.7,
+          "used": true
+        },
+        {
+          "name": "Sorry for your Father",
+          "id": "acb67145-f117-4953-b454-f142ac8d62f4",
+          "score": 6.4,
+          "used": false
+        },
+        {
+          "name": "Righteous Outlaw",
+          "id": "fc8b59cb-f078-4db0-85c6-c7dfa6f89917",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "part": 1,
+      "partsInChapter": 5,
+      "batch": "Midseason 5",
+      "start": 150,
+      "heroes": [
+        "Vendetta",
+        "D.va"
+      ],
+      "sample": [
+        "you look. >> Do you really call yourself a mech",
+        "Do you really call yourself a mech slayer?",
+        "slayer? >> I don't call myself one. I am one. Your"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Mech Slayer",
+          "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Welcome Resistance",
+          "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "part": 2,
+      "partsInChapter": 5,
+      "batch": "Midseason 5",
+      "start": 157.68,
+      "heroes": [
+        "Vendetta",
+        "D.va"
+      ],
+      "sample": [
+        "I don't call myself one. I am one. Your squad must be overdue for a",
+        "squad must be overdue for a demonstration.",
+        "demonstration. >> Try it. Toki and I love crushing sweats."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Mech Slayer",
+          "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Welcome Resistance",
+          "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "part": 3,
+      "partsInChapter": 5,
+      "batch": "Midseason 5",
+      "start": 163.92,
+      "heroes": [
+        "Vendetta",
+        "D.va"
+      ],
+      "sample": [
+        "Try it. Toki and I love crushing sweats. Overlord's got our back. You never take",
+        "Overlord's got our back. You never take us down. Are you serious? Casino would"
+      ],
+      "entryName": "Mech Slayer",
+      "entryId": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "D.va: Do you *really* call yourself a \"mech slayer\"? Hehe. / Vendetta: I don't call myself one. I am one. Your squad must be overdue for / D.va: Try it! Tokki and I love crushing sweats.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Mech Slayer",
+          "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Welcome Resistance",
+          "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "part": 4,
+      "partsInChapter": 5,
+      "batch": "Midseason 5",
+      "start": 169.92,
+      "heroes": [
+        "Vendetta",
+        "D.va"
+      ],
+      "sample": [
+        "us down. Are you serious? Casino would fly circles around you. With King on our",
+        "fly circles around you. With King on our team, you don't stand a chance. Huh? No"
+      ],
+      "entryName": "Mech Slayer",
+      "entryId": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+      "entryStatus": "active",
+      "score": 35,
+      "preview": "D.va: Do you *really* call yourself a \"mech slayer\"? Hehe. / Vendetta: I don't call myself one. I am one. Your squad must be overdue for / D.va: Try it! Tokki and I love crushing sweats.",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Mech Slayer",
+          "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+          "score": 35,
+          "used": true
+        },
+        {
+          "name": "Welcome Resistance",
+          "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "chapterIndex": 11,
+      "chapterTime": "2:30",
+      "chapterTitle": "Vendetta & D.Va",
+      "part": 5,
+      "partsInChapter": 5,
+      "batch": "Midseason 5",
+      "start": 175.6,
+      "heroes": [
+        "Vendetta",
+        "D.va"
+      ],
+      "sample": [
+        "team, you don't stand a chance. Huh? No way. Demon's way better with a sword",
+        "way. Demon's way better with a sword than you. You think Mecca is going to",
+        "than you. You think Mecca is going to let you take the EMP bomb without a"
+      ],
+      "entryName": "Welcome Resistance",
+      "entryId": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+      "entryStatus": "active",
+      "score": 24.4,
+      "preview": "D.va: You think MEKA is going to let you take the EMP bomb without a fi / Vendetta: I welcome your resistance... though I doubt your forces will be a",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Welcome Resistance",
+          "id": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09",
+          "score": 24.4,
+          "used": true
+        },
+        {
+          "name": "Mech Slayer",
+          "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "part": 1,
+      "partsInChapter": 4,
+      "batch": "Midseason 5",
+      "start": 188.56,
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "sample": [
+        "for mine. Mia, dear, I have some concerns about",
+        "Mia, dear, I have some concerns about your latest enterprise in the Outback.",
+        "your latest enterprise in the Outback. If I desired your advice, I'd have"
+      ],
+      "entryName": "Concerns",
+      "entryId": "466873a9-1e6f-474a-8688-3555c0804541",
+      "entryStatus": "active",
+      "score": 35.7,
+      "preview": "Domina: Marzia, dear...I have some concerns about your latest enterprise  / Vendetta: If I desired your advice, I'd have sought you out. / Domina: No need to raise your hackles, darling. I'd simply hate to see th",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Concerns",
+          "id": "466873a9-1e6f-474a-8688-3555c0804541",
+          "score": 35.7,
+          "used": true
+        },
+        {
+          "name": "Negotiator",
+          "id": "d6443879-36cf-4337-8483-558a835cac1a",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Monument to my leadership",
+          "id": "0db66127-b06f-464b-84bf-ecd86553a4f7",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "part": 2,
+      "partsInChapter": 4,
+      "batch": "Midseason 5",
+      "start": 213.28,
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "sample": [
+        "That new blade is rather bold, darling. Designed to terrify, is it?",
+        "Designed to terrify, is it? >> Of course. I always like to leave a",
+        "Of course. I always like to leave a lasting impression. I command you, Vera."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Lasting impression",
+          "id": "c81e6630-b017-4b98-ab0b-9ed25164d0f8",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Negotiator",
+          "id": "d6443879-36cf-4337-8483-558a835cac1a",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Concerns",
+          "id": "466873a9-1e6f-474a-8688-3555c0804541",
+          "score": 5,
+          "used": true
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "part": 3,
+      "partsInChapter": 4,
+      "batch": "Midseason 5",
+      "start": 222.24,
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "sample": [
+        "lasting impression. I command you, Vera. Your company's shielding has proven",
+        "Your company's shielding has proven quite useful so far.",
+        "quite useful so far. >> Of course, paired with those new"
+      ],
+      "entryName": "Monument to my leadership",
+      "entryId": "0db66127-b06f-464b-84bf-ecd86553a4f7",
+      "entryStatus": "active",
+      "score": 35,
+      "preview": "Vendetta: I commend you, Vaira. Your company's shielding has proven quite u / Domina: Of course! Paired with those new armaments, your victory is all b / Vendetta: When Vishkar rebuilds, I expect a monument to my leadership.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Monument to my leadership",
+          "id": "0db66127-b06f-464b-84bf-ecd86553a4f7",
+          "score": 35,
+          "used": true
+        },
+        {
+          "name": "Lasting impression",
+          "id": "c81e6630-b017-4b98-ab0b-9ed25164d0f8",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Negotiator",
+          "id": "d6443879-36cf-4337-8483-558a835cac1a",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "chapterIndex": 12,
+      "chapterTime": "3:08",
+      "chapterTitle": "Vendetta & Domina",
+      "part": 4,
+      "partsInChapter": 4,
+      "batch": "Midseason 5",
+      "start": 233.6,
+      "heroes": [
+        "Vendetta",
+        "Domina"
+      ],
+      "sample": [
+        "assured. When Vishkar rebuilds, I expect a monument to my leadership. Consider it",
+        "a monument to my leadership. Consider it done, my dear."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Monument to my leadership",
+          "id": "0db66127-b06f-464b-84bf-ecd86553a4f7",
+          "score": 6.4,
+          "used": true
+        },
+        {
+          "name": "Negotiator",
+          "id": "d6443879-36cf-4337-8483-558a835cac1a",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Concerns",
+          "id": "466873a9-1e6f-474a-8688-3555c0804541",
+          "score": 5,
+          "used": true
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "chapterIndex": 13,
+      "chapterTime": "3:58",
+      "chapterTitle": "Vendetta & Emre",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 238.48,
+      "heroes": [
+        "Vendetta",
+        "Emre"
+      ],
+      "sample": [
+        "done, my dear. >> When Maximleian promised a war machine,",
+        "When Maximleian promised a war machine, an Overwatch cast away was not what I",
+        "an Overwatch cast away was not what I had in mind."
+      ],
+      "entryName": "War machine",
+      "entryId": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec",
+      "entryStatus": "active",
+      "score": 47.7,
+      "preview": "Vendetta: When Maximilien promised a war machine, an Overwatch castaway was / Emre: Didn't expect this winning smile, did you? **sigh** Max always un / Vendetta: He described you as lethal. Yet you speak too much, and move unpr",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "War machine",
+          "id": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec",
+          "score": 47.7,
+          "used": true
+        },
+        {
+          "name": "Prize Hunter",
+          "id": "3c892232-3b34-45dc-858b-2c262445756e",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "chapterIndex": 13,
+      "chapterTime": "3:58",
+      "chapterTitle": "Vendetta & Emre",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 258.48,
+      "heroes": [
+        "Vendetta",
+        "Emre"
+      ],
+      "sample": [
+        "too much and move unpredictably. >> I get that a lot, too.",
+        "I get that a lot, too. >> You've enjoyed Talon's protection long"
+      ],
+      "entryName": "War machine",
+      "entryId": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Vendetta: When Maximilien promised a war machine, an Overwatch castaway was / Emre: Didn't expect this winning smile, did you? **sigh** Max always un / Vendetta: He described you as lethal. Yet you speak too much, and move unpr",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "War machine",
+          "id": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Prize Hunter",
+          "id": "3c892232-3b34-45dc-858b-2c262445756e",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "chapterIndex": 14,
+      "chapterTime": "4:21",
+      "chapterTitle": "Vendetta & Freja",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 263.04,
+      "heroes": [
+        "Vendetta",
+        "Freja"
+      ],
+      "sample": [
+        "You've enjoyed Talon's protection long enough. Soon, you must declare your",
+        "enough. Soon, you must declare your loyalty.",
+        "loyalty. >> And what happens if I don't?"
+      ],
+      "entryName": "Declare your loyalty",
+      "entryId": "02a3d02d-ee69-4f2b-9e46-ebc062383765",
+      "entryStatus": "active",
+      "score": 42.4,
+      "preview": "Vendetta: You've enjoyed Talon's protection long enough. Soon, you must dec / Freja: And what happens if I don't? / Vendetta: Then I will hunt you down myself.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Declare your loyalty",
+          "id": "02a3d02d-ee69-4f2b-9e46-ebc062383765",
+          "score": 42.4,
+          "used": true
+        },
+        {
+          "name": "Prize Hunter",
+          "id": "3c892232-3b34-45dc-858b-2c262445756e",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "chapterIndex": 15,
+      "chapterTime": "4:36",
+      "chapterTitle": "Vendetta & Hanzo",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 277.84,
+      "heroes": [
+        "Vendetta",
+        "Hanzo"
+      ],
+      "sample": [
+        "hated losing. So, this is how the last son of Shimada wields his legacy.",
+        "son of Shimada wields his legacy. skullking about like a fun."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Absolute Victory",
+          "id": "aaa15cc8-af81-4cb3-b4dc-b5fa35b3618a",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Restless",
+          "id": "fe2ddd85-6d3b-43d4-907f-27431644600f",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "chapterIndex": 15,
+      "chapterTime": "4:36",
+      "chapterTitle": "Vendetta & Hanzo",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 284.24,
+      "heroes": [
+        "Vendetta",
+        "Hanzo"
+      ],
+      "sample": [
+        "skullking about like a fun. >> The Hashimoto cannot go unchallenged. It",
+        "The Hashimoto cannot go unchallenged. It is my duty to protect my home from",
+        "is my duty to protect my home from tyrants like you. [laughter]"
+      ],
+      "entryName": "Restless",
+      "entryId": "fe2ddd85-6d3b-43d4-907f-27431644600f",
+      "entryStatus": "active",
+      "score": 35.7,
+      "preview": "Hanzo: Backing the Hashimoto was a mistake. The sons of Shimada will not / Vendetta: Good. The restless are careless and easy to put down.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Restless",
+          "id": "fe2ddd85-6d3b-43d4-907f-27431644600f",
+          "score": 35.7,
+          "used": true
+        },
+        {
+          "name": "Absolute Victory",
+          "id": "aaa15cc8-af81-4cb3-b4dc-b5fa35b3618a",
+          "score": 12.4,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "chapterIndex": 16,
+      "chapterTime": "5:15",
+      "chapterTitle": "Vendetta & Junker Queen",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 315.84,
+      "heroes": [
+        "Vendetta",
+        "Junker Queen"
+      ],
+      "sample": [
+        "to put down. Lucky you hitched your wagon to me, wolf girl. I've been",
+        "wagon to me, wolf girl. I've been dreaming of a takeover for ages. And a",
+        "dreaming of a takeover for ages. And a spectacle it shall be. Fight loud and I"
+      ],
+      "entryName": "Takeover",
+      "entryId": "b3f294ec-0104-40ce-9731-e80d672b3620",
+      "entryStatus": "active",
+      "score": 11.7,
+      "preview": "Junker Queen: Lucky you hitched your wagon to me, wolf girl. I've been dreaming / Vendetta: And a spectacle it shall be. Fight loud, and I will handle the af",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Takeover",
+          "id": "b3f294ec-0104-40ce-9731-e80d672b3620",
+          "score": 11.7,
+          "used": true
+        },
+        {
+          "name": "Kingdom of wreckage",
+          "id": "81fe664a-af5e-4aa0-8da5-2e0f015bf18b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Queen of the World",
+          "id": "c4b4e665-dfb8-4b9e-971f-f22df98b5831",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 30,
+      "chapterIndex": 16,
+      "chapterTime": "5:15",
+      "chapterTitle": "Vendetta & Junker Queen",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 325.76,
+      "heroes": [
+        "Vendetta",
+        "Junker Queen"
+      ],
+      "sample": [
+        "spectacle it shall be. Fight loud and I will handle the aftermath.",
+        "will handle the aftermath. Do not forget our terms. I won't allow",
+        "Do not forget our terms. I won't allow your recklessness to ruin my plans."
+      ],
+      "entryName": "Kingdom of wreckage",
+      "entryId": "81fe664a-af5e-4aa0-8da5-2e0f015bf18b",
+      "entryStatus": "active",
+      "score": 19.1,
+      "preview": "Vendetta: Do not forget our terms. I won't allow your recklessness to ruin  / Junker Queen: You doubtin' me, lady? *(laughs)* I made a kingdom out of wreckag / Vendetta: And wreckage suits you. Just don't burn down what I've built.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Kingdom of wreckage",
+          "id": "81fe664a-af5e-4aa0-8da5-2e0f015bf18b",
+          "score": 19.1,
+          "used": true
+        },
+        {
+          "name": "Takeover",
+          "id": "b3f294ec-0104-40ce-9731-e80d672b3620",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Queen of the World",
+          "id": "c4b4e665-dfb8-4b9e-971f-f22df98b5831",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "chapterIndex": 17,
+      "chapterTime": "5:45",
+      "chapterTitle": "Vendetta & Lifeweaver",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 346.56,
+      "heroes": [
+        "Vendetta",
+        "Lifeweaver"
+      ],
+      "sample": [
+        "You should be careful making deals with Vera.",
+        "Vera. >> I assure you, she and I have an equal",
+        "I assure you, she and I have an equal partnership. If you're trying to turn me"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Not so Agreeable",
+          "id": "a78e2257-ac18-40ce-a3f1-ae952daf3004",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "chapterIndex": 17,
+      "chapterTime": "5:45",
+      "chapterTitle": "Vendetta & Lifeweaver",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 354.8,
+      "heroes": [
+        "Vendetta",
+        "Lifeweaver"
+      ],
+      "sample": [
+        "against her, you won't succeed. >> Perhaps, but you should know she's not",
+        "Perhaps, but you should know she's not so agreeable as she appears to be.",
+        "so agreeable as she appears to be. >> Do not assume my ignorance. I know her"
+      ],
+      "entryName": "Not so Agreeable",
+      "entryId": "a78e2257-ac18-40ce-a3f1-ae952daf3004",
+      "entryStatus": "active",
+      "score": 17.7,
+      "preview": "Lifeweaver: You should be careful making deals with Moira. / Vendetta: I assure you, she and I have an equal partnership. If you're tryi / Lifeweaver: Perhaps, but you should know she's not so agreeable as she appear",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Not so Agreeable",
+          "id": "a78e2257-ac18-40ce-a3f1-ae952daf3004",
+          "score": 17.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "chapterIndex": 18,
+      "chapterTime": "6:04",
+      "chapterTitle": "Vendetta & Mauga",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 364.88,
+      "heroes": [
+        "Vendetta",
+        "Mauga"
+      ],
+      "sample": [
+        "nature as well as my own. I sent you to the outback as a show of force, not to",
+        "the outback as a show of force, not to start a wildfire.",
+        "start a wildfire. >> Don't worry about it, Senora. Gunny and"
+      ],
+      "entryName": "Boss Changes",
+      "entryId": "88d90625-4f28-4192-8528-4e47c8e51e64",
+      "entryStatus": "active",
+      "score": 11.35,
+      "preview": "Mauga: I gotta say, I'm lovin' all the changes lately, boss! **chuckles* / Vendetta: I don't care what you think, so long as you're ready to fight. / Mauga: **laughter** You don't gotta tell me twice!",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Boss Changes",
+          "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
+          "score": 11.35,
+          "used": true
+        },
+        {
+          "name": "Wildfire",
+          "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Overwatch Survived",
+          "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
+          "score": 5,
+          "used": true
+        }
+      ]
+    },
+    {
+      "n": 34,
+      "chapterIndex": 18,
+      "chapterTime": "6:04",
+      "chapterTitle": "Vendetta & Mauga",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 383.52,
+      "heroes": [
+        "Vendetta",
+        "Mauga"
+      ],
+      "sample": [
+        "loving all the changes lately, boss. Doomfist was always on my back about",
+        "Doomfist was always on my back about exercising restraint or whatever.",
+        "exercising restraint or whatever. >> I don't care what you think, so long as"
+      ],
+      "entryName": "Boss Changes",
+      "entryId": "88d90625-4f28-4192-8528-4e47c8e51e64",
+      "entryStatus": "active",
+      "score": 11.35,
+      "preview": "Mauga: I gotta say, I'm lovin' all the changes lately, boss! **chuckles* / Vendetta: I don't care what you think, so long as you're ready to fight. / Mauga: **laughter** You don't gotta tell me twice!",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Boss Changes",
+          "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
+          "score": 11.35,
+          "used": true
+        },
+        {
+          "name": "Overwatch Survived",
+          "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Wildfire",
+          "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 35,
+      "chapterIndex": 19,
+      "chapterTime": "6:38",
+      "chapterTitle": "Vendetta & Ramattra",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 399.84,
+      "heroes": [
+        "Vendetta",
+        "Ramattra"
+      ],
+      "sample": [
+        "You did me a favor by calling your retreat, Omnic. It saved me the trouble",
+        "retreat, Omnic. It saved me the trouble of killing you myself.",
+        "of killing you myself. >> Of course, I will gladly stand aside"
+      ],
+      "entryName": "Stand Aside",
+      "entryId": "2c741fe3-823c-4b78-912f-0587e267e977",
+      "entryStatus": "active",
+      "score": 17,
+      "preview": "Vendetta: You did me a favor by calling your retreat, omnic. It saved me th / Ramattra: Of course. I will gladly stand aside while you goad humanity to t",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Stand Aside",
+          "id": "2c741fe3-823c-4b78-912f-0587e267e977",
+          "score": 17,
+          "used": true
+        },
+        {
+          "name": "More than one Path",
+          "id": "7bdb9d8d-c180-40a7-a6b6-cc4ea75a9a1b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 36,
+      "chapterIndex": 20,
+      "chapterTime": "6:53",
+      "chapterTitle": "Vendetta & Reaper",
+      "part": 1,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 415.52,
+      "heroes": [
+        "Vendetta",
+        "Reaper"
+      ],
+      "sample": [
+        "Had you remained with Talon, I might have stayed your execution.",
+        "have stayed your execution. Then again, perhaps your judgment was",
+        "Then again, perhaps your judgment was already overdue."
+      ],
+      "entryName": "Entertaining",
+      "entryId": "930d4c6b-3f70-42f0-af4e-3e4999fec397",
+      "entryStatus": "active",
+      "score": 17.35,
+      "preview": "Vendetta: Had you remained with Talon, I might have stayed your execution. / Reaper: **grunt** / Vendetta: Then again... perhaps your judgement was already overdue.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Entertaining",
+          "id": "930d4c6b-3f70-42f0-af4e-3e4999fec397",
+          "score": 17.35,
+          "used": true
+        },
+        {
+          "name": "Dramatic",
+          "id": "c8a56f06-3d79-46c6-8015-5f56f07a0467",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Funeral Arrangements",
+          "id": "0f10492d-b4cb-40c0-a5ae-34a4836d30ff",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 37,
+      "chapterIndex": 20,
+      "chapterTime": "6:53",
+      "chapterTitle": "Vendetta & Reaper",
+      "part": 2,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 430.56,
+      "heroes": [
+        "Vendetta",
+        "Reaper"
+      ],
+      "sample": [
+        "Never. This is far more entertaining. You ran when you killed my father. You",
+        "You ran when you killed my father. You ran from Overwatch. And now you run from"
+      ],
+      "entryName": "Cowardice",
+      "entryId": "a78f7051-a93d-4fca-8824-6e15b2781a1f",
+      "entryStatus": "active",
+      "score": 47,
+      "preview": "Vendetta: You ran when you killed my father! You ran from Overwatch, and *n / Reaper: Call it what you want. It'll keep me alive long enough to kill yo",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Cowardice",
+          "id": "a78f7051-a93d-4fca-8824-6e15b2781a1f",
+          "score": 47,
+          "used": true
+        },
+        {
+          "name": "Entertaining",
+          "id": "930d4c6b-3f70-42f0-af4e-3e4999fec397",
+          "score": 5.35,
+          "used": true
+        },
+        {
+          "name": "Dramatic",
+          "id": "c8a56f06-3d79-46c6-8015-5f56f07a0467",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 38,
+      "chapterIndex": 20,
+      "chapterTime": "6:53",
+      "chapterTitle": "Vendetta & Reaper",
+      "part": 3,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 437.36,
+      "heroes": [
+        "Vendetta",
+        "Reaper"
+      ],
+      "sample": [
+        "ran from Overwatch. And now you run from Talon. It seems cowardice is all you",
+        "Talon. It seems cowardice is all you know.",
+        "know. >> Call it what you want. It'll keep me"
+      ],
+      "entryName": "Retribution",
+      "entryId": "26e1dc3f-f647-4c6d-87aa-22beba17ff64",
+      "entryStatus": "active",
+      "score": 65.7,
+      "preview": "Reaper: I thought you'd know better than to kill Doomfist, since you neve / Vendetta: Your failed leader was already bleeding allies, and what few rema",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Retribution",
+          "id": "26e1dc3f-f647-4c6d-87aa-22beba17ff64",
+          "score": 65.7,
+          "used": true
+        },
+        {
+          "name": "Cowardice",
+          "id": "a78f7051-a93d-4fca-8824-6e15b2781a1f",
+          "score": 35.7,
+          "used": true
+        },
+        {
+          "name": "Dramatic",
+          "id": "c8a56f06-3d79-46c6-8015-5f56f07a0467",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 39,
+      "chapterIndex": 21,
+      "chapterTime": "7:42",
+      "chapterTitle": "Vendetta & Shion",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 463.2,
+      "heroes": [
+        "Vendetta",
+        "Shion"
+      ],
+      "sample": [
+        "swiftly put down. You have disappointed me, Shion. Your latest failure will not",
+        "me, Shion. Your latest failure will not come without consequence.",
+        "come without consequence. >> Oh no. Whatever will you do? Put your"
+      ],
+      "entryName": "Many Paths",
+      "entryId": "4df78e4c-a443-4070-b094-f2b2404f0138",
+      "entryStatus": "active",
+      "score": 35,
+      "preview": "Vendetta: You have disappointed me, Shion. Your latest failure will not com / Shion: Oh, no. Whatever will you do? Put your little pocket knife to my  / Vendetta: You may not bleed, omnic, but I assure you, there are many paths ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Many Paths",
+          "id": "4df78e4c-a443-4070-b094-f2b2404f0138",
+          "score": 35,
+          "used": true
+        },
+        {
+          "name": "Great Potential",
+          "id": "9d39239c-b221-452a-a0cb-46032d8e5a9e",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Control his fear",
+          "id": "17fb68db-8924-4823-9b28-9b8748c6a656",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 40,
+      "chapterIndex": 21,
+      "chapterTime": "7:42",
+      "chapterTitle": "Vendetta & Shion",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 471.36,
+      "heroes": [
+        "Vendetta",
+        "Shion"
+      ],
+      "sample": [
+        "Oh no. Whatever will you do? Put your little pocket knife to my throat? You",
+        "little pocket knife to my throat? You may not bleed, Omnic, but I assure you",
+        "may not bleed, Omnic, but I assure you there are many paths to death."
+      ],
+      "entryName": "Great Potential",
+      "entryId": "9d39239c-b221-452a-a0cb-46032d8e5a9e",
+      "entryStatus": "active",
+      "score": 48.4,
+      "preview": "Vendetta: You may not have accomplished all that I desired, but what you di / Shion: Potential? I handed you carnage in a pretty package. / Vendetta: It takes more than a honed edge to earn my praise. A weapon must ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Great Potential",
+          "id": "9d39239c-b221-452a-a0cb-46032d8e5a9e",
+          "score": 48.4,
+          "used": true
+        },
+        {
+          "name": "Many Paths",
+          "id": "4df78e4c-a443-4070-b094-f2b2404f0138",
+          "score": 41,
+          "used": true
+        },
+        {
+          "name": "Control his fear",
+          "id": "17fb68db-8924-4823-9b28-9b8748c6a656",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 41,
+      "chapterIndex": 22,
+      "chapterTime": "8:22",
+      "chapterTitle": "Vendetta & Sigma",
+      "part": 1,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 502.56,
+      "heroes": [
+        "Vendetta",
+        "Sigma"
+      ],
+      "sample": [
+        "battle. Fail me, Veyou Shoo, and you'll find I'm",
+        "Fail me, Veyou Shoo, and you'll find I'm less tolerant than my predecessor. Ah,",
+        "less tolerant than my predecessor. Ah, [sighs]"
+      ],
+      "entryName": "You are the Variable",
+      "entryId": "7c0610e2-1011-4883-973c-0a775a2dc2d4",
+      "entryStatus": "active",
+      "score": 29.7,
+      "preview": "Vendetta: Fail me, vecchio sciocco, and you'll find I'm less tolerant than  / Sigma: Ah, but is failure not an opportunity to reconsider our variables / Vendetta: Make no mistake: you are the variable here, and I would eliminate",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "You are the Variable",
+          "id": "7c0610e2-1011-4883-973c-0a775a2dc2d4",
+          "score": 29.7,
+          "used": true
+        },
+        {
+          "name": "The harness",
+          "id": "b68a3f0d-0660-49f0-819c-f31aad7ace16",
+          "score": 17,
+          "used": false
+        },
+        {
+          "name": "Can not Hold Together",
+          "id": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 42,
+      "chapterIndex": 22,
+      "chapterTime": "8:22",
+      "chapterTitle": "Vendetta & Sigma",
+      "part": 2,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 531.52,
+      "heroes": [
+        "Vendetta",
+        "Sigma"
+      ],
+      "sample": [
+        "How soon is when time slips away? When moments become millennia.",
+        "moments become millennia. >> Enough. Dr. Rodieran will harness your",
+        "Enough. Dr. Rodieran will harness your power when the time is right."
+      ],
+      "entryName": "The harness",
+      "entryId": "b68a3f0d-0660-49f0-819c-f31aad7ace16",
+      "entryStatus": "active",
+      "score": 54.05,
+      "preview": "Vendetta: Prepare yourself, Subject Sigma. I will have need of you soon. / Sigma: How soon is soon when time slips away? When moments become millen / Vendetta: Enough. Doctor O'Deorain will harness your power when the time is",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "The harness",
+          "id": "b68a3f0d-0660-49f0-819c-f31aad7ace16",
+          "score": 54.05,
+          "used": true
+        },
+        {
+          "name": "You are the Variable",
+          "id": "7c0610e2-1011-4883-973c-0a775a2dc2d4",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Can not Hold Together",
+          "id": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 43,
+      "chapterIndex": 22,
+      "chapterTime": "8:22",
+      "chapterTitle": "Vendetta & Sigma",
+      "part": 3,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 542.8,
+      "heroes": [
+        "Vendetta",
+        "Sigma"
+      ],
+      "sample": [
+        "The harness. Yes, of course. >> The EMP is in place. Subject Sigma. Its",
+        "The EMP is in place. Subject Sigma. Its detonation falls to you.",
+        "detonation falls to you. >> No, no, no, no. There is no use. It"
+      ],
+      "entryName": "Can not Hold Together",
+      "entryId": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
+      "entryStatus": "active",
+      "score": 42.4,
+      "preview": "Vendetta: The EMP is in place, Subject Sigma. Its detonation falls to you / Sigma: No, no, no... No, there is no use. It cannot hold together. It wi / Vendetta: I will not tolerate excuses. Pull your weight, or be cut down lik",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Can not Hold Together",
+          "id": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
+          "score": 42.4,
+          "used": true
+        },
+        {
+          "name": "The harness",
+          "id": "b68a3f0d-0660-49f0-819c-f31aad7ace16",
+          "score": 5.35,
+          "used": true
+        },
+        {
+          "name": "You are the Variable",
+          "id": "7c0610e2-1011-4883-973c-0a775a2dc2d4",
+          "score": 5,
+          "used": true
+        }
+      ]
+    },
+    {
+      "n": 44,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "part": 1,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 559.68,
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "sample": [
+        "weight or be cut down like the rest. I don't care what it takes. This war of",
+        "don't care what it takes. This war of yours ends now.",
+        "yours ends now. >> History will remember which of us claims"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Never Forgotten",
+          "id": "9694ae8c-a8e5-4a33-b034-bd98984d4db4",
+          "score": 5.35,
+          "used": false
+        },
+        {
+          "name": "Aimless Chaos",
+          "id": "a7c8280c-6eff-486e-b310-b8511f24c7b3",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Real Monster",
+          "id": "9e2df146-d789-4ce7-8683-567d7ae4b2a6",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 45,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "part": 2,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 573.44,
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "sample": [
+        "forgotten. I'll hand it to you. You've turned Talon into a real monster. All",
+        "turned Talon into a real monster. All the better to crush your pathetic",
+        "the better to crush your pathetic resistance. One thing you ought to know"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Real Monster",
+          "id": "9e2df146-d789-4ce7-8683-567d7ae4b2a6",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Never Forgotten",
+          "id": "9694ae8c-a8e5-4a33-b034-bd98984d4db4",
+          "score": 5.35,
+          "used": false
+        },
+        {
+          "name": "Aimless Chaos",
+          "id": "a7c8280c-6eff-486e-b310-b8511f24c7b3",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 46,
+      "chapterIndex": 23,
+      "chapterTime": "9:19",
+      "chapterTitle": "Vendetta & Sojourn",
+      "part": 3,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 585.36,
+      "heroes": [
+        "Vendetta",
+        "Sojourn"
+      ],
+      "sample": [
+        "about Overwatch. We don't go down easy. >> I am counting on it. This war you're",
+        "I am counting on it. This war you're waging isn't just aimless chaos. What",
+        "waging isn't just aimless chaos. What are you planning?"
+      ],
+      "entryName": "Misjudge my Competence",
+      "entryId": "9887a224-d2b4-46de-9063-4be66fbfb18d",
+      "entryStatus": "active",
+      "score": 41.35,
+      "preview": "Sojourn: It's time to stand down, Vendetta. Overwatch took out your allies / Vendetta: If you believe I cannot survive a single loss, then you have misj",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Misjudge my Competence",
+          "id": "9887a224-d2b4-46de-9063-4be66fbfb18d",
+          "score": 41.35,
+          "used": true
+        },
+        {
+          "name": "Aimless Chaos",
+          "id": "a7c8280c-6eff-486e-b310-b8511f24c7b3",
+          "score": 29.7,
+          "used": false
+        },
+        {
+          "name": "Real Monster",
+          "id": "9e2df146-d789-4ce7-8683-567d7ae4b2a6",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 47,
+      "chapterIndex": 24,
+      "chapterTime": "10:11",
+      "chapterTitle": "Vendetta & Sombra",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 611.6,
+      "heroes": [
+        "Vendetta",
+        "Sombra"
+      ],
+      "sample": [
+        "competence to a fatal degree. That one as selfish as you would reject my cause",
+        "as selfish as you would reject my cause is unsurprising",
+        "is unsurprising but disappointing nonetheless. Of course"
+      ],
+      "entryName": "Burning the World Down",
+      "entryId": "2fc69c14-62d0-46b4-be21-82978d4f3386",
+      "entryStatus": "active",
+      "score": 29.7,
+      "preview": "Vendetta: That one as selfish as you would reject my cause is unsurprising, / Sombra: Of course I left. You're burning the world down! / Vendetta: Flee, then. May you waste your life outrunning your regret.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Burning the World Down",
+          "id": "2fc69c14-62d0-46b4-be21-82978d4f3386",
+          "score": 29.7,
+          "used": true
+        },
+        {
+          "name": "Lab Rat",
+          "id": "a6e50044-5bba-4cd4-abaa-c564529dcb3b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 48,
+      "chapterIndex": 24,
+      "chapterTime": "10:11",
+      "chapterTitle": "Vendetta & Sombra",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 631.92,
+      "heroes": [
+        "Vendetta",
+        "Sombra"
+      ],
+      "sample": [
+        "to Sigma? He is contained as befits a volatile weapon. He's a person. You",
+        "volatile weapon. He's a person. You can't trap him like some lab rat. You",
+        "can't trap him like some lab rat. You forfeited any say in his fate when you"
+      ],
+      "entryName": "Lab Rat",
+      "entryId": "a6e50044-5bba-4cd4-abaa-c564529dcb3b",
+      "entryStatus": "active",
+      "score": 23,
+      "preview": "Sombra: What are you doing to Sigma? / Vendetta: He is contained, as befits a volatile weapon. / Sombra: He's a person. You can't trap him like some lab rat!",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Lab Rat",
+          "id": "a6e50044-5bba-4cd4-abaa-c564529dcb3b",
+          "score": 23,
+          "used": true
+        },
+        {
+          "name": "Burning the World Down",
+          "id": "2fc69c14-62d0-46b4-be21-82978d4f3386",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 49,
+      "chapterIndex": 25,
+      "chapterTime": "10:41",
+      "chapterTitle": "Vendetta & Widowmaker",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 642.72,
+      "heroes": [
+        "Vendetta",
+        "Widowmaker"
+      ],
+      "sample": [
+        "spurned my rule. I'm disappointed you left Talon behind. Amily, you would have",
+        "left Talon behind. Amily, you would have tried under my rule. I've given my life"
+      ],
+      "entryName": "Serve Another's Vengeance",
+      "entryId": "6f6970d8-8157-4284-8626-2520249cbe8d",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Vendetta: I'm disappointed you left Talon behind, Amélie. You would have th / Widowmaker: I've given my life to Talon. I have no desire to serve another's  / Vendetta: Mine was not the only revenge I would have chased. A shame you fo",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Serve Another's Vengeance",
+          "id": "6f6970d8-8157-4284-8626-2520249cbe8d",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Need your Praise",
+          "id": "112a44b5-97ac-4103-be69-e6908df0a295",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 50,
+      "chapterIndex": 25,
+      "chapterTime": "10:41",
+      "chapterTitle": "Vendetta & Widowmaker",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 648.64,
+      "heroes": [
+        "Vendetta",
+        "Widowmaker"
+      ],
+      "sample": [
+        "tried under my rule. I've given my life to Talon. I have no desire to solve",
+        "to Talon. I have no desire to solve another's vengeance.",
+        "another's vengeance. >> Mine was not the only revenge I would"
+      ],
+      "entryName": "Serve Another's Vengeance",
+      "entryId": "6f6970d8-8157-4284-8626-2520249cbe8d",
+      "entryStatus": "active",
+      "score": 24.4,
+      "preview": "Vendetta: I'm disappointed you left Talon behind, Amélie. You would have th / Widowmaker: I've given my life to Talon. I have no desire to serve another's  / Vendetta: Mine was not the only revenge I would have chased. A shame you fo",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Serve Another's Vengeance",
+          "id": "6f6970d8-8157-4284-8626-2520249cbe8d",
+          "score": 24.4,
+          "used": true
+        },
+        {
+          "name": "Need your Praise",
+          "id": "112a44b5-97ac-4103-be69-e6908df0a295",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 51,
+      "chapterIndex": 26,
+      "chapterTime": "11:00",
+      "chapterTitle": "Vendetta, Emre & Freja",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 660.72,
+      "heroes": [
+        "Vendetta",
+        "Emre",
+        "Freja"
+      ],
+      "sample": [
+        "chance to hunt by my side. I see Maximleon's prized hunter is still",
+        "Maximleon's prized hunter is still watching over her quarry. It looks that",
+        "watching over her quarry. It looks that way. Then I'll take your continued"
+      ],
+      "entryName": "Prize Hunter",
+      "entryId": "3c892232-3b34-45dc-858b-2c262445756e",
+      "entryStatus": "active",
+      "score": 17.7,
+      "preview": "Vendetta: I see Maximilien's prized hunter is still watching over her quarr / Freja: It looks that way. / Vendetta: Then I'll take your continued presence here as a sign of allegian",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Prize Hunter",
+          "id": "3c892232-3b34-45dc-858b-2c262445756e",
+          "score": 17.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -29.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 52,
+      "chapterIndex": 26,
+      "chapterTime": "11:00",
+      "chapterTitle": "Vendetta, Emre & Freja",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 673.2,
+      "heroes": [
+        "Vendetta",
+        "Emre",
+        "Freja"
+      ],
+      "sample": [
+        "Keep paying my price and it's a sign of whatever you like.",
+        "whatever you like. >> We're a package deal, V. If you want me,",
+        "We're a package deal, V. If you want me, you put your trust in her."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Prize Hunter",
+          "id": "3c892232-3b34-45dc-858b-2c262445756e",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -29.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 53,
+      "chapterIndex": 27,
+      "chapterTime": "11:20",
+      "chapterTitle": "Sojourn & Ashe",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 680.16,
+      "heroes": [
+        "Sojourn",
+        "Ashe"
+      ],
+      "sample": [
+        "you put your trust in her. >> I always heard the gangs out west were",
+        "I always heard the gangs out west were small time. Isn't working with Talon a",
+        "small time. Isn't working with Talon a little ambitious?"
+      ],
+      "entryName": "Dreaming Big",
+      "entryId": "f597bd2b-9963-4fd5-b208-a61dbe331b83",
+      "entryStatus": "active",
+      "score": 65.7,
+      "preview": "Sojourn: I always heard the gangs out west were small-time. Isn't working  / Ashe: Come on now. Can't fault a girl for dreaming big, can you? / Sojourn: I can fault her for armed robbery.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Dreaming Big",
+          "id": "f597bd2b-9963-4fd5-b208-a61dbe331b83",
+          "score": 65.7,
+          "used": true
+        },
+        {
+          "name": "Too good for Crime",
+          "id": "ec2f6305-8866-4266-8db9-82f7236fee4f",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Loving the Bleach look",
+          "id": "b0244c00-a23d-4558-a6cf-8e3a01c09c41",
+          "score": 3.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 54,
+      "chapterIndex": 28,
+      "chapterTime": "11:35",
+      "chapterTitle": "Sojourn & Baptiste",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 696.16,
+      "heroes": [
+        "Sojourn",
+        "Baptiste"
+      ],
+      "sample": [
+        "details. It feels like Talon has gone from covert ops to world domination",
+        "from covert ops to world domination overnight.",
+        "overnight. >> They've done plenty of raids in the"
+      ],
+      "entryName": "Fighting Talon",
+      "entryId": "4d638a55-7eac-405a-9bfa-21be049bde08",
+      "entryStatus": "active",
+      "score": 59.35,
+      "preview": "Sojourn: It feels like Talon has gone from covert ops to world domination  / Baptiste: They've done plenty of raids in the past, but nothing nearly this / Sojourn: Huh. You have experience fighting Talon?",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Fighting Talon",
+          "id": "4d638a55-7eac-405a-9bfa-21be049bde08",
+          "score": 59.35,
+          "used": true
+        },
+        {
+          "name": "Lucky Guess",
+          "id": "cac88f7f-a365-42cd-abe3-adbba05f8ec5",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Periodic Table",
+          "id": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d",
+          "score": -8.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 55,
+      "chapterIndex": 28,
+      "chapterTime": "11:35",
+      "chapterTitle": "Sojourn & Baptiste",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 707.44,
+      "heroes": [
+        "Sojourn",
+        "Baptiste"
+      ],
+      "sample": [
+        "huh? You have experience fighting Talon. >> Yeah, you could say that.",
+        "Yeah, you could say that. >> I saw you cover the western entryway in",
+        "I saw you cover the western entryway in our last battle. Smart thinking."
+      ],
+      "entryName": "Lucky Guess",
+      "entryId": "cac88f7f-a365-42cd-abe3-adbba05f8ec5",
+      "entryStatus": "active",
+      "score": 59,
+      "preview": "Sojourn: I saw you cover the western entryway in our last battle. Smart th / Baptiste: Oh, well... I'm just doing what I can to help. / Sojourn: And right before Talon filed in there, too. Almost like you knew ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Lucky Guess",
+          "id": "cac88f7f-a365-42cd-abe3-adbba05f8ec5",
+          "score": 59,
+          "used": true
+        },
+        {
+          "name": "Fighting Talon",
+          "id": "4d638a55-7eac-405a-9bfa-21be049bde08",
+          "score": 23.35,
+          "used": true
+        },
+        {
+          "name": "Periodic Table",
+          "id": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d",
+          "score": -8.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 56,
+      "chapterIndex": 29,
+      "chapterTime": "12:07",
+      "chapterTitle": "Sojourn & Bastion",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 727.36,
+      "heroes": [
+        "Sojourn",
+        "Bastion"
+      ],
+      "sample": [
+        "Uh, just a lucky guess. >> So, Bastion, how are you settling in?",
+        "So, Bastion, how are you settling in? Anything you need?",
+        "Yeah. Uh, sounds good. Give my thanks to"
+      ],
+      "entryName": "Settling In",
+      "entryId": "cf65e9c9-0a4c-4e73-9eec-34947b418da4",
+      "entryStatus": "active",
+      "score": 11.7,
+      "preview": "Sojourn: So, Bastion, how are you... settling in? Anything you... need? / Bastion: **straightforward beeps** / Sojourn: Yeah, uh... Sounds good!",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Settling In",
+          "id": "cf65e9c9-0a4c-4e73-9eec-34947b418da4",
+          "score": 11.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 57,
+      "chapterIndex": 30,
+      "chapterTime": "12:22",
+      "chapterTitle": "Sojourn & Brigitte",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 744.24,
+      "heroes": [
+        "Sojourn",
+        "Brigitte"
+      ],
+      "sample": [
+        "your parents for letting us operate out of their home. And sorry for all the",
+        "of their home. And sorry for all the noise. Oh, don't worry about that. Mama",
+        "noise. Oh, don't worry about that. Mama says it's the quietest the workshop has"
+      ],
+      "entryName": "Thanks to your Parents",
+      "entryId": "e667f75e-0c25-4d92-9df2-740011cef090",
+      "entryStatus": "active",
+      "score": 47.35,
+      "preview": "Sojourn: Give my thanks to your parents for letting us operate out of thei / Brigitte: Oh, don't worry about that. Mama says it's the quietest the works",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Thanks to your Parents",
+          "id": "e667f75e-0c25-4d92-9df2-740011cef090",
+          "score": 47.35,
+          "used": true
+        },
+        {
+          "name": "In his footsteps",
+          "id": "443a67ed-6319-4553-99f1-6dc4445f5afb",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Evacuation",
+          "id": "f804627d-dba9-4f42-884f-e1b3829ddba9",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 58,
+      "chapterIndex": 31,
+      "chapterTime": "12:35",
+      "chapterTitle": "Sojourn & Cassidy",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 756.08,
+      "heroes": [
+        "Sojourn",
+        "Cassidy"
+      ],
+      "sample": [
+        "been in years. Interesting choices, Cole. A professional gamer, a Russian",
+        "Cole. A professional gamer, a Russian powerlifter, two mercenaries.",
+        "powerlifter, two mercenaries. >> You like him?"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Team Choices",
+          "id": "adf7d755-c9b8-492f-8480-526340db55eb",
+          "score": 5.35,
+          "used": false
+        },
+        {
+          "name": "Awful Quiet",
+          "id": "b04cf0fb-9067-4e23-b5ba-ee311bcca654",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Missing Genji",
+          "id": "b8b68e16-4441-4451-bdd7-1c535dee8be5",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 59,
+      "chapterIndex": 32,
+      "chapterTime": "12:46",
+      "chapterTitle": "Sojourn & D.Va",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 767.12,
+      "heroes": [
+        "Sojourn",
+        "D.va"
+      ],
+      "sample": [
+        "I really do. Did you read the mission brief?",
+        "brief? >> Huh? Oh, was I supposed to read that?",
+        "Huh? Oh, was I supposed to read that? >> What did I say about teamwork? Teamwork"
+      ],
+      "entryName": "Mission Brief",
+      "entryId": "df77f106-248e-419f-91ed-13c2f01e0708",
+      "entryStatus": "active",
+      "score": 41.35,
+      "preview": "Sojourn: Did you read the mission brief? / D.va: Huh? Oh, was I supposed to read that? / Sojourn: **sigh** What did I say about teamwork?",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Mission Brief",
+          "id": "df77f106-248e-419f-91ed-13c2f01e0708",
+          "score": 41.35,
+          "used": true
+        },
+        {
+          "name": "Not much Sleep",
+          "id": "f44b15d6-1993-4d22-96ae-1a0cbabf1130",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Follow Orders",
+          "id": "e28b8662-a261-4c48-9525-2a019587c8be",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 60,
+      "chapterIndex": 33,
+      "chapterTime": "12:59",
+      "chapterTitle": "Sojourn & Emre",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 779.2,
+      "heroes": [
+        "Sojourn",
+        "Emre"
+      ],
+      "sample": [
+        "me dead inside. >> Whatever Talon has on you, we can help.",
+        "Whatever Talon has on you, we can help. You just have to tell me what's going",
+        "You just have to tell me what's going on."
+      ],
+      "entryName": "We can Help",
+      "entryId": "c328df98-7b24-4855-b768-f13d9c0d2689",
+      "entryStatus": "active",
+      "score": 23,
+      "preview": "Sojourn: Whatever Talon has on you... we can help. You just have to tell m / Emre: How many years did we work together, Viv? You should know if I'm ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "We can Help",
+          "id": "c328df98-7b24-4855-b768-f13d9c0d2689",
+          "score": 23,
+          "used": true
+        },
+        {
+          "name": "Retirement",
+          "id": "99b13158-409a-4303-86ac-445590d96689",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 61,
+      "chapterIndex": 34,
+      "chapterTime": "13:13",
+      "chapterTitle": "Sojourn & Mei",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 793.28,
+      "heroes": [
+        "Sojourn",
+        "Mei"
+      ],
+      "sample": [
+        "you something. I've got a good reason. >> I saw you training yesterday.",
+        "I saw you training yesterday. Can I give you a tip?",
+        "Can I give you a tip? >> Um, sure. Widen your stance."
+      ],
+      "entryName": "Training Tips",
+      "entryId": "815e2d1e-3334-4ac6-a1b4-0e4974564cf4",
+      "entryStatus": "active",
+      "score": 23.7,
+      "preview": "Sojourn: I saw you training yesterday. Can I give you a tip? / Mei: Um... sure! / Sojourn: Widen your stance. Might feel strange at first, but it keeps you ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Training Tips",
+          "id": "815e2d1e-3334-4ac6-a1b4-0e4974564cf4",
+          "score": 23.7,
+          "used": true
+        },
+        {
+          "name": "Periodic Table",
+          "id": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d",
+          "score": -8.5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 62,
+      "chapterIndex": 35,
+      "chapterTime": "13:27",
+      "chapterTitle": "Sojourn & Orisa",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 807.6,
+      "heroes": [
+        "Sojourn",
+        "Orisa"
+      ],
+      "sample": [
+        "time. >> You were Ephy's favorite character from",
+        "You were Ephy's favorite character from the Overwatch cartoon. [sighs]",
+        "the Overwatch cartoon. [sighs] >> It made me look like a superhero. The"
+      ],
+      "entryName": "Cartoon Superhero",
+      "entryId": "56963687-38de-44ca-9205-4bbc2a76fcde",
+      "entryStatus": "active",
+      "score": 24.4,
+      "preview": "Orisa: You were Efi's favorite character from the Overwatch cartoon. / Sojourn: Ah... it made me look like a superhero. The reality was... not as / Orisa: You gave Efi courage when she needed it most. I am grateful for y",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Cartoon Superhero",
+          "id": "56963687-38de-44ca-9205-4bbc2a76fcde",
+          "score": 24.4,
+          "used": true
+        },
+        {
+          "name": "At Gibraltar",
+          "id": "8bdfb4c4-a253-4a10-96f6-c4b74ab163e5",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -29.55,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 63,
+      "chapterIndex": 35,
+      "chapterTime": "13:27",
+      "chapterTitle": "Sojourn & Orisa",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 817.92,
+      "heroes": [
+        "Sojourn",
+        "Orisa"
+      ],
+      "sample": [
+        "reality was not as inspiring. >> You gave Ephy courage when she needed it",
+        "You gave Ephy courage when she needed it most. I am grateful for you, Captain.",
+        "most. I am grateful for you, Captain. >> That means a lot, Orisa. Null Sector had"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Cartoon Superhero",
+          "id": "56963687-38de-44ca-9205-4bbc2a76fcde",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "At Gibraltar",
+          "id": "8bdfb4c4-a253-4a10-96f6-c4b74ab163e5",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 64,
+      "chapterIndex": 36,
+      "chapterTime": "13:46",
+      "chapterTitle": "Sojourn & Ramattra",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 827.28,
+      "heroes": [
+        "Sojourn",
+        "Ramattra"
+      ],
+      "sample": [
+        "That means a lot, Orisa. Null Sector had a foothold in so many cities. Why",
+        "a foothold in so many cities. Why withdraw your forces now?",
+        "withdraw your forces now? >> Would you have preferred I destroy"
+      ],
+      "entryName": "Why Withdraw",
+      "entryId": "8dc62b9d-f769-4760-8e5d-755251a37733",
+      "entryStatus": "active",
+      "score": 23.7,
+      "preview": "Sojourn: Null Sector has a foothold in so many cities... why withdraw your / Ramattra: Would you have preferred I destroy humanity? / Sojourn: The way you're consolidating your forces? I think you're still pl",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Why Withdraw",
+          "id": "8dc62b9d-f769-4760-8e5d-755251a37733",
+          "score": 23.7,
+          "used": true
+        },
+        {
+          "name": "Champion our Cause",
+          "id": "9553354e-fb3f-4c39-aeb4-79c7ec46b62b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 65,
+      "chapterIndex": 36,
+      "chapterTime": "13:46",
+      "chapterTitle": "Sojourn & Ramattra",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 842.88,
+      "heroes": [
+        "Sojourn",
+        "Ramattra"
+      ],
+      "sample": [
+        "I seek liberation, not devastation. I leave such senseless conflict to your",
+        "leave such senseless conflict to your kind.",
+        "kind. >> I'm glad you joined us. We're going to"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Why Withdraw",
+          "id": "8dc62b9d-f769-4760-8e5d-755251a37733",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Champion our Cause",
+          "id": "9553354e-fb3f-4c39-aeb4-79c7ec46b62b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 66,
+      "chapterIndex": 37,
+      "chapterTime": "14:07",
+      "chapterTitle": "Sojourn & Sierra",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 848.8,
+      "heroes": [
+        "Sojourn",
+        "Sierra"
+      ],
+      "sample": [
+        "I'm glad you joined us. We're going to need all the help we can get to take",
+        "need all the help we can get to take Talon down.",
+        "Talon down. >> My mom always told me to stand up for"
+      ],
+      "entryName": "Glad you joined",
+      "entryId": "017ab4df-b0aa-459a-b70c-bf0754ca684b",
+      "entryStatus": "active",
+      "score": 17.35,
+      "preview": "Sojourn: I'm glad you joined us. We're going to need all the help we can g / Sierra: Hah, my mom always told me to stand up for what's right. And it d",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Glad you joined",
+          "id": "017ab4df-b0aa-459a-b70c-bf0754ca684b",
+          "score": 17.35,
+          "used": true
+        },
+        {
+          "name": "Jack Morrison",
+          "id": "2a00772c-279f-40e8-9154-9e818bdac2ba",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 67,
+      "chapterIndex": 38,
+      "chapterTime": "14:18",
+      "chapterTitle": "Sojourn & Sombra",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 860.08,
+      "heroes": [
+        "Sojourn",
+        "Sombra"
+      ],
+      "sample": [
+        "more wrong than Talon. Viven Chase, your Overwatch record was spotless, and your",
+        "Overwatch record was spotless, and your retirement was just as quiet. Right.",
+        "retirement was just as quiet. Right. >> It was, and I plan to keep it that way."
+      ],
+      "entryName": "Spotless",
+      "entryId": "a492d698-3e16-4459-85d0-91dd8b9f9284",
+      "entryStatus": "active",
+      "score": 47.7,
+      "preview": "Sombra: Vivian Chase. Your Overwatch record was spotless. And your retire / Sojourn: It was. And I plan to keep it that way.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Spotless",
+          "id": "a492d698-3e16-4459-85d0-91dd8b9f9284",
+          "score": 47.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 68,
+      "chapterIndex": 39,
+      "chapterTime": "14:29",
+      "chapterTitle": "Sojourn & Tracer",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 869.36,
+      "heroes": [
+        "Sojourn",
+        "Tracer"
+      ],
+      "sample": [
+        "It was, and I plan to keep it that way. You're sitting out the next mission,",
+        "You're sitting out the next mission, Oxton. Emily made me promise you'd take",
+        "Oxton. Emily made me promise you'd take it easy."
+      ],
+      "entryName": "Sitting out",
+      "entryId": "6cc84ccd-40aa-4c67-91cf-4252c50bb731",
+      "entryStatus": "active",
+      "score": 59.7,
+      "preview": "Sojourn: You're sitting out the next mission, Oxton. Emily made me promise / Tracer: Maybe you could look the other way this time? / Sojourn: And get on her bad side? Not a chance.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Sitting out",
+          "id": "6cc84ccd-40aa-4c67-91cf-4252c50bb731",
+          "score": 59.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 69,
+      "chapterIndex": 40,
+      "chapterTime": "14:39",
+      "chapterTitle": "Sojourn & Winston",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 879.52,
+      "heroes": [
+        "Sojourn",
+        "Winston"
+      ],
+      "sample": [
+        "and get on her bad side. Not a chance. Winston, we need to talk about those",
+        "Winston, we need to talk about those recruitment tokens you sent out.",
+        "recruitment tokens you sent out. >> I'm sorry. If I'd known what Talon was"
+      ],
+      "entryName": "Recruitment tokens",
+      "entryId": "0028e7b4-bbd2-4432-9b01-75db1f4930af",
+      "entryStatus": "active",
+      "score": 48.4,
+      "preview": "Sojourn: Winston, we need to talk about those recruitment tokens you sent  / Winston: I'm... sorry. If I'd known what Talon was planning... / Sojourn: You found us the help we needed to get out alive, Winston. Just..",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Recruitment tokens",
+          "id": "0028e7b4-bbd2-4432-9b01-75db1f4930af",
+          "score": 48.4,
+          "used": true
+        },
+        {
+          "name": "Focus on Saving the World",
+          "id": "0532130e-8937-44ba-b0ba-33cb0586bf6a",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Shutdown Order",
+          "id": "6ea05417-2c0f-4423-831f-ee66713697c0",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 70,
+      "chapterIndex": 40,
+      "chapterTime": "14:39",
+      "chapterTitle": "Sojourn & Winston",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 894.16,
+      "heroes": [
+        "Sojourn",
+        "Winston"
+      ],
+      "sample": [
+        "out alive, Winston. Just maybe a little warning next time. [sighs]",
+        "warning next time. [sighs] >> Of course. Next time [clears throat]",
+        "Of course. Next time [clears throat] you'll be the first to know. Have you"
+      ],
+      "entryName": "Focus on Saving the World",
+      "entryId": "0532130e-8937-44ba-b0ba-33cb0586bf6a",
+      "entryStatus": "active",
+      "score": 54.4,
+      "preview": "Winston: Have you heard from the IJC, Sojourn Surely, these Talon attacks  / Sojourn: Don't worry about that right now, Winston. Let's focus on saving ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Focus on Saving the World",
+          "id": "0532130e-8937-44ba-b0ba-33cb0586bf6a",
+          "score": 54.4,
+          "used": true
+        },
+        {
+          "name": "Recruitment tokens",
+          "id": "0028e7b4-bbd2-4432-9b01-75db1f4930af",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Shutdown Order",
+          "id": "6ea05417-2c0f-4423-831f-ee66713697c0",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 71,
+      "chapterIndex": 41,
+      "chapterTime": "15:14",
+      "chapterTitle": "Sojourn & Wuyang",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 915.84,
+      "heroes": [
+        "Sojourn",
+        "Wuyang"
+      ],
+      "sample": [
+        "first. been thinking we ought to change up your training regimen. Uh,",
+        "up your training regimen. Uh, >> did I do something wrong?",
+        "did I do something wrong? >> The opposite. You're great at thinking"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Thinking on your feet",
+          "id": "7bfc197b-f878-4ccb-9094-1cefb8ce2505",
+          "score": 6.05,
+          "used": false
+        },
+        {
+          "name": "Invitation",
+          "id": "7967e161-cdc6-4289-872d-3b7a6a2822f0",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 72,
+      "chapterIndex": 42,
+      "chapterTime": "15:28",
+      "chapterTitle": "Sojourn, Brigitte & Jetpack Cat",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 929.92,
+      "heroes": [
+        "Sojourn",
+        "Brigitte",
+        "Jetpack Cat"
+      ],
+      "sample": [
+        "Brigittita, you're one of my best agents. So, I'll give you one chance to",
+        "agents. So, I'll give you one chance to explain why you put a cat in a jetpack.",
+        "explain why you put a cat in a jetpack. I know it seems crazy, but she can help."
+      ],
+      "entryName": "Stayed Retired",
+      "entryId": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
+      "entryStatus": "active",
+      "score": 17,
+      "preview": "Sojourn: Brigitte, you're one of my best agents. So I'll give you one chan / Brigitte: I know it seems crazy, but she can help! Can't you, Fika? Aww, go / Jetpack Cat: **happy meows**",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Stayed Retired",
+          "id": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
+          "score": 17,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -29.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 73,
+      "chapterIndex": 42,
+      "chapterTime": "15:28",
+      "chapterTitle": "Sojourn, Brigitte & Jetpack Cat",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 938.4,
+      "heroes": [
+        "Sojourn",
+        "Brigitte",
+        "Jetpack Cat"
+      ],
+      "sample": [
+        "I know it seems crazy, but she can help. Can't you, Fica? Oh, good girl.",
+        "I should have stayed retired."
+      ],
+      "entryName": "Stayed Retired",
+      "entryId": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
+      "entryStatus": "active",
+      "score": 23.7,
+      "preview": "Sojourn: Brigitte, you're one of my best agents. So I'll give you one chan / Brigitte: I know it seems crazy, but she can help! Can't you, Fika? Aww, go / Jetpack Cat: **happy meows**",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Stayed Retired",
+          "id": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
+          "score": 23.7,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -29.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 74,
+      "chapterIndex": 43,
+      "chapterTime": "15:47",
+      "chapterTitle": "Freja & Domina",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 949.68,
+      "heroes": [
+        "Freja",
+        "Domina"
+      ],
+      "sample": [
+        "I'm quite capable of defending you out there, dear. But should I? Wouldn't your",
+        "there, dear. But should I? Wouldn't your partner want you to protect her assets?"
+      ],
+      "entryName": "Tests from Talon",
+      "entryId": "aad0fe73-4231-4b09-8a2f-12088af9ed69",
+      "entryStatus": "active",
+      "score": 23,
+      "preview": "Domina: I'm quite capable of defending you out there, dear. But... should / Freja: Wouldn't your \"partner\" want you to protect her assets? / Domina: I expect she'd much prefer I test their resilience.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Tests from Talon",
+          "id": "aad0fe73-4231-4b09-8a2f-12088af9ed69",
+          "score": 23,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 75,
+      "chapterIndex": 43,
+      "chapterTime": "15:47",
+      "chapterTitle": "Freja & Domina",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 956.64,
+      "heroes": [
+        "Freja",
+        "Domina"
+      ],
+      "sample": [
+        "partner want you to protect her assets? >> I expect she'd much prefer I test their",
+        "I expect she'd much prefer I test their resilience.",
+        "resilience. >> Another test from Telen."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Tests from Talon",
+          "id": "aad0fe73-4231-4b09-8a2f-12088af9ed69",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 76,
+      "chapterIndex": 44,
+      "chapterTime": "16:05",
+      "chapterTitle": "Freja & Emre",
+      "part": 1,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 967.6,
+      "heroes": [
+        "Freja",
+        "Emre"
+      ],
+      "sample": [
+        "You've been off since Grand Mesa. Everything all right?",
+        "Everything all right? >> I don't know. I guess I didn't expect to",
+        "I don't know. I guess I didn't expect to see our old teammates."
+      ],
+      "entryName": "Old Teammates",
+      "entryId": "7f8889f2-10da-4390-8848-e14bdfbda5d8",
+      "entryStatus": "active",
+      "score": 35.7,
+      "preview": "Emre: You've been off since Grand Mesa. Everything all right? / Freja: I don't know. I guess I didn't expect to see our old teammates. / Emre: I'm sure they'd take you back. You don't have to stick around wit",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Old Teammates",
+          "id": "7f8889f2-10da-4390-8848-e14bdfbda5d8",
+          "score": 35.7,
+          "used": true
+        },
+        {
+          "name": "Don't need Saving",
+          "id": "f426b03e-b20e-4b52-8273-dc911fed6e17",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Pretty Bad",
+          "id": "d11240c6-5b61-4e80-af54-3d511a546811",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 77,
+      "chapterIndex": 44,
+      "chapterTime": "16:05",
+      "chapterTitle": "Freja & Emre",
+      "part": 2,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 982.16,
+      "heroes": [
+        "Freja",
+        "Emre"
+      ],
+      "sample": [
+        "I know. I I know. Feels worse than I thought it would working with Vendetta.",
+        "thought it would working with Vendetta. >> Hold on. We can't both be haunted by our",
+        "Hold on. We can't both be haunted by our consciences now. [clears throat]"
+      ],
+      "entryName": "Working with Vendetta",
+      "entryId": "8dacbf8e-2528-4de8-8c6a-bd21ad91a8cb",
+      "entryStatus": "active",
+      "score": 12.4,
+      "preview": "Freja: Feels worse than I thought it would, working with Vendetta... / Emre: Hold on. We can't both be haunted by our consciences now. / Freja: **laughs** You think you can stop me feeling guilty better than I",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Working with Vendetta",
+          "id": "8dacbf8e-2528-4de8-8c6a-bd21ad91a8cb",
+          "score": 12.4,
+          "used": true
+        },
+        {
+          "name": "Working Alone",
+          "id": "6d081e26-5053-4bbe-8bd5-79ef7e5f1b0f",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Don't need Saving",
+          "id": "f426b03e-b20e-4b52-8273-dc911fed6e17",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 78,
+      "chapterIndex": 44,
+      "chapterTime": "16:05",
+      "chapterTitle": "Freja & Emre",
+      "part": 3,
+      "partsInChapter": 3,
+      "batch": "Midseason 5",
+      "start": 999.04,
+      "heroes": [
+        "Freja",
+        "Emre"
+      ],
+      "sample": [
+        "you laugh. You really think you'll find answers working with Telen?",
+        "answers working with Telen? >> I don't know, [snorts]",
+        "I don't know, [snorts] but it feels like my only option."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Working Alone",
+          "id": "6d081e26-5053-4bbe-8bd5-79ef7e5f1b0f",
+          "score": 5.7,
+          "used": false
+        },
+        {
+          "name": "Working with Vendetta",
+          "id": "8dacbf8e-2528-4de8-8c6a-bd21ad91a8cb",
+          "score": 5.7,
+          "used": true
+        },
+        {
+          "name": "Finding Answers",
+          "id": "e18b5fea-475a-4e5e-a58e-127d053b1c95",
+          "score": 5.7,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 79,
+      "chapterIndex": 45,
+      "chapterTime": "16:47",
+      "chapterTitle": "Freja & Kiriko",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1008.64,
+      "heroes": [
+        "Freja",
+        "Kiriko"
+      ],
+      "sample": [
+        "I have some bounties you might want. Five of them, actually. [sighs]",
+        "Five of them, actually. [sighs] >> I'm good at what I do, kid. But even I'm",
+        "I'm good at what I do, kid. But even I'm not going to mess with the Hashimoto."
+      ],
+      "entryName": "Hashimoto Bounties",
+      "entryId": "921ff317-7ba0-4a6c-b988-65eaf50685e0",
+      "entryStatus": "active",
+      "score": 54.05,
+      "preview": "Kiriko: I have some bounties you might want. Five of them, actually. / Freja: **chuckle** I'm good at what I do, kid, but even I'm not going to / Kiriko: All right... Then how are you with rescue missions?",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Hashimoto Bounties",
+          "id": "921ff317-7ba0-4a6c-b988-65eaf50685e0",
+          "score": 54.05,
+          "used": true
+        },
+        {
+          "name": "Bounty for Kids",
+          "id": "89fbd8a0-eb4f-410c-9cd4-b67c934db0e0",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 80,
+      "chapterIndex": 46,
+      "chapterTime": "17:03",
+      "chapterTitle": "Freja & Ramattra",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1026.56,
+      "heroes": [
+        "Freja",
+        "Ramattra"
+      ],
+      "sample": [
+        "talk. You call my people bots, yet you now take orders from one.",
+        "now take orders from one. >> Max isn't my boss. I call the shots as",
+        "Max isn't my boss. I call the shots as much as he does."
+      ],
+      "entryName": "Calling the Shots",
+      "entryId": "c354b12e-1020-4d3a-87a1-52fb9edf140e",
+      "entryStatus": "active",
+      "score": 47,
+      "preview": "Ramattra: You call my people \"bots\", yet you now take orders from one. / Freja: Max isn't my boss. I call the shots as much as he does. / Ramattra: Your self-importance is irksome, but impressively, your denial ma",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Calling the Shots",
+          "id": "c354b12e-1020-4d3a-87a1-52fb9edf140e",
+          "score": 47,
+          "used": true
+        },
+        {
+          "name": "Fight for All Omnics",
+          "id": "971ab2db-e171-4e4a-9215-9d532fc38dc1",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Not Himself",
+          "id": "918b1064-4a57-4af0-bc7f-af7d1100d31b",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 81,
+      "chapterIndex": 47,
+      "chapterTime": "17:20",
+      "chapterTitle": "Cassidy & Ashe",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1041.52,
+      "heroes": [
+        "Cassidy",
+        "Ashe"
+      ],
+      "sample": [
+        "Well, you're making deals with Talon now. You've always been reckless, but I",
+        "now. You've always been reckless, but I know you're not stupid.",
+        "know you're not stupid. >> Then you know I've got it under control."
+      ],
+      "entryName": "Deals with Talon",
+      "entryId": "b298e252-90bb-4582-8d6c-34c001003009",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Cassidy: You're makin' deals with Talon, now? You've always been reckless, / Ashe: Then you know I've got it under control. You ought'a be smart eno",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Deals with Talon",
+          "id": "b298e252-90bb-4582-8d6c-34c001003009",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "How's Bars",
+          "id": "1371a4c9-4bdf-4a11-b089-fe9bfc9526d4",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Nice to see you",
+          "id": "9f01a2af-559b-410a-8127-d97a43325f99",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 82,
+      "chapterIndex": 47,
+      "chapterTime": "17:20",
+      "chapterTitle": "Cassidy & Ashe",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1047.44,
+      "heroes": [
+        "Cassidy",
+        "Ashe"
+      ],
+      "sample": [
+        "Then you know I've got it under control. You'll be smart enough to stay out of my",
+        "You'll be smart enough to stay out of my way. Reckon we got another bartalotti to"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "How's Bars",
+          "id": "1371a4c9-4bdf-4a11-b089-fe9bfc9526d4",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Nice to see you",
+          "id": "9f01a2af-559b-410a-8127-d97a43325f99",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Owing Money",
+          "id": "717ab852-0f80-478e-9686-70dfc336805a",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 83,
+      "chapterIndex": 48,
+      "chapterTime": "17:30",
+      "chapterTitle": "Cassidy & Genji",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1052.56,
+      "heroes": [
+        "Cassidy",
+        "Genji"
+      ],
+      "sample": [
+        "way. Reckon we got another bartalotti to stop. Should be easier without all the",
+        "stop. Should be easier without all the sneaking around.",
+        "sneaking around. >> And you won't have to speak Italian this"
+      ],
+      "entryName": "No Italian",
+      "entryId": "a3980af2-e387-4eda-b5db-0798785ee4ca",
+      "entryStatus": "active",
+      "score": 17.7,
+      "preview": "Cassidy: Reckon we've got another Bartalotti to stop. Should be easier wit / Genji: And you won't have to speak Italian this time. / Cassidy: Well, don't speak so soon, *\"signore.\"*",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "No Italian",
+          "id": "a3980af2-e387-4eda-b5db-0798785ee4ca",
+          "score": 17.7,
+          "used": true
+        },
+        {
+          "name": "Focus on the Good Times",
+          "id": "cb34488f-1e6a-48ff-865e-3838bc54024e",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Undo it all",
+          "id": "5ac2e55f-eff3-461c-b89b-59da9a8cadae",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 84,
+      "chapterIndex": 48,
+      "chapterTime": "17:30",
+      "chapterTitle": "Cassidy & Genji",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1067.12,
+      "heroes": [
+        "Cassidy",
+        "Genji"
+      ],
+      "sample": [
+        "You getting homesick, too? Guess we were never good at sticking anywhere too",
+        "never good at sticking anywhere too long.",
+        "long. >> Maybe not."
+      ],
+      "entryName": "Getting Homesick",
+      "entryId": "c9a58edf-26fb-4257-817b-349d7fb66e72",
+      "entryStatus": "active",
+      "score": 11.7,
+      "preview": "Cassidy: You getting homesick, too? Huh. Guess we were never good at stick / Genji: Maybe not. / Cassidy: Well, wherever you wind up, if you ever need a gunslinger, you ca",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Getting Homesick",
+          "id": "c9a58edf-26fb-4257-817b-349d7fb66e72",
+          "score": 11.7,
+          "used": true
+        },
+        {
+          "name": "Focus on the Good Times",
+          "id": "cb34488f-1e6a-48ff-865e-3838bc54024e",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Undo it all",
+          "id": "5ac2e55f-eff3-461c-b89b-59da9a8cadae",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 85,
+      "chapterIndex": 49,
+      "chapterTime": "18:02",
+      "chapterTitle": "Cassidy & Reinhardt",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1082.48,
+      "heroes": [
+        "Cassidy",
+        "Reinhardt"
+      ],
+      "sample": [
+        "blade, it is yours. >> Look at these fresh faces. What do we",
+        "Look at these fresh faces. What do we owe you for bringing some in, Cole?",
+        "owe you for bringing some in, Cole? >> Don't care to keep a ledger these days."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Old Fashioned",
+          "id": "a2b1f023-2952-4afd-b900-cdceadd796c8",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Too many Sunsets",
+          "id": "925c7dd6-cc11-4174-9c27-49ffe51e613d",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Fresh Faces",
+          "id": "96366250-f815-4ee8-b7bf-ca9732649f22",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 86,
+      "chapterIndex": 49,
+      "chapterTime": "18:02",
+      "chapterTitle": "Cassidy & Reinhardt",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1090.24,
+      "heroes": [
+        "Cassidy",
+        "Reinhardt"
+      ],
+      "sample": [
+        "Don't care to keep a ledger these days. What do you say we call it settled?",
+        "What do you say we call it settled? >> Deal. IT'S AN HONOR JUST TO FIGHT AT",
+        "Deal. IT'S AN HONOR JUST TO FIGHT AT THEIR SIDE."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Old Fashioned",
+          "id": "a2b1f023-2952-4afd-b900-cdceadd796c8",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Too many Sunsets",
+          "id": "925c7dd6-cc11-4174-9c27-49ffe51e613d",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Fresh Faces",
+          "id": "96366250-f815-4ee8-b7bf-ca9732649f22",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 87,
+      "chapterIndex": 50,
+      "chapterTime": "18:20",
+      "chapterTitle": "Sombra & Baptiste",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1100.48,
+      "heroes": [
+        "Sombra",
+        "Baptiste"
+      ],
+      "sample": [
+        "Couldn't agree more, oldtimer. Is it true you're out of talent for",
+        "Is it true you're out of talent for good? for now until someone knocks the",
+        "good? for now until someone knocks the new boss down a few pegs."
+      ],
+      "entryName": "Out of Talon",
+      "entryId": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9",
+      "entryStatus": "active",
+      "score": 65,
+      "preview": "Baptiste: Is it true? You're out of Talon? For good? / Sombra: For now. Until someone knocks the new boss down a few pegs. / Baptiste: Well, if you're looking for help... you can always come find me.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Out of Talon",
+          "id": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9",
+          "score": 65,
+          "used": true
+        },
+        {
+          "name": "Where have you been",
+          "id": "d8153b5b-a9ea-4707-bf2f-32a532da4b29",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Full of Surprises",
+          "id": "3739fc23-6692-4c0d-a87a-70a1fd9638b5",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 88,
+      "chapterIndex": 50,
+      "chapterTime": "18:20",
+      "chapterTitle": "Sombra & Baptiste",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1114.96,
+      "heroes": [
+        "Sombra",
+        "Baptiste"
+      ],
+      "sample": [
+        "A, aren't you sweet? But something tells me your new friends won't enjoy having",
+        "me your new friends won't enjoy having me around. So, what's the plan to take"
+      ],
+      "entryName": "Out of Talon",
+      "entryId": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Baptiste: Is it true? You're out of Talon? For good? / Sombra: For now. Until someone knocks the new boss down a few pegs. / Baptiste: Well, if you're looking for help... you can always come find me.",
+      "note": "shared/reused id",
+      "alts": [
+        {
+          "name": "Out of Talon",
+          "id": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Where have you been",
+          "id": "d8153b5b-a9ea-4707-bf2f-32a532da4b29",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Full of Surprises",
+          "id": "3739fc23-6692-4c0d-a87a-70a1fd9638b5",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 89,
+      "chapterIndex": 51,
+      "chapterTime": "18:38",
+      "chapterTitle": "Sombra & Doomfist",
+      "part": 1,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1119.92,
+      "heroes": [
+        "Sombra",
+        "Doomfist"
+      ],
+      "sample": [
+        "me around. So, what's the plan to take down Vendetta?",
+        "down Vendetta? >> There is no plan.",
+        "There is no plan. >> But you always have a plan. We have to"
+      ],
+      "entryName": "The World will adapt",
+      "entryId": "1dbf921b-e618-476b-8383-1cd6ad9dedee",
+      "entryStatus": "active",
+      "score": 17,
+      "preview": "Sombra: I know stopping Vendetta's priority one, but cracking open Grímsv / Doomfist: The world will adapt, as it always has / Sombra: (sigh) Guess I'm glad you're back to your old self, at least",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "The World will adapt",
+          "id": "1dbf921b-e618-476b-8383-1cd6ad9dedee",
+          "score": 17,
+          "used": true
+        },
+        {
+          "name": "No Plan",
+          "id": "c568b8bf-dda2-497a-bfdf-58422eaf328b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Beaten by a Monkey",
+          "id": "b03a6a09-b749-43c4-9f12-c23afb13b8f5",
+          "score": -3,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 90,
+      "chapterIndex": 51,
+      "chapterTime": "18:38",
+      "chapterTitle": "Sombra & Doomfist",
+      "part": 2,
+      "partsInChapter": 2,
+      "batch": "Midseason 5",
+      "start": 1145.2,
+      "heroes": [
+        "Sombra",
+        "Doomfist"
+      ],
+      "sample": [
+        "The world will adapt as it always has. >> Guess I'm glad you're back to your old",
+        "Guess I'm glad you're back to your old self, at least. Are you okay, Vito? You"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "No Plan",
+          "id": "c568b8bf-dda2-497a-bfdf-58422eaf328b",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "The World will adapt",
+          "id": "1dbf921b-e618-476b-8383-1cd6ad9dedee",
+          "score": 5,
+          "used": true
+        },
+        {
+          "name": "Beaten by a Monkey",
+          "id": "b03a6a09-b749-43c4-9f12-c23afb13b8f5",
+          "score": -3,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 91,
+      "chapterIndex": 52,
+      "chapterTime": "19:08",
+      "chapterTitle": "Sombra & Sigma",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1150.16,
+      "heroes": [
+        "Sombra",
+        "Sigma"
+      ],
+      "sample": [
+        "self, at least. Are you okay, Vito? You don't look too good.",
+        "don't look too good. >> [sighs]",
+        "[sighs] >> I I am afraid conditions have worsened"
+      ],
+      "entryName": "Worsened Conditions",
+      "entryId": "25ccdbbe-f706-415d-b243-cccbcee5eb2a",
+      "entryStatus": "active",
+      "score": 12.4,
+      "preview": "Sombra: Are you okay, viejito? You don't look too good. / Sigma: **sigh** I... I am afraid... conditions have... worsened in your  / Sombra: **sigh** Hang in there, okay? I *promise* I'll get you away from ",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Worsened Conditions",
+          "id": "25ccdbbe-f706-415d-b243-cccbcee5eb2a",
+          "score": 12.4,
+          "used": true
+        },
+        {
+          "name": "Wandering off",
+          "id": "228dba82-1c83-4adb-8007-85fbba76a754",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Change of Origins",
+          "id": "4aee275e-401d-446d-88c3-669873b32546",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 92,
+      "chapterIndex": 53,
+      "chapterTime": "19:24",
+      "chapterTitle": "D.Va & Junker Queen",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1164.96,
+      "heroes": [
+        "D.va",
+        "Junker Queen"
+      ],
+      "sample": [
+        "you away from her. Reckon Busousan's in need of a little fireworks show.",
+        "need of a little fireworks show. >> The only fireworks show you'll see will",
+        "The only fireworks show you'll see will be my missiles blowing up in your face."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Busan fireworks",
+          "id": "815db5b9-cf43-4488-b00e-babef29a9304",
+          "score": 6.4,
+          "used": false
+        },
+        {
+          "name": "Hamster in the Mech",
+          "id": "d21b0a38-c64b-4016-adf2-254206fe3667",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Periodic Table",
+          "id": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d",
+          "score": -8.5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 93,
+      "chapterIndex": 54,
+      "chapterTime": "19:32",
+      "chapterTitle": "D.Va & Ramattra",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1175.12,
+      "heroes": [
+        "D.va",
+        "Ramattra"
+      ],
+      "sample": [
+        "It is the privilege of humanity to trifle with every threat. I give",
+        "trifle with every threat. I give everything to protect my home. So don't",
+        "everything to protect my home. So don't trifle with me. I heard you're a good"
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Priviledge",
+          "id": "16cdbd0f-2897-4ae9-8701-b164a420e721",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Before the Crisis",
+          "id": "96e1f389-2b35-4fa1-9d71-0eaacba132d5",
+          "score": -0.25,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 94,
+      "chapterIndex": 55,
+      "chapterTime": "19:42",
+      "chapterTitle": "D.Va & Symmetra",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1183.52,
+      "heroes": [
+        "D.va",
+        "Symmetra"
+      ],
+      "sample": [
+        "trifle with me. I heard you're a good dancer. You should try to beat my high",
+        "dancer. You should try to beat my high score and dance floor.",
+        "score and dance floor. >> Have you checked the scoreboard"
+      ],
+      "entryName": "High Scores",
+      "entryId": "a22ec657-efd9-4f67-8a5c-507611722dcb",
+      "entryStatus": "active",
+      "score": 23,
+      "preview": "D.va: I heard you're a good dancer. You should try to beat my high scor / Symmetra: Hm. Have you checked the scoreboard recently? / D.va: **gasp** You didn't...!",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "High Scores",
+          "id": "a22ec657-efd9-4f67-8a5c-507611722dcb",
+          "score": 23,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 95,
+      "chapterIndex": 56,
+      "chapterTime": "19:52",
+      "chapterTitle": "Baptiste & Mauga",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1191.92,
+      "heroes": [
+        "Baptiste",
+        "Mauga"
+      ],
+      "sample": [
+        "You didn't. >> Why are you staying with Talon? Fighting",
+        "Why are you staying with Talon? Fighting for Vendetta's crazy even for you. A",
+        "for Vendetta's crazy even for you. A give me some more credit. You know I"
+      ],
+      "entryName": "Fighting for Vendetta",
+      "entryId": "106a8910-2ac6-4228-83e9-3a8d06b4db34",
+      "entryStatus": "active",
+      "score": 42.4,
+      "preview": "Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, e / Mauga: Aw, gimme some more credit. You know I only stick around when I'm / Baptiste: **sigh** That's exactly what I'm worried about.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Fighting for Vendetta",
+          "id": "106a8910-2ac6-4228-83e9-3a8d06b4db34",
+          "score": 42.4,
+          "used": true
+        },
+        {
+          "name": "Right amount of stupid",
+          "id": "b474fdaf-e979-4c0b-9e3e-a37c1070fa08",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Short Memory",
+          "id": "7ca614e4-7dd6-4de0-b8a3-4f039e5b0b70",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 96,
+      "chapterIndex": 57,
+      "chapterTime": "20:07",
+      "chapterTitle": "Baptiste & Moira",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1208.08,
+      "heroes": [
+        "Baptiste",
+        "Moira"
+      ],
+      "sample": [
+        "what I'm worried about. Healing and hurting, huh? I guess we're not that",
+        "hurting, huh? I guess we're not that different.",
+        "different. >> I assure you we are nothing alike."
+      ],
+      "entryName": null,
+      "entryId": null,
+      "entryStatus": null,
+      "score": null,
+      "preview": null,
+      "note": "",
+      "alts": [
+        {
+          "name": "Healing and Hurting",
+          "id": "045725d5-31ab-40bf-a27d-2236bdfebee8",
+          "score": 6.05,
+          "used": false
+        },
+        {
+          "name": "Periodic Table",
+          "id": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d",
+          "score": -8.5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 97,
+      "chapterIndex": 58,
+      "chapterTime": "20:15",
+      "chapterTitle": "Emre & Domina",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1215.04,
+      "heroes": [
+        "Emre",
+        "Domina"
+      ],
+      "sample": [
+        "I assure you we are nothing alike. >> Oh, another one of Martia's lackeyis.",
+        "Oh, another one of Martia's lackeyis. Let's hope you're not as dim as the",
+        "Let's hope you're not as dim as the rest."
+      ],
+      "entryName": "Good Taste",
+      "entryId": "efc23209-bc09-4e58-8536-fa07c4bd2dc9",
+      "entryStatus": "active",
+      "score": 11,
+      "preview": "Domina: Oh, another one of Marzia's lackeys. Let's hope you're not as dim / Emre: You're insulting me? In *those* shoes? / Domina: Darling! These cost more than *fifty* of you.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Good Taste",
+          "id": "efc23209-bc09-4e58-8536-fa07c4bd2dc9",
+          "score": 11,
+          "used": true
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 98,
+      "chapterIndex": 59,
+      "chapterTime": "20:30",
+      "chapterTitle": "Emre & Sigma",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1231.76,
+      "heroes": [
+        "Emre",
+        "Sigma"
+      ],
+      "sample": [
+        "Vendetta's got you under lock and key, huh? You must have really set her off.",
+        "huh? You must have really set her off. >> She claimed I am a threat to myself and",
+        "She claimed I am a threat to myself and others. Although I cannot recall why."
+      ],
+      "entryName": "Threat to myself and others",
+      "entryId": "95b9f80c-8176-4b6b-9a1b-bfe100a755af",
+      "entryStatus": "active",
+      "score": 67.1,
+      "preview": "Emre: Vendetta's got you under lock and key, huh? You must have really  / Sigma: She claimed I am \"a threat to myself and others\"... though I cann / Emre: Yeah. I know the feeling.",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Threat to myself and others",
+          "id": "95b9f80c-8176-4b6b-9a1b-bfe100a755af",
+          "score": 67.1,
+          "used": true
+        },
+        {
+          "name": "More Fortunate",
+          "id": "cc211729-c93f-4935-8699-cc352a647dc0",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 99,
+      "chapterIndex": 60,
+      "chapterTime": "20:45",
+      "chapterTitle": "Torbj÷rn & Brigitte",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1246,
+      "heroes": [
+        "Torbjörn",
+        "Brigitte"
+      ],
+      "sample": [
+        "Yeah, I know the feeling. I'm glad to have you back home, Brigittita.",
+        "have you back home, Brigittita. >> Me, too. I missed you and Mama.",
+        "Me, too. I missed you and Mama. >> Oh, and while you're here, I'm going to"
+      ],
+      "entryName": "Back Home",
+      "entryId": "eee0676c-7269-4942-afb7-6b1b3e30d225",
+      "entryStatus": "active",
+      "score": 29,
+      "preview": "Torbjörn: I'm glad to have you back home, Brigitte! / Brigitte: Me, too! I missed you and Mamma. / Torbjörn: Oh, and, while you're here... I'm going to need your help sorting",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Back Home",
+          "id": "eee0676c-7269-4942-afb7-6b1b3e30d225",
+          "score": 29,
+          "used": true
+        },
+        {
+          "name": "Twice as Many Lindholms",
+          "id": "8a789c55-21df-49ae-b144-f223d06c0b09",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Lidnholm Spark",
+          "id": "57decf39-d2e1-4f4f-a866-4178c1f06b5a",
+          "score": 5,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 100,
+      "chapterIndex": 61,
+      "chapterTime": "21:02",
+      "chapterTitle": "Torbj÷rn & Lifeweaver",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1263.28,
+      "heroes": [
+        "Torbjörn",
+        "Lifeweaver"
+      ],
+      "sample": [
+        "the next briefing. Claudio and Hector send their condolences.",
+        "send their condolences. They know what Jibralta meant to",
+        "They know what Jibralta meant to Overwatch."
+      ],
+      "entryName": "Condolences",
+      "entryId": "60ede0f3-5e90-48d4-baf5-deecac8731f2",
+      "entryStatus": "active",
+      "score": 47.7,
+      "preview": "Lifeweaver: Claudio and Hector send their condolences. They know what Gibralt / Torbjörn: *(sigh)* Well, when they're done feeling sorry, they could help u / Lifeweaver: I'll give them a nudge",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Condolences",
+          "id": "60ede0f3-5e90-48d4-baf5-deecac8731f2",
+          "score": 47.7,
+          "used": true
+        },
+        {
+          "name": "Visiting the Martinses",
+          "id": "4f138171-9f57-443a-b5f8-a185a80a5477",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Favorite Animals",
+          "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
+          "score": -30.25,
+          "used": false
+        }
+      ]
+    },
+    {
+      "n": 101,
+      "chapterIndex": 62,
+      "chapterTime": "21:16",
+      "chapterTitle": "Doomfist & Reaper",
+      "part": 1,
+      "partsInChapter": 1,
+      "batch": "Midseason 5",
+      "start": 1276.4,
+      "heroes": [
+        "Doomfist",
+        "Reaper"
+      ],
+      "sample": [
+        "I'll give them a nudge. >> What are we waiting for? The more time",
+        "What are we waiting for? The more time we waste, the harder it'll be to put",
+        "we waste, the harder it'll be to put Vendetta down."
+      ],
+      "entryName": "Make it Count",
+      "entryId": "c3674b40-e701-4202-af50-a8be82d20589",
+      "entryStatus": "active",
+      "score": 23,
+      "preview": "Reaper: What are we waiting for? The more time we waste, the harder it'll / Doomfist: I will not approach this fight in overconfidence. We will have on",
+      "note": "unique",
+      "alts": [
+        {
+          "name": "Make it Count",
+          "id": "c3674b40-e701-4202-af50-a8be82d20589",
+          "score": 23,
+          "used": true
+        },
+        {
+          "name": "No one Alive",
+          "id": "5f64a6fe-3e1f-40bc-a6b7-760473d5a7aa",
+          "score": 5,
+          "used": false
+        },
+        {
+          "name": "Coming with Us",
+          "id": "33131daf-ebda-4c8b-acdd-df78fe84108d",
+          "score": 4.25,
+          "used": false
+        }
+      ]
+    }
+  ]
+}

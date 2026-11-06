@@ -4,6 +4,7 @@ import { s } from '../../../codex-canvas/core/canvasSession.js';
 import { computeCodexPanForNodeBounds, computeCodexPanForWorldCenter } from './CodexViewFraming.js';
 import { CODEX_ZOOM_FACTOR, CODEX_ZOOM_INITIAL, CODEX_ZOOM_MAX, CODEX_ZOOM_MIN } from '../viewport/CodexCanvasTuning.js';
 import { clearCodexEdgeRedrawSchedule, redrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { syncCodexPacketAnimForViewZoom } from '../../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { scheduleUpdateCodexVirtualScroll, updateCodexVirtualScroll } from '../../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../../codex-canvas/core/canvasConstants.js';
 
@@ -16,6 +17,8 @@ function applyCodexWorldTransformStyle() {
 
 function applyCodexViewTransform() {
     applyCodexWorldTransformStyle();
+    // Pause/resume packet RAF by zoom LOD without waiting for the debounced edge redraw.
+    syncCodexPacketAnimForViewZoom();
     // Skip edge redraws during virtual scroll to prevent freeze (same as pan)
     s.codexSkipAllEdgeRedraws = true;
     s.codexSkipEdgeRedraw = true; // Also skip the internal redraw from updateCodexVirtualScroll

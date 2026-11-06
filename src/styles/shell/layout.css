@@ -815,10 +815,10 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     }
 }
 
-/* Layout Container */
+/* Layout Container — side panels overlay inside this positioned box; main fills the row. */
 .layout-container {
     display: flex;
-    flex-direction: row; /* Horizontal layout for event-slide + main content */
+    flex-direction: row;
     flex: 1;
     overflow: hidden;
     position: relative;
@@ -829,9 +829,11 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     gap: 0;
 }
 
-/* Main Content */
+/* Main Content — full width of the layout band (INFO / Filters overlay on top; dock still shrinks height). */
 main {
-    flex: 1;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
     padding: 0;
     overflow: hidden;
     background: var(--bg-main);

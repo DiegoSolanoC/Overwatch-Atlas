@@ -8,6 +8,7 @@ import {
     formatMergeRowPositionNote,
     isStorySourcesField,
     isStoryStringListField,
+    normalizeStoryCommentaryValue,
     normalizeStorySourcesValue,
     resolveFieldEdit,
     resolveFieldSide,
@@ -23,6 +24,15 @@ import {
     STORY_SECONDARY_PLACES_EDITOR_OPTS,
     normalizeCollectedPlaces,
 } from '../../../interface-shared/storyEventFilterPlaces.js';
+import {
+    collectCommentaryFromEditor,
+    looksLikeChatterCommentaryName,
+    normalizeCommentaryEntries,
+} from '../../../interface-shared/storyEventCommentary.js';
+import {
+    syncCommentaryChatterLabelVisibility,
+    wireCommentaryRowsIn,
+} from '../../../interface-shared/storyEventCommentaryAutocomplete.js';
 import { renderMergeEventPreviewCard } from './renderMergeEventPreviewCard.js';
 
 /**
@@ -258,6 +268,72 @@ function readSourcesFromEditor(container) {
 }
 
 /**
+ * Match event-slide inline commentary row markup.
+ * @param {unknown} entry
+ * @returns {string}
+ */
+function renderCommentaryRowHtml(entry) {
+    const parsed = normalizeCommentaryEntries([entry])[0] || { name: '' };
+    const name = escapeHtml(String(parsed.name || ''));
+    const label = escapeHtml(String(parsed.label || ''));
+    const theaterId = escapeHtml(String(parsed.theaterId || ''));
+    const lineId = escapeHtml(String(parsed.lineId || ''));
+    const isChatter = looksLikeChatterCommentaryName(parsed.name);
+    return `
+        <div class="event-slide-inline-editor__source-row event-slide-inline-editor__commentary-row${isChatter ? ' event-slide-inline-editor__commentary-row--chatter' : ''}">
+            <div class="event-slide-inline-editor__commentary-fields">
+                <input
+                    class="event-slide-inline-editor__input"
+                    type="text"
+                    data-role="commentary-name"
+                    placeholder="Dialogue or Hero Chatter line"
+                    value="${name}"
+                    spellcheck="true"
+                    autocomplete="off"
+                    ${theaterId ? `data-theater-id="${theaterId}"` : ''}
+                    ${lineId ? `data-line-id="${lineId}"` : ''}
+                />
+                <input
+                    class="event-slide-inline-editor__input event-slide-inline-editor__commentary-label"
+                    type="text"
+                    data-role="commentary-label"
+                    placeholder="Simplified label (chatter)"
+                    value="${label}"
+                    spellcheck="true"
+                    autocomplete="off"
+                    title="Short display name for this Hero Chatter on the story slide"
+                    ${isChatter ? '' : 'hidden'}
+                />
+            </div>
+            <button type="button" class="event-slide-inline-editor__small-btn" data-role="commentary-remove" title="Remove commentary">−</button>
+        </div>
+    `;
+}
+
+/**
+ * @param {import('./mergeStoryEvents.js').MergeRow} row
+ * @param {string} field
+ * @param {'base'|'incoming'} side
+ * @returns {string}
+ */
+function renderCommentaryEditor(row, field, side) {
+    const value = fieldSideValue(row, field, side);
+    const entries = normalizeCommentaryEntries(value);
+    const rows = entries.length > 0 ? entries : [{ name: '' }];
+    return `
+        <div class="event-slide-inline-editor__row" data-field-edit-commentary="${escapeHtml(field)}" data-field-side="${side}">
+            <div class="event-slide-inline-editor__label">${escapeHtml(mergeFieldLabel(field))}</div>
+            <div class="event-slide-inline-editor__sources" data-role="commentary-list">
+                ${rows.map((entry) => renderCommentaryRowHtml(entry)).join('')}
+            </div>
+            <div class="event-slide-inline-editor__actions">
+                <button type="button" class="event-slide-inline-editor__small-btn" data-role="commentary-add">+ Commentary</button>
+            </div>
+        </div>
+    `;
+}
+
+/**
  * @param {string} field
  * @param {unknown} value
  * @param {'base'|'incoming'} side
@@ -396,6 +472,8 @@ function renderEditableFieldSide(row, index, field, side, radioName) {
     let editorHtml;
     if (isStorySourcesField(field, originalValue) || field === 'sources') {
         editorHtml = renderSourcesEditor(row, field, side);
+    } else if (field === 'commentary') {
+        editorHtml = renderCommentaryEditor(row, field, side);
     } else if (isGroupedPlacesField(field)) {
         editorHtml = renderPlacesEditorShell(field, side, index);
     } else if (field === 'locationType') {
@@ -876,10 +954,14 @@ export function openStoryEventsMergeModal(plan) {
 
                 const normalizedNext = isGroupedPlacesField(field)
                     ? normalizeCollectedPlaces(nextValue)
-                    : nextValue;
+                    : field === 'commentary'
+                        ? normalizeStoryCommentaryValue(nextValue)
+                        : nextValue;
                 const normalizedOriginal = isGroupedPlacesField(field)
                     ? normalizeCollectedPlaces(original)
-                    : original;
+                    : field === 'commentary'
+                        ? normalizeStoryCommentaryValue(original)
+                        : original;
 
                 if (!targetRow.fieldEdits) targetRow.fieldEdits = {};
                 const fieldBucket = targetRow.fieldEdits[field] || {};
@@ -974,7 +1056,7 @@ export function openStoryEventsMergeModal(plan) {
                 seg.addEventListener('click', (event) => {
                     const target = event.target;
                     if (!(target instanceof Element)) return;
-                    if (target.closest('[data-field-reset], [data-role="source-remove"], [data-role="source-add"], [data-role="source-link-add"], [data-role="source-link-remove"], [data-role="places-add"], .event-slide-loc-type-btn, .event-slide-inline-editor__relevant-loc-row button')) {
+                    if (target.closest('[data-field-reset], [data-role="source-remove"], [data-role="source-add"], [data-role="source-link-add"], [data-role="source-link-remove"], [data-role="commentary-remove"], [data-role="commentary-add"], [data-role="places-add"], .event-slide-loc-type-btn, .event-slide-inline-editor__relevant-loc-row button')) {
                         return;
                     }
                     selectPanelSide(seg);
@@ -1090,6 +1172,90 @@ export function openStoryEventsMergeModal(plan) {
                             });
                         }
                         commitSourcesEdit(sourcesRoot);
+                    }
+                });
+            });
+
+            /**
+             * @param {HTMLElement} commentaryRoot
+             */
+            const commitCommentaryEdit = (commentaryRoot) => {
+                const targetRow = workingRows[rowIndexOf(commentaryRoot)];
+                if (!targetRow) return;
+                const field = commentaryRoot.getAttribute('data-field-edit-commentary');
+                const sideAttr = commentaryRoot.getAttribute('data-field-side');
+                if (!field || (sideAttr !== 'base' && sideAttr !== 'incoming')) return;
+                const list = commentaryRoot.querySelector('[data-role="commentary-list"]') || commentaryRoot;
+                storeFieldEdit(
+                    targetRow,
+                    field,
+                    sideAttr,
+                    normalizeStoryCommentaryValue(collectCommentaryFromEditor(list)),
+                );
+            };
+
+            bodyEl.querySelectorAll('[data-field-edit-commentary]').forEach((commentaryRoot) => {
+                if (!(commentaryRoot instanceof HTMLElement)) return;
+
+                wireCommentaryRowsIn(commentaryRoot);
+
+                commentaryRoot.addEventListener('input', (event) => {
+                    const target = event.target;
+                    if (target instanceof HTMLInputElement && target.dataset.role === 'commentary-name') {
+                        syncCommentaryChatterLabelVisibility(target);
+                    }
+                    commitCommentaryEdit(commentaryRoot);
+                });
+                commentaryRoot.addEventListener('change', () => commitCommentaryEdit(commentaryRoot));
+                commentaryRoot.addEventListener('focusin', () => {
+                    const seg = commentaryRoot.closest('.story-events-merge-seg');
+                    if (seg instanceof HTMLElement) selectPanelSide(seg);
+                });
+
+                commentaryRoot.addEventListener('click', (event) => {
+                    const target = event.target;
+                    if (!(target instanceof Element)) return;
+                    const list = commentaryRoot.querySelector('[data-role="commentary-list"]') || commentaryRoot;
+
+                    const addBtn = target.closest('[data-role="commentary-add"]');
+                    if (addBtn && commentaryRoot.contains(addBtn)) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        const empty = document.createElement('div');
+                        empty.innerHTML = renderCommentaryRowHtml({ name: '' });
+                        const row = empty.firstElementChild;
+                        if (row) list.appendChild(row);
+                        wireCommentaryRowsIn(commentaryRoot);
+                        commitCommentaryEdit(commentaryRoot);
+                        if (row instanceof HTMLElement) {
+                            row.querySelector('[data-role="commentary-name"]')?.focus();
+                        }
+                        return;
+                    }
+
+                    const removeBtn = target.closest('[data-role="commentary-remove"]');
+                    if (removeBtn && commentaryRoot.contains(removeBtn)) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        const row = removeBtn.closest('.event-slide-inline-editor__commentary-row');
+                        const rows = commentaryRoot.querySelectorAll('.event-slide-inline-editor__commentary-row');
+                        if (row && rows.length > 1) {
+                            row.remove();
+                        } else if (row) {
+                            const nameInput = row.querySelector('[data-role="commentary-name"]');
+                            const labelInput = row.querySelector('[data-role="commentary-label"]');
+                            if (nameInput instanceof HTMLInputElement) {
+                                nameInput.value = '';
+                                delete nameInput.dataset.theaterId;
+                                delete nameInput.dataset.lineId;
+                            }
+                            if (labelInput instanceof HTMLInputElement) {
+                                labelInput.value = '';
+                                labelInput.hidden = true;
+                            }
+                            row.classList.remove('event-slide-inline-editor__commentary-row--chatter');
+                        }
+                        commitCommentaryEdit(commentaryRoot);
                     }
                 });
             });
