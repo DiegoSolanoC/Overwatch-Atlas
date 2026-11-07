@@ -11,7 +11,8 @@
  * via `createFilterImageElement`.
  */
 
-import { buildFilterImagePath, generateCacheBuster } from './filterImagePaths.js';
+import { buildFilterImagePath } from './filterImagePaths.js';
+import { resolveOptimizedAssetUrl } from '../../../universal-features/atlas-assets/imageAssetMap.js';
 
 const BATCH_SIZE = 5;
 const DELAY_BETWEEN_BATCHES_MS = 100;
@@ -24,10 +25,10 @@ export function preloadFilterImages(items, type, folder) {
             batch.forEach(item => {
                 const imagePath = buildFilterImagePath(item, type, folder);
                 const img = new Image();
-                img.src = `${imagePath}?v=${generateCacheBuster()}`;
+                img.src = resolveOptimizedAssetUrl(imagePath);
                 img.onerror = function () {
                     setTimeout(() => {
-                        this.src = `${imagePath}?v=${generateCacheBuster()}`;
+                        this.src = resolveOptimizedAssetUrl(imagePath, { preferWebp: false });
                     }, RETRY_DELAY_MS);
                 };
             });

@@ -60,7 +60,7 @@ function formatGalleryScaleForInput(scale) {
     return String(Math.round(n * 1000) / 1000);
 }
 
-const ZOOM_MIN = 0.12;
+const ZOOM_MIN = 0.02;
 const ZOOM_MAX = 2.5;
 const ZOOM_FACTOR = 1.12;
 
@@ -98,6 +98,8 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     let model = {
         nodes: [],
         edges: [],
+        worldW: GALLERY_CONN_CANVAS_WORLD_W,
+        worldH: GALLERY_CONN_CANVAS_WORLD_H,
         view: null,
         display: { ...GALLERY_CONN_DEFAULT_DISPLAY },
     };
@@ -109,6 +111,35 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     let viewPanX = 0;
     let viewPanY = 0;
     let viewZoom = 0.4;
+    /** @type {string} */
+    let loadedEntryKey = '';
+    /** @type {number} */
+    let renderGeneration = 0;
+    /** When false, deferred packet starts from a warm/prewarm load are suppressed. */
+    let packetsArmed = true;
+
+    function worldW() {
+        return Math.max(
+            GALLERY_CONN_CANVAS_WORLD_W,
+            Number(model.worldW) || GALLERY_CONN_CANVAS_WORLD_W,
+        );
+    }
+    function worldH() {
+        return Math.max(
+            GALLERY_CONN_CANVAS_WORLD_H,
+            Number(model.worldH) || GALLERY_CONN_CANVAS_WORLD_H,
+        );
+    }
+    function applyWorldSizeToDom() {
+        const w = worldW();
+        const h = worldH();
+        world.style.width = `${w}px`;
+        world.style.height = `${h}px`;
+        edgesSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        gallerySvgFiltersReady = false;
+        const oldDefs = edgesSvg.querySelector('defs');
+        if (oldDefs) oldDefs.remove();
+    }
 
     const root = document.createElement('div');
     root.className = 'gallery-conn-canvas';
@@ -246,17 +277,16 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
 
     const world = document.createElement('div');
     world.className = 'gallery-conn-canvas__world';
-    world.style.width = `${GALLERY_CONN_CANVAS_WORLD_W}px`;
-    world.style.height = `${GALLERY_CONN_CANVAS_WORLD_H}px`;
-
     hint.textContent = canEdit
         ? 'Drag to pan · click a cord then Add break · right-click a break twice to delete'
         : 'Drag background to pan · wheel to zoom';
 
     const edgesSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     edgesSvg.setAttribute('class', 'gallery-conn-canvas__edges');
-    edgesSvg.setAttribute('viewBox', `0 0 ${GALLERY_CONN_CANVAS_WORLD_W} ${GALLERY_CONN_CANVAS_WORLD_H}`);
     edgesSvg.setAttribute('aria-hidden', 'true');
+    world.style.width = `${worldW()}px`;
+    world.style.height = `${worldH()}px`;
+    edgesSvg.setAttribute('viewBox', `0 0 ${worldW()} ${worldH()}`);
 
     const edgesHitG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     edgesHitG.setAttribute('class', 'gallery-conn-canvas__edges-hit');
@@ -364,8 +394,8 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         if (gallerySvgFiltersReady) return;
         const ns = 'http://www.w3.org/2000/svg';
         const defs = document.createElementNS(ns, 'defs');
-        const vw = GALLERY_CONN_CANVAS_WORLD_W;
-        const vh = GALLERY_CONN_CANVAS_WORLD_H;
+        const vw = worldW();
+        const vh = worldH();
         const prefs = CODEX_VISUAL_DEFAULTS;
         appendEdgeGlowFilter(defs, GALLERY_CORD_GLOW_FILTER_ID, 'galleryConnCordBlur', {
             stdDeviation: prefs.cordBlur,
@@ -394,8 +424,8 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         appendCodexEdgeNodeMask(
             defs,
             ns,
-            GALLERY_CONN_CANVAS_WORLD_W,
-            GALLERY_CONN_CANVAS_WORLD_H,
+            worldW(),
+            worldH(),
             null,
             {
                 getRoot: () => world,
@@ -452,11 +482,14 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     function fitViewToViewport() {
         const vpW = viewport.clientWidth || 280;
         const vpH = viewport.clientHeight || 240;
-        viewZoom = clampZoom(Math.min(vpW / GALLERY_CONN_CANVAS_WORLD_W, vpH / GALLERY_CONN_CANVAS_WORLD_H) * 0.9);
-        const scaledW = GALLERY_CONN_CANVAS_WORLD_W * viewZoom;
-        const scaledH = GALLERY_CONN_CANVAS_WORLD_H * viewZoom;
-        viewPanX = (vpW - scaledW) / 2;
-        viewPanY = (vpH - scaledH) / 2;
+        const bounds = model.contentBounds;
+        const fitW = bounds && Number.isFinite(bounds.width) ? Math.max(400, bounds.width) : worldW();
+        const fitH = bounds && Number.isFinite(bounds.height) ? Math.max(300, bounds.height) : worldH();
+        const minX = bounds && Number.isFinite(bounds.minX) ? bounds.minX : 0;
+        const minY = bounds && Number.isFinite(bounds.minY) ? bounds.minY : 0;
+        viewZoom = clampZoom(Math.min(vpW / fitW, vpH / fitH) * 0.9);
+        viewPanX = (vpW - fitW * viewZoom) / 2 - minX * viewZoom;
+        viewPanY = (vpH - fitH * viewZoom) / 2 - minY * viewZoom;
         applyViewTransform();
     }
 
@@ -575,7 +608,10 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         if (selectedCord) restoreSelectedCordHighlight();
     }
 
-    function redrawCanvasVisual() {
+    /**
+     * @param {{ skipPackets?: boolean }} [opts]
+     */
+    function redrawCanvasVisual(opts = {}) {
         ensureGallerySvgFilters();
         rebuildGalleryEdgeNodeMask();
         hoverController?.clearHover();
@@ -622,7 +658,9 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             appendGalleryJunctionElbows(edgesElbowsG, model.edges, nodeEls, cordFilterUrl);
         }
 
-        packetAnimator.syncPacketState(model.edges);
+        if (!opts.skipPackets) {
+            packetAnimator.syncPacketState(model.edges);
+        }
         restoreSelectedCordHighlight();
     }
 
@@ -788,8 +826,8 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
 
             const node = model.nodes.find((n) => n.id === nodeId);
             if (!node) return;
-            node.x = Math.max(0, Math.min(GALLERY_CONN_CANVAS_WORLD_W - 40, dragState.origX + dx));
-            node.y = Math.max(0, Math.min(GALLERY_CONN_CANVAS_WORLD_H - 40, dragState.origY + dy));
+            node.x = Math.max(0, Math.min(worldW() - 40, dragState.origX + dx));
+            node.y = Math.max(0, Math.min(worldH() - 40, dragState.origY + dy));
             el.style.left = `${node.x}px`;
             el.style.top = `${node.y}px`;
             redrawCanvasVisual();
@@ -806,8 +844,8 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
                         model.edges,
                         nodeEls,
                         model.nodes,
-                        GALLERY_CONN_CANVAS_WORLD_W,
-                        GALLERY_CONN_CANVAS_WORLD_H,
+                        worldW(),
+                        worldH(),
                     );
                     const n = model.nodes.find((rec) => rec.id === nodeId);
                     const nel = nodeEls.get(nodeId);
@@ -840,20 +878,51 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         });
     }
 
-    function renderNodes() {
+    /**
+     * Mount nodes in chunks so large Codex-seeded boards don't freeze the Gallery
+     * when switching List → Canvas (same idea as Codex deferred paint).
+     * @param {{ deferPackets?: boolean }} [opts]
+     * @returns {Promise<void>}
+     */
+    async function renderNodes(opts = {}) {
+        const gen = ++renderGeneration;
         nodeEls.forEach((el) => el.remove());
         nodeEls.clear();
+        packetAnimator.stop();
 
-        for (let i = 0; i < model.nodes.length; i += 1) {
-            const node = model.nodes[i];
-            enrichGalleryCanvasNodeEntity(node, codexNodes);
-            const el = createNodeElement(node);
-            world.appendChild(el);
-            nodeEls.set(node.id, el);
-            bindNodeInteraction(el, node.id);
+        const nodes = model.nodes || [];
+        const chunkSize = nodes.length > 80 ? 24 : nodes.length > 40 ? 36 : 64;
+        for (let i = 0; i < nodes.length; i += chunkSize) {
+            if (gen !== renderGeneration) return;
+            const slice = nodes.slice(i, i + chunkSize);
+            for (let j = 0; j < slice.length; j += 1) {
+                const node = slice[j];
+                enrichGalleryCanvasNodeEntity(node, codexNodes);
+                const el = createNodeElement(node);
+                world.appendChild(el);
+                nodeEls.set(node.id, el);
+                bindNodeInteraction(el, node.id);
+            }
+            if (i + chunkSize < nodes.length) {
+                await new Promise((r) => requestAnimationFrame(r));
+            }
         }
+        if (gen !== renderGeneration) return;
         syncBreaksDisplay();
-        redrawCanvasVisual();
+        redrawCanvasVisual({ skipPackets: opts.deferPackets === true || opts.startPackets === false });
+        if (opts.startPackets === false) {
+            packetAnimator.stop();
+            return;
+        }
+        if (opts.deferPackets) {
+            requestAnimationFrame(() => {
+                if (gen !== renderGeneration || !packetsArmed) return;
+                packetAnimator.start();
+                packetAnimator.syncPacketState(model.edges);
+            });
+        } else {
+            packetAnimator.start();
+        }
     }
 
     function nudgeSelectedNodeScale(factor) {
@@ -900,8 +969,8 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         const dim = CODEX_JUNCTION_BASE_PX * scale;
         const mx = (cA.x + cB.x) / 2;
         const my = (cA.y + cB.y) / 2;
-        const jx = Math.max(0, Math.min(GALLERY_CONN_CANVAS_WORLD_W - dim, mx - dim / 2));
-        const jy = Math.max(0, Math.min(GALLERY_CONN_CANVAS_WORLD_H - dim, my - dim / 2));
+        const jx = Math.max(0, Math.min(worldW() - dim, mx - dim / 2));
+        const jy = Math.max(0, Math.min(worldH() - dim, my - dim / 2));
         const jId = genJunctionId();
 
         model.nodes.push({
@@ -1191,7 +1260,50 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
          * @param {string} filterKey
          * @param {object|null|undefined} savedCanvas
          */
-        async load(entry, category, displayName, filterKey, savedCanvas) {
+        /**
+         * Stable key for “same entry already painted” short-circuit when toggling List/Canvas.
+         * @param {object|null|undefined} entry
+         * @param {string} category
+         * @param {string} filterKey
+         */
+        entryKey(entry, category, filterKey) {
+            const id = String(
+                entry?.filterKey
+                || filterKey
+                || entry?.name
+                || entry?.heroName
+                || entry?.npcName
+                || '',
+            ).trim();
+            const canvasStamp = entry?.connectionCanvas
+                ? JSON.stringify(entry.connectionCanvas?.view || null)
+                    + String(Array.isArray(entry.connectionCanvas?.nodes)
+                        ? entry.connectionCanvas.nodes.length
+                        : 0)
+                : 'none';
+            const connStamp = Array.isArray(entry?.connections) ? entry.connections.length : 0;
+            return `${category}|${id}|c${connStamp}|${canvasStamp}`;
+        },
+
+        /**
+         * @param {object|null|undefined} entry
+         * @param {string} category
+         * @param {string} displayName
+         * @param {string} filterKey
+         * @param {object|null|undefined} savedCanvas
+         * @param {{ prewarm?: boolean }} [opts]
+         */
+        async load(entry, category, displayName, filterKey, savedCanvas, opts = {}) {
+            const nextKey = this.entryKey(entry, category, filterKey);
+            const prewarm = opts.prewarm === true;
+            if (nextKey && nextKey === loadedEntryKey && nodeEls.size > 0) {
+                // Same board already mounted — List↔Canvas toggle should not rebuild.
+                if (prewarm) this.pauseView();
+                else this.resumeView();
+                return;
+            }
+
+            packetsArmed = !prewarm;
             codexNodes = await loadCodexNodesForGalleryStyle();
             let codexGraph = null;
             try {
@@ -1217,15 +1329,53 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             if (!model.display) {
                 model.display = { ...GALLERY_CONN_DEFAULT_DISPLAY };
             }
+            applyWorldSizeToDom();
             syncDisplayControls();
             syncBreaksDisplay();
             clearDirty();
             setSelection([]);
-            renderNodes();
-            packetAnimator.start();
+            await renderNodes({
+                deferPackets: !prewarm,
+                startPackets: !prewarm,
+            });
+            loadedEntryKey = nextKey;
             requestAnimationFrame(() => {
                 restoreOrFitView(model.view);
             });
+        },
+
+        /**
+         * Show an already-built board without rebuilding (view-mode style).
+         * Restores the parked camera when present; otherwise fits once the pane is visible.
+         */
+        resumeView() {
+            packetsArmed = true;
+            packetAnimator.start();
+            packetAnimator.syncPacketState(model.edges);
+            requestAnimationFrame(() => {
+                const parked = model.view;
+                if (
+                    parked
+                    && Number.isFinite(Number(parked.zoom))
+                    && Number(parked.zoom) > 0
+                ) {
+                    restoreOrFitView(parked);
+                    return;
+                }
+                // Warm pane may have painted at a stale size — fit now that it's active.
+                this.refitView();
+            });
+        },
+
+        /** Pause animations while List is showing the warm (invisible) board. */
+        pauseView() {
+            packetsArmed = false;
+            packetAnimator.stop();
+        },
+
+        isLoadedFor(entry, category, filterKey) {
+            const key = this.entryKey(entry, category, filterKey);
+            return Boolean(key && key === loadedEntryKey && nodeEls.size > 0);
         },
 
         refitView() {
@@ -1234,7 +1384,9 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         },
 
         destroy() {
+            renderGeneration += 1;
             packetAnimator.stop();
+            loadedEntryKey = '';
             mountEl.replaceChildren();
             nodeEls.clear();
             dragState = null;

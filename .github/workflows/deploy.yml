@@ -38,8 +38,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: npm
 
-      - name: Build static site (manifest + _site/)
+      - name: Install dependencies (sharp for Pages image optimize)
+        run: npm install --no-fund --no-audit
+
+      - name: Build static site (manifest + _site/ + optimized images)
         run: npm run build:pages
 
       - name: Setup Pages

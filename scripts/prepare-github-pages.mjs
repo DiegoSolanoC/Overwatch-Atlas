@@ -249,6 +249,9 @@ function validateStaticSite() {
         errors.push('Missing _site/src/data/platform/manifest.json (run generate-manifest first)');
     }
 
+    // image-asset-map.json is written by optimize-pages-images.mjs after this
+    // script; validate only that the platform data folder exists here.
+
     if (fs.existsSync(path.join(OUT, 'src', 'server.js'))) {
         errors.push('Dev server file should not be published: _site/src/server.js');
     }

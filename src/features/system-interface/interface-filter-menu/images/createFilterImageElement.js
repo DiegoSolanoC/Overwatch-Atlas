@@ -11,51 +11,74 @@
 
 import { FILTER_IMAGE_PATHS, generateCacheBuster } from './filterImagePaths.js';
 import { buildFactionFilterImagePath } from './factionImagePaths.js';
+import {
+    getImageAssetVersion,
+    resolveOptimizedAssetUrl,
+} from '../../../universal-features/atlas-assets/imageAssetMap.js';
+
+function versionForPath(imagePath) {
+    return getImageAssetVersion(imagePath) || generateCacheBuster();
+}
+
+function withAssetVersion(imagePath) {
+    const optimized = resolveOptimizedAssetUrl(imagePath);
+    if (optimized && optimized !== imagePath && optimized.includes('?v=')) return optimized;
+    return `${imagePath}?v=${versionForPath(imagePath)}`;
+}
 
 const RETRY_DELAY_SHORT_MS = 300;
 
-function buildRetryUrl(type, filterKey, folder, cacheBuster) {
+function buildRetryUrl(type, filterKey, folder) {
     if (type === 'music') {
         const iconName = filterKey.replace(/\.(mp3|wav|ogg)$/i, '');
-        return `${FILTER_IMAGE_PATHS.MUSIC}/${encodeURIComponent(iconName)}.png?v=${cacheBuster}`;
+        return withAssetVersion(
+            `${FILTER_IMAGE_PATHS.MUSIC}/${encodeURIComponent(iconName)}.png`,
+        );
     }
     if (type === 'countries') {
         const raw = String(filterKey || '').startsWith('country:')
             ? String(filterKey).slice('country:'.length).trim()
             : String(filterKey || '').trim();
         const segs = raw.split('/').map(s => encodeURIComponent(s));
-        return `${folder}/${segs.join('/')}?v=${cacheBuster}`;
+        return withAssetVersion(`${folder}/${segs.join('/')}`);
     }
     if (type === 'factions') {
         const pathItem = { filename: filterKey };
-        return `${buildFactionFilterImagePath(pathItem, folder)}?v=${cacheBuster}`;
+        return withAssetVersion(buildFactionFilterImagePath(pathItem, folder));
     }
-    /* heroes / npcs */
-    return `${folder}/${encodeURIComponent(filterKey)}.png?v=${cacheBuster}`;
+    /* heroes / npcs — force PNG fallback (no webp) after a failed webp attempt */
+    return resolveOptimizedAssetUrl(
+        `${folder}/${encodeURIComponent(filterKey)}.png`,
+        { preferWebp: false },
+    );
 }
 
-function buildAltEncodedUrl(type, filterKey, folder, cacheBuster) {
+function buildAltEncodedUrl(type, filterKey, folder) {
     if (type === 'music') {
         const iconName = filterKey.replace(/\.(mp3|wav|ogg)$/i, '');
-        return `${FILTER_IMAGE_PATHS.MUSIC}/${iconName.replace(/\s+/g, '%20')}.png?v=${cacheBuster}`;
+        return withAssetVersion(
+            `${FILTER_IMAGE_PATHS.MUSIC}/${iconName.replace(/\s+/g, '%20')}.png`,
+        );
     }
     if (type === 'countries') {
         const raw = String(filterKey || '').startsWith('country:')
             ? String(filterKey).slice('country:'.length).trim()
             : String(filterKey || '').trim();
         const segs = raw.split('/').map(s => encodeURIComponent(s.replace(/\s+/g, '%20')));
-        return `${folder}/${segs.join('/')}?v=${cacheBuster}`;
+        return withAssetVersion(`${folder}/${segs.join('/')}`);
     }
     if (type === 'factions') {
         const pathItem = { filename: filterKey };
-        const base = buildFactionFilterImagePath(pathItem, folder);
-        return `${base.replace(/%20/g, '%20')}?v=${cacheBuster}`;
+        return withAssetVersion(buildFactionFilterImagePath(pathItem, folder));
     }
-    return `${folder}/${filterKey.replace(/\s+/g, '%20')}.png?v=${cacheBuster}`;
+    return resolveOptimizedAssetUrl(
+        `${folder}/${filterKey.replace(/\s+/g, '%20')}.png`,
+        { preferWebp: false },
+    );
 }
 
 function onFinalImageLoadFailure(img, type, filterKey, folder) {
-    const altUrl = buildAltEncodedUrl(type, filterKey, folder, generateCacheBuster());
+    const altUrl = buildAltEncodedUrl(type, filterKey, folder);
     if (img.src !== altUrl) {
         img.src = altUrl;
         return;
@@ -71,7 +94,7 @@ function onFinalImageLoadFailure(img, type, filterKey, folder) {
 function attachErrorRetry(img, type, filterKey, folder) {
     img.onerror = () => {
         setTimeout(() => {
-            img.src = buildRetryUrl(type, filterKey, folder, generateCacheBuster());
+            img.src = buildRetryUrl(type, filterKey, folder);
         }, RETRY_DELAY_SHORT_MS);
 
         img.addEventListener('error', () => {
@@ -82,7 +105,7 @@ function attachErrorRetry(img, type, filterKey, folder) {
 
 export function createFilterImageElement(imagePath, type, filterKey, folder) {
     const img = new Image();
-    img.src = `${imagePath}?v=${generateCacheBuster()}`;
+    img.src = withAssetVersion(imagePath);
     img.alt = filterKey;
     attachErrorRetry(img, type, filterKey, folder);
     return img;

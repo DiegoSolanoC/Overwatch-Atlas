@@ -356,7 +356,10 @@ export function isDialogueEligibleForCommentary(conversation) {
     if (isChatterEntry(conversation)) return false;
     const status = String(conversation.status || 'active');
     if (status !== 'removed') return true;
-    return isClassicTaggedConversation(conversation);
+    // Classic OW1 archives stay linkable; other removed dialogues also stay
+    // searchable by name so commentary can target lore entries like "Deals with Talon".
+    if (isClassicTaggedConversation(conversation)) return true;
+    return Boolean(String(conversation.name || '').trim());
 }
 
 /**
@@ -514,6 +517,7 @@ export function resolveStoryCommentaryTheaterTarget(nameOrEntry, conversations) 
     }
 
     // 2b) Soft dialogue name (typos like "Ilegal Activities" → "Illegal Activities").
+    // Keep this strict: "Deals with Talon" must never collapse to "Done with Talon".
     if (!isChatterCommentaryTheaterName(name)) {
         /** @type {{ score: number, row: any }[]} */
         const dialogueHits = [];
@@ -528,13 +532,24 @@ export function resolveStoryCommentaryTheaterTarget(nameOrEntry, conversations) 
             const dist = levenshteinDistance(needle, rowNeedle);
             const maxLen = Math.max(needle.length, rowNeedle.length);
             if (maxLen < 8 || dist > 2) continue;
+            // Shared prefix must be meaningful so first-word swaps (deals↔done) never pass.
+            let sharedPrefix = 0;
+            while (
+                sharedPrefix < needle.length
+                && sharedPrefix < rowNeedle.length
+                && needle[sharedPrefix] === rowNeedle[sharedPrefix]
+            ) {
+                sharedPrefix += 1;
+            }
+            const minPrefix = Math.min(4, Math.max(3, Math.floor(maxLen * 0.35)));
+            if (dist > 0 && sharedPrefix < minPrefix) continue;
             const score = 1 - dist / maxLen;
-            if (score >= 0.85) dialogueHits.push({ score, row });
+            if (score >= 0.9) dialogueHits.push({ score, row });
         }
         dialogueHits.sort((a, b) => b.score - a.score);
         if (
             dialogueHits.length === 1
-            || (dialogueHits[0] && dialogueHits[0].score - (dialogueHits[1]?.score || 0) >= 0.05)
+            || (dialogueHits[0] && dialogueHits[0].score - (dialogueHits[1]?.score || 0) >= 0.08)
         ) {
             return { kind: 'dialogue', conversation: dialogueHits[0].row, line: null };
         }

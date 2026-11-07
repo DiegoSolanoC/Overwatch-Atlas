@@ -2,6 +2,8 @@
  * Black slot + `loading asset.gif` while `<img>` previews load (main menu, hubs, dock thumbs).
  */
 
+import { resolveOptimizedAssetUrl } from '../atlas-assets/imageAssetMap.js';
+
 const LOADING_CLASS = {
     menu: 'main-menu-image-container--loading',
     hub: 'story-archive-category-hub__figure--loading',
@@ -69,7 +71,8 @@ export function endLoadingAssetSlot(slot, img) {
 export function setLoadingAssetImageSrc(img, src, options = {}) {
     if (!(img instanceof HTMLImageElement)) return;
     const slot = resolveLoadingAssetSlot(img, options.wrap);
-    const url = src != null ? String(src).trim() : '';
+    const raw = src != null ? String(src).trim() : '';
+    const url = raw ? resolveOptimizedAssetUrl(raw) : '';
 
     if (!url) {
         if (slot && slotKind(slot) === 'dock') {

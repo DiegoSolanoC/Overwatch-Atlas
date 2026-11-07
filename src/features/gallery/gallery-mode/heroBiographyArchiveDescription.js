@@ -104,6 +104,9 @@ let connectionsEmptyEl = null;
 let connectionsListWrapEl = null;
 
 /** @type {HTMLElement | null} */
+let connectionsPanesEl = null;
+
+/** @type {HTMLElement | null} */
 let connectionsCanvasMountEl = null;
 
 /** @type {HTMLElement | null} */
@@ -227,16 +230,30 @@ async function resolveViewEntryForConnections(entry) {
 }
 
 /**
+ * Sync List/Canvas pane visibility. Canvas stays layout-warm while inactive
+ * (absolute + invisible) so List→Canvas does not rebuild from a zero-size mount.
+ * @param {'list' | 'canvas'} mode
+ */
+function applyConnectionsPaneVisibility(mode) {
+    const canvasActive = mode === 'canvas';
+    if (connectionsListWrapEl) {
+        connectionsListWrapEl.hidden = canvasActive;
+        connectionsListWrapEl.classList.toggle('is-active-pane', !canvasActive);
+    }
+    if (connectionsCanvasMountEl) {
+        connectionsCanvasMountEl.hidden = false;
+        connectionsCanvasMountEl.classList.toggle('is-active-pane', canvasActive);
+        connectionsCanvasMountEl.classList.toggle('is-warm-pane', !canvasActive);
+        connectionsCanvasMountEl.setAttribute('aria-hidden', canvasActive ? 'false' : 'true');
+    }
+}
+
+/**
  * @param {'list' | 'canvas'} mode
  */
 function setConnectionsViewMode(mode) {
     connectionsViewMode = mode === 'canvas' ? 'canvas' : 'list';
-    if (connectionsListWrapEl) {
-        connectionsListWrapEl.hidden = connectionsViewMode !== 'list';
-    }
-    if (connectionsCanvasMountEl) {
-        connectionsCanvasMountEl.hidden = connectionsViewMode !== 'canvas';
-    }
+    applyConnectionsPaneVisibility(connectionsViewMode);
     if (connectionsViewToggleEl) {
         connectionsViewToggleEl.querySelectorAll('[data-conn-view]').forEach((btn) => {
             const isActive = btn.getAttribute('data-conn-view') === connectionsViewMode;
@@ -245,28 +262,36 @@ function setConnectionsViewMode(mode) {
         });
     }
     if (connectionsViewMode === 'canvas') {
+        const already =
+            connectionsCanvasController?.isLoadedFor?.(
+                currentViewEntry ?? currentEntry,
+                currentCategory,
+                currentFilterKey || '',
+            );
+        if (already) {
+            connectionsCanvasController.resumeView();
+            requestAnimationFrame(() => {
+                connectionsCanvasMountEl?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            });
+            applyConnectionsEmptyState(currentViewEntry ?? currentEntry);
+            return;
+        }
         void refreshConnectionsCanvas().then(() => {
             requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    connectionsCanvasController?.refitView?.();
-                    connectionsCanvasMountEl?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-                });
+                connectionsCanvasMountEl?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             });
         });
     } else {
+        connectionsCanvasController?.pauseView?.();
         applyConnectionsEmptyState(currentViewEntry ?? currentEntry);
     }
 }
 
 /**
- * @param {object | null} [presetViewEntry] Pre-resolved entry (e.g. from renderConnectionsBody).
+ * Ensure the gallery canvas controller exists (shared by show + prewarm).
  */
-async function refreshConnectionsCanvas(presetViewEntry) {
-    if (!connectionsCanvasMountEl || connectionsViewMode !== 'canvas') return;
-
-    const viewEntry = presetViewEntry ?? await resolveViewEntryForConnections(currentEntry);
-    currentViewEntry = viewEntry;
-
+function ensureConnectionsCanvasController() {
+    if (!connectionsCanvasMountEl) return null;
     if (!connectionsCanvasController) {
         connectionsCanvasController = createGalleryConnectionCanvas(connectionsCanvasMountEl, {
             canEdit: canEditGalleryArchive(),
@@ -292,16 +317,51 @@ async function refreshConnectionsCanvas(presetViewEntry) {
         const canvasSaveBtn = connectionsCanvasController.getSaveButton();
         canvasSaveBtn?.addEventListener('click', () => void handleCanvasLayoutSave());
     }
+    return connectionsCanvasController;
+}
 
-    await connectionsCanvasController.load(
+/**
+ * @param {object | null} [presetViewEntry] Pre-resolved entry (e.g. from renderConnectionsBody).
+ * @param {{ prewarm?: boolean }} [opts]
+ */
+async function refreshConnectionsCanvas(presetViewEntry, opts = {}) {
+    if (!connectionsCanvasMountEl) return;
+    if (!opts.prewarm && connectionsViewMode !== 'canvas') return;
+
+    const viewEntry = presetViewEntry ?? await resolveViewEntryForConnections(currentEntry);
+    currentViewEntry = viewEntry;
+
+    const controller = ensureConnectionsCanvasController();
+    if (!controller) return;
+
+    if (
+        opts.prewarm
+        && controller.isLoadedFor?.(viewEntry, currentCategory, currentFilterKey || '')
+    ) {
+        return;
+    }
+
+    await controller.load(
         viewEntry,
         currentCategory,
         currentDisplayName,
         currentFilterKey || '',
         viewEntry?.connectionCanvas,
+        { prewarm: opts.prewarm === true || connectionsViewMode !== 'canvas' },
     );
     void refreshGalleryConnectionPortraitLooks();
-    applyConnectionsEmptyState(viewEntry);
+    if (!opts.prewarm) applyConnectionsEmptyState(viewEntry);
+}
+
+/**
+ * Build the board while List is still showing so the first Canvas click is instant.
+ * @param {object | null} viewEntry
+ */
+function prewarmConnectionsCanvas(viewEntry) {
+    if (!connectionsCanvasMountEl || !viewEntry) return;
+    if (connectionsViewMode === 'canvas') return;
+    applyConnectionsPaneVisibility('list');
+    void refreshConnectionsCanvas(viewEntry, { prewarm: true });
 }
 
 /**
@@ -356,6 +416,8 @@ async function renderConnectionsBody(entry, category) {
     renderHeroBiographyConnectionsView(connectionsBodyEl, viewEntry, category);
     if (connectionsViewMode === 'canvas') {
         void refreshConnectionsCanvas(viewEntry);
+    } else {
+        prewarmConnectionsCanvas(viewEntry);
     }
     applyConnectionsEmptyState(viewEntry);
 }
@@ -810,6 +872,9 @@ export function initHeroBiographyArchiveDescription(hostEl) {
 
     connectionsViewToggleEl.append(listViewBtn, canvasViewBtn);
 
+    connectionsPanesEl = document.createElement('div');
+    connectionsPanesEl.className = 'gallery-mode__connections-panes';
+
     connectionsListWrapEl = document.createElement('div');
     connectionsListWrapEl.className =
         'gallery-mode__archive-panel-scroll scrollbar-custom gallery-mode__connections-list-wrap';
@@ -825,12 +890,16 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     connectionsEmptyEl.textContent = 'No connections recorded for this entry.';
 
     connectionsCanvasMountEl = document.createElement('div');
-    connectionsCanvasMountEl.className = 'gallery-mode__connections-canvas-mount';
-    connectionsCanvasMountEl.hidden = true;
+    connectionsCanvasMountEl.className =
+        'gallery-mode__connections-canvas-mount is-warm-pane';
+    connectionsCanvasMountEl.hidden = false;
+    connectionsCanvasMountEl.setAttribute('aria-hidden', 'true');
     connectionsCanvasMountEl.setAttribute('aria-label', 'Personal connections canvas');
 
+    connectionsListWrapEl.classList.add('is-active-pane');
     connectionsListWrapEl.append(connectionsBodyEl, connectionsEmptyEl);
-    connectionsViewEl.append(connectionsViewToggleEl, connectionsListWrapEl, connectionsCanvasMountEl);
+    connectionsPanesEl.append(connectionsListWrapEl, connectionsCanvasMountEl);
+    connectionsViewEl.append(connectionsViewToggleEl, connectionsPanesEl);
 
     connectionsEditEl = document.createElement('div');
     connectionsEditEl.className =
@@ -1005,6 +1074,7 @@ export function destroyHeroBiographyArchiveDescription() {
     connectionsEditEl = null;
     connectionsEditMount = null;
     connectionsListWrapEl = null;
+    connectionsPanesEl = null;
     connectionsCanvasMountEl = null;
     connectionsViewToggleEl = null;
     connectionsViewMode = 'list';

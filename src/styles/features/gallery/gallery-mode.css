@@ -326,15 +326,31 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 }
 
 .gallery-mode__archive-description-body--edit {
+    /* Don't shrink under flex (min-height:0 on the view body cramped long intel text). */
+    flex: 0 0 auto;
     outline: none;
     border: 1px dashed rgba(255, 255, 255, 0.2);
     border-radius: 3px;
     padding: clamp(8px, 1vh, 12px);
-    min-height: 4rem;
+    min-height: 12rem;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    white-space: pre-wrap;
 }
 
 .gallery-mode__archive-description-body--edit:focus {
     border-color: rgba(100, 180, 255, 0.45);
+}
+
+.gallery-mode__archive-description.is-editing .gallery-mode__archive-panel-scroll {
+    /* Scroll the panel; let the intel field grow to full length inside it */
+    align-content: flex-start;
+}
+
+.gallery-mode__archive-description.is-editing .gallery-mode__archive-description-body--edit {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .gallery-mode__archive-description-body[hidden],
@@ -445,6 +461,16 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     flex-direction: column;
     flex: 1 1 auto;
     min-height: 0;
+    position: relative;
+}
+
+.gallery-mode__connections-panes {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .gallery-mode__connections-view-toggle {
@@ -497,12 +523,33 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 }
 
 /*
+ * Keep the board mounted under List (Codex-like view keep-alive): same box as the
+ * list pane, invisible, so List→Canvas does not rebuild from a display:none mount.
+ */
+.gallery-mode__connections-canvas-mount.is-warm-pane {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 0;
+    flex: none;
+    min-height: 0;
+}
+
+.gallery-mode__connections-canvas-mount.is-active-pane {
+    position: relative;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/*
  * Canvas view on desktop / landscape: fill the fixed-height side panel.
  * (Do NOT apply flex-basis:0 + min-height:0 on portrait — the stacked panel is
  * height:auto and the canvas mount collapses to zero there.)
  */
 @media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
-    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-view:has(.gallery-mode__connections-canvas-mount:not([hidden])) {
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-view:has(.gallery-mode__connections-canvas-mount.is-active-pane) {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
@@ -510,7 +557,7 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
         overflow: hidden;
     }
 
-    body:has(#atlasGalleryHost) .gallery-mode__connections-canvas-mount:not([hidden]) {
+    body:has(#atlasGalleryHost) .gallery-mode__connections-canvas-mount.is-active-pane {
         flex: 1 1 0;
         min-height: 0;
         display: flex;
@@ -2467,14 +2514,14 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
      * Portrait canvas — content-sized (stacked panel has height:auto; flex-basis:0 collapses).
      */
     body:has(#atlasGalleryHost) .gallery-mode__archive-connections .gallery-mode__archive-connections-view:has(
-            .gallery-mode__connections-canvas-mount:not([hidden])
+            .gallery-mode__connections-canvas-mount.is-active-pane
         ) {
         flex: 0 0 auto;
         min-height: auto;
         overflow: visible;
     }
 
-    body:has(#atlasGalleryHost) .gallery-mode__connections-canvas-mount:not([hidden]) {
+    body:has(#atlasGalleryHost) .gallery-mode__connections-canvas-mount.is-active-pane {
         flex: 0 0 auto;
         min-height: auto;
         width: 100%;

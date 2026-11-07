@@ -347,17 +347,51 @@
     border-color: rgba(255, 160, 160, 0.65);
 }
 
-.event-slide--inline-editing .event-slide-scrollable p#eventSlideText {
+.event-slide--inline-editing .event-slide-scrollable p#eventSlideText,
+.event-slide--inline-editing #eventSlideEditDescriptionContainer p#eventSlideText,
+.event-slide--inline-editing #eventSlideBioDescriptionEditHost p#eventSlideText {
     border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
     border-radius: 8px;
     padding: 10px 10px;
     background: rgba(0, 0, 0, 0.22);
     white-space: pre-wrap; /* keep blank lines stable while editing */
+    /* Long story/intel copy must grow with content — never a fixed/shrunk edit box */
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 12rem;
+    max-height: none;
+    overflow: visible;
+    resize: none;
 }
 
-.event-slide--inline-editing .event-slide-scrollable p#eventSlideText:focus {
+.event-slide--inline-editing .event-slide-scrollable p#eventSlideText:focus,
+.event-slide--inline-editing #eventSlideEditDescriptionContainer p#eventSlideText:focus,
+.event-slide--inline-editing #eventSlideBioDescriptionEditHost p#eventSlideText:focus {
     outline: none;
     border-color: rgba(var(--accent-primary-rgb), 0.75);
+}
+
+/* Long story/intel copy: keep the accent title, but don't box the field into a short panel */
+.event-slide-inline-editor__section--description {
+    overflow: visible;
+    background: transparent;
+    border-left-color: var(--accent-primary);
+    padding-left: 12px;
+}
+
+#eventSlideEditDescriptionContainer,
+#eventSlideBioDescriptionEditHost {
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+#eventSlideEditDescriptionContainer p#eventSlideText,
+#eventSlideBioDescriptionEditHost p#eventSlideText {
+    margin-top: 6px;
 }
 
 /* Inline edit mode: hide finished Details chrome (edit form covers these) */
@@ -403,10 +437,48 @@
 
 .event-slide-inline-editor {
     margin: 14px 0 14px 0;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background: rgba(0, 0, 0, 0.14);
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/*
+ * Edit sections mirror finalized Details blocks: accent titles + subtle panel
+ * so Placement / Story / Commentary / Sources don't blend into one form.
+ */
+.event-slide-inline-editor__section {
+    margin: 0 0 16px 0;
+    padding: 14px 15px 16px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--accent-primary);
+}
+
+.event-slide-inline-editor__section:last-child {
+    margin-bottom: 0;
+}
+
+.event-slide-inline-editor__section > .event-filter-header {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.event-slide-inline-editor__section > .event-slide-inline-editor__hint {
+    margin: 0 0 10px;
+}
+
+.event-slide-inline-editor__section > .event-slide-inline-editor__actions {
+    margin-top: 8px;
+}
+
+.event-slide-inline-editor__section > .event-slide-inline-editor__sources,
+.event-slide-inline-editor__section > .event-slide-inline-editor__relevant-locs,
+.event-slide-inline-editor__section > .event-slide-inline-variant-bar {
+    margin-top: 4px;
 }
 
 .event-slide-inline-editor__row {
@@ -414,6 +486,10 @@
     flex-direction: column;
     gap: 6px;
     margin-bottom: 10px;
+}
+
+.event-slide-inline-editor__section > .event-slide-inline-editor__row:last-child {
+    margin-bottom: 0;
 }
 
 .event-slide-inline-editor__label {
@@ -448,9 +524,13 @@
 }
 
 .event-slide-inline-editor__placement {
-    padding-bottom: 6px;
-    margin-bottom: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+body.color-palette-gray .event-slide-inline-editor__section {
+    border-left-color: #ff6600;
 }
 
 .event-slide-inline-editor__lookup-row {

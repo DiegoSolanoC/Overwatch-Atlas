@@ -73,22 +73,28 @@ class EventImagePathResolver {
             return encodeURIComponent(decoded);
         };
 
+        let resolved;
         if (providedPath && providedPath.trim()) {
-            return encodeImagePath(providedPath.trim());
+            resolved = encodeImagePath(providedPath.trim());
+        } else {
+            let normalizedName = eventName.replace(/\s+/g, ' ').trim();
+            const caseVariations = [
+                normalizedName,
+                normalizedName.charAt(0).toUpperCase() + normalizedName.slice(1).toLowerCase(),
+                normalizedName.replace(/CallSign/g, 'Callsign'),
+                normalizedName.replace(/Callsign/g, 'CallSign')
+            ];
+            const uniqueVariations = [...new Set(caseVariations)];
+            normalizedName = uniqueVariations[0];
+
+            const encodedFileName = encodeURIComponent(normalizedName);
+            resolved = `${activeImagesWebBase}${encodedFileName}.png`;
         }
 
-        let normalizedName = eventName.replace(/\s+/g, ' ').trim();
-        const caseVariations = [
-            normalizedName,
-            normalizedName.charAt(0).toUpperCase() + normalizedName.slice(1).toLowerCase(),
-            normalizedName.replace(/CallSign/g, 'Callsign'),
-            normalizedName.replace(/Callsign/g, 'CallSign')
-        ];
-        const uniqueVariations = [...new Set(caseVariations)];
-        normalizedName = uniqueVariations[0];
-
-        const encodedFileName = encodeURIComponent(normalizedName);
-        return `${activeImagesWebBase}${encodedFileName}.png`;
+        if (typeof window !== 'undefined' && typeof window.resolveOptimizedAssetUrl === 'function') {
+            return window.resolveOptimizedAssetUrl(resolved);
+        }
+        return resolved;
     }
 }
 

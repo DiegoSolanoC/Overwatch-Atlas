@@ -2,6 +2,9 @@
 .DS_Store
 Thumbs.db
 
+# Node (sharp etc. for build:pages image optimize)
+node_modules/
+
 # Editor directories and files
 .vscode/
 .idea/

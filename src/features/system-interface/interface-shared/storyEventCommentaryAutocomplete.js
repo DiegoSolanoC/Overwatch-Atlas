@@ -3,7 +3,6 @@
  * Same anchored dropdown pattern as story source-name autocomplete.
  */
 
-import { buildMatches } from '../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 import {
     ensureAutocompleteAnchor,
     mountAnchoredAutocompleteList,
@@ -13,6 +12,7 @@ import {
     listStoryCommentaryTheaterNames,
     stampCommentaryTheaterIds,
 } from './storyEventCommentaryTheater.js';
+import { buildCommentaryNameMatches } from './storyEventCommentaryMatch.js';
 import {
     applyCommentaryEntryToNameInput,
     looksLikeChatterCommentaryName,
@@ -103,7 +103,7 @@ export function wireStoryEventCommentaryAutocomplete(nameInput) {
     const renderSuggestions = async () => {
         removeList();
         const names = await ensureDialogueTheaterInteractionNames();
-        const matches = buildMatches(nameInput.value, names, 'heroes').slice(0, 8);
+        const matches = buildCommentaryNameMatches(nameInput.value, names, 8);
         if (!matches.length) return;
 
         listEl = document.createElement('div');

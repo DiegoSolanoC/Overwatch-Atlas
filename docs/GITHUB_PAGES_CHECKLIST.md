@@ -43,6 +43,19 @@ Unlike Windows, GitHub Pages serves files from a **case-sensitive** filesystem. 
 - **Share connection edits**: use **Codex → Export JSON** on the live site, then merge/commit the file locally and push (or re-import on another machine). For a canonical update, save from **localhost** (dev server writes `codex-labels.json` on disk).
 - **Before deploy**: run **`npm run build:pages`** locally; fix any validation errors (missing `connections[]`, old codex version, etc.).
 
+## Image optimize + cache busting (build:pages)
+
+`npm run build:pages` now ends with `scripts/optimize-pages-images.mjs` (requires `sharp` via `npm install`):
+
+- Resizes/recompresses large PNG/JPEG under `_site/src/assets/images/` (masters in git stay full quality).
+- Writes sibling `.webp` when smaller.
+- Emits `_site/src/data/platform/image-asset-map.json` with a **content hash** per asset.
+
+Runtime (`imageAssetMap.js`) loads that map at boot and rewrites event / filter / Codex / dock image URLs to `…webp?v=<hash>` (PNG+hash fallback). **JSON catalogs keep `no-store` / busting** so adds/removes/replaces show up; only unchanged image bytes stay cached.
+
+- Skip optimize: `OPTIMIZE_PAGES_IMAGES=0 npm run build:pages`
+- Smoke a few files: `OPTIMIZE_PAGES_IMAGES_MAX=20 npm run optimize:pages-images` (after prepare)
+
 ## Before you push
 
 1. **Commit the Atlas image** (if not already):  

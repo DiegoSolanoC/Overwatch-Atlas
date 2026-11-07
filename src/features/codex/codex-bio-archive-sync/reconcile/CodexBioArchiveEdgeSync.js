@@ -3,12 +3,22 @@
  * Canvas host registers live graph state once per mount.
  */
 
-import { codexUnorderedPairKey, edgeDirectedKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import {
+    codexUnorderedPairKey,
+    edgeDirectedKey,
+    generateNodeId,
+} from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 import {
     codexBioEntityPairHasJunctionAlternatePath as topologyJunctionAlternatePath,
     codexEdgeIsBioEntityChord
 } from '../../codex-edge-cords/topology/CodexGraphTopology.js';
 import { findCodexNodeIdForBioEntity } from '../../codex-edge-cords/topology/CodexBioEntityMatching.js';
+import {
+    CODEX_DEFAULT_SCALE_JUNCTION,
+    CODEX_JUNCTION_BASE_PX,
+    codexNodeCenterFromLayoutRecord,
+    resolveCodexNodeScale,
+} from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { updateAppStatus } from '../../codex-canvas/bridge/CodexAppBridge.js';
 
 /** @type {CodexBioArchiveEdgeSyncRuntime|null} */
@@ -141,6 +151,45 @@ export async function syncCodexEdgesFromBioArchiveConnections() {
         }
     }
 
+    /**
+     * Insert A → junction → B (break format). Naked entity↔entity chords are stripped
+     * by layout migration and do not get elbow markers.
+     * @param {string} fromId
+     * @param {string} toId
+     * @returns {boolean}
+     */
+    function addBreakRouteBetween(fromId, toId) {
+        if (!fromId || !toId || fromId === toId) return false;
+        if (topologyJunctionAlternatePath(fromId, toId, codexAllNodes, codexEdges)) return false;
+        const a = codexAllNodes.find((n) => n && n.id === fromId);
+        const b = codexAllNodes.find((n) => n && n.id === toId);
+        if (!a || !b) return false;
+        // Collinear midpoint: keep short archive links visually straight (center→center).
+        const ca = codexNodeCenterFromLayoutRecord(a) || { x: Number(a.x) || 0, y: Number(a.y) || 0 };
+        const cb = codexNodeCenterFromLayoutRecord(b) || { x: Number(b.x) || 0, y: Number(b.y) || 0 };
+        const jScale = resolveCodexNodeScale('junction', CODEX_DEFAULT_SCALE_JUNCTION);
+        const jDim = CODEX_JUNCTION_BASE_PX * jScale;
+        const jId = generateNodeId();
+        const junction = {
+            id: jId,
+            kind: 'junction',
+            x: (ca.x + cb.x) / 2 - jDim / 2,
+            y: (ca.y + cb.y) / 2 - jDim / 2,
+            scale: jScale,
+            bgColor: null,
+        };
+        codexAllNodes.push(junction);
+        const e1 = _rt.addDirectedCodexEdge(fromId, jId);
+        const e2 = _rt.addDirectedCodexEdge(jId, toId);
+        if (!e1 && !e2) {
+            const idx = codexAllNodes.findIndex((n) => n && n.id === jId);
+            if (idx >= 0) codexAllNodes.splice(idx, 1);
+            return false;
+        }
+        codexEdges = _rt.getCodexEdges();
+        return true;
+    }
+
     let added = 0;
     for (let ai = 0; ai < loadedArchives.length; ai += 1) {
         const { arch, events } = loadedArchives[ai];
@@ -170,8 +219,7 @@ export async function syncCodexEdgesFromBioArchiveConnections() {
                 const fromId = findCodexNodeIdForBioEntity(subjectKind, subjectName, codexAllNodes);
                 const toId = findCodexNodeIdForBioEntity(lk, linkedName, codexAllNodes);
                 if (!fromId || !toId || fromId === toId) continue;
-                if (topologyJunctionAlternatePath(fromId, toId, codexAllNodes, codexEdges)) continue;
-                if (_rt.addDirectedCodexEdge(fromId, toId)) added += 1;
+                if (addBreakRouteBetween(fromId, toId)) added += 1;
             }
         }
     }

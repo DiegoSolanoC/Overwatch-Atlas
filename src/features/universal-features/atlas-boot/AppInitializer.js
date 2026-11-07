@@ -32,6 +32,7 @@ import {
     showLoadingOverlay,
     hideLoadingOverlay
 } from '../atlas-mode-runtime/loadingOverlayState.js';
+import { ensureImageAssetMapLoaded } from '../atlas-assets/imageAssetMap.js';
 
 // Side-effect imports: these modules publish globals consumed by
 // non-module scripts loaded via classic <script> tags.
@@ -185,6 +186,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // Always start fresh on a new page load — never auto-resume an old mode.
         localStorage.removeItem('currentMode');
+
+        // Pages image map (content-hash + webp) — no-op locally if file missing.
+        try {
+            await ensureImageAssetMapLoaded();
+        } catch (err) {
+            console.warn(`${logPrefix} image asset map load skipped:`, err);
+        }
 
         await autoLoadUniversalFeatures(logPrefix);
         await autoLoadMenuComponents(logPrefix);

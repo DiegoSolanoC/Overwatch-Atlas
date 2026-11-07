@@ -1899,6 +1899,12 @@
           "country": "Tatenda,",
           "reasoning": "Manages to survive thanks to his brother's care"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Family Business",
+          "theaterId": "804276aa-3759-470a-b9f0-3953452b8be4"
+        }
       ]
     },
     {
@@ -3145,6 +3151,12 @@
           "country": "Benicio,",
           "reasoning": "Father to Lúcio"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Studying Music",
+          "theaterId": "9d5b474e-0af9-497a-9367-435a81f9db96"
+        }
       ]
     },
     {
@@ -3813,8 +3825,14 @@
         }
       ],
       "commentary": [
-        "Not Qualified",
-        "Worth Conquering"
+        {
+          "name": "Worth Conquering",
+          "theaterId": "aa0b7b81-5e02-4d5c-aaa9-56cd8cf07db0"
+        },
+        {
+          "name": "Of my Word",
+          "theaterId": "2c9071a5-d7d0-47d2-aff2-0de040885be8"
+        }
       ]
     },
     {
@@ -4173,10 +4191,19 @@
         }
       ],
       "commentary": [
-        "Best Sniper",
+        {
+          "name": "Best Sniper",
+          "theaterId": "00043c02-5434-4698-ad30-4e3cb7f7e89d"
+        },
         {
           "name": "Ana · I am watching over you",
-          "label": "Over you"
+          "label": "Over you",
+          "theaterId": "chatter-ana",
+          "lineId": "05e29ce9-da41-449a-a0ce-d91fd4e110f6"
+        },
+        {
+          "name": "Respect, Not Fear",
+          "theaterId": "bf5b2d2a-5e06-488d-a675-d314d365cca0"
         }
       ]
     },
@@ -5208,7 +5235,14 @@
       ],
       "yearStart": 2051,
       "commentary": [
-        "Friendly Fire"
+        {
+          "name": "Friendly Fire",
+          "theaterId": "3b2de51e-33b0-4b26-8bbc-63f5a465e361"
+        },
+        {
+          "name": "Grave Wounds",
+          "theaterId": "a67471ee-52e9-4bcc-aaab-7ad5f8100e13"
+        }
       ]
     },
     {
@@ -6608,10 +6642,19 @@
         }
       ],
       "commentary": [
-        "My Type",
         {
-          "name": "Cassidy · Things were a lot simpler when I was robbing banks with the Deadlock Rebels.",
-          "label": "Robbing Banks"
+          "name": "My Type",
+          "theaterId": "0fef6883-85a7-4812-b4b3-4701a42e9f82"
+        },
+        {
+          "name": "Cassidy · Things were a lot simpler when I was robbing banks with the Deadlock Gang",
+          "label": "Robbing Banks",
+          "theaterId": "chatter-cassidy",
+          "lineId": "77762c4f-c660-4d40-9298-2d89b84cf07a"
+        },
+        {
+          "name": "Dynamite Brains",
+          "theaterId": "3628a3bb-9498-4c4d-8a48-008b51f914cd"
         }
       ]
     },
@@ -6845,8 +6888,14 @@
       ],
       "commentary": [
         {
-          "name": "Ashe · This is a hardy bunch of outlaws. Just need somethin' to steal.",
-          "label": "Outlaws"
+          "name": "Ashe · This is a hardy bunch of outlaws. Just need something to steal",
+          "label": "Outlaws",
+          "theaterId": "chatter-ashe",
+          "lineId": "ed0881fb-63d6-4ddb-9630-75ae5bc3d4ca"
+        },
+        {
+          "name": "Owing Money",
+          "theaterId": "717ab852-0f80-478e-9686-70dfc336805a"
         }
       ]
     },
@@ -7015,7 +7064,14 @@
         }
       ],
       "commentary": [
-        "All about  you"
+        {
+          "name": "All about  you",
+          "theaterId": "f22214c2-9bed-49d1-9711-79b0d4128ddf"
+        },
+        {
+          "name": "Stealing Hearts",
+          "theaterId": "1c013b78-8c73-4616-9285-45219cbcbdd0"
+        }
       ]
     },
     {
@@ -7065,7 +7121,14 @@
       ],
       "yearStart": 2056,
       "commentary": [
-        "Jealous of you"
+        {
+          "name": "Jealous of you",
+          "theaterId": "6d328e55-278b-4400-a3dd-cb023c8b0021"
+        },
+        {
+          "name": "Competition on the Range",
+          "theaterId": "1e8c1a48-6de7-4e68-a32b-a512e2b850e8"
+        }
       ]
     },
     {
@@ -7975,8 +8038,18 @@
         }
       ],
       "commentary": [
-        "Dancing in the Command Center",
-        "So Dramatic"
+        {
+          "name": "Dancing in the Command Center",
+          "theaterId": "8e7c8b93-19b7-4fb5-b703-06fdd9b52ee4"
+        },
+        {
+          "name": "So Dramatic",
+          "theaterId": "17d68491-a753-4aef-9e4f-85536222b8a9"
+        },
+        {
+          "name": "Unstoppable",
+          "theaterId": "af71562c-b5b1-4b4c-9b8c-bcead179babe"
+        }
       ]
     },
     {
@@ -10563,10 +10636,26 @@
         }
       ],
       "commentary": [
-        "Leaving Vishkar",
-        "Cutting Hands",
-        "The Martinses",
-        "Fetching Price"
+        {
+          "name": "Leaving Vishkar",
+          "theaterId": "64a0bdb8-d076-48a7-b10b-4fa0f3146fd8"
+        },
+        {
+          "name": "Cutting Hands",
+          "theaterId": "2c8f0577-ca61-4315-baf4-a2991b5504cf"
+        },
+        {
+          "name": "The Martinses",
+          "theaterId": "22f8cd3c-a79f-49cf-b2d9-5c83ad908a9f"
+        },
+        {
+          "name": "Fetching Price",
+          "theaterId": "d1d50a14-f3fb-463f-96c1-8127a3d87fe2"
+        },
+        {
+          "name": "Your Parents",
+          "theaterId": "40da4532-8f80-4099-ba9e-2771b67be8dd"
+        }
       ]
     },
     {
@@ -11347,6 +11436,12 @@
       "headlines": [
         "Dr. Mina Liao is murdered during explosions in lab",
         "Overwatch facility in Oslo attacked by terrorist group"
+      ],
+      "commentary": [
+        {
+          "name": "Thankful",
+          "theaterId": "919c95e9-cf0d-4190-b1d8-221dbf2f48fb"
+        }
       ]
     },
     {
@@ -12087,6 +12182,12 @@
           "locationName": "",
           "country": "Lucheng Interstellar,",
           "reasoning": "Finally loose legal custody over Winston"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "The old Gabriel",
+          "theaterId": "0a3354b4-3701-4547-84ae-22718b604b5c"
         }
       ]
     },
@@ -15825,10 +15926,22 @@
       "commentary": [
         {
           "name": "D.va · Busan — Elimination — I will defend my country!",
-          "label": "Defend my Country"
+          "label": "Defend my Country",
+          "theaterId": "chatter-d-va",
+          "lineId": "57a5f0f1-7a77-4c05-94e5-1968230d513c"
         },
-        "Mech Mechanic",
-        "Who is your Mechanic"
+        {
+          "name": "Mech Mechanic",
+          "theaterId": "aa62c5bf-aad8-41ae-a2d2-7a5c1c2ab81d"
+        },
+        {
+          "name": "Who is your Mechanic",
+          "theaterId": "cff06142-f20f-49b8-a6ed-60710fdbd088"
+        },
+        {
+          "name": "Such a Young Age",
+          "theaterId": "1771136a-b68b-4abc-be41-c63550947d3d"
+        }
       ]
     },
     {
@@ -17174,6 +17287,16 @@
           "country": "Touch Up, Boomslang, Jackdaw, Revel,",
           "reasoning": "Protect Omnics world wide and join in riots and protests"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Soft Criminals",
+          "theaterId": "fc8c5bff-16b2-4910-952f-3289a9f3b6df"
+        },
+        {
+          "name": "Easy Target",
+          "theaterId": "e2805f66-2c68-4e6c-99b1-e6fae6ab9deb"
+        }
       ]
     },
     {
@@ -17225,9 +17348,22 @@
         "Shirke attacks on criminals spike after recent encounter between Helix and Talon"
       ],
       "commentary": [
-        "Better than Retirement",
-        "Hard to Kill",
-        "Out of Hand"
+        {
+          "name": "Better than Retirement",
+          "theaterId": "fbb324ec-8b5f-4022-8cf9-82e88f528557"
+        },
+        {
+          "name": "Hard to Kill",
+          "theaterId": "670253ca-f2dc-4519-a0fc-8879e21e99f1"
+        },
+        {
+          "name": "Out of Hand",
+          "theaterId": "8d424977-2aef-4096-b567-ea8b0213c294"
+        },
+        {
+          "name": "Just like Him",
+          "theaterId": "3997a572-f5d6-4b97-8540-e12b64015bfd"
+        }
       ]
     },
     {
@@ -17342,9 +17478,18 @@
       "commentary": [
         {
           "name": "Winston · Numbani — Ever feel like you’re just security for Doomfist’s gauntlet?",
-          "label": "Security"
+          "label": "Security",
+          "theaterId": "chatter-winston",
+          "lineId": "566e93f8-2aee-449c-876f-fc3d3af799ae"
         },
-        "Do my Job"
+        {
+          "name": "Do My Job",
+          "theaterId": "ca8e8f5c-f353-4983-86ba-ea74ccac9635"
+        },
+        {
+          "name": "Going Soft",
+          "theaterId": "7e06494f-fd0b-415f-88c4-9687865ee188"
+        }
       ]
     },
     {
@@ -18829,6 +18974,14 @@
         {
           "name": "Coward Run",
           "theaterId": "b5df4ebe-b9b4-4d11-867e-7b20496a1945"
+        },
+        {
+          "name": "VIP Passes",
+          "theaterId": "c29af099-0419-4383-ab95-de03504e615e"
+        },
+        {
+          "name": "Looking Sharp",
+          "theaterId": "bb0bb3bd-158a-43c0-956a-976cf3abbb0b"
         }
       ]
     },
@@ -18952,6 +19105,20 @@
           "text": "Reunion",
           "url": "https://www.youtube.com/watch?v=PKYVvPNhRR0"
         }
+      ],
+      "commentary": [
+        {
+          "name": "How's Bars",
+          "theaterId": "1371a4c9-4bdf-4a11-b089-fe9bfc9526d4"
+        },
+        {
+          "name": "Nice to see you",
+          "theaterId": "9f01a2af-559b-410a-8127-d97a43325f99"
+        },
+        {
+          "name": "Where is my Bike",
+          "theaterId": "aacca2bd-a392-4575-ac24-23db1a7500a4"
+        }
       ]
     },
     {
@@ -19057,6 +19224,16 @@
       "headlines": [
         "Talon raids Egyptian Necropolis near Cairo",
         "Cole Cassidy seen taking a train to the middle east"
+      ],
+      "commentary": [
+        {
+          "name": "Bring out the Best",
+          "theaterId": "3aca4846-ff97-44ec-a9c9-919841fa466a"
+        },
+        {
+          "name": "Always Worry",
+          "theaterId": "d322c0ab-5d11-40de-b68e-9470f8ac2ac3"
+        }
       ]
     },
     {
@@ -19117,6 +19294,20 @@
       "headlines": [
         "Captain Fareeha Amari to resign from the Raptora Unit",
         "Talon attack in Cairo leads to a bombed pier"
+      ],
+      "commentary": [
+        {
+          "name": "What I want",
+          "theaterId": "fdf3038b-eaec-4e39-8327-dd1e541cf5fe"
+        },
+        {
+          "name": "Still Hiding",
+          "theaterId": "db694ed8-a333-4760-82bc-76e83bf0a333"
+        },
+        {
+          "name": "Thank you Mother",
+          "theaterId": "07e50405-b612-413c-9a59-27c19f428938"
+        }
       ]
     },
     {
@@ -19366,6 +19557,12 @@
           "country": "Trembley,",
           "reasoning": "Saved by Sojourn but not in charge of her arrest"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Vigilante Route",
+          "theaterId": "c56a7a43-ad78-4861-8de2-b1639d40d34f"
+        }
       ]
     },
     {
@@ -19587,6 +19784,24 @@
           "text": "Luck of the Draw",
           "url": "https://www.amazon.com/dp/195691630X?lv=shuf&channelId=500&plpRedirect=mhFallback"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Frankie and Bez",
+          "theaterId": "8bc41ec0-e352-416b-8b21-8ccc04da2602"
+        },
+        {
+          "name": "Old Bike",
+          "theaterId": "007ec2f8-0a83-4cd4-ba7d-ba9e67af114d"
+        },
+        {
+          "name": "Freeing your Servant",
+          "theaterId": "a1f422ac-4b65-4074-8749-46c774f83ecb"
+        },
+        {
+          "name": "Humanity's Laws",
+          "theaterId": "67ce117d-909b-40d3-899f-defe3de741ce"
+        }
       ]
     },
     {
@@ -19666,6 +19881,12 @@
         {
           "text": "New Blood 5",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltafcb62fe756a3879/622fa71cda5a7125ed751adf/OW_2.5_Final_EN.pdf"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Owe you a Round",
+          "theaterId": "1b8e057f-6561-4a33-a434-446790c06c29"
         }
       ]
     },
@@ -19789,6 +20010,16 @@
           "country": "Toshiro,",
           "reasoning": "Ordered to confirm Hanzo's identity"
         }
+      ],
+      "commentary": [
+        {
+          "name": "My Father's Opinion",
+          "theaterId": "bf40e6a7-3797-451e-91b9-9da1408ead57"
+        },
+        {
+          "name": "Old Wounds",
+          "theaterId": "1190a1e7-f81c-4dcf-b311-06245a97b22c"
+        }
       ]
     },
     {
@@ -19854,6 +20085,12 @@
           "country": "Benicio,",
           "reasoning": "Thanks Winston for takin in his son"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Intact Memory",
+          "theaterId": "857ece82-bf95-4eb4-8ad9-f3fa021ecf85"
+        }
       ]
     },
     {
@@ -19918,6 +20155,12 @@
           "locationName": "",
           "country": "Osai,",
           "reasoning": "Continues to opose Overwatch's activity"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "In the West",
+          "theaterId": "94c0d066-c429-4d24-afe5-7de3aaac8d58"
         }
       ]
     },
@@ -20031,6 +20274,12 @@
           "text": "Rebuilding Ruins",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0e5e335364d4b808/6622c8af3e3ae65dfb769c64/OW_Heroes_Symmetra_EN_FINAL.pdf"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Making a Living",
+          "theaterId": "7b60a51f-85e3-40aa-bea5-84e476154c61"
+        }
       ]
     },
     {
@@ -20101,6 +20350,12 @@
           "text": "Invasion, Liberation",
           "url": "https://www.youtube.com/watch?v=J7tiJlf8oSU"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Hockey and Basketball",
+          "theaterId": "90c30a53-40f1-491f-9966-3ed04b0bec40"
+        }
       ]
     },
     {
@@ -20149,6 +20404,20 @@
           "locationName": "",
           "country": "Mirembe,",
           "reasoning": "Sees the attack coming and protects her child"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "No Lectures",
+          "theaterId": "fa89422d-216f-419f-ab86-5d7dcdabf941"
+        },
+        {
+          "name": "How's Mirembe",
+          "theaterId": "1bedb068-7325-461f-9b5e-dbd3c761d126"
+        },
+        {
+          "name": "Past your Prime",
+          "theaterId": "82b86f4e-388c-41a4-88c3-cf137a8d0306"
         }
       ]
     },
@@ -20551,7 +20820,7 @@
       "name": "The Hunt Begins",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen, Denmark",
-      "description": "No description available.",
+      "description": "Freja had carved a name for herself in the criminal underworld for years, and it began to catch the attention of larger benefactors. One day, she noticed a person under the name of M4RQU1S placing several high-paying bounties on seemingly disconnected targets. The offer seemed suspicious, but Freja had learned not to make many questions when hired, and the client wished for this to be done as fast as possible, so she was more than up for the challenge.\n\nHer hunt took her across the world, chasing down three criminals ranging from magnates to petty thieves. Damian Barboza, a notorious con artist from Portugal, heavily guarded by private security, Machete Betty, a ruthless pig fighter from Junkertown, and Sahil Bhediya, the Wolf of Suravasa, an old military Veteran and black watch spy.\n\nEach target felt as if Freja was being tested, evaluating her different skills, from combat to tracking and infiltration, but she was able to capture all three of them in the short form allowed. However, in spite of her efficiency, the payment never arrived, and any attempt to contact her client to deliver the bounties failed; she had been ghosted. Frustrated by this betrayal, she threatened M4RQU1S. Tracking him down would be no issue for her, and she would get her payment even if she had to come to them face to face.",
       "image": "",
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
@@ -20561,37 +20830,57 @@
         {
           "locationName": "Copenhagen, Denmark",
           "country": "Denmark",
-          "reasoning": ""
+          "reasoning": "Freja takes jobs from a rich client  but does not get paid"
+        },
+        {
+          "locationName": "Esperança, Portugal",
+          "country": "Portugal",
+          "reasoning": "Freja hunts down Damian Barboza"
+        },
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": "Freja hunts down Machete Betty"
+        },
+        {
+          "locationName": "Suravasa, India",
+          "country": "India",
+          "reasoning": "Freja hunts down Sahil Bhediya",
+          "lat": 23.2599,
+          "lon": 77.4126
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Freja",
-          "reasoning": ""
+          "reasoning": "Hunts down M4RQU1S' targets"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "La Coterie,",
-          "reasoning": ""
+          "reasoning": "Invests into paying Freja at Max's command"
         },
         {
           "locationName": "",
           "country": "Junker Monarchy,",
-          "reasoning": ""
+          "reasoning": "Notices Machete Betty is missing"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
+          "reasoning": "Purposely avoids paying Freja"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "The Wolf of Suravasa goes missing",
+        "Witnesses report foreigner attempting to break into Junkertown"
+      ],
       "sources": [
         {
           "text": "Storm Chaser",
@@ -20730,7 +21019,7 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Juno, Orisa",
+          "country": "Juno, Orisa, Lúcio,",
           "reasoning": ""
         },
         {
@@ -20769,6 +21058,16 @@
         {
           "text": "Unity",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltea0ccf340e7f7cef/665e02a177dc635847f2bc03/OW_Heroes_Orisa_EN_FINAL_REV.pdf"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Grown a lot",
+          "theaterId": "4c6959d5-2f2e-489d-82b0-7704178a51f7"
+        },
+        {
+          "name": "New Single",
+          "theaterId": "d210805f-f9d1-4e5d-966a-1273b18003c9"
         }
       ]
     },
@@ -21174,6 +21473,12 @@
             "https://www.youtube.com/watch?v=9kFSMbaufn8"
           ]
         }
+      ],
+      "commentary": [
+        {
+          "name": "There is a girl",
+          "theaterId": "fcebefae-07de-4a65-9905-cb6ddad65b8b"
+        }
       ]
     },
     {
@@ -21232,6 +21537,16 @@
           "locationName": "",
           "country": "Efi, Sam, Ingrid, Benicio, Dae-Hyun,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Keeping in Touch",
+          "theaterId": "893ff5ce-c3c2-4116-9fdb-05bc0a2ccdf6"
+        },
+        {
+          "name": "Periodic Table",
+          "theaterId": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d"
         }
       ]
     },
@@ -21534,6 +21849,10 @@
         {
           "name": "Doing a Masters",
           "theaterId": "78d21f7f-9e98-49ae-a32d-c28188ac46f6"
+        },
+        {
+          "name": "No Instrumental",
+          "theaterId": "f80a163b-a726-44bb-b4d7-ec33d3e1c417"
         }
       ]
     },
@@ -22127,6 +22446,12 @@
           "country": "B.O.B, Bars, The Triplets,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Aggression and Ability",
+          "theaterId": "980ba389-83d6-41e4-adc0-a50d777961d5"
+        }
       ]
     },
     {
@@ -22252,6 +22577,12 @@
           "locationName": "",
           "country": "Efi,",
           "reasoning": "Aided in covering Baptiste"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Back Together",
+          "theaterId": "cc59636e-0a97-4511-a35b-78ccbb570ad5"
         }
       ]
     },
@@ -22432,6 +22763,18 @@
         {
           "name": "Time to Relax",
           "theaterId": "c47ca5f4-40b0-41c6-9af8-202c2634ec46"
+        },
+        {
+          "name": "Curating the Vibes",
+          "theaterId": "ae23f378-7fa6-4ebb-9767-e4dc4041bc4e"
+        },
+        {
+          "name": "So Dramatic",
+          "theaterId": "17d68491-a753-4aef-9e4f-85536222b8a9"
+        },
+        {
+          "name": "Stay Around",
+          "theaterId": "8bd1c2dd-5ad6-4c73-aa46-16f70717f4c0"
         }
       ]
     },
@@ -22583,7 +22926,7 @@
     },
     {
       "name": "Crossroads",
-      "description": "\n",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Grand Mesa, United States",
       "lat": 39.1131257,
@@ -22646,6 +22989,20 @@
           "locationName": "",
           "country": "Bars, B.O.B, Bez, Frankie,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Going too Far",
+          "theaterId": "08eedec4-9634-4396-be54-e8ee69efcff1"
+        },
+        {
+          "name": "Too good for Crime",
+          "theaterId": "ec2f6305-8866-4266-8db9-82f7236fee4f"
+        },
+        {
+          "name": "Money before Loyalty",
+          "theaterId": "151877ad-cc39-41f3-bb21-e26ad4307908"
         }
       ]
     },
@@ -23207,6 +23564,10 @@
         {
           "name": "Got each other",
           "theaterId": "e3b6f53e-922f-4bce-b7b5-f1ce085e6b45"
+        },
+        {
+          "name": "Like the Glory Days",
+          "theaterId": "c674759f-d87e-48d8-b10c-c2f242d2fd22"
         }
       ]
     },
@@ -23639,6 +24000,12 @@
           "locationName": "",
           "country": "Overwatch,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Tugging Heartstrings",
+          "theaterId": "f59eccb7-fe9b-4557-b093-77d13d0ec04c"
         }
       ]
     },
@@ -24387,6 +24754,11 @@
         },
         {
           "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Brigitte, Torbjörn,",
           "reasoning": ""
         },
@@ -24553,7 +24925,7 @@
         },
         {
           "locationName": "",
-          "country": "Brigitte, Juno, Mei, D.va, Orisa, Jetpack Cat, Echo,",
+          "country": "Brigitte, Juno, Mei, D.va, Orisa, Jetpack Cat, Echo, D.mon,",
           "reasoning": "Team 2"
         },
         {
@@ -24606,6 +24978,45 @@
           "text": "In the Wolf's Mouth",
           "url": "https://www.youtube.com/watch?v=gI2tyTGvFag"
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Winston, Tracer,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sigma, Reaper, Sombra, Widowmaker,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte, Baptiste,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -24632,7 +25043,48 @@
           "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
         }
       ],
-      "yearStart": 2080
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Juno, Pharah, Cassidy, Lúcio, Mizuki, Baptiste, Mercy, Mei, Ana, Brigitte,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Osai,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "All That Follows",
@@ -24645,7 +25097,13 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": [
         {
@@ -24655,6 +25113,62 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8de40d749d9dbeb2/6ad7cebc626f24ec2dfb147a/Talon_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=Y062yXbCRKc"
           ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker, Sombra, Reaper,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira, Mauga,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Helix Securities,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sven,",
+          "reasoning": ""
         }
       ]
     },
@@ -24668,7 +25182,15 @@
       "cityDisplayName": "Watchpoint: Gibraltar",
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
       "headlines": [],
       "sources": [
         {
@@ -24678,6 +25200,47 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5922e9ee92723f32/6ad7ccf568dfc97b279615a4/LastCall_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=-o73kzGkbwo"
           ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Echo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Cassidy, Mizuki, D.va,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sierra, Anran, Juno, Wuyang,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Helix Securities,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Osai,",
+          "reasoning": ""
         }
       ]
     }

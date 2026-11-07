@@ -21,7 +21,8 @@
 .event-filter-header {
     color: var(--accent-primary);
     font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
-    font-size: 1.85rem;
+    /* Track the same info-panel title scale as Story/Details pane headings */
+    font-size: calc(1.85rem * var(--info-description-text-scale, 1.45) / 1.45);
     margin: 10px 0 10px 0;
     font-weight: 800;
     line-height: 1.15;

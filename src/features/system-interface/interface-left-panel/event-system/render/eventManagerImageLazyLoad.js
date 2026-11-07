@@ -34,7 +34,8 @@ function loadPreviewImageFromDataset(img) {
     const done = () => finishPreviewImageLoad(img, wrap);
     img.addEventListener('load', done, { once: true });
     img.addEventListener('error', done, { once: true });
-    img.src = src;
+    const resolve = typeof window !== 'undefined' ? window.resolveOptimizedAssetUrl : null;
+    img.src = typeof resolve === 'function' ? resolve(src) : src;
     delete img.dataset.src;
     if (img.complete) done();
 }

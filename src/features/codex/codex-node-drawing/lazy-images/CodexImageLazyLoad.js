@@ -1,5 +1,13 @@
 /** Lazy-load Codex portrait images via IntersectionObserver (module-local singleton). */
 
+import { resolveOptimizedAssetUrl } from '../../../universal-features/atlas-assets/imageAssetMap.js';
+
+function assignCodexImageSrc(img, src) {
+    const url = src != null ? String(src).trim() : '';
+    if (!url) return;
+    img.src = resolveOptimizedAssetUrl(url);
+}
+
 /** @type {IntersectionObserver|null} */
 let codexImageObserver = null;
 
@@ -36,7 +44,7 @@ function hydrateCodexImageNow(img) {
     if (!img) return;
     pendingHydrateImgs.delete(img);
     if (img.dataset.src && !img.src) {
-        img.src = img.dataset.src;
+        assignCodexImageSrc(img, img.dataset.src);
         img.removeAttribute('data-src');
     }
     codexImageObserver?.unobserve(img);
@@ -92,7 +100,7 @@ export function hydrateCodexPortraitImagesInViewport(root) {
         if (!(img instanceof HTMLImageElement) || img.src) return;
         const r = img.getBoundingClientRect();
         if (r.bottom < top || r.top > bottom || r.right < left || r.left > right) return;
-        img.src = img.dataset.src;
+        assignCodexImageSrc(img, img.dataset.src);
         img.removeAttribute('data-src');
         if (codexImageObserver) codexImageObserver.unobserve(img);
         pendingHydrateImgs.delete(img);
@@ -116,7 +124,7 @@ export async function hydrateAllCodexPortraitImages(root, opts = {}) {
         const slice = imgs.slice(i, i + chunkSize);
         for (const img of slice) {
             if (!(img instanceof HTMLImageElement) || !img.dataset.src) continue;
-            img.src = img.dataset.src;
+            assignCodexImageSrc(img, img.dataset.src);
             img.removeAttribute('data-src');
             codexImageObserver?.unobserve(img);
             pendingHydrateImgs.delete(img);

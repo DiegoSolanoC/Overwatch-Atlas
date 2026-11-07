@@ -13,6 +13,12 @@ import {
     normalizeEdgeRecord
 } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { normalizeCodexConnectionMetaList } from '../../codex-connections/CodexConnectionMeta.js';
+import {
+    CODEX_DEFAULT_SCALE_JUNCTION,
+    CODEX_JUNCTION_BASE_PX,
+    codexNodeCenterFromLayoutRecord,
+    resolveCodexNodeScale,
+} from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 
 function parseLoadedCodexPayload(parsed) {
     let nodes = null;
@@ -128,11 +134,15 @@ export function migrateHero55ToHudson(nodes, connections) {
 }
 
 /**
- * Drop a direct entity↔entity edge if those two nodes are still connected without it via a path
- * that uses at least one junction (break) node.
+ * Convert every direct entity↔entity chord into a break route (A → junction → B).
+ * Naked short cords skip the elbow/break render path and were easy to lose on import;
+ * break format matches the rest of the board.
+ * @param {unknown[]} nodes mutated in place when junctions are appended
+ * @param {{ fromId: string, toId: string }[]} edges
+ * @returns {{ fromId: string, toId: string }[]}
  */
-function pruneRedundantEntityShortcutEdges(nodes, edges) {
-    if (!Array.isArray(edges) || edges.length === 0 || !Array.isArray(nodes)) return edges;
+function convertEntityShortcutEdgesToBreakRoutes(nodes, edges) {
+    if (!Array.isArray(edges) || edges.length === 0 || !Array.isArray(nodes)) return edges || [];
     const byId = new Map();
     for (let i = 0; i < nodes.length; i += 1) {
         const n = nodes[i];
@@ -143,39 +153,7 @@ function pruneRedundantEntityShortcutEdges(nodes, edges) {
         const n = byId.get(id);
         return !!(n && entityKinds.has(n.kind));
     }
-    function isJunctionNode(id) {
-        const n = byId.get(id);
-        return !!(n && n.kind === 'junction');
-    }
-    /** Undirected reachability from start to goal using edgeList; path must visit a junction. */
-    function connectedViaJunction(edgeList, start, goal) {
-        const adj = new Map();
-        for (let k = 0; k < edgeList.length; k += 1) {
-            const e = edgeList[k];
-            if (!e || !e.fromId || !e.toId) continue;
-            if (!adj.has(e.fromId)) adj.set(e.fromId, []);
-            if (!adj.has(e.toId)) adj.set(e.toId, []);
-            adj.get(e.fromId).push(e.toId);
-            adj.get(e.toId).push(e.fromId);
-        }
-        const q = [{ cur: start, passedJunction: false }];
-        const seen = new Set([`${start}|0`]);
-        while (q.length) {
-            const { cur, passedJunction } = q.shift();
-            if (cur === goal && passedJunction) return true;
-            const neighbors = adj.get(cur) || [];
-            for (let j = 0; j < neighbors.length; j += 1) {
-                const nxt = neighbors[j];
-                const pj = passedJunction || isJunctionNode(nxt);
-                const key = `${nxt}|${pj ? 1 : 0}`;
-                if (!seen.has(key)) {
-                    seen.add(key);
-                    q.push({ cur: nxt, passedJunction: pj });
-                }
-            }
-        }
-        return false;
-    }
+    let stamp = Date.now();
     const out = [];
     for (let i = 0; i < edges.length; i += 1) {
         const e = edges[i];
@@ -184,11 +162,29 @@ function pruneRedundantEntityShortcutEdges(nodes, edges) {
             out.push(e);
             continue;
         }
-        const rest = edges.filter((_, j) => j !== i);
-        if (connectedViaJunction(rest, e.fromId, e.toId)) {
-            continue;
-        }
-        out.push(e);
+        const a = byId.get(e.fromId);
+        const b = byId.get(e.toId);
+        if (!a || !b) continue;
+        stamp += 1;
+        const jid = `cn-${stamp}-brk${Math.random().toString(36).slice(2, 7)}`;
+        // Place the break on the center-to-center line (no perpendicular nudge) so
+        // short A→J→B routes stay visually straight instead of shouldered L-bends.
+        const ca = codexNodeCenterFromLayoutRecord(a) || { x: Number(a.x) || 0, y: Number(a.y) || 0 };
+        const cb = codexNodeCenterFromLayoutRecord(b) || { x: Number(b.x) || 0, y: Number(b.y) || 0 };
+        const jScale = resolveCodexNodeScale('junction', CODEX_DEFAULT_SCALE_JUNCTION);
+        const jDim = CODEX_JUNCTION_BASE_PX * jScale;
+        const junction = {
+            id: jid,
+            kind: 'junction',
+            x: (ca.x + cb.x) / 2 - jDim / 2,
+            y: (ca.y + cb.y) / 2 - jDim / 2,
+            scale: jScale,
+            bgColor: null,
+        };
+        nodes.push(junction);
+        byId.set(jid, junction);
+        out.push({ fromId: e.fromId, toId: jid });
+        out.push({ fromId: jid, toId: e.toId });
     }
     return out;
 }
@@ -224,8 +220,7 @@ export function parseMigrateAndDedupeCodexSource(sourceObj) {
     const dedupedEdges = dedupeCodexEdgesByNodePair(
         Array.isArray(edges) ? edges.map(normalizeEdgeRecord).filter(Boolean) : []
     );
-    const prunedEdges = migratedNow
-        ? pruneRedundantEntityShortcutEdges(nodes, dedupedEdges)
-        : dedupedEdges;
-    return { nodes, edges: prunedEdges, connections, migratedNow };
+    // Always normalize naked entity↔entity chords to break routes (import + load).
+    const normalizedEdges = convertEntityShortcutEdgesToBreakRoutes(nodes, dedupedEdges);
+    return { nodes, edges: normalizedEdges, connections, migratedNow };
 }

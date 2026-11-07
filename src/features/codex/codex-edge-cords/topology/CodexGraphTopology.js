@@ -48,8 +48,13 @@ export function isCodexDirectedReachable(startId, targetId, edges) {
 }
 
 /**
- * True when `aId` and `bId` (bio entity nodes) are linked by an undirected path that does **not**
- * use the direct A↔B chord, and that path visits at least one junction.
+ * True when `aId` and `bId` already have a real break route: an undirected path that
+ * does **not** use the direct A↔B chord, visits at least one junction, and whose
+ * **every intermediate node is a junction** (no other heroes/factions/NPCs).
+ *
+ * Long mesh detours like Illari → … → Sombra → … → Inti must NOT count — those made
+ * import/sync treat short intended links as “redundant” and drop them.
+ *
  * @param {string} aId
  * @param {string} bId
  * @param {Array<{ id?: string, kind?: string }>} allNodes
@@ -84,20 +89,27 @@ export function codexBioEntityPairHasJunctionAlternatePath(aId, bId, allNodes, e
         adj.get(e.fromId).push(e.toId);
         adj.get(e.toId).push(e.fromId);
     }
-    const q = [{ cur: aId, passedJunction: false }];
-    const seen = new Set([`${aId}|0`]);
+    // BFS from A: may only step onto junctions (or the goal B).
+    const q = [aId];
+    const seen = new Set([aId]);
+    let touchedJunction = false;
     while (q.length) {
-        const { cur, passedJunction } = q.shift();
-        if (cur === bId && passedJunction) return true;
+        const cur = q.shift();
+        if (cur === bId) return touchedJunction;
         const neighbors = adj.get(cur) || [];
         for (let j = 0; j < neighbors.length; j += 1) {
             const nxt = neighbors[j];
-            const pj = passedJunction || isJunctionNode(nxt);
-            const key = `${nxt}|${pj ? 1 : 0}`;
-            if (!seen.has(key)) {
-                seen.add(key);
-                q.push({ cur: nxt, passedJunction: pj });
+            if (seen.has(nxt)) continue;
+            if (nxt === bId) {
+                // Direct neighbor of current — valid if we already passed a junction,
+                // or if current itself is a junction (A → J → B).
+                if (touchedJunction || isJunctionNode(cur)) return true;
+                continue;
             }
+            if (!isJunctionNode(nxt)) continue;
+            seen.add(nxt);
+            touchedJunction = true;
+            q.push(nxt);
         }
     }
     return false;
