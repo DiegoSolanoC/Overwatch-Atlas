@@ -1,16 +1,23 @@
 /**
- * Minimal in-content shell for modes that are not yet fully built.
+ * Coming Soon / WIP shell for modes that are not yet fully built.
  * Exit via the header Home button (or Escape → Home), not an in-panel Cancel.
  */
 
 import { triggerHomeExit } from '../atlas-header/triggerHomeExit.js';
 
 const HOST_ID = 'atlasEmptyModeHost';
+const WIP_ICON_SRC = 'src/assets/images/Misc/WIP.png';
+const DEFAULT_TITLE = 'Coming Soon';
+const DEFAULT_LEAD = 'This feature is still in development, please wait patiently';
 
 /**
- * @param {{ title: string, lead?: string }} options
+ * @param {{ title?: string, lead?: string, iconPath?: string }} [options]
  */
-export function mountEmptyModeShell({ title, lead = '' }) {
+export function mountEmptyModeShell({
+    title = DEFAULT_TITLE,
+    lead = DEFAULT_LEAD,
+    iconPath = WIP_ICON_SRC,
+} = {}) {
     unmountEmptyModeShell();
 
     const testContainer = document.querySelector('.test-container');
@@ -44,16 +51,30 @@ export function mountEmptyModeShell({ title, lead = '' }) {
     const inner = document.createElement('div');
     inner.className = 'atlas-empty-mode-host__inner';
 
+    if (iconPath) {
+        const figure = document.createElement('div');
+        figure.className = 'atlas-empty-mode-host__icon-wrap';
+        figure.setAttribute('aria-hidden', 'true');
+
+        const img = document.createElement('img');
+        img.className = 'atlas-empty-mode-host__icon';
+        img.src = iconPath;
+        img.alt = '';
+        img.decoding = 'async';
+        img.draggable = false;
+        figure.appendChild(img);
+        inner.appendChild(figure);
+    }
+
     const heading = document.createElement('h2');
     heading.id = 'atlasEmptyModeHostHeading';
-    heading.className = 'story-archive-category-hub-heading atlas-empty-mode-host__heading';
+    heading.className = 'atlas-empty-mode-host__heading';
     heading.textContent = title;
-
     inner.appendChild(heading);
 
     if (lead) {
         const sub = document.createElement('p');
-        sub.className = 'story-archive-category-hub-lead atlas-empty-mode-host__lead';
+        sub.className = 'atlas-empty-mode-host__lead';
         sub.textContent = lead;
         inner.appendChild(sub);
     }

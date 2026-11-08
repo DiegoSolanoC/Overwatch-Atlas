@@ -4,10 +4,7 @@ import {
 } from '../../universal-features/atlas-mode-shell/EmptyModeShell.js';
 
 export async function mountOfficialArchiveMode() {
-    mountEmptyModeShell({
-        title: 'Archive',
-        lead: 'Archive — content coming soon.',
-    });
+    mountEmptyModeShell();
 }
 
 export async function unmountOfficialArchiveMode() {

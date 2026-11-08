@@ -104,11 +104,12 @@ header {
 }
 
 /*
- * Filters (left) + Music (right): flank the pagination dock, always available.
+ * Filters (left) + Music (right): mobile portrait only — flank the pagination dock.
  * Right = globe-control slant (−11°, thick border inward/left).
  * Left = mirrored (+11°, thick border inward/right).
  */
 .header-utility-rail {
+    display: none;
     --header-utility-btn-h: clamp(64px, 8.5vh, 78px);
     --header-utility-btn-w: clamp(118px, 28vw, 160px);
     --header-utility-skew-right: -11deg;
@@ -131,6 +132,12 @@ header {
     height: 0;
     z-index: 700;
     pointer-events: none;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .header-utility-rail {
+        display: block;
+    }
 }
 
 body:not(:has(#paginationDock)) .header-utility-rail {
