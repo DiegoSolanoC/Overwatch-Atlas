@@ -3,17 +3,26 @@
  */
 
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
+import {
+    isDialogueTheaterDockActive,
+    isDialogueTheaterModeMounted,
+} from '../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 
 export function refreshDockTimelinePagination() {
     const slide = window.standaloneEventSlide;
     const pagination = window.standaloneDockPagination;
     const fullDock = window.eventManager?.getDockTimelineEvents?.() ?? [];
     const curated = pagination?.getDockEvents?.() ?? fullDock;
-    const subsetActive = curated.length < fullDock.length;
+    const theaterEntries = isDialogueTheaterDockActive();
+    const theaterMounted = isDialogueTheaterModeMounted();
+    const subsetActive = !theaterEntries && curated.length < fullDock.length;
     const perPage = pagination?.eventsPerPage || 10;
 
+    // Theater entry strip rebuilds fresh pseudo-events each pass — never treat that
+    // as "open entry left the subset" or the info panel closes while browsing.
     if (
         slide
+        && !theaterEntries
         && Number.isFinite(slide.currentEventIndex)
         && slide.currentEventIndex >= 0
         && subsetActive
@@ -39,14 +48,17 @@ export function refreshDockTimelinePagination() {
         window.newsTickerService.updateTicker(events.slice(start, start + perPage));
     }
 
-    window.globeEventMarkerManager?.refreshEventMarkers?.(true);
-    window.globeController?.map2dLite?.syncMarkers?.({ mode: 'pageTurn' });
+    // Theater mode hides the globe — skip marker/timeline sync while mounted.
+    if (!theaterMounted) {
+        window.globeEventMarkerManager?.refreshEventMarkers?.(true);
+        window.globeController?.map2dLite?.syncMarkers?.({ mode: 'pageTurn' });
 
-    syncStoryTimelineIfActive({
-        preservePan: false,
-        scrollToPage: pagination?.getCurrentPage?.() || 1,
-        eventsPerPage: perPage,
-    });
+        syncStoryTimelineIfActive({
+            preservePan: false,
+            scrollToPage: pagination?.getCurrentPage?.() || 1,
+            eventsPerPage: perPage,
+        });
+    }
 
     window.dispatchEvent(
         new CustomEvent('atlas-dock-timeline-page-changed', {

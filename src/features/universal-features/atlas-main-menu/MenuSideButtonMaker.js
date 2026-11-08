@@ -12,6 +12,7 @@ import { wireMenuHoverIcon } from './wireMenuHoverIcon.js';
  * @param {string} [config.description]
  * @param {string} [config.href] - When set, renders an `<a>` instead of `<button>`.
  * @param {boolean} [config.pending] - Disabled placeholder (no navigation).
+ * @param {boolean} [config.menuHoverIcon=true] - Swap to Menu Hover/ art on hover.
  * @returns {HTMLDivElement}
  */
 export function MenuSideButtonMaker({
@@ -22,6 +23,7 @@ export function MenuSideButtonMaker({
     description = '',
     href,
     pending = false,
+    menuHoverIcon = true,
 }) {
     const wrapper = document.createElement('div');
     wrapper.className = 'main-menu-side-btn-wrapper';
@@ -50,7 +52,9 @@ export function MenuSideButtonMaker({
         ? `<div class="main-menu-image-container">
             <img src="${imagePath}" alt="${title}">
            </div>`
-        : `<div class="main-menu-image-container main-menu-image-container--placeholder" aria-hidden="true"></div>`;
+        : `<div class="main-menu-image-container main-menu-image-container--placeholder" aria-hidden="true">
+            <img src="" alt="${title}">
+           </div>`;
 
     el.innerHTML = `
         ${imgBlock}
@@ -73,7 +77,9 @@ export function MenuSideButtonMaker({
         wireLoadingAssetImage(menuImg, {
             wrap: el.querySelector('.main-menu-image-container'),
         });
-        wireMenuHoverIcon(menuImg, { normalPath: imagePath, hoverTarget: el });
+        if (menuHoverIcon) {
+            wireMenuHoverIcon(menuImg, { normalPath: imagePath, hoverTarget: el });
+        }
     }
 
     wrapper.button = el;

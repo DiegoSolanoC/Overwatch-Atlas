@@ -261,7 +261,13 @@ async function renderHeroRoleLayout(container) {
     const { board, body: rolesRow } = buildFilterBoard('columns', 'Heroes');
 
     for (const role of HERO_BIOGRAPHY_ROLE_ORDER) {
-        rolesRow.appendChild(buildRoleColumn(role, roleGroups[role]));
+        const roleGroup = roleGroups[role] || {};
+        const hasChips = Object.values(roleGroup).some(
+            (ids) => Array.isArray(ids) && ids.length > 0,
+        );
+        /* Unassigned fourth band only when someone is waiting for a real role. */
+        if (!hasChips && role === 'Unassigned') continue;
+        rolesRow.appendChild(buildRoleColumn(role, roleGroup));
     }
 
     container.appendChild(board);

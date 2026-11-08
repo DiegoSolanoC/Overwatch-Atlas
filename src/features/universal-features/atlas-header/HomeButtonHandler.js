@@ -38,10 +38,18 @@ async function unloadActiveModeBeforeReturningHome(currentMode) {
   }
 
   if (
+    isAtlasMode(currentMode, ATLAS_MODE.GALLERY) &&
+    typeof window.killGalleryHubComponents === "function"
+  ) {
+    await window.killGalleryHubComponents(false);
+    return;
+  }
+
+  if (
     isAtlasMode(currentMode, ATLAS_MODE.DATA_WORKSHOP) &&
     typeof window.killDataWorkshopComponents === "function"
   ) {
-    await window.killDataWorkshopComponents();
+    await window.killDataWorkshopComponents(false);
   }
 
   if (

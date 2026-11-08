@@ -29,6 +29,7 @@ import {
 } from "../archive-category-heroes/ArchiveHeroSorting.js";
 
 import {
+  FACTION_ARCHIVE_TYPE_ORDER,
   normalizeFactionArchiveType,
   displayLabelForFactionArchiveType,
   factionArchiveTypeRank,
@@ -77,6 +78,7 @@ if (typeof window !== "undefined") {
 
   // Faction helpers
   window.FactionArchiveGroupOrderHelpers = {
+    FACTION_ARCHIVE_TYPE_ORDER,
     normalizeFactionArchiveType,
     displayLabelForFactionArchiveType,
     factionArchiveTypeRank,

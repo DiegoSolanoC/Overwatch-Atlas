@@ -28,7 +28,8 @@ export function wikiPageTitleForHero(heroId) {
  */
 export function wikiQuotesUrl(pageTitle) {
     const encoded = pageTitle.replace(/ /g, '_');
-    return `https://overwatch.fandom.com/wiki/${encodeURIComponent(encoded)}`;
+    // Prefer weirdgloop — fuller Quotes pages + File: audio for newer heroes.
+    return `https://overwatch.weirdgloop.org/wiki/${encodeURIComponent(encoded)}`;
 }
 
 /**

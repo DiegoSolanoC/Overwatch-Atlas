@@ -11,6 +11,7 @@ import {
     getDockTimelineEventsForPagination,
     isHeroBiographyDockFilterActive,
 } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
+import { isDialogueTheaterDockActive } from '../../../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 import { noteCodexDockTimelinePageChange } from '../../../../codex/codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 import { shouldDockEventBeLocked } from '../../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
 import { isEventManagerAxisSearchActive } from '../../../interface-left-panel/coordinator/search/filterEvents.js';
@@ -18,6 +19,7 @@ import {
     updateStandaloneSliderTicks,
     eventRootSlotMissingDescription
 } from '../../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
+import { storyEventHasWrongCategoryRelevancy } from '../../../interface-shared/storyEventWrongCategoryRelevancy.js';
 import { wireStandaloneEventNavButtons } from './standalonePaginationEventNav.js';
 import {
     isStoryTimelineViewActive,
@@ -119,6 +121,9 @@ export function runSetupStandalonePagination(slide) {
                 }
             }
             
+            // Theater dock: skip dense per-event ticks/labels (1k+ entries).
+            if (isDialogueTheaterDockActive()) return;
+
             // Add event number labels (1-10) for each page position
             for (let p = 0; p < pages; p++) {
                 const onPage = Math.min(eventsPerPage, Math.max(0, totalEvents - p * eventsPerPage));
@@ -147,17 +152,25 @@ export function runSetupStandalonePagination(slide) {
                 }
             }
             
-            // Add unfinished slot markers (red bars) for events missing descriptions
+            // Red unfinished / orange wrong-category slot markers (same predicates as dock thumbs)
             for (let p = 0; p < pages; p++) {
                 const onPage = Math.min(eventsPerPage, Math.max(0, totalEvents - p * eventsPerPage));
                 for (let e = 0; e < onPage; e++) {
                     const g = p * eventsPerPage + e;
                     const rootEv = g >= 0 && g < totalEvents ? currentEvents[g] : null;
-                    if (!eventRootSlotMissingDescription(rootEv)) continue;
+                    const unfinished = eventRootSlotMissingDescription(rootEv);
+                    const wrongCategory = storyEventHasWrongCategoryRelevancy(rootEv);
+                    if (!unfinished && !wrongCategory) continue;
                     const mark = document.createElement('span');
-                    mark.className = 'event-page-slider-tick event-page-slider-tick--unfinished-slot';
+                    mark.className = unfinished
+                        ? 'event-page-slider-tick event-page-slider-tick--unfinished-slot'
+                        : 'event-page-slider-tick event-page-slider-tick--wrong-category-slot';
                     mark.style.left = `${((p + (e + 0.5) / onPage) / pages) * 100}%`;
-                    mark.title = 'Unfinished: missing description';
+                    mark.title = unfinished
+                        ? (wrongCategory
+                            ? 'Unfinished + wrong-category hero/NPC relevancy'
+                            : 'Unfinished: missing description')
+                        : 'Wrong-category hero/NPC relevancy';
                     ticksEl.appendChild(mark);
                 }
             }
@@ -180,6 +193,12 @@ export function runSetupStandalonePagination(slide) {
             }
             
             if (!eraStrip) return;
+
+            // Theater dock has no era stripe — clear and skip heavy page scans.
+            if (isDialogueTheaterDockActive()) {
+                eraStrip.style.background = 'transparent';
+                return;
+            }
             
             const currentEvents = getDockEvents();
             

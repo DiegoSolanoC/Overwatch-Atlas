@@ -24,8 +24,11 @@ export async function buildGroupedFactionArchiveFilterDom(
     soundManager,
     updateFilterCounts,
 ) {
+    const buildToken = filtersGrid._atlasFilterBuildToken;
     filtersGrid.innerHTML = '';
     const { top, bottom } = await buildFactionBiographyFlatChipRowSegments(items);
+    if (filtersGrid._atlasFilterBuildToken !== buildToken) return [];
+    filtersGrid.innerHTML = '';
     const { board, body } = buildFiltersChipBoard('flat', 'Factions');
 
     for (const rowKey of /** @type {const} */ (['top', 'bottom'])) {

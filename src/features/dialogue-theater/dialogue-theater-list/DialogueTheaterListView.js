@@ -5,7 +5,7 @@
 
 import { showSaveSuccessFeedback } from '../../system-interface/interface-left-panel/coordinator/flashSaveSuccess.js';
 import { triggerHomeExit } from '../../universal-features/atlas-header/triggerHomeExit.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=108';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js';
 import { loadDialogueTheaterAssets } from '../data/loadDialogueTheaterAssets.js';
 import { getEventListSpinnerGifSrc } from '../../universal-features/atlas-ui/loadingGifAssets.js';
 import { buildDialogueTheaterListThumbMediaHtml } from './buildDialogueTheaterListThumb.js';
@@ -13,7 +13,7 @@ import {
     closeDialogueTheaterInfoPanel,
     openDialogueTheaterInfoPanel,
     setDialogueTheaterInfoPanelListRefresh,
-} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=108';
+} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 import {
     setupDialogueTheaterCompactChrome,
     unwireDialogueTheaterToolbarCollapse,
@@ -59,6 +59,13 @@ import {
     mountDialogueTheaterEntryToggle,
     unmountDialogueTheaterEntryToggle,
 } from '../dialogue-theater-mode/DialogueTheaterEntryToggle.js';
+import {
+    getDialogueTheaterDockEraPairFilter,
+    getDialogueTheaterDockStatusFilter,
+    getDialogueTheaterDockStatusOption,
+    scheduleDialogueTheaterDockPaginationRefresh,
+    setDialogueTheaterDockStatusFromOptionId,
+} from '../dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 import { waitForLoadingOverlayInactive } from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
@@ -302,13 +309,14 @@ function scheduleRenderList(root) {
         const host = renderListRoot;
         renderListRoot = null;
         if (host instanceof HTMLElement) renderList(host);
+        scheduleDialogueTheaterDockPaginationRefresh();
     });
 }
 
 /**
  * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
  */
-function getFilteredConversations() {
+function getFilteredConversations(options = {}) {
     let rows = getModeConversations();
 
     const pairA = pairSearchControls?.getPairA?.() || '';
@@ -345,11 +353,19 @@ function getFilteredConversations() {
         );
     }
 
-    if (statusFilter.trim()) {
-        rows = rows.filter((row) => conversationMatchesStatusFilter(row, statusFilter));
+    const statusValue =
+        options.statusOverride !== undefined && options.statusOverride !== null
+            ? String(options.statusOverride)
+            : statusFilter;
+    if (!options.skipStatus && String(statusValue || '').trim()) {
+        rows = rows.filter((row) => conversationMatchesStatusFilter(row, statusValue));
     }
-    if (eraPairFilter.trim()) {
-        rows = rows.filter((row) => conversationMatchesEraPairFilter(row, eraPairFilter));
+    const eraPairValue =
+        options.eraPairOverride !== undefined && options.eraPairOverride !== null
+            ? String(options.eraPairOverride)
+            : eraPairFilter;
+    if (String(eraPairValue || '').trim()) {
+        rows = rows.filter((row) => conversationMatchesEraPairFilter(row, eraPairValue));
     }
     if (eraFilter.trim()) {
         rows = rows.filter((row) => conversationMatchesEraFilter(row, eraFilter));
@@ -366,6 +382,38 @@ function getFilteredConversations() {
         if (aUnfinished !== bUnfinished) return aUnfinished - bUnfinished;
         return 0;
     });
+}
+
+
+/**
+ * Dock strip rows when entry strip is active; Eras dock drives status + era pair.
+ * @param {{ statusOverride?: string, eraPairOverride?: string }} [options]
+ */
+function getFilteredConversationsForDock(options = {}) {
+    const statusOverride =
+        options.statusOverride !== undefined
+            ? options.statusOverride
+            : getDialogueTheaterDockStatusFilter();
+    const eraPairOverride =
+        options.eraPairOverride !== undefined
+            ? options.eraPairOverride
+            : getDialogueTheaterDockEraPairFilter();
+    return getFilteredConversations({ statusOverride, eraPairOverride });
+}
+
+/**
+ * Dock shows theater entries only for chatters mode, or dialogues with
+ * title/line search and/or character A/B pair search. Status / tags / era alone
+ * leave the story timeline in the dock.
+ * @returns {boolean}
+ */
+function isDialogueTheaterDockEntryStripActive() {
+    if (!isDialogueTheaterListActive()) return false;
+    if (getDialogueTheaterEntryMode() === 'chatters') return true;
+    if (searchQuery.trim()) return true;
+    const pairA = pairSearchControls?.getPairA?.() || '';
+    const pairB = pairSearchControls?.getPairB?.() || '';
+    return isDialogueTheaterPairSearchActive(pairA, pairB, manifestHeroesForPairSearch());
 }
 
 /** @returns {{ singular: string, plural: string }} */
@@ -794,12 +842,30 @@ function wireSearch(root) {
     const statusSelect = root.querySelector('#dialogueTheaterStatusFilter');
     statusSelect?.addEventListener('change', () => {
         statusFilter = statusSelect instanceof HTMLSelectElement ? statusSelect.value : '';
+        if (statusFilter === 'active' || statusFilter === 'removed') {
+            setDialogueTheaterDockStatusFromOptionId(
+                statusFilter === 'active' ? 'theater-active' : 'theater-removed',
+            );
+        } else if (eraPairFilter === 'Overwatch') {
+            setDialogueTheaterDockStatusFromOptionId('theater-overwatch');
+        } else if (eraPairFilter === 'Classic') {
+            setDialogueTheaterDockStatusFromOptionId('theater-classic');
+        } else {
+            setDialogueTheaterDockStatusFromOptionId('theater-all');
+        }
         scheduleRenderList(root);
     });
 
     const eraPairSelect = root.querySelector('#dialogueTheaterEraPairFilter');
     eraPairSelect?.addEventListener('change', () => {
         eraPairFilter = eraPairSelect instanceof HTMLSelectElement ? eraPairSelect.value : '';
+        if (eraPairFilter === 'Overwatch') {
+            setDialogueTheaterDockStatusFromOptionId('theater-overwatch');
+        } else if (eraPairFilter === 'Classic') {
+            setDialogueTheaterDockStatusFromOptionId('theater-classic');
+        } else if (!statusFilter) {
+            setDialogueTheaterDockStatusFromOptionId('theater-all');
+        }
         scheduleRenderList(root);
     });
 
@@ -1150,4 +1216,34 @@ export function syncDialogueTheaterListIfActive() {
     if (!isDialogueTheaterListActive()) return;
     const host = document.getElementById(HOST_ID);
     if (host instanceof HTMLElement) scheduleRenderList(host);
+}
+
+/**
+ * @param {{ statusOverride?: string }} [options]
+ * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
+ */
+export function getDialogueTheaterFilteredConversationsForDock(options = {}) {
+    if (!isDialogueTheaterListActive()) return [];
+    return getFilteredConversationsForDock(options);
+}
+
+if (typeof window !== 'undefined') {
+    window.__isDialogueTheaterDockEntryStripActive = isDialogueTheaterDockEntryStripActive;
+    window.__getDialogueTheaterFilteredConversationsForDock = getDialogueTheaterFilteredConversationsForDock;
+    window.__syncDialogueTheaterListStatusFromDock = (optionId) => {
+        setDialogueTheaterDockStatusFromOptionId(optionId);
+        const opt = getDialogueTheaterDockStatusOption(optionId);
+        statusFilter = opt.status || '';
+        eraPairFilter = opt.eraPair || '';
+        const host = document.getElementById(HOST_ID);
+        const statusSelect = host?.querySelector?.('#dialogueTheaterStatusFilter');
+        if (statusSelect instanceof HTMLSelectElement) {
+            statusSelect.value = statusFilter;
+        }
+        const eraPairSelect = host?.querySelector?.('#dialogueTheaterEraPairFilter');
+        if (eraPairSelect instanceof HTMLSelectElement) {
+            eraPairSelect.value = eraPairFilter;
+        }
+        if (host instanceof HTMLElement) scheduleRenderList(host);
+    };
 }

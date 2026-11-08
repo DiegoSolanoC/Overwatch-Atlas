@@ -9,6 +9,14 @@ import {
     clearDockEraFilter,
 } from './dockEraTimelineFilter.js';
 import { refreshDockTimelinePagination } from './refreshDockTimelinePagination.js';
+import {
+    DIALOGUE_THEATER_DOCK_STATUS_OPTIONS,
+    getDialogueTheaterDockStatusOption,
+    getDialogueTheaterDockStatusOptionId,
+    isDialogueTheaterDockActive,
+    setDialogueTheaterDockStatusFromOptionId,
+    refreshDialogueTheaterDockPagination,
+} from '../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 import { closePaletteMenu } from '../../universal-features/atlas-palette/PaletteMenuPositioning.js';
 import { playColorChangeSound } from '../../universal-features/atlas-palette/PaletteSwitching.js';
 import { getEraDockLabelColorHex } from '../interface-shared/hover-badge/eraHoverPreviewTheme.js';
@@ -54,12 +62,24 @@ function getDockCapAnchorRect() {
  * @param {string | null | undefined} eraId
  * @returns {{ id: string, label: string, iconPath: string }}
  */
+function getMenuOptions() {
+    return isDialogueTheaterDockActive()
+        ? DIALOGUE_THEATER_DOCK_STATUS_OPTIONS
+        : DOCK_ERA_MENU_OPTIONS;
+}
+
 function getEraOption(eraId) {
     const id = eraId != null ? String(eraId).trim() : '';
+    if (isDialogueTheaterDockActive()) {
+        return getDialogueTheaterDockStatusOption(id);
+    }
     return DOCK_ERA_MENU_OPTIONS.find((o) => o.id === id) || DOCK_ERA_MENU_OPTIONS[0];
 }
 
 function getDisplayedEraId() {
+    if (isDialogueTheaterDockActive()) {
+        return hoveredEraId || getDialogueTheaterDockStatusOptionId();
+    }
     return hoveredEraId || getActiveDockEraFilter() || 'complete';
 }
 
@@ -69,7 +89,9 @@ function updateEraMenuTitleDisplay() {
     const eraId = getDisplayedEraId();
     const option = getEraOption(eraId);
     titleEl.textContent = option.label;
-    titleEl.style.color = getEraDockLabelColorHex(eraId);
+    titleEl.style.color = isDialogueTheaterDockActive()
+        ? (option.labelColor || '#f0f0f0')
+        : getEraDockLabelColorHex(eraId);
 }
 
 /**
@@ -149,10 +171,48 @@ function positionEraMenuRow(menu) {
     }
 }
 
+function rebuildEraMenuButtonsIfNeeded(menu) {
+    if (!menu) return;
+    const options = getMenuOptions();
+    const row = menu.querySelector('.dock-era-menu__buttons');
+    if (!row) return;
+    const ids = options.map((o) => o.id).join('|');
+    if (row.dataset.optionIds === ids) return;
+    row.dataset.optionIds = ids;
+    row.innerHTML = '';
+    options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'dock-era-option-btn';
+        btn.dataset.eraId = option.id;
+        btn.title = option.label;
+        btn.setAttribute('aria-label', option.label);
+        btn.style.setProperty('--era-stagger-index', String(index));
+        const img = document.createElement('img');
+        img.src = option.iconPath;
+        img.alt = '';
+        img.draggable = false;
+        btn.appendChild(img);
+        btn.addEventListener('click', handleEraOptionClick);
+        btn.addEventListener('mouseenter', handleEraOptionHover);
+        btn.addEventListener('focus', handleEraOptionHover);
+        row.appendChild(btn);
+    });
+    const aria = isDialogueTheaterDockActive()
+        ? 'Dialogue status options'
+        : 'Timeline era options';
+    row.setAttribute('aria-label', aria);
+    menu.setAttribute(
+        'aria-label',
+        isDialogueTheaterDockActive() ? 'Dialogue status filter' : 'Timeline era filter',
+    );
+}
+
 function updateEraMenuActiveState() {
     const menu = document.getElementById('dockEraMenu');
     if (!menu) return;
-    const active = getActiveDockEraFilter() || 'complete';
+    rebuildEraMenuButtonsIfNeeded(menu);
+    const active = getDisplayedEraId();
     menu.querySelectorAll('.dock-era-option-btn').forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.eraId === active);
     });
@@ -324,14 +384,24 @@ function handleEraOptionClick(e) {
     e.stopPropagation();
     const eraId = e.currentTarget?.dataset?.eraId;
     if (!eraId) return;
-    if (eraId === 'complete') {
+    if (isDialogueTheaterDockActive()) {
+        setDialogueTheaterDockStatusFromOptionId(eraId);
+        hoveredEraId = null;
+        updateEraMenuActiveState();
+        refreshDialogueTheaterDockPagination();
+        // Keep list status dropdown in sync when present.
+        window.__syncDialogueTheaterListStatusFromDock?.(eraId);
+    } else if (eraId === 'complete') {
         clearDockEraFilter();
+        hoveredEraId = null;
+        updateEraMenuActiveState();
+        refreshDockTimelinePagination();
     } else {
         setDockEraFilter(eraId);
+        hoveredEraId = null;
+        updateEraMenuActiveState();
+        refreshDockTimelinePagination();
     }
-    hoveredEraId = null;
-    updateEraMenuActiveState();
-    refreshDockTimelinePagination();
     if (window.SoundEffectsManager?.play) {
         window.SoundEffectsManager.play('page');
     }
@@ -363,6 +433,10 @@ export function toggleDockEraMenu() {
     } else {
         openDockEraMenu();
     }
+}
+
+export function syncDockEraMenuForCurrentMode() {
+    updateEraMenuActiveState();
 }
 
 export function setupDockEraMenu() {
@@ -397,6 +471,13 @@ export function setupDockEraMenu() {
         btn.addEventListener('mouseenter', handleEraOptionHover);
         btn.addEventListener('focus', handleEraOptionHover);
     });
+
+    if (!window.__atlasTheaterDockEraModeBound) {
+        window.__atlasTheaterDockEraModeBound = true;
+        window.addEventListener('atlas-dialogue-theater-dock-mode', () => {
+            updateEraMenuActiveState();
+        });
+    }
 
     if (!clickOutsideHandler) {
         clickOutsideHandler = (e) => {

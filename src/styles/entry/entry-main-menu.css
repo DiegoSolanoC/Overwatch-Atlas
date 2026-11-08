@@ -67,6 +67,11 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     box-sizing: border-box;
 }
 
+/* Portrait slide deck — hidden on desktop / landscape; shown in ≤768 portrait MQ */
+.main-menu-mobile-deck {
+    display: none;
+}
+
 .main-menu-layout {
     --main-menu-side-desc-h: 44px;
     --side-tile-body-h: clamp(158px, 16.5vh, 196px);
@@ -92,6 +97,200 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     column-gap: max(clamp(48px, 5vw, 80px), calc(var(--side-stack-step-x) + 32px));
     width: 100%;
     box-sizing: border-box;
+}
+
+
+/* Mode tiles — primary ~2.8× tall + wider; secondaries top-aligned; ~95% width */
+.main-menu-buttons-stack:has(.main-menu-layout--modes-only) {
+    width: 95%;
+    max-width: none;
+    padding: 0 clamp(4px, 0.6vw, 12px) 0 clamp(18px, 2.2vw, 40px);
+}
+
+.main-menu-layout--modes-only {
+    display: flex;
+    grid-template-columns: none;
+    column-gap: 0;
+    width: 100%;
+    max-width: none;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row {
+    --main-menu-mode-tile-h: clamp(230px, 36vh, 420px);
+    /* Theater / Archive / Gallery — a bit taller so See the Latest shortens */
+    --main-menu-mode-tile-h-secondary: calc(var(--main-menu-mode-tile-h) * 1.32);
+    --main-menu-mode-tile-h-primary: calc(var(--main-menu-mode-tile-h) * 2.8 * 0.95);
+    /* Tighter between neighbors so the four mains can claim more width */
+    --main-menu-mode-gap: clamp(12px, 1.15vw, 20px);
+    --main-menu-mode-group-gap: clamp(48px, 4.5vw, 80px);
+    grid-column: auto;
+    width: 100%;
+    max-width: none;
+    min-height: var(--main-menu-mode-tile-h-primary);
+    height: auto;
+    gap: var(--main-menu-mode-gap);
+    justify-content: stretch;
+    align-items: flex-start;
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper {
+    flex: 1 1 0;
+    align-self: flex-start;
+    min-width: 0;
+    max-width: none;
+    width: auto;
+    height: var(--main-menu-mode-tile-h);
+    min-height: var(--main-menu-mode-tile-h);
+    margin-right: 0;
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:last-child {
+    margin-right: 0;
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-mode-btn {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+}
+
+/* Fill parallelogram without over-cropping or empty side gutters */
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-mode-btn .main-menu-image-container {
+    top: 0;
+    left: -18%;
+    right: -16%;
+    bottom: var(--main-menu-desc-band-h, 80px);
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: skewX(11deg) scale(1.04);
+    transform-origin: center center;
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-mode-btn .main-menu-image-container img {
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+/* World · Codex · Story · Intel — wider flex share, ~2.8× taller */
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlobeBtn),
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlossaryBtn),
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runStoryTimelineBtn),
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runHeroBiographyBtn) {
+    flex: 1.615 1 0;
+    height: var(--main-menu-mode-tile-h-primary);
+    min-height: var(--main-menu-mode-tile-h-primary);
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlobeBtn) .main-menu-image-container,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlossaryBtn) .main-menu-image-container,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runStoryTimelineBtn) .main-menu-image-container,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runHeroBiographyBtn) .main-menu-image-container {
+    left: -22%;
+    right: -20%;
+    transform: skewX(11deg) scale(1.05);
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlobeBtn) .main-menu-image-container img,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlossaryBtn) .main-menu-image-container img,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runStoryTimelineBtn) .main-menu-image-container img,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runHeroBiographyBtn) .main-menu-image-container img {
+    object-position: center 26%;
+}
+
+/* Secondary stack (Theater / Archive / Gallery + See the Latest) */
+.main-menu-layout--modes-only .main-menu-secondary-stack {
+    --see-latest-stack-gap: clamp(6px, 0.55vw, 10px);
+    --see-latest-h: calc(
+        var(--main-menu-mode-tile-h-primary) - var(--main-menu-mode-tile-h-secondary) - var(--see-latest-stack-gap)
+    );
+    /*
+     * Center-origin skewX(-11deg): short tiles’ bottoms shift left by (h/2)·tan(11°),
+     * tall See Latest’s top shifts right by (H/2)·tan(11°). Net left nudge:
+     * ((H + h) / 2) · tan(11°). Apply translate AFTER skew so it is screen-space.
+     */
+    --see-latest-skew-nudge: calc(
+        -0.5 * (var(--see-latest-h) + var(--main-menu-mode-tile-h-secondary)) * tan(11deg)
+    );
+    flex: 3 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: flex-start;
+    gap: var(--see-latest-stack-gap);
+    margin-left: var(--main-menu-mode-group-gap);
+    height: var(--main-menu-mode-tile-h-primary);
+    min-height: var(--main-menu-mode-tile-h-primary);
+    box-sizing: border-box;
+}
+
+.main-menu-layout--modes-only .main-menu-secondary-modes-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--main-menu-mode-gap);
+    flex: 0 0 auto;
+    width: 100%;
+    height: var(--main-menu-mode-tile-h-secondary);
+    min-height: var(--main-menu-mode-tile-h-secondary);
+}
+
+.main-menu-layout--modes-only .main-menu-secondary-modes-row .main-menu-btn-wrapper {
+    flex: 1 1 0;
+    align-self: stretch;
+    width: auto;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+}
+
+.main-menu-layout--modes-only .main-menu-secondary-modes-row .main-menu-mode-btn {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper {
+    flex: 1 1 auto;
+    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    min-height: 0;
+    height: var(--see-latest-h);
+    margin: 0;
+    padding: 0;
+    transform: none !important;
+    z-index: 0;
+    box-sizing: border-box;
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    margin: 0;
+    box-sizing: border-box;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-radius: 16px;
+    transform: translateX(var(--see-latest-skew-nudge)) skewX(var(--thumb-skew));
+    transform-origin: center center;
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest:hover,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn:hover,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest:focus-visible,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn:focus-visible {
+    transform: translateX(var(--see-latest-skew-nudge)) skewX(var(--thumb-skew)) translateY(-2px) scale(1.02);
 }
 
 .main-menu-side-column {
@@ -266,6 +465,68 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     box-sizing: border-box;
 }
 
+/* modes-only cascade fix — must follow general .main-menu-modes-row rules */
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row {
+    height: auto;
+    min-height: var(--main-menu-mode-tile-h-primary);
+    align-items: flex-start;
+    gap: var(--main-menu-mode-gap);
+}
+
+/* Direct primary children only — do NOT force secondary-stack tiles to the short height */
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper {
+    align-self: flex-start;
+    height: var(--main-menu-mode-tile-h);
+    min-height: var(--main-menu-mode-tile-h);
+    margin-right: 0;
+    flex: 1 1 0;
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper .main-menu-mode-btn {
+    height: 100%;
+    min-height: 0;
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper:has(#runGlobeBtn),
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper:has(#runGlossaryBtn),
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper:has(#runStoryTimelineBtn),
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-modes-row > .main-menu-btn-wrapper:has(#runHeroBiographyBtn) {
+    flex: 1.615 1 0;
+    height: var(--main-menu-mode-tile-h-primary);
+    min-height: var(--main-menu-mode-tile-h-primary);
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-secondary-stack {
+    margin-left: var(--main-menu-mode-group-gap);
+    height: var(--main-menu-mode-tile-h-primary);
+    min-height: var(--main-menu-mode-tile-h-primary);
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-secondary-modes-row {
+    height: var(--main-menu-mode-tile-h-secondary) !important;
+    min-height: var(--main-menu-mode-tile-h-secondary) !important;
+    flex: 0 0 var(--main-menu-mode-tile-h-secondary);
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-secondary-modes-row .main-menu-btn-wrapper {
+    height: 100% !important;
+    min-height: 0 !important;
+    align-self: stretch;
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-secondary-modes-row .main-menu-mode-btn {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+.main-menu-buttons-stack .main-menu-layout--modes-only .main-menu-see-latest-wrapper {
+    height: var(--see-latest-h) !important;
+    flex: 0 0 var(--see-latest-h);
+}
+
+
+
+
 /* Same bleed/counter-skew as story-archive hub tiles — parent clip handles corners */
 .main-menu-modes-row .main-menu-mode-btn .main-menu-image-container {
     top: 0;
@@ -328,6 +589,92 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     font-size: clamp(14px, 1.15vw, 18px);
     line-height: 1.25;
 }
+
+/* ===== modes-only: secondary image fill + larger type (after base modes-row rules) ===== */
+.main-menu-layout--modes-only {
+    --main-menu-desc-band-h: clamp(88px, 9vh, 112px);
+}
+
+.main-menu-layout--modes-only .main-menu-secondary-modes-row .main-menu-mode-btn .main-menu-image-container {
+    top: 0;
+    left: -18%;
+    right: -16%;
+    bottom: var(--main-menu-desc-band-h, 80px);
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: skewX(11deg) scale(1.04);
+    transform-origin: center center;
+}
+
+.main-menu-layout--modes-only .main-menu-secondary-modes-row .main-menu-mode-btn .main-menu-image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    object-fit: cover;
+    object-position: center 28%;
+}
+
+.main-menu-layout--modes-only .main-menu-mode-btn .main-menu-label-container,
+.main-menu-layout--modes-only .main-menu-side-btn .main-menu-label-container {
+    bottom: var(--main-menu-desc-band-h);
+    padding: clamp(10px, 1.4vh, 18px) clamp(14px, 1.8vw, 28px) clamp(6px, 0.8vh, 10px);
+}
+
+.main-menu-layout--modes-only .main-menu-mode-btn .main-menu-label,
+.main-menu-layout--modes-only .main-menu-side-btn .main-menu-label {
+    font-size: clamp(30px, 3.6vmin, 56px);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+}
+
+.main-menu-layout--modes-only .main-menu-mode-btn .main-menu-external-label,
+.main-menu-layout--modes-only .main-menu-side-btn .main-menu-external-label,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-mode-btn .main-menu-external-label {
+    height: var(--main-menu-desc-band-h);
+    min-height: var(--main-menu-desc-band-h);
+    padding: 6px clamp(14px, 1.6vw, 24px);
+}
+
+.main-menu-layout--modes-only .main-menu-external-label__desc,
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-external-label__desc {
+    font-size: clamp(18px, 1.7vw, 30px);
+    line-height: 1.2;
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-mode-btn .main-menu-image-container {
+    bottom: var(--main-menu-desc-band-h, 80px);
+}
+
+.main-menu-layout--modes-only .main-menu-modes-row .main-menu-mode-btn .main-menu-label {
+    font-size: clamp(30px, 3.6vmin, 56px);
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-external-label,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn .main-menu-external-label {
+    height: var(--main-menu-desc-band-h) !important;
+    min-height: var(--main-menu-desc-band-h) !important;
+    padding: 6px clamp(14px, 1.6vw, 24px);
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-label-container,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn .main-menu-label-container {
+    bottom: var(--main-menu-desc-band-h);
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-image-container,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn .main-menu-image-container {
+    bottom: var(--main-menu-desc-band-h);
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-label,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn .main-menu-label {
+    font-size: clamp(30px, 3.6vmin, 56px);
+}
+
 
 /* Side column — wide horizontal rectangles, stepped along shared slant */
 .main-menu-side-btn-wrapper {
@@ -897,28 +1244,28 @@ body.color-palette-gray .main-menu-label-container {
         padding: 4px 8px;
     }
 
-    /* Portrait: compact 2×2 grid — all tiles visible without scrolling */
+    /* Portrait: full-bleed mode slides + Select above dock trapezoid (no tile grid / See Latest) */
     @media (orientation: portrait) {
         /*
-         * Safe band: below header chrome (layout-container starts under header) and above dock
-         * trapezoid cap (absolute above .pagination-dock, inside layout-container coords).
+         * Fill the whole layout band (header → dock). Select overlays the slide
+         * just above the dock trapezoid seam — it must not shrink the image.
          */
         body .test-container {
-            top: var(--main-menu-header-clearance, 28px) !important;
+            top: 0 !important;
             bottom: 0 !important;
             height: auto !important;
             min-height: 0 !important;
         }
 
         body:has(#paginationDock) .test-container {
-            bottom: var(--main-menu-trapezoid-clearance, 96px) !important;
+            bottom: 0 !important;
         }
 
         body .main-menu-buttons {
             gap: 0;
-            padding: 0 clamp(6px, 2vw, 10px);
-            justify-content: center !important;
-            align-items: center !important;
+            padding: 0;
+            justify-content: stretch !important;
+            align-items: stretch !important;
             overflow: hidden;
             min-height: 0;
             height: 100%;
@@ -927,256 +1274,329 @@ body.color-palette-gray .main-menu-label-container {
         }
 
         body.app-timeline-default.event-system-loaded .main-menu-buttons {
-            justify-content: center !important;
-        }
-
-        body .main-menu-buttons-stack {
-            flex: 0 1 auto;
-            width: 100% !important;
-            max-width: min(680px, 100%);
-            min-height: 0;
-            height: 100%;
-            max-height: 100%;
-        }
-
-        body .main-menu-layout {
-            --portrait-menu-gap: clamp(4px, 0.7vh, 8px);
-            --portrait-menu-skew: -11deg;
-            --portrait-menu-desc-h: clamp(30px, 4.8vh, 42px);
-            display: grid !important;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: repeat(4, minmax(0, 1fr));
-            gap: var(--portrait-menu-gap);
-            width: 100% !important;
-            height: 100% !important;
-            max-height: 100% !important;
-            margin-inline: auto;
-            margin-block: 0;
-            justify-items: stretch;
-            align-items: stretch;
-        }
-
-        body .main-menu-modes-row,
-        body .main-menu-side-column,
-        body .main-menu-side-grid,
-        body .main-menu-side-grid__col {
-            display: contents !important;
-        }
-
-        body .main-menu-side-column {
-            padding-left: 0 !important;
-        }
-
-        body .main-menu-modes-row {
-            order: unset !important;
-            min-height: 0 !important;
-            height: auto !important;
-        }
-
-        body .main-menu-modes-row .main-menu-btn-wrapper:last-child {
-            margin-right: 0 !important;
-        }
-
-        body .main-menu-btn-wrapper:has(#runGlobeBtn) {
-            grid-column: 1;
-            grid-row: 1;
-        }
-
-        body .main-menu-btn-wrapper:has(#runGlossaryBtn) {
-            grid-column: 2;
-            grid-row: 1;
-        }
-
-        body .main-menu-btn-wrapper:has(#runStoryTimelineBtn) {
-            grid-column: 1;
-            grid-row: 2;
-        }
-
-        body .main-menu-btn-wrapper:has(#runHeroBiographyBtn) {
-            grid-column: 2;
-            grid-row: 2;
-        }
-
-        body .main-menu-side-btn-wrapper:has(#runDialogueTheaterBtn) {
-            grid-column: 1;
-            grid-row: 3;
-        }
-
-        body .main-menu-side-btn-wrapper:has(#runOfficialResourcesBtn) {
-            grid-column: 2;
-            grid-row: 3;
-        }
-
-        body .main-menu-side-btn-wrapper:has(#readUndividedBtn) {
-            grid-column: 1 / -1;
-            grid-row: 4;
-        }
-
-        body .main-menu-btn-wrapper,
-        body .main-menu-side-btn-wrapper {
-            min-height: 0 !important;
-            height: 100%;
-            max-width: none;
-            width: 100%;
-            overflow: visible;
-            padding: 0 !important;
-            margin: 0 !important;
-            box-sizing: border-box;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: stretch !important;
             justify-content: stretch !important;
-            transform: none !important;
         }
 
-        /* Desktop side-column step offsets must not apply in portrait grid */
-        body .main-menu-layout .main-menu-side-grid__col .main-menu-side-btn-wrapper:nth-child(1),
-        body .main-menu-layout .main-menu-side-grid__col .main-menu-side-btn-wrapper:nth-child(2) {
-            transform: none !important;
-            z-index: auto;
+        /* Desktop modes-only tiles — unused on portrait */
+        body .main-menu-buttons-stack {
+            display: none !important;
         }
 
-        /* All portrait tiles: skewed parallelograms (same treatment as desktop primary modes) */
-        body .main-menu-layout .main-menu-btn {
-            --thumb-skew: var(--portrait-menu-skew, -11deg);
+        body .main-menu-mobile-deck {
+            display: flex !important;
+            flex-direction: column;
+            position: relative;
             flex: 1 1 auto;
-            display: flex !important;
-            width: 100% !important;
-            height: 100% !important;
-            min-height: 0 !important;
-            max-height: none !important;
-            aspect-ratio: auto;
-            border-top-width: 6px;
-            border-bottom-width: 6px;
-            border-radius: 12px;
-            overflow: hidden;
-            transform: skewX(var(--thumb-skew)) !important;
-            transform-origin: center center;
-        }
-
-        body .main-menu-layout .main-menu-btn .main-menu-image-container {
-            position: absolute !important;
-            top: 0 !important;
-            left: -12% !important;
-            right: auto !important;
-            bottom: var(--portrait-menu-desc-h) !important;
-            width: 124% !important;
-            height: auto !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border-radius: 0 !important;
-            overflow: hidden !important;
-            transform: skewX(11deg) scale(1.05) !important;
-            transform-origin: center center;
-        }
-
-        body .main-menu-layout .main-menu-btn .main-menu-image-container img {
-            width: 100% !important;
-            height: 100% !important;
-            min-width: 100% !important;
-            min-height: 100% !important;
-            object-fit: cover !important;
-            object-position: center center !important;
-        }
-
-        body .main-menu-layout .main-menu-btn .main-menu-external-label {
-            display: flex !important;
-            position: absolute !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            z-index: 10;
-            width: 100% !important;
-            height: var(--portrait-menu-desc-h) !important;
-            min-height: var(--portrait-menu-desc-h) !important;
-            padding: 2px clamp(8px, 2vw, 12px) !important;
-            margin: 0 !important;
-            align-items: center !important;
-            justify-content: center !important;
-            background: rgba(0, 0, 0, 0.78) !important;
-            border: none !important;
-            border-top: 2px solid rgba(255, 255, 255, 0.93) !important;
-            border-radius: 0 0 10px 10px !important;
-            box-shadow: none !important;
-            backdrop-filter: blur(4px);
+            width: 100%;
+            height: 100%;
+            min-height: 0;
             box-sizing: border-box;
         }
 
-        body .main-menu-layout .main-menu-btn .main-menu-external-label__desc {
-            font-size: clamp(10px, 2.6vw, 13px) !important;
-            line-height: 1.2 !important;
-            font-style: italic;
-            text-align: center;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+        body .main-menu-mobile-viewport {
+            flex: 1 1 auto;
+            min-height: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 100%;
+            align-items: stretch;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+            touch-action: pan-x;
+            cursor: grab;
         }
 
-        body .main-menu-layout .main-menu-btn .main-menu-label-container {
-            position: absolute !important;
-            bottom: var(--portrait-menu-desc-h) !important;
-            left: 0 !important;
-            right: 0 !important;
-            width: 100% !important;
-            margin: 0 !important;
-            padding: clamp(6px, 1.2vh, 10px) clamp(8px, 2vw, 14px) clamp(4px, 0.8vh, 8px) !important;
-            transform: skewX(11deg) !important;
-            transform-origin: center center;
-            z-index: 3;
-            display: flex !important;
-            align-items: flex-end !important;
-            justify-content: center !important;
-            background: none !important;
+        body .main-menu-mobile-viewport::-webkit-scrollbar {
+            display: none;
+        }
+
+        body .main-menu-mobile-viewport.is-dragging {
+            scroll-behavior: auto;
+            cursor: grabbing;
+            scroll-snap-type: none;
+        }
+
+        /* Flatten so slides are direct grid columns of the scrollport (100% = viewport width) */
+        body .main-menu-mobile-track {
+            display: contents;
+        }
+
+        body .main-menu-mobile-slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            overflow: hidden;
             box-sizing: border-box;
+            background: #05070c;
+        }
+
+        body .main-menu-mobile-slide__media {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        body .main-menu-mobile-slide__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /*
+         * Bottom shade runs all the way to the dock (slide bottom = dock top),
+         * so Select is never cut by a mid-button gradient edge.
+         */
+        body .main-menu-mobile-slide__shade {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            height: calc(
+                var(--dock-border-seam-h, 48px)
+                + var(--dock-trapezoid-offset-y, 2px)
+                + clamp(140px, 22vh, 200px)
+            );
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.88) 0%,
+                rgba(0, 0, 0, 0.72) 28%,
+                rgba(0, 0, 0, 0.4) 62%,
+                rgba(0, 0, 0, 0) 100%
+            );
             pointer-events: none;
         }
 
-        body .main-menu-layout .main-menu-btn .main-menu-label {
-            font-size: clamp(18px, 5vw, 26px) !important;
+        body .main-menu-mobile-slide__copy {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: calc(
+                var(--dock-border-seam-h, 48px)
+                + var(--dock-trapezoid-offset-y, 2px)
+                + clamp(56px, 9vh, 76px)
+            );
+            z-index: 2;
+            padding: clamp(8px, 1.6vh, 16px) clamp(56px, 16vw, 88px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            text-align: center;
+            background: none;
+            pointer-events: none;
+            box-sizing: border-box;
+        }
+
+        body .main-menu-mobile-slide__label {
+            font-family: var(--font-menu-title, var(--font-title, 'BigNoodleToo', Impact, sans-serif));
+            font-weight: 700;
+            font-style: italic;
+            font-size: clamp(34px, 10vw, 56px);
+            line-height: 0.95;
             letter-spacing: 0.04em;
-            line-height: 1.1;
-            padding: 0 !important;
             text-transform: uppercase;
+            text-align: center;
             color: #fff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
         }
 
-        body .main-menu-layout .main-menu-side-btn-wrapper:has(#readUndividedBtn) .main-menu-label {
-            font-size: clamp(16px, 4.4vw, 22px) !important;
-            white-space: normal;
-            overflow: visible;
-            text-overflow: unset;
+        body .main-menu-mobile-slide__desc {
+            font-family: var(--font-menu-desc, var(--font-default, 'Config', sans-serif));
+            font-style: italic;
+            font-size: clamp(13px, 3.4vw, 16px);
+            line-height: 1.25;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 22em;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
         }
 
-        body .main-menu-layout .main-menu-side-btn .main-menu-label {
-            font-size: clamp(15px, 4.2vw, 20px) !important;
-            white-space: normal;
-            overflow: visible;
-            text-overflow: unset;
-            line-height: 1.08;
+        /* Side entry arrows (Arrow Icon — same as dock prev/next event) */
+        body .main-menu-mobile-nav {
+            position: absolute;
+            top: 42%;
+            transform: translateY(-50%);
+            z-index: 6;
+            width: clamp(72px, 20vw, 104px);
+            height: clamp(72px, 20vw, 104px);
+            padding: 0;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.85));
+            transition: opacity 0.15s ease, transform 0.15s ease;
         }
 
-        body .main-menu-layout .main-menu-mode-btn .main-menu-label {
-            white-space: nowrap;
+        body .main-menu-mobile-nav--prev {
+            left: clamp(4px, 1.5vw, 10px);
         }
 
-        body .main-menu-layout .main-menu-btn:hover,
-        body .main-menu-layout .main-menu-btn:focus-visible {
-            transform: skewX(var(--thumb-skew)) translateY(-1px) scale(1.02) !important;
+        body .main-menu-mobile-nav--next {
+            right: clamp(4px, 1.5vw, 10px);
         }
 
-        /* Hidden on portrait — must follow wrapper display:flex rule (see-latest shares that class) */
-        body .main-menu-side-btn-wrapper:has(#runBiographyBtn),
-        body .main-menu-side-btn-wrapper.main-menu-see-latest-wrapper {
-            display: none !important;
+        body .main-menu-mobile-nav__icon {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        body .main-menu-mobile-nav__icon--flip {
+            transform: scaleX(-1);
+        }
+
+        body .main-menu-mobile-nav:hover,
+        body .main-menu-mobile-nav:focus-visible {
+            outline: none;
+            transform: translateY(-50%) scale(1.08);
+            filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.35));
+        }
+
+        body .main-menu-mobile-nav:active {
+            transform: translateY(-50%) scale(0.96);
+        }
+
+        body .main-menu-mobile-deck[data-at-start='1'] .main-menu-mobile-nav--prev,
+        body .main-menu-mobile-deck[data-at-end='1'] .main-menu-mobile-nav--next {
+            opacity: 0.38;
+        }
+
+        /* Map-style white edge glow host */
+        body .main-menu-mobile-edge-glow.map-edge-glow {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        body .main-menu-mobile-edge-glow .map-edge-glow__edge--left,
+        body .main-menu-mobile-edge-glow .map-edge-glow__edge--right {
+            width: clamp(28px, 8vw, 44px);
+        }
+
+        /*
+         * Select overlays the slide, seated just above the dock trapezoid seam
+         * inside the shade band that reaches the dock.
+         */
+        body .main-menu-mobile-select-wrap {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: calc(
+                var(--dock-border-seam-h, 48px)
+                + var(--dock-trapezoid-offset-y, 2px)
+                + clamp(6px, 1vh, 12px)
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0 clamp(16px, 5vw, 28px);
+            box-sizing: border-box;
+            background: none;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        body .main-menu-mobile-select-wrap .main-menu-mobile-select {
+            pointer-events: auto;
+        }
+
+        /* Match World / dock globe-control buttons */
+        body .main-menu-mobile-select {
+            --select-skew: -11deg;
+            appearance: none;
+            -webkit-appearance: none;
+            border-style: solid;
+            border-width: 2px 2px 2px 6px;
+            border-color: rgba(255, 255, 255, 0.93);
+            border-radius: 4px;
+            background: rgba(13, 71, 161, 0.35);
+            color: #fff;
+            font-family: var(--font-control-bold, var(--font-default));
+            font-weight: 700;
+            font-style: normal;
+            font-size: clamp(18px, 5vw, 24px);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+            padding: 0.72em 1.9em 0.68em;
+            min-width: min(64vw, 240px);
+            cursor: pointer;
+            clip-path: none;
+            transform: skewX(var(--select-skew));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        body .main-menu-mobile-select:hover,
+        body .main-menu-mobile-select:focus-visible {
+            background: rgba(13, 71, 161, 0.55);
+            border-color: #fff;
+            color: #fff;
+            outline: none;
+            transform: skewX(var(--select-skew)) translateY(-3px) scale(1.04);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        body .main-menu-mobile-select:active {
+            transform: skewX(var(--select-skew)) translateY(-1px) scale(1.02);
+            background: rgba(13, 71, 161, 0.55);
+        }
+
+        body.color-palette-gray .main-menu-mobile-select {
+            background: rgba(66, 66, 66, 0.45);
+        }
+        body.color-palette-gray .main-menu-mobile-select:hover,
+        body.color-palette-gray .main-menu-mobile-select:focus-visible,
+        body.color-palette-gray .main-menu-mobile-select:active {
+            background: rgba(66, 66, 66, 0.7);
+        }
+        body.color-palette-crimson .main-menu-mobile-select {
+            background: rgba(183, 28, 28, 0.4);
+        }
+        body.color-palette-crimson .main-menu-mobile-select:hover,
+        body.color-palette-crimson .main-menu-mobile-select:focus-visible,
+        body.color-palette-crimson .main-menu-mobile-select:active {
+            background: rgba(183, 28, 28, 0.65);
+        }
+        body.color-palette-nulled .main-menu-mobile-select {
+            background: rgba(103, 58, 183, 0.4);
+        }
+        body.color-palette-nulled .main-menu-mobile-select:hover,
+        body.color-palette-nulled .main-menu-mobile-select:focus-visible,
+        body.color-palette-nulled .main-menu-mobile-select:active {
+            background: rgba(103, 58, 183, 0.65);
         }
     }
 
-    /* Landscape narrow: smaller stacked tiles (portrait uses grid above) */
+    /* Landscape narrow: smaller stacked tiles (portrait uses slide deck) */
     @media (max-width: 480px) and (orientation: landscape) {
         .main-menu-buttons {
             gap: 12px;

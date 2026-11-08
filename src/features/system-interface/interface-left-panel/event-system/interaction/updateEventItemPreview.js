@@ -1,3 +1,5 @@
+import { storyEventHasWrongCategoryRelevancy } from '../../../interface-shared/storyEventWrongCategoryRelevancy.js';
+
 /**
  * Compose the location-text string for a variant preview, mirroring the rules from the
  * full event renderer:
@@ -120,4 +122,14 @@ export function updateEventItemPreview(interactionService, _eventIndex, event, i
 
     const hasDescription = variant.description && variant.description.trim().length > 0;
     itemElement.classList.toggle('event-item--unfinished', !hasDescription);
+
+    const em = interactionService.eventManager;
+    const isStory =
+        typeof em?.dataService?.getArchiveSource === 'function'
+            ? em.dataService.getArchiveSource() === 'story'
+            : true;
+    itemElement.classList.toggle(
+        'event-item--wrong-category-relevancy',
+        isStory && storyEventHasWrongCategoryRelevancy(event),
+    );
 }

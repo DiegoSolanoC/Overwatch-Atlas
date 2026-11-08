@@ -161,6 +161,12 @@
         </a>
     </header>
 
+    <!-- Always-on Filters (left of dock) + Music (right of dock) -->
+    <div class="header-utility-rail" id="headerUtilityRail" aria-label="Filters and music">
+        <div class="header-utility-rail__slot header-utility-rail__slot--left" id="headerUtilityRailLeft"></div>
+        <div class="header-utility-rail__slot header-utility-rail__slot--right" id="headerUtilityRailRight"></div>
+    </div>
+
     <div class="header-subbar" id="headerRotateSubBar" aria-label="Rotation controls">
         <div class="header-subbar-inner" id="headerRotateSubBarInner"></div>
     </div>
@@ -195,6 +201,9 @@
                         <h2 id="eventSlideTitle">Event</h2>
                         <button type="button" id="eventGlitchToggle" class="event-glitch-toggle-btn" style="display: none;" aria-label="Glitch effect" aria-pressed="false"><span class="event-glitch-toggle-btn__icon" aria-hidden="true"></span></button>
                     </div>
+                    <button type="button" class="event-slide-see-gallery-btn" id="eventSlideSeeMoreInGallery" hidden>
+                        See More in Gallery
+                    </button>
                     <p id="eventSlideLocation" class="event-slide-location" style="display: none;"></p>
                     <div class="event-slide-meta-jump-row" id="eventSlideMetaJumpRow">
                         <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>

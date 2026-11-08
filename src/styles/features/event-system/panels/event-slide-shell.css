@@ -145,18 +145,18 @@
 
 .event-slide-section-jump {
     margin: 0;
-    min-width: 104px;
-    min-height: 42px;
-    padding: 10px 18px;
+    min-width: 128px;
+    min-height: 52px;
+    padding: 12px 22px;
     border: 1px solid rgba(255, 255, 255, 0.38);
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.55);
     color: #fff;
     font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
-    font-size: 1.35rem;
+    font-size: 1.7rem;
     font-weight: 800;
-    letter-spacing: 0.03em;
-    line-height: 1.1;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
     text-transform: none;
     cursor: pointer;
     transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;

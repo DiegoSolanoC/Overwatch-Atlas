@@ -7,11 +7,11 @@ export const PAGINATION_DOCK_COLLAPSED_STORAGE_KEY = 'timeline-pagination-dock-c
 
 /** Native pixel size of `src/assets/images/Misc/UI/Dock%20Border.png` (reference only; border band height is CSS-driven). */
 export const DOCK_BORDER_ART_PX_W = 5200;
-export const DOCK_BORDER_ART_PX_H = 200;
+export const DOCK_BORDER_ART_PX_H = 500;
 
 /**
  * Sets `body { --dock-top-border-h }` to the fixed dock border image band height (`--dock-border-img-h`) so
- * collapse handle + fixed globe rails track the border art — independent of column width (images use object-fit: fill).
+ * collapse handle + fixed globe rails track the border art — independent of column width (images use object-fit: fill; clip is bottom-anchored).
  */
 export function syncPaginationDockTopChromeMetrics() {
     const dock = document.getElementById('paginationDock');

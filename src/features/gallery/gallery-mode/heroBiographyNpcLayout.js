@@ -77,6 +77,7 @@ export const NPC_BIOGRAPHY_CATEGORY_DISPLAY_ORDER = Object.freeze([
     'Influential Players',
     'Researchers',
     'Civilians',
+    'Unassigned',
     'Other',
 ]);
 

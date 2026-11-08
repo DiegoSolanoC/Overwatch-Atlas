@@ -48,6 +48,10 @@ const loadedComponents = {
     events: false,
     codex: false,
     dataWorkshop: false,
+    intel: false,
+    /** Media / concept Gallery hub (ATLAS_MODE.GALLERY). */
+    mediaGallery: false,
+    /** @deprecated Legacy Intel flag — prefer intel. */
     gallery: false,
     story: false,
     dialogueTheater: false,
@@ -108,16 +112,24 @@ const killWorldComponents = () => modeOrchestrator.killWorldComponents();
 const runCodexComponents = (isAutoLoad = false) => modeOrchestrator.runCodexComponents(isAutoLoad);
 const killCodexComponents = () => modeOrchestrator.killCodexComponents();
 const runDataWorkshopComponents = (isAutoLoad = false) => modeOrchestrator.runDataWorkshopComponents(isAutoLoad);
-const killDataWorkshopComponents = () => modeOrchestrator.killDataWorkshopComponents();
-const runGalleryComponents = (isAutoLoad = false) => modeOrchestrator.runGalleryComponents(isAutoLoad);
-const killGalleryComponents = () => modeOrchestrator.killGalleryComponents();
+const killDataWorkshopComponents = (restoreMenu) => modeOrchestrator.killDataWorkshopComponents(restoreMenu);
+const runIntelComponents = (isAutoLoad = false) => modeOrchestrator.runIntelComponents(isAutoLoad);
+const killIntelComponents = (restoreMenu) => modeOrchestrator.killIntelComponents(restoreMenu);
+const runGalleryHubComponents = (isAutoLoad = false) => modeOrchestrator.runGalleryHubComponents(isAutoLoad);
+const killGalleryHubComponents = (restoreMenu) => modeOrchestrator.killGalleryHubComponents(restoreMenu);
+/** @deprecated Use runIntelComponents */
+const runGalleryComponents = runIntelComponents;
+/** @deprecated Use killIntelComponents */
+const killGalleryComponents = killIntelComponents;
 const runStoryComponents = (isAutoLoad = false) => modeOrchestrator.runStoryComponents(isAutoLoad);
-const killStoryComponents = () => modeOrchestrator.killStoryComponents();
+const killStoryComponents = (restoreMenu) => modeOrchestrator.killStoryComponents(restoreMenu);
 const runDialogueTheaterComponents = (isAutoLoad = false) => modeOrchestrator.runDialogueTheaterComponents(isAutoLoad);
-const killDialogueTheaterComponents = () => modeOrchestrator.killDialogueTheaterComponents();
+const killDialogueTheaterComponents = (restoreMenu) =>
+    modeOrchestrator.killDialogueTheaterComponents(restoreMenu);
 const runOfficialArchiveComponents = (isAutoLoad = false) =>
     modeOrchestrator.runOfficialArchiveComponents(isAutoLoad);
-const killOfficialArchiveComponents = () => modeOrchestrator.killOfficialArchiveComponents();
+const killOfficialArchiveComponents = (restoreMenu) =>
+    modeOrchestrator.killOfficialArchiveComponents(restoreMenu);
 
 /** @deprecated Legacy window aliases — prefer canonical names above. */
 const runGlobeComponents = runWorldComponents;
@@ -126,8 +138,8 @@ const runGlossaryComponents = runCodexComponents;
 const killGlossaryComponents = killCodexComponents;
 const runBiographyComponents = runDataWorkshopComponents;
 const killBiographyComponents = killDataWorkshopComponents;
-const runHeroBiographyComponents = runGalleryComponents;
-const killHeroBiographyComponents = killGalleryComponents;
+const runHeroBiographyComponents = runIntelComponents;
+const killHeroBiographyComponents = killIntelComponents;
 const runStoryTimelineComponents = runStoryComponents;
 const killStoryTimelineComponents = killStoryComponents;
 const runOfficialResourcesComponents = runOfficialArchiveComponents;
@@ -145,6 +157,10 @@ window.runCodexComponents = runCodexComponents;
 window.killCodexComponents = killCodexComponents;
 window.runDataWorkshopComponents = runDataWorkshopComponents;
 window.killDataWorkshopComponents = killDataWorkshopComponents;
+window.runIntelComponents = runIntelComponents;
+window.killIntelComponents = killIntelComponents;
+window.runGalleryHubComponents = runGalleryHubComponents;
+window.killGalleryHubComponents = killGalleryHubComponents;
 window.runGalleryComponents = runGalleryComponents;
 window.killGalleryComponents = killGalleryComponents;
 window.runStoryComponents = runStoryComponents;

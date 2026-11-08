@@ -27,7 +27,8 @@ export async function killOtherModes(ctx) {
     };
 
     await killLinear(ATLAS_MODE.DATA_WORKSHOP, killers.killDataWorkshopComponents);
-    await killLinear(ATLAS_MODE.GALLERY, killers.killGalleryComponents);
+    await killLinear(ATLAS_MODE.INTEL, killers.killIntelComponents);
+    await killLinear(ATLAS_MODE.GALLERY, killers.killGalleryHubComponents);
     await killLinear(ATLAS_MODE.STORY, killers.killStoryComponents);
     await killLinear(ATLAS_MODE.DIALOGUE_THEATER, killers.killDialogueTheaterComponents);
     await killLinear(ATLAS_MODE.OFFICIAL_ARCHIVE, killers.killOfficialArchiveComponents);

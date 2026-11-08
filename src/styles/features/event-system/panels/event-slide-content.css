@@ -148,6 +148,41 @@
     margin-bottom: 0;
 }
 
+.event-slide-see-gallery-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 14px 0;
+    min-height: 52px;
+    padding: 12px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.event-slide-see-gallery-btn[hidden] {
+    display: none !important;
+}
+
+.event-slide-see-gallery-btn:hover {
+    background: rgba(0, 0, 0, 0.62);
+    border-color: rgba(255, 255, 255, 0.55);
+    transform: scale(1.03);
+}
+
+.event-slide-see-gallery-btn:focus-visible {
+    outline: 2px solid var(--accent-primary, #5aa9e6);
+    outline-offset: 2px;
+}
+
 .event-slide-top .event-slide-location,
 .event-slide-location {
     font-size: var(--info-description-font-size);

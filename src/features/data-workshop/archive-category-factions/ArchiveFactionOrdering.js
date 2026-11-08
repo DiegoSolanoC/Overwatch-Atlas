@@ -5,7 +5,7 @@
  */
 
 /** Canonical faction type order */
-const FACTION_ARCHIVE_TYPE_ORDER = [
+export const FACTION_ARCHIVE_TYPE_ORDER = [
   "Major Player",
   "Criminal Groups",
   "Military Initiatives",

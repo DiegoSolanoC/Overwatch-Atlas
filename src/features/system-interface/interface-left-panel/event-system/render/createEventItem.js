@@ -20,6 +20,7 @@ import { resolveEventItemLocation } from './resolveEventItemLocation.js';
 import { renderEventItemMarkup } from './renderEventItemMarkup.js';
 import { wireEventItemInteractions } from './wireEventItemInteractions.js';
 import { isBioArchiveWorkshopEditingEnabled } from '../../../interface-info-display/isEventSlideEditDevHost.js';
+import { storyEventHasWrongCategoryRelevancy } from '../../../interface-shared/storyEventWrongCategoryRelevancy.js';
 
 /** @returns {typeof window.FactionArchiveGroupOrderHelpers|null} */
 function factionArchiveGroupOrder() {
@@ -101,6 +102,22 @@ export function createEventItem(renderService, event, index, _allEvents, options
     }
     const isUnfinished = !hasDescription;
     item.classList.toggle('event-item--unfinished', isUnfinished);
+
+    const isStoryArchive =
+        typeof eventManager?.dataService?.getArchiveSource === 'function'
+            ? eventManager.dataService.getArchiveSource() === 'story'
+            : !isSatelliteArchive;
+    const wrongCategory =
+        isStoryArchive && storyEventHasWrongCategoryRelevancy(event);
+    item.classList.toggle('event-item--wrong-category-relevancy', wrongCategory);
+    if (wrongCategory) {
+        item.title = [
+            item.title || '',
+            'Wrong-category relevancy: a hero/NPC token is listed under the other filter group.',
+        ]
+            .filter(Boolean)
+            .join(' — ');
+    }
 
     if (eventManager.getSearchMatchAxesForItem) {
         const axes = eventManager.getSearchMatchAxesForItem(resolved.displayEvent);

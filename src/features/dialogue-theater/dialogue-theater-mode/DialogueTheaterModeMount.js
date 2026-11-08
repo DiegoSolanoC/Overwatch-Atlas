@@ -2,7 +2,13 @@ import {
     getDialogueTheaterListHostId,
     mountDialogueTheaterListView,
     unmountDialogueTheaterListView,
-} from '../dialogue-theater-list/DialogueTheaterListView.js?v=115';
+} from '../dialogue-theater-list/DialogueTheaterListView.js';
+import {
+    clearDialogueTheaterDockState,
+    ensureDialogueTheaterDockAssets,
+    refreshDialogueTheaterDockPagination,
+} from './dialogueTheaterDockTimeline.js';
+import { refreshDockTimelinePagination } from '../../system-interface/interface-bottom-dock/refreshDockTimelinePagination.js';
 
 function hideGlobeChrome() {
     const testContainer = document.querySelector('.test-container');
@@ -57,11 +63,17 @@ export async function mountDialogueTheaterMode() {
     content.appendChild(host);
 
     await mountDialogueTheaterListView(host);
+    await ensureDialogueTheaterDockAssets();
+    refreshDialogueTheaterDockPagination();
+    window.dispatchEvent(new CustomEvent('atlas-dialogue-theater-dock-mode', { detail: { active: true } }));
 }
 
 export async function unmountDialogueTheaterMode() {
     const host = document.getElementById(getDialogueTheaterListHostId());
     unmountDialogueTheaterListView(host);
     document.body.classList.remove('dialogue-theater-mode-active');
+    clearDialogueTheaterDockState();
+    window.dispatchEvent(new CustomEvent('atlas-dialogue-theater-dock-mode', { detail: { active: false } }));
+    refreshDockTimelinePagination();
     restoreGlobeChrome();
 }

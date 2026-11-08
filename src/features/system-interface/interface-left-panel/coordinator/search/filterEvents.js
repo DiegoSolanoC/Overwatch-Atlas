@@ -85,6 +85,25 @@ function itemMatchesTextSearch(mgr, item, q, tokens) {
  * @param {object} mgr — EventManager instance (search* fields, dataService, eventItemVariantIndices)
  * @param {object} item — event or variant row
  */
+/**
+ * Character name match across hero/NPC place lists (promote/demote may leave
+ * the token on the other axis until the event is fixed).
+ * @param {string} filterName
+ * @param {unknown[]} tokens
+ */
+function characterTokenListIncludes(filterName, tokens) {
+    const want = String(filterName || '').trim().toLowerCase();
+    if (!want || !Array.isArray(tokens)) return false;
+    const wantStrip = want.replace(/[^a-z0-9]+/g, '');
+    for (let i = 0; i < tokens.length; i += 1) {
+        const have = String(tokens[i] || '').trim().toLowerCase();
+        if (!have) continue;
+        if (have === want) return true;
+        if (wantStrip && have.replace(/[^a-z0-9]+/g, '') === wantStrip) return true;
+    }
+    return false;
+}
+
 function computeSearchAxisMatchesForItem(mgr, item) {
     const heroFilters = mgr.searchHeroFilters || [];
     const factionFilters = mgr.searchFactionFilters || [];
@@ -100,8 +119,16 @@ function computeSearchAxisMatchesForItem(mgr, item) {
     const hasH = heroFilters.length > 0;
     const hasF = factionFilters.length > 0;
     const hasN = npcFilters.length > 0;
-    const heroHit = hasH && heroFilters.some((h) => itemHeroes.includes(h));
-    const npcHit = hasN && npcFilters.some((n) => itemNpcs.includes(n));
+    const heroHit =
+        hasH
+        && heroFilters.some(
+            (h) => characterTokenListIncludes(h, itemHeroes) || characterTokenListIncludes(h, itemNpcs),
+        );
+    const npcHit =
+        hasN
+        && npcFilters.some(
+            (n) => characterTokenListIncludes(n, itemNpcs) || characterTokenListIncludes(n, itemHeroes),
+        );
     const fh = typeof window !== 'undefined' && window.FactionMatchHelpers;
     const factionHit =
         hasF &&

@@ -185,6 +185,11 @@ body.color-palette-gray .event-page-slider-tick--unfinished-slot {
     box-shadow: 0 0 7px rgba(244, 67, 54, 0.72) !important;
 }
 
+body.color-palette-gray .event-page-slider-tick--wrong-category-slot {
+    background: rgba(255, 152, 0, 0.96) !important;
+    box-shadow: 0 0 7px rgba(255, 152, 0, 0.72) !important;
+}
+
 body.color-palette-gray .event-number-btn {
     background: rgba(74, 74, 74, 0.9) !important;
 }

@@ -3,15 +3,18 @@
  * Extracted from the massive HeroArchiveRoleOrder.js file.
  */
 
-/** Canonical hero role order */
-export const HERO_ARCHIVE_ROLE_ORDER = ['Tank', 'Damage', 'Support'];
+/** Canonical hero role order (Unassigned = promoted / uncategorized fourth band) */
+export const HERO_ARCHIVE_ROLE_ORDER = ['Tank', 'Damage', 'Support', 'Unassigned'];
 
 /** Role aliases for normalization */
 export const HERO_ARCHIVE_ROLE_ALIASES = {
     tank: 'Tank',
     damage: 'Damage',
     dps: 'Damage',
-    support: 'Support'
+    support: 'Support',
+    unassigned: 'Unassigned',
+    none: 'Unassigned',
+    unknown: 'Unassigned',
 };
 
 /**

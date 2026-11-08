@@ -91,21 +91,41 @@
         var portraitAttrs = '';
         var title = '';
 
-        if (kind === 'heroes') {
+        if (kind === 'heroes' || kind === 'npcs') {
             var hk = B.resolveHeroImageKey(t);
-            var canon = hk || t;
-            label = canon;
-            src = 'src/assets/images/Filters/Heroes/' + encodeURIComponent(canon) + '.png';
-            openAttr = 'data-hero-open="' + encodeURIComponent(canon) + '"';
-            clickClass = 'event-slide-filter-token-chip--clickable-hero';
-            title = 'Open ' + R.escapeHtmlAttr(canon) + ' in Heroes archive';
-        } else if (kind === 'npcs') {
             var nk = B.resolveNpcImageKey(t);
-            label = nk || t;
-            src = 'src/assets/images/Filters/NPCs/' + encodeURIComponent(nk || t) + '.png';
-            openAttr = 'data-npc-open="' + encodeURIComponent(nk || t) + '"';
-            clickClass = 'event-slide-filter-token-chip--clickable-npc';
-            title = 'Open ' + R.escapeHtmlAttr(nk || t) + ' in NPCs archive';
+            var heroList = window.eventManager?.heroes || window.globeController?.dataModel?.heroes || [];
+            var npcList = window.eventManager?.npcs || [];
+            var onHero = false;
+            var onNpc = false;
+            var i;
+            var wantH = R.normalizeKey(hk || t);
+            var wantN = R.normalizeKey(nk || t);
+            for (i = 0; i < heroList.length; i++) {
+                if (R.normalizeKey(heroList[i]) === wantH) { onHero = true; break; }
+            }
+            for (i = 0; i < npcList.length; i++) {
+                if (R.normalizeKey(npcList[i]) === wantN) { onNpc = true; break; }
+            }
+            /* Prefer live roster over the place-list kind so promote/demote portraits resolve. */
+            var asHero = kind === 'heroes' ? (onHero || !onNpc) : (onHero && !onNpc);
+            if (asHero) {
+                var canon = hk || t;
+                label = canon;
+                src = 'src/assets/images/Filters/Heroes/' + encodeURIComponent(canon) + '.png';
+                openAttr = 'data-hero-open="' + encodeURIComponent(canon) + '"';
+                clickClass = 'event-slide-filter-token-chip--clickable-hero';
+                title = 'Open ' + R.escapeHtmlAttr(canon) + ' in Heroes archive';
+                fb = B.filterFallbackIconSrc('heroes').replace(/'/g, "\\'");
+            } else {
+                var npcLabel = nk || t;
+                label = npcLabel;
+                src = 'src/assets/images/Filters/NPCs/' + encodeURIComponent(npcLabel) + '.png';
+                openAttr = 'data-npc-open="' + encodeURIComponent(npcLabel) + '"';
+                clickClass = 'event-slide-filter-token-chip--clickable-npc';
+                title = 'Open ' + R.escapeHtmlAttr(npcLabel) + ' in NPCs archive';
+                fb = B.filterFallbackIconSrc('npcs').replace(/'/g, "\\'");
+            }
         } else if (kind === 'factions') {
             var ff = B.resolveFactionImageFilename(t);
             if (!ff) return '';
@@ -133,7 +153,15 @@
                 ' title="' + title + '" aria-label="' + title + '">' +
                     '<div class="filter-image-container">' +
                         '<img' + portraitAttrs + ' src="' + src + '" alt="" loading="lazy" decoding="async" ' +
-                        'onerror="this.onerror=null;this.src=\'' + fb + '\';" />' +
+                        'onerror="(function(img){var a=img.getAttribute(\'data-alt-filter-src\');if(a){img.removeAttribute(\'data-alt-filter-src\');img.src=a;return;}img.onerror=null;img.src=\'' + fb + '\';})(this);" ' +
+                        (kind === 'heroes' || kind === 'npcs'
+                            ? 'data-alt-filter-src="' +
+                              (src.indexOf('/Heroes/') >= 0
+                                  ? 'src/assets/images/Filters/NPCs/' + encodeURIComponent(label) + '.png'
+                                  : 'src/assets/images/Filters/Heroes/' + encodeURIComponent(label) + '.png') +
+                              '" '
+                            : '') +
+                        '/>' +
                     '</div>' +
                     '<div class="filter-label">' +
                         '<span class="filter-label-text">' + R.slideStoryDisplayHtml(label) + '</span>' +

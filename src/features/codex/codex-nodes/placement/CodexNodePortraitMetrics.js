@@ -18,7 +18,9 @@ export const CODEX_USE_SIMPLIFIED_DOM = true;
 /** Node portrait/junction scale clamp + defaults for newly placed nodes. */
 export const CODEX_SCALE_MIN = 0.25;
 export const CODEX_SCALE_MAX = 5;
-export const CODEX_DEFAULT_SCALE_HERO = 1.5;
+/** Atlas convention: heroes read larger than NPCs on the board. */
+export const CODEX_DEFAULT_SCALE_HERO = 2.5;
+export const CODEX_DEFAULT_SCALE_NPC = 1.5;
 export const CODEX_DEFAULT_SCALE_FACTION = 2;
 export const CODEX_DEFAULT_SCALE_COUNTRY = 1.5;
 export const CODEX_DEFAULT_SCALE_JUNCTION = 3;
@@ -91,5 +93,6 @@ export function resolveCodexNodeScale(kind, optsScale) {
     if (kind === 'junction') return CODEX_DEFAULT_SCALE_JUNCTION;
     if (kind === 'faction') return CODEX_DEFAULT_SCALE_FACTION;
     if (kind === 'country') return CODEX_DEFAULT_SCALE_COUNTRY;
+    if (kind === 'npc') return CODEX_DEFAULT_SCALE_NPC;
     return CODEX_DEFAULT_SCALE_HERO;
 }

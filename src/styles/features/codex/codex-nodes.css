@@ -689,20 +689,27 @@ body:has(#paginationDock) .codex-visual-panel {
     --codex-faction-portrait-inset: 0.864; /* 0.72 × 1.2 — 20% larger emblem */
 }
 
-/* Numbani art is a full city glyph — zoom further in than other faction emblems */
-.codex-node[data-codex-kind='faction'][data-codex-faction-file='Numbani City of Harmony'] {
-    --codex-faction-portrait-inset: 1.28;
+/* Full city/region glyphs — zoom further in than other faction emblems */
+.codex-node[data-codex-kind='faction'][data-codex-faction-file='Numbani City of Harmony'],
+.codex-node[data-codex-kind='faction'][data-codex-faction-file='Polynesian League'] {
+    --codex-faction-portrait-inset: 1.05;
 }
 
 .codex-node--simplified[data-codex-kind='faction'] .codex-node__img {
+    /* Clear `inset: 0` so right/bottom don't fight sized left/top (off-center hex). */
+    inset: auto;
     object-fit: contain;
+    object-position: center center;
     width: calc(100% * var(--codex-faction-portrait-inset));
     height: calc(100% * var(--codex-faction-portrait-inset));
-    left: calc((100% - 100% * var(--codex-faction-portrait-inset)) / 2);
-    top: calc((100% - 100% * var(--codex-faction-portrait-inset)) / 2);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--codex-hex-rotation, 0deg)));
+    transform-origin: center center;
 }
 
-.codex-node--simplified[data-codex-kind='faction'][data-codex-faction-file='Numbani City of Harmony'] .codex-node__img {
+.codex-node--simplified[data-codex-kind='faction'][data-codex-faction-file='Numbani City of Harmony'] .codex-node__img,
+.codex-node--simplified[data-codex-kind='faction'][data-codex-faction-file='Polynesian League'] .codex-node__img {
     object-fit: cover;
 }
 

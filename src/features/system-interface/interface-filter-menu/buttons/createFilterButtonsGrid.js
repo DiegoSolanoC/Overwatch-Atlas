@@ -58,6 +58,9 @@ export async function createFilterButtonsGrid(
         return;
     }
 
+    const buildToken = Symbol('filterButtonsGrid');
+    filtersGrid._atlasFilterBuildToken = buildToken;
+
     filtersGrid.innerHTML = '';
     filtersGrid.classList.add('filters-grid--chip-board');
     filtersGrid.classList.remove('filters-grid--chip-board-columns');
@@ -84,6 +87,7 @@ export async function createFilterButtonsGrid(
             items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
         );
     } else {
+        if (filtersGrid._atlasFilterBuildToken !== buildToken) return;
         const row = document.createElement('div');
         row.className = 'filters-chip-board__chips-row filters-chip-board__chips-row--wrap';
         row.setAttribute('role', 'list');
@@ -97,6 +101,7 @@ export async function createFilterButtonsGrid(
         cachedButtons = [row];
     }
 
+    if (filtersGrid._atlasFilterBuildToken !== buildToken) return;
     buttonCache[type] = cachedButtons;
     scheduleOtherTabPreloads(type, { heroes, factions, npcs, countries }, preloadImages);
     updateFilterCounts();

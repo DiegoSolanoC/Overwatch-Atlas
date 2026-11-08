@@ -71,6 +71,53 @@ function mergeVoicelineLists(a, b) {
 }
 
 /**
+ * Parse JSON, recovering when trailing junk follows a valid document (e.g. extra `}`).
+ * @param {string} text
+ * @returns {unknown}
+ */
+function parseJsonAllowingTrailingJunk(text) {
+    const raw = String(text ?? '');
+    try {
+        return JSON.parse(raw);
+    } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        const match = /position (\d+)/i.exec(message);
+        if (!match) throw err;
+        const pos = Number(match[1]);
+        if (!Number.isFinite(pos) || pos <= 0) throw err;
+        return JSON.parse(raw.slice(0, pos));
+    }
+}
+
+/**
+ * @param {string} url
+ * @param {number} [timeoutMs]
+ * @returns {Promise<unknown>}
+ */
+async function fetchTheaterJson(url, timeoutMs = 10000) {
+    const separator = url.includes('?') ? '&' : '?';
+    const cacheBuster = `${separator}v=${Date.now()}&_=${Math.random().toString(36).slice(2, 9)}&nocache=true`;
+    const fullUrl = url + cacheBuster;
+    const res = await Promise.race([
+        fetch(fullUrl, {
+            cache: 'no-store',
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                Pragma: 'no-cache',
+            },
+        }),
+        new Promise((_, reject) => {
+            setTimeout(() => reject(new Error(`Timeout: ${url} took longer than ${timeoutMs}ms`)), timeoutMs);
+        }),
+    ]);
+    if (!(res instanceof Response) || !res.ok) {
+        throw new Error(`HTTP ${res?.status || 0}: ${res?.statusText || 'fetch failed'}`);
+    }
+    const text = await res.text();
+    return parseJsonAllowingTrailingJunk(text);
+}
+
+/**
  * @returns {Promise<DialogueTheaterAssets>}
  */
 export async function loadDialogueTheaterAssets({ force = false } = {}) {
@@ -85,7 +132,7 @@ export async function loadDialogueTheaterAssets({ force = false } = {}) {
         /** @type {DialogueTheaterAssets} */
         let manifestAssets = { scenes: [], voicelines: [], renders: {} };
         try {
-            const manifest = await fetchJsonWithTimeout(
+            const manifest = await fetchTheaterJson(
                 'src/data/dialogue-theater/theater-assets-manifest.json',
             );
             manifestAssets = normalizeAssets(manifest);

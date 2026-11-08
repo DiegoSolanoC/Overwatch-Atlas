@@ -85,4 +85,9 @@ export function unmountEmptyModeShell() {
     if (eventManagerBtn) {
         eventManagerBtn.style.removeProperty('display');
     }
+
+    // Leave `.test-container` / `#globe-container` alone — `restoreMainMenu`
+    // (Home) or the next `enterMode` ceremony owns chrome visibility. Clearing
+    // inline display here briefly resurrected the globe under placeholder modes
+    // and broke Home → menu after Gallery / Archive.
 }

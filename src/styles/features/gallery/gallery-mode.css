@@ -319,6 +319,79 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     color: rgba(255, 255, 255, 0.55);
 }
 
+.gallery-mode__archive-category-meta {
+    margin: 0 0 10px;
+}
+
+.gallery-mode__archive-category-line {
+    margin: 0;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.gallery-mode__archive-category-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 12px;
+}
+
+.gallery-mode__archive-category-fields[hidden] {
+    display: none !important;
+}
+
+.gallery-mode__archive-category-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+}
+
+.gallery-mode__archive-category-row[hidden] {
+    display: none !important;
+}
+
+.gallery-mode__archive-category-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 140px;
+    min-width: 120px;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.gallery-mode__archive-category-select {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+
+.gallery-mode__archive-category-row--transfer {
+    margin-top: 4px;
+}
+
+.gallery-mode__archive-kind-transfer-btn {
+    width: 100%;
+    min-height: 40px;
+    justify-content: center;
+}
+
 .gallery-mode__archive-birthday-edit .event-slide-hero-birthday-field__input {
     font-size: 0.95rem;
     padding: 8px 10px;
@@ -1085,11 +1158,11 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
 .gallery-mode__portrait {
     /*
      * Theater uses a deep negative bottom bleed for the info-panel stage.
-     * Gallery sits above the pagination dock — keep feet on the stage floor
-     * (no dock burial) with a small upward bias.
+     * Gallery sits above the pagination dock — slide feet up so the figure
+     * reads higher in the stage (factions use a separate centered scale).
      */
-    --stage-render-bottom: -15%;
-    --stage-render-bottom-extent: 15%;
+    --stage-render-bottom: -5%;
+    --stage-render-bottom-extent: 5%;
     --stage-render-top-gutter: 2%;
     --stage-render-scale: 1.48;
     --stage-render-max-height: calc(
@@ -1129,7 +1202,7 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
     display: none;
     position: absolute;
     left: 50%;
-    bottom: var(--stage-render-bottom, -15%);
+    bottom: var(--stage-render-bottom, -5%);
     z-index: 2;
     width: auto;
     height: auto;
@@ -1158,21 +1231,23 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
     cursor: grab;
 }
 
+/* Factions stay centered — enlarge ~5× instead of sliding up. */
 .gallery-mode__portrait--faction {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: clamp(6rem, 14vh, 10rem);
+    padding-bottom: 0;
 }
 
 .gallery-mode__portrait--faction .gallery-mode__portrait-img {
+    /* Fixed stage box so 256px assets (Lumérico / Lucheng) match 500px logos. */
     position: relative;
     left: auto;
     bottom: auto;
-    width: auto;
-    height: auto;
-    max-width: min(42vw, 520px);
-    max-height: min(36vh, 380px);
+    width: min(80vmin, 1600px);
+    height: min(80vmin, 1600px);
+    max-width: 96vw;
+    max-height: 88vh;
     object-fit: contain;
     object-position: center center;
     transform: none;
@@ -1898,7 +1973,8 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 /* Hero biography — slight air between subrole blocks (still tighter than before) */
 .gallery-hero-filters__role-column--damage .gallery-hero-filters__subrow,
 .gallery-hero-filters__role-column--tank .gallery-hero-filters__subrow,
-.gallery-hero-filters__role-column--support .gallery-hero-filters__subrow {
+.gallery-hero-filters__role-column--support .gallery-hero-filters__subrow,
+.gallery-hero-filters__role-column--unassigned .gallery-hero-filters__subrow {
     gap: clamp(18px, 1.4vw, 28px);
 }
 
@@ -2312,12 +2388,14 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     body:has(#atlasGalleryHost) .gallery-mode__portrait--faction {
         align-items: center;
         justify-content: center;
-        padding-bottom: clamp(8px, 1.5vh, 14px);
+        padding-bottom: 0;
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__portrait--faction .gallery-mode__portrait-img {
-        max-width: min(72vw, 320px);
-        max-height: min(32vh, 280px);
+        width: min(72vmin, 960px);
+        height: min(72vmin, 960px);
+        max-width: 96vw;
+        max-height: 70vh;
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__portrait-img {

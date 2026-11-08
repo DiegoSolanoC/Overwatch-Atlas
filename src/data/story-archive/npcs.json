@@ -359,28 +359,6 @@
       "npcCategory": "Gladiators"
     },
     {
-      "name": "Kace",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "npcCategory": "Fugitives"
-    },
-    {
-      "name": "Sven",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "npcCategory": "Fugitives",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Ironclad Guild",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
       "name": "Chao",
       "description": "No description available.",
       "relevantLocations": [],
@@ -873,6 +851,28 @@
       "description": "",
       "relevantLocations": [],
       "npcCategory": "Civilians"
+    },
+    {
+      "name": "Sven",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Fugitives",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
+      "name": "Kace",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Fugitives"
     }
   ]
 }

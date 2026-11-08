@@ -100,9 +100,7 @@ export async function loadEventSystem(testBtn) {
       parentId: "dockGlobeRailCenter",
       baseClass: "globe-control-btn",
       headerOrder: 5,
-      mobileParentId: "dockGlobeRailLeft",
-      mobileBaseClass: "globe-control-btn",
-      mobileClassName: "dock-globe-rail__btn",
+      /* Stay in the dock trapezoid on mobile — same as desktop (do not move to left rail). */
     });
     clearDockEraFilter();
     try {
@@ -121,9 +119,7 @@ export async function loadEventSystem(testBtn) {
       parentId: "dockGlobeRailCenter",
       baseClass: "globe-control-btn",
       headerOrder: 6,
-      mobileParentId: "dockGlobeRailLeft",
-      mobileBaseClass: "globe-control-btn",
-      mobileClassName: "dock-globe-rail__btn",
+      /* Stay in the dock trapezoid on mobile — same as desktop. */
     });
     await wait(100);
     wireGlobalImageToggleHandler(globalImageToggleState);
@@ -201,16 +197,15 @@ export async function loadEventSystem(testBtn) {
 
     createHeaderHubButton({
       id: "filtersToggle",
-      className: "",
+      className: "header-utility-btn header-utility-btn--filters",
       title: "Filters (F)",
       label: "Filters",
       iconPath:
         "src/assets/images/Icons/Filter%20Icons/Filter%20Icon.png",
       iconAlt: "Filters",
-      parentId: "headerHubRightButtonGroup",
-      baseClass: "header-hub-btn header-hub-btn--icon",
+      parentId: "headerUtilityRailLeft",
+      baseClass: "globe-control-btn",
       iconSpanId: "filtersIcon",
-      headerOrder: 55,
     });
 
     reflowDockChromeRails();

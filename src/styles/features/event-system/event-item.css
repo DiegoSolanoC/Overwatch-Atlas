@@ -947,6 +947,29 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
     transform: skewX(var(--thumb-skew)) scale(1.045);
 }
 
+/* Hero/NPC relevancy on the wrong filter group (e.g. promoted NPC still listed as NPC) */
+:is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--wrong-category-relevancy:not(.unsaved) .event-item__thumb-shell {
+    border-top-color: rgba(255, 152, 0, 0.95) !important;
+    border-bottom-color: rgba(255, 152, 0, 0.95) !important;
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.42),
+        0 0 0 3px rgba(255, 152, 0, 0.5),
+        inset 0 0 100px rgba(230, 81, 0, 0.22);
+}
+
+:is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--wrong-category-relevancy:hover:not(.dragging) .event-item__thumb-shell {
+    transform: skewX(var(--thumb-skew)) scale(1.045);
+    border-color: rgba(255, 183, 77, 0.98) rgba(255, 204, 128, 0.9) rgba(255, 183, 77, 0.98) rgba(255, 204, 128, 0.9) !important;
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.55),
+        0 0 0 2px rgba(255, 152, 0, 0.55),
+        inset 0 0 120px rgba(239, 108, 0, 0.3) !important;
+}
+
+:is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--wrong-category-relevancy:hover:not(.dragging) .event-item__thumb-chrome {
+    transform: skewX(var(--thumb-skew)) scale(1.045);
+}
+
 @media (max-width: 768px), (max-height: 599px) {
     :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item {
         --thumb-outline-y: 6px;

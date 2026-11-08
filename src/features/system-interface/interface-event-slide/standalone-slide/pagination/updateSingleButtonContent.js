@@ -9,6 +9,12 @@
 
 import { isHeroBiographyDockFilterActive } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import {
+    applyDialogueTheaterDockThumbMedia,
+    clearDialogueTheaterDockThumbMedia,
+    hydrateDialogueTheaterDockEventVisuals,
+    isDialogueTheaterDockEvent,
+} from '../../../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
+import {
     onHeroBiographyDockEventHover,
     onHeroBiographyDockEventHoverEnd,
 } from '../../../../gallery/gallery-mode/heroBiographyDockLookHover.js';
@@ -23,6 +29,7 @@ import {
     eventRootSlotMissingDescription,
     eventSlotMissingDescription
 } from '../../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
+import { storyEventHasWrongCategoryRelevancy } from '../../../interface-shared/storyEventWrongCategoryRelevancy.js';
 import { setLoadingAssetImageSrc } from '../../../../universal-features/atlas-ui/loadingAssetSlot.js';
 import {
     thumbPageTurnShrinkKeyframes,
@@ -156,20 +163,34 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                 nameEl.textContent = plainName;
             }
         }
+
+        const theaterDock = isDialogueTheaterDockEvent(event);
         
-        // Unfinished indicator: same predicate as the dock-thumb / list rule
-            const hasDescription = !eventSlotMissingDescription(displayEvent);
+        // Unfinished / wrong-category relevancy (same predicates as Event Manager list)
+        const hasDescription = theaterDock ? true : !eventSlotMissingDescription(displayEvent);
+        const wrongCategory = theaterDock ? false : storyEventHasWrongCategoryRelevancy(event);
         btn.classList.toggle('event-number-btn--unfinished', !hasDescription);
-        btn.title = hasDescription ? plainName : `${plainName} — Unfinished: missing description`;
+        btn.classList.toggle('event-number-btn--wrong-category-relevancy', wrongCategory);
+        const titleBits = [plainName];
+        if (!hasDescription) titleBits.push('Unfinished: missing description');
+        if (wrongCategory) titleBits.push('Wrong-category hero/NPC relevancy');
+        btn.title = titleBits.join(' — ');
         
         // Get image (dock thumbs always use main timeline event art)
         let imagePath = null;
-        if (window.NavigationImageHelpers?.getEventImagePath) {
-            imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
-        } else if (window.eventManager?.getEventImagePath) {
-            imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
+        if (theaterDock) {
+            hydrateDialogueTheaterDockEventVisuals(event);
+            imagePath = event._dialogueTheaterScene || event.image || event.imagePath || null;
+            if (imgWrap) applyDialogueTheaterDockThumbMedia(imgWrap, event);
         } else {
-            imagePath = displayEvent.image || displayEvent.imagePath || null;
+            clearDialogueTheaterDockThumbMedia(imgWrap);
+            if (window.NavigationImageHelpers?.getEventImagePath) {
+                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
+            } else if (window.eventManager?.getEventImagePath) {
+                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
+            } else {
+                imagePath = displayEvent.image || displayEvent.imagePath || null;
+            }
         }
         
         if (imgEl) {
@@ -178,7 +199,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         
         // Variant badge
         if (variantBadge) {
-            const hasVariants = Array.isArray(event.variants) && event.variants.length > 1;
+            const hasVariants = !theaterDock && Array.isArray(event.variants) && event.variants.length > 1;
             variantBadge.hidden = !hasVariants;
             variantBadge.dataset.eventIndex = globalEventIndex;
             variantBadge.dataset.currentVariant = '0';
@@ -264,25 +285,40 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
 
             // Show preview badge
             if (window.SummaryInfoBadge?.show && event) {
-                const hoverLines = window.SummaryInfoBadge.getHoverPreviewLines 
-                    ? window.SummaryInfoBadge.getHoverPreviewLines(event)
-                    : { eraName: displayEvent.eraName || '', primaryRowFlag: null, otherRowFlags: [], yearLine: displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `—${displayEvent.yearEnd}` : ''}` : '' };
-                
-                const variants = isMultiEvent ? event.variants : [];
-                const otherVariants = variants.slice(1);
-                
-                window.SummaryInfoBadge.show(
-                    globalEventIndex + 1,
-                    plainName,
-                    otherVariants.map(v => v.name || ''),
-                    hoverLines.eraName || displayEvent.eraName || '',
-                    hoverLines.primaryRowFlag || null,
-                    hoverLines.otherRowFlags || [],
-                    hoverLines.yearLine || (displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `—${displayEvent.yearEnd}` : ''}` : '')
-                );
+                if (theaterDock) {
+                    window.SummaryInfoBadge.show(
+                        globalEventIndex + 1,
+                        plainName,
+                        [],
+                        displayEvent.description || '',
+                        null,
+                        [],
+                        '',
+                    );
+                } else {
+                    const hoverLines = window.SummaryInfoBadge.getHoverPreviewLines
+                        ? window.SummaryInfoBadge.getHoverPreviewLines(event)
+                        : { eraName: displayEvent.eraName || '', primaryRowFlag: null, otherRowFlags: [], yearLine: displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `—${displayEvent.yearEnd}` : ''}` : '' };
+
+                    const variants = isMultiEvent ? event.variants : [];
+                    const otherVariants = variants.slice(1);
+
+                    window.SummaryInfoBadge.show(
+                        globalEventIndex + 1,
+                        plainName,
+                        otherVariants.map(v => v.name || ''),
+                        hoverLines.eraName || displayEvent.eraName || '',
+                        hoverLines.primaryRowFlag || null,
+                        hoverLines.otherRowFlags || [],
+                        hoverLines.yearLine || (displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `—${displayEvent.yearEnd}` : ''}` : '')
+                    );
+                }
             }
 
-            // Trigger marker hover effect based on view mode
+            // Theater dock has no globe markers — skip map/3d hover path.
+            if (theaterDock) return;
+
+            // Trigger marker hover effect based on view mode            // Trigger marker hover effect based on view mode
             const sceneModel = window.globeController?.sceneModel;
             const isMapView = sceneModel?.getMapViewEnabled?.() || !!sceneModel?.isMapView;
 

@@ -54,9 +54,11 @@ export async function loadMenu(loadedComponents) {
         const setupBiographyHandler = typeof window.runBiographyComponents === 'function'
             ? createLoadingLockHandler(window.runBiographyComponents, setRunOperation)
             : null;
-        const setupHeroBiographyHandler = typeof window.runHeroBiographyComponents === 'function'
-            ? createLoadingLockHandler(window.runHeroBiographyComponents, setRunOperation)
-            : null;
+        const setupHeroBiographyHandler = typeof window.runIntelComponents === 'function'
+            ? createLoadingLockHandler(window.runIntelComponents, setRunOperation)
+            : (typeof window.runHeroBiographyComponents === 'function'
+                ? createLoadingLockHandler(window.runHeroBiographyComponents, setRunOperation)
+                : null);
         const setupStoryTimelineHandler = typeof window.runStoryTimelineComponents === 'function'
             ? createLoadingLockHandler(window.runStoryTimelineComponents, setRunOperation)
             : null;
@@ -65,6 +67,9 @@ export async function loadMenu(loadedComponents) {
             : null;
         const setupOfficialResourcesHandler = typeof window.runOfficialResourcesComponents === 'function'
             ? createLoadingLockHandler(window.runOfficialResourcesComponents, setRunOperation)
+            : null;
+        const setupGalleryHubHandler = typeof window.runGalleryHubComponents === 'function'
+            ? createLoadingLockHandler(window.runGalleryHubComponents, setRunOperation)
             : null;
 
         const menuButtons = createMenuButtons(
@@ -75,6 +80,7 @@ export async function loadMenu(loadedComponents) {
             setupStoryTimelineHandler,
             setupDialogueTheaterHandler,
             setupOfficialResourcesHandler,
+            setupGalleryHubHandler,
         );
         menuContainer.appendChild(menuButtons);
         updateStatus('✓ Menu buttons created', 'success');

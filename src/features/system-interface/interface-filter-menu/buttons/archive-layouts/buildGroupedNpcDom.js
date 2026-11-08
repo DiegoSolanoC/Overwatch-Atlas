@@ -25,8 +25,11 @@ export async function buildGroupedNpcArchiveFilterDom(
     soundManager,
     updateFilterCounts,
 ) {
+    const buildToken = filtersGrid._atlasFilterBuildToken;
     filtersGrid.innerHTML = '';
     const { top, bottom } = await buildNpcBiographyFlatChipRowSegments(items);
+    if (filtersGrid._atlasFilterBuildToken !== buildToken) return [];
+    filtersGrid.innerHTML = '';
     const { board, body } = buildFiltersChipBoard('flat', 'NPCs');
 
     for (const rowKey of /** @type {const} */ (['top', 'bottom'])) {

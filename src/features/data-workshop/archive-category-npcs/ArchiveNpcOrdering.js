@@ -21,6 +21,7 @@ export const NPC_ARCHIVE_CATEGORY_ORDER = Object.freeze([
     'Influential Players',
     'Researchers',
     'Civilians',
+    'Unassigned',
     'Other',
 ]);
 
@@ -54,6 +55,8 @@ const NPC_ARCHIVE_CATEGORY_ALIASES = Object.freeze({
     researchers: 'Researchers',
     civilian: 'Civilians',
     civilians: 'Civilians',
+    unassigned: 'Unassigned',
+    unknown: 'Unassigned',
     other: 'Other',
     none: 'Other',
 });
@@ -97,7 +100,7 @@ export const NPC_ARCHIVE_CATEGORY_BY_NAME = Object.freeze({
     Maximus: 'Gladiators',
     Titus: 'Gladiators',
     Zephyrus: 'Gladiators',
-    Kace: 'Fugitives',
+    /* Kace demotes to Unassigned — do not force Fugitives via name map. */
     Sven: 'Fugitives',
     Chao: 'Lucheng',
     Harold: 'Lucheng',

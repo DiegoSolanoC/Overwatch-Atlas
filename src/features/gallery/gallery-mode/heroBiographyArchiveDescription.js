@@ -6,7 +6,13 @@
 import { createHeroBirthdayFieldSet } from '../../system-interface/interface-shared/bio-archive/HeroBirthdayFieldSet.js';
 import { getHeroBirthdayRawFromEntry } from '../../system-interface/interface-shared/bio-archive/HeroBirthdayAge.js';
 import { isHeroBiographyLocalDev } from './heroBiographyLocalDev.js';
-import { saveHeroArchiveEntryPatchFromBiographyStage, saveBioArchiveConnectionCanvasFromGallery } from './heroBiographyArchivePersist.js';
+import {
+    saveBioArchiveEntryPatchFromBiographyStage,
+    saveBioArchiveConnectionCanvasFromGallery,
+} from './heroBiographyArchivePersist.js';
+import { createGalleryIntelCategoryControls } from './galleryIntelCategoryControls.js';
+import { refreshHeroBiographyCategoryChipsIfActive } from './HeroBiographyHeroFilterBar.js';
+import { transferGalleryEntityKindFromUi } from './galleryEntityKindTransfer.js';
 import {
     archiveEntryWithConnections,
     resolveConnectionsForArchiveEntry,
@@ -68,7 +74,13 @@ let connectionsCancelBtn = null;
 let viewBirthdayMetaEl = null;
 
 /** @type {HTMLElement | null} */
+let viewCategoryMetaEl = null;
+
+/** @type {HTMLElement | null} */
 let editBirthdayEl = null;
+
+/** @type {ReturnType<typeof createGalleryIntelCategoryControls> | null} */
+let categoryControls = null;
 
 /** @type {ReturnType<typeof createHeroBirthdayFieldSet> | null} */
 let birthdayFields = null;
@@ -182,12 +194,16 @@ function setIntelEditingMode(editing) {
     isIntelEditing = editing;
     if (!intelPanelEl) return;
     intelPanelEl.classList.toggle('is-editing', editing);
-    if (viewBirthdayMetaEl) viewBirthdayMetaEl.hidden = editing;
+    const isHero = currentCategory === 'heroes';
+    if (viewBirthdayMetaEl) viewBirthdayMetaEl.hidden = editing || !isHero;
+    if (viewCategoryMetaEl) viewCategoryMetaEl.hidden = editing;
     if (editBirthdayEl) {
-        editBirthdayEl.hidden = !editing;
-        editBirthdayEl.classList.toggle('is-active', editing);
+        const showBirthday = editing && isHero;
+        editBirthdayEl.hidden = !showBirthday;
+        editBirthdayEl.classList.toggle('is-active', showBirthday);
     }
-    setBirthdayFieldsEnabled(editing);
+    setBirthdayFieldsEnabled(editing && isHero);
+    categoryControls?.setVisible(editing);
     if (editBodyEl) editBodyEl.hidden = !editing;
     if (intelEditBtn) intelEditBtn.hidden = editing;
     if (intelSaveBtn) intelSaveBtn.hidden = !editing;
@@ -447,12 +463,50 @@ function renderBirthdayMeta(display) {
     applyIntelEmptyState();
 }
 
-function populateIntelEditFields(entry, descriptionText) {
+/**
+ * @param {object | null} entry
+ */
+function renderCategoryMeta(entry) {
+    if (!viewCategoryMetaEl) return;
+    viewCategoryMetaEl.replaceChildren();
+    if (!entry) {
+        viewCategoryMetaEl.hidden = true;
+        return;
+    }
+    let text = '';
+    if (currentCategory === 'heroes') {
+        const role = String(entry.heroRole || '').trim();
+        const sub = String(entry.heroSubRole || '').trim();
+        text = [role, sub].filter(Boolean).join(' · ');
+    } else if (currentCategory === 'factions') {
+        text = String(entry.factionType || '').trim();
+    } else if (currentCategory === 'npcs') {
+        text = String(entry.npcCategory || '').trim();
+    }
+    if (!text) {
+        viewCategoryMetaEl.hidden = true;
+        return;
+    }
+    const line = document.createElement('p');
+    line.className = 'gallery-mode__archive-category-line';
+    line.textContent = text;
+    viewCategoryMetaEl.append(line);
+    viewCategoryMetaEl.hidden = false;
+}
+
+async function populateIntelEditFields(entry, descriptionText) {
     const raw = entry ? getHeroBirthdayRawFromEntry(entry) : '';
     birthdayFields?.populate(raw);
     if (editBodyEl) {
         editBodyEl.textContent = descriptionText || '';
     }
+    let events = [];
+    try {
+        events = await loadBioArchiveEvents(currentCategory);
+    } catch {
+        events = [];
+    }
+    categoryControls?.populate(currentCategory, entry, events);
 }
 
 function exitIntelEditMode() {
@@ -472,14 +526,22 @@ function exitAllEditModes() {
     exitConnectionsEditMode();
 }
 
-function beginIntelEditMode(entry, descriptionText) {
-    if (!canEditGalleryArchive() || !currentFilterKey || currentCategory !== 'heroes') return;
+async function beginIntelEditMode(entry, descriptionText) {
+    const cat = normalizeBioBiographyCategory(currentCategory);
+    if (
+        !canEditGalleryArchive()
+        || !currentFilterKey
+        || (cat !== 'heroes' && cat !== 'factions' && cat !== 'npcs')
+    ) {
+        return;
+    }
     if (isConnectionsEditing) exitConnectionsEditMode();
     intelEditDraft = {
         description: descriptionText || '',
         birthdayRaw: entry ? getHeroBirthdayRawFromEntry(entry) : '',
+        categoryPatch: categoryControls?.read(cat) || {},
     };
-    populateIntelEditFields(entry, descriptionText);
+    await populateIntelEditFields(entry, descriptionText);
     setIntelEditingMode(true);
     editBodyEl?.focus();
 }
@@ -514,18 +576,18 @@ async function beginConnectionsEditMode() {
 }
 
 async function handleIntelSave() {
+    const cat = normalizeBioBiographyCategory(currentCategory);
     if (
         !canEditGalleryArchive()
         || !currentFilterKey
-        || currentCategory !== 'heroes'
+        || (cat !== 'heroes' && cat !== 'factions' && cat !== 'npcs')
         || intelSaveInFlight
-        || !birthdayFields
         || !editBodyEl
     ) {
         return;
     }
 
-    if (birthdayFields.isIncomplete()) {
+    if (cat === 'heroes' && birthdayFields?.isIncomplete()) {
         window.updateAppStatus?.(
             'Birthday needs a valid day, month, and year (example: 12 May 2048).',
             'warning',
@@ -537,33 +599,41 @@ async function handleIntelSave() {
     const description = (editBodyEl.innerText ?? editBodyEl.textContent ?? '')
         .replace(/\r\n/g, '\n')
         .trim();
-    const birthday = birthdayFields.readNormalized();
+    const categoryPatch = categoryControls?.read(cat) || {};
+    /** @type {Record<string, string>} */
+    const patch = { description, ...categoryPatch };
+    if (cat === 'heroes' && birthdayFields) {
+        patch.birthday = birthdayFields.readNormalized();
+    }
 
     intelSaveInFlight = true;
     if (intelSaveBtn) intelSaveBtn.disabled = true;
 
     try {
-        const result = await saveHeroArchiveEntryPatchFromBiographyStage(
+        const result = await saveBioArchiveEntryPatchFromBiographyStage(
+            cat,
             currentFilterKey,
             currentDisplayName,
-            { description, birthday },
+            patch,
         );
         if (!result.ok) {
-            window.updateAppStatus?.(result.error || 'Could not save hero bio.', 'warning');
+            window.updateAppStatus?.(result.error || 'Could not save bio.', 'warning');
             return;
         }
 
         if (result.entry) currentEntry = result.entry;
-        clearBioArchiveEventsCache('heroes');
+        clearBioArchiveEventsCache(cat);
         exitIntelEditMode();
+        renderCategoryMeta(currentEntry);
+        void refreshHeroBiographyCategoryChipsIfActive(cat);
         window.SoundEffectsManager?.play?.('save');
         if (intelSaveBtn && window.flashButton) {
             window.flashButton(intelSaveBtn, 'flash-green');
         }
-        await setBioBiographyArchiveDescription('heroes', currentFilterKey, currentDisplayName);
+        await setBioBiographyArchiveDescription(cat, currentFilterKey, currentDisplayName);
     } catch (err) {
         console.warn('[gallery] Bio save failed:', err);
-        window.updateAppStatus?.('Could not save hero bio.', 'warning');
+        window.updateAppStatus?.('Could not save bio.', 'warning');
     } finally {
         intelSaveInFlight = false;
         if (intelSaveBtn) intelSaveBtn.disabled = false;
@@ -631,6 +701,45 @@ function handleIntelCancel() {
     birthdayFields?.populate(intelEditDraft.birthdayRaw);
     if (editBodyEl) editBodyEl.textContent = intelEditDraft.description;
     exitIntelEditMode();
+}
+
+async function handleEntityKindTransfer() {
+    const cat = normalizeBioBiographyCategory(currentCategory);
+    const name = String(currentDisplayName || currentFilterKey || '').trim();
+    if (!canEditGalleryArchive() || !name) return;
+    if (cat !== 'heroes' && cat !== 'npcs') return;
+
+    const direction = cat === 'npcs' ? 'promote' : 'demote';
+    const label = direction === 'promote' ? 'Promote to Hero' : 'Demote to NPC';
+    const ok = window.confirm(
+        `${label}: “${name}”?\n\nFilter chip and archive entry move.\nStory event relevancies stay as-is (orange glow marks mismatches until you fix them).`,
+    );
+    if (!ok) return;
+
+    const btn = categoryControls?.transferBtn;
+    if (btn) btn.disabled = true;
+    try {
+        const result = await transferGalleryEntityKindFromUi(direction, name);
+        if (!result.ok) {
+            window.updateAppStatus?.(result.error || `Could not ${direction}.`, 'warning');
+            return;
+        }
+        window.SoundEffectsManager?.play?.('save');
+        window.updateAppStatus?.(
+            direction === 'promote'
+                ? `Promoted “${name}” to Hero. Check story events for orange mismatch glow.`
+                : `Demoted “${name}” to NPC. Check story events for orange mismatch glow.`,
+            'success',
+        );
+        exitIntelEditMode();
+        const nextCat = direction === 'promote' ? 'heroes' : 'npcs';
+        await setBioBiographyArchiveDescription(nextCat, name, name);
+    } catch (err) {
+        console.warn('[gallery] entity kind transfer failed:', err);
+        window.updateAppStatus?.(`Could not ${direction} “${name}”.`, 'warning');
+    } finally {
+        if (btn) btn.disabled = false;
+    }
 }
 
 function handleConnectionsCancel() {
@@ -731,12 +840,18 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     intelEditBtn.className = 'gallery-mode__archive-description-btn';
     intelEditBtn.textContent = 'Edit';
     intelEditBtn.addEventListener('click', async () => {
-        if (!currentFilterKey || currentCategory !== 'heroes') return;
-        clearBioArchiveEventsCache('heroes');
-        const events = await loadBioArchiveEvents('heroes');
-        const entry = findBioArchiveEntryByFilterKey('heroes', currentFilterKey, events);
+        const cat = normalizeBioBiographyCategory(currentCategory);
+        if (
+            !currentFilterKey
+            || (cat !== 'heroes' && cat !== 'factions' && cat !== 'npcs')
+        ) {
+            return;
+        }
+        clearBioArchiveEventsCache(cat);
+        const events = await loadBioArchiveEvents(cat);
+        const entry = findBioArchiveEntryByFilterKey(cat, currentFilterKey, events);
         const description = getHeroArchiveBioDescription(entry) || '';
-        beginIntelEditMode(entry, description);
+        await beginIntelEditMode(entry, description);
     });
 
     intelSaveBtn = document.createElement('button');
@@ -814,6 +929,10 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     viewBirthdayMetaEl.className = 'gallery-mode__archive-birthday-meta';
     viewBirthdayMetaEl.hidden = true;
 
+    viewCategoryMetaEl = document.createElement('div');
+    viewCategoryMetaEl.className = 'gallery-mode__archive-category-meta';
+    viewCategoryMetaEl.hidden = true;
+
     editBirthdayEl = document.createElement('div');
     editBirthdayEl.className = 'gallery-mode__archive-birthday-edit';
     editBirthdayEl.hidden = true;
@@ -824,6 +943,12 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     birthdayFields = createHeroBirthdayFieldSet(editBirthdayEl, 'heroBioArchive');
     setBirthdayFieldsEnabled(false);
 
+    categoryControls = createGalleryIntelCategoryControls();
+    categoryControls.setVisible(false);
+    categoryControls.transferBtn?.addEventListener('click', () => {
+        void handleEntityKindTransfer();
+    });
+
     viewBodyEl = document.createElement('div');
     viewBodyEl.className = 'gallery-mode__archive-description-body';
 
@@ -832,17 +957,25 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     editBodyEl.hidden = true;
     editBodyEl.contentEditable = 'true';
     editBodyEl.setAttribute('spellcheck', 'true');
-    editBodyEl.setAttribute('aria-label', 'Hero biography description');
+    editBodyEl.setAttribute('aria-label', 'Biography description');
 
     intelEmptyEl = document.createElement('p');
     intelEmptyEl.className = 'gallery-mode__archive-description-empty';
-    intelEmptyEl.textContent = 'No biography written yet for this hero.';
+    intelEmptyEl.textContent = 'No biography written yet for this entry.';
 
     intelScrollEl = document.createElement('div');
     intelScrollEl.className = 'gallery-mode__archive-panel-scroll scrollbar-custom';
     intelScrollEl.setAttribute('tabindex', '0');
-    intelScrollEl.setAttribute('aria-label', 'Hero intel content');
-    intelScrollEl.append(viewBirthdayMetaEl, editBirthdayEl, viewBodyEl, editBodyEl, intelEmptyEl);
+    intelScrollEl.setAttribute('aria-label', 'Intel content');
+    intelScrollEl.append(
+        viewCategoryMetaEl,
+        viewBirthdayMetaEl,
+        categoryControls.root,
+        editBirthdayEl,
+        viewBodyEl,
+        editBodyEl,
+        intelEmptyEl,
+    );
 
     connectionsViewEl = document.createElement('div');
     connectionsViewEl.className = 'gallery-mode__archive-connections-view';
@@ -1018,19 +1151,27 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
 
     if (gen !== loadGeneration) return;
 
+    renderCategoryMeta(entry);
     renderBirthdayMeta(birthdayDisplay);
     renderIntelBody(description || '');
     await renderConnectionsBody(entry, cat);
 
-    const hasIntel = !!(description || birthdayDisplay);
+    const hasCategory =
+        !!(entry?.heroRole || entry?.heroSubRole || entry?.factionType || entry?.npcCategory);
+    const hasIntel = !!(description || birthdayDisplay || hasCategory);
 
-    setIntelPanelVisible(hasIntel || (canEditGalleryArchive() && isHero) || !isHero);
+    setIntelPanelVisible(hasIntel || canEditGalleryArchive() || !isHero);
     setConnectionsPanelVisible(supportsConnections);
 
     if (intelEditBtn) {
-        intelEditBtn.hidden = !canEditGalleryArchive() || !isHero;
-        intelEditBtn.disabled = !canEditGalleryArchive() || !isHero;
-        intelEditBtn.title = isHero ? 'Edit biography and birthday' : 'Editing is only available for heroes';
+        const canIntel =
+            canEditGalleryArchive()
+            && (cat === 'heroes' || cat === 'factions' || cat === 'npcs');
+        intelEditBtn.hidden = !canIntel;
+        intelEditBtn.disabled = !canIntel;
+        intelEditBtn.title = canIntel
+            ? 'Edit biography and categorization'
+            : 'Editing unavailable';
     }
     if (connectionsEditBtn) {
         connectionsEditBtn.hidden = !canEditGalleryArchive();
@@ -1066,8 +1207,10 @@ export function destroyHeroBiographyArchiveDescription() {
     connectionsSaveBtn = null;
     connectionsCancelBtn = null;
     viewBirthdayMetaEl = null;
+    viewCategoryMetaEl = null;
     editBirthdayEl = null;
     birthdayFields = null;
+    categoryControls = null;
     viewBodyEl = null;
     connectionsViewEl = null;
     connectionsBodyEl = null;

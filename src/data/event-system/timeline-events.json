@@ -15475,14 +15475,19 @@
       "sources": [
         {
           "text": "Dragon Slayer",
-          "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
+          "url": "https://static.playoverwatch.com/media/comics/2/en-us/comic-overwatch-dragon-slayer.pdf"
         }
       ],
       "commentary": [
-        "Medieval History",
+        {
+          "name": "Medieval History",
+          "theaterId": "d8c9903d-306b-44f9-b6e0-b6b79ed3ad9b"
+        },
         {
           "name": "Brigitte · Here we go again. Shields up!",
-          "label": "Shields up"
+          "label": "Shields up",
+          "theaterId": "chatter-brigitte",
+          "lineId": "7835b5cc-1440-4588-9a33-ae23da557058"
         }
       ]
     },
@@ -17200,7 +17205,7 @@
       ]
     },
     {
-      "name": "Tear it down",
+      "name": "Tear it Down",
       "description": "Over the years fighting alongside the Phreaks, Hazard continued upgrading himself with further cybernetic augments, and began traveling around the world, quickly becoming one of the Phreaks' most prominent and radicalized members, passionately helping other Phreaks and fellow rebels like the Deadlock gang, which commonly stole from large weapon empires like Arbalest and was willing to provide the Phreaks with firepower if they were able to met her price.\n\nTheir cause saw a massive boost following Mondatta's death, as many Omnics and supporters were sought out, afraid and in distress, and when the London Police killed a protestor, the Phreaks were the ones to show up and dismantle the Sonic suppressors that kept the Underworld living in fear. After their missions, Hazard would take time to bring Susie to Mondatta's brand-new memorial at King's Row, paying his respects and bowing to protect the Omnics from their oppressors.\n\nThe movement was growing every day as more people became dissatisfied with the system. It was clear to Hazard that this world was a prison, treating everyone like a number rather than people, and that the Phreaks had the power to help people realize that, setting them free and joining the fight for a better world, even if it meant tearing this one down.",
       "locationType": "earth",
       "lat": 51.5074456,

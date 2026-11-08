@@ -1,15 +1,11 @@
-import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
 import { MenuButtonMaker } from './MenuButtonMaker.js';
 import { MenuSideButtonMaker } from './MenuSideButtonMaker.js';
 
-const UNDIVIDED_WEBTOON_URL =
-    'https://www.webtoons.com/en/action/overwatch/list?title_no=9843';
-
 /**
- * Main menu layout: one row of four primary modes + side column on the right.
+ * Main menu layout: four tall primary tiles + secondary stack.
  *
- * Side 2×2: [Read Undivided, Dialogue Theater] | [Data Workshop, Official Archive].
- * Modes row: World, Codex, Story, Gallery.
+ * World · Codex · Story · Intel | Theater · Archive · Gallery
+ *                               | See the Latest
  *
  * Click handlers are wired in `./ModeActivation.js`.
  *
@@ -20,61 +16,24 @@ export function MenuButtonArrangement() {
     stack.className = 'main-menu-buttons-stack';
 
     const layout = document.createElement('div');
-    layout.className = 'main-menu-layout';
-
-    const sideColumn = document.createElement('div');
-    sideColumn.className = 'main-menu-side-column';
-    sideColumn.setAttribute('aria-label', 'Resources and archives');
+    layout.className = 'main-menu-layout main-menu-layout--modes-only';
 
     const modesRow = document.createElement('div');
     modesRow.className = 'main-menu-modes-row';
     modesRow.setAttribute('aria-label', 'Atlas modes');
 
-    const readUndividedBtn = MenuSideButtonMaker({
-        id: 'readUndividedBtn',
-        title: 'Read Undivided',
-        imagePath: 'src/assets/images/Menu/Undivided.png',
-        label: 'Read Undivided',
-        description: 'Read the Undivided webtoon on WEBTOON',
-        href: UNDIVIDED_WEBTOON_URL,
-    });
-
-    const theaterBtn = MenuSideButtonMaker({
-        id: 'runDialogueTheaterBtn',
-        title: 'Dialogue Theater',
-        imagePath: 'src/assets/images/Menu/Dialogue%20Theater.png',
-        label: 'Dialogue Theater',
-        description: 'Listen to Character Interactions',
-    });
-
-    const archivesBtn = MenuSideButtonMaker({
-        id: 'runBiographyBtn',
-        title: 'Data Workshop',
-        imagePath: 'src/assets/images/Menu/Data%20Archive.png',
-        label: 'Data Workshop',
-        description: 'Browse Factions, Characters and Places',
-    });
-
-    const officialResourcesBtn = MenuSideButtonMaker({
-        id: 'runOfficialResourcesBtn',
-        title: 'Official Archive',
-        imagePath: 'src/assets/images/Menu/Official%20Resources.png',
-        label: 'Official Archive',
-        description: 'Links to official Overwatch sites and media',
-    });
-
     const worldviewBtn = MenuButtonMaker({
         id: 'runGlobeBtn',
         title: 'World',
-        imagePath: 'src/assets/images/Menu/Interactive%20Worldview.png',
+        imagePath: 'src/assets/images/Menu/World.png',
         label: 'World',
-        description: 'Visualize the story through a 3D globe or 2D map',
+        description: 'Visualize the story on a globe or map',
     });
 
     const codexBtn = MenuButtonMaker({
         id: 'runGlossaryBtn',
         title: 'Codex',
-        imagePath: 'src/assets/images/Menu/Connection%20Codex.png',
+        imagePath: 'src/assets/images/Menu/Codex.png',
         label: 'Codex',
         description: 'Study how every detail connects',
     });
@@ -82,75 +41,82 @@ export function MenuButtonArrangement() {
     const storyBtn = MenuButtonMaker({
         id: 'runStoryTimelineBtn',
         title: 'Story',
-        imagePath: 'src/assets/images/Menu/Story%20Timeline.png',
+        imagePath: 'src/assets/images/Menu/Story.png',
         label: 'Story',
         description: 'Experience the Narrative in Order',
     });
 
     const biosBtn = MenuButtonMaker({
         id: 'runHeroBiographyBtn',
-        title: 'Gallery',
-        imagePath: 'src/assets/images/Menu/Hero%20Biography.png',
-        label: 'Gallery',
-        description: 'Learn about every Hero and their Journey',
+        title: 'Intel',
+        imagePath: 'src/assets/images/Menu/Intel.png',
+        label: 'Intel',
+        description: 'Browse heroes, factions, NPCs, and places',
     });
 
-    const sideGrid = document.createElement('div');
-    sideGrid.className = 'main-menu-side-grid';
+    const theaterBtn = MenuButtonMaker({
+        id: 'runDialogueTheaterBtn',
+        title: 'Theater',
+        imagePath: 'src/assets/images/Menu/Theater.png',
+        label: 'Theater',
+        description: 'Listen to Character Interactions',
+    });
 
-    const sideColLeft = document.createElement('div');
-    sideColLeft.className = 'main-menu-side-grid__col';
-    sideColLeft.setAttribute('aria-label', 'Undivided and Dialogue Theater');
-    sideColLeft.appendChild(readUndividedBtn);
-    sideColLeft.appendChild(theaterBtn);
+    const officialResourcesBtn = MenuButtonMaker({
+        id: 'runOfficialResourcesBtn',
+        title: 'Archive',
+        imagePath: 'src/assets/images/Menu/Archive.png',
+        label: 'Archive',
+        description: 'Release schedule and Documentation',
+    });
 
-    const sideColRight = document.createElement('div');
-    sideColRight.className = 'main-menu-side-grid__col main-menu-side-grid__col--resources';
-    sideColRight.setAttribute('aria-label', 'Data Workshop and Official Archive');
-    sideColRight.appendChild(archivesBtn);
-    sideColRight.appendChild(officialResourcesBtn);
+    const galleryBtn = MenuButtonMaker({
+        id: 'runGalleryHubBtn',
+        title: 'Gallery',
+        imagePath: 'src/assets/images/Menu/Gallery.png',
+        label: 'Gallery',
+        description: 'Browse all sorts of Official media',
+    });
 
-    sideGrid.appendChild(sideColLeft);
-    sideGrid.appendChild(sideColRight);
-    sideColumn.appendChild(sideGrid);
+    const seeLatestWrapper = MenuSideButtonMaker({
+        id: 'seeTheLatestBtn',
+        title: 'See the Latest',
+        /* Preview art is filled by refreshSeeTheLatestMenuPreview — no Menu/Story hover swap */
+        imagePath: null,
+        label: 'See the Latest',
+        description: 'Jump to the newest story beat',
+        menuHoverIcon: false,
+    });
+    seeLatestWrapper.classList.add('main-menu-see-latest-wrapper');
+    seeLatestWrapper.button.classList.add('main-menu-side-btn--see-latest');
 
-    const seeLatestWrapper = document.createElement('div');
-    seeLatestWrapper.className = 'main-menu-side-btn-wrapper main-menu-see-latest-wrapper';
+    const secondaryModesRow = document.createElement('div');
+    secondaryModesRow.className = 'main-menu-secondary-modes-row';
+    secondaryModesRow.setAttribute('aria-label', 'Secondary modes');
+    secondaryModesRow.appendChild(theaterBtn);
+    secondaryModesRow.appendChild(officialResourcesBtn);
+    secondaryModesRow.appendChild(galleryBtn);
 
-    const seeLatestBtn = document.createElement('button');
-    seeLatestBtn.type = 'button';
-    seeLatestBtn.id = 'seeTheLatestBtn';
-    seeLatestBtn.className = 'main-menu-btn main-menu-side-btn main-menu-side-btn--see-latest';
-    seeLatestBtn.title = 'See the Latest';
-    seeLatestBtn.innerHTML = `
-        <div class="main-menu-image-container">
-            <img src="" alt="Latest story event">
-        </div>
-        <div class="main-menu-label-container">
-            <div class="main-menu-label">See the Latest</div>
-        </div>
-        <div class="main-menu-external-label">
-            <div class="main-menu-external-label__desc">Jump to the newest story event</div>
-        </div>
-    `;
-    const seeLatestImg = seeLatestBtn.querySelector('.main-menu-image-container img');
-    if (seeLatestImg) {
-        wireLoadingAssetImage(seeLatestImg, {
-            wrap: seeLatestBtn.querySelector('.main-menu-image-container'),
-        });
-    }
-    seeLatestWrapper.appendChild(seeLatestBtn);
-    seeLatestWrapper.button = seeLatestBtn;
-    sideColumn.appendChild(seeLatestWrapper);
+    const secondaryStack = document.createElement('div');
+    secondaryStack.className = 'main-menu-secondary-stack';
+    secondaryStack.appendChild(secondaryModesRow);
+    secondaryStack.appendChild(seeLatestWrapper);
 
     modesRow.appendChild(worldviewBtn);
     modesRow.appendChild(codexBtn);
     modesRow.appendChild(storyBtn);
     modesRow.appendChild(biosBtn);
+    modesRow.appendChild(secondaryStack);
 
     layout.appendChild(modesRow);
-    layout.appendChild(sideColumn);
     stack.appendChild(layout);
+
+    const readUndividedBtn = null;
+    const archivesBtn = null;
+    const sideColumn = null;
+    const sideGrid = null;
+    const sideColLeft = null;
+    const sideColRight = null;
 
     return {
         stack,
@@ -160,31 +126,26 @@ export function MenuButtonArrangement() {
         sideColLeft,
         sideColRight,
         modesRow,
+        secondaryStack,
+        secondaryModesRow,
         readUndividedBtn,
         theaterBtn,
+        galleryBtn,
         archivesBtn,
         officialResourcesBtn,
         seeLatestWrapper,
-        seeLatestBtn,
+        seeLatestBtn: seeLatestWrapper.button,
         worldviewBtn,
         codexBtn,
         storyBtn,
         biosBtn,
-        /** @deprecated use storyBtn */
         storyTimelineBtn: storyBtn,
-        /** @deprecated use biosBtn */
         heroBiographyBtn: biosBtn,
-        /** @deprecated use theaterBtn */
         dialogueTheaterBtn: theaterBtn,
-        /** @deprecated use archivesBtn */
         archiveBtn: archivesBtn,
-        /** @deprecated use archivesBtn */
         biographyBtn: archivesBtn,
-        /** @deprecated use worldviewBtn */
         globeBtn: worldviewBtn,
-        /** @deprecated use codexBtn */
         glossaryBtn: codexBtn,
-        /** @deprecated use modesRow */
         row1: modesRow,
         row2: null,
     };

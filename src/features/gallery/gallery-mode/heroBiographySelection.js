@@ -277,13 +277,39 @@ export function getActiveHeroBiographySelection() {
     };
 }
 
+/**
+ * Drop the visible portrait before hero↔faction CSS mode changes so the old
+ * art is not briefly restyled (hero shrink under faction max-size rules).
+ */
+function clearPortraitSurface() {
+    if (!portraitEl || !portraitImg) return;
+    portraitLoadId += 1;
+    portraitEl.classList.remove('has-image');
+    portraitImg.onload = null;
+    portraitImg.onerror = null;
+    portraitImg.removeAttribute('src');
+    delete portraitImg.dataset.bioLook;
+    delete portraitImg.dataset.bioEntity;
+    delete portraitImg.dataset.bioCategory;
+    portraitImg.alt = '';
+    resetHeroBiographyPortraitScale(portraitImg);
+}
+
 function syncPortraitControlsVisibility() {
     const showPortrait = currentCategory === 'heroes' || currentCategory === 'factions';
     const showLookPicker = showPortrait;
     if (portraitEl) {
         portraitEl.style.display = showPortrait ? '' : 'none';
-        portraitEl.classList.toggle('gallery-mode__portrait--faction', currentCategory === 'factions');
-        portraitEl.classList.toggle('gallery-mode__portrait--hero', currentCategory === 'heroes');
+        const wantFaction = currentCategory === 'factions';
+        const wantHero = currentCategory === 'heroes';
+        const modeChanging =
+            portraitEl.classList.contains('gallery-mode__portrait--faction') !== wantFaction
+            || portraitEl.classList.contains('gallery-mode__portrait--hero') !== wantHero;
+        if (modeChanging && portraitEl.classList.contains('has-image')) {
+            clearPortraitSurface();
+        }
+        portraitEl.classList.toggle('gallery-mode__portrait--faction', wantFaction);
+        portraitEl.classList.toggle('gallery-mode__portrait--hero', wantHero);
     }
     if (controlsRowEl) {
         const lookField = controlsRowEl.querySelector('.gallery-mode__look-field');
@@ -501,9 +527,21 @@ async function applyBioSelection(category, filterKey, displayName) {
     cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
     hoverPreviewLook = null;
+
+    const prevCategory = currentCategory;
+    const prevKey = currentFilterKey;
+    const entityChanging =
+        prevCategory !== cat || String(prevKey || '') !== String(filterKey || '');
+
     currentCategory = cat;
     currentFilterKey = filterKey;
     currentLook = defaultLookForCategory(cat);
+
+    // Clear before mode CSS / async look fetch so hero art never shrinks into
+    // the faction layout while the logo is still loading.
+    if (entityChanging) {
+        clearPortraitSurface();
+    }
     syncPortraitControlsVisibility();
 
     if (cat === 'heroes' || cat === 'factions') {

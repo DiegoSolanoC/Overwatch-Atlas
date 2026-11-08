@@ -4,6 +4,7 @@
 
 import { MenuButtonArrangement } from './MenuButtonArrangement.js';
 import { wireModeActivation } from './ModeActivation.js';
+import { createMenuMobileSlides } from './MenuMobileSlides.js';
 import { navigateSeeTheLatest } from './navigateSeeTheLatest.js';
 import { refreshSeeTheLatestMenuPreview } from './seeTheLatestPreview.js';
 
@@ -17,6 +18,7 @@ export { MenuContainer } from './MenuContainer.js';
  * @param {Function} [setupStoryTimelineHandler]
  * @param {Function} [setupDialogueTheaterHandler]
  * @param {Function} [setupOfficialResourcesHandler]
+ * @param {Function} [setupGalleryHubHandler]
  * @returns {HTMLDivElement}
  */
 export function createMenuButtons(
@@ -27,12 +29,12 @@ export function createMenuButtons(
     setupStoryTimelineHandler = null,
     setupDialogueTheaterHandler = null,
     setupOfficialResourcesHandler = null,
+    setupGalleryHubHandler = null,
 ) {
     const menuButtons = document.createElement('div');
     menuButtons.className = 'main-menu-buttons';
 
-    const tiles = MenuButtonArrangement();
-    wireModeActivation(tiles, {
+    const handlers = {
         setupGlobeHandler,
         setupGlossaryHandler,
         setupBiographyHandler,
@@ -40,7 +42,11 @@ export function createMenuButtons(
         setupStoryTimelineHandler,
         setupDialogueTheaterHandler,
         setupOfficialResourcesHandler,
-    });
+        setupGalleryHubHandler,
+    };
+
+    const tiles = MenuButtonArrangement();
+    wireModeActivation(tiles, handlers);
 
     const seeLatestEl = tiles.seeLatestWrapper?.button || tiles.seeLatestBtn;
     if (seeLatestEl) {
@@ -52,6 +58,7 @@ export function createMenuButtons(
     }
 
     menuButtons.appendChild(tiles.stack);
+    menuButtons.appendChild(createMenuMobileSlides(handlers));
     queueMicrotask(() => refreshSeeTheLatestMenuPreview());
 
     return menuButtons;

@@ -17,6 +17,11 @@
 import { shouldDockEventBeLocked } from '../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
 import { isEventManagerAxisSearchActive } from '../../interface-left-panel/coordinator/search/filterEvents.js';
 import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
+import {
+    getDockTimelineEventsForPagination,
+    isHeroBiographyDockFilterActive,
+} from '../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
+import { isDialogueTheaterDockActive } from '../../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 
 /**
  * Same rule as dock thumbs / event list: first variant (or root) must have a
@@ -53,10 +58,14 @@ export function eventSlotMissingDescription(displayEvent) {
 /**
  * Lock/unlock pagination thumbnails based on active filters, then refresh the
  * slider tick colorings.
+ *
+ * Always uses the same curated dock list as pagination (Gallery entity / era),
+ * never the raw full timeline — otherwise filter sync re-shows stale thumbs
+ * that curation had hidden.
  */
 export function updateStandalonePaginationForFilters() {
     const activeFilters = window.standaloneActiveFilters || new Set();
-    const events = window.eventManager?.getDockTimelineEvents?.() || [];
+    const events = getDockTimelineEventsForPagination();
     const buttons = document.querySelectorAll('#eventNumberButtons .event-number-btn');
 
     if (!buttons.length) return;
@@ -64,6 +73,7 @@ export function updateStandalonePaginationForFilters() {
     const eventsPerPage = 10;
     const currentPage = window.standaloneEventSlide?.currentPage || 1;
     const startIndex = (currentPage - 1) * eventsPerPage;
+    const bioCurated = isHeroBiographyDockFilterActive() || isDialogueTheaterDockActive();
 
     buttons.forEach((btn, index) => {
         const eventIndex = startIndex + index;
@@ -71,10 +81,14 @@ export function updateStandalonePaginationForFilters() {
 
         if (!event) {
             btn.style.display = 'none';
+            btn.disabled = true;
+            btn.classList.remove('locked');
+            btn.dataset.isLocked = 'false';
             return;
         }
 
-        const isLocked = shouldDockEventBeLocked(event, activeFilters);
+        /* Gallery curated strip is already the matching set — never lock/dim. */
+        const isLocked = bioCurated ? false : shouldDockEventBeLocked(event, activeFilters);
 
         if (isLocked) {
             btn.disabled = true;
@@ -82,6 +96,7 @@ export function updateStandalonePaginationForFilters() {
             btn.style.setProperty('opacity', '0.5', 'important');
             btn.style.setProperty('filter', 'none', 'important');
             btn.style.pointerEvents = 'none';
+            btn.style.display = 'flex';
             btn.title = btn.title.replace(' — Filtered out', '') + ' — Filtered out';
             btn.dataset.isLocked = 'true';
         } else {
@@ -138,7 +153,8 @@ export function updateStandaloneSliderTicks(activeFilters, events, eventsPerPage
     });
 
     const curationActive =
-        (activeFilters && activeFilters.size > 0)
+        isHeroBiographyDockFilterActive()
+        || (activeFilters && activeFilters.size > 0)
         || isEventManagerAxisSearchActive(typeof window !== 'undefined' ? window.eventManager : null);
 
     if (!curationActive) return;

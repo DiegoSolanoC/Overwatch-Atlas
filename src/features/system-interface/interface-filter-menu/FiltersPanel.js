@@ -247,7 +247,10 @@ class FilterService {
 
   /* ------------------------------ Manifest ------------------------------- */
 
-  async loadManifest() {
+  /**
+   * @param {{ skipPaint?: boolean, paintType?: string }} [opts]
+   */
+  async loadManifest(opts = {}) {
     /* Cached chips reference stale dataset.filterKey values after manifest edits. */
     this.buttonCache.heroes = null;
     this.buttonCache.factions = null;
@@ -255,16 +258,122 @@ class FilterService {
     this.buttonCache.countries = null;
     invalidateArchiveLayoutFileCaches();
 
+    const paintType = opts.paintType || this.currentFilterType || "heroes";
     const result = await loadFilterManifest(
-      (items, type, folder) => this.createFilterButtons(items, type, folder),
+      (items, type, folder) => {
+        this.currentFilterType = type;
+        this.createFilterButtons(items, type, folder);
+      },
       () => this.updateFilterCounts(),
       (items, type, folder) => this.preloadImages(items, type, folder),
+      { skipPaint: opts.skipPaint === true, paintType },
     );
     this.heroes = result.heroes;
     this.factions = result.factions;
     this.npcs = result.npcs || [];
     this._initCountryFilterItems();
     this.refreshCountryFilterUsage();
+  }
+
+  /**
+   * Activate a Filters tab and rebuild its chip grid from live roster arrays.
+   * @param {'heroes'|'factions'|'npcs'|'countries'} type
+   */
+  activateFilterType(type) {
+    const t = String(type || "heroes");
+    const folder = {
+      heroes: "src/assets/images/Filters/Heroes",
+      factions: "src/assets/images/Filters/Factions",
+      npcs: "src/assets/images/Filters/NPCs",
+      countries: "src/assets/images/Filters/Flags",
+    };
+    const items = {
+      heroes: this.heroes,
+      factions: this.factions,
+      npcs: this.npcs,
+      countries: this.countries,
+    };
+    const tabs = {
+      heroes: this.heroesTab,
+      factions: this.factionsTab,
+      npcs: this.npcsTab,
+      countries: this.countriesTab,
+    };
+    Object.values(tabs).forEach((tab) => {
+      if (!tab) return;
+      tab.classList.remove("active");
+      tab.setAttribute("aria-selected", "false");
+    });
+    const active = tabs[t];
+    if (active) {
+      active.classList.add("active");
+      active.setAttribute("aria-selected", "true");
+    }
+    this.currentFilterType = t;
+    this.buttonCache[t] = null;
+    void this.createFilterButtons(items[t] || [], t, folder[t]);
+    this._applyCurrentCategorySearch();
+    this.updateButtonStates();
+    void this.updateFilterCounts();
+  }
+
+  /**
+   * After Gallery promote/demote: sync rosters, one manifest fetch, one paint.
+   * @param {{ direction: 'promote'|'demote', heroNames?: string[], npcNames?: string[] }} opts
+   */
+  async applyEntityKindTransferRosters(opts = {}) {
+    const direction = opts.direction === "demote" ? "demote" : "promote";
+    const heroNames = Array.isArray(opts.heroNames) ? opts.heroNames.map(String) : null;
+    const npcNames = Array.isArray(opts.npcNames) ? opts.npcNames.map(String) : null;
+
+    this.buttonCache.heroes = null;
+    this.buttonCache.factions = null;
+    this.buttonCache.npcs = null;
+    invalidateArchiveLayoutFileCaches();
+
+    if (heroNames?.length) {
+      this.heroes = orderHeroOrNpcIdsByArchive(
+        [...new Set([...(this.heroes || []), ...heroNames])],
+        heroNames,
+      );
+    }
+    if (npcNames?.length) {
+      this.npcs = orderHeroOrNpcIdsByArchive(
+        [...new Set([...(this.npcs || []), ...npcNames])],
+        npcNames,
+      );
+    }
+    /* Drop the entity from the opposite roster immediately (before manifest). */
+    if (direction === "promote" && heroNames?.length) {
+      const keep = new Set(heroNames);
+      this.npcs = (this.npcs || []).filter((id) => !keep.has(String(id)));
+    } else if (direction === "demote" && npcNames?.length) {
+      const keep = new Set(npcNames);
+      this.heroes = (this.heroes || []).filter((id) => !keep.has(String(id)));
+    }
+
+    const dest = direction === "promote" ? "heroes" : "npcs";
+    this.activateFilterType(dest);
+
+    try {
+      await this.loadManifest({ skipPaint: true });
+      if (heroNames?.length) {
+        this.heroes = orderHeroOrNpcIdsByArchive(this.heroes || [], heroNames);
+      }
+      if (npcNames?.length) {
+        this.npcs = orderHeroOrNpcIdsByArchive(this.npcs || [], npcNames);
+      }
+      if (direction === "promote" && heroNames?.length) {
+        const keep = new Set(heroNames);
+        this.npcs = (this.npcs || []).filter((id) => !keep.has(String(id)));
+      } else if (direction === "demote" && npcNames?.length) {
+        const keep = new Set(npcNames);
+        this.heroes = (this.heroes || []).filter((id) => !keep.has(String(id)));
+      }
+      this.activateFilterType(dest);
+    } catch (_) {
+      /* keep the optimistic paint */
+    }
   }
 
   /**
@@ -355,6 +464,8 @@ class FilterService {
    * category order regardless of which archive is open in the Event Manager.
    */
   async createFilterButtons(items, type, folder) {
+    const buildId = (this._filterButtonsBuildId =
+      (this._filterButtonsBuildId || 0) + 1);
     let list = items;
     if (type === "countries") {
       this._rebuildCountryUsageMap();
@@ -369,6 +480,8 @@ class FilterService {
       await ensureArchiveLayoutSnapshotsForFilter("heroes");
     if (groupNpcsByArchiveCategory)
       await ensureArchiveLayoutSnapshotsForFilter("npcs");
+
+    if (buildId !== this._filterButtonsBuildId) return;
 
     await createFilterButtonsGrid(
       list,
@@ -390,6 +503,8 @@ class FilterService {
       groupHeroesByArchiveRole,
       groupNpcsByArchiveCategory,
     );
+
+    if (buildId !== this._filterButtonsBuildId) return;
     this._applyCurrentCategorySearch();
   }
 
@@ -538,10 +653,10 @@ class FilterService {
       this.factionsTab,
       this.npcsTab,
       this.countriesTab,
-      this.heroes,
-      this.factions,
-      this.npcs,
-      this.countries,
+      () => this.heroes,
+      () => this.factions,
+      () => this.npcs,
+      () => this.countries,
       (items, type, folder) => {
         this.currentFilterType = type;
         this.createFilterButtons(items, type, folder);
@@ -611,21 +726,63 @@ class FilterService {
       this.buttonCache.npcs = null;
       invalidateArchiveLayoutFileCaches();
 
-      if (orderNames && orderNames.length && archives.length) {
+      /* Kind transfer owns its own single paint via applyEntityKindTransferRosters. */
+      if (d.skipFiltersReload) {
+        return;
+      }
+
+      /* Kind transfer / imports that move entities across archives. */
+      if (d.reloadManifest) {
+        const paintType = this.currentFilterType || "heroes";
+        this.loadManifest({ paintType }).then(() => repaintCurrentFilterTab());
+        return;
+      }
+
+      const orderByArchive =
+        d.orderByArchive && typeof d.orderByArchive === "object"
+          ? d.orderByArchive
+          : null;
+
+      if (orderByArchive && archives.length) {
         for (const arch of archives) {
+          const names = Array.isArray(orderByArchive[arch])
+            ? orderByArchive[arch]
+            : null;
+          if (!names || !names.length) continue;
           if (arch === "heroes") {
-            this.heroes = orderHeroOrNpcIdsByArchive(this.heroes, orderNames);
+            const merged = [
+              ...new Set([...(this.heroes || []), ...names].map(String)),
+            ];
+            this.heroes = orderHeroOrNpcIdsByArchive(merged, names);
           } else if (arch === "npcs") {
-            this.npcs = orderHeroOrNpcIdsByArchive(this.npcs, orderNames);
+            const merged = [
+              ...new Set([...(this.npcs || []), ...names].map(String)),
+            ];
+            this.npcs = orderHeroOrNpcIdsByArchive(merged, names);
           } else if (arch === "factions") {
-            this.factions = orderFactionsByArchive(this.factions, orderNames);
+            this.factions = orderFactionsByArchive(this.factions, names);
           }
         }
         repaintCurrentFilterTab();
         return;
       }
 
-      this.loadManifest().then(() => repaintCurrentFilterTab());
+      if (orderNames && orderNames.length && archives.length === 1) {
+        const arch = archives[0];
+        if (arch === "heroes") {
+          this.heroes = orderHeroOrNpcIdsByArchive(this.heroes, orderNames);
+        } else if (arch === "npcs") {
+          this.npcs = orderHeroOrNpcIdsByArchive(this.npcs, orderNames);
+        } else if (arch === "factions") {
+          this.factions = orderFactionsByArchive(this.factions, orderNames);
+        }
+        repaintCurrentFilterTab();
+        return;
+      }
+
+      this.loadManifest({ paintType: this.currentFilterType || "heroes" }).then(
+        () => repaintCurrentFilterTab(),
+      );
     };
     window.addEventListener(
       "atlas-bio-archives-refreshed",

@@ -1006,30 +1006,6 @@
       ]
     },
     {
-      "name": "Sombra",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Castillo",
-          "country": "Mexico",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Recon",
-      "birthday": "31 December 2046",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
       "name": "Bastion",
       "description": "No description available.",
       "relevantLocations": [
@@ -1361,6 +1337,30 @@
       "birthday": "19 November 2043"
     },
     {
+      "name": "Sombra",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Castillo",
+          "country": "Mexico",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Support",
+      "heroSubRole": "Tactician",
+      "birthday": "31 December 2046",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
       "name": "Baptiste",
       "description": "",
       "relevantLocations": [
@@ -1376,7 +1376,7 @@
     },
     {
       "name": "Ana",
-      "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "description": "",
       "relevantLocations": [
         {
           "locationName": "Cairo",

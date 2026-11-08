@@ -21,6 +21,7 @@ import {
     syncEventSlideSectionJumpsMode,
 } from './wireEventSlideSectionJumps.js';
 import { clearEventSlideBioConnectionsDisplay } from '../../../interface-shared/bio-archive/eventSlideBioConnectionsDisplay.js';
+import { clearEventSlideSeeMoreInGallery } from './eventSlideSeeMoreInGallery.js';
 
 function restoreHubMenuIfHidden() {
     if (!document.body.classList.contains('app-timeline-default')) return;
@@ -66,6 +67,7 @@ export function runHideEventSlide(slide) {
             syncEventSlideSectionJumpsMode('story');
             syncEventSlidePaneHeadingsMode('story');
             clearEventSlideBioConnectionsDisplay();
+            clearEventSlideSeeMoreInGallery();
             
             // Hide image overlay completely
             clearEventSourceMediaEmbed();

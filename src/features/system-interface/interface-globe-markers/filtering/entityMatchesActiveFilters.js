@@ -135,6 +135,32 @@ function factionIdMatchesActiveFilters(factionId, activeFilters) {
  * @param {Object|null|undefined} entity - Event root or variant object
  * @param {Set} activeFilters - Set of active filter IDs
  */
+/**
+ * Active character chips match either hero or NPC relevancy tokens so
+ * promoted/demoted names still filter while timeline places stay displaced.
+ * @param {string[]} tokens
+ * @param {Set} activeFilters
+ */
+function characterTokensMatchActiveFilters(tokens, activeFilters) {
+    if (!Array.isArray(tokens) || !activeFilters || activeFilters.size === 0) return false;
+    for (const id of tokens) {
+        if (id == null) continue;
+        const raw = String(id).trim();
+        if (!raw) continue;
+        if (activeFilters.has(raw)) return true;
+        if (activeFilterSetMatchesNpcId(activeFilters, raw)) return true;
+        const lower = raw.toLowerCase();
+        const strip = raw.toLowerCase().replace(/[^a-z0-9]+/g, '');
+        for (const f of activeFilters) {
+            const fs = String(f || '').trim();
+            if (!fs || fs.startsWith('country:')) continue;
+            if (fs.toLowerCase() === lower) return true;
+            if (strip && fs.toLowerCase().replace(/[^a-z0-9]+/g, '') === strip) return true;
+        }
+    }
+    return false;
+}
+
 export function entityMatchesActiveFilters(entity, activeFilters) {
     if (!entity || !activeFilters || activeFilters.size === 0) {
         return false;
@@ -142,8 +168,8 @@ export function entityMatchesActiveFilters(entity, activeFilters) {
     const heroFilters = getStoryEventHeroTokens(entity);
     const npcFilters = getStoryEventNpcTokens(entity);
     const factionFilters = getStoryEventFactionTokens(entity);
-    return heroFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
-        || npcFilters.some((id) => activeFilterSetMatchesNpcId(activeFilters, id))
+    return characterTokensMatchActiveFilters(heroFilters, activeFilters)
+        || characterTokensMatchActiveFilters(npcFilters, activeFilters)
         || factionFilters.some((id) => factionIdMatchesActiveFilters(id, activeFilters))
         || countryFiltersMatchEntity(entity, activeFilters);
 }

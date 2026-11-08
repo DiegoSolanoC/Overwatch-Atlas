@@ -41,6 +41,10 @@ import {
     unmountGalleryMode,
 } from '../../gallery/gallery-mode/GalleryModeMount.js';
 import {
+    mountGalleryHubMode,
+    unmountGalleryHubMode,
+} from '../../gallery/gallery-hub-placeholder/GalleryHubModeMount.js';
+import {
     mountStoryMode,
     unmountStoryMode,
 } from '../../story/story-mode/StoryModeMount.js?v=2';
@@ -73,7 +77,10 @@ export class ModeOrchestrator {
             killWorldComponents: this.killWorldComponents.bind(this),
             killCodexComponents: this.killCodexComponents.bind(this),
             killDataWorkshopComponents: this.killDataWorkshopComponents.bind(this),
-            killGalleryComponents: this.killGalleryComponents.bind(this),
+            killIntelComponents: this.killIntelComponents.bind(this),
+            killGalleryHubComponents: this.killGalleryHubComponents.bind(this),
+            /** @deprecated Use killIntelComponents */
+            killGalleryComponents: this.killIntelComponents.bind(this),
             killStoryComponents: this.killStoryComponents.bind(this),
             killDialogueTheaterComponents: this.killDialogueTheaterComponents.bind(this),
             killOfficialArchiveComponents: this.killOfficialArchiveComponents.bind(this),
@@ -83,8 +90,8 @@ export class ModeOrchestrator {
             killGlossaryComponents: this.killCodexComponents.bind(this),
             /** @deprecated Use killDataWorkshopComponents */
             killBiographyComponents: this.killDataWorkshopComponents.bind(this),
-            /** @deprecated Use killGalleryComponents */
-            killHeroBiographyComponents: this.killGalleryComponents.bind(this),
+            /** @deprecated Use killIntelComponents */
+            killHeroBiographyComponents: this.killIntelComponents.bind(this),
             /** @deprecated Use killStoryComponents */
             killStoryTimelineComponents: this.killStoryComponents.bind(this),
             /** @deprecated Use killOfficialArchiveComponents */
@@ -194,10 +201,40 @@ export class ModeOrchestrator {
         return this.runDataWorkshopComponents(isAutoLoad);
     }
 
+    async runIntelComponents(isAutoLoad = false) {
+        await enterMode(this._modeContext(), {
+            mode: ATLAS_MODE.INTEL,
+            runBtnId: 'runHeroBiographyBtn',
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.INTEL]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.INTEL]} ready`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.INTEL]} load`,
+            isAutoLoad,
+        }, async () => {
+            await runStagedLinearModeLoad({
+                modeLabel: MODE_LABEL[ATLAS_MODE.INTEL],
+                mountStageId: 'loadContent',
+                mountStageLabel: 'loading hero filters and layout',
+                startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.INTEL]}...`,
+                finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.INTEL]} ready`,
+                mountFn: () => mountGalleryMode(),
+            });
+        });
+    }
+
+    /** @deprecated Use {@link runIntelComponents} */
     async runGalleryComponents(isAutoLoad = false) {
+        return this.runIntelComponents(isAutoLoad);
+    }
+
+    /** @deprecated Use {@link runIntelComponents} */
+    async runHeroBiographyComponents(isAutoLoad = false) {
+        return this.runIntelComponents(isAutoLoad);
+    }
+
+    async runGalleryHubComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
             mode: ATLAS_MODE.GALLERY,
-            runBtnId: 'runHeroBiographyBtn',
+            runBtnId: 'runGalleryHubBtn',
             startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
             successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} ready`,
             errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.GALLERY]} load`,
@@ -205,18 +242,13 @@ export class ModeOrchestrator {
         }, async () => {
             await runStagedLinearModeLoad({
                 modeLabel: MODE_LABEL[ATLAS_MODE.GALLERY],
-                mountStageId: 'loadContent',
-                mountStageLabel: 'loading hero filters and layout',
+                mountStageId: 'mountShell',
+                mountStageLabel: 'mounting Gallery shell',
                 startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
                 finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} ready`,
-                mountFn: () => mountGalleryMode(),
+                mountFn: () => mountGalleryHubMode(),
             });
         });
-    }
-
-    /** @deprecated Use {@link runGalleryComponents} */
-    async runHeroBiographyComponents(isAutoLoad = false) {
-        return this.runGalleryComponents(isAutoLoad);
     }
 
     async openStoryView() {
@@ -270,7 +302,7 @@ export class ModeOrchestrator {
             await runStagedLinearModeLoad({
                 modeLabel: MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER],
                 mountStageId: 'mountShell',
-                mountStageLabel: 'mounting Dialogue Theater shell',
+                mountStageLabel: 'mounting Theater shell',
                 startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]}...`,
                 finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]} ready`,
                 mountFn: () => mountDialogueTheaterMode(),
@@ -290,7 +322,7 @@ export class ModeOrchestrator {
             await runStagedLinearModeLoad({
                 modeLabel: MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE],
                 mountStageId: 'mountShell',
-                mountStageLabel: 'mounting Official Archive shell',
+                mountStageLabel: 'mounting Archive shell',
                 startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]}...`,
                 finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]} ready`,
                 mountFn: () => mountOfficialArchiveMode(),
@@ -422,20 +454,36 @@ export class ModeOrchestrator {
         return this.killDataWorkshopComponents(restoreMenu);
     }
 
-    async killGalleryComponents(restoreMenu = true) {
+    async killIntelComponents(restoreMenu = true) {
         await exitMode(this._modeContext(), {
-            mode: ATLAS_MODE.GALLERY,
-            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
-            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} exited!`,
+            mode: ATLAS_MODE.INTEL,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.INTEL]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.INTEL]} exited!`,
             restoreMenu,
         }, async () => {
             await unmountGalleryMode();
         });
     }
 
-    /** @deprecated Use {@link killGalleryComponents} */
+    /** @deprecated Use {@link killIntelComponents} */
+    async killGalleryComponents(restoreMenu = true) {
+        return this.killIntelComponents(restoreMenu);
+    }
+
+    /** @deprecated Use {@link killIntelComponents} */
     async killHeroBiographyComponents(restoreMenu = true) {
-        return this.killGalleryComponents(restoreMenu);
+        return this.killIntelComponents(restoreMenu);
+    }
+
+    async killGalleryHubComponents(restoreMenu = true) {
+        await exitMode(this._modeContext(), {
+            mode: ATLAS_MODE.GALLERY,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} exited!`,
+            restoreMenu,
+        }, async () => {
+            await unmountGalleryHubMode();
+        });
     }
 
     async killStoryComponents(restoreMenu = true) {

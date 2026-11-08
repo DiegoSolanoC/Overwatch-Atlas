@@ -7,6 +7,8 @@
  * the original method's `this`).
  */
 
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
+
 export function runShowStandaloneEventSlide(slide, eventData, globalIndex, options = {}) {
             if (!eventData) return;
             
@@ -21,20 +23,26 @@ export function runShowStandaloneEventSlide(slide, eventData, globalIndex, optio
             let eventName = displayEvent.name || eventData.name || 'Unnamed Event';
             const description = displayEvent.description || '';
 
-            // Get image path — dock rows are always main-timeline story art
+            /*
+             * Image folder must follow the slide's presentation archive (heroes peek
+             * while EventManager stays on story), not the live EM source. Dock timeline
+             * rows always use story event art.
+             */
             const useStoryDockImages = !!slide._presentationFromDockTimeline;
+            const imageArchive =
+                useStoryDockImages ? 'story' : resolveEventSlideArchiveSource(slide);
             let imagePath = null;
             if (window.NavigationImageHelpers?.getEventImagePath) {
                 imagePath = window.NavigationImageHelpers.getEventImagePath(
                     displayEvent,
                     eventName,
-                    useStoryDockImages ? 'story' : undefined
+                    imageArchive
                 );
             } else if (window.eventManager?.getEventImagePath) {
                 imagePath = window.eventManager.getEventImagePath(
                     displayEvent.name,
                     displayEvent.image,
-                    useStoryDockImages ? 'story' : undefined
+                    imageArchive
                 );
             } else {
                 imagePath = displayEvent.image || displayEvent.imagePath || null;

@@ -1,11 +1,12 @@
 /**
  * HeaderModeButtons — mounts primary mode-entry header buttons.
  *
- * Left hub (`#headerHubButtonGroup`): Home, World, Codex, Story, Gallery.
- * Right hub: Theater, Archive, Workshop, Palette (Palette is mounted by
+ * Left hub (`#headerHubButtonGroup`): Home, World, Codex, Story, Intel.
+ * Right hub: Gallery, Theater, Archive, Workshop, Palette (Palette is mounted by
  * `PaletteLoaders` at double width so the right strip still reads as five segments).
  *
  * Each tile delegates to the matching `runXComponents` global from the orchestrator.
+ * On mobile portrait main menu: first tap slides to that mode; second tap selects it.
  *
  * Loaded by the `ModeOrchestrator` under the `headerNav` loader key.
  */
@@ -15,101 +16,70 @@ import { createLoadingLockHandler } from '../atlas-shared-ui/loading/LoadingLock
 import { updateStatus } from '../atlas-mode-runtime/statusFeed.js';
 import { setRunOperation } from '../atlas-mode-runtime/loadingOverlayState.js';
 import { attachHomeButtonHandler } from './HomeButtonHandler.js';
+import { tryMobileMenuHeaderTap } from '../atlas-main-menu/mobileMainMenuHeaderBridge.js';
 
-function attachWorldviewBootstrap() {
-    const headerGlobeBtn = document.getElementById('headerInteractiveGlobeBtn');
-    if (!headerGlobeBtn) return;
+/**
+ * @param {string} btnId
+ * @param {string} modeId - Matches MAIN_MENU_MOBILE_MODES id
+ * @param {Function | null | undefined} launchFn
+ */
+function attachModeBootstrap(btnId, modeId, launchFn) {
+    const btn = document.getElementById(btnId);
+    if (!btn || typeof launchFn !== 'function') return;
 
-    // Worldview launches inside its own mode shell — the chooser hub paints
-    // 3D Globe / 2D Map options the same way Data Archive paints categories.
-    const launchGlobe = createLoadingLockHandler(window.runWorldComponents, setRunOperation);
-    headerGlobeBtn.addEventListener('click', function bootstrapGlobe(e) {
+    btn.addEventListener('click', function bootstrapMode(e) {
         e.stopPropagation();
         e.preventDefault();
-        void launchGlobe();
+        if (tryMobileMenuHeaderTap(modeId, launchFn)) return;
+        void launchFn();
     }, true);
+}
+
+function attachWorldviewBootstrap() {
+    const launchGlobe = createLoadingLockHandler(window.runWorldComponents, setRunOperation);
+    attachModeBootstrap('headerInteractiveGlobeBtn', 'world', launchGlobe);
 }
 
 function attachCodexBootstrap() {
-    const headerCodexBtn = document.getElementById('headerWorldCodexBtn');
-    if (!headerCodexBtn) return;
-    headerCodexBtn.addEventListener('click', function bootstrapCodex(e) {
-        e.stopPropagation();
-        e.preventDefault();
+    attachModeBootstrap('headerWorldCodexBtn', 'codex', () => {
         if (typeof window.runCodexComponents === 'function') {
             void window.runCodexComponents(false);
         }
-    }, true);
+    });
 }
 
 function attachHeroBiographyBootstrap() {
-    const btn = document.getElementById('headerHeroBiographyBtn');
-    if (!btn) return;
-    const launch = createLoadingLockHandler(window.runGalleryComponents, setRunOperation);
-    btn.addEventListener('click', function bootstrapHeroBiography(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        void launch();
-    }, true);
+    const launch = createLoadingLockHandler(
+        window.runIntelComponents || window.runGalleryComponents,
+        setRunOperation,
+    );
+    attachModeBootstrap('headerHeroBiographyBtn', 'intel', launch);
 }
 
 function attachStoryTimelineBootstrap() {
-    const btn = document.getElementById('headerStoryTimelineBtn');
-    if (!btn) return;
     const launch = createLoadingLockHandler(window.runStoryComponents, setRunOperation);
-    btn.addEventListener('click', function bootstrapStoryTimeline(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        void launch();
-    }, true);
+    attachModeBootstrap('headerStoryTimelineBtn', 'story', launch);
 }
 
 function attachDialogueTheaterBootstrap() {
-    const btn = document.getElementById('headerDialogueTheaterBtn');
-    if (!btn) return;
-    const launch = typeof window.runDialogueTheaterComponents === 'function'
-        ? createLoadingLockHandler(window.runDialogueTheaterComponents, setRunOperation)
-        : null;
-    if (!launch) return;
-    btn.addEventListener('click', function bootstrapDialogueTheater(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        void launch();
-    }, true);
+    if (typeof window.runDialogueTheaterComponents !== 'function') return;
+    const launch = createLoadingLockHandler(window.runDialogueTheaterComponents, setRunOperation);
+    attachModeBootstrap('headerDialogueTheaterBtn', 'theater', launch);
 }
 
 function attachOfficialArchiveBootstrap() {
-    const btn = document.getElementById('headerOfficialArchiveBtn');
-    if (!btn) return;
     const run = typeof window.runOfficialArchiveComponents === 'function'
         ? window.runOfficialArchiveComponents
         : window.runOfficialResourcesComponents;
-    const launch = typeof run === 'function'
-        ? createLoadingLockHandler(run, setRunOperation)
-        : null;
-    if (!launch) return;
-    btn.addEventListener('click', function bootstrapOfficialArchive(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        void launch();
-    }, true);
+    if (typeof run !== 'function') return;
+    const launch = createLoadingLockHandler(run, setRunOperation);
+    attachModeBootstrap('headerOfficialArchiveBtn', 'archive', launch);
 }
 
-function attachDataWorkshopBootstrap() {
-    const btn = document.getElementById('headerDataWorkshopBtn');
-    if (!btn) return;
-    const run = typeof window.runDataWorkshopComponents === 'function'
-        ? window.runDataWorkshopComponents
-        : window.runBiographyComponents;
-    const launch = typeof run === 'function'
-        ? createLoadingLockHandler(run, setRunOperation)
-        : null;
-    if (!launch) return;
-    btn.addEventListener('click', function bootstrapDataWorkshop(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        void launch();
-    }, true);
+function attachGalleryHubBootstrap() {
+    if (typeof window.runGalleryHubComponents !== 'function') return;
+    const launch = createLoadingLockHandler(window.runGalleryHubComponents, setRunOperation);
+    attachModeBootstrap('headerGalleryHubBtn', 'gallery', launch);
 }
 
 export function loadHeaderModeButtons() {
@@ -135,7 +105,7 @@ export function loadHeaderModeButtons() {
         className: '',
         title: 'World',
         label: 'World',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Interactive%20Worldview.png',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Worldview.png',
         iconAlt: 'World',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
@@ -149,7 +119,7 @@ export function loadHeaderModeButtons() {
         className: '',
         title: 'Codex',
         label: 'Codex',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Connection%20Codex.png',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Codex.png',
         iconAlt: 'Codex',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
@@ -163,7 +133,7 @@ export function loadHeaderModeButtons() {
         className: '',
         title: 'Story',
         label: 'Story',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Story%20Timeline.png',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Story.png',
         iconAlt: 'Story',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
@@ -175,10 +145,10 @@ export function loadHeaderModeButtons() {
     createHeaderHubButton({
         id: 'headerHeroBiographyBtn',
         className: '',
-        title: 'Gallery',
-        label: 'Gallery',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Concept%20Gallery.png',
-        iconAlt: 'Gallery',
+        title: 'Intel',
+        label: 'Intel',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Intel.png',
+        iconAlt: 'Intel',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerHeroBiographyIcon',
@@ -186,17 +156,18 @@ export function loadHeaderModeButtons() {
     });
     attachHeroBiographyBootstrap();
 
+    /* Match main-menu order: Theater → Archive → Gallery */
     createHeaderHubButton({
         id: 'headerDialogueTheaterBtn',
         className: '',
         title: 'Theater',
         label: 'Theater',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Theater.png',
         iconAlt: 'Theater',
         parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerDialogueTheaterIcon',
-        headerOrder: 50
+        headerOrder: 48,
     });
     attachDialogueTheaterBootstrap();
 
@@ -205,28 +176,28 @@ export function loadHeaderModeButtons() {
         className: '',
         title: 'Archive',
         label: 'Archive',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Official%20Archive.png',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Archive.png',
         iconAlt: 'Archive',
         parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerOfficialArchiveIcon',
-        headerOrder: 55
+        headerOrder: 50,
     });
     attachOfficialArchiveBootstrap();
 
     createHeaderHubButton({
-        id: 'headerDataWorkshopBtn',
+        id: 'headerGalleryHubBtn',
         className: '',
-        title: 'Workshop',
-        label: 'Workshop',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Data%20Workshop.png',
-        iconAlt: 'Workshop',
+        title: 'Gallery',
+        label: 'Gallery',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Gallery.png',
+        iconAlt: 'Gallery',
         parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
-        iconSpanId: 'headerDataWorkshopIcon',
-        headerOrder: 60
+        iconSpanId: 'headerGalleryHubIcon',
+        headerOrder: 55,
     });
-    attachDataWorkshopBootstrap();
+    attachGalleryHubBootstrap();
 
     updateStatus('✓ Header mode buttons loaded', 'success');
 }

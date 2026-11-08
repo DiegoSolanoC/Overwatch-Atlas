@@ -28,25 +28,40 @@ export function wikiFileTitleToTheaterFilename(wikiFileTitle) {
  * @param {string} wikiFileTitle
  * @returns {Promise<{ url: string, wikiTitle: string }|null>}
  */
+const WIKI_FILE_ORIGINS = [
+    'https://overwatch.weirdgloop.org',
+    'https://overwatch.fandom.com',
+];
+
 export async function resolveWikiFileDownloadUrl(wikiFileTitle) {
-    const url = new URL('https://overwatch.fandom.com/api.php');
-    url.searchParams.set('action', 'query');
-    url.searchParams.set('titles', wikiFileTitle);
-    url.searchParams.set('prop', 'imageinfo');
-    url.searchParams.set('iiprop', 'url');
-    url.searchParams.set('format', 'json');
+    let lastError = null;
+    for (const origin of WIKI_FILE_ORIGINS) {
+        const url = new URL('/api.php', origin);
+        url.searchParams.set('action', 'query');
+        url.searchParams.set('titles', wikiFileTitle);
+        url.searchParams.set('prop', 'imageinfo');
+        url.searchParams.set('iiprop', 'url');
+        url.searchParams.set('format', 'json');
 
-    const res = await fetch(url, { headers: { 'User-Agent': WIKI_USER_AGENT } });
-    if (!res.ok) {
-        throw new Error(`Wiki API HTTP ${res.status} for ${wikiFileTitle}`);
+        try {
+            const res = await fetch(url, { headers: { 'User-Agent': WIKI_USER_AGENT } });
+            if (!res.ok) {
+                lastError = new Error(`Wiki API HTTP ${res.status} for ${wikiFileTitle} @ ${origin}`);
+                continue;
+            }
+
+            const json = await res.json();
+            const page = Object.values(json.query?.pages || {})[0];
+            const info = page?.imageinfo?.[0];
+            if (!info?.url || page?.missing !== undefined) continue;
+
+            return { url: info.url, wikiTitle: page.title };
+        } catch (err) {
+            lastError = err instanceof Error ? err : new Error(String(err));
+        }
     }
-
-    const json = await res.json();
-    const page = Object.values(json.query?.pages || {})[0];
-    const info = page?.imageinfo?.[0];
-    if (!info?.url || page?.missing !== undefined) return null;
-
-    return { url: info.url, wikiTitle: page.title };
+    if (lastError) throw lastError;
+    return null;
 }
 
 /**

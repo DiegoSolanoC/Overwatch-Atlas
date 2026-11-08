@@ -13,7 +13,13 @@ export const ATLAS_MODE = Object.freeze({
     CODEX: 'codex',
     DATA_WORKSHOP: 'dataWorkshop',
     STORY: 'story',
-    GALLERY: 'gallery',
+    /** Entity browser (heroes / factions / NPCs / places) — formerly labeled Gallery. */
+    INTEL: 'intel',
+    /**
+     * Media / concept gallery hub — placeholder shell for now.
+     * Internal id is mediaGallery so legacy "gallery" (old bios) maps to Intel.
+     */
+    GALLERY: 'mediaGallery',
     OFFICIAL_ARCHIVE: 'officialArchive',
     DIALOGUE_THEATER: 'dialogueTheater',
 });
@@ -25,9 +31,10 @@ export const MODE_LABEL = Object.freeze({
     [ATLAS_MODE.CODEX]: 'Codex',
     [ATLAS_MODE.DATA_WORKSHOP]: 'Data Workshop',
     [ATLAS_MODE.STORY]: 'Story',
+    [ATLAS_MODE.INTEL]: 'Intel',
     [ATLAS_MODE.GALLERY]: 'Gallery',
-    [ATLAS_MODE.OFFICIAL_ARCHIVE]: 'Official Archive',
-    [ATLAS_MODE.DIALOGUE_THEATER]: 'Dialogue Theater',
+    [ATLAS_MODE.OFFICIAL_ARCHIVE]: 'Archive',
+    [ATLAS_MODE.DIALOGUE_THEATER]: 'Theater',
 });
 
 /** @type {Readonly<Record<string, AtlasModeId>>} */
@@ -40,7 +47,10 @@ const LEGACY_MODE_ALIASES = Object.freeze({
     biography: ATLAS_MODE.DATA_WORKSHOP,
     dataarchive: ATLAS_MODE.DATA_WORKSHOP,
     storytimeline: ATLAS_MODE.STORY,
-    herobiography: ATLAS_MODE.GALLERY,
+    herobiography: ATLAS_MODE.INTEL,
+    /** Pre-rename id for the entity browser (now Intel). */
+    gallery: ATLAS_MODE.INTEL,
+    conceptgallery: ATLAS_MODE.INTEL,
     officialresources: ATLAS_MODE.OFFICIAL_ARCHIVE,
     dialoguetheater: ATLAS_MODE.DIALOGUE_THEATER,
 });

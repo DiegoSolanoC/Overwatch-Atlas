@@ -170,62 +170,121 @@ function findHeroArchiveIndex(heroFilterKey, events) {
 }
 
 /**
- * @param {string} heroFilterKey
- * @param {string} heroDisplayName
- * @param {{ description?: string, birthday?: string, connections?: object[] }} patch
- * @returns {Promise<{ ok: boolean, error?: string, entry?: object }>}
+ * @param {object} next
+ * @param {object} patch
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} cat
  */
-export async function saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey, heroDisplayName, patch) {
-    const key = String(heroFilterKey || '').trim();
-    if (!key) return { ok: false, error: 'No hero selected.' };
-
-    clearHeroesArchiveEventsCache();
-    const loaded = await loadHeroesArchiveEvents();
-    const events = loaded.map((row) => ({ ...row }));
-
-    let idx = findHeroArchiveIndex(key, events);
-    if (idx < 0) {
-        const name = String(heroDisplayName || key).trim() || key;
-        events.push({
-            name,
-            description: patch.description !== undefined ? String(patch.description ?? '').trim() : '',
-            birthday: patch.birthday !== undefined ? String(patch.birthday ?? '').trim() : '',
-            relevantLocations: [],
-        });
-        idx = events.length - 1;
-    } else {
-        const prev = events[idx];
-        const next = { ...prev };
-        if (patch.description !== undefined) {
-            next.description = String(patch.description ?? '').trim();
-        }
+function applyIntelPatchFields(next, patch, cat) {
+    if (patch.description !== undefined) {
+        next.description = String(patch.description ?? '').trim();
+    }
+    if (cat === 'heroes') {
         if (patch.birthday !== undefined) {
             next.birthday = String(patch.birthday ?? '').trim();
         }
-        if ('connections' in next) {
-            delete next.connections;
+        if (patch.heroRole !== undefined) {
+            next.heroRole = String(patch.heroRole ?? '').trim();
         }
-        events[idx] = next;
+        if (patch.heroSubRole !== undefined) {
+            next.heroSubRole = String(patch.heroSubRole ?? '').trim();
+        }
+    }
+    if (cat === 'factions' && patch.factionType !== undefined) {
+        next.factionType = String(patch.factionType ?? '').trim();
+    }
+    if (cat === 'npcs' && patch.npcCategory !== undefined) {
+        next.npcCategory = String(patch.npcCategory ?? '').trim();
+    }
+    if ('connections' in next) {
+        delete next.connections;
+    }
+    return next;
+}
+
+/**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} filterKey
+ * @param {string} displayName
+ * @param {{
+ *   description?: string,
+ *   birthday?: string,
+ *   heroRole?: string,
+ *   heroSubRole?: string,
+ *   factionType?: string,
+ *   npcCategory?: string,
+ * }} patch
+ * @returns {Promise<{ ok: boolean, error?: string, entry?: object }>}
+ */
+export async function saveBioArchiveEntryPatchFromBiographyStage(
+    category,
+    filterKey,
+    displayName,
+    patch,
+) {
+    const cat = normalizeBioBiographyCategory(category);
+    const key = String(filterKey || '').trim();
+    if (!key) return { ok: false, error: 'No entry selected.' };
+    if (cat === 'locations') return { ok: false, error: 'Locations do not support gallery intel edit.' };
+
+    clearBioArchiveEventsCache(cat);
+    const loaded = await loadBioArchiveEvents(cat);
+    const events = loaded.map((row) => ({ ...row }));
+
+    let idx = -1;
+    for (let i = 0; i < events.length; i += 1) {
+        if (findBioArchiveEntryByFilterKey(cat, key, [events[i]])) {
+            idx = i;
+            break;
+        }
     }
 
-    writeHeroesArchiveLocal(events);
+    if (idx < 0) {
+        const name = String(displayName || key).trim() || key;
+        /** @type {object} */
+        const stub = {
+            name,
+            description: '',
+            connections: [],
+        };
+        if (cat === 'heroes') {
+            stub.relevantLocations = [];
+            stub.heroRole = 'Unassigned';
+            stub.heroSubRole = '';
+        } else if (cat === 'factions') {
+            stub.factionType = 'Independent Coalitions';
+        } else if (cat === 'npcs') {
+            stub.npcCategory = 'Unassigned';
+        }
+        applyIntelPatchFields(stub, patch, cat);
+        events.push(stub);
+        idx = events.length - 1;
+    } else {
+        events[idx] = applyIntelPatchFields({ ...events[idx] }, patch, cat);
+    }
+
+    writeBioArchiveLocal(cat, events);
 
     const em = window.eventManager;
     const ds = em?.dataService;
-    const onHeroesArchive =
-        typeof ds?.getArchiveSource === 'function' && ds.getArchiveSource() === 'heroes';
+    const onMatchingArchive =
+        typeof ds?.getArchiveSource === 'function' && ds.getArchiveSource() === cat;
 
-    if (onHeroesArchive && Array.isArray(em?.events)) {
-        let emIdx = findHeroArchiveIndex(key, em.events);
+    if (onMatchingArchive && Array.isArray(em?.events)) {
+        let emIdx = -1;
+        for (let i = 0; i < em.events.length; i += 1) {
+            if (findBioArchiveEntryByFilterKey(cat, key, [em.events[i]])) {
+                emIdx = i;
+                break;
+            }
+        }
         if (emIdx < 0 && events[idx]) {
             emIdx =
                 window.BioArchiveConnectionsSync?.resolveBioArchiveEventIndex?.(
                     em.events,
                     events[idx],
-                    'heroes',
+                    cat,
                 ) ?? -1;
         }
-
         if (emIdx >= 0) {
             em.events[emIdx] = { ...events[idx] };
             em.unsavedEventIndices?.add(emIdx);
@@ -233,13 +292,24 @@ export async function saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey,
             em.events.push({ ...events[idx] });
             em.unsavedEventIndices?.add(em.events.length - 1);
         }
+        /* saveEvents dispatches atlas-bio-archives-refreshed → Filters rebuild */
         ds?.saveEvents?.();
     } else {
-        dispatchHeroesArchiveRefreshed(events);
-        postHeroesArchiveToDevApi(events);
+        dispatchBioArchiveRefreshed(cat, events);
+        postBioArchiveToDevApi(cat, events);
     }
 
     return { ok: true, entry: events[idx] };
+}
+
+/**
+ * @param {string} heroFilterKey
+ * @param {string} heroDisplayName
+ * @param {{ description?: string, birthday?: string, heroRole?: string, heroSubRole?: string, connections?: object[] }} patch
+ * @returns {Promise<{ ok: boolean, error?: string, entry?: object }>}
+ */
+export async function saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey, heroDisplayName, patch) {
+    return saveBioArchiveEntryPatchFromBiographyStage('heroes', heroFilterKey, heroDisplayName, patch);
 }
 
 /**

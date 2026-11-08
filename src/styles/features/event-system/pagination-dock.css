@@ -79,17 +79,26 @@
     /*
      * Dock top cap: left border | trapezoid | right border (mirrored), anchored above the dock.
      */
+    /*
+     * Dock Border.png is now 500px tall (was 200): original graphic on top, extra area below.
+     * --dock-border-seam-h = height of the original band (stays at the dock top seam).
+     * --dock-border-img-h  = full scaled art height (seam × 500/200). Cap row top stays put;
+     * the extra height extends downward into the dock instead of squeezing/pushing the art up.
+     */
     body:has(#paginationDock) .pagination-dock-top-cap-row {
         position: absolute;
         left: 0;
         right: 0;
-        bottom: calc(100% + var(--dock-top-cap-lift, -5px));
+        bottom: calc(
+            100% + var(--dock-top-cap-lift, -5px)
+            - (var(--dock-border-img-h, 200px) - var(--dock-border-seam-h, 80px))
+        );
         width: 100%;
         max-width: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: flex-end;
+        align-items: flex-start;
         justify-content: center;
         gap: 0;
         box-sizing: border-box;
@@ -101,18 +110,22 @@
     body:has(#paginationDock) .pagination-dock-top-border-side {
         flex: 1 1 0;
         min-width: 0;
+        height: var(--dock-border-img-h, 200px);
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
         justify-content: center;
+        overflow: visible;
+        box-sizing: border-box;
     }
 
     body:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
         display: block;
         width: 100%;
-        height: var(--dock-border-img-h, 80px);
+        height: 100%;
         object-fit: fill;
-        object-position: center bottom;
+        object-position: center top;
         flex-shrink: 0;
+        align-self: flex-start;
         user-select: none;
         -webkit-user-drag: none;
         position: relative;
@@ -131,7 +144,7 @@
         z-index: 2;
         flex: 0 0 auto;
         width: var(--dock-trapezoid-width, min(820px, 88vw));
-        height: var(--dock-border-img-h, 80px);
+        height: var(--dock-border-seam-h, 80px);
         pointer-events: none;
         line-height: 0;
         display: flex;
@@ -257,8 +270,10 @@
         /* Extra vertical shift for center rail inside trapezoid (negative = up). */
         --dock-trapezoid-rail-shift-y: -3px;
         --dock-trapezoid-width: min(820px, 88vw);
-        /* Dock side border art + trapezoid band: fixed height (no vertical shrink when narrowing width); SVG uses preserveAspectRatio none for horizontal stretch. */
-        --dock-border-img-h: 80px;
+        /* Original graphic band height (dock seam). Trapezoid / clearance use this. */
+        --dock-border-seam-h: 80px;
+        /* Full Dock Border.png scaled height (500/200 × seam). Extra extends down into the dock. */
+        --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
         --dock-collapse-pill-width: min(280px, 46vw);
         --dock-collapse-pill-top-radius: 22px;
         /* Shift collapse pill + border art slightly toward the dock seam */
@@ -270,7 +285,7 @@
          * the dock top — add |lift| so panel chrome clears that band too.
          */
         --side-panel-dock-cut-bottom-lift: calc(
-            var(--dock-border-img-h, 80px) + max(0px, -1 * var(--dock-top-cap-lift, 0px))
+            var(--dock-border-seam-h, 80px) + max(0px, -1 * var(--dock-top-cap-lift, 0px))
         );
         /* Main menu / floating content: clear dock trapezoid cap above the dock box */
         --main-menu-trapezoid-clearance: calc(
@@ -338,9 +353,35 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     --dock-top-cap-lift: -5px;
     --dock-trapezoid-offset-y: 3px;
     --dock-trapezoid-rail-shift-y: -2px;
-    --dock-border-img-h: 88px;
+    --dock-border-seam-h: 88px;
+    --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
     --dock-trapezoid-width: min(820px, 98vw);
     --dock-segment-slant: 4px;
+}
+
+/* Portrait phone: shrink seam/border art so cap strips match the narrow dock */
+@media (max-width: 768px) and (orientation: portrait) {
+    body.pagination-dock-mobile-locked:has(#paginationDock),
+    body:has(#paginationDock) {
+        --dock-top-cap-lift: -3px;
+        --dock-trapezoid-offset-y: 2px;
+        --dock-trapezoid-rail-shift-y: -1px;
+        --dock-border-seam-h: clamp(40px, 6.2vh, 52px);
+        --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
+        --dock-trapezoid-width: min(92vw, 560px);
+        --main-menu-trapezoid-clearance: calc(
+            var(--dock-border-seam-h) + clamp(4px, 0.8vh, 10px)
+        );
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
+        height: var(--dock-border-seam-h, 48px);
+    }
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock {
@@ -755,7 +796,9 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
 
 /*
  * Mobile event info panel is position:fixed (z-index ~540) and extends over the dock band.
- * Pin the cap row to the viewport so border art + trapezium always paint above the panel.
+ * Keep the cap row absolutely seated on the dock (same seam math as desktop) and raise the
+ * dock stacking context so border art + trapezium still paint above the panel.
+ * (A prior fixed bottom: footer+dock ignored the tall border img and floated the trapezoid.)
  */
 @media (max-width: 768px) {
     body:has(#paginationDock) .pagination-dock {
@@ -767,15 +810,14 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row {
-        position: fixed !important;
+        position: absolute !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
         bottom: calc(
-            var(--footer-height, 60px)
-            + var(--pagination-dock-height, 200px)
-            + var(--dock-top-cap-lift, -5px)
+            100% + var(--dock-top-cap-lift, -5px)
+            - (var(--dock-border-img-h, 200px) - var(--dock-border-seam-h, 80px))
         ) !important;
         z-index: 690 !important;
         pointer-events: none;

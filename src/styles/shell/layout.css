@@ -103,6 +103,207 @@ header {
     overflow: visible; /* allow title badge to protrude */
 }
 
+/*
+ * Filters (left) + Music (right): flank the pagination dock, always available.
+ * Right = globe-control slant (−11°, thick border inward/left).
+ * Left = mirrored (+11°, thick border inward/right).
+ */
+.header-utility-rail {
+    --header-utility-btn-h: clamp(64px, 8.5vh, 78px);
+    --header-utility-btn-w: clamp(118px, 28vw, 160px);
+    --header-utility-skew-right: -11deg;
+    --header-utility-skew-left: 11deg;
+    /*
+     * Sit fully above the dock top border/trapezoid band (not on the seam art).
+     * Seam clears the white dock border imgs; extra gap keeps chips off that chrome.
+     */
+    --header-utility-dock-clearance: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 200px)
+        + calc(var(--dock-border-seam-h, 48px) * 0.55)
+        + clamp(4px, 0.8vh, 8px)
+    );
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: var(--header-utility-dock-clearance);
+    height: 0;
+    z-index: 700;
+    pointer-events: none;
+}
+
+body:not(:has(#paginationDock)) .header-utility-rail {
+    --header-utility-dock-clearance: calc(var(--footer-height, 65px) + 24px);
+}
+
+.header-utility-rail__slot {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    transform: none;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.header-utility-rail__slot--left {
+    left: clamp(10px, 2.2vw, 22px);
+}
+
+.header-utility-rail__slot--right {
+    right: clamp(10px, 2.2vw, 22px);
+}
+
+.header-utility-rail .header-utility-btn.globe-control-btn {
+    pointer-events: auto;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 1;
+    height: var(--header-utility-btn-h) !important;
+    width: var(--header-utility-btn-w) !important;
+    min-width: var(--header-utility-btn-w) !important;
+    max-width: none !important;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0 16px !important;
+    gap: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(13, 71, 161, 0.88);
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
+    clip-path: none;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-weight: 700;
+    font-size: clamp(15px, 3.6vw, 18px);
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Right (Music): default world-button slant, thick border on inward (left) edge */
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn {
+    border-width: 2px 2px 2px 7px;
+    transform: skewX(var(--header-utility-skew-right)) !important;
+}
+
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn:hover {
+    transform: skewX(var(--header-utility-skew-right)) translateY(-3px) scale(1.04) !important;
+    background: rgba(13, 71, 161, 0.98);
+    border-color: #fff;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.65);
+}
+
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn:active {
+    transform: skewX(var(--header-utility-skew-right)) translateY(-1px) scale(1.02) !important;
+}
+
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn > *,
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn [id$='Icon'],
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn .header-hub-btn-label,
+.header-utility-rail__slot--right .header-utility-btn.globe-control-btn .globe-control-btn__label {
+    transform: skewX(11deg) !important;
+}
+
+/* Left (Filters): mirrored slant, thick border on inward (right) edge */
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn {
+    border-width: 2px 7px 2px 2px;
+    transform: skewX(var(--header-utility-skew-left)) !important;
+}
+
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn:hover {
+    transform: skewX(var(--header-utility-skew-left)) translateY(-3px) scale(1.04) !important;
+    background: rgba(13, 71, 161, 0.98);
+    border-color: #fff;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.65);
+}
+
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn:active {
+    transform: skewX(var(--header-utility-skew-left)) translateY(-1px) scale(1.02) !important;
+}
+
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn > *,
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn [id$='Icon'],
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn .header-hub-btn-label,
+.header-utility-rail__slot--left .header-utility-btn.globe-control-btn .globe-control-btn__label {
+    transform: skewX(-11deg) !important;
+}
+
+.header-utility-rail .header-utility-btn.globe-control-btn.active {
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.28);
+}
+
+.header-utility-rail .header-utility-btn.globe-control-btn img {
+    transform: none !important;
+}
+
+.header-utility-rail .header-utility-btn.globe-control-btn [id$='Icon'] {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: clamp(30px, 7vw, 38px) !important;
+    height: clamp(30px, 7vw, 38px) !important;
+    flex-shrink: 0;
+    margin: 0 !important;
+}
+
+.header-utility-rail .header-utility-btn.globe-control-btn [id$='Icon'] img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+}
+
+.header-utility-rail .header-utility-btn .header-hub-btn-label,
+.header-utility-rail .header-utility-btn .globe-control-btn__label {
+    display: none;
+    white-space: nowrap;
+    margin: 0;
+}
+
+@media (min-width: 769px) {
+    .header-utility-rail {
+        --header-utility-btn-w: 150px;
+        --header-utility-btn-h: 68px;
+    }
+
+    .header-utility-rail .header-utility-btn .header-hub-btn-label,
+    .header-utility-rail .header-utility-btn .globe-control-btn__label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+/* Palette-aware utility rail fills */
+body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn {
+    background: rgba(66, 66, 66, 0.9);
+}
+body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn:hover {
+    background: rgba(80, 80, 80, 0.98);
+}
+body.color-palette-crimson .header-utility-rail .header-utility-btn.globe-control-btn {
+    background: rgba(183, 28, 28, 0.88);
+}
+body.color-palette-crimson .header-utility-rail .header-utility-btn.globe-control-btn:hover {
+    background: rgba(198, 40, 40, 0.98);
+}
+body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn {
+    background: rgba(103, 58, 183, 0.88);
+}
+body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn:hover {
+    background: rgba(126, 87, 194, 0.98);
+}
+
 /* Center title badge (inverted trapezoid) */
 .header-title-badge {
     position: absolute;

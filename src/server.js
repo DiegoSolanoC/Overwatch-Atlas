@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const { diffStoryArchivesVsCodex } = require('../scripts/server-bio-codex-sync.js');
+const { transferGalleryEntityKind } = require('../scripts/gallery-entity-kind-transfer.cjs');
 const {
     absFromPublic,
     FILES,
@@ -46,6 +47,28 @@ const mimeTypes = {
     '.eot': 'application/vnd.ms-fontobject'
 };
 
+/**
+ * Atomic JSON write with OneDrive/Windows rename fallback.
+ * @param {string} outPath
+ * @param {string} json
+ */
+function writeJsonFileAtomic(outPath, json) {
+    const tmpPath = `${outPath}.tmp`;
+    try {
+        fs.writeFileSync(tmpPath, json, 'utf8');
+        fs.renameSync(tmpPath, outPath);
+    } catch (err) {
+        try {
+            if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+        } catch (_) { /* ignore */ }
+        if (err && (err.code === 'EPERM' || err.code === 'EACCES' || err.code === 'EBUSY')) {
+            fs.writeFileSync(outPath, json, 'utf8');
+            return;
+        }
+        throw err;
+    }
+}
+
 function sendJson(res, code, data) {
     res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify(data, null, 2) + '\n');
@@ -81,15 +104,11 @@ function writeEventsJson(events, res) {
     const payload = { events };
     const json = JSON.stringify(payload, null, 2) + '\n';
 
-    // Atomic write: temp then rename
-    const tmpPath = outPath + '.tmp';
     try {
-        fs.writeFileSync(tmpPath, json, 'utf8');
-        fs.renameSync(tmpPath, outPath);
+        writeJsonFileAtomic(outPath, json);
         sendJson(res, 200, { ok: true, eventsCount: events.length });
     } catch (e) {
-        try { if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath); } catch (_) {}
-        sendJson(res, 500, { ok: false, error: 'Write failed' });
+        sendJson(res, 500, { ok: false, error: 'Write failed', detail: e?.message || String(e) });
     }
 }
 
@@ -107,16 +126,15 @@ function writeStoryArchiveJson(body, res) {
     const outPath = path.join(__dirname, 'data', 'story-archive', fileName);
     const payload = { events };
     const json = JSON.stringify(payload, null, 2) + '\n';
-    const tmpPath = outPath + '.tmp';
     try {
-        fs.writeFileSync(tmpPath, json, 'utf8');
-        fs.renameSync(tmpPath, outPath);
+        writeJsonFileAtomic(outPath, json);
         sendJson(res, 200, { ok: true, archive, eventsCount: events.length });
     } catch (e) {
-        try {
-            if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
-        } catch (_) {}
-        sendJson(res, 500, { ok: false, error: 'Write failed' });
+        sendJson(res, 500, {
+            ok: false,
+            error: 'Write failed',
+            detail: e?.message || String(e),
+        });
     }
 }
 
@@ -193,17 +211,12 @@ function writeDialogueTheaterJson(body, res) {
         delete payload._meta;
     }
     const json = JSON.stringify(payload, null, 2) + '\n';
-    const tmpPath = outPath + '.tmp';
     try {
         fs.mkdirSync(path.dirname(outPath), { recursive: true });
-        fs.writeFileSync(tmpPath, json, 'utf8');
-        fs.renameSync(tmpPath, outPath);
+        writeJsonFileAtomic(outPath, json);
         sendJson(res, 200, { ok: true, conversationsCount: mergedConversations.length });
     } catch (e) {
-        try {
-            if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
-        } catch (_) {}
-        sendJson(res, 500, { ok: false, error: 'Write failed' });
+        sendJson(res, 500, { ok: false, error: 'Write failed', detail: e?.message || String(e) });
     }
 }
 
@@ -288,10 +301,8 @@ function writeCodexStateJson(body, res) {
     const vOut = typeof body.v === 'number' && body.v >= 4 ? body.v : 5;
     const payload = { v: vOut, nodes, edges, connections };
     const json = JSON.stringify(payload, null, 2) + '\n';
-    const tmpPath = outPath + '.tmp';
     try {
-        fs.writeFileSync(tmpPath, json, 'utf8');
-        fs.renameSync(tmpPath, outPath);
+        writeJsonFileAtomic(outPath, json);
         sendJson(res, 200, {
             ok: true,
             nodesCount: nodes.length,
@@ -299,8 +310,7 @@ function writeCodexStateJson(body, res) {
             connectionsCount: connections.length,
         });
     } catch (e) {
-        try { if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath); } catch (_) {}
-        sendJson(res, 500, { ok: false, error: 'Write failed' });
+        sendJson(res, 500, { ok: false, error: 'Write failed', detail: e?.message || String(e) });
     }
 }
 
@@ -342,6 +352,41 @@ const server = http.createServer((req, res) => {
         if (req.method === 'POST' || req.method === 'PUT') {
             readJsonBody(req, res, (body) => {
                 writeStoryArchiveJson(body, res);
+            });
+            return;
+        }
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+
+    if (decodedPath === '/api/gallery-entity-kind') {
+        if (req.method === 'POST' || req.method === 'PUT') {
+            readJsonBody(req, res, (body) => {
+                try {
+                    const result = transferGalleryEntityKind({
+                        repoRoot: REPO_ROOT,
+                        name: body?.name,
+                        direction: body?.direction,
+                    });
+                    if (!result.ok) {
+                        sendJson(res, 400, result);
+                        return;
+                    }
+                    sendJson(res, 200, {
+                        ok: true,
+                        name: result.name,
+                        direction: result.direction,
+                        kind: result.kind,
+                        steps: result.steps,
+                        heroes: result.heroes,
+                        npcs: result.npcs,
+                    });
+                } catch (err) {
+                    sendJson(res, 500, {
+                        ok: false,
+                        error: err?.message || String(err),
+                    });
+                }
             });
             return;
         }
@@ -713,6 +758,7 @@ server.listen(PORT, () => {
     console.log(`  - http://localhost:${PORT}/test.html → test.html`);
     console.log(`  - http://localhost:${PORT}/api/events → GET/POST events.json`);
     console.log(`  - http://localhost:${PORT}/api/story-archive → POST story-archive-*.json (Heroes/Factions/NPCs/Locations)`);
+    console.log(`  - http://localhost:${PORT}/api/gallery-entity-kind → POST promote NPC↔Hero / demote`);
     console.log(`  - http://localhost:${PORT}/api/dialogue-theater → POST conversations.json`);
     console.log(`  - http://localhost:${PORT}/api/dialogue-theater/assets → GET theater asset catalog`);
     console.log(`  - http://localhost:${PORT}/api/codex → GET/POST codex-labels.json`);

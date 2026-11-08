@@ -66,6 +66,7 @@ import {
     clearEventSlideBioConnectionsDisplay,
     updateEventSlideBioConnectionsDisplay,
 } from '../../../interface-shared/bio-archive/eventSlideBioConnectionsDisplay.js';
+import { syncEventSlideSeeMoreInGallery } from './eventSlideSeeMoreInGallery.js';
 
 export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
         const eventSlide = document.getElementById('eventSlide');
@@ -209,6 +210,7 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
         syncEventSlideSectionJumpsMode(isBioArchiveChrome ? 'bio' : 'story');
         syncEventSlidePaneHeadingsMode(isBioArchiveChrome ? 'bio' : 'story');
         eventSlide.classList.toggle('event-slide--bio-archive', isBioArchiveChrome);
+        syncEventSlideSeeMoreInGallery(archiveSourceSlide, eventName);
 
         if (archiveSourceSlide === 'factions') {
             updateEventSlideFactionTypeDisplay(eventData, slide.currentVariantIndex ?? 0);
@@ -368,12 +370,12 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
                             }
                         }
                         
-                        // Update image for variant
+                        // Update image for variant (honor presentation archive on peeks)
                         const vImagePath = window.eventManager?.getEventImagePath
                             ? window.eventManager.getEventImagePath(
                                 v.name,
                                 v.image,
-                                !isSatelliteArchive ? 'story' : undefined
+                                archiveSourceSlide
                             )
                             : v.image;
                         if (vImagePath) {

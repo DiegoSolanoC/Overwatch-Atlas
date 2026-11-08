@@ -47,7 +47,16 @@ const EXTRACT_ROOT = path.join(
     'ow models',
     'HeroVoice',
 );
-const WIKI_ORIGIN = 'https://overwatch.fandom.com';
+/**
+ * Fandom Quotes pages are often stubs for newer heroes (Doctrine, etc.).
+ * weirdgloop carries the full Chatter / Voice Lines / Communication tables
+ * and hosts the matching File: audio that fandom is missing.
+ */
+const WIKI_ORIGIN = 'https://overwatch.weirdgloop.org';
+const WIKI_AUDIO_ORIGINS = [
+    'https://overwatch.weirdgloop.org',
+    'https://overwatch.fandom.com',
+];
 const USER_AGENT = 'OverwatchAtlas/1.0 (gallery hero phrases importer)';
 
 const dryRun = process.argv.includes('--dry-run');
@@ -138,12 +147,17 @@ function splitQuoteAndDisclaimer(rawCell) {
     return { spoken: spoken.replace(/\s+/g, ' ').trim(), disclaimer };
 }
 
+/**
+ * Pull `==Name==` or `===Name===` bodies (Voice Lines often nests under Cosmetics).
+ * @param {string} wikitext
+ * @param {string} name
+ */
 function extractSection(wikitext, name) {
     const re = new RegExp(
-        `==\\s*${name}\\s*==([\\s\\S]*?)(?=\\n==\\s*[^=]|$)`,
+        `(?:^|\\n)(={2,3})\\s*${name}\\s*\\1\\s*\\n([\\s\\S]*?)(?=\\n={2,3}\\s*[^=\\n]+\\s*={2,3}\\s*(?:\\n|$)|$)`,
         'i',
     );
-    return String(wikitext || '').match(re)?.[1] || '';
+    return String(wikitext || '').match(re)?.[2] || '';
 }
 
 function extractAudios(row) {
@@ -351,12 +365,19 @@ function filenameFromWikiAudio(wikiAudio, spoken) {
     if (m) {
         return m[2].replace(/[\\/:*?"<>|]/g, '').trim();
     }
-    let name = String(spoken || 'phrase')
-        .replace(/[\\/:*?"<>|]/g, '')
+    // Prefer a clean spoken label; never keep raw {{QuoteTranslation…}} as a filename.
+    let name = stripGalleryWikiMarkup(spoken || '')
+        .replace(/[\\/:*?"<>|{}]/g, '')
         .replace(/\s+/g, ' ')
         .trim()
         .replace(/[.\s]+$/g, '');
-    if (!name) name = 'phrase';
+    if (!name || /^phrase$/i.test(name) || /quotetranslation/i.test(name)) {
+        name = raw.replace(/\.ogg$/i, '').split(/\s-\s/).pop() || 'phrase';
+        name = stripGalleryWikiMarkup(name)
+            .replace(/[\\/:*?"<>|{}]/g, '')
+            .replace(/\s+/g, ' ')
+            .trim() || 'phrase';
+    }
     if (name.length > 160) name = name.slice(0, 160).trim();
     return name.toLowerCase().endsWith('.ogg') ? name : `${name}.ogg`;
 }
@@ -388,26 +409,28 @@ async function downloadWikiAudioWithFallback(wikiAudio, destPath) {
             errors.push(`${title}: ${err instanceof Error ? err.message : err}`);
         }
     }
-    for (const title of wikiAudioTitleCandidates(wikiAudio)) {
-        try {
-            const url = new URL('https://overwatch.fandom.com/api.php');
-            url.searchParams.set('action', 'query');
-            url.searchParams.set('titles', title);
-            url.searchParams.set('prop', 'imageinfo');
-            url.searchParams.set('iiprop', 'url');
-            url.searchParams.set('format', 'json');
-            const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-            if (!res.ok) continue;
-            const json = await res.json();
-            const page = Object.values(json.query?.pages || {})[0];
-            const fileUrl = page?.imageinfo?.[0]?.url;
-            if (!fileUrl) continue;
-            const dl = await fetch(fileUrl, { headers: { 'User-Agent': USER_AGENT } });
-            if (!dl.ok) continue;
-            await fsp.writeFile(destPath, Buffer.from(await dl.arrayBuffer()));
-            return title;
-        } catch (err) {
-            errors.push(`fallback ${title}: ${err instanceof Error ? err.message : err}`);
+    for (const origin of WIKI_AUDIO_ORIGINS) {
+        for (const title of wikiAudioTitleCandidates(wikiAudio)) {
+            try {
+                const url = new URL('/api.php', origin);
+                url.searchParams.set('action', 'query');
+                url.searchParams.set('titles', title);
+                url.searchParams.set('prop', 'imageinfo');
+                url.searchParams.set('iiprop', 'url');
+                url.searchParams.set('format', 'json');
+                const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+                if (!res.ok) continue;
+                const json = await res.json();
+                const page = Object.values(json.query?.pages || {})[0];
+                const fileUrl = page?.imageinfo?.[0]?.url;
+                if (!fileUrl) continue;
+                const dl = await fetch(fileUrl, { headers: { 'User-Agent': USER_AGENT } });
+                if (!dl.ok) continue;
+                await fsp.writeFile(destPath, Buffer.from(await dl.arrayBuffer()));
+                return `${origin} ${title}`;
+            } catch (err) {
+                errors.push(`fallback ${origin} ${title}: ${err instanceof Error ? err.message : err}`);
+            }
         }
     }
     throw new Error(errors.join(' | ') || 'no wiki audio candidates');

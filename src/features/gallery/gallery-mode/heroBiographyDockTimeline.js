@@ -10,6 +10,10 @@ import {
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import { applyDockEraTimelineFilter } from '../../system-interface/interface-bottom-dock/dockEraTimelineFilter.js';
 import { refreshDockTimelinePagination } from '../../system-interface/interface-bottom-dock/refreshDockTimelinePagination.js';
+import {
+    getDialogueTheaterDockEvents,
+    isDialogueTheaterDockActive,
+} from '../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -69,6 +73,19 @@ export function clearHeroBiographyDockHeroFilter() {
 }
 
 /**
+ * Loose name match — displaced promote/demote tokens may sit on the other list.
+ * @param {string} token
+ * @param {string} keyLower
+ */
+function tokenMatchesKey(token, keyLower) {
+    const t = String(token || '').trim().toLowerCase();
+    if (!t || !keyLower) return false;
+    if (t === keyLower) return true;
+    const strip = (s) => s.replace(/[^a-z0-9]+/g, '');
+    return Boolean(strip(t) && strip(t) === strip(keyLower));
+}
+
+/**
  * @param {object | null | undefined} entity
  * @param {string} heroFilterKey
  * @returns {boolean}
@@ -77,8 +94,10 @@ function entityIncludesHero(entity, heroFilterKey) {
     if (!entity) return false;
     const keyLower = String(heroFilterKey || '').trim().toLowerCase();
     if (!keyLower) return false;
-    return getStoryEventHeroTokens(entity).some(
-        (token) => String(token || '').trim().toLowerCase() === keyLower,
+    /* Also scan NPC places: promoted heroes often still sit under npcFilterPlaces. */
+    return (
+        getStoryEventHeroTokens(entity).some((token) => tokenMatchesKey(token, keyLower))
+        || getStoryEventNpcTokens(entity).some((token) => tokenMatchesKey(token, keyLower))
     );
 }
 
@@ -111,8 +130,10 @@ function entityIncludesNpc(entity, npcFilterKey) {
     if (!entity) return false;
     const keyLower = String(npcFilterKey || '').trim().toLowerCase();
     if (!keyLower) return false;
-    return getStoryEventNpcTokens(entity).some(
-        (token) => String(token || '').trim().toLowerCase() === keyLower,
+    /* Also scan hero places: demoted NPCs may still sit under heroFilterPlaces. */
+    return (
+        getStoryEventNpcTokens(entity).some((token) => tokenMatchesKey(token, keyLower))
+        || getStoryEventHeroTokens(entity).some((token) => tokenMatchesKey(token, keyLower))
     );
 }
 
@@ -200,6 +221,9 @@ export function resolveDockTimelineEventsForDisplay(baseEvents) {
  * @returns {object[]}
  */
 export function getDockTimelineEventsForPagination() {
+    if (isDialogueTheaterDockActive()) {
+        return getDialogueTheaterDockEvents();
+    }
     const base = window.eventManager?.getDockTimelineEvents?.() || [];
     return resolveDockTimelineEventsForDisplay(base);
 }

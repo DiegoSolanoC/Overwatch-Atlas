@@ -330,3 +330,12 @@ console.log(`${manifestPath} written from disk assets (heroes/factions/npcs orde
 console.log(
     `  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}, heroBios: ${Object.keys(heroBios).length}, factionBios: ${Object.keys(factionBios).length}, heroPhrases: ${Object.keys(heroPhrases).length}`
 );
+
+/* Gallery owns filter roster: ensure each Filters image has a bio/intel archive row. */
+const { syncGalleryArchivesFromFilters } = require('./sync-gallery-archive-from-filters.js');
+syncGalleryArchivesFromFilters({
+    dataDir,
+    heroes,
+    factions,
+    npcs,
+});

@@ -306,6 +306,24 @@ export function createStandaloneEventSlide() {
             const events =
                 options.eventList != null ? options.eventList : dockList;
             if (index < 0 || index >= events.length) return;
+
+            // Dialogue Theater dock: open theater info panel instead of story slide.
+            const candidate = events[index];
+            if (
+                options.eventList == null
+                && candidate
+                && candidate._atlasDockKind === 'dialogue-theater'
+            ) {
+                this.currentEventIndex = index;
+                this.allEvents = events;
+                import('../../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js')
+                    .then((mod) => {
+                        mod.openDialogueTheaterFromDockEvent?.(candidate);
+                    })
+                    .catch(() => {});
+                return;
+            }
+
             this.currentEventIndex = index;
             this.allEvents = events;
             this._presentationFromDockTimeline =

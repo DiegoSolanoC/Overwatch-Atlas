@@ -5,8 +5,8 @@ import {
 
 export async function mountOfficialArchiveMode() {
     mountEmptyModeShell({
-        title: 'Official Archive',
-        lead: 'Official Archive — content coming soon.',
+        title: 'Archive',
+        lead: 'Archive — content coming soon.',
     });
 }
 

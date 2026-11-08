@@ -13,6 +13,7 @@ export function wireModeActivation(tiles, handlers) {
         storyBtn,
         biosBtn,
         theaterBtn,
+        galleryBtn,
         archivesBtn,
         storyTimelineBtn,
         heroBiographyBtn,
@@ -31,6 +32,7 @@ export function wireModeActivation(tiles, handlers) {
         setupStoryTimelineHandler,
         setupDialogueTheaterHandler,
         setupOfficialResourcesHandler,
+        setupGalleryHubHandler,
     } = handlers;
 
     const pairs = [
@@ -41,6 +43,7 @@ export function wireModeActivation(tiles, handlers) {
         [archivesBtn || archiveBtn || biographyBtn, setupBiographyHandler],
         [theaterBtn || dialogueTheaterBtn, setupDialogueTheaterHandler],
         [tiles.officialResourcesBtn, setupOfficialResourcesHandler],
+        [galleryBtn, setupGalleryHubHandler],
     ];
 
     for (const [tile, handler] of pairs) {

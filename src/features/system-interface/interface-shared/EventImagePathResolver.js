@@ -74,10 +74,23 @@ class EventImagePathResolver {
         };
 
         let resolved;
-        if (providedPath && providedPath.trim()) {
-            resolved = encodeImagePath(providedPath.trim());
+        const trimmedProvided = providedPath && String(providedPath).trim();
+        if (trimmedProvided) {
+            /* Bare filename (e.g. Freja.png) → join active archive folder. */
+            const looksAbsoluteOrRooted =
+                /^(?:[a-z]+:)?\/\//i.test(trimmedProvided)
+                || trimmedProvided.startsWith('src/')
+                || trimmedProvided.startsWith('/')
+                || trimmedProvided.includes('/')
+                || trimmedProvided.includes('\\');
+            if (looksAbsoluteOrRooted) {
+                resolved = encodeImagePath(trimmedProvided);
+            } else {
+                const file = trimmedProvided.replace(/^\.?[/\\]/, '');
+                resolved = encodeImagePath(`${activeImagesWebBase}${file}`);
+            }
         } else {
-            let normalizedName = eventName.replace(/\s+/g, ' ').trim();
+            let normalizedName = String(eventName || '').replace(/\s+/g, ' ').trim();
             const caseVariations = [
                 normalizedName,
                 normalizedName.charAt(0).toUpperCase() + normalizedName.slice(1).toLowerCase(),

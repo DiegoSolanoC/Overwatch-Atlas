@@ -1,11 +1,12 @@
 /**
  * Data Workshop availability (main menu + mode orchestrator).
- * Available on localhost and GitHub Pages; static deploy uses localStorage + import/export.
+ * Retired as a hub mode — entity bios live in Gallery. Orchestrator
+ * entry remains for emergency / deep links but UI no longer surfaces it.
  */
 
 /**
  * @returns {boolean}
  */
 export function isDataWorkshopLocalDev() {
-    return true;
+    return false;
 }

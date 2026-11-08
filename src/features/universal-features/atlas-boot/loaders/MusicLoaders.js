@@ -1,11 +1,10 @@
 /**
  * MusicLoaders — load/unload pair for music components.
  *
- * `loadMusic` mounts a hidden `#musicToggle` (header tile removed — music opens
- * via Filters), the music panel HTML, the audio element, initializes
- * MusicService twice (immediate + delayed re-init for service-readiness), and
- * loads the music sound effect. `unloadMusic` removes the toggle + panel and
- * stops any playing audio.
+ * `loadMusic` mounts `#musicToggle` under the header (right utility rail),
+ * the music panel HTML, the audio element, initializes MusicService twice
+ * (immediate + delayed re-init for service-readiness), and loads the music
+ * sound effect. `unloadMusic` removes the toggle + panel and stops audio.
  */
 
 import {
@@ -21,18 +20,32 @@ import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
 import { getRunOperation } from '../../atlas-mode-runtime/loadingOverlayState.js';
 import { initializeMusicService } from '../../atlas-music/initializeMusicService.js';
 import { createBackgroundMusicElement } from '../../atlas-music/createBackgroundMusicElement.js';
+import { createHeaderHubButton } from '../../atlas-header/HeaderHubButton.js';
 
-/** Hidden toggle so MusicService / Filters / keyboard `M` keep a stable target. */
-function ensureHiddenMusicToggle() {
-    if (document.getElementById('musicToggle')) return;
-    const btn = document.createElement('button');
-    btn.id = 'musicToggle';
-    btn.type = 'button';
-    btn.title = 'Music Options';
-    btn.setAttribute('aria-label', 'Music Options');
-    btn.hidden = true;
-    const parent = document.getElementById('content') || document.body;
-    parent.appendChild(btn);
+/** Visible under-header toggle — MusicService / Filters / keyboard `M` target. */
+function ensureMusicToggle() {
+    if (document.getElementById('musicToggle')) {
+        const existing = document.getElementById('musicToggle');
+        existing.hidden = false;
+        existing.className = 'globe-control-btn header-utility-btn header-utility-btn--music';
+        const rail = document.getElementById('headerUtilityRailRight');
+        if (rail && existing.parentElement !== rail) {
+            rail.appendChild(existing);
+        }
+        return existing;
+    }
+
+    return createHeaderHubButton({
+        id: 'musicToggle',
+        className: 'header-utility-btn header-utility-btn--music',
+        title: 'Music Options (M)',
+        label: 'Music',
+        iconPath: 'src/assets/images/Icons/Music%20Icons/Music%20Icon.png',
+        iconAlt: 'Music',
+        parentId: 'headerUtilityRailRight',
+        baseClass: 'globe-control-btn',
+        iconSpanId: 'musicToggleIcon',
+    });
 }
 
 export async function loadMusic(loadedComponents) {
@@ -41,7 +54,7 @@ export async function loadMusic(loadedComponents) {
     }
 
     await withLoadLifecycle(async () => {
-        ensureHiddenMusicToggle();
+        ensureMusicToggle();
 
         lookAndAddElement('musicPanel', () => {
             updateStatus('Adding music panel...', 'info');

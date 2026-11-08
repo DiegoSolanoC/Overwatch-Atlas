@@ -26,6 +26,12 @@ import {
 } from '../../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
 import { setLoadingAssetImageSrc } from '../../../../universal-features/atlas-ui/loadingAssetSlot.js';
 import {
+    applyDialogueTheaterDockThumbMedia,
+    clearDialogueTheaterDockThumbMedia,
+    hydrateDialogueTheaterDockEventVisuals,
+    isDialogueTheaterDockEvent,
+} from '../../../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
+import {
     thumbPageTurnShrinkKeyframes,
     thumbPageTurnGrowKeyframes
 } from '../../../interface-bottom-dock/thumbPageTurnKeyframes.js';
@@ -48,6 +54,7 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../../../interface-shared/storyEventFilterPlaces.js';
+import { storyEventHasWrongCategoryRelevancy } from '../../../interface-shared/storyEventWrongCategoryRelevancy.js';
 import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
 import {
     readHeroRoleBioPanelTrimmed,
@@ -63,7 +70,12 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
         const buttons = document.querySelectorAll('#eventNumberButtons .event-number-btn');
         if (!buttons.length) return;
         
-        const events = allEvents || window.eventManager?.getDockTimelineEvents?.() || [];
+        const events = allEvents
+            || (typeof window.standaloneDockPagination?.getDockEvents === 'function'
+                ? window.standaloneDockPagination.getDockEvents()
+                : null)
+            || window.eventManager?.getDockTimelineEvents?.()
+            || [];
         const eventsPerPage = 10;
         const baseIndex = (pageNum - 1) * eventsPerPage;
         
@@ -127,19 +139,33 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
                 }
             }
             
-            // Unfinished indicator: same predicate as the dock-thumb / list rule
-            const hasDescription = !eventSlotMissingDescription(displayEvent);
+            const theaterDock = isDialogueTheaterDockEvent(event);
+
+            // Unfinished / wrong-category relevancy (same predicates as Event Manager list)
+            const hasDescription = theaterDock ? true : !eventSlotMissingDescription(displayEvent);
+            const wrongCategory = theaterDock ? false : storyEventHasWrongCategoryRelevancy(event);
             newBtn.classList.toggle('event-number-btn--unfinished', !hasDescription);
-            newBtn.title = hasDescription ? plainName : `${plainName} — Unfinished: missing description`;
+            newBtn.classList.toggle('event-number-btn--wrong-category-relevancy', wrongCategory);
+            const titleBits = [plainName];
+            if (!hasDescription) titleBits.push('Unfinished: missing description');
+            if (wrongCategory) titleBits.push('Wrong-category hero/NPC relevancy');
+            newBtn.title = titleBits.join(' — ');
             
             // Get image path using helper
             let imagePath = null;
-            if (window.NavigationImageHelpers?.getEventImagePath) {
-                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
-            } else if (window.eventManager?.getEventImagePath) {
-                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
+            if (theaterDock) {
+                hydrateDialogueTheaterDockEventVisuals(event);
+                imagePath = event._dialogueTheaterScene || event.image || event.imagePath || null;
+                if (imgWrap) applyDialogueTheaterDockThumbMedia(imgWrap, event);
             } else {
-                imagePath = displayEvent.image || displayEvent.imagePath || null;
+                clearDialogueTheaterDockThumbMedia(imgWrap);
+                if (window.NavigationImageHelpers?.getEventImagePath) {
+                    imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
+                } else if (window.eventManager?.getEventImagePath) {
+                    imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
+                } else {
+                    imagePath = displayEvent.image || displayEvent.imagePath || null;
+                }
             }
             
             if (imgEl) {

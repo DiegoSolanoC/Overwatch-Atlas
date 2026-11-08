@@ -29,8 +29,11 @@ export async function buildGroupedHeroArchiveFilterDom(
     soundManager,
     updateFilterCounts,
 ) {
+    const buildToken = filtersGrid._atlasFilterBuildToken;
     filtersGrid.innerHTML = '';
     const roleGroups = await buildHeroBiographyRoleGroups(items);
+    if (filtersGrid._atlasFilterBuildToken !== buildToken) return [];
+    filtersGrid.innerHTML = '';
     const { board, body } = buildFiltersChipBoard('flat', 'Heroes');
 
     for (const role of HERO_BIOGRAPHY_ROLE_ORDER) {

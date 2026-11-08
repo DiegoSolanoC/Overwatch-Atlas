@@ -7,11 +7,14 @@ import { normalizeAtlasMode } from '../atlas-mode-runtime/atlasModes.js';
 
 /** Canonical + legacy keys → window kill function name. */
 const PLACEHOLDER_MODE_KILL_FN = {
-    gallery: 'killGalleryComponents',
+    intel: 'killIntelComponents',
+    mediagallery: 'killGalleryHubComponents',
+    gallery: 'killIntelComponents',
     story: 'killStoryComponents',
     dialoguetheater: 'killDialogueTheaterComponents',
     officialarchive: 'killOfficialArchiveComponents',
-    herobiography: 'killGalleryComponents',
+    herobiography: 'killIntelComponents',
+    conceptgallery: 'killIntelComponents',
     storytimeline: 'killStoryComponents',
     officialresources: 'killOfficialArchiveComponents',
 };
@@ -28,7 +31,9 @@ export async function killPlaceholderModeIfActive(currentMode) {
     if (!fnName || typeof window[fnName] !== 'function') {
         return false;
     }
-    await window[fnName]();
+    // Home / mode-switch callers restore the menu themselves — avoid a double
+    // restore that fights EmptyModeShell chrome and flashes the globe.
+    await window[fnName](false);
     return true;
 }
 
@@ -37,8 +42,12 @@ export async function killPlaceholderModeIfActive(currentMode) {
  */
 export async function killPlaceholderModeFromDomIfPresent() {
     if (document.getElementById('atlasGalleryHost')) {
-        if (typeof window.killGalleryComponents === 'function') {
-            await window.killGalleryComponents();
+        const killIntel =
+            typeof window.killIntelComponents === 'function'
+                ? window.killIntelComponents
+                : window.killGalleryComponents;
+        if (typeof killIntel === 'function') {
+            await killIntel(false);
             return true;
         }
     }
@@ -47,12 +56,31 @@ export async function killPlaceholderModeFromDomIfPresent() {
         storyViewer?.classList.contains('story-viewer-container--timeline-mode') &&
         typeof window.killStoryComponents === 'function'
     ) {
-        await window.killStoryComponents();
+        await window.killStoryComponents(false);
         return true;
     }
-    if (document.getElementById('atlasEmptyModeHost') || document.getElementById('dialogueTheaterListHost')) {
+    if (document.getElementById('atlasEmptyModeHost')) {
         const stored = getCurrentMode();
         if (stored && (await killPlaceholderModeIfActive(stored))) {
+            return true;
+        }
+        // Empty shell without a known mode key — prefer Gallery hub, then Archive.
+        if (typeof window.killGalleryHubComponents === 'function') {
+            await window.killGalleryHubComponents(false);
+            return true;
+        }
+        if (typeof window.killOfficialArchiveComponents === 'function') {
+            await window.killOfficialArchiveComponents(false);
+            return true;
+        }
+    }
+    if (document.getElementById('dialogueTheaterListHost')) {
+        const stored = getCurrentMode();
+        if (stored && (await killPlaceholderModeIfActive(stored))) {
+            return true;
+        }
+        if (typeof window.killDialogueTheaterComponents === 'function') {
+            await window.killDialogueTheaterComponents(false);
             return true;
         }
     }

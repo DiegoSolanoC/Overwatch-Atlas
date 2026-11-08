@@ -42,9 +42,9 @@ function syncStandaloneFromPending(stateManager) {
 /**
  * @param {string} filterKey
  * @param {string} displayName
- * @param {'heroes'|'factions'|'npcs'|'countries'|string} type
+ * @param {'heroes'|'factions'|'npcs'|'locations'|'countries'|string} type
  */
-function applyExclusiveGallerySelection(filterKey, displayName, type) {
+export function applyExclusiveGallerySelection(filterKey, displayName, type) {
     const fs = window.FilterService;
     const stateManager = fs?.stateManager;
     const grid = document.getElementById('filtersGrid');
@@ -71,7 +71,13 @@ function applyExclusiveGallerySelection(filterKey, displayName, type) {
     }
 
     const t = String(type || '').toLowerCase();
-    if (t === 'heroes' || t === 'factions' || t === 'npcs' || t === 'countries') {
+    if (
+        t === 'heroes'
+        || t === 'factions'
+        || t === 'npcs'
+        || t === 'locations'
+        || t === 'countries'
+    ) {
         selectBioBiographyEntityFromFilter(t, filterKey, displayName);
     } else {
         clearBioBiographyEntityFromFilter();
@@ -129,7 +135,13 @@ export function applyGalleryExclusiveFilterPick({
     filterBtn.setAttribute('aria-pressed', 'true');
 
     const t = String(type || '').toLowerCase();
-    if (t === 'heroes' || t === 'factions' || t === 'npcs' || t === 'countries') {
+    if (
+        t === 'heroes'
+        || t === 'factions'
+        || t === 'npcs'
+        || t === 'locations'
+        || t === 'countries'
+    ) {
         selectBioBiographyEntityFromFilter(t, filterKey, displayName);
     } else {
         clearBioBiographyEntityFromFilter();
@@ -172,11 +184,20 @@ export function openFiltersPanelForGallery() {
 
 /**
  * Pick a random hero whenever Gallery opens so the stage is never empty.
+ * Honors a pending deep-link from {@link openBioEntityInGallery}.
  */
 export async function pickRandomGalleryHeroOnOpen() {
     if (!isAtlasGalleryOpen()) return;
 
     try {
+        const { consumePendingGalleryBioFocus, focusBioEntityInOpenGallery } =
+            await import('./openBioEntityInGallery.js');
+        const pending = consumePendingGalleryBioFocus();
+        if (pending?.name) {
+            const ok = await focusBioEntityInOpenGallery(pending.kind, pending.name);
+            if (ok) return;
+        }
+
         const heroes = await loadBioFilterManifestEntries('heroes');
         if (!heroes.length) return;
 

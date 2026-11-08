@@ -7,7 +7,8 @@
 export const HERO_ARCHIVE_SUBROLE_ORDER_BY_ROLE = {
     Tank: ['Initiator', 'Bruiser', 'Stalwart'],
     Damage: ['Flanker', 'Recon', 'Specialist', 'Sharpshooter'],
-    Support: ['Tactician', 'Medic', 'Survivor', 'Unassigned']
+    Support: ['Tactician', 'Medic', 'Survivor', 'Unassigned'],
+    Unassigned: ['Unassigned'],
 };
 
 /** Subrole aliases for normalization */

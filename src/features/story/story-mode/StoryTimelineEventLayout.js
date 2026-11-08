@@ -12,15 +12,19 @@ const TIMELINE_MIN_YEAR = 1500;
 const TIMELINE_MAX_YEAR = 2200;
 
 /** Extra track past start/end so edge cards are not clipped. */
-export const TIMELINE_EDGE_BLEED_PX = 220;
-/** Minimum horizontal gap between consecutive events (JSON order). */
-export const TIMELINE_MIN_EVENT_GAP_PX = 220;
+export const TIMELINE_EDGE_BLEED_PX = 280;
+/**
+ * Minimum center-to-center gap between consecutive events (JSON order).
+ * Cards alternate above/below, so same-side neighbors are 2× this gap apart.
+ * Must clear max card width (~460px) plus breathing room to avoid overlap.
+ */
+export const TIMELINE_MIN_EVENT_GAP_PX = 300;
 /** Horizontal slot per event inside a year band. */
 export const TIMELINE_CARD_SLOT_PX = TIMELINE_MIN_EVENT_GAP_PX;
 /** Minimum width for a year that only has one event. */
 export const TIMELINE_MIN_YEAR_SEGMENT_PX = TIMELINE_MIN_EVENT_GAP_PX;
 /** Extra space when consecutive events belong to different story eras. */
-export const TIMELINE_ERA_BOUNDARY_EXTRA_PX = 88;
+export const TIMELINE_ERA_BOUNDARY_EXTRA_PX = 96;
 
 /**
  * @typedef {'above'|'below'} StoryTimelineEventSide
