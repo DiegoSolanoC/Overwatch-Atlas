@@ -1,7 +1,17 @@
 /**
- * Plain-text paste for event slide title/description contenteditable fields.
- * Capture-phase listener so all open-slide routes get the same behavior.
+ * Plain-text paste for contenteditable fields that must not keep source
+ * formatting (white Word/Docs backgrounds, fonts, etc.):
+ *   - event slide title / description
+ *   - Gallery Intel biography editor
+ *
+ * Capture-phase listener so every open-slide / intel-edit route shares behavior.
  */
+
+const PLAIN_PASTE_EDITABLE_SELECTOR = [
+    '#eventSlideText',
+    '#eventSlideTitle',
+    '.gallery-mode__archive-description-body--edit',
+].join(', ');
 
 function clipboardPlainFromDataTransfer(dt) {
     if (!dt) return '';
@@ -44,7 +54,7 @@ export function installEventSlidePlainPasteGuard() {
             const host = raw.nodeType === Node.TEXT_NODE ? raw.parentElement : raw;
             if (!host || typeof host.closest !== 'function') return;
 
-            const root = host.closest('#eventSlideText, #eventSlideTitle');
+            const root = host.closest(PLAIN_PASTE_EDITABLE_SELECTOR);
             if (!root || !(root instanceof HTMLElement) || !root.isContentEditable) return;
 
             const sel = window.getSelection?.();

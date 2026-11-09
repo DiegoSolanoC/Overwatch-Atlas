@@ -2787,7 +2787,7 @@
       "name": "Aleksandra Zaryanova is Born",
       "locationType": "earth",
       "cityDisplayName": "Novoanskoye, Russia",
-      "description": "On December 4th of 2048, Aleksandra Zaryanova was born in the small Siberian village of Novoanskoye, near the shadow of a remote Omnium. Her family knew her as 'Sasha', but the world would know her as 'Zarya'.\n\n Her father would sadly die during the Omnic Crisis, which made Aleksandra determine to gain the strength needed to protect her loved ones. Her resolve would lead her to pursue body building and become a professional weightlifter, with the talent and strength to compete internationally and become a record-setting star in the field, and a source of pride to all of Russia.",
+      "description": "On December 4th of 2048, Aleksandra Zaryanova was born in the small Siberian village of Novoanskoye, near the shadow of a remote Omnium. Her family knew her as \"Sasha\", but the world would know her as \"Zarya\".\n\n Her father would sadly die during the Omnic Crisis, which made Aleksandra determine to gain the strength needed to protect her loved ones. Her resolve would lead her to pursue body building and become a professional weightlifter, with the talent and strength to compete internationally and become a record-setting star in the field, and a source of pride to all of Russia.",
       "image": "",
       "sources": [
         {
@@ -14262,7 +14262,7 @@
       "name": "Treassure",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
-      "description": "For years, the lives of the average junker were filled with chaos and misery, but they all generally fell in line with the commands of their Queen, as she knew how to keep order among the anarchy. There were those, however, that defied her and threatened the vague sense of stability in the city, and for someone to defy Odessa Stone, they would be either a genius, or unbelievably stupid.\n\nJamison Fawkes grew more or less his whole life as a junker under the car of the Demolitionist branch, a group that has made a living out of collecting metal and technology from the scraps of the Omnium and turning them into all sorts of explosives to be used by the other factions. Going by the name of Junkrat, he would grow a maniac obsession with chaos and destruction that quickly put him on the bad side of many of his fellow junkers, the Queen included, yet he was also meek and awkward, but really suited to the harsh eye for an eye life in the wasteland. His name would grow to infamy in the city after he began claiming he discovered an extremely valuable secret that lies deep within the Omnium and loudly claimed it as his, causing bounty hunters and gangsters to pursue him, many under orders from the Queen herself, to surrender the information on this treasure.\n\nTo keep himself alive, he made a deal with Mako Rutledge, an ex-ALF enforcer, who begrudgingly agreed to act as his bodyguard in exchange for a fifty percent cut of their earnings. Roadhog himself was a troublemaker, who defied the Queen almost since her crowning. He quit working under the Wreckers Branch for years, angering his old guilty members, and decided to set up shop literally on the outskirts of the Omnium gate, becoming an eyesore to the Queen purely out of disrespect. Mako hated the miserable life the ALF had brought upon themselves, but deep down he knew they deserved it. For all he cared for, as long as he had access to a hogdrogen gas supply to deal with the radiation, everyone else could rot. When he took in Junkrat, it was not clear if he pitied him, or if it was yet another middle finger towards the monarchy, but in his eyes, for as much of a nuisance as Junkrat was to everyone, himself included, they all deserved him, they deserved both of them.",
+      "description": "For years, the lives of the average junker were filled with chaos and misery, but they all generally fell in line with the commands of their Queen, as she knew how to keep order among the anarchy. There were those, however, that defied her and threatened the vague sense of stability in the city, and for someone to defy Odessa Stone, they would be either a genius, or unbelievably stupid.\n\nJamison Fawkes grew more or less his whole life as a junker under the car of the Demolitionist branch, a group that has made a living out of collecting metal and technology from the scraps of the Omnium and turning them into all sorts of explosives to be used by the other factions. Going by the name of Junkrat, he would grow a maniac obsession with chaos and destruction that quickly put him on the bad side of many of his fellow junkers, the Queen included, yet he was also meek and awkward, but really suited to the harsh eye for an eye life in the wasteland. His name would grow to infamy in the city after he began claiming he discovered an extremely valuable secret that lies deep within the Omnium and loudly claimed it as his, causing bounty hunters and gangsters to pursue him, many under orders from the Queen herself, to surrender the information on this treasure.\n\nTo keep himself alive, he made a deal with Mako Rutledge, an ex-ALF enforcer, who begrudgingly agreed to act as his bodyguard in exchange for a fifty percent cut of their earnings. Roadhog himself was a troublemaker, who defied the Queen almost since her crowning. He quit working under the Wreckers Branch for years, angering his old guil members, and decided to set up shop literally on the outskirts of the Omnium gate, becoming an eyesore to the Queen purely out of disrespect. Mako hated the miserable life the ALF had brought upon themselves, but deep down he knew they deserved it. For all he cared for, as long as he had access to a hogdrogen gas supply to deal with the radiation, everyone else could rot. When he took in Junkrat, it was not clear if he pitied him, or if it was yet another middle finger towards the monarchy, but in his eyes, for as much of a nuisance as Junkrat was to everyone, himself included, they all deserved him, they deserved both of them.",
       "image": "",
       "lat": -25,
       "lon": 135,
@@ -14305,15 +14305,27 @@
         }
       ],
       "commentary": [
-        "Are you a Couple",
-        "Don't Blow It",
-        "Bacon",
-        "Mako and the Wreckers"
+        {
+          "name": "Are you a Couple",
+          "theaterId": "ac479692-1ea0-484a-9ac4-433fc947a588"
+        },
+        {
+          "name": "Don't Blow It",
+          "theaterId": "423daf29-d24e-430f-b6e3-4864bb45e6a7"
+        },
+        {
+          "name": "Bacon",
+          "theaterId": "399e44d2-d2b9-43bf-8505-81cc72a91096"
+        },
+        {
+          "name": "Mako and the Wreckers",
+          "theaterId": "edaf88d4-2311-4b2c-aa72-15bf7a9a7d0b"
+        }
       ]
     },
     {
       "name": "Strongest Woman Alive",
-      "description": "Growing up in the depths of Siberia, Aleksandra Zaryanova lost her father in the crisis, and was left to take care of her sisters. Swearing to become stronger to protect her family and help her community rebuild, she began training her body, and quickly developed a passion for weightlifting.\n\nAs she grew older, she was identified by the national athletics program as a potential star, and taken into extensive body-building programs to represent the country as a professional athlete. Going simply by Zarya, she became known as the strongest woman alive, with a lifting record of 512kgs, shattering the highest Olympic score in her category. Zarya would go on to participate in many world tournaments, including the Olympic Summer Games in New York, where she won gold in spite of having a cold and a thorn trapezius. Having become an international star, the name of Zaryanova was proudly admired all across Russia, and her family's expenses were well taken care of by the fame of their big sister, the strongest woman in the world.",
+      "description": "Growing up in the depths of Siberia, Aleksandra Zaryanova lost her father in the crisis, and was left to take care of her sisters. Swearing to become stronger to protect her family and help her community rebuild, she began training her body, and quickly developed a passion for weightlifting.\n\nAs she grew older, she was identified by the national athletics program as a potential star, and taken into extensive body-building programs to represent the country as a professional athlete. Going simply by Zarya, she became known as the strongest woman alive, with a lifting record of 512kgs, shattering the highest Olympic score in her category.\n\n\nZarya would go on to participate in many world tournaments, including the Olympic Summer Games in New York, where she won gold in spite of having a cold and a thorn trapezius. Having become an international star, the name of Zaryanova was proudly admired all across Russia, and her family's expenses were well taken care of by the fame of their big sister, the strongest woman in the world.",
       "locationType": "earth",
       "lat": 0,
       "lon": 0,
@@ -14346,8 +14358,14 @@
         }
       ],
       "commentary": [
-        "Lifting",
-        "Huge fan"
+        {
+          "name": "Lifting",
+          "theaterId": "2c059852-c9ad-4ce7-a8a6-3d81e27c74e8"
+        },
+        {
+          "name": "Huge fan",
+          "theaterId": "ed39fb5c-2b90-4278-a65f-6d6f527f82c6"
+        }
       ]
     },
     {

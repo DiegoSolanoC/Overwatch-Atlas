@@ -115,12 +115,60 @@ let portraitLoadId = 0;
 /** @type {AbortController | null} */
 let portraitCopyAc = null;
 
+/** @type {number} */
+let portraitLookPickerLastTapMs = 0;
+
 function rewirePortraitCopy() {
     portraitCopyAc?.abort();
     portraitCopyAc = new AbortController();
     if (portraitImg) {
         wireHeroBiographyPortraitCopy(portraitImg, portraitCopyAc.signal);
+        wirePortraitLookPickerOpen(portraitImg, portraitCopyAc.signal);
     }
+}
+
+/**
+ * Open the Look <select> via showPicker when available (more reliable under
+ * Chrome device toolbar / mobile than the native tap path alone).
+ */
+function openHeroBiographyLookPicker() {
+    if (!lookSelectEl || lookSelectEl.disabled) return;
+    if (!headerEl?.classList.contains('is-visible')) return;
+    if (lookSelectEl.options.length < 2) return;
+    try {
+        lookSelectEl.focus({ preventScroll: true });
+    } catch (_) { /* ignore */ }
+    try {
+        if (typeof lookSelectEl.showPicker === 'function') {
+            lookSelectEl.showPicker();
+        }
+    } catch (_) {
+        /* Already open, or browser blocked non-gesture / unsupported. */
+    }
+}
+
+/**
+ * Double-click / double-tap the portrait art to open the Look picker.
+ * @param {HTMLImageElement} img
+ * @param {AbortSignal} [signal]
+ */
+function wirePortraitLookPickerOpen(img, signal) {
+    const onPointerUp = (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        if (!img.src || img.closest('.gallery-mode__portrait:not(.has-image)')) return;
+        const now = performance.now();
+        if (now - portraitLookPickerLastTapMs < 380) {
+            portraitLookPickerLastTapMs = 0;
+            if (event.cancelable) event.preventDefault();
+            openHeroBiographyLookPicker();
+            return;
+        }
+        portraitLookPickerLastTapMs = now;
+    };
+
+    img.addEventListener('pointerup', onPointerUp, { signal });
+    img.title =
+        'Double-click to change look. Drag or right-click to copy. Use the Copy button or press Ctrl+C while focused.';
 }
 
 async function ensureFactionBiosLooksMap() {
@@ -241,6 +289,11 @@ export function initHeroBiographySelection(hostEl, mainEl) {
             currentLook,
         );
         refreshConnectionPortraitLooks();
+    });
+    /* Device toolbar / some mobile WebViews skip opening appearance:none selects. */
+    lookSelectEl.addEventListener('pointerup', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        openHeroBiographyLookPicker();
     });
 
     lookField.append(lookLabel, lookSelectEl);

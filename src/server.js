@@ -651,6 +651,23 @@ const server = http.createServer((req, res) => {
         if (decodedPath === iconsRoot + 'Mode Icons/Music Icon.png') {
             decodedPath = iconsRoot + 'Music Icons/Music Icon.png';
         }
+        /* Legacy Mode Icons filenames after Scout/Repair / Dialogue Theater renames */
+        const modeIconAliases = {
+            'Connection Codex.png': 'Codex.png',
+            'Data Workshop.png': 'Archive.png',
+            'Dialogue Theater.png': 'Theater.png',
+            'Concept Gallery.png': 'Gallery.png',
+            'Story Timeline.png': 'Story.png',
+            'Scout.png': 'Codex.png',
+            'Repair.png': 'Archive.png',
+        };
+        const modeIconsPrefix = iconsRoot + 'Mode Icons/';
+        if (decodedPath.startsWith(modeIconsPrefix)) {
+            const leaf = decodedPath.slice(modeIconsPrefix.length);
+            if (modeIconAliases[leaf]) {
+                decodedPath = modeIconsPrefix + modeIconAliases[leaf];
+            }
+        }
     }
 
     // Legacy flat `icons/` layout → category subfolders

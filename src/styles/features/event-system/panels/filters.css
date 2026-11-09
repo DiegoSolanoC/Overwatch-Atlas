@@ -172,11 +172,12 @@ body.color-palette-gray .filters-panel-close:hover {
 }
 
 .filters-panel.filters-panel--music-mode .filters-panel-content {
-    display: none;
+    display: none !important;
 }
 
 .filters-panel.filters-panel--music-mode .music-panel-content {
-    display: flex;
+    display: flex !important;
+    flex-direction: column;
     height: 100%;
     padding: 20px 20px 20px 20px;
 }
@@ -1046,6 +1047,155 @@ body.color-palette-gray .filters-actions {
 
     .filters-actions-buttons {
         justify-content: flex-start;
+    }
+}
+
+/*
+ * Mobile portrait only: Clear/Confirm sit beside category tabs (not under search).
+ * Chips grow for touch; the chip board scrolls when content overflows.
+ */
+@media (max-width: 768px) and (orientation: portrait) {
+    /*
+     * Keep Filters chrome layout — but never force it while Music owns the
+     * shared panel (otherwise Music opens looking like Filters).
+     */
+    .filters-panel.open:not(.filters-panel--music-mode) .filters-panel-content,
+    .filters-panel.panel--closing:not(.filters-panel--music-mode) .filters-panel-content {
+        display: flex !important;
+        flex-direction: column !important;
+        /* Chrome stays put; only .filters-grid scrolls */
+        overflow: hidden !important;
+    }
+
+    .filters-panel.open.filters-panel--music-mode .filters-panel-content,
+    .filters-panel.panel--closing.filters-panel--music-mode .filters-panel-content {
+        display: none !important;
+    }
+
+    .filters-panel.open.filters-panel--music-mode .music-panel-content,
+    .filters-panel.panel--closing.filters-panel--music-mode .music-panel-content {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .filters-actions {
+        margin-bottom: 8px;
+        padding: 8px 52px 8px 10px;
+    }
+
+    .filters-title {
+        font-size: 1.55rem;
+        margin-bottom: 6px;
+    }
+
+    /* Six equal cells: tabs 1–4, Clear/Confirm 5–6 — shared height & footprint */
+    .filters-toolbar {
+        display: grid !important;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-rows: auto auto;
+        align-items: stretch;
+        column-gap: 4px;
+        row-gap: 8px;
+    }
+
+    .filters-tabs {
+        grid-column: 1 / span 4;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 4px;
+        width: auto;
+        min-width: 0;
+        justify-self: stretch;
+        align-self: stretch;
+    }
+
+    .filters-actions-buttons {
+        grid-column: 5 / span 2;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        width: auto;
+        min-width: 0;
+        justify-self: stretch;
+        align-self: stretch;
+    }
+
+    .filters-search-wrap {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
+    }
+
+    .filter-tab,
+    .filters-action-btn {
+        min-width: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
+        height: 100%;
+        min-height: 76px;
+        padding: 8px 2px 6px !important;
+        gap: 4px !important;
+        box-sizing: border-box;
+    }
+
+    .filter-tab-icon,
+    .filters-action-btn__icon {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .filter-tab-label,
+    .filters-action-btn__label {
+        font-size: 11px !important;
+        letter-spacing: 0.4px !important;
+        line-height: 1.1;
+    }
+
+    .filter-tab .filter-count,
+    .filters-confirm-btn .filter-count,
+    .filter-count {
+        font-size: 13px !important;
+    }
+
+    .filters-search-input {
+        height: 36px;
+    }
+
+    .filters-grid {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        margin-top: 4px;
+        margin-bottom: 0;
+        padding-right: 4px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filters-grid.filters-grid--chip-board {
+        --filters-chip-rim: clamp(4px, 1.1vw, 7px);
+        --filters-chip-max-h: clamp(96px, 26vw, 124px);
+        --filters-chip-max-w: calc(var(--filters-chip-max-h) - 2 * var(--filters-chip-rim));
+        --filters-chip-label-band: clamp(16px, 4.2vw, 20px);
+        --filters-chip-label-rim: clamp(2px, 0.8vw, 4px);
+        --filters-chip-board-heading-h: calc(1.15rem * 0.95 + 8px);
+        --filters-chip-board-row-gap: 10px;
+        --filters-chip-group-gap: 12px;
+        --hero-bio-chip-rim: var(--filters-chip-rim);
+        --hero-bio-chip-max-h: var(--filters-chip-max-h);
+        --hero-bio-chip-max-w: var(--filters-chip-max-w);
+        --hero-bio-label-band: var(--filters-chip-label-band);
+        --hero-bio-label-rim: var(--filters-chip-label-rim);
+    }
+
+    .filters-chip-board__heading {
+        font-size: 1.15rem;
     }
 }
 

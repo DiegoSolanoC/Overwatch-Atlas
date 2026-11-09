@@ -8,7 +8,7 @@
  *   3) Resolve audio: Theater Voicelines → MatchTalk → wiki download
  *   4) Write into src/assets/audio/Phrases/<heroId>/
  *      - quote-named .ogg files
- *      - Selection.ogg (copy of the first Hero Selected line, for gallery pick)
+ *      - Selection.ogg (copy of the OW2 Chatter Hero Selected line, for gallery pick)
  *
  * Usage:
  *   node scripts/import-gallery-hero-selected-phrases.mjs --dry-run
@@ -30,6 +30,10 @@ import {
     wikiPageTitleForHero,
 } from './lib/wiki-quotes-heroes.mjs';
 import { auditPath, ensureAuditWorkspace, WIKI_QUOTES_CACHE_DIR } from './lib/auditWorkspace.mjs';
+import {
+    extractOw2HeroSelectedSpoken,
+    pickOw2SelectionSource,
+} from './lib/gallery-selection-ow2.mjs';
 
 ensureAuditWorkspace();
 
@@ -419,8 +423,8 @@ async function main() {
         }
         const mtPool = matchTalkCache.get(mtFolder) || [];
 
-        /** @type {string|null} */
-        let firstDest = null;
+        /** @type {string[]} */
+        const writtenDests = [];
 
         for (const line of lines) {
             const destName = sanitizePhraseFilename(line.spoken);
@@ -451,7 +455,7 @@ async function main() {
 
             if (dryRun) {
                 console.log(`  DRY ${via || 'missing'} → ${destName}`);
-                if (!firstDest) firstDest = destPath;
+                writtenDests.push(destPath);
                 continue;
             }
 
@@ -470,21 +474,25 @@ async function main() {
                     continue;
                 }
                 console.log(`  OK [${via}] ${destName}`);
-                if (!firstDest) firstDest = destPath;
+                writtenDests.push(destPath);
             } catch (err) {
                 console.warn(`  FAIL ${destName}: ${err instanceof Error ? err.message : err}`);
                 failed += 1;
             }
         }
 
-        if (firstDest && !dryRun && fs.existsSync(firstDest)) {
+        const preferredSpoken =
+            extractOw2HeroSelectedSpoken(wikitext) || lines[0]?.spoken || '';
+        const selectionSrc =
+            pickOw2SelectionSource(writtenDests, preferredSpoken) || writtenDests[0] || null;
+        if (selectionSrc && !dryRun && fs.existsSync(selectionSrc)) {
             const selectionPath = path.join(heroDir, 'Selection.ogg');
-            if (path.resolve(firstDest) !== path.resolve(selectionPath)) {
-                await fsp.copyFile(firstDest, selectionPath);
-                console.log('  OK Selection.ogg (from first Hero Selected)');
+            if (path.resolve(selectionSrc) !== path.resolve(selectionPath)) {
+                await fsp.copyFile(selectionSrc, selectionPath);
+                console.log(`  OK Selection.ogg (OW2: ${preferredSpoken})`);
             }
-        } else if (firstDest && dryRun) {
-            console.log('  DRY Selection.ogg (from first Hero Selected)');
+        } else if (selectionSrc && dryRun) {
+            console.log(`  DRY Selection.ogg (OW2: ${preferredSpoken})`);
         }
     }
 

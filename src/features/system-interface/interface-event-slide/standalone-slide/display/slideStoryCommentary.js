@@ -21,7 +21,7 @@ import { fitHeroChipLabelTextInRoot } from '../../../../gallery/gallery-mode/fit
 import { wireSlideChipFloatingLabels } from '../../../../gallery/gallery-mode/wireSlideChipFloatingLabels.js';
 
 const DIALOGUE_THEATER_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png';
+    'src/assets/images/Icons/Mode%20Icons/Theater.png';
 
 /**
  * Prefer Heroes archive for theater speakers (incl. Sierra, Shion, Vendetta, …).

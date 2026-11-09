@@ -23,7 +23,15 @@ export function wireFilterPanelToggleAndClose(panel, {
     closePanel
 }) {
     if (filtersButton) {
-        filtersButton.addEventListener('click', () => {
+        let touchStartTime = 0;
+        let ignoreClickUntil = 0;
+
+        const isMusicGestureActive = () => Date.now() < (window.__atlasMusicGestureUntil || 0);
+
+        const handleFiltersToggle = () => {
+            // Ghost click after Music touchend must not steal music mode.
+            if (isMusicGestureActive()) return;
+
             const mode = getPanelMode();
             if (panel?.classList.contains('open') && mode === 'music') {
                 setPanelMode('filters');
@@ -38,6 +46,32 @@ export function wireFilterPanelToggleAndClose(panel, {
             togglePanel();
             if (isOpening) soundManager?.play?.('filterButton');
             window.flashButton?.(filtersButton, 'flash-orange');
+        };
+
+        filtersButton.addEventListener('touchstart', () => {
+            touchStartTime = Date.now();
+        }, { passive: true });
+
+        filtersButton.addEventListener('touchend', (event) => {
+            if (isMusicGestureActive()) {
+                if (event.cancelable) event.preventDefault();
+                event.stopPropagation();
+                return;
+            }
+            if (event.cancelable) event.preventDefault();
+            if (Date.now() - touchStartTime < 300) {
+                ignoreClickUntil = Date.now() + 500;
+                handleFiltersToggle();
+            }
+        });
+
+        filtersButton.addEventListener('click', (event) => {
+            if (Date.now() < ignoreClickUntil || isMusicGestureActive()) {
+                if (event.cancelable) event.preventDefault();
+                event.stopPropagation();
+                return;
+            }
+            handleFiltersToggle();
         });
     }
 

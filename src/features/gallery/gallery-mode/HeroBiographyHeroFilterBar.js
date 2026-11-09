@@ -38,6 +38,10 @@ import {
     mountHeroBiographyChipStripToggle,
     unmountHeroBiographyChipStripControls,
 } from './heroBiographyChipStripVisibility.js';
+import {
+    mountGalleryMobilePanelToggles,
+    unmountGalleryMobilePanelToggles,
+} from './galleryMobilePanelToggles.js';
 import { configureHeroBiographyArchiveIoBar } from './heroBiographyArchiveIoBar.js';
 
 /** @type {FilterImageService | null} */
@@ -444,6 +448,7 @@ export async function mountGalleryBiographyStage(host, mainEl) {
     sessionImageService = new FilterImageService();
     initHeroBiographySelection(host, mainEl);
     activeCategory = 'heroes';
+    mountGalleryMobilePanelToggles();
 
     configureHeroBiographyArchiveIoBar({
         getActiveCategory: () => {
@@ -463,6 +468,7 @@ export function unmountGalleryBiographyStage() {
         delete host._heroBiographyActiveCategory;
     }
     chipsContentEl = null;
+    unmountGalleryMobilePanelToggles();
     unmountHeroBiographyChipStripControls();
     destroyHeroBiographySelection();
     sessionImageService = null;

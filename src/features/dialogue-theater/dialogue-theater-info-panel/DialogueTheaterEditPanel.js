@@ -9,7 +9,10 @@ import {
     updateDialogueTheaterStageActiveLine,
     endStoryCommentaryDirectPlayStage,
     isStoryCommentaryDirectPlayActive,
-    PANEL_DIALOGUE_BOX_HTML,
+    armDialoguePanelReplay,
+    clearDialoguePanelReplay,
+    hideMobilePanelDialogueSlot,
+    ensureMobilePanelDialogueSlot,
 } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
 import {
     DIALOGUE_THEATER_ERA_CLASSIC,
@@ -295,21 +298,39 @@ function stopViewVoicelinePlayback(conversation = null) {
         activeViewVoicelineAudio.currentTime = 0;
         activeViewVoicelineAudio = null;
     }
+    clearDialoguePanelReplay();
     if (conversation) {
-        finishViewPlaybackStage(conversation);
+        finishViewPlaybackStage(conversation, { offerReplay: false });
     }
 }
 
 /**
- * Idle theater stage, or tear down Story Commentary Direct Play overlay.
+ * Idle theater stage after playback. Commentary Direct Play matches theater entries
+ * on mobile (panel subtitle + Replay); only full stop tears the overlay down.
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {{ offerReplay?: boolean, onReplay?: (() => void)|null }} [options]
  */
-function finishViewPlaybackStage(conversation) {
-    if (isStoryCommentaryDirectPlayActive()) {
+function finishViewPlaybackStage(conversation, options = {}) {
+    const offerReplay = options.offerReplay !== false;
+    const directPlay = isStoryCommentaryDirectPlayActive();
+
+    if (directPlay && !offerReplay) {
         endStoryCommentaryDirectPlayStage({ restoreEventImage: true });
         return;
     }
-    resetDialogueTheaterStageToIdle(conversation);
+
+    resetDialogueTheaterStageToIdle(conversation, {
+        preservePanelDialogue: offerReplay,
+    });
+    if (offerReplay) {
+        const replay = options.onReplay
+            || (() => {
+                void playAllViewVoicelines(conversation);
+            });
+        armDialoguePanelReplay(replay);
+    } else {
+        clearDialoguePanelReplay();
+    }
 }
 
 function getPlaybackConversation(conversation) {
@@ -993,16 +1014,22 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
             activeViewPlayAllToken = token;
 
             void (async () => {
+                const playIndex = lineIndex >= 0 ? lineIndex : idx;
                 const ok = await playMasterPlayLine(
                     token,
                     line,
                     stageConversation,
-                    lineIndex >= 0 ? lineIndex : idx,
+                    playIndex,
                     voicelines,
                 );
                 if (activeViewPlayAllToken !== token) return;
                 activeViewPlayAllToken = null;
-                if (ok) finishViewPlaybackStage(stageConversation);
+                if (ok) {
+                    finishViewPlaybackStage(stageConversation, {
+                        offerReplay: true,
+                        onReplay: () => btn.click(),
+                    });
+                }
             })();
         });
     });
@@ -1442,9 +1469,10 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
         ? `<div class="dialogue-theater-edit__chatter-categories">${renderChatterCategorySelectionHtml(chatterCategories)}</div>`
         : '';
 
+    ensureMobilePanelDialogueSlot();
+
     host.innerHTML = `
         <div class="dialogue-theater-edit dialogue-theater-edit--view">
-            ${PANEL_DIALOGUE_BOX_HTML}
             ${topSectionHtml}
             ${pathSwitcherHtml}
             <section id="dialogueTheaterLinesSection" class="dialogue-theater-edit__section dialogue-theater-edit__section--lines" data-theater-section="lines">
@@ -2487,6 +2515,7 @@ export function isDialogueTheaterViewPlaybackActive() {
 export function unmountDialogueTheaterPanel({ preservePlayback = false } = {}) {
     if (!preservePlayback) {
         stopViewVoicelinePlayback();
+        hideMobilePanelDialogueSlot();
     }
     document.getElementById(HOST_ID)?.remove();
 }

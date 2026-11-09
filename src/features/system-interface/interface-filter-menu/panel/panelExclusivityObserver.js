@@ -18,8 +18,18 @@ export function createPanelExclusivityObserver() {
         try {
             const filtersPanel = document.getElementById('filtersPanel');
             const filtersToggle = document.getElementById('filtersToggle');
+            const musicToggle = document.getElementById('musicToggle');
+            const panelOpen = !!filtersPanel?.classList.contains('open');
+            const musicMode =
+                panelOpen
+                && (filtersPanel?.dataset?.panelMode === 'music'
+                    || filtersPanel?.classList.contains('filters-panel--music-mode'));
             if (filtersToggle) {
-                filtersToggle.classList.toggle('active', !!filtersPanel?.classList.contains('open'));
+                // Shared panel hosts music too — only light Filters when in filters mode.
+                filtersToggle.classList.toggle('active', panelOpen && !musicMode);
+            }
+            if (musicToggle) {
+                musicToggle.classList.toggle('active', musicMode);
             }
         } finally {
             enforcing = false;
@@ -34,7 +44,10 @@ export function createPanelExclusivityObserver() {
             const eventSlide = document.getElementById('eventSlide');
             if (!filtersPanel || !eventSlide || typeof MutationObserver === 'undefined') return;
             observer = new MutationObserver(enforcePanelExclusivity);
-            observer.observe(filtersPanel, { attributes: true, attributeFilter: ['class'] });
+            observer.observe(filtersPanel, {
+                attributes: true,
+                attributeFilter: ['class', 'data-panel-mode'],
+            });
             observer.observe(eventSlide, { attributes: true, attributeFilter: ['class'] });
             enforcePanelExclusivity();
         },

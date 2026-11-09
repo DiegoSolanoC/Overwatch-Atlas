@@ -46,11 +46,17 @@ let connectorStemTeardown = null;
  *
  * @param {HTMLElement} track
  */
+function isPortraitVerticalTimeline() {
+    return typeof window !== 'undefined'
+        && window.matchMedia('(max-width: 768px) and (orientation: portrait)').matches;
+}
+
 function syncTimelineConnectorStems(track) {
     const line = track.querySelector('.story-timeline-view__line');
     if (!line) return;
 
     const lineRect = line.getBoundingClientRect();
+    const vertical = track.closest('.story-timeline-view--vertical');
 
     for (const connector of track.querySelectorAll('.story-timeline-connector')) {
         const index = connector.dataset.index;
@@ -61,8 +67,24 @@ function syncTimelineConnectorStems(track) {
         if (!slot || !thumbShell) continue;
 
         const thumbRect = thumbShell.getBoundingClientRect();
-        const thumbCenterY = thumbRect.top + thumbRect.height / 2;
         const isAbove = connector.classList.contains('story-timeline-connector--above');
+
+        if (vertical) {
+            /*
+             * Vertical branches are pure CSS (gutter matches event offset).
+             * Clear any leftover inline geometry from earlier measure attempts.
+             */
+            connector.style.removeProperty('left');
+            connector.style.removeProperty('right');
+            connector.style.removeProperty('width');
+            connector.style.marginLeft = '0';
+            connector.style.marginTop = '0';
+            connector.style.height = '7px';
+            connector.style.opacity = '1';
+            continue;
+        }
+
+        const thumbCenterY = thumbRect.top + thumbRect.height / 2;
         const span = isAbove
             ? lineRect.top - thumbCenterY
             : thumbCenterY - lineRect.bottom;
@@ -70,7 +92,9 @@ function syncTimelineConnectorStems(track) {
         connector.style.marginTop = isAbove
             ? `${CONNECTOR_LINE_OVERLAP_PX}px`
             : `-${CONNECTOR_LINE_OVERLAP_PX}px`;
+        connector.style.marginLeft = '0';
         connector.style.height = `${Math.max(6, Math.round(span + CONNECTOR_LINE_OVERLAP_PX))}px`;
+        connector.style.width = '';
         connector.style.opacity = span > 0 ? '1' : '0';
     }
 }
@@ -214,14 +238,23 @@ function panOffsetToCenterX(x, viewport, cardWidth = TIMELINE_CARD_SLOT_PX) {
  * @returns {number|null}
  */
 function computePanOffsetForSourceIndex(sourceIndex, viewport, track) {
+    const vertical = !!track.closest('.story-timeline-view--vertical')
+        || track.classList.contains('story-timeline-view__track--vertical');
     const slot = track.querySelector(`.story-timeline-event[data-index="${sourceIndex}"]`);
     if (slot) {
-        const x = parseFloat(slot.style.left) || 0;
+        const coord = parseFloat(vertical ? slot.style.top : slot.style.left) || 0;
+        if (vertical) {
+            /* style.top is the stem/thumb anchor after vertical thumb alignment */
+            return Math.round(viewport.clientHeight / 2 - coord);
+        }
         const w = slot.offsetWidth || TIMELINE_CARD_SLOT_PX;
-        return panOffsetToCenterX(x, viewport, w);
+        return panOffsetToCenterX(coord, viewport, w);
     }
     const layoutX = findLayoutXForSourceIndex(sourceIndex);
     if (layoutX != null) {
+        if (vertical) {
+            return Math.round(viewport.clientHeight / 2 - layoutX);
+        }
         return panOffsetToCenterX(layoutX, viewport, TIMELINE_CARD_SLOT_PX);
     }
     return null;
@@ -338,6 +371,11 @@ export { isStoryTimelineViewActive };
  */
 function readTrackPanOffset(track) {
     const transform = track.style.transform || '';
+    const vertical = track.closest('.story-timeline-view--vertical');
+    if (vertical) {
+        const matchY = transform.match(/translate3d\([^,]+,\s*(-?\d+(?:\.\d+)?)px/);
+        return matchY ? parseFloat(matchY[1]) : null;
+    }
     const match = transform.match(/translate3d\((-?\d+(?:\.\d+)?)px/);
     return match ? parseFloat(match[1]) : null;
 }
@@ -376,16 +414,30 @@ function ensureTimelineViewport(layer) {
  * @param {(() => void) | undefined} onReady
  */
 function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, allEvents, eventLayout, viewport, filterActive, onReady) {
+    const vertical = isPortraitVerticalTimeline();
     track.replaceChildren();
     track.classList.toggle('story-timeline-view__track--filtered', filterActive);
-    track.style.width = `${trackWidth}px`;
+    track.classList.toggle('story-timeline-view__track--vertical', vertical);
+    if (vertical) {
+        track.style.width = '100%';
+        track.style.height = `${trackWidth}px`;
+        track.style.minHeight = `${trackWidth}px`;
+    } else {
+        track.style.width = `${trackWidth}px`;
+        track.style.height = '';
+        track.style.minHeight = '';
+    }
 
     const line = document.createElement('div');
     line.className = 'story-timeline-view__line';
     line.setAttribute('aria-hidden', 'true');
     const eraGradient = buildTimelineEraLineGradient(events, eventLayout.positions, trackWidth);
     if (eraGradient) {
+        /* Horizontal gradient maps along the long axis; vertical flips via CSS rotate. */
         line.style.background = eraGradient;
+        if (vertical) {
+            line.style.background = eraGradient.replace(/to right/gi, 'to bottom');
+        }
     }
     track.appendChild(line);
 
@@ -400,9 +452,20 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
 
     for (const marker of layout.markers) {
         const el = document.createElement('div');
-        el.className = `story-timeline-year story-timeline-year--${marker.role}`;
+        const yearSide = marker.side === 'left' || marker.side === 'right'
+            ? marker.side
+            : 'right';
+        el.className = `story-timeline-year story-timeline-year--${marker.role} story-timeline-year--${yearSide}`;
         el.dataset.year = String(marker.year);
-        el.style.left = `${marker.x}px`;
+        el.dataset.side = yearSide;
+        if (vertical) {
+            el.style.top = `${marker.x}px`;
+            el.style.left = '';
+            el.style.right = '';
+        } else {
+            el.style.left = `${marker.x}px`;
+            el.style.top = '';
+        }
 
         const label = document.createElement('span');
         label.className = 'story-timeline-year__label';
@@ -442,14 +505,26 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
 
             const slot = document.createElement('div');
             slot.className = `story-timeline-event story-timeline-event--${pos.side}`;
-            slot.style.left = `${pos.x}px`;
+            if (vertical) {
+                slot.style.top = `${pos.x}px`;
+                slot.style.left = '';
+            } else {
+                slot.style.left = `${pos.x}px`;
+                slot.style.top = '';
+            }
             slot.dataset.index = String(sourceIndex);
             slot.dataset.anchorYear = String(pos.anchorYear);
 
             const connector = document.createElement('span');
             connector.className = `story-timeline-connector story-timeline-connector--${pos.side}`;
             connector.dataset.index = String(sourceIndex);
-            connector.style.left = `${pos.x}px`;
+            if (vertical) {
+                connector.style.top = `${pos.x}px`;
+                connector.style.left = '';
+            } else {
+                connector.style.left = `${pos.x}px`;
+                connector.style.top = '';
+            }
             connector.style.setProperty('--stem-phase', String((pos.index % 7) * 0.21));
             const eraHex = getEraStripeColorHexForEvent(event);
             const eraRgb = hexColorToRgbCsv(eraHex);
@@ -498,19 +573,33 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
  * @param {StoryTimelinePanConfig} [panConfig]
  */
 function attachPanHandlers(viewport, track, panConfig = {}) {
+    const vertical = !!track.closest('.story-timeline-view--vertical')
+        || track.classList.contains('story-timeline-view__track--vertical');
     let offsetX = 0;
     let dragging = false;
     let startX = 0;
     let startOffset = 0;
+    let velocityPxPerMs = 0;
+    let lastClient = 0;
+    let lastMoveTime = 0;
+    let momentumRaf = 0;
     const ac = new AbortController();
     const { signal } = ac;
 
+    function viewSize() {
+        return vertical ? viewport.clientHeight : viewport.clientWidth;
+    }
+
+    function trackSize() {
+        return vertical ? track.offsetHeight : track.offsetWidth;
+    }
+
     function trackFitsInViewport() {
-        return track.offsetWidth <= viewport.clientWidth;
+        return trackSize() <= viewSize();
     }
 
     function centeredTrackOffset() {
-        return Math.max(0, (viewport.clientWidth - track.offsetWidth) / 2);
+        return Math.max(0, (viewSize() - trackSize()) / 2);
     }
 
     /**
@@ -521,20 +610,31 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
             return centeredTrackOffset();
         }
         const maxOffset = 0;
-        const minOffset = viewport.clientWidth - track.offsetWidth;
+        const minOffset = viewSize() - trackSize();
         return Math.max(minOffset, Math.min(maxOffset, next));
+    }
+
+    function stopMomentum() {
+        if (momentumRaf) {
+            cancelAnimationFrame(momentumRaf);
+            momentumRaf = 0;
+        }
     }
 
     /**
      * @param {number} next
+     * @returns {number} clamped offset actually applied
      */
     function applyOffset(next) {
-        offsetX = clampOffset(next);
-        track.style.transform = `translate3d(${offsetX}px, 0, 0)`;
+        const clamped = clampOffset(next);
+        offsetX = clamped;
+        track.style.transform = vertical
+            ? `translate3d(0, ${offsetX}px, 0)`
+            : `translate3d(${offsetX}px, 0, 0)`;
 
         let progress = 0;
         if (!trackFitsInViewport()) {
-            const minOffset = viewport.clientWidth - track.offsetWidth;
+            const minOffset = viewSize() - trackSize();
             if (minOffset < 0) {
                 progress = Math.max(0, Math.min(1, offsetX / minOffset));
             }
@@ -544,16 +644,53 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
             detail: { progress },
         }));
         flushVisibleLazyPreviewImages(viewport, 240);
+        return clamped;
     }
+
+    /**
+     * Coast after a fling so vertical (and horizontal) scrubbing keeps momentum.
+     * @param {number} releaseVelocityPxPerMs
+     */
+    function startMomentum(releaseVelocityPxPerMs) {
+        stopMomentum();
+        let v = releaseVelocityPxPerMs;
+        if (!Number.isFinite(v) || Math.abs(v) < 0.05) return;
+
+        let prev = performance.now();
+        const tick = (now) => {
+            const dt = Math.min(34, Math.max(0, now - prev));
+            prev = now;
+            /* ~0.955 decay per frame at 60fps */
+            v *= Math.pow(0.955, dt / 16.67);
+            if (Math.abs(v) < 0.02) {
+                momentumRaf = 0;
+                return;
+            }
+            const before = offsetX;
+            const after = applyOffset(offsetX + v * dt);
+            if (Math.abs(after - before) < 0.25) {
+                /* Hit a bound — drop residual velocity */
+                momentumRaf = 0;
+                return;
+            }
+            momentumRaf = requestAnimationFrame(tick);
+        };
+        momentumRaf = requestAnimationFrame(tick);
+    }
+
+    signal.addEventListener('abort', stopMomentum);
 
     /**
      * @param {HTMLElement | null} slot
      */
     function panOffsetForSlot(slot) {
         if (!slot) return 0;
-        const x = parseFloat(slot.style.left) || 0;
-        const cardWidth = slot.offsetWidth || TIMELINE_CARD_SLOT_PX;
-        return panOffsetToCenterX(x, viewport, cardWidth);
+        const coord = parseFloat(vertical ? slot.style.top : slot.style.left) || 0;
+        if (vertical) {
+            return Math.round(viewSize() / 2 - coord);
+        }
+        const cardExtent = slot.offsetWidth || TIMELINE_CARD_SLOT_PX;
+        return panOffsetToCenterX(coord, viewport, cardExtent);
     }
 
     /**
@@ -593,7 +730,7 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
             applyOffset(centeredTrackOffset());
             return;
         }
-        const minOffset = viewport.clientWidth - track.offsetWidth;
+        const minOffset = viewSize() - trackSize();
         applyOffset(minOffset * t);
     }
 
@@ -670,21 +807,44 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
         scrollToTimelineStart();
     }
 
+    let dragMoved = false;
+    let startedOnCard = false;
+    const CARD_PAN_THRESHOLD_PX = vertical ? 8 : 0;
+
     viewport.addEventListener('pointerdown', (event) => {
         if (event.button !== 0) return;
-        if (event.target instanceof Element && event.target.closest('.event-item, .story-timeline-event')) {
-            return;
-        }
+        const onCard = event.target instanceof Element
+            && !!event.target.closest('.event-item, .story-timeline-event');
+        /* Horizontal: keep card taps free of pan. Vertical: allow drag-from-card (threshold). */
+        if (onCard && !vertical) return;
+        stopMomentum();
         dragging = true;
-        startX = event.clientX;
+        dragMoved = false;
+        startedOnCard = onCard;
+        startX = vertical ? event.clientY : event.clientX;
         startOffset = offsetX;
+        lastClient = startX;
+        lastMoveTime = performance.now();
+        velocityPxPerMs = 0;
         viewport.setPointerCapture(event.pointerId);
         viewport.classList.add('story-timeline-view__viewport--dragging');
     }, { signal });
 
     viewport.addEventListener('pointermove', (event) => {
         if (!dragging) return;
-        applyOffset(startOffset + (event.clientX - startX));
+        const client = vertical ? event.clientY : event.clientX;
+        const now = performance.now();
+        const sampleDt = now - lastMoveTime;
+        if (sampleDt > 0 && sampleDt < 64) {
+            const instant = (client - lastClient) / sampleDt;
+            velocityPxPerMs = velocityPxPerMs * 0.65 + instant * 0.35;
+        }
+        lastClient = client;
+        lastMoveTime = now;
+        const delta = client - startX;
+        if (startedOnCard && Math.abs(delta) < CARD_PAN_THRESHOLD_PX) return;
+        if (Math.abs(delta) >= CARD_PAN_THRESHOLD_PX) dragMoved = true;
+        applyOffset(startOffset + delta);
     }, { signal });
 
     /**
@@ -697,6 +857,28 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
         try {
             viewport.releasePointerCapture(event.pointerId);
         } catch (_) { /* ignore */ }
+        /* Swallow synthetic click after a real pan so cards don't open mid-scroll. */
+        if (startedOnCard && dragMoved && event.target instanceof Element) {
+            const card = event.target.closest('.event-item, .story-timeline-event');
+            if (card) {
+                const blockClick = (clickEvent) => {
+                    clickEvent.preventDefault();
+                    clickEvent.stopPropagation();
+                    card.removeEventListener('click', blockClick, true);
+                };
+                card.addEventListener('click', blockClick, true);
+                window.setTimeout(() => card.removeEventListener('click', blockClick, true), 0);
+            }
+        }
+        if (dragMoved) {
+            /* Stale sample if the finger paused before lift */
+            const idle = performance.now() - lastMoveTime;
+            const releaseV = idle > 80 ? 0 : velocityPxPerMs;
+            startMomentum(releaseV);
+        }
+        dragMoved = false;
+        startedOnCard = false;
+        velocityPxPerMs = 0;
     };
 
     viewport.addEventListener('pointerup', endDrag, { signal });
@@ -716,6 +898,8 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
         panApi = null;
         track.style.removeProperty('transform');
         track.style.removeProperty('width');
+        track.style.removeProperty('height');
+        track.style.removeProperty('min-height');
     };
 }
 
@@ -822,6 +1006,8 @@ export function refreshStoryTimelineView(options = {}) {
     const layer = document.getElementById('storyTimelineView');
     if (!layer) return;
 
+    layer.classList.toggle('story-timeline-view--vertical', isPortraitVerticalTimeline());
+
     const viewport = layer.querySelector('.story-timeline-view__viewport');
     const existingTrack = viewport?.querySelector('.story-timeline-view__track');
     const savedOffset = options.preservePan && existingTrack
@@ -838,7 +1024,11 @@ export function refreshStoryTimelineView(options = {}) {
     if (!track) return;
 
     const { events, sourceIndices, allEvents, filterActive } = getStoryTimelineEventSet();
-    const eventLayout = buildStoryTimelineEventLayout(events, TRACK_PADDING_PX);
+    const vertical = isPortraitVerticalTimeline();
+    /* Portrait vertical: denser packing — desktop gap (300) leaves huge empty stem runs. */
+    const eventLayout = buildStoryTimelineEventLayout(events, TRACK_PADDING_PX, vertical
+        ? { minEventGapPx: 200, edgeBleedPx: 96, eraBoundaryExtraPx: 40 }
+        : {});
     timelinePanLayoutCache = {
         sourceIndices,
         positions: eventLayout.positions.map((p) => ({ index: p.index, x: p.x })),

@@ -23,14 +23,16 @@ const INFO_ICON_ID = 'codexToggleInfoIcon';
 const MODE_TOGGLE_ID = 'codexToggleViewDev';
 const MODE_ICON_ID = 'codexToggleViewDevIcon';
 
+/* Filenames match Mode Icons/ after the Scout/Repair → Codex/Archive rename. */
 const MODE_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Connection%20Codex.png';
+    'src/assets/images/Icons/Mode%20Icons/Codex.png';
 const LINKING_ICON =
     'src/assets/images/Icons/Filter%20Icons/Confirm%20Filter%20Icon.png';
+/* Packets / Info glyphs swapped (Archive ↔ Codex) per mobile portrait UX. */
 const PACKETS_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Data%20Workshop.png';
+    'src/assets/images/Icons/Mode%20Icons/Codex.png';
 const INFO_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Connection%20Codex.png';
+    'src/assets/images/Icons/Mode%20Icons/Archive.png';
 
 /** @type {HTMLButtonElement | null} */
 let linkingToggleBtn = null;
@@ -247,7 +249,8 @@ function mountDockToggle({
         btn.classList.add(`${className}--floating`);
     }
 
-    btn.style.setProperty('display', 'flex', 'important');
+    /* Visibility is CSS-owned so #eventSlide.open can hide these chips. */
+    btn.style.removeProperty('display');
     syncToggleOffClass(btn, enabled);
     return btn;
 }
@@ -291,7 +294,7 @@ export function mountCodexDockToggles() {
         iconId: LINKING_ICON_ID,
         className: 'codex-toggle-linking',
         title: 'Toggle Linking — shortest paths between all confirmed filter chips',
-        label: 'Toggle Linking',
+        label: 'Linking',
         iconPath: LINKING_ICON,
         iconAlt: 'Toggle linking',
         headerOrder: 12,
@@ -303,7 +306,7 @@ export function mountCodexDockToggles() {
         iconId: PACKETS_ICON_ID,
         className: 'codex-toggle-packets',
         title: 'Toggle Packets — animate lights along cords',
-        label: 'Toggle Packets',
+        label: 'Packets',
         iconPath: PACKETS_ICON,
         iconAlt: 'Toggle packets',
         headerOrder: 13,
@@ -315,7 +318,7 @@ export function mountCodexDockToggles() {
         iconId: INFO_ICON_ID,
         className: 'codex-toggle-info',
         title: 'Toggle Info — break nodes, cord angle labels, and node coordinates',
-        label: 'Toggle Info',
+        label: 'Info',
         iconPath: INFO_ICON,
         iconAlt: 'Toggle info',
         headerOrder: 14,

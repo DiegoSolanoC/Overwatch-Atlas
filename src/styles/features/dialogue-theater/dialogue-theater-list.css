@@ -20,6 +20,12 @@ body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryTog
     visibility: visible !important;
 }
 
+body:has(#eventSlide.open) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
 @media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
     body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn,
     body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn {
@@ -833,6 +839,115 @@ body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-p
 
     .dialogue-theater-pair-search-row .events-search-input--title {
         padding: 8px 10px;
+    }
+}
+
+/* Portrait: Search higher + bigger; Chatters toggle parks above dock; hide archive file actions */
+@media (max-width: 768px) and (orientation: portrait) {
+    .dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageControls {
+        margin-bottom: 6px;
+    }
+
+    .dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageSearch
+        .events-manage-search-row--primary:not(.dialogue-theater-pair-search-row) {
+        gap: 6px;
+    }
+
+    .dialogue-theater-panel-embedded .events-manage-controls {
+        padding: 0 8px 2px !important;
+        margin-bottom: 2px !important;
+        margin-top: 0 !important;
+    }
+
+    .dialogue-theater-panel-embedded .events-manage-controls-title {
+        margin: 0 !important;
+    }
+
+    .dialogue-theater-panel-embedded .events-manage-controls-title::after {
+        font-size: clamp(1.55rem, 6.5vw, 2.15rem) !important;
+        line-height: 1 !important;
+    }
+
+    .dialogue-theater-panel-embedded .events-manage-search-row--primary .events-search-count,
+    .dialogue-theater-panel-embedded #dialogueTheaterSearchCount,
+    .dialogue-theater-panel-embedded .events-manage-result-count {
+        font-size: clamp(1.35rem, 5.5vw, 1.85rem) !important;
+        line-height: 1.1 !important;
+        margin: 0 !important;
+    }
+
+    /* Dev archive actions (Save / Import / Export / Merge / Add) — desktop only */
+    .dialogue-theater-panel-embedded #dialogueTheaterBottomBar,
+    .dialogue-theater-panel-embedded #dialogueTheaterBottomBar .events-manage-actions,
+    body.dialogue-theater-mode-active #dockGlobeRailRight.dock-globe-rail--archive-file-actions,
+    body:has(#dialogueTheaterListHost) #dockGlobeRailRight.dock-globe-rail--archive-file-actions {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .dialogue-theater-pair-search-col {
+        grid-template-rows: auto auto;
+        gap: 4px;
+    }
+
+    .dialogue-theater-pair-search-col__icon,
+    .dialogue-theater-pair-search-col--title .dialogue-theater-pair-search-col__icon--spacer,
+    .dialogue-theater-pair-search-col--title .dialogue-theater-pair-search-col__icon--count {
+        height: clamp(36px, 9vw, 44px) !important;
+        min-height: clamp(36px, 9vw, 44px) !important;
+    }
+
+    .dialogue-theater-pair-search-col__icon-img {
+        width: clamp(36px, 9vw, 44px) !important;
+        height: clamp(36px, 9vw, 44px) !important;
+    }
+
+    .dialogue-theater-era-filter-row.events-manage-search-row--secondary {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr) !important;
+        column-gap: 6px;
+        row-gap: 0;
+        max-width: 100%;
+        width: 100%;
+        margin: 6px 0 0;
+        justify-items: stretch;
+    }
+
+    .dialogue-theater-era-filter {
+        grid-column: auto !important;
+    }
+
+    .dialogue-theater-era-filter-col .events-search-label,
+    .dialogue-theater-era-filter .events-search-label {
+        font-size: 10px;
+        margin: 0 0 2px;
+    }
+
+    .dialogue-theater-era-filter__select.events-search-input,
+    .dialogue-theater-era-filter__select {
+        min-height: 36px;
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .dialogue-theater-incomplete-first-btn {
+        min-height: 36px;
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+
+    .dialogue-theater-era-filter__controls {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    /* Clear the Chatters toggle parked above the dock trap */
+    body.dialogue-theater-mode-active .dialogue-theater-panel-embedded #dialogueTheaterList.events-list,
+    body:has(#dialogueTheaterListHost) .dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
+        padding-bottom: calc(
+            var(--mode-dock-above-trap-bottom, 280px) + 64px
+        ) !important;
     }
 }
 

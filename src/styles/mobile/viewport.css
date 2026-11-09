@@ -8,9 +8,9 @@
     :root {
         /* Slightly shorter footer on tall phones to reduce dead space */
         --footer-height: 60px;
-        /* Include notch safe area in header height on mobile */
-        --header-inner-height: calc(60px + env(safe-area-inset-top));
-        --header-height: calc(60px + env(safe-area-inset-top));
+        /* Taller mobile header for vertical breathing room around hub icons */
+        --header-inner-height: calc(72px + env(safe-area-inset-top));
+        --header-height: calc(72px + env(safe-area-inset-top));
     }
 
     header {
@@ -20,7 +20,8 @@
     body {
         /* Match layout.css ≤768; hubs + hex + subbar slant read from `body` */
         --header-chrome-align-top: 2px;
-        --header-chrome-align-extra: 12px;
+        --header-chrome-align-extra: 18px;
+        --header-badge-gap: clamp(8px, 2.2vw, 14px);
     }
 
     /* Title badge: keep it fully visible below notch */
@@ -33,8 +34,34 @@
 
     .header-title-badge-logo {
         max-width: 100% !important;
-        height: 66% !important;
-        max-height: 40px !important;
+        height: 64% !important;
+        max-height: 38px !important;
+    }
+
+    /* Portrait: tighter center badge + gap; icons inset in the taller strip */
+    @media (orientation: portrait) {
+        :root {
+            --header-inner-height: calc(76px + env(safe-area-inset-top));
+            --header-height: calc(76px + env(safe-area-inset-top));
+        }
+
+        body {
+            --header-chrome-align-extra: 20px;
+            --header-badge-gap: clamp(8px, 2.4vw, 12px);
+        }
+
+        .header-title-badge-logo {
+            height: 66% !important;
+            max-height: 32px !important;
+        }
+
+        #headerHubButtonGroup .header-hub-btn.header-hub-btn--icon img,
+        #headerHubRightButtonGroup .header-hub-btn.header-hub-btn--icon img,
+        #headerHubButtonGroup .header-hub-icon,
+        #headerHubRightButtonGroup .header-hub-icon {
+            height: 74% !important;
+            max-height: 46px !important;
+        }
     }
 
     /* Reduce button sizes for mobile vertical displays */
@@ -144,93 +171,240 @@
             bottom: auto !important;
         }
 
-        /* Labeled mode toggles — single row, equal flex share across full width */
-        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
-            flex: 1 1 0 !important;
+        /*
+         * Info slide open — hide ALL mode dock chips (World/Codex/Story/Theater/Intel).
+         * Named IDs beat each mode's `display:flex !important` show rules.
+         */
+        body:has(#eventSlide.open) #dockGlobeRailLeft.dock-globe-rail,
+        body:has(#eventSlide.open) .dock-globe-rail--left,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > .globe-control-btn.dock-globe-rail__btn,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #mapViewToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #autoRotateToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #dialogueTheaterEntryToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #codexToggleViewDev,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #codexLinkFiltersToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #codexTogglePackets,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #codexToggleInfo,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #heroBiographyChipStripToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #galleryShowIntelToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #galleryShowConnectionsToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #galleryShowVisualsToggle,
+        body:has(#eventSlide.open) #dockGlobeRailRight.dock-globe-rail--archive-file-actions {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        /*
+         * World / Codex tool chips — squared-off (not wide Codex bars).
+         * More gap under header; larger icon + label; same chip proportions.
+         */
+        body {
+            --mode-dock-rail-height: 84px;
+            --mode-dock-rail-top: calc(var(--header-height) + clamp(14px, 2.6vh, 22px));
+            --mode-dock-rail-clearance: calc(
+                var(--mode-dock-rail-top) + var(--mode-dock-rail-height) + clamp(8px, 1.4vh, 14px)
+            );
+            --mode-dock-chip-max: clamp(64px, 18vw, 78px);
+            --mode-dock-above-trap-bottom: calc(
+                var(--footer-height, 60px)
+                + var(--pagination-dock-height, 200px)
+                + var(--dock-border-seam-h, 72px)
+                + clamp(8px, 1.4vh, 16px)
+            );
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
+        #dockGlobeRailLeft.dock-globe-rail {
             width: auto !important;
-            min-width: 0 !important;
-            max-width: none !important;
-            height: var(--mode-dock-rail-height, 48px) !important;
-            padding: 0 clamp(3px, 1vw, 6px) !important;
-            gap: clamp(2px, 0.6vw, 4px) !important;
-            font-size: clamp(9px, 2.4vw, 11px) !important;
+            max-width: calc(
+                100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+                    clamp(8px, 2vw, 16px)
+            ) !important;
+            justify-content: center !important;
+            gap: clamp(5px, 1.4vw, 10px) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+            flex: 0 0 auto !important;
+            width: var(--mode-dock-chip-max) !important;
+            min-width: var(--mode-dock-chip-max) !important;
+            max-width: var(--mode-dock-chip-max) !important;
+            height: var(--mode-dock-rail-height, 84px) !important;
+            min-height: var(--mode-dock-rail-height, 84px) !important;
+            padding: 8px 4px !important;
+            gap: 6px !important;
+            font-size: clamp(11px, 3vw, 13px) !important;
             line-height: 1.05 !important;
             letter-spacing: 0.01em;
             justify-content: center !important;
+            align-items: center !important;
+            flex-direction: column !important;
+            overflow: visible !important;
+            flex-shrink: 0 !important;
         }
 
         #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
         #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label {
-            display: inline-block !important;
-            width: auto !important;
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
             height: auto !important;
-            overflow: hidden !important;
-            text-overflow: ellipsis !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
             margin-left: 0 !important;
-            white-space: nowrap;
-            max-width: 100%;
+            white-space: normal !important;
+            text-align: center;
             min-width: 0;
-            flex: 1 1 auto;
+            flex: 0 0 auto;
+            font-size: inherit !important;
+            font-weight: 700 !important;
+            hyphens: auto;
         }
 
         #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn [id$='Icon'] {
-            width: clamp(18px, 4.8vw, 22px) !important;
-            height: clamp(18px, 4.8vw, 22px) !important;
-            min-width: clamp(18px, 4.8vw, 22px) !important;
-            min-height: clamp(18px, 4.8vw, 22px) !important;
+            width: clamp(32px, 8.5vw, 40px) !important;
+            height: clamp(32px, 8.5vw, 40px) !important;
+            min-width: clamp(32px, 8.5vw, 40px) !important;
+            min-height: clamp(32px, 8.5vw, 40px) !important;
             margin-right: 0 !important;
             flex-shrink: 0;
         }
 
-        /* Beat mode-specific min-width rules (Codex etc.) — keep one row on portrait */
+        /* Codex portrait: Link + Packets only — same squared chips as World */
         body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
-        body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
-        body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
-        body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn,
-        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
-            flex: 1 1 0 !important;
+        body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            width: 0 !important;
             min-width: 0 !important;
-            max-width: none !important;
-            width: auto !important;
-            flex-shrink: 1 !important;
+            max-width: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: none !important;
+            overflow: hidden !important;
+        }
+
+        body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
+        body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn {
+            flex: 0 0 auto !important;
+            width: var(--mode-dock-chip-max) !important;
+            min-width: var(--mode-dock-chip-max) !important;
+            max-width: var(--mode-dock-chip-max) !important;
+            font-size: clamp(11px, 3vw, 13px) !important;
+        }
+
+        body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn .globe-control-btn__label,
+        body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label {
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
         }
 
         /*
-         * Story / Gallery: one centered chip — not full-width stretch.
+         * Story / Theater: park the single mode toggle centered above the dock trap
+         * so the content stage can use the full top of the screen.
+         * Gallery (Intel) keeps World/Codex-style top chips for panel switching.
          */
         body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
             #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
-        body:has(#atlasGalleryHost) #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left {
+        body.dialogue-theater-mode-active #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
+        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left {
+            top: auto !important;
+            bottom: var(--mode-dock-above-trap-bottom) !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
             justify-content: center !important;
             width: auto !important;
             max-width: calc(
                 100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
                     clamp(16px, 4vw, 32px)
             ) !important;
+            z-index: 310;
+        }
+
+        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active),
+        body.dialogue-theater-mode-active,
+        body:has(#dialogueTheaterListHost) {
+            --mode-dock-rail-clearance: calc(var(--header-height) + clamp(6px, 1.2vh, 12px));
+        }
+
+        /* Gallery: three panel chips at top — slightly wider for “Show …” labels */
+        body:has(#atlasGalleryHost) #dockGlobeRailLeft > .gallery-mobile-panel-toggle.dock-globe-rail__btn {
+            flex: 0 0 auto !important;
+            width: clamp(72px, 22vw, 96px) !important;
+            min-width: clamp(72px, 22vw, 96px) !important;
+            max-width: clamp(72px, 22vw, 96px) !important;
+            font-size: clamp(10px, 2.6vw, 12px) !important;
+        }
+
+        body:has(#atlasGalleryHost)
+            #dockGlobeRailLeft
+            > .gallery-mobile-panel-toggle.dock-globe-rail__btn
+            .globe-control-btn__label {
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
+            line-height: 1.1 !important;
         }
 
         body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
             #dockGlobeRailLeft
             > #storyViewToggle.dock-globe-rail__btn,
-        body:has(#atlasGalleryHost) #dockGlobeRailLeft > #heroBiographyChipStripToggle.dock-globe-rail__btn {
+        body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn,
+        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn {
             flex: 0 0 auto !important;
+            flex-direction: row !important;
             width: auto !important;
-            min-width: min(108px, 32vw) !important;
-            max-width: min(168px, 48vw) !important;
-            padding: 0 clamp(8px, 2.4vw, 12px) !important;
-            font-size: clamp(10px, 2.8vw, 12px) !important;
+            min-width: min(168px, 48vw) !important;
+            max-width: min(240px, 70vw) !important;
+            height: 56px !important;
+            min-height: 56px !important;
+            padding: 0 clamp(14px, 3.5vw, 20px) !important;
+            font-size: clamp(14px, 3.6vw, 16px) !important;
+            gap: 10px !important;
+        }
+
+        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+            #dockGlobeRailLeft
+            > #storyViewToggle.dock-globe-rail__btn
+            [id$='Icon'],
+        body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn [id$='Icon'],
+        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn [id$='Icon'] {
+            width: 28px !important;
+            height: 28px !important;
+            min-width: 28px !important;
+            min-height: 28px !important;
         }
 
         body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
             #dockGlobeRailLeft
             > #storyViewToggle.dock-globe-rail__btn
             .globe-control-btn__label,
-        body:has(#atlasGalleryHost)
+        body.dialogue-theater-mode-active
             #dockGlobeRailLeft
-            > #heroBiographyChipStripToggle.dock-globe-rail__btn
+            > #dialogueTheaterEntryToggle.dock-globe-rail__btn
+            .globe-control-btn__label,
+        body:has(#dialogueTheaterListHost)
+            #dockGlobeRailLeft
+            > #dialogueTheaterEntryToggle.dock-globe-rail__btn
             .globe-control-btn__label {
-            max-width: min(88px, 26vw) !important;
+            max-width: none !important;
             flex: 0 1 auto !important;
+            white-space: nowrap !important;
+            overflow: visible !important;
+        }
+
+        /* Mobile: hide Story/Theater archive file actions (Add/Save/Import/Export/Merge) */
+        #dockGlobeRailRight.dock-globe-rail--archive-file-actions,
+        #dockGlobeRailRight.dock-globe-rail--archive-file-actions .archive-file-actions-row,
+        .story-viewer-panel-embedded #storyArchiveBottomBar .events-manage-actions,
+        .story-viewer-panel-embedded #dialogueTheaterBottomBar .events-manage-actions {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
     }
 

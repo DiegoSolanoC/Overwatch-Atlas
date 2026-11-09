@@ -69,7 +69,14 @@ export function collectYearsFromEvent(event) {
 }
 
 /**
- * @typedef {{ year: number, role: 'start'|'middle'|'end', ratio: number, x: number }} StoryTimelineYearMarker
+ * @typedef {'left'|'right'} StoryTimelineYearSide
+ * @typedef {{
+ *   year: number,
+ *   role: 'start'|'middle'|'end',
+ *   ratio: number,
+ *   x: number,
+ *   side: StoryTimelineYearSide,
+ * }} StoryTimelineYearMarker
  * @typedef {{
  *   startYear: number|null,
  *   endYear: number|null,
@@ -78,6 +85,20 @@ export function collectYearsFromEvent(event) {
  *   trackWidth: number,
  * }} StoryTimelineYearLayout
  */
+
+/**
+ * Portrait vertical: park the year opposite the entry thumb.
+ * `above` cards sit left of the spine → year goes right, and vice versa.
+ * No linked entry → pick a side at random.
+ *
+ * @param {import('./StoryTimelineEventLayout.js').StoryTimelineEventSide | null | undefined} eventSide
+ * @returns {StoryTimelineYearSide}
+ */
+function yearSideOppositeEntry(eventSide) {
+    if (eventSide === 'above') return 'right';
+    if (eventSide === 'below') return 'left';
+    return Math.random() < 0.5 ? 'left' : 'right';
+}
 
 /**
  * Year labels align with the first single-year event of each band after final layout.
@@ -115,6 +136,7 @@ export function buildStoryTimelineYearLayoutFromSegments(segments, trackWidth, p
             role: index === 0 ? 'start' : index === segments.length - 1 ? 'end' : 'middle',
             ratio: x / safeWidth,
             x,
+            side: yearSideOppositeEntry(placed?.side),
         };
     });
 

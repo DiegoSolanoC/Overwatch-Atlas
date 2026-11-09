@@ -20,7 +20,15 @@ import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadManifestHeroIds } from './lib/wiki-quotes-heroes.mjs';
+import { loadManifestHeroIds, wikiPageTitleForHero } from './lib/wiki-quotes-heroes.mjs';
+import { ensureAuditWorkspace, WIKI_QUOTES_CACHE_DIR } from './lib/auditWorkspace.mjs';
+import {
+    extractOw2HeroSelectedSpoken,
+    pickOw2SelectionSource,
+    selectionPhraseKey,
+} from './lib/gallery-selection-ow2.mjs';
+
+ensureAuditWorkspace();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.join(__dirname, '..');
@@ -121,6 +129,25 @@ function extractFolderForHero(heroId) {
         if (fs.existsSync(path.join(EXTRACT_ROOT, name))) return name;
     }
     return id;
+}
+
+/**
+ * @param {string} heroId
+ * @returns {Promise<string>}
+ */
+async function loadOw2HeroSelectedSpoken(heroId) {
+    const pageTitle = wikiPageTitleForHero(heroId);
+    const cacheFile = path.join(
+        WIKI_QUOTES_CACHE_DIR,
+        `${pageTitle.replace(/[\\/:*?"<>|]/g, '_')}.wikitext`,
+    );
+    if (!fs.existsSync(cacheFile)) return '';
+    try {
+        const wikitext = await fsp.readFile(cacheFile, 'utf8');
+        return extractOw2HeroSelectedSpoken(wikitext);
+    } catch {
+        return '';
+    }
 }
 
 /**
@@ -232,8 +259,8 @@ async function importHero(heroId) {
     if (!dryRun) await fsp.mkdir(heroDir, { recursive: true });
 
     const used = new Set();
-    /** @type {string|null} */
-    let firstSelectionSource = null;
+    /** @type {Array<{ label: string, source: string, destPath: string }>} */
+    const heroSelectCopies = [];
     const counts = {};
 
     for (const src of PHRASE_SOURCES) {
@@ -247,23 +274,52 @@ async function importHero(heroId) {
                 `${cleanLabel(row.label).replace(/[\\/:*?"<>|]/g, '')}.ogg`,
             );
             const rel = src.dest ? `${src.dest}/${leaf}` : leaf;
-            if (src.selection && !firstSelectionSource) firstSelectionSource = row.source;
+            const destPath = path.join(heroDir, ...rel.split('/'));
+            if (src.selection) {
+                heroSelectCopies.push({ label: row.label, source: row.source, destPath });
+            }
 
             if (dryRun) {
                 console.log(`  DRY [${src.wiki}] ${rel}`);
                 continue;
             }
-            const destPath = path.join(heroDir, ...rel.split('/'));
             await fsp.mkdir(path.dirname(destPath), { recursive: true });
             await fsp.copyFile(row.source, destPath);
         }
     }
 
-    if (firstSelectionSource && !dryRun) {
+    // Prefer Chatter → Hero Selected from the main Quotes page (OW2 default),
+    // not the oldest HeroSelect GUID (usually the OW1 line).
+    let selectionSource = heroSelectCopies[0]?.source || null;
+    const preferredSpoken = await loadOw2HeroSelectedSpoken(heroId);
+    if (preferredSpoken && heroSelectCopies.length) {
+        const want = selectionPhraseKey(preferredSpoken);
+        const matched = heroSelectCopies.find(
+            (row) => selectionPhraseKey(cleanLabel(row.label)) === want,
+        );
+        if (matched) {
+            selectionSource = matched.source;
+        } else {
+            const byDest = pickOw2SelectionSource(
+                heroSelectCopies.map((r) => r.destPath),
+                preferredSpoken,
+            );
+            if (byDest) {
+                const hit = heroSelectCopies.find(
+                    (r) => path.resolve(r.destPath) === path.resolve(byDest),
+                );
+                if (hit) selectionSource = hit.source;
+            }
+        }
+    }
+
+    if (selectionSource && !dryRun) {
         const selectionPath = path.join(heroDir, 'Selection.ogg');
-        await fsp.copyFile(firstSelectionSource, selectionPath);
-    } else if (firstSelectionSource && dryRun) {
-        console.log('  DRY Selection.ogg');
+        await fsp.copyFile(selectionSource, selectionPath);
+    } else if (selectionSource && dryRun) {
+        console.log(
+            `  DRY Selection.ogg${preferredSpoken ? ` ← OW2 "${preferredSpoken}"` : ' ← first HeroSelect'}`,
+        );
     }
 
     const summary = Object.entries(counts)

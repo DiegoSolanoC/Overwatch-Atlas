@@ -33,13 +33,54 @@ const HERO_SELECTION_PHRASE_DELAY_MS = 480;
 /** @type {Map<string, Record<string, string[]> | null>} */
 const hamsterPrefixCache = new Map();
 
+/** @type {Map<string, boolean>} */
+const hamsterFolderAvailableCache = new Map();
+
 function isWreckingBallHeroKey(heroFilterKey) {
     return (
         String(heroFilterKey || '')
             .trim()
             .toLowerCase()
-            .replace(/[^a-z0-9]/g, '') === 'wreckingball'
+            .replace(/[^a-z0-9]+/g, '') === 'wreckingball'
     );
+}
+
+/**
+ * hamster-prefixes.json points at Hamster/*.ogg, but that folder may be absent
+ * locally — probe once so we skip prefixes instead of 404-spamming Selection.
+ * @param {string} heroFilterKey
+ * @returns {Promise<boolean>}
+ */
+async function hamsterPrefixFolderAvailable(heroFilterKey) {
+    const key = String(heroFilterKey || '').trim();
+    if (!key) return false;
+    if (hamsterFolderAvailableCache.has(key)) {
+        return hamsterFolderAvailableCache.get(key) === true;
+    }
+
+    const probe = buildHeroBiographyPhrasePath(key, 'Hamster/Selection.ogg');
+    if (!probe) {
+        hamsterFolderAvailableCache.set(key, false);
+        return false;
+    }
+
+    try {
+        let res = await fetch(probe, { method: 'HEAD', cache: 'no-store' });
+        // Some static servers reject HEAD — fall back to a tiny ranged GET.
+        if (res && (res.status === 405 || res.status === 501)) {
+            res = await fetch(probe, {
+                method: 'GET',
+                cache: 'no-store',
+                headers: { Range: 'bytes=0-0' },
+            });
+        }
+        const ok = !!res && (res.ok || res.status === 206);
+        hamsterFolderAvailableCache.set(key, ok);
+        return ok;
+    } catch {
+        hamsterFolderAvailableCache.set(key, false);
+        return false;
+    }
 }
 
 function notifyPhrasePlaybackChange() {
@@ -125,6 +166,9 @@ async function resolvePhrasePlaybackFiles(heroFilterKey, fileName) {
     const variants = map?.[file];
     if (!Array.isArray(variants) || variants.length === 0) return [file];
 
+    // No Hamster/ audio on disk → play translator line only.
+    if (!(await hamsterPrefixFolderAvailable(heroFilterKey))) return [file];
+
     const valid = variants.map((v) => String(v || '').trim().replace(/\\/g, '/')).filter(Boolean);
     if (!valid.length) return [file];
 
@@ -208,7 +252,8 @@ export async function playHeroBiographyPhrase(heroFilterKey, fileName) {
         for (const src of srcs) {
             if (generation !== phrasePlaybackGeneration) break;
             const ok = await playAudioSrc(src, generation);
-            if (!ok) break;
+            // Missing hamster prefix (or any clip) — keep going so translator still plays.
+            if (!ok) continue;
         }
     } catch (err) {
         console.warn('[gallery] Phrase playback failed:', err);
@@ -270,4 +315,5 @@ export function scheduleHeroSelectionPhrase(heroFilterKey, phraseFiles, delayMs 
 /** Clears cached hamster-prefix maps (tests / hot reload). */
 export function clearHeroBiographyPhraseHamsterCache() {
     hamsterPrefixCache.clear();
+    hamsterFolderAvailableCache.clear();
 }

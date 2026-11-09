@@ -185,7 +185,8 @@ export function mountStoryViewToggle(eventsManagePanel) {
 
     if (btn) {
         btn.classList.toggle('story-view-toggle--floating', !dockParent);
-        btn.style.setProperty('display', 'flex', 'important');
+        /* Visibility is CSS-owned so #eventSlide.open can hide this chip. */
+        btn.style.removeProperty('display');
     }
 
     const ac = new AbortController();

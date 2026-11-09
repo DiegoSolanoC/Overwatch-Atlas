@@ -521,6 +521,12 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     visibility: visible !important;
 }
 
+body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
 /* Desktop + mobile landscape: fixed chip width. Portrait uses viewport.css centered chip. */
 @media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
 body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
@@ -857,7 +863,7 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
         .story-viewer-panel-embedded
         .events-manage-content {
-        padding-top: var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px));
+        padding-top: calc(var(--header-height, 72px) + 2px);
         box-sizing: border-box;
     }
 
@@ -910,7 +916,8 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     body:has(.dialogue-theater-list-host.active)
         .dialogue-theater-panel-embedded
         .events-manage-content {
-        padding-top: var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px));
+        /* Toggle parks above the dock — tuck Search tight under the header */
+        padding-top: calc(var(--header-height, 72px) + 2px);
         box-sizing: border-box;
     }
 
@@ -927,7 +934,9 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
         flex-direction: column;
         visibility: visible !important;
         padding-inline: clamp(12px, 3.5vw, 20px);
-        margin-bottom: 12px;
+        padding-top: 0 !important;
+        margin-bottom: 4px;
+        margin-top: 0 !important;
     }
 
     .story-viewer-panel-embedded--list-view.events-manage-panel--toolbar-collapsed #eventsManageControls,
@@ -1887,5 +1896,251 @@ body.color-palette-gray .story-viewer-exit-btn:hover {
         font-size: 36px;
         width: 40px;
         height: 40px;
+    }
+}
+
+/*
+ * Mobile portrait vertical timeline: center spine with cards left / right.
+ * Long-axis scroll is handled in StoryTimelineView.js (translateY pan).
+ */
+.story-timeline-view--vertical .story-timeline-view__viewport {
+    align-items: stretch;
+    touch-action: none;
+    overscroll-behavior: contain;
+}
+
+.story-timeline-view--vertical .story-timeline-view__track {
+    width: 100% !important;
+    height: auto;
+}
+
+.story-timeline-view--vertical {
+    --story-timeline-v-line-w: 14px;
+    --story-timeline-v-line-half: 7px;
+    --story-timeline-v-card-gap: 40px;
+    --story-timeline-v-branch-tuck: 22px;
+    --story-timeline-v-branch-w: calc(
+        var(--story-timeline-v-card-gap) - var(--story-timeline-v-line-half) + var(--story-timeline-v-branch-tuck)
+    );
+}
+
+.story-timeline-view--vertical .story-timeline-view__line {
+    left: 50%;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: var(--story-timeline-v-line-w);
+    height: auto !important;
+    transform: translateX(-50%);
+    border-radius: 8px;
+}
+
+.story-timeline-view--vertical .story-timeline-year {
+    top: 0; /* overridden by inline top from layout x */
+    transform: translateY(-50%);
+    z-index: 7;
+    pointer-events: none;
+}
+
+/* Opposite the entry thumb so the year isn't painted over the spine */
+.story-timeline-view--vertical .story-timeline-year--left {
+    left: auto;
+    right: calc(50% + 16px);
+}
+
+.story-timeline-view--vertical .story-timeline-year--right {
+    left: calc(50% + 16px);
+    right: auto;
+}
+
+.story-timeline-view--vertical .story-timeline-year__label {
+    font-size: clamp(30px, 8.5vw, 44px) !important;
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.04em;
+    padding: 0 !important;
+    border-radius: 0;
+    background: none !important;
+    text-shadow: none !important;
+    color: rgba(255, 255, 255, 0.98) !important;
+}
+
+.story-timeline-view--vertical .story-timeline-year--start .story-timeline-year__label,
+.story-timeline-view--vertical .story-timeline-year--end .story-timeline-year__label {
+    text-shadow: none !important;
+}
+
+.story-timeline-view--vertical .story-timeline-event {
+    /* Bigger cards; leave a clear gutter for the branch stem */
+    width: min(54vw, 252px);
+    min-width: 188px;
+    max-width: 54vw;
+    overflow: visible;
+}
+
+.story-timeline-view--vertical .story-timeline-event--above {
+    /* Left of spine — gap matches --story-timeline-v-card-gap */
+    right: calc(50% + var(--story-timeline-v-card-gap));
+    left: auto;
+    bottom: auto;
+    top: 0; /* inline */
+    transform: translateY(-50%);
+}
+
+.story-timeline-view--vertical .story-timeline-event--below {
+    /* Right of spine */
+    left: calc(50% + var(--story-timeline-v-card-gap));
+    top: 0; /* inline */
+    transform: translateY(-50%);
+}
+
+/*
+ * Keep dock-style 5:4 skew thumbs intact.
+ * Meta (flag / location / year) hangs below out-of-flow so the stem still centers on the image.
+ */
+.story-timeline-view--vertical .story-timeline-event__card.event-item {
+    position: relative;
+    flex-direction: column !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 4px !important;
+    overflow: visible !important;
+}
+
+.story-timeline-view--vertical #storyTimelineEvents {
+    --em-visual-min: 176px;
+    --em-visual-max: 236px;
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__thumb-shell {
+    max-height: none;
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__body {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    gap: 2px;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__body .event-item-info {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__body .event-item-heading {
+    display: none;
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__thumb-titlebar .event-item-title,
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__thumb-titlebar .event-item-heading {
+    font-size: clamp(12px, 3.2vw, 14px) !important;
+    line-height: 1.2 !important;
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__body .event-item-meta {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2px;
+    font-size: clamp(12px, 3.2vw, 14px) !important;
+    line-height: 1.2 !important;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__body .event-item-location,
+.story-timeline-view--vertical .story-timeline-event__card.event-item .event-item__body .event-item-year {
+    display: block !important;
+    font-size: inherit !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    visibility: visible !important;
+}
+
+/*
+ * Vertical branches: CSS-only, locked to the same gap vars as the cards.
+ * Width = gutter + tuck into the parallelogram.
+ */
+.story-timeline-view--vertical .story-timeline-connector--above {
+    left: auto !important;
+    right: calc(50% + var(--story-timeline-v-line-half)) !important;
+    top: 0; /* inline layout Y */
+    width: var(--story-timeline-v-branch-w) !important;
+    height: 7px !important;
+    margin: 0 !important;
+    transform: translateY(-50%);
+    border-radius: 4px 0 0 4px;
+}
+
+.story-timeline-view--vertical .story-timeline-connector--below {
+    left: calc(50% + var(--story-timeline-v-line-half)) !important;
+    right: auto !important;
+    top: 0; /* inline layout Y */
+    width: var(--story-timeline-v-branch-w) !important;
+    height: 7px !important;
+    margin: 0 !important;
+    transform: translateY(-50%);
+    border-radius: 0 4px 4px 0;
+}
+
+/*
+ * Mobile portrait: Search sits under the header (List/Timeline toggle parks above the dock).
+ * Bigger title + tighter vertical stack so the timeline can start sooner.
+ */
+@media (max-width: 768px) and (orientation: portrait) {
+    .story-viewer-panel-embedded .events-manage-controls {
+        padding: 0 10px 4px;
+        margin-bottom: 2px;
+    }
+
+    .story-viewer-panel-embedded .events-manage-controls-title {
+        margin: 0 !important;
+    }
+
+    .story-viewer-panel-embedded .events-manage-controls-title::after {
+        font-size: clamp(1.55rem, 6.5vw, 2.15rem) !important;
+        line-height: 1 !important;
+    }
+
+    .story-viewer-panel-embedded .events-manage-search-row--primary {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px !important;
+    }
+
+    .story-viewer-panel-embedded .events-manage-search-row--primary .events-search-input--title {
+        width: min(100%, 92vw);
+        max-width: none;
+        min-width: 0;
+        flex: 1 1 100%;
+        padding: 9px 14px;
+        min-height: 42px;
+        font-size: 15px;
+    }
+
+    .story-viewer-panel-embedded .events-manage-search-row--primary .events-search-count,
+    .story-viewer-panel-embedded .events-manage-controls .events-search-count,
+    .story-viewer-panel-embedded #eventsSearchCount,
+    .story-viewer-panel-embedded .events-manage-result-count {
+        font-size: clamp(1.25rem, 5vw, 1.7rem) !important;
+        line-height: 1.05 !important;
+        margin: 0 !important;
+    }
+
+    /* Extra bottom inset so the last timeline cards clear the mode toggle above the trap */
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-timeline-view--vertical
+        .story-timeline-view__viewport {
+        padding-bottom: calc(
+            var(--mode-dock-above-trap-bottom, 280px) + 56px
+        );
+        box-sizing: border-box;
     }
 }

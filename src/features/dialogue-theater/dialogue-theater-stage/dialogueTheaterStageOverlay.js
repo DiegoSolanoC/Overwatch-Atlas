@@ -62,7 +62,10 @@ const STAGE_DIALOGUE_BOX_HTML = `
     </div>
 `;
 
-/** Info panel dialogue box (mobile) — sits below the line list in #dialogueTheaterEditHost */
+/**
+ * Mobile subtitle box — parked between the image strip and the scrolling info panel
+ * (outside #eventSlideScrollable so audio progress does not drag it away).
+ */
 export const PANEL_DIALOGUE_BOX_HTML = `
     <div class="dialogue-theater-stage__dialogue dialogue-theater-panel__dialogue" id="dialogueTheaterPanelDialogue" hidden>
         <div class="dialogue-theater-stage__dialogue-head">
@@ -72,16 +75,134 @@ export const PANEL_DIALOGUE_BOX_HTML = `
             <span class="dialogue-theater-stage__dialogue-name"></span>
         </div>
         <p class="dialogue-theater-stage__dialogue-text"></p>
+        <button type="button" class="dialogue-theater-panel__dialogue-replay" aria-hidden="true" tabindex="-1" disabled aria-label="Replay dialogue">↻ Replay</button>
     </div>
 `;
+
+/** @type {number|null} */
+let lastPanelDialogueLineIndex = null;
+/** @type {import('../data/DialogueTheaterDataService.js').DialogueConversation|null} */
+let lastPanelDialogueConversation = null;
+/** @type {(() => void)|null} */
+let panelDialogueReplayHandler = null;
 
 function isMobileTheaterLayout() {
     return window.innerWidth <= 768;
 }
 
-function isStoryDirectPlayStage(stage) {
-    return Boolean(stage?.dataset?.sceneUrlOverride)
-        || document.getElementById('eventImageOverlay')?.dataset.storyCommentaryDirectPlay === '1';
+function isDialogueTheaterEventSlide() {
+    return Boolean(document.getElementById('eventSlide')?.classList.contains('event-slide--dialogue-theater'));
+}
+
+/**
+ * Mobile subtitle parks in the info panel for dialogue-theater entries and for
+ * Story Commentary Direct Play (same format — between image strip and info).
+ */
+function shouldUseMobilePanelDialogue() {
+    if (!isMobileTheaterLayout()) return false;
+    if (isDialogueTheaterEventSlide()) return true;
+    return document.getElementById('eventImageOverlay')?.dataset.storyCommentaryDirectPlay === '1';
+}
+
+/**
+ * Ensure the mobile subtitle slot lives at the top of #eventSlideContent
+ * (between the image strip and title / scrolling info).
+ * @returns {HTMLElement|null}
+ */
+export function ensureMobilePanelDialogueSlot() {
+    if (!shouldUseMobilePanelDialogue()) return null;
+
+    const content = document.getElementById('eventSlideContent');
+    if (!content) return null;
+
+    let box = document.getElementById('dialogueTheaterPanelDialogue');
+    if (!(box instanceof HTMLElement)) {
+        content.insertAdjacentHTML('afterbegin', PANEL_DIALOGUE_BOX_HTML);
+        box = document.getElementById('dialogueTheaterPanelDialogue');
+    }
+    if (!(box instanceof HTMLElement)) return null;
+
+    const top = document.getElementById('eventSlideTop');
+    if (box.parentElement !== content || (top && box.nextElementSibling !== top)) {
+        content.insertBefore(box, top || content.firstChild);
+    }
+
+    // Normalize replay control so older markup with [hidden] still reserves space.
+    const replayBtn = box.querySelector('.dialogue-theater-panel__dialogue-replay');
+    if (replayBtn instanceof HTMLButtonElement) {
+        replayBtn.hidden = false;
+        if (!box.classList.contains('dialogue-theater-panel__dialogue--replay')) {
+            replayBtn.disabled = true;
+            replayBtn.tabIndex = -1;
+            replayBtn.setAttribute('aria-hidden', 'true');
+        }
+    }
+    return box;
+}
+
+/**
+ * @param {HTMLElement} box
+ * @param {boolean} enabled
+ */
+function setPanelDialogueReplayUi(box, enabled) {
+    box.classList.toggle('dialogue-theater-panel__dialogue--replay', enabled);
+    const btn = box.querySelector('.dialogue-theater-panel__dialogue-replay');
+    if (btn instanceof HTMLButtonElement) {
+        // Keep in layout (no [hidden]) so Replay never resizes the subtitle box.
+        btn.hidden = false;
+        btn.disabled = !enabled;
+        btn.tabIndex = enabled ? 0 : -1;
+        btn.setAttribute('aria-hidden', enabled ? 'false' : 'true');
+    }
+}
+
+/**
+ * Keep the last subtitle visible and offer replay after playback ends.
+ * @param {(() => void)|null} onReplay
+ */
+export function armDialoguePanelReplay(onReplay) {
+    const box = ensureMobilePanelDialogueSlot();
+    if (!(box instanceof HTMLElement)) return;
+
+    const conversation = lastPanelDialogueConversation;
+    const lineIndex = lastPanelDialogueLineIndex;
+    if (conversation && lineIndex != null) {
+        syncPanelDialogue(conversation, lineIndex, { replay: true });
+    } else if (!box.hidden) {
+        setPanelDialogueReplayUi(box, true);
+    } else {
+        return;
+    }
+
+    panelDialogueReplayHandler = typeof onReplay === 'function' ? onReplay : null;
+    const btn = box.querySelector('.dialogue-theater-panel__dialogue-replay');
+    if (btn instanceof HTMLButtonElement) {
+        btn.onclick = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const replay = panelDialogueReplayHandler;
+            clearDialoguePanelReplay();
+            replay?.();
+        };
+    }
+}
+
+export function clearDialoguePanelReplay() {
+    panelDialogueReplayHandler = null;
+    const box = document.getElementById('dialogueTheaterPanelDialogue');
+    if (box instanceof HTMLElement) {
+        setPanelDialogueReplayUi(box, false);
+    }
+}
+
+export function hideMobilePanelDialogueSlot() {
+    clearDialoguePanelReplay();
+    lastPanelDialogueLineIndex = null;
+    lastPanelDialogueConversation = null;
+    const box = document.getElementById('dialogueTheaterPanelDialogue');
+    if (box instanceof HTMLElement) {
+        box.hidden = true;
+    }
 }
 
 /**
@@ -135,21 +256,29 @@ function clearPanelDialogueHighlight() {
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  * @param {number|null} activeLineIndex
+ * @param {{ replay?: boolean }} [options]
  */
-function syncPanelDialogue(conversation, activeLineIndex) {
-    const panelBox = document.getElementById('dialogueTheaterPanelDialogue');
+function syncPanelDialogue(conversation, activeLineIndex, options = {}) {
+    const existingBox = document.getElementById('dialogueTheaterPanelDialogue');
 
-    if (!isMobileTheaterLayout()) {
-        if (panelBox instanceof HTMLElement) {
-            panelBox.hidden = true;
+    // Story Commentary Direct Play (and non-theater slides): stage subtitle only.
+    if (!shouldUseMobilePanelDialogue()) {
+        if (existingBox instanceof HTMLElement) {
+            existingBox.hidden = true;
+            setPanelDialogueReplayUi(existingBox, false);
         }
         clearPanelDialogueHighlight();
+        clearDialoguePanelReplay();
         return;
     }
 
+    const panelBox = ensureMobilePanelDialogueSlot()
+        || existingBox;
+
     if (activeLineIndex == null || !(panelBox instanceof HTMLElement)) {
-        if (panelBox instanceof HTMLElement) {
+        if (panelBox instanceof HTMLElement && !options.replay) {
             panelBox.hidden = true;
+            setPanelDialogueReplayUi(panelBox, false);
         }
         clearPanelDialogueHighlight();
         return;
@@ -158,20 +287,26 @@ function syncPanelDialogue(conversation, activeLineIndex) {
     const lines = resolveActiveConversationLines(conversation);
     const line = lines[activeLineIndex];
     if (!line) {
-        panelBox.hidden = true;
+        if (!options.replay) {
+            panelBox.hidden = true;
+            setPanelDialogueReplayUi(panelBox, false);
+        }
         clearPanelDialogueHighlight();
         return;
     }
 
+    lastPanelDialogueLineIndex = activeLineIndex;
+    lastPanelDialogueConversation = conversation;
+    if (!options.replay) {
+        clearDialoguePanelReplay();
+    }
     fillDialogueBox(panelBox, line);
+    setPanelDialogueReplayUi(panelBox, options.replay === true);
 
+    /* Highlight the active list row — do not auto-scroll the info panel. */
     const host = document.getElementById('dialogueTheaterEditHost');
     host?.querySelectorAll('.dialogue-theater-edit__view-line').forEach((row, idx) => {
-        const isActive = idx === activeLineIndex;
-        row.classList.toggle('dialogue-theater-edit__view-line--active', isActive);
-        if (isActive && row instanceof HTMLElement) {
-            row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        }
+        row.classList.toggle('dialogue-theater-edit__view-line--active', idx === activeLineIndex);
     });
 }
 
@@ -197,8 +332,8 @@ function setStageDialogue(stage, line) {
     const box = stage.querySelector('.dialogue-theater-stage__dialogue');
     if (!(box instanceof HTMLElement)) return;
 
-    // Mobile theater moves dialogue into the info panel — but Direct Play has no panel.
-    if (isMobileTheaterLayout() && !isStoryDirectPlayStage(stage)) {
+    // Mobile: subtitle lives in the info panel (theater entries + commentary Direct Play).
+    if (isMobileTheaterLayout()) {
         box.hidden = true;
         return;
     }
@@ -382,8 +517,9 @@ function paintChatterPartners(stage, line, rendersMap) {
  * @param {HTMLElement} stage
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  * @param {number|null} activeLineIndex
+ * @param {{ preservePanelDialogue?: boolean }} [options]
  */
-function paintStage(stage, conversation, activeLineIndex = null) {
+function paintStage(stage, conversation, activeLineIndex = null, options = {}) {
     const rendersMap = stageAssets?.renders || {};
     const lines = resolveActiveConversationLines(conversation);
     const sceneEl = stage.querySelector('.dialogue-theater-stage__scene');
@@ -447,7 +583,9 @@ function paintStage(stage, conversation, activeLineIndex = null) {
         setStageRender(stage, 'left', leftLine ? getLineRenderSrc(leftLine, rendersMap) : '', false);
         setStageRender(stage, 'right', rightLine ? getLineRenderSrc(rightLine, rendersMap) : '', false);
         setStageDialogue(stage, null);
-        syncPanelDialogue(conversation, null);
+        if (!options.preservePanelDialogue) {
+            syncPanelDialogue(conversation, null);
+        }
         return;
     }
 
@@ -522,7 +660,8 @@ export async function showDialogueTheaterStage(conversation) {
 }
 
 /**
- * Story Commentary Direct Play: theater renders + subtitles over the event image.
+ * Story Commentary Direct Play: theater renders over the event image.
+ * On mobile, subtitles use the same info-panel slot as dialogue entries.
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  * @param {string} sceneUrl
  */
@@ -560,6 +699,7 @@ export function endStoryCommentaryDirectPlayStage({ restoreEventImage = true } =
     stage?.remove();
     overlay?.classList.remove('dialogue-theater-stage-overlay');
     if (overlay) delete overlay.dataset.storyCommentaryDirectPlay;
+    hideMobilePanelDialogueSlot();
 
     const defaultImg = document.getElementById('eventImage');
     const slide = window.standaloneEventSlide;
@@ -606,14 +746,19 @@ async function syncPanelDialogueWhenStageHidden(conversation, activeLineIndex) {
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {{ preservePanelDialogue?: boolean }} [options]
  */
-export function resetDialogueTheaterStageToIdle(conversation) {
+export function resetDialogueTheaterStageToIdle(conversation, options = {}) {
     const stage = document.getElementById('dialogueTheaterStage');
     if (stage) {
-        paintStage(stage, conversation, null);
+        paintStage(stage, conversation, null, {
+            preservePanelDialogue: options.preservePanelDialogue === true,
+        });
         return;
     }
-    void syncPanelDialogueWhenStageHidden(conversation, null);
+    if (!options.preservePanelDialogue) {
+        void syncPanelDialogueWhenStageHidden(conversation, null);
+    }
 }
 
 /**

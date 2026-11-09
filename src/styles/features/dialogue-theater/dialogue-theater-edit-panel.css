@@ -1254,7 +1254,7 @@ body.color-palette-gray #dialogueTheaterStoryCommentaryRefs .event-item:focus-vi
     display: block;
 }
 
-/* Mobile: active-line highlight + in-panel subtitle box (below dialogue list) */
+/* Mobile: active-line highlight + subtitle parked between image strip and info */
 @media (max-width: 768px) {
     .dialogue-theater-edit-host--view .dialogue-theater-edit__hint {
         display: none;
@@ -1266,17 +1266,79 @@ body.color-palette-gray #dialogueTheaterStoryCommentaryRefs .event-item:focus-vi
         box-shadow: 0 0 0 1px rgba(var(--accent-primary-rgb), 0.2);
     }
 
+    /*
+     * Theater entries + commentary Direct Play: keep title chrome + subtitle fixed;
+     * only the info body scrolls. Subtitle sits above #eventSlideTop.
+     */
+    #eventSlide.event-slide--dialogue-theater.open #eventSlideContent,
+    html:has(.event-image-overlay[data-story-commentary-direct-play="1"])
+        #eventSlide.open #eventSlideContent {
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        height: 100% !important;
+    }
+
+    /*
+     * Absolute Edit / × clear ~60px from the slide top. When the subtitle is up,
+     * grow content padding so the box starts below that chrome (pushes title down).
+     */
+    #eventSlide.event-slide--dialogue-theater.open
+        #eventSlideContent:has(#dialogueTheaterPanelDialogue:not([hidden])),
+    html:has(.event-image-overlay[data-story-commentary-direct-play="1"])
+        #eventSlide.open #eventSlideContent:has(#dialogueTheaterPanelDialogue:not([hidden])) {
+        padding-top: 62px !important;
+    }
+
+    #eventSlide.event-slide--dialogue-theater.open #eventSlideTop,
+    #eventSlide.event-slide--dialogue-theater.open #eventSlideMidControls,
+    html:has(.event-image-overlay[data-story-commentary-direct-play="1"])
+        #eventSlide.open #eventSlideTop,
+    html:has(.event-image-overlay[data-story-commentary-direct-play="1"])
+        #eventSlide.open #eventSlideMidControls {
+        flex: 0 0 auto;
+    }
+
+    #eventSlide.event-slide--dialogue-theater.open #eventSlideScrollable,
+    html:has(.event-image-overlay[data-story-commentary-direct-play="1"])
+        #eventSlide.open #eventSlideScrollable {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+    }
+
     #dialogueTheaterPanelDialogue.dialogue-theater-panel__dialogue {
-        position: relative;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-        width: 100%;
-        max-width: none;
-        margin-top: 0;
-        margin-bottom: 12px;
+        position: relative !important;
+        inset: auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 0 12px !important;
+        padding: 14px 16px 12px !important;
+        flex: 0 0 auto;
+        order: -1;
+        display: flex;
+        flex-direction: column;
         pointer-events: auto;
+        box-sizing: border-box;
+        z-index: 3;
+        isolation: isolate;
+        /* Fully opaque — pattern / scroll content must not show through or flicker */
+        background: #060c16 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* Keep Edit / × clickable above the subtitle layer */
+    #eventSlide.open:has(#dialogueTheaterPanelDialogue:not([hidden])) .event-slide-close-cluster,
+    #eventSlide.open:has(#dialogueTheaterPanelDialogue:not([hidden])) #eventSlideEditBtn,
+    #eventSlide.open:has(#dialogueTheaterPanelDialogue:not([hidden])) #eventSlideSaveBtn,
+    #eventSlide.open:has(#dialogueTheaterPanelDialogue:not([hidden])) #eventSlideDeleteBtn {
+        z-index: 520;
     }
 
     #dialogueTheaterPanelDialogue.dialogue-theater-panel__dialogue[hidden] {
@@ -1284,17 +1346,52 @@ body.color-palette-gray #dialogueTheaterStoryCommentaryRefs .event-item:focus-vi
     }
 
     #dialogueTheaterPanelDialogue .dialogue-theater-stage__dialogue-icon-wrap {
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
     }
 
     #dialogueTheaterPanelDialogue .dialogue-theater-stage__dialogue-name {
-        font-size: 1.05rem;
+        font-size: 1.02rem;
     }
 
     #dialogueTheaterPanelDialogue .dialogue-theater-stage__dialogue-text {
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 0.92rem;
+        line-height: 1.45;
+    }
+
+    /*
+     * Replay footer is always reserved so arming replay does not resize the box.
+     * Visibility toggles; layout size stays put.
+     */
+    #dialogueTheaterPanelDialogue .dialogue-theater-panel__dialogue-replay {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 10px;
+        align-self: flex-start;
+        min-height: 36px;
+        padding: 6px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(var(--accent-primary-rgb), 0.55);
+        background: rgba(var(--accent-primary-rgb), 0.18);
+        color: rgba(255, 255, 255, 0.96);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    #dialogueTheaterPanelDialogue.dialogue-theater-panel__dialogue--replay
+        .dialogue-theater-panel__dialogue-replay {
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    #dialogueTheaterPanelDialogue .dialogue-theater-panel__dialogue-replay:hover {
+        background: rgba(var(--accent-primary-rgb), 0.28);
+        border-color: rgba(var(--accent-primary-rgb), 0.8);
     }
 }
 

@@ -2,8 +2,9 @@
  * Story Commentary ▶ opens a Dialogue Theater entry in the current event slide
  * (same-mode, chip→workshop style). Back restores the prior story entry.
  *
- * Direct Play overlays theater renders + subtitles on the event image without
- * opening the Dialogue Theater panel.
+ * Direct Play overlays theater renders on the event image without opening the
+ * Dialogue Theater panel. On mobile, subtitles use the same between-image-and-info
+ * slot as dialogue entries (with Replay when finished).
  *
  * IMPORTANT: import DialogueTheaterDataService with the same `?v=` as theater modules
  * so we share one in-memory conversation store (not a second empty instance).

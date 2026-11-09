@@ -293,10 +293,12 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 
 @media (max-width: 768px) {
     /*
-     * Dialogue entries: taller stage strip than story (same formula shape, higher floor/cap + multiplier).
+     * Dialogue entries + commentary Direct Play: taller stage strip than story
+     * (same formula shape, higher floor/cap + multiplier) so character renders match.
      * Story: min(max(16:9, 40vh), 52vh) * 1.25 → up to ~65vh portrait.
      */
-    html:has(#eventSlide.event-slide--dialogue-theater.open) {
+    html:has(#eventSlide.event-slide--dialogue-theater.open),
+    html:has(.event-image-overlay[data-story-commentary-direct-play="1"]) {
         --event-mobile-image-strip-height: calc(
             min(
                 max(calc(100vw * 9 / 16), 46vh),
@@ -306,7 +308,8 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
     }
 
     @media (orientation: portrait) {
-        html:has(#eventSlide.event-slide--dialogue-theater.open) {
+        html:has(#eventSlide.event-slide--dialogue-theater.open),
+        html:has(.event-image-overlay[data-story-commentary-direct-play="1"]) {
             --event-mobile-image-strip-height: calc(
                 min(
                     max(calc(100vw * 9 / 16), 52vh),
@@ -370,19 +373,6 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 
     /* Subtitle box lives in #eventSlide on mobile — hide the stage overlay copy */
     .dialogue-theater-stage > .dialogue-theater-stage__dialogue {
-        display: none !important;
-    }
-
-    /* Story Commentary Direct Play has no theater panel — keep stage subtitles */
-    .event-image-overlay[data-story-commentary-direct-play="1"]
-        .dialogue-theater-stage
-        > .dialogue-theater-stage__dialogue {
-        display: block !important;
-    }
-
-    .event-image-overlay[data-story-commentary-direct-play="1"]
-        .dialogue-theater-stage
-        > .dialogue-theater-stage__dialogue[hidden] {
         display: none !important;
     }
 

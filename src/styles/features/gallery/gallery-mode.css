@@ -410,6 +410,24 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     max-height: none;
     overflow: visible;
     white-space: pre-wrap;
+    color: inherit;
+    background: transparent;
+}
+
+/* Kill Word/Docs paste chrome if any rich HTML still lands in the editor */
+.gallery-mode__archive-description-body--edit *,
+.gallery-mode__archive-description-body--edit *::before,
+.gallery-mode__archive-description-body--edit *::after {
+    color: inherit !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border: none !important;
 }
 
 .gallery-mode__archive-description-body--edit:focus {
@@ -1117,8 +1135,13 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     grid-template-rows: 1fr 0fr;
 }
 
-/* Select File toggle — left dock rail (same chrome as Filters / Map toggles) */
-body:has(#atlasGalleryHost) #dockGlobeRailLeft > .globe-control-btn.dock-globe-rail__btn:not(#heroBiographyChipStripToggle) {
+/*
+ * Gallery dock rail: hide unrelated mode toggles.
+ * Keep Select File (legacy) + mobile panel chips (Intel / Connections / Visuals).
+ */
+body:has(#atlasGalleryHost)
+    #dockGlobeRailLeft
+    > .globe-control-btn.dock-globe-rail__btn:not(#heroBiographyChipStripToggle):not(.gallery-mobile-panel-toggle) {
     display: none !important;
 }
 
@@ -1126,6 +1149,33 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
     display: flex !important;
     pointer-events: auto !important;
     visibility: visible !important;
+}
+
+body:has(#eventSlide.open) #dockGlobeRailLeft > #heroBiographyChipStripToggle.dock-globe-rail__btn,
+body:has(#eventSlide.open) #dockGlobeRailLeft > .gallery-mobile-panel-toggle.dock-globe-rail__btn {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Panel chips are portrait-mobile only — desktop keeps all three regions on screen */
+body:has(#atlasGalleryHost) #dockGlobeRailLeft > .gallery-mobile-panel-toggle.dock-globe-rail__btn {
+    display: none !important;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    body:has(#atlasGalleryHost) #dockGlobeRailLeft > .gallery-mobile-panel-toggle.dock-globe-rail__btn {
+        display: flex !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+    }
+
+    body:has(#eventSlide.open) #dockGlobeRailLeft > #heroBiographyChipStripToggle.dock-globe-rail__btn,
+    body:has(#eventSlide.open) #dockGlobeRailLeft > .gallery-mobile-panel-toggle.dock-globe-rail__btn {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
 }
 
 /* Fallback when dock rail is not in the layout */
@@ -2291,7 +2341,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     }
 }
 
-/* Portrait mobile: vertical stack — Look → Intel → Connections (scroll); chips sticky at bottom */
+/* Portrait mobile: switch Intel / Connections / Visuals (default Visuals) via top dock chips */
 @media (max-width: 768px) and (orientation: portrait) {
     body:has(#atlasGalleryHost) {
         --gallery-portrait-canvas-min: max(320px, 58dvh);
@@ -2302,6 +2352,45 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
                     clamp(36px, 7vh, 64px)
             )
         );
+    }
+
+    /* Exclusive panel views — desktop still shows all three regions together */
+    #atlasGalleryHost.gallery-mode--mobile-panel-visuals .gallery-mode__archive-side-panel {
+        display: none !important;
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-intel .gallery-mode__main,
+    #atlasGalleryHost.gallery-mode--mobile-panel-intel .gallery-mode__portrait,
+    #atlasGalleryHost.gallery-mode--mobile-panel-intel .gallery-mode__archive-connections {
+        display: none !important;
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-intel
+        .gallery-mode__archive-description.gallery-mode__archive-side-panel,
+    #atlasGalleryHost.gallery-mode--mobile-panel-intel
+        .gallery-mode__archive-description.gallery-mode__archive-side-panel:not(.is-visible) {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-top: var(--mode-dock-rail-clearance, calc(var(--header-height, 72px) + 96px));
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-connections .gallery-mode__main,
+    #atlasGalleryHost.gallery-mode--mobile-panel-connections .gallery-mode__portrait,
+    #atlasGalleryHost.gallery-mode--mobile-panel-connections .gallery-mode__archive-description {
+        display: none !important;
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-connections
+        .gallery-mode__archive-connections.gallery-mode__archive-side-panel,
+    #atlasGalleryHost.gallery-mode--mobile-panel-connections
+        .gallery-mode__archive-connections.gallery-mode__archive-side-panel:not(.is-visible) {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-top: var(--mode-dock-rail-clearance, calc(var(--header-height, 72px) + 96px));
     }
 
     /*
@@ -2345,8 +2434,13 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         width: 100%;
         padding: var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px))
             clamp(12px, 3vw, 16px) clamp(8px, 1.5vh, 12px);
-        pointer-events: auto;
-        z-index: 2;
+        /*
+         * Lift above pagination dock (~680) so fixed Look/Phrase receive taps.
+         * pointer-events:none so the top padding does not cover mode chips;
+         * controls-row re-enables hits for the select + phrase button.
+         */
+        pointer-events: none;
+        z-index: 720;
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__portrait {
@@ -2411,6 +2505,85 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         transform-origin: center bottom;
     }
 
+    /*
+     * Visuals tab — large scale, top-anchored under Look/Phrase.
+     * Feet may bleed past the dock; we do not need the full figure from the bottom.
+     */
+    #atlasGalleryHost.gallery-mode--mobile-panel-visuals .gallery-mode__portrait {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        flex: 1 1 auto;
+        align-self: stretch;
+        width: 100%;
+        min-height: max(
+            52dvh,
+            calc(
+                100dvh - var(--mode-dock-rail-clearance, 160px) - 13.5rem -
+                    var(--footer-height, 60px) - var(--pagination-dock-height, 200px)
+            )
+        );
+        height: max(
+            52dvh,
+            calc(
+                100dvh - var(--mode-dock-rail-clearance, 160px) - 13.5rem -
+                    var(--footer-height, 60px) - var(--pagination-dock-height, 200px)
+            )
+        );
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        display: block;
+        z-index: 1;
+        pointer-events: none;
+        --stage-render-scale: 2.16;
+        /* Negative = up (tweak this to park the figure under Look) */
+        --stage-render-nudge-y: -54%;
+        --stage-render-max-height: 155%;
+        --stage-render-max-width: min(300%, 2200px);
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-visuals .gallery-mode__portrait-img {
+        display: block !important;
+        position: absolute !important;
+        left: 50% !important;
+        right: auto !important;
+        top: 0 !important;
+        bottom: auto !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: var(--stage-render-max-height) !important;
+        max-width: var(--stage-render-max-width) !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+        object-position: center top !important;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(var(--stage-render-nudge-y, -54%))
+            scale(calc(var(--stage-render-scale, 2.16) * var(--hero-bio-portrait-scale, 1))) !important;
+        transform-origin: top center !important;
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-visuals .gallery-mode__portrait--faction {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+    }
+
+    #atlasGalleryHost.gallery-mode--mobile-panel-visuals .gallery-mode__portrait--faction .gallery-mode__portrait-img {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        width: min(90vmin, 820px) !important;
+        height: min(90vmin, 820px) !important;
+        max-width: 98vw !important;
+        max-height: min(72dvh, 820px) !important;
+        transform: none !important;
+    }
+
     body:has(#atlasGalleryHost) .gallery-mode__portrait-empty {
         position: relative;
         left: auto;
@@ -2424,6 +2597,8 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         visibility: visible;
         transform: none;
         pointer-events: auto;
+        /* Title stays in-flow at top; Look/Phrase dock separately below */
+        gap: 0;
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__hero-header:not(.is-visible) {
@@ -2437,6 +2612,85 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 
     body:has(#atlasGalleryHost) .gallery-mode__hero-title {
         font-size: clamp(1.85rem, 9vw, 2.75rem);
+    }
+
+    /* Dev look↔event range editor — desktop/local only */
+    body:has(#atlasGalleryHost) .gallery-mode__ranges-row {
+        display: none !important;
+    }
+
+    /*
+     * Look + Phrase — above the dock trapezium (higher than filter/music flank
+     * chips so they clear the blue mid strip), centered between them.
+     */
+    body:has(#atlasGalleryHost) .gallery-mode__controls-row {
+        position: fixed;
+        left: 50%;
+        right: auto;
+        top: auto;
+        bottom: calc(
+            var(--footer-height, 65px) + var(--pagination-dock-height, 200px) +
+                var(--dock-border-seam-h, 48px) + clamp(56px, 7vh, 72px)
+        );
+        transform: translateX(-50%);
+        z-index: 1;
+        width: min(420px, calc(100vw - 2 * var(--header-utility-btn-w, 130px) - 16px));
+        max-width: min(420px, 78vw);
+        gap: 12px;
+        margin: 0;
+        pointer-events: auto;
+        touch-action: manipulation;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__look-select-label {
+        font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+        pointer-events: none;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__look-select {
+        height: 64px;
+        min-height: 64px;
+        padding: 0 40px 0 16px;
+        font-size: clamp(1.1rem, 4.2vw, 1.25rem);
+        background-color: rgba(8, 48, 112, 0.92);
+        background-image:
+            linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.95) 50%),
+            linear-gradient(135deg, rgba(255, 255, 255, 0.95) 50%, transparent 50%);
+        background-position:
+            calc(100% - 20px) calc(50% - 3px),
+            calc(100% - 14px) calc(50% - 3px);
+        background-size: 7px 7px, 7px 7px;
+        background-repeat: no-repeat;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        z-index: 2;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__look-select:hover:not(:disabled) {
+        background-color: rgba(10, 58, 132, 0.96);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__phrase-btn {
+        flex-basis: 64px;
+        width: 64px;
+        height: 64px;
+        background: rgba(8, 48, 112, 0.92);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__phrase-btn:hover:not(:disabled) {
+        background: rgba(10, 58, 132, 0.96);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__phrase-btn-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__phrase-btn-label {
+        font-size: clamp(0.68rem, 2.4vw, 0.78rem);
     }
 
     /* Intel + Connections — stacked full-width blocks (no desktop fixed/absolute) */
@@ -2623,14 +2877,33 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         display: none;
     }
 
-    /* Chip strip — portrait: Select File open = full-stage overlay; closed = off-screen */
-    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) {
+    /*
+     * Chip strip overlay (legacy Select File): only hide the stage while that strip
+     * is actually mounted and visible. Without this guard, portraits + connections
+     * stay invisible/non-interactive because the strip is no longer mounted.
+     */
+    body:has(#atlasGalleryHost)
+        #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed):has(
+            .gallery-hero-filters:not(.gallery-hero-filters--hidden)
+        ) {
         overflow: hidden;
     }
 
-    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) .gallery-mode__main,
-    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) .gallery-mode__portrait,
-    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) .gallery-mode__archive-side-panel {
+    body:has(#atlasGalleryHost)
+        #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed):has(
+            .gallery-hero-filters:not(.gallery-hero-filters--hidden)
+        )
+        .gallery-mode__main,
+    body:has(#atlasGalleryHost)
+        #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed):has(
+            .gallery-hero-filters:not(.gallery-hero-filters--hidden)
+        )
+        .gallery-mode__portrait,
+    body:has(#atlasGalleryHost)
+        #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed):has(
+            .gallery-hero-filters:not(.gallery-hero-filters--hidden)
+        )
+        .gallery-mode__archive-side-panel {
         visibility: hidden;
         pointer-events: none;
     }

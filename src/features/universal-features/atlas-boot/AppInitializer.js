@@ -26,7 +26,7 @@ import {
 } from '../atlas-header/HeaderModeSynchronization.js';
 import { initMobilePortraitGate } from './mobilePortraitGate.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
-import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=100';
+import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=102';
 import {
     setRunOperation,
     showLoadingOverlay,

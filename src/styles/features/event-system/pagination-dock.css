@@ -359,18 +359,22 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     --dock-segment-slant: 4px;
 }
 
-/* Portrait phone: shrink seam/border art so cap strips match the narrow dock */
+/*
+ * Portrait phone: taller trap + larger controls (header-style touch targets).
+ * Full trapezium redesign deferred — size/accessibility only for now.
+ */
 @media (max-width: 768px) and (orientation: portrait) {
     body.pagination-dock-mobile-locked:has(#paginationDock),
     body:has(#paginationDock) {
         --dock-top-cap-lift: -3px;
         --dock-trapezoid-offset-y: 2px;
         --dock-trapezoid-rail-shift-y: -1px;
-        --dock-border-seam-h: clamp(40px, 6.2vh, 52px);
+        --dock-border-seam-h: clamp(68px, 9.5vh, 84px);
         --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
-        --dock-trapezoid-width: min(92vw, 560px);
+        --dock-trapezoid-width: min(96vw, 640px);
+        --dock-collapse-bottom: calc(var(--dock-border-seam-h) - 8px);
         --main-menu-trapezoid-clearance: calc(
-            var(--dock-border-seam-h) + clamp(4px, 0.8vh, 10px)
+            var(--dock-border-seam-h) + clamp(6px, 1vh, 12px)
         );
     }
 
@@ -380,7 +384,75 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
-        height: var(--dock-border-seam-h, 48px);
+        height: var(--dock-border-seam-h, 72px);
+    }
+
+    /* Beat viewport.css 48×42 / 32px icon caps inside the trap */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > .globe-control-btn.dock-globe-rail__btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > .globe-control-btn {
+        width: auto !important;
+        min-width: 44px !important;
+        height: 100% !important;
+        min-height: 52px !important;
+        max-height: none !important;
+        font-size: 14px !important;
+        padding: 0 4px !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > .globe-control-btn
+        [id$='Icon'],
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > .globe-control-btn
+        img,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn
+        img,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > #erasToggle.dock-globe-rail__btn
+        img {
+        width: 36px !important;
+        height: 36px !important;
+        max-width: 36px !important;
+        max-height: 36px !important;
+        object-fit: contain !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > .page-input-container {
+        flex: 1.15 1 0 !important;
+        min-width: 52px !important;
+        padding: 4px 6px !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        > .page-input-container
+        .page-input {
+        width: 2.6rem !important;
+        min-width: 40px !important;
+        max-width: 56px !important;
+        height: 36px !important;
+        padding: 0 4px !important;
+        font-size: 17px !important;
+        font-weight: 700 !important;
     }
 }
 
@@ -461,12 +533,27 @@ body.pagination-dock-mobile-locked:has(#paginationDock)
     .dock-globe-rail--center
     > .page-input-container
     .page-input {
-    width: 2.25rem !important;
-    min-width: 34px !important;
-    max-width: 48px !important;
-    height: 26px !important;
+    width: 2.6rem !important;
+    min-width: 40px !important;
+    max-width: 56px !important;
+    height: 36px !important;
     padding: 0 4px !important;
-    font-size: 14px !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+}
+
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .globe-control-btn.dock-globe-rail__btn,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .globe-control-btn {
+    width: auto !important;
+    height: 100% !important;
+    min-height: 52px !important;
+    max-height: none !important;
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock)
@@ -477,8 +564,9 @@ body.pagination-dock-mobile-locked:has(#paginationDock)
     .pagination-dock-top-trapezoid
     .dock-globe-rail--center
     > #nextEventBtn.globe-control-btn {
-    flex: 0.55 1 0 !important;
-    padding: 0 2px !important;
+    flex: 0.7 1 0 !important;
+    min-width: 44px !important;
+    padding: 0 4px !important;
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock)
@@ -489,8 +577,36 @@ body.pagination-dock-mobile-locked:has(#paginationDock)
     .pagination-dock-top-trapezoid
     .dock-globe-rail--center
     > #erasToggle.dock-globe-rail__btn {
-    flex: 0.75 1 0 !important;
-    padding: 0 2px !important;
+    flex: 0.9 1 0 !important;
+    min-width: 48px !important;
+    padding: 0 4px !important;
+}
+
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .globe-control-btn
+    [id$='Icon'],
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .globe-control-btn
+    img,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > #globalImageToggle.dock-globe-rail__btn
+    img,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > #erasToggle.dock-globe-rail__btn
+    img {
+    width: 36px !important;
+    height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+    object-fit: contain !important;
 }
 
 /* Page slider visible on mobile compact (same as desktop dock) */

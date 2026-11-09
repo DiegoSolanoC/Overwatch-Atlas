@@ -8,12 +8,41 @@ import {
 } from '../../../system-interface/interface-filter-menu/panel/panelSideImageOverlaySync.js';
 import { closeEventInfoPanelIfOpen } from '../../../system-interface/interface-shared/closeEventInfoPanelIfOpen.js';
 
+const MUSIC_GESTURE_MS = 900;
+
+function markMusicGesture() {
+    const until = Date.now() + MUSIC_GESTURE_MS;
+    try {
+        window.__atlasMusicGestureUntil = until;
+    } catch (_) { /* ignore */ }
+
+    /* Swallow ghost clicks/taps that land on Filters after a Music touch. */
+    const sink = (event) => {
+        if (Date.now() >= until) return;
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        if (!target.closest('#filtersToggle')) return;
+        if (event.cancelable) event.preventDefault();
+        event.stopImmediatePropagation();
+    };
+    const cleanup = () => {
+        document.removeEventListener('click', sink, true);
+        document.removeEventListener('touchend', sink, true);
+    };
+    document.addEventListener('click', sink, true);
+    document.addEventListener('touchend', sink, true);
+    setTimeout(cleanup, MUSIC_GESTURE_MS + 50);
+    return until;
+}
+
 export class MusicPanelService {
     constructor(musicButton, musicPanel, musicPanelClose) {
         this.musicButton = musicButton;
         this.musicPanel = musicPanel;
         this.musicPanelClose = musicPanelClose;
         this._onToggle = null;
+        this._toggleTeardown = null;
+        this._closeTeardown = null;
     }
 
     /**
@@ -24,9 +53,15 @@ export class MusicPanelService {
             console.error('MusicPanelService: musicButton is null in setupToggleButton!');
             return;
         }
-        this._onToggle = (typeof onToggle === 'function') ? onToggle : null;
+        if (typeof this._toggleTeardown === 'function') {
+            try { this._toggleTeardown(); } catch (_) { /* ignore */ }
+            this._toggleTeardown = null;
+        }
 
-        // Handle button click/touch - unified handler
+        this._onToggle = (typeof onToggle === 'function') ? onToggle : null;
+        const ac = new AbortController();
+        const { signal } = ac;
+
         const ensureMusicContentMounted = () => {
             const filtersPanel = document.getElementById('filtersPanel');
             const musicPanel = document.getElementById('musicPanel');
@@ -42,7 +77,7 @@ export class MusicPanelService {
         const handleMusicToggle = (event) => {
             if (event) {
                 event.stopPropagation();
-                event.preventDefault();
+                if (event.cancelable) event.preventDefault();
             }
 
             // Play music button sound
@@ -113,30 +148,47 @@ export class MusicPanelService {
         // Prevent button from interfering with globe controls (mouse)
         this.musicButton.addEventListener('mousedown', (event) => {
             event.stopPropagation();
-        });
+        }, { signal });
 
         this.musicButton.addEventListener('mouseup', (event) => {
             event.stopPropagation();
-        });
+        }, { signal });
 
-        // Handle touch events for mobile
+        /*
+         * Portrait: touchend often cannot preventDefault (cancelable=false), so a
+         * synthetic click still fires — sometimes on Filters, which then steals
+         * music mode via “open+music → switch to filters”. Suppress that ghost click.
+         */
         let touchStartTime = 0;
+        let ignoreClickUntil = 0;
         this.musicButton.addEventListener('touchstart', (event) => {
             event.stopPropagation();
             touchStartTime = Date.now();
-        });
+        }, { passive: true, signal });
 
         this.musicButton.addEventListener('touchend', (event) => {
             event.stopPropagation();
-            event.preventDefault();
-            // Only trigger if it was a quick tap (not a drag)
+            if (event.cancelable) event.preventDefault();
             if (Date.now() - touchStartTime < 300) {
+                ignoreClickUntil = markMusicGesture();
                 handleMusicToggle(event);
             }
-        });
+        }, { signal });
 
-        // Handle click events (desktop and fallback)
-        this.musicButton.addEventListener('click', handleMusicToggle);
+        this.musicButton.addEventListener('click', (event) => {
+            if (Date.now() < ignoreClickUntil || Date.now() < (window.__atlasMusicGestureUntil || 0)) {
+                if (event.cancelable) event.preventDefault();
+                event.stopPropagation();
+                return;
+            }
+            markMusicGesture();
+            handleMusicToggle(event);
+        }, { signal });
+
+        this._toggleTeardown = () => {
+            ac.abort();
+            this._toggleTeardown = null;
+        };
     }
 
     /**
@@ -146,6 +198,12 @@ export class MusicPanelService {
         const closeButton = this.musicPanelClose || document.getElementById('filtersPanelClose');
         if (!closeButton) return;
 
+        if (typeof this._closeTeardown === 'function') {
+            try { this._closeTeardown(); } catch (_) { /* ignore */ }
+            this._closeTeardown = null;
+        }
+
+        const ac = new AbortController();
         closeButton.addEventListener('click', () => {
             const filterService = window.FilterService;
             if (filterService && typeof filterService.getPanelMode === 'function' && filterService.getPanelMode() !== 'music') {
@@ -168,6 +226,11 @@ export class MusicPanelService {
             if (this._onToggle) {
                 this._onToggle(false);
             }
-        });
+        }, { signal: ac.signal });
+
+        this._closeTeardown = () => {
+            ac.abort();
+            this._closeTeardown = null;
+        };
     }
 }

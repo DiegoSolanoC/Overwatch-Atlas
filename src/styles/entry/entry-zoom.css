@@ -143,6 +143,32 @@ body:has(.loading-overlay.active) .time-control-slider {
     }
 }
 
+/* Portrait: larger zoom cluster centered just above the dock trap */
+@media (max-width: 768px) and (orientation: portrait) {
+    .zoom-controls,
+    body:has(#paginationDock) .zoom-controls {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        bottom: calc(
+            var(--footer-height, 60px)
+            + var(--pagination-dock-height, 200px)
+            + var(--dock-border-seam-h, 72px)
+            + clamp(10px, 1.6vh, 18px)
+        ) !important;
+        z-index: 300;
+    }
+
+    .zoom-btn {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 30px !important;
+        border-radius: 10px;
+    }
+}
+
 /* Story / Theater file actions — live in #dockGlobeRailRight (same band as list/timeline toggle) */
 #dockGlobeRailRight.dock-globe-rail--archive-file-actions {
     /* Above story/theater stage; match left rail presence */
@@ -213,6 +239,19 @@ body:has(.loading-overlay.active) #dockGlobeRailRight.dock-globe-rail--archive-f
         max-height: 44px;
         padding: 0 12px;
         font-size: 13px;
+    }
+}
+
+/* Portrait mobile: archive file actions are desktop/dev-only */
+@media (max-width: 768px) and (orientation: portrait) {
+    #dockGlobeRailRight.dock-globe-rail--archive-file-actions,
+    #dockGlobeRailRight.dock-globe-rail--archive-file-actions .archive-file-actions-row {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
     }
 }
 

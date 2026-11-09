@@ -19,9 +19,20 @@ export function getPanelModeFor(filtersPanel, fallback) {
 }
 
 export function setPanelModeFor(filtersPanel, mode) {
-    const nextMode = mode === 'music' ? 'music' : 'filters';
+    let nextMode = mode === 'music' ? 'music' : 'filters';
     const panel = filtersPanel || document.getElementById('filtersPanel');
     if (!panel) return nextMode;
+
+    /* Portrait ghost-click after Music must not flip the shared panel to Filters. */
+    if (
+        nextMode === 'filters'
+        && panel.classList.contains('open')
+        && panel.dataset.panelMode === 'music'
+        && Date.now() < (window.__atlasMusicGestureUntil || 0)
+    ) {
+        nextMode = 'music';
+    }
+
     panel.classList.toggle('filters-panel--music-mode', nextMode === 'music');
     panel.classList.toggle('filters-panel--filters-mode', nextMode !== 'music');
     panel.dataset.panelMode = nextMode;

@@ -343,9 +343,12 @@ function placeRemainingEvents(events, segments, positions) {
  *
  * @param {StoryTimelineEventPosition[]} positions
  * @param {unknown[]} events
+ * @param {{ minEventGapPx?: number, edgeBleedPx?: number, eraBoundaryExtraPx?: number }} [opts]
  */
-function enforceJsonOrderMonotonicLayout(positions, events) {
-    const gap = TIMELINE_MIN_EVENT_GAP_PX;
+function enforceJsonOrderMonotonicLayout(positions, events, opts = {}) {
+    const gap = opts.minEventGapPx ?? TIMELINE_MIN_EVENT_GAP_PX;
+    const edgeBleed = opts.edgeBleedPx ?? TIMELINE_EDGE_BLEED_PX;
+    const eraExtra = opts.eraBoundaryExtraPx ?? TIMELINE_ERA_BOUNDARY_EXTRA_PX;
     /** @type {number|null} */
     let prevX = null;
     /** @type {number|null} */
@@ -362,16 +365,14 @@ function enforceJsonOrderMonotonicLayout(positions, events) {
         let x;
 
         if (prevX == null) {
-            x = Number.isFinite(pos.x) && pos.x > 0
-                ? pos.x
-                : TIMELINE_EDGE_BLEED_PX + gap;
+            x = edgeBleed + gap;
         } else {
             let step = gap;
             if (prevYear != null && curYear != null && curYear > prevYear + 1) {
                 step = gap * 2;
             }
             if (prevEra && curEra && prevEra !== curEra) {
-                step += TIMELINE_ERA_BOUNDARY_EXTRA_PX;
+                step += eraExtra;
             }
             x = prevX + step;
         }
@@ -388,12 +389,15 @@ function enforceJsonOrderMonotonicLayout(positions, events) {
 /**
  * @param {unknown[]} events
  * @param {number} trackPadding
+ * @param {{ minEventGapPx?: number, edgeBleedPx?: number, eraBoundaryExtraPx?: number }} [options]
  */
-export function buildStoryTimelineEventLayout(events, trackPadding) {
+export function buildStoryTimelineEventLayout(events, trackPadding, options = {}) {
+    const edgeBleed = options.edgeBleedPx ?? TIMELINE_EDGE_BLEED_PX;
+    const cardSlot = options.minEventGapPx ?? TIMELINE_CARD_SLOT_PX;
     const rawSegments = buildSolidYearSegments(events);
 
     if (!Array.isArray(events) || events.length === 0 || rawSegments.length === 0) {
-        const emptyWidth = trackPadding * 2 + TIMELINE_EDGE_BLEED_PX * 2;
+        const emptyWidth = trackPadding * 2 + edgeBleed * 2;
         return {
             positions: [],
             segments: [],
@@ -404,14 +408,14 @@ export function buildStoryTimelineEventLayout(events, trackPadding) {
     const { segments, trackWidth: baseTrackWidth } = assignSegmentGeometry(rawSegments, trackPadding);
     const positions = placeEventsInYearBands(events, segments);
     placeRemainingEvents(events, segments, positions);
-    enforceJsonOrderMonotonicLayout(positions, events);
+    enforceJsonOrderMonotonicLayout(positions, events, options);
 
     let maxX = baseTrackWidth;
     for (const pos of positions) {
         if (pos && pos.x > maxX) maxX = pos.x;
     }
 
-    const tailPad = TIMELINE_EDGE_BLEED_PX + TIMELINE_CARD_SLOT_PX / 2 + trackPadding;
+    const tailPad = edgeBleed + cardSlot / 2 + trackPadding;
     const trackWidth = Math.max(baseTrackWidth, maxX + tailPad);
 
     return { positions, segments, trackWidth };

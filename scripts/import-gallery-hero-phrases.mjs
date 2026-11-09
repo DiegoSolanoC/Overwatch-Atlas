@@ -33,6 +33,10 @@ import {
     GALLERY_ULTIMATE_BY_HERO,
 } from './lib/gallery-phrase-ultimates.mjs';
 import { ensureAuditWorkspace, WIKI_QUOTES_CACHE_DIR } from './lib/auditWorkspace.mjs';
+import {
+    extractOw2HeroSelectedSpoken,
+    pickOw2SelectionSource,
+} from './lib/gallery-selection-ow2.mjs';
 
 ensureAuditWorkspace();
 
@@ -660,13 +664,13 @@ async function main() {
         const mtPool = matchTalkCache.get(mtFolder) || [];
         const usedNames = new Set();
 
-        /** @type {string|null} */
-        let firstSelectionDest = null;
+        /** @type {string[]} */
+        const selectionDests = [];
 
         for (const line of selected) {
             const base = uniqueDestName(usedNames, filenameFromWikiAudio(line.wikiAudio, line.spoken));
             const ok = await saveLine(heroDir, base, line, mtPool, counters);
-            if (ok && !firstSelectionDest) firstSelectionDest = path.join(heroDir, base);
+            if (ok) selectionDests.push(path.join(heroDir, base));
         }
 
         for (const line of [...voiceLines, ...communication]) {
@@ -683,13 +687,17 @@ async function main() {
             await saveLine(heroDir, base, line, mtPool, counters);
         }
 
-        if (firstSelectionDest && !dryRun && fs.existsSync(firstSelectionDest)) {
+        const preferredSpoken =
+            extractOw2HeroSelectedSpoken(wikitext) || selected[0]?.spoken || '';
+        const selectionSrc =
+            pickOw2SelectionSource(selectionDests, preferredSpoken) || selectionDests[0] || null;
+        if (selectionSrc && !dryRun && fs.existsSync(selectionSrc)) {
             const selectionPath = path.join(heroDir, 'Selection.ogg');
-            if (path.resolve(firstSelectionDest) !== path.resolve(selectionPath)) {
-                await fsp.copyFile(firstSelectionDest, selectionPath);
+            if (path.resolve(selectionSrc) !== path.resolve(selectionPath)) {
+                await fsp.copyFile(selectionSrc, selectionPath);
             }
-        } else if (firstSelectionDest && dryRun) {
-            console.log('  DRY Selection.ogg');
+        } else if (selectionSrc && dryRun) {
+            console.log(`  DRY Selection.ogg (OW2: ${preferredSpoken})`);
         }
     }
 

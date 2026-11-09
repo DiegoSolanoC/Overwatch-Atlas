@@ -13,8 +13,8 @@ const ENTRY_MODE_KEY = 'dialogueTheaterEntryMode';
 const DOCK_PARENT_ID = 'dockGlobeRailLeft';
 const TOGGLE_ID = 'dialogueTheaterEntryToggle';
 
-const ICON_DIALOGUES = 'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png';
-const ICON_CHATTERS = 'src/assets/images/Icons/Mode%20Icons/Concept%20Gallery.png';
+const ICON_DIALOGUES = 'src/assets/images/Icons/Mode%20Icons/Theater.png';
+const ICON_CHATTERS = 'src/assets/images/Icons/Mode%20Icons/Gallery.png';
 
 /** @typedef {'dialogues'|'chatters'} DialogueTheaterEntryMode */
 
@@ -122,7 +122,8 @@ export function mountDialogueTheaterEntryToggle(options = {}) {
     }
 
     if (btn) {
-        btn.style.setProperty('display', 'flex', 'important');
+        /* Visibility is CSS-owned so #eventSlide.open can hide this chip. */
+        btn.style.removeProperty('display');
     }
 
     const ac = new AbortController();

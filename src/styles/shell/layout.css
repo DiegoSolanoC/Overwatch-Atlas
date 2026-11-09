@@ -138,6 +138,12 @@ header {
     .header-utility-rail {
         display: block;
     }
+
+    /* Info slide covers the stage — park Filters/Music so they don't float above it */
+    body:has(#eventSlide.open) .header-utility-rail {
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
 }
 
 body:not(:has(#paginationDock)) .header-utility-rail {
@@ -906,14 +912,20 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
 @media (max-width: 768px) {
     body {
         --header-chrome-align-top: 2px;
-        --header-chrome-align-extra: 12px;
-        --header-badge-outer-w: clamp(200px, 52vw, 280px);
+        /* Taller chrome so icons aren’t flush to the hub strip edges */
+        --header-chrome-align-extra: 18px;
+        /* Narrower center badge → wider hub columns for touch icons */
+        --header-badge-outer-w: clamp(140px, 34vw, 180px);
         --header-badge-half: calc(var(--header-badge-outer-w) / 2);
+        /* Positive gap restores space between side hubs and center badge */
+        --header-badge-gap: clamp(8px, 2.2vw, 14px);
     }
 
     header {
         --header-title-size: 18px;
         --header-hub-stack-w: clamp(48px, 12vw, 72px);
+        /* Desktop uses a negative gap for overlap; keep the mobile positive gap */
+        --header-badge-gap: clamp(8px, 2.2vw, 14px);
     }
 
     /* Match desktop: each hub button grows to fill its column (flex 1 1 0 from .header-hub-btn). */
@@ -953,9 +965,46 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
         justify-content: center;
     }
 
+    /* Large enough to tap, with vertical inset inside the taller strip */
+    .header-hub-btn.header-hub-btn--icon img,
+    .header-hub-icon {
+        height: 72% !important;
+        max-height: 44px !important;
+    }
+
     .header-title-badge {
         width: var(--header-badge-outer-w);
-        padding: 0 8px;
+        padding: 0 6px;
+    }
+
+    .header-title-badge-logo {
+        height: 64%;
+        max-height: 38px;
+    }
+}
+
+/* Portrait phones: tighten the center logo further so side icons stay large */
+@media (max-width: 768px) and (orientation: portrait) {
+    body {
+        --header-chrome-align-extra: 20px;
+        --header-badge-outer-w: clamp(108px, 28vw, 136px);
+        --header-badge-half: calc(var(--header-badge-outer-w) / 2);
+        --header-badge-gap: clamp(8px, 2.4vw, 12px);
+    }
+
+    header {
+        --header-badge-gap: clamp(8px, 2.4vw, 12px);
+    }
+
+    .header-hub-btn.header-hub-btn--icon img,
+    .header-hub-icon {
+        height: 74% !important;
+        max-height: 46px !important;
+    }
+
+    .header-title-badge-logo {
+        height: 66%;
+        max-height: 32px;
     }
 }
 

@@ -18,10 +18,7 @@ import { updateStatus } from '../../universal-features/atlas-mode-runtime/status
 import { updateStandalonePaginationForFilters } from './pagination/standalonePaginationFilterSync.js';
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
 import { syncDialogueTheaterListIfActive } from '../../dialogue-theater/dialogue-theater-list/DialogueTheaterListView.js';
-import {
-    clearGalleryFilterSelectionIfOpen,
-    isAtlasGalleryOpen,
-} from '../../gallery/gallery-mode/galleryFiltersBridge.js';
+import { clearGalleryFilterSelectionIfOpen } from '../../gallery/gallery-mode/galleryFiltersBridge.js';
 
 /**
  * Replace `#confirmFiltersBtn` and `#clearFiltersBtn` with cloned copies wired
@@ -57,12 +54,15 @@ export function wireStandaloneFilterButtons() {
             if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
                 window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
             }
-            /* In gallery, selection already applied live — keep the panel open. */
-            if (!isAtlasGalleryOpen()) {
+            /* Confirm always dismisses the shared filters/music panel. */
+            if (typeof window.FilterService?.closePanel === 'function') {
+                window.FilterService.closePanel();
+            } else {
                 const filtersPanel = document.getElementById('filtersPanel');
                 if (filtersPanel) filtersPanel.classList.remove('open');
                 const filtersToggle = document.getElementById('filtersToggle');
                 if (filtersToggle) filtersToggle.classList.remove('active');
+                document.getElementById('musicToggle')?.classList.remove('active');
             }
             if (typeof window.syncFiltersPanelTrapIcon === 'function') {
                 window.syncFiltersPanelTrapIcon();
