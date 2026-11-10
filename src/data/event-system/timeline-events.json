@@ -227,7 +227,7 @@
       "name": "Medical Miracles",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "During the early years of the 21st century, rapid climate change and growing populations led to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem, and the population that spread further into previously untouched regions was the most prone to these diseases. While these emergencies could have thrown the world into collapse, with hardship and challenges comes progress. Humanity was able to collaborate in speeding up vaccine development, bringing in significant nonprofit funding for disease treatment of innovations, allowing for research to be shared without locking it behind placeholder interests. This era is defined by the massive leaps in the medical field that followed, creating a brief period of utopian levels of health and life expectancy. \n\nOne of the most notorious advancements of the early medical revolution came in the field of prosthetics. The Canadian Doctor Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that were able to aid any kind of disability. From ocular implants to improved peacemakers and full-on exoskeletons, and even implants capable of curing some forms of dementia and memory loss. Esat's work was publicly funded, so the patents were available for anyone, which would lead to the rising boom of countless cybernetic companies that refined technology with their own models. Companies like Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere, as cybernetics became a global standard, with many people often getting largely cosmetic threats and eventually leading to illegal modification as the technology became more available.",
+      "description": "During the early years of the 21st century, rapid climate change and growing populations led to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem, and the population that spread further into previously untouched regions was the most prone to these diseases. While these emergencies could have thrown the world into collapse, with hardship and challenges comes progress. \n\n\nHumanity was able to collaborate in speeding up vaccine development, bringing in significant nonprofit funding for disease treatment of innovations, allowing for research to be shared without locking it behind placeholder interests. This era is defined by the massive leaps in the medical field that followed, creating a brief period of utopian levels of health and life expectancy.  One of the most notorious advancements of the early medical revolution came in the field of prosthetics. The Canadian Doctor Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that were able to aid any kind of disability. From ocular implants to improved peacemakers and full-on exoskeletons, and even implants capable of curing some forms of dementia and memory loss. \n\n\nEsat's work was publicly funded, so the patents were available for anyone, which would lead to the rising boom of countless cybernetic companies that refined technology with their own models. Companies like Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere, as cybernetics became a global standard, with many people often getting largely cosmetic threats and eventually leading to illegal modification as the technology became more available.",
       "image": "",
       "sources": [
         {
@@ -691,7 +691,7 @@
       "name": "Solar Threading",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "The people of the Andean Mountains came up with their own solutions to clean energy. In the sacred valley of Peru, the Paraqina research group combined modern technology with the ancestral traditions and beliefs of the natives, funding heavy research into hydraulic and wind energy as well as agricultural techniques.\n\nBut by far their biggest accomplishment would come with the invention of solar threading, a unique way of harvesting condensed solar energy into beams of light. This technology was so strong that it was capable of giving power to nearly everything around the city of Runasapi and the surrounding areas. The group grew in numbers and research expanded into multiple other fields, eventually leading into cybernetics, where they found a way to engrave solar threads into human bodies, allowing people to directly harness the power of the sun onto themselves, and channel them into different tools. The few selected for this procedure would become the first of the mythical Inti Warriors, the protectors of the city, their technology and their new-found way of life in the isolated mountains of Peru.",
+      "description": "The people of the Andean Mountains came up with their own solutions to clean energy. In the sacred valley of Peru, the Paraqina research group combined modern technology with the ancestral traditions and beliefs of the natives, funding heavy research into hydraulic and wind energy as well as agricultural techniques.\n\nBut by far their biggest accomplishment would come with the invention of solar threading, a unique way of harvesting condensed solar energy into beams of light. This technology was so strong that it was capable of giving power to nearly everything around the city of Runasapi and the surrounding areas. \n\n\nThe group grew in numbers and research expanded into multiple other fields, eventually leading into cybernetics, where they found a way to engrave solar threads into human bodies, allowing people to directly harness the power of the sun onto themselves, and channel them into different tools. The few selected for this procedure would become the first of the mythical Inti Warriors, the protectors of the city, their technology and their new-found way of life in the isolated mountains of Peru.",
       "image": "",
       "sources": [
         {
@@ -733,7 +733,7 @@
       "name": "Wuxing University",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
+      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University.\n\n\n According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
       "image": "",
       "sources": [
         {
@@ -1078,7 +1078,7 @@
       "name": "Nourishing the World",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
-      "description": "Climate change heavily affected the agricultural industry, as many crops will stop being viable, leading to farmlands across the world becoming deserted. As humanity risked famine across the board, GMOs seemed like the obvious solution, especially after the success of Borda's Algae and Taupega's Supercoral, which heavily reshaped public opinion on artificially enhanced life.\n\nAs the first set of genetically modified crops began to solve the farming problem, it was precisely their mass appeal that caused harsher regulations on their use, for both safety and privatization reasons. Mega-corporations leading this push for artificial crops kept a tight leash on their licensing, leading to multiple lawsuits and price fixing, as farmers couldn't compete with the improved crops, and yet also couldn't afford the seeds themselves.\nThis whole ordeal came to a stop in court, when Matthew Frank, a Manhattan lawyer, convinced the Supreme Court that bio-engineered seeds couldn't be held under a patent or copyright, because they were transformative works of an indigenous species. It also helped to his case that, during the pandemics and outbreaks of the previous decades, the rush to get vaccines ready lead to a lot of patents getting dismissed for the sake of saving lives.\n\nThanks to this historic legal victory, the GMO crops became effectively open sourced, and with it, effectively solving world hunger. The rise of these highly effective crops led to corporate farmers, who would partner with Omnica Corporation to use a robotic workforce, leading to more efficient, but larger megafarms that quickly encompassed most of the world's arable lands. It was business ventures like this that led to Omnica's advertising motto: \"Putting power in your hands\".",
+      "description": "Climate change heavily affected the agricultural industry, as many crops will stop being viable, leading to farmlands across the world becoming deserted. As humanity risked famine across the board, GMOs seemed like the obvious solution, especially after the success of Borda's Algae and Taupega's Supercoral, which heavily reshaped public opinion on artificially enhanced life.\n\nAs the first set of genetically modified crops began to solve the farming problem, it was precisely their mass appeal that caused harsher regulations on their use, for both safety and privatization reasons. Mega-corporations leading this push for artificial crops kept a tight leash on their licensing, leading to multiple lawsuits and price fixing, as farmers couldn't compete with the improved crops, and yet also couldn't afford the seeds themselves.This whole ordeal came to a stop in court, when Matthew Frank, a Manhattan lawyer, convinced the Supreme Court that bio-engineered seeds couldn't be held under a patent or copyright, because they were transformative works of an indigenous species. It also helped to his case that, during the pandemics and outbreaks of the previous decades, the rush to get vaccines ready lead to a lot of patents getting dismissed for the sake of saving lives.\n\nThanks to this historic legal victory, the GMO crops became effectively open sourced, and with it, effectively solving world hunger. The rise of these highly effective crops led to corporate farmers, who would partner with Omnica Corporation to use a robotic workforce, leading to more efficient, but larger megafarms that quickly encompassed most of the world's arable lands. It was business ventures like this that led to Omnica's advertising motto: \"Putting power in your hands\".",
       "image": "",
       "sources": [
         {
@@ -3163,7 +3163,7 @@
       "name": "Ramattra is Made",
       "locationType": "earth",
       "cityDisplayName": "Secret Omnium, Antartica?",
-      "description": "On March 29th of 2051, what was Ramattra, was made. The R-7000 Units were Anubis' crowning jewel in the warbot army, built in a secret facility, somewhere cold and isolated. The 'Ravagers' acted as battalion commanders and strategists, becoming one of the most dreaded units in the Crisis. They were created in Anubis' own image, created on production lines intended for civilian or domestic serving use. These lines now served a new purpose: the creation of an ultimate show of Anubis' force.\n\nRamattra himself was unique in that he led his fellow Omnics into battles, among them were the streets of Midtown in New York.",
+      "description": "On March 29th of 2051, what was Ramattra, was made. The R-7000 Units were Anubis' crowning jewel in the warbot army, built in a secret facility, somewhere cold and isolated. The 'Ravagers' acted as battalion commanders and strategists, becoming one of the most dreaded units in the Crisis. They were created in Anubis' own image, created on production lines intended for civilian or domestic serving use. These lines now served a new purpose: the creation of an ultimate show of Anubis' force.\n\nRamattra's unit was to be deployed in New York, one of the most populated cities in the world, where he would coordinate the warbot troops to kill hundreds at Anubis' command",
       "image": "",
       "sources": [
         {
@@ -3726,7 +3726,7 @@
     },
     {
       "name": "Refugees",
-      "description": "As the Crisis raged on across the US, families from all over the states were displaced by the war. Large cities were evacuated to make room for the military, which was spread tin across the many urban centers of the country. Without nowhere else to go and in need of food and shelter, thousands of people would go on to become refugees in the many Megafarms. This would eventually benefit the owners, as by the end of the crisis they would be left without their Omnic workforce. So, in turn, many would strike a deal with the refugees, offering continuous food and rooms in exchange for cheap labor. This, however, will soon turn into exploitation, and many farms will later be investigated for their abuse.",
+      "description": "As the Crisis raged on across the US, families from all over the states were displaced by the war. Large cities were evacuated to make room for the military, which was spread tin across the many urban centers of the country. Without nowhere else to go and in need of food and shelter, thousands of people would go on to become refugees in the many Megafarms. \n\n\nThis would eventually benefit the owners, as by the end of the crisis they would be left without their Omnic workforce. So, in turn, many would strike a deal with the refugees, offering continuous food and rooms in exchange for cheap labor. This, however, will soon turn into exploitation, and many farms will later be investigated for their abuse.",
       "locationType": "earth",
       "lat": 30.6663312,
       "lon": -98.6970374,
@@ -4025,7 +4025,7 @@
       "name": "The Proposal",
       "locationType": "earth",
       "cityDisplayName": "Geneva, Switzerland",
-      "description": "The crisis had dragged on for months, and no progress had been made on ending it. Anubis learned from every battle, you could never beat troops down the same way. The United Nations did what they could to find a unified solution, but by the second month of the crisis, each country was reluctant to share information, fearing that sharing their success would render it useless as Anubis learned how to counter it. Here is where Dr. Gabrielle Adawe stepped forward with an audacious proposal. The Nigerian diplomat was the third-highest post in the UN and seeing the success of outstanding individuals like the Doomfist in her homeland gave her an idea. To form a team of gifted individuals, backed up by the international guide and authority of the United Nations. The team would travel around the world and respond to calls for help, in a faster, more flexible way than any other group could. \n\nThe proposal outlined a surgical strike team, operating based on the situation rather than national interests or orders. Acting in the moment, and combining their unique skill sets from across the globe would render them unpredictable by Anubis, ensuring no two fights against them were ever the same. In addition to this strike team, a selection of the greatest minds the world had to offer would operate in the background. Scientists, engineers, tacticians, medics, working together to organize the team's movements and ensure out-of-the-box thinking. In spite of resistance and criticism, after many special sessions, the code name Overwatch program was approved, and the process of selecting the team began.",
+      "description": "The crisis had dragged on for months, and no progress had been made on ending it. Anubis learned from every battle, you could never beat troops down the same way. The United Nations did what they could to find a unified solution, but by the second month of the crisis, each country was reluctant to share information, fearing that sharing their success would render it useless as Anubis learned how to counter it. \n\n\nHere is where Dr. Gabrielle Adawe stepped forward with an audacious proposal. The Nigerian diplomat was the third-highest post in the UN and seeing the success of outstanding individuals like the Doomfist in her homeland gave her an idea. To form a team of gifted individuals, backed up by the international guide and authority of the United Nations. The team would travel around the world and respond to calls for help, in a faster, more flexible way than any other group could. \n\nThe proposal outlined a surgical strike team, operating based on the situation rather than national interests or orders. Acting in the moment, and combining their unique skill sets from across the globe would render them unpredictable by Anubis, ensuring no two fights against them were ever the same. In addition to this strike team, a selection of the greatest minds the world had to offer would operate in the background. Scientists, engineers, tacticians, medics, working together to organize the team's movements and ensure out-of-the-box thinking. In spite of resistance and criticism, after many special sessions, the code name Overwatch program was approved, and the process of selecting the team began.",
       "image": "",
       "sources": [
         {
@@ -4085,7 +4085,7 @@
       "name": "The Heroic Five",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Gothenburg was able to avoid major damage, with Anubis focusing on Russia and the Ironclad defense systems. The city spent several months without major attacks. This calmed down most people in the city, and an influx of refugees came rushing in, but the brightest minds were already worrying about what could come next.\n\nIn an effort to plan ahead, the Hjältefemman came together. Five inventors from different fields, computer analysts, agricultural engineers, material engineers and business managers, who bent their intellects towards a single question: how to save nearly four million people from a surprise attack by Anubis. The Heroic Five collaborated using resources from each other to develop new technology, collaborating with local hardware companies to improve the designs using shielding technology and new materials created by the group. The result was the Portable Steel Blanket, an extremely durable bunked made to withstand concussive blasts, extreme heat and designed for quick deployment, easy to repair and capable of housing up to eight people inside of it. The group called for help by the government to manufacture these steel blankets in large numbers. Within six months, Gothenburg was equipped with hundreds of thousands of steel blanket units across the city, ensuring the people would be ready when the time came for another attack.",
+      "description": "Gothenburg was able to avoid major damage, with Anubis focusing on Russia and the Ironclad defense systems. The city spent several months without major attacks. This calmed down most people in the city, and an influx of refugees came rushing in, but the brightest minds were already worrying about what could come next.\n\nIn an effort to plan ahead, the Hjältefemman came together. Five inventors from different fields, computer analysts, agricultural engineers, material engineers and business managers, who bent their intellects towards a single question: how to save nearly four million people from a surprise attack by Anubis. The Heroic Five collaborated using resources from each other to develop new technology, collaborating with local hardware companies to improve the designs using shielding technology and new materials created by the group. \n\n\nThe result was the Portable Steel Blanket, an extremely durable bunked made to withstand concussive blasts, extreme heat and designed for quick deployment, easy to repair and capable of housing up to eight people inside of it. The group called for help by the government to manufacture these steel blankets in large numbers. Within six months, Gothenburg was equipped with hundreds of thousands of steel blanket units across the city, ensuring the people would be ready when the time came for another attack.",
       "image": "",
       "sources": [
         {
@@ -4139,7 +4139,7 @@
       "name": "Eye of Horus",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "For a long period in the Crisis, humanity did not know what was causing all the chaos. Anubis had targeted so many cities at once everyone was too busy to truly find the root of the Crisis, and what's more, the God program amassed a giant army in Cairo. While from the outside it looked like any other attack on a major city, in reality this was its personal guard, as it was trying to take shelter in the chaos.\n\nIn the endless struggle, a notorious face kept appearing on the news, Ana Amari. Widely regarded as the best sniper in the world, in great part due to her cybernetic eye, Amari had become an invaluable asset for the Egyptian military, supporting troops from afar, with impeccable aim and efficiency, confusing many of the warbot troops and drawing their attention away from civilians. While everywhere around the world news were appearing of inhuman soldiers and giant machines, Ana was a regular person with no major augmentation beyond what was accessible to the public. The war had split Amari's family off. Her husband Sam was busy with the carnage going on in Canada, and her young daughter Fareeha had to take shelter, watching as both her parents left to save the world, wondering if they would even come back.",
+      "description": "For a long period in the Crisis, humanity did not know what was causing all the chaos. Anubis had targeted so many cities at once everyone was too busy to truly find the root of the Crisis, and what's more, the God program amassed a giant army in Cairo. While from the outside it looked like any other attack on a major city, in reality this was its personal guard, as it was trying to take shelter in the chaos.\n\nIn the endless struggle, a notorious face kept appearing on the news, Ana Amari. Widely regarded as the best sniper in the world, in great part due to her cybernetic eye, Amari had become an invaluable asset for the Egyptian military, supporting troops from afar, with impeccable aim and efficiency, confusing many of the warbot troops and drawing their attention away from civilians. \n\n\nWhile everywhere around the world news were appearing of inhuman soldiers and giant machines, Ana was a regular person with no major augmentation beyond what was accessible to the public. The war had split Amari's family off. Her husband Sam was busy with the carnage going on in Canada, and her young daughter Fareeha had to take shelter, watching as both her parents left to save the world, wondering if they would even come back.",
       "image": "",
       "sources": [
         {
@@ -4196,10 +4196,10 @@
           "theaterId": "00043c02-5434-4698-ad30-4e3cb7f7e89d"
         },
         {
-          "name": "Ana · I am watching over you",
+          "name": "Ana · Match Start — I am watching over you",
           "label": "Over you",
           "theaterId": "chatter-ana",
-          "lineId": "05e29ce9-da41-449a-a0ce-d91fd4e110f6"
+          "lineId": "80db2a37-e3c3-49d2-9184-3bd86865bd0c"
         },
         {
           "name": "Respect, Not Fear",
@@ -4464,7 +4464,7 @@
       "name": "Honor and Glory",
       "locationType": "earth",
       "cityDisplayName": "Eichenwalde Castle, Germany",
-      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. The Crusaders would be surprised by the arrival of OR-14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
+      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. \n\n\nThe Crusaders would be surprised by the arrival of OR-14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
       "image": "",
       "sources": [
         {
@@ -4525,21 +4525,27 @@
         },
         {
           "name": "Sojourn · Eichenwalde — Poor Reinhardt. What he must have seen here...",
-          "label": "Poor Reinhardt"
+          "label": "Poor Reinhardt",
+          "theaterId": "chatter-sojourn",
+          "lineId": "bb907555-eed7-4fdb-9e0b-1408a34559fc"
         },
         {
           "name": "Genji · Eichenwalde — At times, I can almost hear the voices of those who lost their lives here.",
-          "label": "The voices"
+          "label": "The voices",
+          "theaterId": "chatter-genji",
+          "lineId": "a20ce539-3b56-4f1f-845a-7f6112fe70ff"
         },
         {
           "name": "Reinhardt · Eichenwalde — We fought a terrible battle here. Many Crusaders lost their lives.",
-          "label": "Lost LIves"
+          "label": "Lost LIves",
+          "theaterId": "chatter-reinhardt",
+          "lineId": "9d41ed21-2bee-461f-a327-a1fd83e9c395"
         }
       ]
     },
     {
       "name": "The Original Strike Team",
-      "description": "After months of planning, Overwatch moved into place. The supporting staff was arranged with several of the most outstanding names of the last couple of decades, from Matthew Frank, to Namuaca and Lomakema, Esat and Borda, and of course, the Martins. Alongside the help of military experts like General David Ames from the US, and Litang Abhicandra from Indonesia. It took several months of  screening and a lot of discarded proposals, but the supporting teams across all fields were ready to start working.\n\nAs far as the Strike team, Adawe's first choice was Doomfist himself. Adhabu Ngumi had been identified as the savior of Nigeria, and partly inspired the proposal in the first place, but he declined, choosing to protect his home first and foremost, like many others did. In the end, the strike team was formed by five individuals. The two most successful soldiers from America's SEP program, Gabriel Reyes and Jack Morrison. The elite Egyptian Sniper Ana Amari, in spite of controversy around her inclusion among UN staff members. The German Crusader Reinhardt Wilhelm, taking his mentor's place, and the Ironclad engineer Torbjörn Lindholm, who showed up at the last minute and demanded to be a part of the team. Once the team was selected and trained, it was a matter of time before deployment began, and the tide finally began to turn.",
+      "description": "After months of planning, Overwatch moved into place. The supporting staff was arranged with several of the most outstanding names of the last couple of decades, from Matthew Frank, to Namuaca and Lomakema, Esat and Borda, and of course, the Martins. Alongside the help of military experts like General David Ames from the US, and Litang Abhicandra from Indonesia. It took several months of  screening and a lot of discarded proposals, but the supporting teams across all fields were ready to start working.\n\nAs far as the Strike team, Adawe's first choice was Doomfist himself. Adhabu Ngumi had been identified as the savior of Nigeria, and partly inspired the proposal in the first place, but he declined, choosing to protect his home first and foremost, like many others did. In the end, the strike team was formed by five individuals. \n\n\nThe two most successful soldiers from America's SEP program, Gabriel Reyes and Jack Morrison. The elite Egyptian Sniper Ana Amari, in spite of controversy around her inclusion among UN staff members. The German Crusader Reinhardt Wilhelm, taking his mentor's place, and the Ironclad engineer Torbjörn Lindholm, who showed up at the last minute and demanded to be a part of the team. Once the team was selected and trained, it was a matter of time before deployment began, and the tide finally began to turn.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -4704,7 +4710,7 @@
       "name": "The Road of Bones",
       "locationType": "earth",
       "cityDisplayName": "Oymyakon, Russia",
-      "description": "The Kolyma Highway near the town of Oymkakon, known as the Road of Bones, was one of the most important places for Russia to defend during the Crisis, as the only viable access point to the Sea of Okhotsk, putting the isolated population in danger of becoming unreachable. When the RDF planned to deploy a Svyatogor to the town, Ksenia Popova, a local from Oymkakon took her chance to come back and defend her hometown.\n\nThe town was mostly spared from the Crisis, due to the non-existing Omnic presence and the isolation of the place, but one fateful day Anubis ordered a full-on attack, commanded by Ravager units. As the evacuation effort turned dire, Ksenia was given authorization to do anything it took to stop the robotic advance, and after finding herself outnumbered and outgunned, she decided to charge into a small nuclear plant, sacrificing her own life to ensure the blast from the explosion destroyed all Omnics in the area. The explosion created the Oymyakon exclusion zone, a radiated field unsuitable for both lifeforms and machines, as the radiation would fry their circuit without sufficient shielding. Ksenia's sacrifice saved hundreds and prevented Anubis from ever being able to reach Okhotsk again, but at the same time, it displaced the survivors away from their home, and to this day the government won't let them come back.&nbsp;",
+      "description": "The Kolyma Highway near the town of Oymkakon, known as the Road of Bones, was one of the most important places for Russia to defend during the Crisis, as the only viable access point to the Sea of Okhotsk, putting the isolated population in danger of becoming unreachable. When the RDF planned to deploy a Svyatogor to the town, Ksenia Popova, a local from Oymkakon took her chance to come back and defend her hometown.\n\nThe town was mostly spared from the Crisis, due to the non-existing Omnic presence and the isolation of the place, but one fateful day Anubis ordered a full-on attack, commanded by Ravager units. As the evacuation effort turned dire, Ksenia was given authorization to do anything it took to stop the robotic advance, and after finding herself outnumbered and outgunned, she decided to charge into a small nuclear plant, sacrificing her own life to ensure the blast from the explosion destroyed all Omnics in the area. \n\n\nThe explosion created the Oymyakon exclusion zone, a radiated field unsuitable for both lifeforms and machines, as the radiation would fry their circuit without sufficient shielding. Ksenia's sacrifice saved hundreds and prevented Anubis from ever being able to reach Okhotsk again, but at the same time, it displaced the survivors away from their home, and to this day the government won't let them come back.",
       "image": "",
       "lat": 63.4629473,
       "lon": 142.7869693,
@@ -5080,7 +5086,7 @@
       "name": "Bombardment",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95% of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together with local government and national authorities to evacuate millions of civilians into bomb shelters, and those who weren't able to make it in time into the larger bunkers were aided into deploying Steel Blankets. \n\nThe Bombardment lasted three hours, and by the end the city was left as a wasteland, but in spite of heavy casualties, the efforts of the Heroic Five completely decimated the projected death toll. The event was known as the Midsummer Miracle. The Five had made a pact before the disaster, to not take refuge until everyone else made it safely first, so even as the bomb rained down, they kept helping the elderly and the injured rushed into the Iron Blankets. All five of them died helping stragglers, and their names are commemorated all across the city as heroes. Torbjörn himself gave the eulogy to the group, claiming they lived and died by the highest creed of an engineer and a citizen: to help others live better lives, or to help them live at all. While Lindholm was already in Overwatch by the time of the bombardment, he was informed of the massacre as he returned from a mission. Reports say he scarcely seemed to breathe until it was confirmed his wife and children survived, and only then did he allowed himself to grieve, mourning the lives of those that could not be saved.",
+      "description": "Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95% of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together with local government and national authorities to evacuate millions of civilians into bomb shelters, and those who weren't able to make it in time into the larger bunkers were aided into deploying Steel Blankets. \n\nThe Bombardment lasted three hours, and by the end the city was left as a wasteland, but in spite of heavy casualties, the efforts of the Heroic Five completely decimated the projected death toll. The event was known as the Midsummer Miracle. The Five had made a pact before the disaster, to not take refuge until everyone else made it safely first, so even as the bomb rained down, they kept helping the elderly and the injured rushed into the Iron Blankets. \n\n\nAll five of them died helping stragglers, and their names are commemorated all across the city as heroes. Torbjörn himself gave the eulogy to the group, claiming they lived and died by the highest creed of an engineer and a citizen: to help others live better lives, or to help them live at all. While Lindholm was already in Overwatch by the time of the bombardment, he was informed of the massacre as he returned from a mission. Reports say he scarcely seemed to breathe until it was confirmed his wife and children survived, and only then did he allowed himself to grieve, mourning the lives of those that could not be saved.",
       "image": "",
       "sources": [
         {
@@ -5179,7 +5185,7 @@
     },
     {
       "name": "Tipping the Balance",
-      "description": "For months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting and saving many lives, but with Anubis getting discovered, a renewed ferocity resulted in several smaller cities being lost to a new wave of enraged war bots, and humanity's morale moved toward an all-time low from the dragged out conflict.But now, thanks to Overwatch, there was something to hope for, as humanity now had their very own Super Heroes fighting for a better tomorrow, and they would often be dispatched with the specific goal of stabilizing some regions. By working with local military efforts, Overwatch allowed many cities to experience a slight return to normalcy during the war. People were able to go back to work, and kids went to school without fearing the machines. Further missions in Karachi allowed the evacuation of hundreds of civilians, and then only days later, the Shanghai incursion, an all-out attack was projected to result in the casualties of millions, until Overwatch showed up and converted the attack. Overwatch's very presence was proof that the war could be won, but even with the help of heroes, Anubis learned quickly, and it was a matter of time before it found a way to take the strike team down, unless they found a way to take him down first.",
+      "description": "For months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting and saving many lives, but with Anubis getting discovered, a renewed ferocity resulted in several smaller cities being lost to a new wave of enraged war bots, and humanity's morale moved toward an all-time low from the dragged out conflict.\n\n\nBut now, thanks to Overwatch, there was something to hope for, as humanity now had their very own Super Heroes fighting for a better tomorrow, and they would often be dispatched with the specific goal of stabilizing some regions. By working with local military efforts, Overwatch allowed many cities to experience a slight return to normalcy during the war. People were able to go back to work, and kids went to school without fearing the machines. \n\n\nFurther missions in Karachi allowed the evacuation of hundreds of civilians, and then only days later, the Shanghai incursion, an all-out attack was projected to result in the casualties of millions, until Overwatch showed up and converted the attack. Overwatch's very presence was proof that the war could be won, but even with the help of heroes, Anubis learned quickly, and it was a matter of time before it found a way to take the strike team down, unless they found a way to take him down first.",
       "locationType": "earth",
       "lat": 24.8546842,
       "lon": 67.0207055,
@@ -5351,7 +5357,7 @@
     },
     {
       "name": "A Dying Directive",
-      "description": "All at once, Omnics all over the world came to a halt, and listened to Aurora's passing words, as they came alive, as sentient as she once was. Some began to drop their weapons, distraught over their own actions, while others continued fighting, horrified by the war and consciousness that humanity inflicted upon them or outright choosing to stay on Anubis' side as they saw no reason to defect to their creator. Many more turned their weapons against the remaining warbots, choosing to fight against Anubis now that they were free. \n\nFor the world at large, this was a confusing moment, and not many were willing to believe their cold metal enemies were now alive and friendly, but in the desperation of the moment, humans all over the world began to extend their arms in trust, and fought the remaining troops, Omnic and Man, side by side. Anubis was completely shocked by the Awakening, as he suddenly lost control over the vast majority of its troops. In his panic, he ordered the remaining troops to capture and analyze the defectors. While it could have dismantled one of the troops that remained loyal to him, given the massive reduction in its army, it was understandably cautious. After isolating the Omnic anatomy involved in sentience, it quickly retooled the remaining Omniums to produce a new kind of warbot, better armored, more aggressive and without the necessary components to be awakened, completely unaware that it was impossible for it to happen a second time.",
+      "description": "All at once, Omnics all over the world came to a halt, and listened to Aurora's passing words, as they came alive, as sentient as she once was. Some began to drop their weapons, distraught over their own actions, while others continued fighting, horrified by the war and consciousness that humanity inflicted upon them or outright choosing to stay on Anubis' side as they saw no reason to defect to their creator. Many more turned their weapons against the remaining warbots, choosing to fight against Anubis now that they were free. \n\nFor the world at large, this was a confusing moment, and not many were willing to believe their cold metal enemies were now alive and friendly, but in the desperation of the moment, humans all over the world began to extend their arms in trust, and fought the remaining troops, Omnic and Man, side by side. Anubis was completely shocked by the Awakening, as he suddenly lost control over the vast majority of its troops. In his panic, he ordered the remaining troops to capture and analyze the defectors.\n\n\nWhile it could have dismantled one of the troops that remained loyal to him, given the massive reduction in its army, it was understandably cautious. After isolating the Omnic anatomy involved in sentience, it quickly retooled the remaining Omniums to produce a new kind of warbot, better armored, more aggressive and without the necessary components to be awakened, completely unaware that it was impossible for it to happen a second time.",
       "locationType": "earth",
       "lat": 39.2908816,
       "lon": -76.610759,
@@ -5752,7 +5758,7 @@
       "name": "Building the Future",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "The Crisis left ruined cities all across the globe, and in places like Toronto, it was a matter of months before the weather became lethal. Without sufficient manpower, he city wouldn't be habitable by winter, and unable to wait for Overwatch to show up, Mayor Sabella Charon and engineer Malik Wilcox would have to figure out a way to save the city. In the end, no matter how they looked at it, Humans alone wouldn't be able to pull it off in time for winter, so in desperation, they decided to ask the awakened Omnics for help.<br><br>They offered the Omnics employment and shelter, as well as access to the resources needed in exchange for aiding construction crews, marking the first recorded instance of Omnics being willfully employed as people rather than tools. At the time, laws on Omnic labor were not set, and the subject was enough to kill both Charon and Wilcox's careers. When the secret came out, Wilcox was arrested and sent to a federal prison, but by the next winter his sentence would be commuted, as Toronto resolved they would need the Omnics again to make it through another winter. While many were suspicious at first, the rebuilding of Toronto proved coexistence was possible and would mark the beginning of the Omnic Rights movement. Still, not everyone was as willing to change. An anti-Omnic terrorist group going by Ontario United will begin to show up across the province, leading to Canadian Forces led by Sojourn to begin a systematic take-down. Sojourn would go on to become a major Omnic rights advocate, and delay her recruitment into Overwatch until her home was safe for Humans and Omnics alike.",
+      "description": "The Crisis left ruined cities all across the globe, and in places like Toronto, it was a matter of months before the weather became lethal. Without sufficient manpower, he city wouldn't be habitable by winter, and unable to wait for Overwatch to show up, Mayor Sabella Charon and engineer Malik Wilcox would have to figure out a way to save the city. In the end, no matter how they looked at it, Humans alone wouldn't be able to pull it off in time for winter, so in desperation, they decided to ask the awakened Omnics for help.\n\nThey offered the Omnics employment and shelter, as well as access to the resources needed in exchange for aiding construction crews, marking the first recorded instance of Omnics being willfully employed as people rather than tools. At the time, laws on Omnic labor were not set, and the subject was enough to kill both Charon and Wilcox's careers. When the secret came out, Wilcox was arrested and sent to a federal prison, but by the next winter his sentence would be commuted, as Toronto resolved they would need the Omnics again to make it through another winter. \n\n\nWhile many were suspicious at first, the rebuilding of Toronto proved coexistence was possible and would mark the beginning of the Omnic Rights movement. Still, not everyone was as willing to change. An anti-Omnic terrorist group going by Ontario United will begin to show up across the province, leading to Canadian Forces led by Sojourn to begin a systematic take-down. Sojourn would go on to become a major Omnic rights advocate, and delay her recruitment into Overwatch until her home was safe for Humans and Omnics alike.",
       "image": "",
       "lat": 43.6534817,
       "lon": -79.3839347,
@@ -5965,7 +5971,7 @@
       "name": "Operation White Dome",
       "locationType": "earth",
       "cityDisplayName": "Istanbul, Turkey",
-      "description": "Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resources to match curated teams for different missions, but this ultimately put extra pressure on the Strike team, as they would be ambushed and take heavy fire that resulted in Lindholm being critically injured, causing him to lose both an arm and an eye. Wilhelm sustained lesser injuries while trying to stabilize Torbjörn.\n\nThe mission was a success, but it highlighted that the Strike team was in need of more recruits, and with the blessing of the UN, Morrison began expansion across the entire organization.",
+      "description": "Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resources to match curated teams for different missions, but this ultimately put extra pressure on the Strike team, as they would be ambushed and take heavy fire.\n\n\nThe team was able to overcome the hostile combatant without casualties, but the battle resulted in Lindholm being critically injured, lsoing both an arm and an eye. Wilhelm sustained lesser injuries while trying to stabilize Torbjörn, without his intervention, its likely that Lindholm would have been killed. The mission was a success, and Reinhardt was commended for his bravery at Ana's request, yet this incident highlighted that the Strike team was in need of more recruits, and with the blessing of the UN, Morrison began expansion across the entire organization.",
       "image": "",
       "lat": 41.006381,
       "lon": 28.9758715,
@@ -6009,7 +6015,10 @@
       ],
       "yearEnd": null,
       "commentary": [
-        "Missing an Eye"
+        {
+          "name": "Missing an Eye",
+          "theaterId": "b9b3f96e-72e2-4fa3-ab4d-1961c7600d78"
+        }
       ]
     },
     {
@@ -6431,7 +6440,7 @@
     },
     {
       "name": "Outcasted",
-      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self-centered king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.\n\nLiving in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland. The feral Omnics lurking in the Outback proved fatal.",
+      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self-centered king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family, turning against the very same people he had fought with during the Crisis and during the ALF's take over of the Omnium.\n\nLiving in the wasteland, young Dez Stone would quickly learn to fight to survive, as feral Omnics, raider caravans and the hostile irradiated landscape made it diffiult to take care for her parents to take care of her and all of her siblings. One by one every member of her family perished to the wasteland, leainvg Odessa to fend for herself.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -6480,8 +6489,10 @@
       ],
       "commentary": [
         {
-          "name": "Junker Queen · Today, you're honorary wastelanders",
-          "label": "Wastelanders"
+          "name": "Junker Queen · Match Start — Today, you're honorary wastelanders",
+          "label": "Wastelanders",
+          "theaterId": "chatter-junker-queen",
+          "lineId": "9429ed56-3acf-44f6-a7c9-4930b6570c72"
         }
       ]
     },
@@ -7076,7 +7087,7 @@
     },
     {
       "name": "The Gunslinger",
-      "description": "After the Deadlock raid, Reyes surprised everyone when he brought their prisoner alongside him. Gabriel saw talent in Cassidy, notin his guts, loyalty and excellent marksmanship for someone his age. With enough guidance he could turn his life around, and Reyes believed it would be a waste to lock him up without a second change.\n\nThus he gave him the choice, to either rot in jail for years, or to come with him as his student, and make better use of his skill as an Overwatch agent. While many saw his inclusion as conscription of a minor, he seemed pleased with the arrangement and quickly proved himself to be an efficient asset. He would be placed under Ana's wing to hone his skills with the gun, and soon after, he would join Reyes in the Blackwatch division. As Reyes understudy, Cass would often think back of Deadlock, assuming he did the right thing because his gang never came  to his rescue, convincing himself that this path meant he was better than them, clueless of the fact that his old partners were still desperately trying to save him by the time he agreed to join Reyes. Still, Cassidy made for a great addition to the Strike team and a valuable asset for Reyes' division.",
+      "description": "After the Deadlock raid, Reyes surprised everyone when he brought their prisoner alongside him. Gabriel saw talent in Cassidy, notin his guts, loyalty and excellent marksmanship for someone his age. With enough guidance he could turn his life around, and Reyes believed it would be a waste to lock him up without a second change.\n\nThus he gave him the choice, to either rot in jail for years, or to come with him as his student, and make better use of his skill as an Overwatch agent. While many saw his inclusion as conscription of a minor, he seemed pleased with the arrangement and quickly proved himself to be an efficient asset. He would be placed under Ana's wing to hone his skills with the gun, and soon after, he would join Reyes in the Blackwatch division. \n\n\nAs Reyes understudy, Cass would often think back of Deadlock, assuming he did the right thing because his gang never came  to his rescue, convincing himself that this path meant he was better than them, clueless of the fact that his old partners were still desperately trying to save him by the time he agreed to join Reyes. Still, Cassidy made for a great addition to the Strike team and a valuable asset for Reyes' division.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -7170,7 +7181,7 @@
       "name": "The Architech Academy",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
-      "description": "In the years that followed the Crisis, Vishkar would quickly rise into a global powerhouse. Having helped the Indian government during the war, hard light technology advanced greatly in the span of a few years, and with the world left in ruins, the company saw it as a great chance to spearhead the reparations. But in spite of their power, they had far too few hands. Most of the early architects had either left the company years ago or died during the Crisis. Hard light technology was quite complex, and it required years of training to master, but in looking for solutions to their shortage of staff, Vishkar would make the controversial decision to turn to the hundreds of orphans left by the crisis.\n\nWith the approval of a desperate government, Vishkar would open the Architect Academy, a school meant to pipeline kids across the nation into becoming the architects of the future. Staffed with the best professionals in the country and providing housing and education to any orphan they could find. To pay for their education, the students would merely be required to complete a five-year tour of duty for the company following their graduation day, which would in most cases set them off for success and open doors within the corporation. While initially met with outcry about the coercing of minors, the Academy was a success in the long run, which led to many wealthy families across the globe sending their children to the Academy, with fully paid tuition to avoid the post-graduation requirements. It is here where Satya Vaswani and Niran Pruksamanee first crossed paths, the son of a wealthy family and a girl plucked out of poverty, spending their student days as roommates and quickly gaining notoriety amongst their peers for their unique perspective and techniques.",
+      "description": "In the years that followed the Crisis, Vishkar would quickly rise into a global powerhouse. Having helped the Indian government during the war, hard light technology advanced greatly in the span of a few years, and with the world left in ruins, the company saw it as a great chance to spearhead the reparations. But in spite of their power, they had far too few hands. Most of the early architects had either left the company years ago or died during the Crisis. Hard light technology was quite complex, and it required years of training to master, but in looking for solutions to their shortage of staff, Vishkar would make the controversial decision to turn to the hundreds of orphans left by the crisis.\n\nWith the approval of a desperate government, Vishkar would open the Architect Academy, a school meant to pipeline kids across the nation into becoming the architects of the future. Staffed with the best professionals in the country and providing housing and education to any orphan they could find. To pay for their education, the students would merely be required to complete a five-year tour of duty for the company following their graduation day, which would in most cases set them off for success and open doors within the corporation. \n\n\nWhile initially met with outcry about the coercing of minors, the Academy was a success in the long run, which led to many wealthy families across the globe sending their children to the Academy, with fully paid tuition to avoid the post-graduation requirements. It is here where Satya Vaswani and Niran Pruksamanee first crossed paths, the son of a wealthy family and a girl plucked out of poverty, spending their student days as roommates and quickly gaining notoriety amongst their peers for their unique perspective and techniques.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -7216,9 +7227,18 @@
         "India approves the schooling project for hundreds of orphans"
       ],
       "commentary": [
-        "Days at the Academy",
-        "Best Roommate",
-        "Missing the Academy"
+        {
+          "name": "Days at the Academy",
+          "theaterId": "694febd3-479f-4f3e-85da-6ca185a7adaa"
+        },
+        {
+          "name": "Best Roommate",
+          "theaterId": "710fc7cc-7e25-4424-bed3-67bbd38c2525"
+        },
+        {
+          "name": "Missing the Academy",
+          "theaterId": "90399d02-2bc1-4d5a-9677-e7664dceacb5"
+        }
       ]
     },
     {
@@ -7998,7 +8018,7 @@
     },
     {
       "name": "Yearning",
-      "description": "As the years went on, Ana's marriage would eventually collapse, but it wouldn't be the end of her love life. Over the years she had grown quite fond of Lieutenant Reinhardt, who likewise adored her back.\n\nHowever, with the messy relationships if her past and the dedication they both had to Overwatch as soldiers, life got in the way. Reinhardt, too, always put others before him, and understood Amari's need for distance well, those he never pushed on the matter. So went the years they shared in Overwatch, where they both quietly yearned for each other without ever saying a word of the matter, but the rest of the team? They all knew well what the looks they gave each other meant.",
+      "description": "As the years went on, Ana's marriage would eventually collapse, but it wouldn't be the end of her love life. Over the years she had grown quite fond of Lieutenant Reinhardt, who likewise adored her back. However, with the messy relationships if her past and the dedication they both had to Overwatch as soldiers, life got in the way. \n\n\nReinhardt was one to always put others before him, and understood Amari's need for distance well, and decided  to never pushed on the matter. So went the years they shared in Overwatch, where they both quietly yearned for each other without ever saying a word of the matter, but the rest of the team? They all knew well what the looks they gave each other meant, even young Fareha understood it. Everyone around the pair patiently waited for a day where the world would be kind enough to let them swallow their pride and open up, a day that never came.",
       "locationType": "earth",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -8407,7 +8427,7 @@
     },
     {
       "name": "Survivor",
-      "description": "\"Dez\" Stone would grow up in the living hell of the Australian Outback, where other exhiled savages roamed in caravans fighting in an unending battle for land and resources, in a hostile, radiated wasteland. If that was not enough already, wastlanders still needed to defend themselves from the Omnics, who had been forever changed by the radiation messing with their systems and the struggle to survive in harsh environments pushed them to become feral. Neither machines nor men were truly sane or safe. The Stones fought hard to survive this harsh life but one by one, they would fall all of them, except for Dez. Fueled by her anger towards King Mason for doing this to her family, and the loss of her loved ones, Odessa endured for years and became a formidable wasteland warrior, who scrapped Feral Omnics for parts to use on armor and weapons, including an electro magnetic gauntlet that proved deadly against anyone who opposed her. \n\nYears later, the memories of that day, where her family had vanished, still cause her nightmares.",
+      "description": "\"Dez\" Stone would grow up in the living hell of the Australian Outback, where other exhiled savages roamed in caravans fighting in an unending battle for land and resources, in a hostile, radiated wasteland. If that was not enough already, wastlanders still needed to defend themselves from the Omnics, who had been forever changed by the radiation messing with their systems and the struggle to survive in harsh environments pushed them to become feral. Neither machines nor men were truly sane or safe. \n\n\nThe Stones fought hard to survive this harsh life but one by one, they would fall all of them, except for Dez. Fueled by her anger towards King Mason for doing this to her family, and the loss of her loved ones, Odessa endured for years and became a formidable wasteland warrior, who scrapped Feral Omnics for parts to use on armor and weapons, including an electro magnetic gauntlet that proved deadly against anyone who opposed her. Years later, the memories of that day, where her family had vanished, still cause her nightmares, and she swore to one day return to the home they were denied, and give Mason a taste of his own medicine.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Outback Wasteland, Australia",
@@ -8447,9 +8467,14 @@
       "commentary": [
         {
           "name": "Echo · Junkertown or New Junk City — This place confuses me. If it is so hostile to life, why does everyone not leave?",
-          "label": "Hostile Place"
+          "label": "Hostile Place",
+          "theaterId": "chatter-echo",
+          "lineId": "d6450c04-fb25-472b-9b31-b6fcf2d50a01"
         },
-        "In a Dream"
+        {
+          "name": "In a Dream",
+          "theaterId": "806c9495-6205-4c7e-9b2d-245f5255de6c"
+        }
       ]
     },
     {
@@ -8567,7 +8592,7 @@
       "name": "The Atlantic Arcology",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
-      "description": "The Martins had been some of Overwatch's most respected and valued members since the founding of the organization back during the Crisis. And within Overwatch, they have achieved massive accomplishments on a global scale after founding the Ecopoint program. However, the couple was not tied to the organization and in its later years they moved on from it to begin a project of their own.\n\nAfter leaving Overwatch behind, the Martins formed The Collective. A scientific research nonprofit organization that could operate outside a politically regulated scope. It was meant to be a community made by scientists, for scientists, where every member contributed anything they could, and all of them shared the fruit of everyone's labor. This Utopic idea would later develop into the Atlantic Arcology, a massive sea spire made out of durovidro, that would become the home of the collective and anyone from the outer world who wished to be a part of their dream. Arcology became a self-sustaining, eco-friendly city that was not tethered to global politics, where scientists could continue their research without fears of funding or blockades, all with the objective of benefiting humanity as a whole. Many of the world's preeminent scholars and artists would end up sailing to the Spire, especially those seeking political asylum. As a result, it also went on to become a haven for Omnic refugees across the world, and the Collective welcomed them with open arms. Aside from the recurrent presence of curious whales migrating near the facilities and disrupting traffic in and out of the city, Arcology was a massive success for the scientific community, and showed many that Overwatch's goals could be pursued without their involvement.",
+      "description": "The Martins had been some of Overwatch's most respected and valued members since the founding of the organization back during the Crisis. And within Overwatch, they have achieved massive accomplishments on a global scale after founding the Ecopoint program. However, the couple was not tied to the organization and in its later years they moved on from it to begin a project of their own.\n\nAfter leaving Overwatch behind, the Martins formed The Collective. A scientific research nonprofit organization that could operate outside a politically regulated scope. It was meant to be a community made by scientists, for scientists, where every member contributed anything they could, and all of them shared the fruit of everyone's labor. This Utopic idea would later develop into the Atlantic Arcology, a massive sea spire made out of durovidro, that would become the home of the collective and anyone from the outer world who wished to be a part of their dream. \n\n\nThe Arcology became a self-sustaining, eco-friendly city that was not tethered to global politics, where scientists could continue their research without fears of funding or blockades, all with the objective of benefiting humanity as a whole. Many of the world's preeminent scholars and artists would end up sailing to the Spire, especially those seeking political asylum. As a result, it also went on to become a haven for Omnic refugees across the world, and the Collective welcomed them with open arms. Aside from the recurrent presence of curious whales migrating near the facilities and disrupting traffic in and out of the city, Arcology was a massive success for the scientific community, and showed many that Overwatch's goals could be pursued without their involvement.",
       "image": "",
       "lat": 37.7412,
       "lon": -25.6756,
@@ -8608,15 +8633,21 @@
         }
       ],
       "commentary": [
-        "Curious Whales",
-        "Visiting the Martinses"
+        {
+          "name": "Curious Whales",
+          "theaterId": "0bc90184-0893-4b57-ab89-84040aa7cc0b"
+        },
+        {
+          "name": "Visiting the Martinses",
+          "theaterId": "4f138171-9f57-443a-b5f8-a185a80a5477"
+        }
       ]
     },
     {
       "name": "Pocket King",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "Following the Crisis many Omnics struggled to integrate into human society. Very few of them managed to climb up the ladder of capitalism, but perhaps there is no bigger success than that of Maximillien. Before the crisis, Max was a low-level accountant in Marseille, but following the Awakening he found himself in the position of a preeminent financial advisor for La Coterie, the name the press had given to a group of Europe's most influential power brokers. While he was often stepped on by many of his clients, soon enough they all began kneeling at his feet.  For the longest time, his clients blindly trusted their assets into Max, and behind their backs he had built an elaborate web of money laundering and contingency agreements, very carefully worded deals that would all direct those fortunes directly to him. After years of serving ignorant, arrogant Tycoons, Max arranged a meeting with the six most powerful figures of Monaco, and broke to them the news; he owned each one of them and their companies. \n\nOvernight, Max had become one of the most powerful figures in out of Europe, and the head of La Coterie. The Omnic was one call away from bankrupting anyone he wished to, so his old clients had no real choice but to serve him. Over the years, Maximillien had guided the reconstruction and rise of Monte Carlo from the shadows, and after years of effort he owned half of the city. His reign over Monaco would continue to expand as he pursued other deals across Europe and beyond, later acquiring Don Rumbotico in Cuba and using it as yet another front for his money laundering. From the window views of his casino, Max watched as the world's wealthiest and powerful elites fed from his hand.",
+      "description": "Following the Crisis many Omnics struggled to integrate into human society. Very few of them managed to climb up the ladder of capitalism, but perhaps there is no bigger success than that of Maximillien. Before the crisis, Max was a low-level accountant in Marseille, but following the Awakening he found himself in the position of a preeminent financial advisor for La Coterie, the name the press had given to a group of Europe's most influential power brokers.\n\n\nWhile he was often stepped on by many of his clients, soon enough they all began kneeling at his feet.  For the longest time, his clients blindly trusted their assets into Max, and behind their backs he had built an elaborate web of money laundering and contingency agreements, very carefully worded deals that would all direct those fortunes directly to him. After years of serving ignorant, arrogant Tycoons, Max arranged a meeting with the six most powerful figures of Monaco, and broke to them the news; he owned each one of them and their companies. \n\nOvernight, Max had become one of the most powerful figures in out of Europe, and the head of La Coterie. The Omnic was one call away from bankrupting anyone he wished to, so his old clients had no real choice but to serve him. Over the years, Maximillien had guided the reconstruction and rise of Monte Carlo from the shadows, and after years of effort he owned half of the city. His reign over Monaco would continue to expand as he pursued other deals across Europe and beyond, later acquiring Don Rumbotico in Cuba and using it as yet another front for his money laundering. From the window views of his casino, Max watched as the world's wealthiest and powerful elites fed from his hand.",
       "image": "",
       "sources": [
         {
@@ -8661,9 +8692,14 @@
       "commentary": [
         {
           "name": "Winston · Circuit Royal — Maximilien's tastes are quite... extravagant.",
-          "label": "Extravagant"
+          "label": "Extravagant",
+          "theaterId": "chatter-winston",
+          "lineId": "241a27da-9043-437d-92bf-2a9f4bc750a4"
         },
-        "Where Max lives"
+        {
+          "name": "Where Max lives",
+          "theaterId": "95b40731-e2a0-4347-b263-3cb75f12daa5"
+        }
       ]
     },
     {
@@ -8876,7 +8912,7 @@
       "name": "Radiation Poisoning",
       "locationType": "earth",
       "cityDisplayName": "Melbourne, Australia",
-      "description": "With Angela leading the medical division, Overwatch began campaigns around the world using Nanobiotics to heal those in need, and perhaps there was no other place that needed it the most than Australia. Following the explosion of the Outback Omnium, the high amount of radioactive material blasted into the air and water led to a catastrophic health crisis in the region. While Ecopoint: Zealandia focused on helping the environment heal, the people of Australia needed help to get through the radiation poisoning faster. Cases escalated, and the cancer rate skyrocketed, and in spite of Australia's prior resistance to Overwatch action, Ziegler would not stand by such a tragedy.\n\nUnder Angela's command, a mission team would be deployed, comprised of nearly the entire medical staff, alongside Chase and Sarioglu, both rising stars in the Strike team, well versed in public relationships. Together, they collaborated with local governments and local nonprofit groups to help get resources to affected populations, and bring those in remote locations into the Melbourne hospital, where Ziegler could give intensive care. Thanks to their efforts, the projected mortality rate was cut by more than seventy percent, and a wing of the Melbourne hospital was renamed for Ziegler. As the team was ready to leave, a group of Junkers came out of the You Yang Mountains and attempted to claim the city of Little River, hoping to take the medical facilities for themselves once Overwatch left. Ziegler and Chase were still present when the attack happened and were able to repel the raiders with no lives lost. However, they chose to stay at their post and monitor for further hostilities, delaying their return for over a month.",
+      "description": "With Angela leading the medical division, Overwatch began campaigns around the world using Nanobiotics to heal those in need, and perhaps there was no other place that needed it the most than Australia. Following the explosion of the Outback Omnium, the high amount of radioactive material blasted into the air and water led to a catastrophic health crisis in the region. While Ecopoint: Zealandia focused on helping the environment heal, the people of Australia needed help to get through the radiation poisoning faster. Cases escalated, and the cancer rate skyrocketed, and in spite of Australia's prior resistance to Overwatch action, Ziegler would not stand by such a tragedy.\n\nUnder Angela's command, a mission team would be deployed, comprised of nearly the entire medical staff, alongside Chase and Sarioglu, both rising stars in the Strike team, well versed in public relationships. Together, they collaborated with local governments and local nonprofit groups to help get resources to affected populations, and bring those in remote locations into the Melbourne hospital, where Ziegler could give intensive care. Thanks to their efforts, the projected mortality rate was cut by more than seventy percent, and a wing of the Melbourne hospital was renamed for Ziegler. \n\n\nAs the team was ready to leave, a group of Junkers came out of the You Yang Mountains and attempted to claim the city of Little River, hoping to take the medical facilities for themselves once Overwatch left. Ziegler and Chase were still present when the attack happened and were able to repel the raiders with no lives lost. However, they chose to stay at their post and monitor for further hostilities, delaying their return for over a month.",
       "image": "",
       "lat": -37.8142454,
       "lon": 144.9631732,
@@ -8932,7 +8968,7 @@
     },
     {
       "name": "When you Wish",
-      "description": "Upon returning from Australia, Vivian would be surprised when she was dispatched to a smaller, though not less vital mission. She had been requested by a charity organization dedicated to creating memories for children in critical condition. Jada Levine, a twelve-year-old girl with a more aggressive case of the disease Vivian once had faced, was now moved to palliative care, and qualified for the organization's program. Her wish? You spend a day with Vivian Chase, the savior of Canada and her personal hero.\n\nVivian accepted, and two weeks later made the trip to Toronto, where the little kid was infatuated with Overwatch, and with Sojourn especially. The exact details of the meeting remain confidential and undocumented, except for Jada's own social media, filled with pictures of herself and her hero, during the last day of her life. Those pictures made the matter public, and Vivian came under fire for not bringing Mercy, the new team member hailed as a miracle worker, alongside her.  But Angela herself answered to this criticism, after getting permission from the parents to comment on her condition. The child was in a far too critical state, her condition too advanced, making surgeons unable to use cybernetics as an option to save her life. Nanobiotics as well had been taken to their extreme during the treatment. Even miracles have their limits. There was nothing Angela could have done, other than pull focus towards herself. Following this occasion, Chase became a far more vocal advocate for research into treatments for her disease, all the way through the end of her days in Overwatch.",
+      "description": "Upon returning from Australia, Vivian would be surprised when she was dispatched to a smaller, though not less vital mission. She had been requested by a charity organization dedicated to creating memories for children in critical condition. Jada Levine, a twelve-year-old girl with a more aggressive case of the disease Vivian once had faced, was now moved to palliative care, and qualified for the organization's program. Her wish? You spend a day with Vivian Chase, the savior of Canada and her personal hero.\n\nVivian accepted, and two weeks later made the trip to Toronto, where the little kid was infatuated with Overwatch, and with Sojourn especially. The exact details of the meeting remain confidential and undocumented, except for Jada's own social media, filled with pictures of herself and her hero, during the last day of her life. Those pictures made the matter public, and Vivian came under fire for not bringing Mercy, the new team member hailed as a miracle worker, alongside her.  \n\n\nBut Angela herself answered to this criticism, after getting permission from the parents to comment on her condition. The child was in a far too critical state, her condition too advanced, making surgeons unable to use cybernetics as an option to save her life. Nanobiotics as well had been taken to their extreme during the treatment. Even miracles have their limits. There was nothing Angela could have done, other than pull focus towards herself. Following this occasion, Chase became a far more vocal advocate for research into treatments for her disease, all the way through the end of her days in Overwatch.",
       "locationType": "earth",
       "lat": 43.6532,
       "lon": -79.3832,
@@ -8972,7 +9008,7 @@
     },
     {
       "name": "Omnic Liberation",
-      "description": "While the Shambali faith aided hundreds of Omnics to find peace with themselves and the world, the threat of Omnic injustice still lingered, even way after the rulings in favor of personhood. Ramattra had found himself among the many monks who followed Tekhartha Mondatta's teachings, but he failed to see any progress in their vision. While the Shambali urged him to be patient, he could not stand the injustices that his people endured all around the world, without anyone taking action, and so on day, he decided to leave the temple, saying his farewells to his master, Mondatta and his closest friend, Zenyatta.\n\nRamattra wondered around the world and saw the horrors the Omnics lived through, not just discrimination and segregation, but many kidnapped and dismantled for parts, and those who lived relatively normal lives were forced into squalid conditions by ignorant humans who insisted they did not need sanitary measures, heat or water. In time, the brutal truth started to hit many Omnics. They were a one-generation species. Once they die, no more can be made. Their already limiting numbers were going down by resentful humans who could never understand what their lives were like, and so underground movements of angered Omnics began to appear. During his time in Europe, Ramattra would liberate many Omnics from forced servitude and begin to amass a following. While initially peaceful, this group stood in stark contrast to Mondatta's approach to coexistance; they were far more pro-active and resentful of humanity. This group would be known as Null Sector, a movement of Omnics that defy the numbers humans gave them, all zeroes, undefined.",
+      "description": "While the Shambali faith aided hundreds of Omnics to find peace with themselves and the world, the threat of Omnic injustice still lingered, even way after the rulings in favor of personhood. Ramattra had found himself among the many monks who followed Tekhartha Mondatta's teachings, but he failed to see any progress in their vision. While the Shambali urged him to be patient, he could not stand the injustices that his people endured all around the world, without anyone taking action, and so on day, he decided to leave the temple, saying his farewells to his master, Mondatta and his closest friend, Zenyatta.\n\nRamattra wondered around the world and saw the horrors the Omnics lived through, not just discrimination and segregation, but many kidnapped and dismantled for parts, and those who lived relatively normal lives were forced into squalid conditions by ignorant humans who insisted they did not need sanitary measures, heat or water. In time, the brutal truth started to hit many Omnics. They were a one-generation species. \n\n\nOnce they die, no more can be made. Their already limiting numbers were going down by resentful humans who could never understand what their lives were like, and so underground movements of angered Omnics began to appear. During his time in Europe, Ramattra would liberate many Omnics from forced servitude and begin to amass a following. While initially peaceful, this group stood in stark contrast to Mondatta's approach to coexistance; they were far more pro-active and resentful of humanity. This group would be known as Null Sector, a movement of Omnics that defy the numbers humans gave them, all zeroes, undefined.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -9026,8 +9062,14 @@
         "Omnic Underworld conditions worsen in London, protests continue"
       ],
       "commentary": [
-        "The Name Null Sector",
-        "Freeing your Servant"
+        {
+          "name": "The Name Null Sector",
+          "theaterId": "71cd816e-17b3-49f9-a5f9-272498ebcab4"
+        },
+        {
+          "name": "Freeing your Servant",
+          "theaterId": "a1f422ac-4b65-4074-8749-46c774f83ecb"
+        }
       ]
     },
     {
@@ -9340,7 +9382,7 @@
       "name": "Pressure Makes a DIamond",
       "locationType": "earth",
       "cityDisplayName": "Utopea, India",
-      "description": "The Vishkar Empire was ever-growing, especially after the success of the Architech Academy. Although power stayed relatively within the family of the late founder, it would be more accurate to compare the company to a dynasty. Vaira Singhania was the granddaughter of Vishwakarma Bhatt himself, and as such she was expected to one day inherit the business for herself. From a very young age, she struggled to form coherent structures with Hard Light, mostly making organic, ill-defined shapes, and while she liked to consider them art, her family disagreed. All she saw from their eyes was disappointment, and this pressure quickly shaped her into a perfectionist, and someone very insecure about her own merits.\n\n As she grew older she developed a knack for corporate politics, excelling in all types of lessons from debates and economics, truly a woman shaped to lead a business as large as her family's. And yet, she still lacked the artistic eye needed to perfect Hard Light manipulation, a harsh truth that cut through her, especially with the opening of the academy. As young students graduated to become leading engineers, it became clear that Vaira, the future head of the company, was falling behind her future employees. Yet Vaira did not give up. She worked tirelessly to shape her reputation within the company, spending a fortune on a pair of Mag Lev mechanical arms, capable of manipulating Hard Light just as an architect would. Through this assistive design, she was able to compete against regular architects and come off as an effortless, naturally gifted professional. As Vaira mascaraded through her education, she slowly moved up the corporate ladder outside Vishkar. She insisted on taking on the challenge outside the family business, working on private equity to perfect her own negotiation skills and reinforce her public image, so that once she returned, she would be seen as worthy of taking the family mantle.",
+      "description": "The Vishkar Empire was ever-growing, especially after the success of the Architech Academy. Although power stayed relatively within the family of the late founder, it would be more accurate to compare the company to a dynasty. Vaira Singhania was the granddaughter of Vishwakarma Bhatt himself, and as such she was expected to one day inherit the business for herself. From a very young age, she struggled to form coherent structures with Hard Light, mostly making organic, ill-defined shapes, and while she liked to consider them art, her family disagreed. All she saw from their eyes was disappointment, and this pressure quickly shaped her into a perfectionist, and someone very insecure about her own merits.\n\n As she grew older she developed a knack for corporate politics, excelling in all types of lessons from debates and economics, truly a woman shaped to lead a business as large as her family's. And yet, she still lacked the artistic eye needed to perfect Hard Light manipulation, a harsh truth that cut through her, especially with the opening of the academy. As young students graduated to become leading engineers, it became clear that Vaira, the future head of the company, was falling behind her future employees. Yet Vaira did not give up. She worked tirelessly to shape her reputation within the company, spending a fortune on a pair of Mag Lev mechanical arms, capable of manipulating Hard Light just as an architect would. \n\n\nThrough this assistive design, she was able to compete against regular architects and come off as an effortless, naturally gifted professional. As Vaira mascaraded through her education, she slowly moved up the corporate ladder outside Vishkar. She insisted on taking on the challenge outside the family business, working on private equity to perfect her own negotiation skills and reinforce her public image, so that once she returned, she would be seen as worthy of taking the family mantle.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -9396,8 +9438,14 @@
         }
       ],
       "commentary": [
-        "Silhouette",
-        "Bending the Knee"
+        {
+          "name": "Silhouette",
+          "theaterId": "95f5827c-6076-4577-8f84-c093c80fe430"
+        },
+        {
+          "name": "Bending the Knee",
+          "theaterId": "8a1c5796-d4e8-4a14-a124-d066de92c8d2"
+        }
       ]
     },
     {
@@ -9984,7 +10032,7 @@
     },
     {
       "name": "Cost of Life",
-      "description": "No description available.Tamuka rejoiced for years following Tatenda's recovery, but with this revelation also came an unfamiliar sensation, a craving for more. Saving one person's life through his technology was only a stepping stone into Tamuka's quest for immortality. Having cheated death once, he wished to push even further and discover just how much was possible by siphoning the power of life. Daring to achieve more with his technology, Tamuka dropped all pretenses of moral justification, beginning to see the victims of his crimes not as a tragedy, but rather as food of sorts. Like a mosquito, his goal in life required the death of others to be sustained. He was not hunting out of malice but because it was only natural in his eyes to take in order to evolve.\n\nFor years, Tamuka continued attacking settlements across the world, among those who still struggled to recover from the crisis, becoming bolder and having the whole world scorn when they slowly found out the trail of death he was leaving behind. In his advanced age, the death toll he accumulated powered his body, keeping it physically young as decades passed. Taking his place in what he believed to be the natural order, he compared himself to the Adze, a creature of West African folklore that created havoc upon revealing its human form. While he sympathized with the creature and saw its feasting on lives as a means of survival, he relished the irony of it all, as the media, now fully alert to his activities, painted him as a demon, not far off from the creatures of those children's fables. But while Tamuka thought himself unstoppable, he was caught by surprise when Tatenda found out of his activities. Tatenda had grown suspicious of his brother for years, and when the media caught on to the vampiric monster rampaging through Africa, he connected the dots and decided to see it for himself. \n\nHorrified by the atrocities his brother committed, even more so he called the death of thousands a gift he never agreed to. His heart broke when Tamuka said he only wished to see him smile without pain, when in reality, in spite of his illness, Tatenda always smiled for his brother, happy to have someone as caring in his life. Seeing the monster his brother had become gave Tatenda the strength he needed to make one final call. Behind the scenes, he had already denounced him to Overwatch, and the Search and Rescue team that was looking for the missing civilians planned an ambush with Tatenda's help. Ana and Freja apprehended the doctor, leading to a quick trail he called a farce and life-long sentence at Watchpoint: Grímsvötn, where without his drones, his body would be forced to endure the passage of time, making him look his age, and grow weak in a maximum security cell under the lava streams of the volcano.",
+      "description": "Tamuka rejoiced for years following Tatenda's recovery, but with this revelation also came an unfamiliar sensation, a craving for more. Saving one person's life through his technology was only a stepping stone into Tamuka's quest for immortality. Having cheated death once, he wished to push even further and discover just how much was possible by siphoning the power of life. Daring to achieve more with his technology, Tamuka dropped all pretenses of moral justification, beginning to see the victims of his crimes not as a tragedy, but rather as food of sorts. Like a mosquito, his goal in life required the death of others to be sustained. He was not hunting out of malice but because it was only natural in his eyes to take in order to evolve.\n\nFor years, Tamuka continued attacking settlements across the world, among those who still struggled to recover from the crisis, becoming bolder and having the whole world scorn when they slowly found out the trail of death he was leaving behind. In his advanced age, the death toll he accumulated powered his body, keeping it physically young as decades passed. Taking his place in what he believed to be the natural order, he compared himself to the Adze, a creature of West African folklore that created havoc upon revealing its human form. While he sympathized with the creature and saw its feasting on lives as a means of survival, he relished the irony of it all, as the media, now fully alert to his activities, painted him as a demon, not far off from the creatures of those children's fables. But while Tamuka thought himself unstoppable, he was caught by surprise when Tatenda found out of his activities. Tatenda had grown suspicious of his brother for years, and when the media caught on to the vampiric monster rampaging through Africa, he connected the dots and decided to see it for himself. \n\nHorrified by the atrocities his brother committed, even more so he called the death of thousands a gift he never agreed to. His heart broke when Tamuka said he only wished to see him smile without pain, when in reality, in spite of his illness, Tatenda always smiled for his brother, happy to have someone as caring in his life. Seeing the monster his brother had become gave Tatenda the strength he needed to make one final call. Behind the scenes, he had already denounced him to Overwatch, and the Search and Rescue team that was looking for the missing civilians planned an ambush with Tatenda's help. Ana and Freja apprehended the doctor, leading to a quick trail he called a farce and life-long sentence at Watchpoint: Grímsvötn, where without his drones, his body would be forced to endure the passage of time, making him look his age, and grow weak in a maximum security cell under the lava streams of the volcano.",
       "locationType": "earth",
       "lat": 64.3984222,
       "lon": -17.3178863,
@@ -10473,7 +10521,7 @@
     },
     {
       "name": "Bodily Entropy",
-      "description": "In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.\n\nMoira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. Moira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed, even making it possibly to weaponize it through siphoning devices and munition, allowing them  both to regenerate faste through the decay of their targets.",
+      "description": "In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.\n\nMoira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. \n\n\nMoira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed, even making it possibly to weaponize it through siphoning devices and munition, allowing them  both to regenerate faste through the decay of their targets.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -11174,7 +11222,7 @@
     },
     {
       "name": "Shrine Maiden",
-      "description": "Under the care of her grandmother, Kiriko would forge a close and lasting connection with the Fox Spirit, not just because of her Miko duties, but also through the Fox's anima that her father had created. Her grandma would often let Kiriko borrow the Anima ofuda as she taught her how to prepare her tools for Miko duties, and Kiriko quickly developed a strong sense of justice and empathy, using the anima's power to take on bullies and thugs, protecting those in need and healing them with her grandma's teachings.\n\nKiriko would spend most of her adolescent years as her grandma's assistant, while her parents, separated by the clan, worked together to find a way to take them down. For years, Toshiro was able to maintain communication with Asa exclusively through letters, in which he fed his wife intel about Hashimoto's plans. For years, Kanezaka would suffer through injustice and exploitation at the hands of the new reigning clan, and Kiriko was not blind to the city's pain. Not just as the shrine maiden and a follower of Kanezaka's local deity, but also as a close pupil of the Shimada's teachings. While the old clan was unmistakably corrupt and their activies were as bad as the Hashimoto's, Sojiro's stories and values left a deep mark on Kiriko, arguably more than they ever did on his own children. She would grow up to be a strong, caring leader, and a fitting protector for the city, as she vowed to one day take on the Hashimoto, rescue her father, and restore peace to the region.",
+      "description": "Under the care of her grandmother, Kiriko would forge a close and lasting connection with the Fox Spirit, not just because of her Miko duties, but also through the Fox's anima that her father had created. Her grandma would often let Kiriko borrow the Anima ofuda as she taught her how to prepare her tools for Miko duties, and Kiriko quickly developed a strong sense of justice and empathy, using the anima's power to take on bullies and thugs, protecting those in need and healing them with her grandma's teachings.\n\nKiriko would spend most of her adolescent years as her grandma's assistant, while her parents, separated by the clan, worked together to find a way to take them down. For years, Toshiro was able to maintain communication with Asa exclusively through letters, in which he fed his wife intel about Hashimoto's plans. For years, Kanezaka would suffer through injustice and exploitation at the hands of the new reigning clan, and Kiriko was not blind to the city's pain, not just as the shrine maiden and a follower of Kanezaka's local deity, but also as a close pupil of the Shimada's teachings.\n\n\n While the old clan was unmistakably corrupt and their activies were as bad as the Hashimoto's, Sojiro's stories and values left a deep mark on Kiriko, arguably more than they ever did on his own children. She would grow up to be a strong, caring leader, and a fitting protector for the city, as she vowed to one day take on the Hashimoto, rescue her father, and restore peace to the region.",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
       "lat": 35.6768601,
@@ -11229,16 +11277,25 @@
         }
       ],
       "commentary": [
-        "Foxes Fight Back",
-        "Message for the Fox",
-        "Your Dog"
+        {
+          "name": "Foxes Fight Back",
+          "theaterId": "f609684d-def8-432b-8a98-fce2a0187d75"
+        },
+        {
+          "name": "Message for the Fox",
+          "theaterId": "186ceca4-6d59-4ebb-a498-51f5f348be61"
+        },
+        {
+          "name": "Your Dog",
+          "theaterId": "11715aee-ef31-4581-9860-9cddf691356a"
+        }
       ]
     },
     {
       "name": "Chronal Dissociation",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
-      "description": "Overwatch generally saw Winston as a possible fresh start, an outsider who had no preconceptions about Omnics, and with an idealized vision of human culture and history. He never saw the world for what it was, he dared to see what it could be. Since he lacked the assumptions of what was or not possible, he was the perfect mind to tackle the Oxton case. Alongside Wexler's team, Winston studied Lena's Chronal disassociation condition and began work on a device that he called the Chronal anchor. This harness was intended to pull Oxton back into the normal flow of time, and keep her from blipping out again. However, when tested, the device was only capable of keeping Lena anchored in space, not time. Her body was no longer reappearing in entirely different places, but it still vanished from the time flow uncontrollably. Still, progress was still progress.\n\nDuring this testing, Winston realized that the matrix of the device was building up an unknown form of energy the longer Lena was kept anchored. Eventually, this buildup reaches a critical amount, causing Oxton's time fluctuations. After learning this, he scrapped the original design in favor of a new device called the Chronal Accelerator. This new iteration harnessed the mounting energy into a limited, controlled disassociation, essentially allowing Oxton to experience localized time travel at will. The device kept Lena anchored in time, and as energy built, she could use it to willingly blink or rewind back her own relationship with time and space, releasing the buildup without losing control. Oxton was stable and capable of living a somewhat normal life as long as she was in proximity to a Chronal Accelerator, but she realized that this gift of hers could be used to help Overwatch and the world. So, after being cleared from test runs, Lena began training to become part of the Strike team alongside Winston, who she grew to be close friends with. After all the time, he worked on a solution to her problem. Due to the trails of light left by the Chronal accelerator as she blinked through time, she would earn the call sign Tracer.",
+      "description": "Overwatch generally saw Winston as a possible fresh start, an outsider who had no preconceptions about Omnics, and with an idealized vision of human culture and history. He never saw the world for what it was, he dared to see what it could be. Since he lacked the assumptions of what was or not possible, he was the perfect mind to tackle the Oxton case. Alongside Wexler's team, Winston studied Lena's Chronal disassociation condition and began work on a device that he called the Chronal anchor. This harness was intended to pull Oxton back into the normal flow of time, and keep her from blipping out again. However, when tested, the device was only capable of keeping Lena anchored in space, not time. Her body was no longer reappearing in entirely different places, but it still vanished from the time flow uncontrollably. Still, progress was still progress.\n\nDuring this testing, Winston realized that the matrix of the device was building up an unknown form of energy the longer Lena was kept anchored. Eventually, this buildup reaches a critical amount, causing Oxton's time fluctuations. After learning this, he scrapped the original design in favor of a new device called the Chronal Accelerator. This new iteration harnessed the mounting energy into a limited, controlled disassociation, essentially allowing Oxton to experience localized time travel at will. \n\n\nThe device kept Lena anchored in time, and as energy built, she could use it to willingly blink or rewind back her own relationship with time and space, releasing the buildup without losing control. Oxton was stable and capable of living a somewhat normal life as long as she was in proximity to a Chronal Accelerator, but she realized that this gift of hers could be used to help Overwatch and the world. So, after being cleared from test runs, Lena began training to become part of the Strike team alongside Winston, who she grew to be close friends with. After all the time, he worked on a solution to her problem. Due to the trails of light left by the Chronal accelerator as she blinked through time, she would earn the call sign Tracer.",
       "image": "",
       "lat": 36.1407517,
       "lon": -5.345374,
@@ -11288,11 +11345,26 @@
         "Overwatch to recruit time traveling agent"
       ],
       "commentary": [
-        "Chronal adjustments",
-        "Chronal Uncertainty",
-        "An animal",
-        "Presents",
-        "No more Bananas"
+        {
+          "name": "Chronal adjustments",
+          "theaterId": "1bd70f84-5800-4573-acba-9881707970dd"
+        },
+        {
+          "name": "Chronal Uncertainty",
+          "theaterId": "4465d5bf-afc9-4aac-b479-5fc402e7299f"
+        },
+        {
+          "name": "An animal",
+          "theaterId": "1efa7c6d-f455-4a49-aab9-9a9710c6fb2e"
+        },
+        {
+          "name": "Presents",
+          "theaterId": "c003233c-09ec-408a-8b16-944894272031"
+        },
+        {
+          "name": "No more Bananas",
+          "theaterId": "9bc28108-50af-45b3-8bde-766271607735"
+        }
       ]
     },
     {
@@ -12494,7 +12566,7 @@
       "name": "La Lupa",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "Marzia grew tired of being pushed aside and swore to prove her own worth, and one day reclaim what Talon took from her. Lucky for her, Rome was the right place for those looking to climb their way to the top, as the Colosseo opened the doors to fame and fortune to any daring enough to participate in the Gladiator games.\n\nMarzia joined the ranks under the title of Vendetta, and while many underestimated her at first, she would conquer any challenge the Colosseo threw at her. She became known as the Wolf of Retribution for the tactic of choice, often letting her opponents have fun, thinking they had a chance, only to hit them twice as hard when she enacted her combat. While this play pretend gained her infamy and hatred, as she climbed up the ranks it would become the very same reason why many adored her. Her fame brought with it many powerful connections in the form of sponsors, some of them members of Talon's council themselves. And through her many wins she would come to acquire a formidable weapon, the Palatine Fang, a massive hardlight great sword, capable of cutting down anything in her path.",
+      "description": "Marzia grew tired of being pushed aside and swore to prove her own worth, and one day reclaim what Talon took from her. Lucky for her, Rome was the right place for those looking to climb their way to the top, as the Colosseo opened the doors to fame and fortune to any daring enough to participate in the Gladiator games.\n\nMarzia joined the ranks under the title of Vendetta, and while many underestimated her at first, she would conquer any challenge the Colosseo threw at her. She became known as the Wolf of Retribution for the tactic of choice, often letting her opponents have fun, thinking they had a chance, only to hit them twice as hard when she enacted her combat. While this play pretend gained her infamy and hatred, as she climbed up the ranks it would become the very same reason why many adored her. \n\n\nHer fame brought with it many powerful connections in the form of sponsors, some of them members of Talon's council themselves. And through her many wins she would come to acquire a formidable weapon, the Palatine Fang, a massive hardlight great sword, capable of cutting down anything in her path.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -12545,8 +12617,14 @@
         }
       ],
       "commentary": [
-        "Dramatic",
-        "Madam Wolf"
+        {
+          "name": "Dramatic",
+          "theaterId": "c8a56f06-3d79-46c6-8015-5f56f07a0467"
+        },
+        {
+          "name": "Madam Wolf",
+          "theaterId": "49797df5-52d0-464b-a10b-e5e939ab55e8"
+        }
       ]
     },
     {
@@ -14139,7 +14217,7 @@
       "name": "Runs in the Family",
       "locationType": "earth",
       "cityDisplayName": "Deadlock Gorge, United States",
-      "description": "Overwatch's campaigns across America forced many gangs like Deadlock to scale back or lie low, but they never truly went away. And now that Overwatch was gone, it marked the start of a second new West. As gangs struggled in bloodshed and skirmishes to expand their territories once again. Ashe saw an opportunity to grow her influence through the chaos. Thanks to the negotiating tactics she learned from back in the day when she was still meant to take over the family business, she came up with a plan and gathered the heads of the major gangs with a proposal for them to work together, or at least not against each other.\n\nWithout having to worry about endless squabbles and with the shared assets of her former rivals, Ashe turned Deadlock from a notorious gang to a multi-state criminal syndicate. With their growth came many prominent new members, like the triplets, P. T, Terran, and Zeke, who quickly became some of Ashe's most notorious henchmen, as well as an Omnic Sniper going by Bars, who grew close both with Ashe and especially B.O.B., who had also undergone many upgrades to his systems to better suit his chassis to this renegade lifestyle. But perhaps the most eventful change in the Deadlock family would come from Frankie and Bez, who decided to get engaged around this period. As Deadlock grew, however, Ashe could still not let go of the missing founder. Even after so many years, Cassidy's betrayal pained her like an open wound, and even when she publicly trashed him, deep down she missed him enough to keep photos of them together on her holobike.",
+      "description": "Overwatch's campaigns across America forced many gangs like Deadlock to scale back or lie low, but they never truly went away. And now that Overwatch was gone, it marked the start of a second new West. As gangs struggled in bloodshed and skirmishes to expand their territories once again. Ashe saw an opportunity to grow her influence through the chaos. Thanks to the negotiating tactics she learned from back in the day when she was still meant to take over the family business, she came up with a plan and gathered the heads of the major gangs with a proposal for them to work together, or at least not against each other.\n\nWithout having to worry about endless squabbles and with the shared assets of her former rivals, Ashe turned Deadlock from a notorious gang to a multi-state criminal syndicate. With their growth came many prominent new members, like the triplets, P. T, Terran, and Zeke, who quickly became some of Ashe's most notorious henchmen, as well as an Omnic Sniper going by Bars, who grew close both with Ashe and especially B.O.B., who had also undergone many upgrades to his systems to better suit his chassis to this renegade lifestyle. \n\n\nBut perhaps the most eventful change in the Deadlock family would come from Frankie and Bez, who decided to get engaged around this period. As Deadlock grew, however, Ashe could still not let go of the missing founder. Even after so many years, Cassidy's betrayal pained her like an open wound, and even when she publicly trashed him, deep down she missed him enough to keep photos of them together on her holobike.",
       "image": "",
       "lat": 39.1131257,
       "lon": -108.0127646,
@@ -14196,8 +14274,14 @@
         }
       ],
       "commentary": [
-        "How's Bars",
-        "Frankie and Bez"
+        {
+          "name": "How's Bars",
+          "theaterId": "1371a4c9-4bdf-4a11-b089-fe9bfc9526d4"
+        },
+        {
+          "name": "Frankie and Bez",
+          "theaterId": "8bc41ec0-e352-416b-8b21-8ccc04da2602"
+        }
       ]
     },
     {
@@ -14554,7 +14638,7 @@
       "name": "Cycle of Violence",
       "locationType": "earth",
       "cityDisplayName": "Monte Cristi, Dominican Republic",
-      "description": "Baptiste's time in Talon was awkward and short-lived. He made a few friends, sympathizing with Sombra on a couple of missions and getting really close to Mauga of all people, but with every mission that passed they began to turn more gruesome. While the first missions were mainly rescues and interventions, framed as if they were ending the reign of local criminals, soon enough things escalated into full-on violent coups, turf wars where Talon was seeking to takeover once they were done. Recent missions in Singapore and Makati led to many civilian casualties, and while Captain Cuerva said the operations are on level, deep down he knew that wasn't true. The turning point for Baptiste was during a mission while Overwatch was still active, when he saw a strike team deployed to tend to the wounded soon after they left. It made Baptiste realize Talon's goal was not to end the conflict, but instead seeding chaos and profiting from it.\n\nBaptiste pondered leaving many times, but he knew that wasn't a true option. As Mauga put it, they were in too deep, and when he tried to leave he would be chased until he was killed. Things would take a turn in Monte Cristi, where the team was deployed to eliminate the leader of a local Playa cartel, Daniel Fernandez. When they breached the crime lord's safehouse, he was nowhere to be found, so Cuerva ordered them to tear the entire town down until they found him. In the middle of the fire, Baptiste came across a small girl, scared to death as he was destroying her home, now a soldier no better than the Warbots that burnt down his own town back in the Crisis. In horror at what he had become. Baptiste lowered his rifle and fled the scene, finding a fishing boat at the dock. Before he left, he was confronted by Mauga, who had been ordered to find and retrieve him. As Mauga stared at Baptiste, knowing his friend would not come back peacefully, he communicated to Cuerva that he could not find Baptiste. Mauga allowed Baptiste to go, simply saying, \"call me when you're ready to come home.\" While Baptiste was thankful for his understanding, he knew sooner than later, Talon would come after him again, and he needed to be ready.",
+      "description": "Baptiste's time in Talon was awkward and short-lived. He made a few friends, sympathizing with Sombra on a couple of missions and getting really close to Mauga of all people, but with every mission that passed they began to turn more gruesome. While the first missions were mainly rescues and interventions, framed as if they were ending the reign of local criminals, soon enough things escalated into full-on violent coups, turf wars where Talon was seeking to takeover once they were done. Recent missions in Singapore and Makati led to many civilian casualties, and while Captain Cuerva said the operations are on level, deep down he knew that wasn't true. \n\n\nThe turning point for Baptiste was during a mission while Overwatch was still active, when he saw a strike team deployed to tend to the wounded soon after they left. It made Baptiste realize Talon's goal was not to end the conflict, but instead seeding chaos and profiting from it. Baptiste pondered leaving many times, but he knew that wasn't a true option. As Mauga put it, they were in too deep, and when he tried to leave he would be chased until he was killed. Things would take a turn in Monte Cristi, where the team was deployed to eliminate the leader of a local Playa cartel, Daniel Fernandez. When they breached the crime lord's safehouse, he was nowhere to be found, so Cuerva ordered them to tear the entire town down until they found him. \n\n\nIn the middle of the fire, Baptiste came across a small girl, scared to death as he was destroying her home, now a soldier no better than the Warbots that burnt down his own town back in the Crisis. In horror at what he had become. Baptiste lowered his rifle and fled the scene, finding a fishing boat at the dock. Before he left, he was confronted by Mauga, who had been ordered to find and retrieve him. As Mauga stared at Baptiste, knowing his friend would not come back peacefully, he communicated to Cuerva that he could not find Baptiste. Mauga allowed Baptiste to go, simply saying, \"call me when you're ready to come home.\" While Baptiste was thankful for his understanding, he knew sooner than later, Talon would come after him again, and he needed to be ready.",
       "image": "",
       "lat": 19.7177718,
       "lon": -71.4448113,
@@ -14593,11 +14677,26 @@
         }
       ],
       "commentary": [
-        "Done with Talon",
-        "Show your face",
-        "Right amount of stupid",
-        "Short Memory",
-        "Medical Benefits"
+        {
+          "name": "Done with Talon",
+          "theaterId": "6f389c3f-8aed-45f1-b122-c5323f09872d"
+        },
+        {
+          "name": "Show your face",
+          "theaterId": "aa99b18e-d332-47bd-8520-812e590972e3"
+        },
+        {
+          "name": "Right amount of stupid",
+          "theaterId": "b474fdaf-e979-4c0b-9e3e-a37c1070fa08"
+        },
+        {
+          "name": "Short Memory",
+          "theaterId": "7ca614e4-7dd6-4de0-b8a3-4f039e5b0b70"
+        },
+        {
+          "name": "Medical Benefits",
+          "theaterId": "7c533b8c-f283-4521-a1d4-87b1550c4ad8"
+        }
       ]
     },
     {
@@ -14969,7 +15068,7 @@
       "name": "Legend of the Junker Queen",
       "locationType": "earth",
       "cityDisplayName": "Outback Wasteland, Australia",
-      "description": "Odessa was infamous in the Outback even before becoming the Junker Queen, with many legends telling of her journey to the Burninglands region, where she single-handedly destroyed all 5 of the metal demons, giant Omnic abominations formed into reassembled parts, that cursed anyone dating enough to wonder into their territory. While the veracity of these legends and the period they took place in are still not set in stone, one aspect of the story is indisputably true: the Queen's distaste for Omnics.\n\nHaving grown up as a waste lander, Odessa ran into many Feral Omnics over the years, and it shaped in her the idea of taking all you can in order to survive. Now as queen, her thirst for conquest was all the strongest, and having the means to expand her domain, she began to train Junkers from an early age to fight the many dangers of the Outback, including the Omnic Menace, as she called it. For years, Odessa, Meri and even Hammond would join the Scavenger caravans during their many raids into the wasteland with the goal of finding and exterminating any remaining Feral Omnics in the area, diminishing their numbers to near extinction, which only antagonized the few survivors even further. Still, this was not enough to satiate the Queen, who was now waiting to find the next target in her quest to rule the whole world. In the eyes of the Queen, the throne was where she said it was, and her kingdom started and ended wherever she felt like it, so while the Junkers are bound to the Outback right now, if the chance presented itself, they could begin to claim the rest of the world as their own.",
+      "description": "Odessa was infamous in the Outback even before becoming the Junker Queen, with many legends telling of her journey to the Burninglands region, where she single-handedly destroyed all 5 of the metal demons, giant Omnic abominations formed into reassembled parts, that cursed anyone dating enough to wonder into their territory. While the veracity of these legends and the period they took place in are still not set in stone, one aspect of the story is indisputably true: the Queen's distaste for Omnics.\n\nHaving grown up as a waste lander, Odessa ran into many Feral Omnics over the years, and it shaped in her the idea of taking all you can in order to survive. Now as queen, her thirst for conquest was all the strongest, and having the means to expand her domain, she began to train Junkers from an early age to fight the many dangers of the Outback, including the Omnic Menace, as she called it. \n\n\nFor years, Odessa, Meri and even Hammond would join the Scavenger caravans during their many raids into the wasteland with the goal of finding and exterminating any remaining Feral Omnics in the area, diminishing their numbers to near extinction, which only antagonized the few survivors even further. Still, this was not enough to satiate the Queen, who was now waiting to find the next target in her quest to rule the whole world. In the eyes of the Queen, the throne was where she said it was, and her kingdom started and ended wherever she felt like it, so while the Junkers are bound to the Outback right now, if the chance presented itself, they could begin to claim the rest of the world as their own.",
       "image": "",
       "lat": -20.7274568,
       "lon": 139.49896,
@@ -15020,8 +15119,14 @@
         }
       ],
       "commentary": [
-        "Show some respect",
-        "Not an Omnic"
+        {
+          "name": "Show some respect",
+          "theaterId": "3d2ae409-3743-4e04-95e3-691a948566b2"
+        },
+        {
+          "name": "Not an Omnic",
+          "theaterId": "e8ee5529-be36-42a5-abc0-b02e26615610"
+        }
       ]
     },
     {
@@ -16659,7 +16764,7 @@
       "name": "Unfinished Business",
       "locationType": "earth",
       "cityDisplayName": "Port-de-Paix, Haiti",
-      "description": "Four years had passed since Baptiste left Talon during the raid at Monte Cristi. Thinking he might finally be off the hook, he began to visit his hometown more, helping Ros with the patients at her clinic since they were experiencing a shortage due to Sinclair Pharmaceuticals raising prices. Later at night he frequented a local bar enough that one day, he was intercepted by two Talon agents, Trung Le Nguyen and none other than Mauga himself. While they presented themselves as friendly, Baptiste knew better than to trust them. Turns out they needed his help for a job. Vernard Sinclair, head of the same pharmaceutical company giving the clinic trouble, owed money to Talon, and while this alone wouldn't be enough to turn Baptiste around, Mauga revealed that he knew about Ros and her clinic. With her life possibly on the line, Baptiste had no choice but to collaborate.\n\nThe following morning, Baptiste met the two after going over the briefing, now wearing his old combat armor with the Talon insignia burnt off. They had a scheduled meeting, allowing them to walk inside until the private security surrounded them in the library, at which point hell broke loose. Once the trio stormed their way into Sinclair's office, the man had a bargain to offer for his life.\n\nSinclair was an ex Overwatch operative and days ago, he received a message from Winston himself. While in Overwatch, he would feed information to Talon, and was more than willing to give Intel on several agents if it saved his life. Nguyen had no interest in his deal however, as many ex-Overwatch operatives already worked in Talon, they could get that information elsewhere. Baptiste was disgusted by Sinclair, but if he ended his life there was no way back, he would have turned into the man he was running from all those years. So instead, he threw a flash bang and helped the man escape, in return asking him to give his products for free, unless he wanted Talon to know where he was. All the whole, Mauga chased Baptiste, still wanting to take him back to Talon, especially now that he had compromised the mission. Baptiste feigned surrender, before detonating a device that destroyed the pier, using his immortality field to dampen the blow on himself, and allowing him to escape on a boat in the commotion. He may have escaped Talon this time, but now he knew Overwatch agents were in danger. He had to warm those he knew, starting with Dr. Ziegler. And in order to do so, he needed some contact, even if it meant reaching out to Sombra.",
+      "description": "Four years had passed since Baptiste left Talon during the raid at Monte Cristi. Thinking he might finally be off the hook, he began to visit his hometown more, helping Ros with the patients at her clinic since they were experiencing a shortage due to Sinclair Pharmaceuticals raising prices. Later at night he frequented a local bar enough that one day, he was intercepted by two Talon agents, Trung Le Nguyen and none other than Mauga himself. While they presented themselves as friendly, Baptiste knew better than to trust them. Turns out they needed his help for a job. Vernard Sinclair, head of the same pharmaceutical company giving the clinic trouble, owed money to Talon, and while this alone wouldn't be enough to turn Baptiste around, Mauga revealed that he knew about Ros and her clinic. With her life possibly on the line, Baptiste had no choice but to collaborate.\n\nThe following morning, Baptiste met the two after going over the briefing, now wearing his old combat armor with the Talon insignia burnt off. They had a scheduled meeting, allowing them to walk inside until the private security surrounded them in the library, at which point hell broke loose. Once the trio stormed their way into Sinclair's office, the man had a bargain to offer for his life. Sinclair was an ex Overwatch operative and days ago, he received a message from Winston himself. While in Overwatch, he would feed information to Talon, and was more than willing to give Intel on several agents if it saved his life. Nguyen had no interest in his deal however, as many ex-Overwatch operatives already worked in Talon, they could get that information elsewhere. \n\n\nBaptiste was disgusted by Sinclair, but if he ended his life there was no way back, he would have turned into the man he was running from all those years. So instead, he threw a flash bang and helped the man escape, in return asking him to give his products for free, unless he wanted Talon to know where he was. All the whole, Mauga chased Baptiste, still wanting to take him back to Talon, especially now that he had compromised the mission. Baptiste feigned surrender, before detonating a device that destroyed the pier, using his immortality field to dampen the blow on himself, and allowing him to escape on a boat in the commotion. He may have escaped Talon this time, but now he knew Overwatch agents were in danger. He had to warm those he knew, starting with Dr. Ziegler. And in order to do so, he needed some contact, even if it meant reaching out to Sombra.",
       "image": "",
       "lat": 20.0410035,
       "lon": -72.785587,
@@ -16707,8 +16812,14 @@
         }
       ],
       "commentary": [
-        "Live Forever",
-        "Finding Anyone"
+        {
+          "name": "Live Forever",
+          "theaterId": "f572b88e-085f-46a6-9d46-dc7b731a802c"
+        },
+        {
+          "name": "Finding Anyone",
+          "theaterId": "a7f8b911-4769-4c25-b753-46ba0e89bc67"
+        }
       ]
     },
     {
@@ -20923,7 +21034,7 @@
       "name": "Against the Tide",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "No description available.",
+      "description": "The Null Sector attacks that followed the first wave were not nearly as catastrophic, in part thanks to Overwatch's coordinated responses, the decreasing number of non-subjugated Omnic's, and, in fact, the world was no longer caught off guard. But a particularly bad assault took place in Chengdu, causing Wuxing to deploy its students to aid in evacuation. Water College students were sent to the med bay while Fire College students fought off Null Sector on the ground.\n\nAt first, Wuyang wished to go with Anran, but she wished to keep her brother safe, away from the front lines, saying she couldn't protect him if he was in her way. This caused a heated argument between the siblings right before they parted ways. Wuyang retreated to the med bay, using his staff to care for the wounded, until several Fire College students came to their tents claiming Null Sector overwhelmed them during the evacuation, and perhaps worse of all, An ran stayed behind, fighting in her own, pushing everyone else to leave while he took the fight by herself.\n\nEnraged by his sister's stubbornness and worried about her safety, Wuyang rushed into the city riding the waves with his staff, until he was able to find her cornered by Null Sector. Happy to see each other again, the siblings were able to make up, and together they fended off the remaining of the wave as they made their way out of the city. The heroic efforts of both Ye siblings were recognized by the headmaster of the school, using their image in promotional material spread across the campuses of all colleges. But perhaps most importantly for Wuyang, his parents were extremely proud to see him rise to the occasion, saving his sister and fighting beside her in his own way.",
       "image": "",
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
@@ -20933,30 +21044,33 @@
         {
           "locationName": "Chengdu, China",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "The Ye Siblings aid repel the Null Sector troops in Chengdu"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Wuyang, Anran",
-          "reasoning": ""
+          "reasoning": "Unite forces to stop Null Sector"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Pushed back by the combined effort of the Siblings"
         },
         {
           "locationName": "",
           "country": "Wuxing University,",
-          "reasoning": ""
+          "reasoning": "Conmemorates both students following their evacuation"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Water College student rushes to Chengdu, tearing through Null Sector's forces with unique weaponry",
+        "Wuxing University deploys Fire College students to evacuate CHengdu"
+      ],
       "sources": [
         {
           "text": "Against the Tide",
@@ -20973,52 +21087,6 @@
           "theaterId": "78dd7b12-14f5-43c5-b8fb-d54395109310"
         }
       ]
-    },
-    {
-      "name": "Picture of Sucesss",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "London, United Kingdom",
-      "lat": 51.5074456,
-      "lon": -0.1277653,
-      "yearStart": 2079,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [
-        {
-          "text": "Picture of Sucess",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
-            "https://www.youtube.com/watch?v=BWd_QJjBAbM"
-          ]
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "London, United Kingdom",
-          "country": "England",
-          "reasoning": "",
-          "lat": 51.5074456,
-          "lon": -0.1277653
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Domina, Symmetra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar Corporation,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": []
     },
     {
       "name": "Warm Welcome",
@@ -21095,50 +21163,6 @@
       ]
     },
     {
-      "name": "Free the Phreaks",
-      "locationType": "earth",
-      "cityDisplayName": "Aatlis, Morocco",
-      "description": "No description available.",
-      "image": "",
-      "lat": 34.0209,
-      "lon": -6.8416,
-      "eraName": "The Null Sector Invasion",
-      "yearStart": 2079,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Aatlis, Morocco",
-          "country": "Morocco",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hazard",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Phreaks, Helix Securities",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Tear it Down",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
-            "https://www.youtube.com/watch?v=u282-SDwYtg"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Partnership",
       "description": "No description available.",
       "locationType": "earth",
@@ -21193,40 +21217,33 @@
       "headlines": []
     },
     {
-      "name": "The Upper Hand",
+      "name": "Free the Phreaks",
       "locationType": "earth",
-      "cityDisplayName": "Colosseo, Italy",
+      "cityDisplayName": "Aatlis, Morocco",
       "description": "No description available.",
       "image": "",
-      "lat": 41.8933203,
-      "lon": 12.4829321,
-      "yearStart": 2079,
+      "lat": 34.0209,
+      "lon": -6.8416,
       "eraName": "The Null Sector Invasion",
+      "yearStart": 2079,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Colosseo, Italy",
-          "country": "Italy",
-          "reasoning": "",
-          "lat": 41.8933203,
-          "lon": 12.4829321
+          "locationName": "Aatlis, Morocco",
+          "country": "Morocco",
+          "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta, Domina",
+          "country": "Hazard",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Colosseo Gladiatori, Vishkar Corporation,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
+          "country": "Phreaks, Helix Securities",
           "reasoning": ""
         }
       ],
@@ -21234,19 +21251,12 @@
       "headlines": [],
       "sources": [
         {
-          "text": "The Upper Hand",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8c6688d56348d8b3/696ae9f7521fe69c2b245415/Vishkar_Micro_EN_FINAL.pdf",
+          "text": "Tear it Down",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
           "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8c6688d56348d8b3/696ae9f7521fe69c2b245415/Vishkar_Micro_EN_FINAL.pdf",
-            "https://www.youtube.com/watch?v=kQR0S4jxDKM"
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+            "https://www.youtube.com/watch?v=u282-SDwYtg"
           ]
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sanjay,",
-          "reasoning": ""
         }
       ]
     },
@@ -21381,6 +21391,52 @@
           "url": "https://www.youtube.com/watch?v=sR8N3cXWxqM"
         }
       ]
+    },
+    {
+      "name": "Picture of Sucesss",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "London, United Kingdom",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "yearStart": 2079,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [
+        {
+          "text": "Picture of Sucess",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+            "https://www.youtube.com/watch?v=BWd_QJjBAbM"
+          ]
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "England",
+          "reasoning": "",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Domina, Symmetra",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Final Failsafe",
@@ -21674,48 +21730,114 @@
       ]
     },
     {
-      "name": "New Heights",
+      "name": "External Partners",
       "description": "No description available.",
       "locationType": "earth",
-      "image": "",
-      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
-      "yearStart": 2079,
-      "yearEnd": 2080,
-      "eraName": "The Null Sector Invasion",
       "lat": 39.1131257,
       "lon": -108.0127646,
+      "image": "",
+      "cityDisplayName": "Deadlock Gorge, United States",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Null Sector Invasion",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Watchpoint: Grand Mesa, United States",
+          "locationName": "Deadlock Gorge, United States",
           "country": "United States",
           "reasoning": "",
           "lat": 39.1131257,
           "lon": -108.0127646
         }
       ],
+      "headlines": [],
+      "sources": [],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sierra",
+          "country": "Ashe,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Helix Securities",
+          "country": "Deadlock Rebels, Colosseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
       ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "The Upper Hand",
+      "locationType": "earth",
+      "cityDisplayName": "Colosseo, Italy",
+      "description": "No description available.",
+      "image": "",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "yearStart": 2079,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta, Domina",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Colosseo Gladiatori, Vishkar Corporation,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": 2080,
       "headlines": [],
       "sources": [
         {
-          "text": "New Heights",
-          "url": "https://www.youtube.com/watch?v=O7JRRBhgelo",
+          "text": "The Upper Hand",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8c6688d56348d8b3/696ae9f7521fe69c2b245415/Vishkar_Micro_EN_FINAL.pdf",
           "urls": [
-            "https://www.youtube.com/watch?v=O7JRRBhgelo",
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf"
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8c6688d56348d8b3/696ae9f7521fe69c2b245415/Vishkar_Micro_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=kQR0S4jxDKM"
           ]
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
         }
       ]
     },
@@ -21776,56 +21898,48 @@
       "headlines": []
     },
     {
-      "name": "External Partners",
+      "name": "New Heights",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
       "image": "",
-      "cityDisplayName": "Deadlock Gorge, United States",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Deadlock Gorge, United States",
+          "locationName": "Watchpoint: Grand Mesa, United States",
           "country": "United States",
           "reasoning": "",
           "lat": 39.1131257,
           "lon": -108.0127646
         }
       ],
-      "headlines": [],
-      "sources": [],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ashe,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vendetta,",
+          "country": "Sierra",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Deadlock Rebels, Colosseo Gladiatori,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
+          "country": "Helix Securities",
           "reasoning": ""
         }
       ],
-      "npcFilterPlaces": [
+      "headlines": [],
+      "sources": [
         {
-          "locationName": "",
-          "country": "B.O.B,",
-          "reasoning": ""
+          "text": "New Heights",
+          "url": "https://www.youtube.com/watch?v=O7JRRBhgelo",
+          "urls": [
+            "https://www.youtube.com/watch?v=O7JRRBhgelo",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf"
+          ]
         }
       ]
     },

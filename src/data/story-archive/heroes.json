@@ -383,7 +383,7 @@
     },
     {
       "name": "D.mon",
-      "description": "",
+      "description": "Yuna Lee, more commonly known as \"D.mon\" was a professional gamer that skyrocketed to the top of the esport's scene internationally after the addition of Hana Song, \"D.va\" to their Mecha Guardian V team. But while the duo climbed up the ranks and made a name for themselves, South Korea endured the thread of the Gwishin, colossal war machines lingering from the Omnic Crisis, set to destroy Busan and reemerging to upgrade every time they were defeated. The Mobile Exo-Force of the Korean Army was created to develop weapons and strategies to deal with this menace, quickly noticing their ace mech pilots each had something in common, their background in professional gaming paired well with the controls of their machines. As such, the army drafted several esports players, including both D.va and D.mon into the MEKA Squad.\n\nFor years, the MEKA Squad protected Korea from the Gwishin, earning praise and fame around the world including several sponsorships, but while D.va climbed to the top, becoming the leader of the group and the most marketable member, D.mon faded into the background with the rest of the squad. The Null Sector Invasion, however, leads to an ongoing alliance between MEKA and Overwatch, with D.va leaving Korea to help fight the Null Sector war bots abroad. In her stead, Yuna was made the new leader of the squad, but the team struggled to adapt with one less member and the change in leadership, making superiors second guess the efficiency of the squad and develop an EMP Bomb as a fail-safe if they ever falter.\n\nIn spite of the pressure, however, D.mon rose to the occasion and reshaped the MEKA squad into something fiercer, playing into each individual member's strengths. Her leadership skills played a key role in protecting civilians during the coordinated Junker and Talon attack on Busan, even allowing the team to capture a prisoner. But in spite of her efforts, the thought calls she made resulted in the loss of the EMP bomb to Talon's hands. MEKA cooperated with Overwatch to eventually disarm and retrieve the bomb in a standoff against Talon in Rome, but the pressure officials placed upon D.mon, as well as the looming presence of the Gwishin, awaiting in the East China Sea for the time to attack once again continues to push Yuna to make harsh decisions to protect her home and her people.",
       "relevantLocations": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
@@ -478,7 +478,7 @@
     },
     {
       "name": "Domina",
-      "description": "",
+      "description": "Vaira Singhania is the granddaughter of Vishkar's founder, Vishwakarma Bhatt, the brilliant scientist responsible for creating hard light, dreaming of using it as his gift to the world, but dying tragically in an accident before fulfilling his vision. Without him, the family's business took a more corporate-centric approach, and Vaira was expected to eventually inherit their legacy, placing a lot of pressure since she was young to live up to the dynasty's standards.\n\nBut while Vaira had a knack for the business side of the company, she struggled when it came to hard light manipulation, eventually developing a pair of assisting arms to aid her on the job. After years working outside the family business to hone her own skills and connections, she eventually landed a position as Vice President of Operations and Development in Vishkar, but, in secret, she had also made her way to the Talon council, using the criminal group's connections to profit off of their activities. Over the years, however, Vishkar took several PR hits under her leadership, from the uprising in Rio to the destruction of a temple in Suravasa, and the death of an Omnic protestor at the hands of the Sonic equipment she provided to the police. Vishkar, an already controversial company for decades, was caught up in endless scandals following Vaira's promotion.\n\nAs the company became desperate to regain public trust, Vaira entertained Marzia Bartalotti, the champion of the Roman Colosseo, and an important figure in Europe's elite. She wished to overthrow Talon and in order to do so she needed support from the inside. All she asked was for Vishkar to provide state-of-the-art shielding for her gladiators so that her private guard became impenetrable, and Vishkar would then get to profit from any chaos that followed her take-over. The bargain was made all the easier by the thread of Marzia leaking Vaira's previous dealings with the current Talon leadership, which would ruin both the company and her career. But while Vaira became one of the first allies in Vendetta's Crusade, as her plans turned more extreme, she took the change to distance herself from Talon, having enough on her plate from the headlines of Vishkar's support of the radical gladiators after Vendetta's arrest. With Talon's previous leadership being back in control, Vishkar is still willing to take a seat at their table, playing their cards behind the scenes to expand their brand and wash up their public image.",
       "relevantLocations": [
         {
           "locationName": "London",
@@ -488,21 +488,11 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "28 August 2046",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": "28 August 2046"
     },
     {
       "name": "Junker Queen",
-      "description": "",
+      "description": "Odessa Stone is the current crown Queen of Junkertown, the unofficial nation of savages that formed after the extremist Australian Liberation Front triggered a nuclear explosion on the Outback Omnium. Odessa's parents were members of the ALF, believing that their government turned their backs on the people when they gifted away their land to the Omnics, but in spite of their commitment to the cause, they were expelled from the remains of the Omnium by Mason Howl, the self-proclaimed King of the Junkers. The Stones vanished to the irradiated Outback where, between the radiation poisoning, mutated raiders and aggressive feral Omnics, slowly, one by one, they would die off, leaving Odessa to fend off herself.\n\nIn spite of the odds, she managed to survive to adulthood in the Outback, carving a name for herself and gaining rare technology to use as weapons. Eventually, she reentered Junkertown to participate on the Reckoning, an annual feast that surrounded an all-out brawl in which the winner got a chance to take the crowd for themselves. Dez managed to not only defeat the cheating King Mason in battle, but also earn the respect of the faction leaders that competed against her, becoming the new Junker Queen and reshaping the Omnium to her liking over the years. Odessa's name became a legend across the Wasteland, as she trained her people to fight the feral Omnics to near extinction, yet as a survivor and a conqueror, she still craved more even after getting her hands on the throne.\n\nA good for nothing demolitonist going by the name of Junkrat claimed to have a massive secret treasure in the city, one that the Queen saw as her own property. Initially, Junkrat refused to hand off his treasure, forcing the Queen to vanish him and his partner, Roadhog, off of the city. When the pair tried to infiltrate their way back, they were captured and set for execution, where, in exchange for his life, the madman granted her access to the Omnium's final door, where a Crisis-era mothership and armada lay in waiting. With the help of Wrecking Ball, the Queen's champion and personal mechanic, as well as resources from Talon, the Queen was able to get her new fleet flying, and after returning Talon the favor by helping them attack the MEKA Squad in Busan, they are now free to fly anywhere in the planet, allowing Odessa to finally fulfill her dreams of taking over the World and beyond.",
       "relevantLocations": [
         {
           "locationName": "The Outback",
@@ -512,21 +502,11 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "14 June 2047",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": "14 June 2047"
     },
     {
       "name": "Ramattra",
-      "description": "No description available.",
+      "description": "Ramattra is the leader of Null Sector, a radical Omnics liberation group that believes coexistence between Humans and Omnics is no longer possible, seeking both the liberation of his species and righteous retribution for years of systematic abuse and turmoil. He was an R-7000 unit, built by Anubis during the crisis to act as one of its commanders. As such, humans dubbed his kind as Ravagers, and grew to hate them so much they hunted them down to near extinction even after the Awakening granted them life and freedom from Anubis' commands. Like many Omnics, Ramattra was lost and hopeless after his awakening, but he wasn't alone. A group of Omnics followed the footsteps of Aurora, their race's progenitor, seeking enlightenment the same way she once did. They went on to form the Shambali order, where Ramattra, alongside his closest friend, Zenyatta would seek to find peace in their existence.\n\nRamattra, however, couldn't turn a blind eye to Omnic suffering following the crisis, so he eventually left their Monastery to preach of revolution and justice across the world, eventually amassing a large following. With the help of his closest allies, he took over an abandoned Omnium made by Anubis to manufacture a war bot army so he could stage an Uprising in London, taking one of the worst places for Omnics to live in and turning it into an Omnic State by force. But his plans were stopped by Overwatch, leading to the death of one of his friends, and the loss of most of his following after the Shambali publicly denounced his cause. Ramattra was once again alone but his resolve to save his people strengthened, as he grew determined to save them, even if they refused him.\n\nAfter years of research and planning, Ramattra once again amassed an army with the help of Talon, this time one large enough to invade several cities around the globe for several months, all with the objective of suppressing and capturing as many Omnics as possible, forcing clamp devices in their heads that would leave them insert, as he claimed to have found a way to split their consciousness from their metal husks. After a drawn out stalemate against Overwatch, Ramattra managed to retrieve a large enough number of the global Omnic Population and bring them to his side, where he now patiently waits as humans set the world ablaze, so that his people can one day wake up to a kinder world.",
       "relevantLocations": [
         {
           "locationName": "Secret Omnium",
@@ -536,21 +516,11 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "29 March 2051",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Null Sector",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": "29 March 2051"
     },
     {
       "name": "Reinhardt",
-      "description": "No description available.",
+      "description": "Reinhardt Wilhelm is one of the fabled German Crusaders, a special Initiative of warriors in shining armor wielding shields of light and rocket weaponry. Living with Honor and Dying with Glory, the Crusaders fashioned themselves as knights of old, and became a key player for Germany during the Omnic Crisis. One of their best fighters, Balderich Von Adler, was called by the United Nations to form part of an international task force formed to put an end to the war, but he tragically died defending Eichenwalde Castle from the war bots. Reinhardt was sent in his place.\n\nAs a founding member of Overwatch, Reinhardt became a key asset not just during the Crisis but for multiple decades to come, quickly growing close with the Lindholm's after saving Torbjörn's life in Operation White Dome, even becoming the godfather of his children. He grew particularly fond of Ana Amari, but kept his feelings for himself out of respect, as both were too busy to do anything formal. While his bright spirit never got old with his age, it eventually costed him his job, when defying rules to save civilians during a terrorist attack in a Global Security Summit led to the loss of important data, a scandal that forced Overwatch to send Reinhardt into retirement.\n\nBut neither Overwatch or the UN could keep a warrior from standing up for what he believed in, as he came out of retirement to travel the world as an errand knight, now with his squire, Brigitte Lindholm, Torbjörn's daughter and Reinhardt's pupil and mechanic. Together they fended off criminals across Europe for years before Overwatch sent a recall. While Brigitte had her concerns given how they had treated him before, Reinhardt was honor bound to answer when he was needed. Together, they regrouped with Winston during Null Sector's attack on Paris, and have been fundamental to several missions during the Null Sector Invasion and Vendetta's Reign of Talon. Not only that, but the reformed Overwatch provided a chance for him to rekindle with Ana, who he long thought was dead by now, and thanks to the help of some of the younger recruits, who wished to keep morale up in dire times, the old soldiers were able to share a night of love after all the years of fighting.",
       "relevantLocations": [
         {
           "locationName": "Stuttgrat",
