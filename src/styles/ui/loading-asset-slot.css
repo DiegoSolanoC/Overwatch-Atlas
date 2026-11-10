@@ -1,8 +1,17 @@
 /**
  * Production: black slot + loading asset.gif while preview images load.
+ * Default wraps use the GIF too so empty thumbs never flash white before JS marks --loading.
  */
 
 /* --- Main menu --- */
+.main-menu-image-container {
+    background-color: #000;
+    background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+
 .main-menu-image-container--loading {
     background-color: #000 !important;
     background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
@@ -17,6 +26,10 @@
 
 .main-menu-image-container--loading > img {
     opacity: 0;
+}
+
+.main-menu-image-container.main-menu-image-container--ready {
+    background-image: none;
 }
 
 /* --- Data Archive / Choose view category tiles --- */
@@ -50,12 +63,33 @@
 }
 
 /* --- Pagination dock (desktop thumb mode) --- */
-.event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--loading {
-    background-color: #000;
+.event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap {
+    background-color: #000 !important;
     background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: auto 100%;
+}
+
+.event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--empty {
+    background-color: #000 !important;
+    background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+
+.event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--loading {
+    background-color: #000 !important;
+    background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+
+.event-number-buttons.event-number-buttons--thumbs-desktop
+    .event-number-btn__img-wrap.event-number-btn__img-wrap--ready {
+    background-image: none;
 }
 
 .event-number-buttons.event-number-buttons--thumbs-desktop

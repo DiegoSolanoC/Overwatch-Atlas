@@ -860,15 +860,23 @@ button.event-number-btn.locked,
         margin: 0;
         padding: 0;
         border: none !important;
-        /* Solid fill so the slot reads as white while the <img> is still loading (was transparent). */
-        background: #fff;
+        /* Black + loading GIF until art paints (never flash white empty thumbs). */
+        background-color: #000;
+        background-image: url('../../../assets/images/Misc/GIFs/loading%20asset.gif');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 100%;
         border-radius: 0;
         overflow: hidden;
         z-index: 0;
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--empty {
-        background: #fff;
+        background-color: #000;
+        background-image: url('../../../assets/images/Misc/GIFs/loading%20asset.gif');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 100%;
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--loading {

@@ -146,14 +146,27 @@ export function heroArchiveBirthdaysMergedFromFile(events, fileEvents) {
  * @param {unknown} row
  * @returns {string}
  */
+/**
+ * @param {string} raw
+ * @returns {string} trimmed text, or '' for empty / placeholder copy
+ */
+function meaningfulDescription(raw) {
+    const text = String(raw || '').trim();
+    if (!text) return '';
+    if (/^no description available\.?$/i.test(text)) return '';
+    return text;
+}
+
 function readRowDescription(row) {
     if (!row || typeof row !== 'object') return '';
     const variants = row.variants;
     if (Array.isArray(variants) && variants.length > 0) {
         const v0 = variants[0] || {};
-        return String(v0.description != null ? v0.description : row.description || '').trim();
+        return meaningfulDescription(
+            v0.description != null ? v0.description : row.description || '',
+        );
     }
-    return String(row.description != null ? row.description : '').trim();
+    return meaningfulDescription(row.description != null ? row.description : '');
 }
 
 /**
@@ -193,7 +206,11 @@ export function mergeHeroDescriptionsFromBundledFile(events, fileEvents) {
     for (let i = 0; i < fileEvents.length; i += 1) {
         const fe = fileEvents[i];
         const n = readRowName(fe).toLowerCase();
-        if (n) byName.set(n, fe);
+        if (!n) continue;
+        byName.set(n, fe);
+        // "D.va" / "D.Va" / "Dva" aliases for Pages localStorage drift
+        const compact = n.replace(/[^a-z0-9]+/g, '');
+        if (compact && compact !== n) byName.set(compact, fe);
     }
 
     let changed = 0;
@@ -202,7 +219,8 @@ export function mergeHeroDescriptionsFromBundledFile(events, fileEvents) {
         const name = readRowName(row).toLowerCase();
         if (!name) return row;
         if (readRowDescription(row)) return row;
-        const fromFile = byName.get(name);
+        const fromFile =
+            byName.get(name) || byName.get(name.replace(/[^a-z0-9]+/g, ''));
         if (!fromFile) return row;
         const fileDesc = readRowDescription(fromFile);
         if (!fileDesc) return row;

@@ -43,6 +43,10 @@ export function beginLoadingAssetSlot(slot, img) {
     if (!kind) return;
     if (kind === 'dock') {
         slot.classList.remove('event-number-btn__img-wrap--empty');
+        slot.classList.remove('event-number-btn__img-wrap--ready');
+    }
+    if (kind === 'menu') {
+        slot.classList.remove('main-menu-image-container--ready');
     }
     slot.classList.add(LOADING_CLASS[kind]);
     img.style.opacity = '0';
@@ -57,6 +61,12 @@ export function endLoadingAssetSlot(slot, img) {
     const kind = slotKind(slot);
     if (!kind) return;
     slot.classList.remove(LOADING_CLASS[kind]);
+    if (kind === 'dock') {
+        slot.classList.add('event-number-btn__img-wrap--ready');
+    }
+    if (kind === 'menu') {
+        slot.classList.add('main-menu-image-container--ready');
+    }
     img.style.opacity = '';
 }
 

@@ -113,7 +113,23 @@
     </script>
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
-    <link rel="stylesheet" href="src/styles/app.css?v=128">
+    <!-- Slot spinner must win the first network slot so thumbs/menu show it while art loads. -->
+    <link
+        rel="preload"
+        as="image"
+        href="src/assets/images/Misc/GIFs/loading%20asset.gif"
+        fetchpriority="high"
+    >
+    <script>
+    (function () {
+        try {
+            var img = new Image();
+            if ('fetchPriority' in img) img.fetchPriority = 'high';
+            img.src = 'src/assets/images/Misc/GIFs/loading%20asset.gif';
+        } catch (e) {}
+    })();
+    </script>
+    <link rel="stylesheet" href="src/styles/app.css?v=129">
     <link rel="stylesheet" href="src/styles/entry.css?v=24">
 </head>
 <body class="app-timeline-default">

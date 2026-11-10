@@ -29,7 +29,7 @@
 /* Shared UI */
 @import url('ui/modals.css?v=9');
 @import url('ui/external-link-confirm.css?v=9');
-@import url('ui/loading-asset-slot.css?v=1');
+@import url('ui/loading-asset-slot.css?v=2');
 @import url('features/system-interface/info-description-text-scale.css?v=1');
 
 /* Story */
@@ -47,7 +47,7 @@
 @import url('features/event-system/event-buttons.css?v=15');
 @import url('features/event-system/event-image-overlay.css?v=24');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=127');
+@import url('features/event-system/event-pagination.css?v=128');
 @import url('features/event-system/news-ticker.css?v=10');
 
 /* Event system panels */
