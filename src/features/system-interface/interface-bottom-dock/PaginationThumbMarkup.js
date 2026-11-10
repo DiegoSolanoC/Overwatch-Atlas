@@ -6,7 +6,7 @@ function oneButton(n) {
     return `<button type="button" class="event-number-btn" data-position="${n}" title="Event ${n}">
             <div class="event-number-btn__visual">
                 <div class="event-number-btn__img-wrap" aria-hidden="true">
-                    <img class="event-number-btn__img" alt="" decoding="async" loading="lazy" width="140" height="105" />
+                    <img class="event-number-btn__img" alt="" decoding="async" loading="eager" fetchpriority="auto" width="140" height="105" />
                 </div>
                 <span class="event-number-btn__name"></span>
                 <span class="event-number-btn__key" aria-hidden="true">${n}</span>

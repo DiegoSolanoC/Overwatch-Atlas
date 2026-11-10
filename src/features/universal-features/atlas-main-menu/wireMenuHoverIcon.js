@@ -42,7 +42,7 @@ export function wireMenuHoverIcon(img, options = {}) {
         || img.closest('.main-menu-btn, .main-menu-side-btn');
     if (!hoverTarget) return;
 
-    void probeImageUrl(hoverSrc).then((ok) => {
+    const attachHover = (ok) => {
         if (!ok || !img.isConnected || !hoverTarget.isConnected) return;
 
         const showHover = () => {
@@ -59,5 +59,17 @@ export function wireMenuHoverIcon(img, options = {}) {
             if (hoverTarget.contains(event.relatedTarget)) return;
             showNormal();
         });
+    };
+
+    // Defer hover probes so Menu/*.png win the first network slots on Pages.
+    const schedule = (fn) => {
+        if (typeof requestIdleCallback === 'function') {
+            requestIdleCallback(fn, { timeout: 1800 });
+            return;
+        }
+        setTimeout(fn, 700);
+    };
+    schedule(() => {
+        void probeImageUrl(hoverSrc).then(attachHover);
     });
 }

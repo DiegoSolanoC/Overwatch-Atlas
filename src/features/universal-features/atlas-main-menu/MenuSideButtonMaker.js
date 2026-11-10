@@ -50,10 +50,10 @@ export function MenuSideButtonMaker({
 
     const imgBlock = imagePath
         ? `<div class="main-menu-image-container">
-            <img src="${imagePath}" alt="${title}">
+            <img src="${imagePath}" alt="${title}" loading="eager" fetchpriority="high" decoding="async">
            </div>`
         : `<div class="main-menu-image-container main-menu-image-container--placeholder" aria-hidden="true">
-            <img src="" alt="${title}">
+            <img src="" alt="${title}" loading="eager" fetchpriority="high" decoding="async">
            </div>`;
 
     el.innerHTML = `

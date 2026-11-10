@@ -25,7 +25,7 @@ export function MenuButtonMaker({ id, title, imagePath, label, description }) {
     button.title = title;
     button.innerHTML = `
         <div class="main-menu-image-container">
-            <img src="${imagePath}" alt="${title}">
+            <img src="${imagePath}" alt="${title}" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="main-menu-label-container">
             <div class="main-menu-label">${label}</div>

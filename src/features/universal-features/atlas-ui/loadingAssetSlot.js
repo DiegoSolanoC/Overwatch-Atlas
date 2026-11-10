@@ -61,6 +61,30 @@ export function endLoadingAssetSlot(slot, img) {
 }
 
 /**
+ * @param {HTMLImageElement} img
+ * @param {'menu'|'hub'|'dock'|null} kind
+ */
+function applySlotFetchPriority(img, kind) {
+    if (!(img instanceof HTMLImageElement)) return;
+    try {
+        if (kind === 'menu') {
+            img.loading = 'eager';
+            img.fetchPriority = 'high';
+            img.decoding = 'async';
+            return;
+        }
+        if (kind === 'dock') {
+            // Visible page thumbs — after menu tiles, still ahead of lazy filter grids.
+            img.loading = 'eager';
+            if (!img.fetchPriority || img.fetchPriority === 'low') {
+                img.fetchPriority = 'auto';
+            }
+            img.decoding = 'async';
+        }
+    } catch (_) { /* older WebViews */ }
+}
+
+/**
  * Assign `src` and show the loading asset until the image loads (or errors).
  * Hides the previous frame immediately so dock page turns do not flash stale art.
  *
@@ -71,11 +95,12 @@ export function endLoadingAssetSlot(slot, img) {
 export function setLoadingAssetImageSrc(img, src, options = {}) {
     if (!(img instanceof HTMLImageElement)) return;
     const slot = resolveLoadingAssetSlot(img, options.wrap);
+    const kind = slot ? slotKind(slot) : null;
     const raw = src != null ? String(src).trim() : '';
     const url = raw ? resolveOptimizedAssetUrl(raw) : '';
 
     if (!url) {
-        if (slot && slotKind(slot) === 'dock') {
+        if (slot && kind === 'dock') {
             slot.classList.add('event-number-btn__img-wrap--empty');
             slot.classList.remove(LOADING_CLASS.dock);
         }
@@ -84,6 +109,8 @@ export function setLoadingAssetImageSrc(img, src, options = {}) {
         img.style.opacity = '';
         return;
     }
+
+    applySlotFetchPriority(img, kind);
 
     if (!slot) {
         img.src = url;
@@ -103,7 +130,15 @@ export function setLoadingAssetImageSrc(img, src, options = {}) {
     img.addEventListener('load', finish, { once: true });
     img.addEventListener('error', finish, { once: true });
 
+    // Skip cancel/restart when the resolved URL is already current.
+    const current = img.currentSrc || img.getAttribute('src') || '';
+    if (current === url && img.complete && img.naturalWidth > 0) {
+        finish();
+        return;
+    }
+
     img.removeAttribute('src');
+    applySlotFetchPriority(img, kind);
     img.src = url;
 
     if (img.complete) finish();

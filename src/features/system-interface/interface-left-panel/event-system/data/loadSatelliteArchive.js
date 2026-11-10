@@ -14,7 +14,12 @@
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
 import { mergeNpcCategoriesFromBundledArchiveRows } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 import { migrateEntityDisplayNamesInBioArchiveEvents } from './entityDisplayNameMigration.js';
-import { mergeHeroBirthdaysFromBundledFile, mergeHeroRolesFromBundledArchiveRows, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
+import {
+    mergeHeroBirthdaysFromBundledFile,
+    mergeHeroDescriptionsFromBundledFile,
+    mergeHeroRolesFromBundledArchiveRows,
+    repairCorruptedHeroArchiveDescriptionsFromFile,
+} from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
 import { getHeroBirthdayRawFromEntry } from '../../../interface-shared/bio-archive/HeroBirthdayAge.js';
 
@@ -252,6 +257,7 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
     let added = 0;
     let npcCategoriesSynced = 0;
     let heroRolesSynced = 0;
+    let heroDescriptionsSynced = 0;
     let factionCleanup = 0;
     const arch = dataService.getArchiveSource();
     if (arch === 'npcs') {
@@ -280,6 +286,12 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
                 dataService.events,
                 fileEvents,
             );
+            const descMerge = mergeHeroDescriptionsFromBundledFile(
+                dataService.events,
+                fileEvents,
+            );
+            dataService.events = descMerge.events;
+            heroDescriptionsSynced = descMerge.changed;
         }
     } else if (arch === 'factions') {
         const beforeBundledMerge = dataService.events.length;
@@ -333,6 +345,12 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
                 'info',
             );
         }
+        if (heroDescriptionsSynced > 0) {
+            dataService.updateStatus(
+                `EventDataService: filled ${heroDescriptionsSynced} empty hero Intel bio${heroDescriptionsSynced === 1 ? '' : 's'} from bundled file`,
+                'info',
+            );
+        }
         if (factionCleanup > 0) {
             dataService.updateStatus(
                 `EventDataService: synced ${factionCleanup} faction archive fix${factionCleanup === 1 ? '' : 'es'} from bundled file`,
@@ -340,7 +358,14 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
             );
         }
     }
-    return removed + added + npcCategoriesSynced + heroRolesSynced + factionCleanup;
+    return (
+        removed +
+        added +
+        npcCategoriesSynced +
+        heroRolesSynced +
+        heroDescriptionsSynced +
+        factionCleanup
+    );
 }
 
 /**

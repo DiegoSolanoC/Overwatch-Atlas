@@ -213,10 +213,22 @@ export function createMenuMobileSlides(handlers = {}) {
         media.className = 'main-menu-mobile-slide__media';
 
         const img = document.createElement('img');
-        img.src = mode.imagePath;
         img.alt = mode.title;
         img.draggable = false;
-        wireLoadingAssetImage(img, { wrap: media });
+        img.decoding = 'async';
+        // Desktop hides this deck — keep src off until portrait so Menu tiles aren't double-fetched.
+        const isPortraitMobile =
+            typeof window !== 'undefined' &&
+            window.matchMedia('(max-width: 768px) and (orientation: portrait)').matches;
+        if (isPortraitMobile) {
+            img.loading = 'eager';
+            img.fetchPriority = 'high';
+            img.src = mode.imagePath;
+            wireLoadingAssetImage(img, { wrap: media });
+        } else {
+            img.loading = 'lazy';
+            img.dataset.menuSrc = mode.imagePath;
+        }
         media.appendChild(img);
 
         const shade = document.createElement('div');
@@ -279,7 +291,28 @@ export function createMenuMobileSlides(handlers = {}) {
         return viewport.clientWidth || 1;
     }
 
+    function hydrateDeferredSlideImages() {
+        const need =
+            typeof window !== 'undefined' &&
+            window.matchMedia('(max-width: 768px) and (orientation: portrait)').matches;
+        if (!need) return;
+        for (const slide of slides) {
+            const img = slide.querySelector('.main-menu-mobile-slide__media img');
+            if (!(img instanceof HTMLImageElement)) continue;
+            const pending = img.dataset.menuSrc;
+            if (!pending || img.getAttribute('src')) continue;
+            img.loading = 'eager';
+            img.fetchPriority = 'high';
+            img.src = pending;
+            delete img.dataset.menuSrc;
+            wireLoadingAssetImage(img, {
+                wrap: slide.querySelector('.main-menu-mobile-slide__media'),
+            });
+        }
+    }
+
     function syncChrome() {
+        hydrateDeferredSlideImages();
         const mode = MAIN_MENU_MOBILE_MODES[index];
         selectBtn.setAttribute('aria-label', `Select ${mode.label}`);
         deck.dataset.activeMode = mode.id;
