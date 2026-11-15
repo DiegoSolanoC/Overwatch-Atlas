@@ -170,7 +170,18 @@
         </div>
         <a class="header-title-badge header-title-badge--link" id="headerTitleBadge" href="https://overwatch.blizzard.com/en-us/" target="_blank" rel="noopener noreferrer" aria-label="Open official Overwatch website" title="Go to official website">
             <svg class="header-title-badge-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                <path class="header-title-badge-path" vector-effect="non-scaling-stroke" d="M8 10 H92 L94 22 L82 98 H18 L6 22 Z"></path>
+                <defs>
+                    <linearGradient id="headerTitleBadgeFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop id="headerTitleBadgeGradTop" offset="0%" stop-color="rgb(var(--accent-primary-rgb))"></stop>
+                        <stop id="headerTitleBadgeGradBot" offset="100%" stop-color="rgb(var(--accent-primary-rgb))"></stop>
+                    </linearGradient>
+                    <clipPath id="headerTitleBadgeClip" clipPathUnits="userSpaceOnUse">
+                        <path class="header-title-badge-clip" d="M7 8 L93 8 L96 20 L83 98 L17 98 L4 20 Z"></path>
+                    </clipPath>
+                </defs>
+                <path class="header-title-badge-path" fill="url(#headerTitleBadgeFill)" d="M7 8 L93 8 L96 20 L83 98 L17 98 L4 20 Z"></path>
+                <path class="header-title-badge-stroke header-title-badge-stroke--top" fill="none" stroke="rgb(64, 210, 255)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" clip-path="url(#headerTitleBadgeClip)" d=""></path>
+                <path class="header-title-badge-stroke header-title-badge-stroke--bottom" fill="none" stroke="rgb(64, 210, 255)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" clip-path="url(#headerTitleBadgeClip)" d=""></path>
             </svg>
             <img class="header-title-badge-logo" src="src/assets/images/Misc/Website%20Icons/Website.png" alt="Overwatch Website" />
             <span class="header-title-badge-sr">Overwatch Atlas</span>

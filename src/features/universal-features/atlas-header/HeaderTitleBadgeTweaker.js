@@ -1,0 +1,919 @@
+/**
+ * Live tweaker for the center header official-site badge (hex / inverted trap).
+ *
+ * Fill = darkened accent gradient.
+ * Border = filled outward ribbons (split top/bottom) with one-sided pointy tips
+ * and a neon/sky rim color derived from the palette hue.
+ * Live preview while dragging; Save writes localStorage.
+ */
+
+const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
+const PANEL_ID = 'headerTitleBadgeTweakerPanel';
+const TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
+
+/** @typedef {object} BadgeTweakState */
+
+export const HEADER_BADGE_TWEAK_DEFAULTS = Object.freeze({
+    widthPx: 340,
+    heightExtraPx: 34,
+    logoPercent: 82,
+    logoMaxPx: 86,
+
+    /** Uniform rim thickness in CSS px (same on sides + horizontal edge). */
+    topStrokeWidth: 3.5,
+    bottomStrokeWidth: 4.5,
+    /** Gap length as % of each flank. */
+    borderGap: 18,
+    /** Gap center along flank: 0 = near top, 100 = near bottom. */
+    borderGapCenter: 48,
+    /** 0 = softer inside curve, 100 = sharper wedge tip. */
+    tipPointiness: 78,
+    /** Shared by fill + rim outer edge so border corners round with the shape. */
+    cornerRadius: 3.5,
+
+    /** Hue shift from palette accent (−40…+40). + pushes blue toward cyan. */
+    borderHueShift: 16,
+    borderSaturation: 100,
+    borderLightness: 56,
+    borderGlow: 42,
+    borderOpacity: 100,
+
+    fillDarkness: 58,
+    fillBrightness: 8,
+
+    topY: 8,
+    bottomY: 96,
+    topLength: 78,
+    bottomLength: 58,
+    notchDrop: 12,
+    notchOut: 2,
+});
+
+function cloneDefaults() {
+    return { ...HEADER_BADGE_TWEAK_DEFAULTS };
+}
+
+function loadState() {
+    try {
+        const raw =
+            localStorage.getItem(STORAGE_KEY)
+            || localStorage.getItem('atlas.headerTitleBadge.tweak.v6')
+            || localStorage.getItem('atlas.headerTitleBadge.tweak.v5')
+            || localStorage.getItem('atlas.headerTitleBadge.tweak.v4')
+            || localStorage.getItem('atlas.headerTitleBadge.tweak.v3')
+            || localStorage.getItem('atlas.headerTitleBadge.tweak.v2')
+            || localStorage.getItem('atlas.headerTitleBadge.tweak.v1');
+        if (!raw) return cloneDefaults();
+        const parsed = JSON.parse(raw);
+        const next = cloneDefaults();
+        for (const key of Object.keys(HEADER_BADGE_TWEAK_DEFAULTS)) {
+            if (parsed[key] != null && Number.isFinite(Number(parsed[key]))) {
+                next[key] = Number(parsed[key]);
+            }
+        }
+        // Prefer prior side widths when migrating from split edge/side controls.
+        if (parsed.topStrokeWidth == null && Number.isFinite(Number(parsed.topSideWidth))) {
+            next.topStrokeWidth = Number(parsed.topSideWidth);
+        }
+        if (parsed.bottomStrokeWidth == null && Number.isFinite(Number(parsed.bottomSideWidth))) {
+            next.bottomStrokeWidth = Number(parsed.bottomSideWidth);
+        }
+        if (parsed.topStrokeWidth == null && Number.isFinite(Number(parsed.strokeWidth))) {
+            next.topStrokeWidth = Number(parsed.strokeWidth);
+            next.bottomStrokeWidth = Number(parsed.strokeWidth) * 1.2;
+        }
+        if (parsed.notchOut == null) {
+            const l = Number(parsed.leftNotchOut);
+            const r = Number(parsed.rightNotchOut);
+            if (Number.isFinite(l) || Number.isFinite(r)) {
+                const a = Number.isFinite(l) ? l : 0;
+                const b = Number.isFinite(r) ? r : a;
+                next.notchOut = (a + b) / 2;
+            }
+        }
+        return sanitizeState(next);
+    } catch {
+        return cloneDefaults();
+    }
+}
+
+function saveState(state) {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitizeState(state)));
+    } catch {
+        /* ignore */
+    }
+}
+
+function clamp(n, lo, hi) {
+    return Math.min(hi, Math.max(lo, n));
+}
+
+function sanitizeState(s) {
+    const next = { ...s };
+    const pad = 4;
+
+    next.topY = clamp(Number(next.topY), 4, 28);
+    next.bottomY = clamp(Number(next.bottomY), next.topY + 36, 96);
+
+    const maxTop = Math.max(36, (100 - pad * 2) - Number(next.notchOut) * 2);
+    next.topLength = clamp(Number(next.topLength), 36, maxTop);
+    next.bottomLength = clamp(Number(next.bottomLength), 24, next.topLength - 2);
+    next.notchOut = clamp(Number(next.notchOut), 0, Math.max(0, (100 - next.topLength) / 2 - pad));
+    next.notchDrop = clamp(Number(next.notchDrop), 2, (next.bottomY - next.topY) * 0.45);
+
+    next.borderGap = clamp(Number(next.borderGap), 4, 40);
+    next.borderGapCenter = clamp(Number(next.borderGapCenter), 18, 82);
+    next.cornerRadius = clamp(Number(next.cornerRadius), 0, 12);
+    next.borderHueShift = clamp(Number(next.borderHueShift), -40, 40);
+    next.borderSaturation = clamp(Number(next.borderSaturation), 50, 100);
+    next.borderLightness = clamp(Number(next.borderLightness), 38, 70);
+    next.borderGlow = clamp(Number(next.borderGlow), 0, 100);
+    next.borderOpacity = clamp(Number(next.borderOpacity), 10, 100);
+    next.topStrokeWidth = clamp(Number(next.topStrokeWidth), 1, 12);
+    next.bottomStrokeWidth = clamp(Number(next.bottomStrokeWidth), 1, 14);
+    next.tipPointiness = clamp(Number(next.tipPointiness), 0, 100);
+
+    return next;
+}
+
+function readPaletteAccentRgb() {
+    const raw = getComputedStyle(document.body).getPropertyValue('--accent-primary-rgb').trim();
+    const parts = raw.split(/[,\s]+/).map((p) => Number(p)).filter((n) => Number.isFinite(n));
+    if (parts.length >= 3) {
+        return [clamp(parts[0], 0, 255), clamp(parts[1], 0, 255), clamp(parts[2], 0, 255)];
+    }
+    return [33, 150, 243];
+}
+
+function mixRgb(a, b, t) {
+    const u = clamp(t, 0, 1);
+    return [
+        Math.round(a[0] + (b[0] - a[0]) * u),
+        Math.round(a[1] + (b[1] - a[1]) * u),
+        Math.round(a[2] + (b[2] - a[2]) * u),
+    ];
+}
+
+function shadeFromAccent(accent, darkness, brightness) {
+    const darkened = mixRgb(accent, [0, 0, 0], clamp(Number(darkness), 0, 100) / 100);
+    return mixRgb(darkened, [255, 255, 255], clamp(Number(brightness), 0, 100) / 100);
+}
+
+/**
+ * Neon / sky rim: keep palette hue (plus shift), force vivid chroma — not a grey lift.
+ */
+function rimFromAccent(accent, sat, light, hueShift, glow) {
+    const [h0] = rgbToHsl(accent[0], accent[1], accent[2]);
+    const h = ((h0 + Number(hueShift)) % 360 + 360) % 360;
+    const s = clamp(Number(sat), 0, 100);
+    const l = clamp(Number(light), 0, 100);
+    // Pure vivid at target HSL, then punch with a neon mid-tone of same hue.
+    const vivid = hslToRgb(h, s, l);
+    const neon = hslToRgb(h, 100, 52);
+    const electric = hslToRgb(h, 100, 62);
+    const punched = mixRgb(mixRgb(vivid, neon, 0.45), electric, 0.25);
+    // Glow: blend toward near-white of same hue (keeps saturation feel without going grey).
+    const hot = hslToRgb(h, 100, 72);
+    return mixRgb(punched, hot, clamp(Number(glow), 0, 100) / 100 * 0.55);
+}
+
+function rgbToHsl(r, g, b) {
+    const rr = r / 255;
+    const gg = g / 255;
+    const bb = b / 255;
+    const max = Math.max(rr, gg, bb);
+    const min = Math.min(rr, gg, bb);
+    const l = (max + min) / 2;
+    if (max === min) return [0, 0, l * 100];
+    const d = max - min;
+    const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    let h = 0;
+    if (max === rr) h = ((gg - bb) / d + (gg < bb ? 6 : 0)) / 6;
+    else if (max === gg) h = ((bb - rr) / d + 2) / 6;
+    else h = ((rr - gg) / d + 4) / 6;
+    return [h * 360, s * 100, l * 100];
+}
+
+function hslToRgb(h, s, l) {
+    const hh = (((h % 360) + 360) % 360) / 360;
+    const ss = clamp(s, 0, 100) / 100;
+    const ll = clamp(l, 0, 100) / 100;
+    if (ss === 0) {
+        const v = Math.round(ll * 255);
+        return [v, v, v];
+    }
+    const hue2rgb = (p, q, t) => {
+        let tt = t;
+        if (tt < 0) tt += 1;
+        if (tt > 1) tt -= 1;
+        if (tt < 1 / 6) return p + (q - p) * 6 * tt;
+        if (tt < 1 / 2) return q;
+        if (tt < 2 / 3) return p + (q - p) * (2 / 3 - tt) * 6;
+        return p;
+    };
+    const q = ll < 0.5 ? ll * (1 + ss) : ll + ss - ll * ss;
+    const p = 2 * ll - q;
+    return [
+        Math.round(hue2rgb(p, q, hh + 1 / 3) * 255),
+        Math.round(hue2rgb(p, q, hh) * 255),
+        Math.round(hue2rgb(p, q, hh - 1 / 3) * 255),
+    ];
+}
+
+function rgbCss(rgb, alpha) {
+    if (alpha == null || alpha >= 1) return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+    return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${clamp(alpha, 0, 1)})`;
+}
+
+export function badgeVerticesFromState(s) {
+    const state = sanitizeState(s);
+    const cx = 50;
+    const topHalf = Math.max(8, Number(state.topLength) / 2);
+    const botHalf = Math.max(6, Math.min(topHalf - 1, Number(state.bottomLength) / 2));
+    const topY = Number(state.topY);
+    const bottomY = Number(state.bottomY);
+    const notchY = clamp(topY + Number(state.notchDrop), topY + 1, bottomY - 8);
+    const notchOut = Math.max(0, Number(state.notchOut));
+    const pad = 2;
+
+    const tlX = cx - topHalf;
+    const trX = cx + topHalf;
+    const blX = cx - botHalf;
+    const brX = cx + botHalf;
+
+    return [
+        [clamp(tlX, pad, 50 - 4), topY],
+        [clamp(trX, 50 + 4, 100 - pad), topY],
+        [clamp(trX + notchOut, 50 + 4, 100 - pad), notchY],
+        [clamp(brX, 50 + 4, 100 - pad), bottomY],
+        [clamp(blX, pad, 50 - 4), bottomY],
+        [clamp(tlX - notchOut, pad, 50 - 4), notchY],
+    ];
+}
+
+function dist(a, b) {
+    return Math.hypot(b[0] - a[0], b[1] - a[1]);
+}
+
+function sideMetrics(chain) {
+    const segs = [];
+    let total = 0;
+    for (let i = 0; i < chain.length - 1; i += 1) {
+        const len = dist(chain[i], chain[i + 1]);
+        segs.push({ a: chain[i], b: chain[i + 1], len });
+        total += len;
+    }
+    return { total: total || 1, segs };
+}
+
+function pointAtFraction(chain, t) {
+    const { total, segs } = sideMetrics(chain);
+    let remain = clamp(t, 0, 1) * total;
+    for (const seg of segs) {
+        if (remain <= seg.len || seg === segs[segs.length - 1]) {
+            const u = seg.len > 0 ? clamp(remain / seg.len, 0, 1) : 0;
+            return [
+                seg.a[0] + (seg.b[0] - seg.a[0]) * u,
+                seg.a[1] + (seg.b[1] - seg.a[1]) * u,
+            ];
+        }
+        remain -= seg.len;
+    }
+    return chain[chain.length - 1];
+}
+
+function sliceChain(chain, t0, t1) {
+    const lo = Math.min(t0, t1);
+    const hi = Math.max(t0, t1);
+    const { total, segs } = sideMetrics(chain);
+    const out = [pointAtFraction(chain, lo)];
+    let acc = 0;
+    for (const seg of segs) {
+        acc += seg.len;
+        const end = acc / total;
+        if (end > lo + 1e-6 && end < hi - 1e-6) out.push([...seg.b]);
+    }
+    out.push(pointAtFraction(chain, hi));
+    return t0 <= t1 ? out : out.reverse();
+}
+
+/** Trim both ends of an open polyline by a fraction of its length (tip seat). */
+function trimPolylineEnds(pts, frac) {
+    const t = clamp(Number(frac), 0, 0.2);
+    if (!pts || pts.length < 2 || t < 1e-4) return pts;
+    return sliceChain(pts, t, 1 - t);
+}
+
+/**
+ * Rounded closed fill path.
+ */
+export function roundedPathFromPoints(pts, radius, closed) {
+    if (!pts || pts.length < 2) return '';
+    const f = (n) => Math.round(n * 100) / 100;
+    const rMax = Math.max(0, Number(radius) || 0);
+    const n = pts.length;
+
+    if (!closed) {
+        if (rMax < 0.05) {
+            let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
+            for (let i = 1; i < n; i += 1) d += ` L${f(pts[i][0])} ${f(pts[i][1])}`;
+            return d;
+        }
+        const open = [`M${f(pts[0][0])} ${f(pts[0][1])}`];
+        for (let i = 1; i < n - 1; i += 1) {
+            const prev = pts[i - 1];
+            const cur = pts[i];
+            const next = pts[i + 1];
+            const d1 = dist(prev, cur);
+            const d2 = dist(cur, next);
+            const r = Math.min(rMax, d1 * 0.45, d2 * 0.45);
+            if (d1 < 1e-6 || d2 < 1e-6 || r < 0.05) {
+                open.push(`L${f(cur[0])} ${f(cur[1])}`);
+                continue;
+            }
+            const p1 = [
+                cur[0] + (prev[0] - cur[0]) * (r / d1),
+                cur[1] + (prev[1] - cur[1]) * (r / d1),
+            ];
+            const p2 = [
+                cur[0] + (next[0] - cur[0]) * (r / d2),
+                cur[1] + (next[1] - cur[1]) * (r / d2),
+            ];
+            open.push(`L${f(p1[0])} ${f(p1[1])}`);
+            open.push(`Q${f(cur[0])} ${f(cur[1])} ${f(p2[0])} ${f(p2[1])}`);
+        }
+        open.push(`L${f(pts[n - 1][0])} ${f(pts[n - 1][1])}`);
+        return open.join(' ');
+    }
+
+    if (rMax < 0.05) {
+        let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
+        for (let i = 1; i < n; i += 1) d += ` L${f(pts[i][0])} ${f(pts[i][1])}`;
+        return `${d} Z`;
+    }
+
+    const parts = [];
+    for (let i = 0; i < n; i += 1) {
+        const prev = pts[(i - 1 + n) % n];
+        const cur = pts[i];
+        const next = pts[(i + 1) % n];
+        const d1 = dist(prev, cur);
+        const d2 = dist(cur, next);
+        if (d1 < 1e-6 || d2 < 1e-6) continue;
+        const r = Math.min(rMax, d1 * 0.45, d2 * 0.45);
+        const p1 = [
+            cur[0] + (prev[0] - cur[0]) * (r / d1),
+            cur[1] + (prev[1] - cur[1]) * (r / d1),
+        ];
+        const p2 = [
+            cur[0] + (next[0] - cur[0]) * (r / d2),
+            cur[1] + (next[1] - cur[1]) * (r / d2),
+        ];
+        if (parts.length === 0) parts.push(`M${f(p1[0])} ${f(p1[1])}`);
+        else parts.push(`L${f(p1[0])} ${f(p1[1])}`);
+        parts.push(`Q${f(cur[0])} ${f(cur[1])} ${f(p2[0])} ${f(p2[1])}`);
+    }
+    parts.push('Z');
+    return parts.join(' ');
+}
+
+/**
+ * @param {number[][]} pts
+ * @param {number} gapPct
+ * @param {number} gapCenterPct 0–100 along flank
+ */
+export function splitBorderPolylines(pts, gapPct, gapCenterPct = 50) {
+    const left = [pts[0], pts[5], pts[4]];
+    const right = [pts[1], pts[2], pts[3]];
+    const gap = clamp(Number(gapPct), 4, 40) / 100;
+    const center = clamp(Number(gapCenterPct), 18, 82) / 100;
+    const half = gap / 2;
+    const tTop = clamp(center - half, 0.06, 0.9);
+    const tBot = clamp(center + half, tTop + 0.04, 0.94);
+
+    const leftTop = sliceChain(left, tTop, 0);
+    const rightTop = sliceChain(right, 0, tTop);
+    const top = [...leftTop, ...rightTop];
+
+    const leftBot = sliceChain(left, tBot, 1);
+    const rightBot = sliceChain(right, 1, tBot);
+    const bottom = [...leftBot, ...rightBot];
+
+    return { top, bottom };
+}
+
+export function badgePathFromVertices(pts) {
+    return roundedPathFromPoints(pts, 0, true);
+}
+
+function sideLengths(pts) {
+    const out = [];
+    for (let i = 0; i < pts.length; i += 1) {
+        out.push(dist(pts[i], pts[(i + 1) % pts.length]));
+    }
+    return out;
+}
+
+function ensureBadgeSvgParts(badge) {
+    const svg = badge.querySelector('.header-title-badge-shape');
+    if (!svg) return;
+
+    let defs = svg.querySelector('defs');
+    if (!defs) {
+        defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        svg.insertBefore(defs, svg.firstChild);
+    }
+    let grad = defs.querySelector('#headerTitleBadgeFill');
+    if (!grad) {
+        grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        grad.setAttribute('id', 'headerTitleBadgeFill');
+        grad.setAttribute('x1', '0');
+        grad.setAttribute('y1', '0');
+        grad.setAttribute('x2', '0');
+        grad.setAttribute('y2', '1');
+        const s0 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        s0.setAttribute('id', 'headerTitleBadgeGradTop');
+        s0.setAttribute('offset', '0%');
+        const s1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        s1.setAttribute('id', 'headerTitleBadgeGradBot');
+        s1.setAttribute('offset', '100%');
+        grad.appendChild(s0);
+        grad.appendChild(s1);
+        defs.appendChild(grad);
+    }
+
+    let clip = defs.querySelector('#headerTitleBadgeClip');
+    if (!clip) {
+        clip = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');
+        clip.setAttribute('id', 'headerTitleBadgeClip');
+        clip.setAttribute('clipPathUnits', 'userSpaceOnUse');
+        const clipPathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        clipPathEl.setAttribute('class', 'header-title-badge-clip');
+        clip.appendChild(clipPathEl);
+        defs.appendChild(clip);
+    }
+
+    let fill = svg.querySelector('.header-title-badge-path');
+    if (!fill) {
+        fill = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        fill.setAttribute('class', 'header-title-badge-path');
+        svg.appendChild(fill);
+    }
+    fill.setAttribute('fill', 'url(#headerTitleBadgeFill)');
+    fill.style.stroke = 'none';
+
+    const ensureRim = (cls) => {
+        let el = svg.querySelector(`.${cls}`);
+        if (!el) {
+            el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            el.setAttribute('class', `header-title-badge-stroke ${cls}`);
+        }
+        // 2× stroke clipped to fill: outer flush to outline, inside tip from round cap.
+        el.setAttribute('fill', 'none');
+        el.style.fill = 'none';
+        el.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
+        el.setAttribute('vector-effect', 'non-scaling-stroke');
+        el.setAttribute('stroke-linecap', 'round');
+        el.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(el);
+        return el;
+    };
+    // Drop legacy tip / filled-ribbon layers if present from earlier builds.
+    svg.querySelectorAll('.header-title-badge-tips').forEach((el) => el.remove());
+    svg.appendChild(fill);
+    ensureRim('header-title-badge-stroke--top');
+    ensureRim('header-title-badge-stroke--bottom');
+}
+
+export function applyHeaderTitleBadgeTweaks(state) {
+    const badge = document.getElementById('headerTitleBadge');
+    if (!badge) return;
+
+    ensureBadgeSvgParts(badge);
+    const clean = sanitizeState(state);
+    Object.assign(state, clean);
+
+    const svg = badge.querySelector('.header-title-badge-shape');
+    // Keep 0–100 viewBox so hub/header black height stays locked to badge bottom.
+    if (svg) svg.setAttribute('viewBox', '0 0 100 100');
+
+    const pts = badgeVerticesFromState(clean);
+    const fillD = roundedPathFromPoints(pts, clean.cornerRadius, true);
+    const { top, bottom } = splitBorderPolylines(pts, clean.borderGap, clean.borderGapCenter);
+    // tipPointiness shortens the stroke into the gap; round cap + clip still forms the tip.
+    const tipTrim = (clamp(Number(clean.tipPointiness), 0, 100) / 100) * 0.04;
+    const topPts = trimPolylineEnds(top, tipTrim);
+    const botPts = trimPolylineEnds(bottom, tipTrim);
+    // Same rounded open outline as the fill — stroke follows corners without offset math.
+    const topD = roundedPathFromPoints(topPts, clean.cornerRadius, false);
+    const bottomD = roundedPathFromPoints(botPts, clean.cornerRadius, false);
+
+    const fill = badge.querySelector('.header-title-badge-path');
+    const clipPathEl = badge.querySelector('.header-title-badge-clip');
+    const topStroke = badge.querySelector('.header-title-badge-stroke--top');
+    const botStroke = badge.querySelector('.header-title-badge-stroke--bottom');
+    if (fill && fillD) fill.setAttribute('d', fillD);
+    if (clipPathEl && fillD) clipPathEl.setAttribute('d', fillD);
+    if (topStroke && topD) topStroke.setAttribute('d', topD);
+    if (botStroke && bottomD) botStroke.setAttribute('d', bottomD);
+
+    const accent = readPaletteAccentRgb();
+    const fillTop = shadeFromAccent(accent, clean.fillDarkness, 0);
+    const fillBottom = shadeFromAccent(accent, 0, clean.fillBrightness);
+    const fillBottomFinal =
+        Number(clean.fillBrightness) < 1 ? mixRgb(accent, fillTop, 0.35) : fillBottom;
+
+    const borderRgb = rimFromAccent(
+        accent,
+        clean.borderSaturation,
+        clean.borderLightness,
+        clean.borderHueShift,
+        clean.borderGlow,
+    );
+    const borderAlpha = clamp(Number(clean.borderOpacity), 0, 100) / 100;
+    const rimCss = rgbCss(borderRgb, borderAlpha);
+
+    const gradTop = document.getElementById('headerTitleBadgeGradTop');
+    const gradBot = document.getElementById('headerTitleBadgeGradBot');
+    if (gradTop) gradTop.setAttribute('stop-color', rgbCss(fillTop));
+    if (gradBot) gradBot.setAttribute('stop-color', rgbCss(fillBottomFinal));
+
+    if (fill) {
+        fill.setAttribute('fill', 'url(#headerTitleBadgeFill)');
+        fill.style.stroke = 'none';
+    }
+    // Round caps + clip → one-sided tip (outer flush, inside curves into the tip).
+    if (topStroke) {
+        topStroke.setAttribute('fill', 'none');
+        topStroke.style.fill = 'none';
+        topStroke.setAttribute('stroke', rimCss);
+        topStroke.style.stroke = rimCss;
+        topStroke.setAttribute('stroke-width', String(Math.max(1, clean.topStrokeWidth) * 2));
+        topStroke.setAttribute('stroke-linecap', 'round');
+        topStroke.setAttribute('stroke-linejoin', 'round');
+        topStroke.setAttribute('vector-effect', 'non-scaling-stroke');
+        topStroke.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
+    }
+    if (botStroke) {
+        botStroke.setAttribute('fill', 'none');
+        botStroke.style.fill = 'none';
+        botStroke.setAttribute('stroke', rimCss);
+        botStroke.style.stroke = rimCss;
+        botStroke.setAttribute('stroke-width', String(Math.max(1, clean.bottomStrokeWidth) * 2));
+        botStroke.setAttribute('stroke-linecap', 'round');
+        botStroke.setAttribute('stroke-linejoin', 'round');
+        botStroke.setAttribute('vector-effect', 'non-scaling-stroke');
+        botStroke.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
+    }
+
+    const root = document.body;
+    root.style.setProperty('--header-badge-outer-w', `${clean.widthPx}px`);
+    root.style.setProperty('--header-chrome-align-extra', `${clean.heightExtraPx}px`);
+    root.style.setProperty('--header-badge-logo-percent', `${clean.logoPercent}%`);
+    root.style.setProperty('--header-badge-logo-max', `${clean.logoMaxPx}px`);
+
+    const notchY = pts[2][1];
+    const bottomY = pts[3][1];
+    const dx = Math.abs(pts[2][0] - pts[3][0]);
+    const dy = Math.abs(bottomY - notchY) || 1;
+    root.style.setProperty('--header-hub-hex-y-top', String(notchY));
+    root.style.setProperty('--header-hub-hex-y-bottom', String(bottomY));
+    root.style.setProperty('--header-hub-hex-edge-dx', String(dx));
+    root.style.setProperty('--header-hub-hex-edge-dy', String(dy));
+    root.style.setProperty(
+        '--header-hub-btn-slant',
+        `calc(var(--header-badge-outer-w) * ${dx} / 100)`,
+    );
+
+    return {
+        pts,
+        sideLengths: sideLengths(pts),
+        accent,
+        fillTop,
+        fillBottom: fillBottomFinal,
+        borderRgb,
+    };
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {BadgeTweakState} state
+ * @param {{ onPreview: () => void, onSave: () => void, isDirty: () => boolean }} hooks
+ */
+function mountControls(panel, state, hooks) {
+    panel.replaceChildren();
+
+    const head = document.createElement('div');
+    head.className = 'header-badge-tweaker__head';
+    panel.appendChild(head);
+
+    const title = document.createElement('div');
+    title.className = 'header-badge-tweaker__title';
+    title.textContent = 'Center badge tweaker';
+    head.appendChild(title);
+
+    const status = document.createElement('div');
+    status.className = 'header-badge-tweaker__status';
+    head.appendChild(status);
+
+    const hint = document.createElement('p');
+    hint.className = 'header-badge-tweaker__hint';
+    hint.textContent =
+        'Drag for live preview · Save to keep · Rim is a clipped stroke on the rounded outline (even thickness, flush outer edge, round tip caps)';
+    panel.appendChild(hint);
+
+    const meta = document.createElement('div');
+    meta.className = 'header-badge-tweaker__meta';
+    panel.appendChild(meta);
+
+    const paletteNote = document.createElement('div');
+    paletteNote.className = 'header-badge-tweaker__palette';
+    meta.appendChild(paletteNote);
+
+    const swatches = document.createElement('div');
+    swatches.className = 'header-badge-tweaker__swatches';
+    meta.appendChild(swatches);
+
+    /** @type {{ title: string, items: { key: keyof typeof HEADER_BADGE_TWEAK_DEFAULTS, label: string, min: number, max: number, step: number }[] }[]} */
+    const sections = [
+        {
+            title: 'Size & logo',
+            items: [
+                { key: 'widthPx', label: 'Width', min: 200, max: 440, step: 2 },
+                { key: 'heightExtraPx', label: 'Height extra', min: 10, max: 60, step: 1 },
+                { key: 'logoPercent', label: 'Logo %', min: 50, max: 95, step: 1 },
+                { key: 'logoMaxPx', label: 'Logo max px', min: 40, max: 120, step: 1 },
+            ],
+        },
+        {
+            title: 'Border shape',
+            items: [
+                { key: 'topStrokeWidth', label: 'Top border thickness', min: 1, max: 12, step: 0.25 },
+                { key: 'bottomStrokeWidth', label: 'Bottom border thickness', min: 1, max: 14, step: 0.25 },
+                { key: 'borderGap', label: 'Gap size', min: 4, max: 40, step: 1 },
+                { key: 'borderGapCenter', label: 'Gap position (↑↓)', min: 18, max: 82, step: 1 },
+                { key: 'tipPointiness', label: 'Tip pointiness', min: 0, max: 100, step: 1 },
+                { key: 'cornerRadius', label: 'Shape / border corner round', min: 0, max: 12, step: 0.25 },
+            ],
+        },
+        {
+            title: 'Border color',
+            items: [
+                { key: 'borderHueShift', label: 'Hue shift', min: -40, max: 40, step: 1 },
+                { key: 'borderSaturation', label: 'Saturation', min: 50, max: 100, step: 1 },
+                { key: 'borderLightness', label: 'Lightness', min: 38, max: 70, step: 1 },
+                { key: 'borderGlow', label: 'Neon glow', min: 0, max: 100, step: 1 },
+                { key: 'borderOpacity', label: 'Opacity', min: 10, max: 100, step: 1 },
+            ],
+        },
+        {
+            title: 'Fill',
+            items: [
+                { key: 'fillDarkness', label: 'Top darkness', min: 0, max: 100, step: 1 },
+                { key: 'fillBrightness', label: 'Bottom lift', min: 0, max: 100, step: 1 },
+            ],
+        },
+        {
+            title: 'Geometry',
+            items: [
+                { key: 'topY', label: 'Top Y', min: 2, max: 24, step: 0.5 },
+                { key: 'bottomY', label: 'Bottom Y', min: 70, max: 98, step: 0.5 },
+                { key: 'topLength', label: 'Top length', min: 40, max: 86, step: 0.5 },
+                { key: 'bottomLength', label: 'Bottom length', min: 24, max: 80, step: 0.5 },
+                { key: 'notchOut', label: 'Notch out', min: 0, max: 10, step: 0.25 },
+                { key: 'notchDrop', label: 'Notch drop', min: 4, max: 24, step: 0.5 },
+            ],
+        },
+    ];
+
+    const grid = document.createElement('div');
+    grid.className = 'header-badge-tweaker__grid';
+    panel.appendChild(grid);
+
+    const refreshStatus = () => {
+        status.textContent = hooks.isDirty() ? 'Unsaved changes' : 'Saved';
+        status.classList.toggle('is-dirty', hooks.isDirty());
+    };
+
+    const refreshReadouts = () => {
+        const result = applyHeaderTitleBadgeTweaks(state);
+        if (!result) return;
+        const { accent, fillTop, fillBottom, borderRgb } = result;
+        paletteNote.textContent = `Accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
+
+        swatches.replaceChildren();
+        for (const [label, rgb] of [
+            ['Accent', accent],
+            ['Fill top', fillTop],
+            ['Fill bottom', fillBottom],
+            ['Border', borderRgb],
+        ]) {
+            const cell = document.createElement('div');
+            cell.className = 'header-badge-tweaker__swatch';
+            const chip = document.createElement('span');
+            chip.className = 'header-badge-tweaker__swatch-chip';
+            chip.style.background = rgbCss(rgb);
+            const lab = document.createElement('span');
+            lab.textContent = label;
+            cell.appendChild(chip);
+            cell.appendChild(lab);
+            swatches.appendChild(cell);
+        }
+        refreshStatus();
+    };
+
+    const syncRowValues = () => {
+        panel.querySelectorAll('[data-tweak-key]').forEach((el) => {
+            const key = el.getAttribute('data-tweak-key');
+            if (!key || !(key in state)) return;
+            const range = el.querySelector('input[type="range"]');
+            const v = el.querySelector('.header-badge-tweaker__val');
+            if (range) range.value = String(state[key]);
+            if (v) v.textContent = String(state[key]);
+        });
+    };
+
+    for (const section of sections) {
+        const card = document.createElement('section');
+        card.className = 'header-badge-tweaker__section';
+
+        const h = document.createElement('h3');
+        h.className = 'header-badge-tweaker__section-title';
+        h.textContent = section.title;
+        card.appendChild(h);
+
+        for (const spec of section.items) {
+            const row = document.createElement('div');
+            row.className = 'header-badge-tweaker__row';
+            row.dataset.tweakKey = spec.key;
+
+            const lab = document.createElement('span');
+            lab.className = 'header-badge-tweaker__label';
+            lab.textContent = spec.label;
+
+            const input = document.createElement('input');
+            input.type = 'range';
+            input.min = String(spec.min);
+            input.max = String(spec.max);
+            input.step = String(spec.step);
+            input.value = String(state[spec.key]);
+            input.setAttribute('aria-label', spec.label);
+
+            const val = document.createElement('span');
+            val.className = 'header-badge-tweaker__val';
+            val.textContent = String(state[spec.key]);
+
+            const resetOne = document.createElement('button');
+            resetOne.type = 'button';
+            resetOne.className = 'header-badge-tweaker__reset-one';
+            resetOne.title = `Reset ${spec.label}`;
+            resetOne.textContent = 'Reset';
+            resetOne.addEventListener('click', () => {
+                state[spec.key] = HEADER_BADGE_TWEAK_DEFAULTS[spec.key];
+                Object.assign(state, sanitizeState(state));
+                syncRowValues();
+                hooks.onPreview();
+                refreshReadouts();
+            });
+
+            input.addEventListener('input', () => {
+                state[spec.key] = Number(input.value);
+                Object.assign(state, sanitizeState(state));
+                syncRowValues();
+                hooks.onPreview();
+                refreshReadouts();
+            });
+
+            row.appendChild(lab);
+            row.appendChild(input);
+            row.appendChild(val);
+            row.appendChild(resetOne);
+            card.appendChild(row);
+        }
+
+        grid.appendChild(card);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'header-badge-tweaker__actions';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.type = 'button';
+    saveBtn.className = 'header-badge-tweaker__save';
+    saveBtn.textContent = 'Save';
+    saveBtn.addEventListener('click', () => {
+        hooks.onSave();
+        saveBtn.textContent = 'Saved';
+        refreshStatus();
+        setTimeout(() => {
+            saveBtn.textContent = 'Save';
+        }, 1000);
+    });
+
+    const resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.textContent = 'Reset all';
+    resetBtn.addEventListener('click', () => {
+        Object.assign(state, cloneDefaults());
+        hooks.onPreview();
+        mountControls(panel, state, hooks);
+    });
+
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.textContent = 'Copy JSON';
+    copyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(JSON.stringify(sanitizeState(state), null, 2));
+            copyBtn.textContent = 'Copied';
+            setTimeout(() => {
+                copyBtn.textContent = 'Copy JSON';
+            }, 1200);
+        } catch {
+            copyBtn.textContent = 'Copy failed';
+        }
+    });
+
+    actions.appendChild(saveBtn);
+    actions.appendChild(resetBtn);
+    actions.appendChild(copyBtn);
+    panel.appendChild(actions);
+
+    refreshReadouts();
+}
+
+export function setupHeaderTitleBadgeTweaker() {
+    const badge = document.getElementById('headerTitleBadge');
+    if (!badge) return;
+
+    ensureBadgeSvgParts(badge);
+    const state = loadState();
+    let savedSnapshot = sanitizeState({ ...state });
+    let dirty = false;
+
+    const preview = () => {
+        applyHeaderTitleBadgeTweaks(state);
+        dirty = JSON.stringify(sanitizeState(state)) !== JSON.stringify(savedSnapshot);
+    };
+    const persist = () => {
+        Object.assign(state, sanitizeState(state));
+        saveState(state);
+        savedSnapshot = sanitizeState({ ...state });
+        dirty = false;
+        applyHeaderTitleBadgeTweaks(state);
+    };
+
+    preview();
+    if (document.getElementById(TOGGLE_ID)) return;
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.id = TOGGLE_ID;
+    toggle.className = 'header-badge-tweaker-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', PANEL_ID);
+    toggle.title = 'Tweak center official-site badge';
+    toggle.textContent = 'Badge';
+
+    const panel = document.createElement('div');
+    panel.id = PANEL_ID;
+    panel.className = 'header-badge-tweaker-panel';
+    panel.hidden = true;
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'Center badge geometry tweaker');
+
+    const hooks = {
+        onPreview: preview,
+        onSave: persist,
+        isDirty: () => dirty,
+    };
+
+    mountControls(panel, state, hooks);
+
+    const mo = new MutationObserver(() => {
+        applyHeaderTitleBadgeTweaks(state);
+        if (!panel.hidden) mountControls(panel, state, hooks);
+    });
+    mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    toggle.addEventListener('click', () => {
+        const open = panel.hidden;
+        panel.hidden = !open;
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.classList.toggle('is-active', open);
+        toggle.textContent = open ? 'Close' : 'Badge';
+        if (open) mountControls(panel, state, hooks);
+    });
+
+    document.body.appendChild(toggle);
+    document.body.appendChild(panel);
+}
+
+if (typeof window !== 'undefined') {
+    window.HeaderTitleBadgeTweaker = {
+        setupHeaderTitleBadgeTweaker,
+        applyHeaderTitleBadgeTweaks,
+        HEADER_BADGE_TWEAK_DEFAULTS,
+    };
+}

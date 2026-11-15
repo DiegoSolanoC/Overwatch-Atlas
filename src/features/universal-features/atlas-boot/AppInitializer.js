@@ -24,6 +24,7 @@ import {
     setupHeaderHub,
     setupOfficialSiteLinkSound
 } from '../atlas-header/HeaderModeSynchronization.js';
+import { setupHeaderTitleBadgeTweaker } from '../atlas-header/HeaderTitleBadgeTweaker.js';
 import { initMobilePortraitGate } from './mobilePortraitGate.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
 import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=102';
@@ -221,9 +222,11 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupHeaderHub);
     document.addEventListener('DOMContentLoaded', setupZoomControls);
     document.addEventListener('DOMContentLoaded', setupOfficialSiteLinkSound);
+    document.addEventListener('DOMContentLoaded', setupHeaderTitleBadgeTweaker);
 } else {
     initMobilePortraitGate();
     setupHeaderHub();
     setupZoomControls();
     setupOfficialSiteLinkSound();
+    setupHeaderTitleBadgeTweaker();
 }
