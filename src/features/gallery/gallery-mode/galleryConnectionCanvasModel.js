@@ -465,8 +465,8 @@ export function buildGalleryConnectionCanvasModel(
     const savedNodes = Array.isArray(saved?.nodes) ? saved.nodes : [];
     const savedEdges = Array.isArray(saved?.edges) ? saved.edges : [];
 
-    // Subject → each linked path only (junctions/breaks included). Peer cords among
-    // neighbors are added lightly later — full peer path mesh explodes the subgraph.
+    // Subject → each linked path, plus Codex paths among neighbors who also connect
+    // to each other (e.g. Doomfist’s linked cast that share cords on the board).
     const seed = codexGraph?.nodes?.length
         ? extractCodexEgoSubgraphForGallery({
             subjectKind,
@@ -475,7 +475,7 @@ export function buildGalleryConnectionCanvasModel(
             linkedEntities,
             codexNodes: codexGraph.nodes,
             codexEdges: codexGraph.edges || [],
-            includePeerPaths: false,
+            includePeerPaths: true,
         })
         : null;
 

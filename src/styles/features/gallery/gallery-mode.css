@@ -270,6 +270,16 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     color: rgba(200, 230, 255, 0.95);
 }
 
+.gallery-mode__archive-description-btn--danger {
+    border-color: rgba(244, 120, 120, 0.55);
+    color: rgba(255, 220, 220, 0.96);
+}
+
+.gallery-mode__archive-description-btn--danger:hover:not(:disabled) {
+    border-color: rgba(244, 140, 140, 0.75);
+    background: rgba(180, 50, 50, 0.28);
+}
+
 .gallery-mode__archive-description-btn--save-archive {
     border-color: rgba(76, 175, 80, 0.55);
     color: rgba(210, 245, 215, 0.95);
@@ -923,6 +933,12 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 
 .gallery-conn-canvas .gallery-conn-canvas__node.codex-node--simplified .codex-node__img {
     transform: none !important;
+}
+
+/* Faction emblems use left/top 50% + translate(-50%, -50%) in Codex; keep that
+   centering when gallery strips hex counter-rotation above. */
+.gallery-conn-canvas .gallery-conn-canvas__node.codex-node--simplified[data-codex-kind='faction'] .codex-node__img {
+    transform: translate(-50%, -50%) !important;
 }
 
 /* Codex filter-hover uses outline on generic nodes — gallery uses portrait glow only */

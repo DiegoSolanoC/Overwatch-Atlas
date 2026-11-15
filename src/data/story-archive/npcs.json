@@ -14,7 +14,92 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197798582-i6xktlaz",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Casino",
+            "x": 9131.85,
+            "y": 5155.840996418491,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Casino",
+            "codexNodeId": "cn-1776197798582-i6xktlaz"
+          },
+          {
+            "id": "cn-1792614728741-elmdufqm",
+            "kind": "junction",
+            "x": 9191.85,
+            "y": 5311.524666803865,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792614728741-elmdufqm"
+          },
+          {
+            "id": "cn-1792614750162-oc5z3y91",
+            "kind": "junction",
+            "x": 9252.095460167064,
+            "y": 5370.532224783739,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792614750162-oc5z3y91"
+          },
+          {
+            "id": "cn-1792615180005-larhtrw2",
+            "kind": "junction",
+            "x": 9402.759247793489,
+            "y": 5369.654453561805,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792615180005-larhtrw2"
+          },
+          {
+            "id": "cn-1792617264313-l21revok",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "M.E.K.A Squad",
+            "x": 9388.76650053098,
+            "y": 5308.294686799489,
+            "scale": 3,
+            "bgColor": "#74f1ab",
+            "factionFilename": "M.E.K.A Squad",
+            "portraitKey": "M.E.K.A Squad",
+            "codexNodeId": "cn-1792617264313-l21revok"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197798582-i6xktlaz",
+            "toId": "cn-1792614728741-elmdufqm"
+          },
+          {
+            "fromId": "cn-1792614728741-elmdufqm",
+            "toId": "cn-1792614750162-oc5z3y91"
+          },
+          {
+            "fromId": "cn-1792614750162-oc5z3y91",
+            "toId": "cn-1792615180005-larhtrw2"
+          },
+          {
+            "fromId": "cn-1792615180005-larhtrw2",
+            "toId": "cn-1792617264313-l21revok"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10109,
+        "worldH": 6029
+      }
     },
     {
       "name": "Dae-Hyun",
@@ -30,7 +115,79 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778802005760-uhk8yuwo",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Dae-Hyun",
+            "x": 9380.55,
+            "y": 5835.4980021248775,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Dae-Hyun",
+            "codexNodeId": "cn-1778802005760-uhk8yuwo"
+          },
+          {
+            "id": "cn-1792855295375-4iio0390",
+            "kind": "junction",
+            "x": 9493.897468214484,
+            "y": 5842.1235986733,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792855295375-4iio0390"
+          },
+          {
+            "id": "cn-1792855317316-a71m6ze6",
+            "kind": "junction",
+            "x": 9495.117468214483,
+            "y": 5592.1435986732995,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792855317316-a71m6ze6"
+          },
+          {
+            "id": "cn-1792617264313-l21revok",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "M.E.K.A Squad",
+            "x": 9388.76650053098,
+            "y": 5308.294686799489,
+            "scale": 3,
+            "bgColor": "#74f1ab",
+            "factionFilename": "M.E.K.A Squad",
+            "portraitKey": "M.E.K.A Squad",
+            "codexNodeId": "cn-1792617264313-l21revok"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778802005760-uhk8yuwo",
+            "toId": "cn-1792855295375-4iio0390"
+          },
+          {
+            "fromId": "cn-1792855295375-4iio0390",
+            "toId": "cn-1792855317316-a71m6ze6"
+          },
+          {
+            "fromId": "cn-1792855317316-a71m6ze6",
+            "toId": "cn-1792617264313-l21revok"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10109,
+        "worldH": 6376
+      }
     },
     {
       "name": "King",
@@ -46,7 +203,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198177071-2bom9fnt",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "King",
+            "x": 9621.610597851095,
+            "y": 5164.595017907544,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "King",
+            "codexNodeId": "cn-1776198177071-2bom9fnt"
+          },
+          {
+            "id": "cn-1794013103692-brkq2vbb",
+            "kind": "junction",
+            "x": 9619.188549191036,
+            "y": 5350.444852353517,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103692-brkq2vbb"
+          },
+          {
+            "id": "cn-1792617264313-l21revok",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "M.E.K.A Squad",
+            "x": 9388.76650053098,
+            "y": 5308.294686799489,
+            "scale": 3,
+            "bgColor": "#74f1ab",
+            "factionFilename": "M.E.K.A Squad",
+            "portraitKey": "M.E.K.A Squad",
+            "codexNodeId": "cn-1792617264313-l21revok"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198177071-2bom9fnt",
+            "toId": "cn-1794013103692-brkq2vbb"
+          },
+          {
+            "fromId": "cn-1794013103692-brkq2vbb",
+            "toId": "cn-1792617264313-l21revok"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10162,
+        "worldH": 6029
+      }
     },
     {
       "name": "Myung",
@@ -74,7 +290,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197785893-fhkkqm96",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Boomslang",
+            "x": 10643.284872224853,
+            "y": 5377.620511100597,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Boomslang",
+            "codexNodeId": "cn-1776197785893-fhkkqm96"
+          },
+          {
+            "id": "cn-1794013103607-brktekyk",
+            "kind": "junction",
+            "x": 10805.11780787813,
+            "y": 5323.541147787991,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103607-brktekyk"
+          },
+          {
+            "id": "cn-1776189155391-blrdsyra",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Phreaks",
+            "x": 10738.95074353141,
+            "y": 5041.461784475385,
+            "scale": 3,
+            "bgColor": "#8000ff",
+            "factionFilename": "The Phreaks",
+            "portraitKey": "The Phreaks",
+            "codexNodeId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197785893-fhkkqm96",
+            "toId": "cn-1794013103607-brktekyk"
+          },
+          {
+            "fromId": "cn-1794013103607-brktekyk",
+            "toId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 11459,
+        "worldH": 5918
+      }
     },
     {
       "name": "Jackdaw",
@@ -102,7 +377,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776199008484-l590n2nt",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Susannah",
+            "x": 11141.9,
+            "y": 5161.230988577638,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Susannah",
+            "codexNodeId": "cn-1776199008484-l590n2nt"
+          },
+          {
+            "id": "cn-1794013103689-brk4cpci",
+            "kind": "junction",
+            "x": 11072.425371765705,
+            "y": 5233.346386526511,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103689-brk4cpci"
+          },
+          {
+            "id": "cn-1776189155391-blrdsyra",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Phreaks",
+            "x": 10738.95074353141,
+            "y": 5041.461784475385,
+            "scale": 3,
+            "bgColor": "#8000ff",
+            "factionFilename": "The Phreaks",
+            "portraitKey": "The Phreaks",
+            "codexNodeId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776199008484-l590n2nt",
+            "toId": "cn-1794013103689-brk4cpci"
+          },
+          {
+            "fromId": "cn-1794013103689-brk4cpci",
+            "toId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 11742,
+        "worldH": 5762
+      }
     },
     {
       "name": "Touch Up",
@@ -118,7 +452,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776199057015-ffml1sq3",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Touch Up",
+            "x": 10541.345074353141,
+            "y": 5203.418029741257,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Touch Up",
+            "codexNodeId": "cn-1776199057015-ffml1sq3"
+          },
+          {
+            "id": "cn-1794013103687-brkjbxcn",
+            "kind": "junction",
+            "x": 10754.147908942276,
+            "y": 5236.439907108321,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103687-brkjbxcn"
+          },
+          {
+            "id": "cn-1776189155391-blrdsyra",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Phreaks",
+            "x": 10738.95074353141,
+            "y": 5041.461784475385,
+            "scale": 3,
+            "bgColor": "#8000ff",
+            "factionFilename": "The Phreaks",
+            "portraitKey": "The Phreaks",
+            "codexNodeId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776199057015-ffml1sq3",
+            "toId": "cn-1794013103687-brkjbxcn"
+          },
+          {
+            "fromId": "cn-1794013103687-brkjbxcn",
+            "toId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 11459,
+        "worldH": 5762
+      }
     },
     {
       "name": "B.O.B",
@@ -134,7 +527,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197773898-vrt0idb9",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "B.O.B",
+            "x": 6002.796563220367,
+            "y": 6407.791754622951,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "B.O.B",
+            "codexNodeId": "cn-1776197773898-vrt0idb9"
+          },
+          {
+            "id": "cn-1794013103702-brkjgqx8",
+            "kind": "junction",
+            "x": 6214.883281610184,
+            "y": 6386.9046462970655,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103702-brkjgqx8"
+          },
+          {
+            "id": "cn-1792630940143-4ay56gm8",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Deadlock Rebels",
+            "x": 6162.97,
+            "y": 6102.01753797118,
+            "scale": 3,
+            "bgColor": "#5a1f1e",
+            "factionFilename": "Deadlock Rebels",
+            "portraitKey": "Deadlock Rebels",
+            "codexNodeId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197773898-vrt0idb9",
+            "toId": "cn-1794013103702-brkjgqx8"
+          },
+          {
+            "fromId": "cn-1794013103702-brkjgqx8",
+            "toId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6883,
+        "worldH": 7008
+      }
     },
     {
       "name": "Bars",
@@ -150,7 +602,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197779816-8kojasku",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Bars",
+            "x": 6110.341051922159,
+            "y": 5970.781051922158,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Bars",
+            "codexNodeId": "cn-1776197779816-8kojasku"
+          },
+          {
+            "id": "cn-1794013103703-brk3wuji",
+            "kind": "junction",
+            "x": 6250.65552596108,
+            "y": 6150.399294946669,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103703-brk3wuji"
+          },
+          {
+            "id": "cn-1792630940143-4ay56gm8",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Deadlock Rebels",
+            "x": 6162.97,
+            "y": 6102.01753797118,
+            "scale": 3,
+            "bgColor": "#5a1f1e",
+            "factionFilename": "Deadlock Rebels",
+            "portraitKey": "Deadlock Rebels",
+            "codexNodeId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197779816-8kojasku",
+            "toId": "cn-1794013103703-brk3wuji"
+          },
+          {
+            "fromId": "cn-1794013103703-brk3wuji",
+            "toId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6883,
+        "worldH": 6823
+      }
     },
     {
       "name": "Bez",
@@ -166,7 +677,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1781042310078-t04oguxx",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Bez",
+            "x": 6561.880677354116,
+            "y": 6173.2,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Bez",
+            "codexNodeId": "cn-1781042310078-t04oguxx"
+          },
+          {
+            "id": "cn-1794013103700-brkk1r0b",
+            "kind": "junction",
+            "x": 6476.425338677058,
+            "y": 6251.60876898559,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103700-brkk1r0b"
+          },
+          {
+            "id": "cn-1792630940143-4ay56gm8",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Deadlock Rebels",
+            "x": 6162.97,
+            "y": 6102.01753797118,
+            "scale": 3,
+            "bgColor": "#5a1f1e",
+            "factionFilename": "Deadlock Rebels",
+            "portraitKey": "Deadlock Rebels",
+            "codexNodeId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1781042310078-t04oguxx",
+            "toId": "cn-1794013103700-brkk1r0b"
+          },
+          {
+            "fromId": "cn-1794013103700-brkk1r0b",
+            "toId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7102,
+        "worldH": 6823
+      }
     },
     {
       "name": "Frankie",
@@ -182,7 +752,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778979041484-kwbkzem6",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Frankie",
+            "x": 6463.491355237513,
+            "y": 5995.253785079171,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Frankie",
+            "codexNodeId": "cn-1778979041484-kwbkzem6"
+          },
+          {
+            "id": "cn-1794013103698-brk9d6ek",
+            "kind": "junction",
+            "x": 6427.230677618756,
+            "y": 6162.635661525175,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103698-brk9d6ek"
+          },
+          {
+            "id": "cn-1792630940143-4ay56gm8",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Deadlock Rebels",
+            "x": 6162.97,
+            "y": 6102.01753797118,
+            "scale": 3,
+            "bgColor": "#5a1f1e",
+            "factionFilename": "Deadlock Rebels",
+            "portraitKey": "Deadlock Rebels",
+            "codexNodeId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778979041484-kwbkzem6",
+            "toId": "cn-1794013103698-brk9d6ek"
+          },
+          {
+            "fromId": "cn-1794013103698-brk9d6ek",
+            "toId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7004,
+        "worldH": 6823
+      }
     },
     {
       "name": "The Triplets",
@@ -204,7 +833,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1780236360130-tkr4lg6h",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Asa",
+            "x": 5270.310293924484,
+            "y": 9481.015311804545,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Asa",
+            "codexNodeId": "cn-1780236360130-tkr4lg6h"
+          },
+          {
+            "id": "cn-1794013103628-brk04zbt",
+            "kind": "junction",
+            "x": 5219.831569180507,
+            "y": 9540.887655902272,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103628-brk04zbt"
+          },
+          {
+            "id": "cn-1776189210560-3uu1uqoc",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Yamagami Blades",
+            "x": 5013.352844436531,
+            "y": 9444.76,
+            "scale": 2,
+            "bgColor": null,
+            "factionFilename": "Yamagami Blades",
+            "portraitKey": "Yamagami Blades",
+            "codexNodeId": "cn-1776189210560-3uu1uqoc"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1780236360130-tkr4lg6h",
+            "toId": "cn-1794013103628-brk04zbt"
+          },
+          {
+            "fromId": "cn-1794013103628-brk04zbt",
+            "toId": "cn-1776189210560-3uu1uqoc"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5811,
+        "worldH": 10045
+      }
     },
     {
       "name": "Kamori-san",
@@ -226,7 +914,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1780195623793-y533oc6a",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Sojiro",
+            "x": 5715.66,
+            "y": 9132.741517293844,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Sojiro",
+            "codexNodeId": "cn-1780195623793-y533oc6a"
+          },
+          {
+            "id": "cn-1794013103625-brkbhdon",
+            "kind": "junction",
+            "x": 5728.6086965412305,
+            "y": 9051.27836556446,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103625-brkbhdon"
+          },
+          {
+            "id": "cn-1776189217121-65fhi9r3",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Shimada Clan",
+            "x": 5513.557393082461,
+            "y": 8741.815213835076,
+            "scale": 3,
+            "bgColor": null,
+            "factionFilename": "Shimada Clan",
+            "portraitKey": "Shimada Clan",
+            "codexNodeId": "cn-1776189217121-65fhi9r3"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1780195623793-y533oc6a",
+            "toId": "cn-1794013103625-brkbhdon"
+          },
+          {
+            "fromId": "cn-1794013103625-brkbhdon",
+            "toId": "cn-1776189217121-65fhi9r3"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6256,
+        "worldH": 9673
+      }
     },
     {
       "name": "Toshiro",
@@ -266,7 +1013,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198357928-5tnnx0cn",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Nobuto",
+            "x": 6039.327265474201,
+            "y": 10035.6127345258,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Nobuto",
+            "codexNodeId": "cn-1776198357928-5tnnx0cn"
+          },
+          {
+            "id": "cn-1794013103619-brkbtoel",
+            "kind": "junction",
+            "x": 6239.7634173167335,
+            "y": 9955.174152686559,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103619-brkbtoel"
+          },
+          {
+            "id": "cn-1776189240157-xzlqn0e9",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Yokai Gang",
+            "x": 6212.199569159265,
+            "y": 9646.735570847319,
+            "scale": 3,
+            "bgColor": "#5acfe5",
+            "factionFilename": "Yokai Gang",
+            "portraitKey": "Yokai Gang",
+            "codexNodeId": "cn-1776189240157-xzlqn0e9"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198357928-5tnnx0cn",
+            "toId": "cn-1794013103619-brkbtoel"
+          },
+          {
+            "fromId": "cn-1794013103619-brkbtoel",
+            "toId": "cn-1776189240157-xzlqn0e9"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6933,
+        "worldH": 10576
+      }
     },
     {
       "name": "Ryota",
@@ -282,7 +1088,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198974115-2jyrwswf",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Ryota",
+            "x": 6418.371594269586,
+            "y": 9486.94880429781,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Ryota",
+            "codexNodeId": "cn-1776198974115-2jyrwswf"
+          },
+          {
+            "id": "cn-1794013103620-brkye9kl",
+            "kind": "junction",
+            "x": 6429.2855817144255,
+            "y": 9680.842187572565,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103620-brkye9kl"
+          },
+          {
+            "id": "cn-1776189240157-xzlqn0e9",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Yokai Gang",
+            "x": 6212.199569159265,
+            "y": 9646.735570847319,
+            "scale": 3,
+            "bgColor": "#5acfe5",
+            "factionFilename": "Yokai Gang",
+            "portraitKey": "Yokai Gang",
+            "codexNodeId": "cn-1776189240157-xzlqn0e9"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198974115-2jyrwswf",
+            "toId": "cn-1794013103620-brkye9kl"
+          },
+          {
+            "fromId": "cn-1794013103620-brkye9kl",
+            "toId": "cn-1776189240157-xzlqn0e9"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6959,
+        "worldH": 10367
+      }
     },
     {
       "name": "Sakura",
@@ -298,7 +1163,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198981201-kaorvuxy",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Sakura",
+            "x": 6517.351394985888,
+            "y": 9319.538007163019,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Sakura",
+            "codexNodeId": "cn-1776198981201-kaorvuxy"
+          },
+          {
+            "id": "cn-1792766956270-13zlkv2g",
+            "kind": "junction",
+            "x": 6726.831983305061,
+            "y": 10161.371983305062,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792766956270-13zlkv2g"
+          },
+          {
+            "id": "cn-1776189240157-xzlqn0e9",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Yokai Gang",
+            "x": 6212.199569159265,
+            "y": 9646.735570847319,
+            "scale": 3,
+            "bgColor": "#5acfe5",
+            "factionFilename": "Yokai Gang",
+            "portraitKey": "Yokai Gang",
+            "codexNodeId": "cn-1776189240157-xzlqn0e9"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198981201-kaorvuxy",
+            "toId": "cn-1792766956270-13zlkv2g"
+          },
+          {
+            "fromId": "cn-1792766956270-13zlkv2g",
+            "toId": "cn-1776189240157-xzlqn0e9"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7171,
+        "worldH": 10606
+      }
     },
     {
       "name": "Geiger",
@@ -314,7 +1238,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197899775-0v9epp21",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Geiger",
+            "x": 7045.921058878848,
+            "y": 5202.889529909628,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Geiger",
+            "codexNodeId": "cn-1776197899775-0v9epp21"
+          },
+          {
+            "id": "cn-1794013103612-brk1s4ec",
+            "kind": "junction",
+            "x": 7205.571793360718,
+            "y": 5375.3773004829445,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103612-brk1s4ec"
+          },
+          {
+            "id": "cn-1776189424359-1982a8ml",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Junker Monarchy",
+            "x": 7137.2225278425885,
+            "y": 5319.865071056261,
+            "scale": 3,
+            "bgColor": "#e0c26f",
+            "factionFilename": "Junker Monarchy",
+            "portraitKey": "Junker Monarchy",
+            "codexNodeId": "cn-1776189424359-1982a8ml"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197899775-0v9epp21",
+            "toId": "cn-1794013103612-brk1s4ec"
+          },
+          {
+            "fromId": "cn-1794013103612-brk1s4ec",
+            "toId": "cn-1776189424359-1982a8ml"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7858,
+        "worldH": 6040
+      }
     },
     {
       "name": "Mason",
@@ -372,7 +1355,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778802034992-1qhaxwlg",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Chao",
+            "x": 12878.496273128407,
+            "y": 6396.8188193852175,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Chao",
+            "codexNodeId": "cn-1778802034992-1qhaxwlg"
+          },
+          {
+            "id": "cn-1794013103682-brk1hvkx",
+            "kind": "junction",
+            "x": 12888.59422761577,
+            "y": 6356.542227589476,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103682-brk1hvkx"
+          },
+          {
+            "id": "cn-1776189366354-irv4wkok",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Lucheng Interstellar",
+            "x": 12634.692182103134,
+            "y": 6052.265635793735,
+            "scale": 3,
+            "bgColor": "#999999",
+            "factionFilename": "Lucheng Interstellar",
+            "portraitKey": "Lucheng Interstellar",
+            "codexNodeId": "cn-1776189366354-irv4wkok"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778802034992-1qhaxwlg",
+            "toId": "cn-1794013103682-brk1hvkx"
+          },
+          {
+            "fromId": "cn-1794013103682-brk1hvkx",
+            "toId": "cn-1776189366354-irv4wkok"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 13479,
+        "worldH": 6997
+      }
     },
     {
       "name": "Harold",
@@ -388,7 +1430,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197955340-9ialzc1r",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Harold",
+            "x": 12442.699081252815,
+            "y": 6160.795,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Harold",
+            "codexNodeId": "cn-1776197955340-9ialzc1r"
+          },
+          {
+            "id": "cn-1794013103681-brk8bgwg",
+            "kind": "junction",
+            "x": 12652.695631677974,
+            "y": 6220.530317896868,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103681-brk8bgwg"
+          },
+          {
+            "id": "cn-1776189366354-irv4wkok",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Lucheng Interstellar",
+            "x": 12634.692182103134,
+            "y": 6052.265635793735,
+            "scale": 3,
+            "bgColor": "#999999",
+            "factionFilename": "Lucheng Interstellar",
+            "portraitKey": "Lucheng Interstellar",
+            "codexNodeId": "cn-1776189366354-irv4wkok"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197955340-9ialzc1r",
+            "toId": "cn-1794013103681-brk8bgwg"
+          },
+          {
+            "fromId": "cn-1794013103681-brk8bgwg",
+            "toId": "cn-1776189366354-irv4wkok"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 13355,
+        "worldH": 6773
+      }
     },
     {
       "name": "Jiayi",
@@ -404,7 +1505,79 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197996547-ax6bzskn",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Jiayi",
+            "x": 12616.429155457818,
+            "y": 6617.2333726257275,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Jiayi",
+            "codexNodeId": "cn-1776197996547-ax6bzskn"
+          },
+          {
+            "id": "cn-1792974592996-0dez4s3y",
+            "kind": "junction",
+            "x": 12676.4,
+            "y": 6496.8172285562905,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792974592996-0dez4s3y"
+          },
+          {
+            "id": "cn-1792974609133-1gekmmuj",
+            "kind": "junction",
+            "x": 12802.7,
+            "y": 6370.380819396871,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792974609133-1gekmmuj"
+          },
+          {
+            "id": "cn-1776189366354-irv4wkok",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Lucheng Interstellar",
+            "x": 12634.692182103134,
+            "y": 6052.265635793735,
+            "scale": 3,
+            "bgColor": "#999999",
+            "factionFilename": "Lucheng Interstellar",
+            "portraitKey": "Lucheng Interstellar",
+            "codexNodeId": "cn-1776189366354-irv4wkok"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197996547-ax6bzskn",
+            "toId": "cn-1792974592996-0dez4s3y"
+          },
+          {
+            "fromId": "cn-1792974592996-0dez4s3y",
+            "toId": "cn-1792974609133-1gekmmuj"
+          },
+          {
+            "fromId": "cn-1792974609133-1gekmmuj",
+            "toId": "cn-1776189366354-irv4wkok"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 13355,
+        "worldH": 7158
+      }
     },
     {
       "name": "Adawe",
@@ -420,7 +1593,196 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197531895-fyylpmp4",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Adawe",
+            "x": 10660.087398872927,
+            "y": 9013.372581175847,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Adawe",
+            "codexNodeId": "cn-1776197531895-fyylpmp4"
+          },
+          {
+            "id": "cn-1793465554210-c0ev4izh",
+            "kind": "junction",
+            "x": 10831.171280126116,
+            "y": 8963.42653151102,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793465554210-c0ev4izh"
+          },
+          {
+            "id": "cn-1793465551760-xybzw8fi",
+            "kind": "junction",
+            "x": 10920.40358737181,
+            "y": 8963.43,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793465551760-xybzw8fi"
+          },
+          {
+            "id": "cn-1793465550171-1fn74jlt",
+            "kind": "junction",
+            "x": 11050.292920455126,
+            "y": 8831.4,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793465550171-1fn74jlt"
+          },
+          {
+            "id": "cn-1792887609141-7moaz773",
+            "kind": "junction",
+            "x": 11153.650000000001,
+            "y": 8831.4,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792887609141-7moaz773"
+          },
+          {
+            "id": "cn-1792887859460-043zukwe",
+            "kind": "junction",
+            "x": 11341.688580168611,
+            "y": 8832.353121441754,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792887859460-043zukwe"
+          },
+          {
+            "id": "cn-1793465182692-1bmqkdj7",
+            "kind": "junction",
+            "x": 11530.758857301573,
+            "y": 8642.681142698428,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793465182692-1bmqkdj7"
+          },
+          {
+            "id": "cn-1792885128180-pra1qdy5",
+            "kind": "junction",
+            "x": 11663.242863869651,
+            "y": 8509.625219387546,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792885128180-pra1qdy5"
+          },
+          {
+            "id": "cn-1792886259160-crtpye94",
+            "kind": "junction",
+            "x": 11662.440341736183,
+            "y": 8428.201570436922,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792886259160-crtpye94"
+          },
+          {
+            "id": "cn-1792885451648-ekw4vc01",
+            "kind": "junction",
+            "x": 11720.765986892111,
+            "y": 8368.628066150952,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792885451648-ekw4vc01"
+          },
+          {
+            "id": "cn-1792885427172-cx6ynfv4",
+            "kind": "junction",
+            "x": 11952.567043659816,
+            "y": 8368.452969378975,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792885427172-cx6ynfv4"
+          },
+          {
+            "id": "cn-1792885129300-0z3oqmfx",
+            "kind": "junction",
+            "x": 12067.5,
+            "y": 8253.110863124908,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792885129300-0z3oqmfx"
+          },
+          {
+            "id": "cn-1791848476510-njst19xu",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Overwatch",
+            "x": 11755.19116365587,
+            "y": 7363.30811667225,
+            "scale": 5,
+            "bgColor": "#003b62",
+            "factionFilename": "Overwatch",
+            "portraitKey": "Overwatch",
+            "codexNodeId": "cn-1791848476510-njst19xu"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197531895-fyylpmp4",
+            "toId": "cn-1793465554210-c0ev4izh"
+          },
+          {
+            "fromId": "cn-1793465554210-c0ev4izh",
+            "toId": "cn-1793465551760-xybzw8fi"
+          },
+          {
+            "fromId": "cn-1793465551760-xybzw8fi",
+            "toId": "cn-1793465550171-1fn74jlt"
+          },
+          {
+            "fromId": "cn-1793465550171-1fn74jlt",
+            "toId": "cn-1792887609141-7moaz773"
+          },
+          {
+            "fromId": "cn-1792887609141-7moaz773",
+            "toId": "cn-1792887859460-043zukwe"
+          },
+          {
+            "fromId": "cn-1792887859460-043zukwe",
+            "toId": "cn-1793465182692-1bmqkdj7"
+          },
+          {
+            "fromId": "cn-1793465182692-1bmqkdj7",
+            "toId": "cn-1792885128180-pra1qdy5"
+          },
+          {
+            "fromId": "cn-1792885128180-pra1qdy5",
+            "toId": "cn-1792886259160-crtpye94"
+          },
+          {
+            "fromId": "cn-1792886259160-crtpye94",
+            "toId": "cn-1792885451648-ekw4vc01"
+          },
+          {
+            "fromId": "cn-1792885451648-ekw4vc01",
+            "toId": "cn-1792885427172-cx6ynfv4"
+          },
+          {
+            "fromId": "cn-1792885427172-cx6ynfv4",
+            "toId": "cn-1792885129300-0z3oqmfx"
+          },
+          {
+            "fromId": "cn-1792885129300-0z3oqmfx",
+            "toId": "cn-1791848476510-njst19xu"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 12716,
+        "worldH": 9554
+      }
     },
     {
       "name": "Athena",
@@ -436,7 +1798,92 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197740892-6e9fqzn6",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Athena",
+            "x": 11633.492626097599,
+            "y": 6864.292626097599,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Athena",
+            "codexNodeId": "cn-1776197740892-6e9fqzn6"
+          },
+          {
+            "id": "cn-1792858041176-4fgkr735",
+            "kind": "junction",
+            "x": 11829.101239862983,
+            "y": 7058.739403325462,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792858041176-4fgkr735"
+          },
+          {
+            "id": "cn-1794066464713-xhjk7tab",
+            "kind": "junction",
+            "x": 11829.901509272746,
+            "y": 7168.651620957497,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794066464713-xhjk7tab"
+          },
+          {
+            "id": "cn-1792858062408-5gc5aed2",
+            "kind": "junction",
+            "x": 12059.5,
+            "y": 7404.78562522148,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792858062408-5gc5aed2"
+          },
+          {
+            "id": "cn-1791848476510-njst19xu",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Overwatch",
+            "x": 11755.19116365587,
+            "y": 7363.30811667225,
+            "scale": 5,
+            "bgColor": "#003b62",
+            "factionFilename": "Overwatch",
+            "portraitKey": "Overwatch",
+            "codexNodeId": "cn-1791848476510-njst19xu"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197740892-6e9fqzn6",
+            "toId": "cn-1792858041176-4fgkr735"
+          },
+          {
+            "fromId": "cn-1792858041176-4fgkr735",
+            "toId": "cn-1794066464713-xhjk7tab"
+          },
+          {
+            "fromId": "cn-1794066464713-xhjk7tab",
+            "toId": "cn-1792858062408-5gc5aed2"
+          },
+          {
+            "fromId": "cn-1792858062408-5gc5aed2",
+            "toId": "cn-1791848476510-njst19xu"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 12716,
+        "worldH": 8324
+      }
     },
     {
       "name": "Claudio",
@@ -452,7 +1899,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197821324-p34man2s",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Claudio",
+            "x": 13279.958658177158,
+            "y": 6955.077661281373,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Claudio",
+            "codexNodeId": "cn-1776197821324-p34man2s"
+          },
+          {
+            "id": "cn-1794013103668-brk0m59x",
+            "kind": "junction",
+            "x": 13535.303666018503,
+            "y": 7211.742204291964,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103668-brk0m59x"
+          },
+          {
+            "id": "cn-1776189118821-pp4icyoj",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Martins Collective",
+            "x": 13526.648673859849,
+            "y": 7204.406747302556,
+            "scale": 3,
+            "bgColor": "#f5f0d8",
+            "factionFilename": "The Martins Collective",
+            "portraitKey": "The Martins Collective",
+            "codexNodeId": "cn-1776189118821-pp4icyoj"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197821324-p34man2s",
+            "toId": "cn-1794013103668-brk0m59x"
+          },
+          {
+            "fromId": "cn-1794013103668-brk0m59x",
+            "toId": "cn-1776189118821-pp4icyoj"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 14247,
+        "worldH": 7925
+      }
     },
     {
       "name": "Efi",
@@ -480,7 +1986,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197963232-c9rv6uj4",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Hector",
+            "x": 13316.549971574805,
+            "y": 7312.315941954016,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Hector",
+            "codexNodeId": "cn-1776197963232-c9rv6uj4"
+          },
+          {
+            "id": "cn-1794013103667-brk4hpe7",
+            "kind": "junction",
+            "x": 13535.599322717328,
+            "y": 7372.361344628286,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103667-brk4hpe7"
+          },
+          {
+            "id": "cn-1776189118821-pp4icyoj",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Martins Collective",
+            "x": 13526.648673859849,
+            "y": 7204.406747302556,
+            "scale": 3,
+            "bgColor": "#f5f0d8",
+            "factionFilename": "The Martins Collective",
+            "portraitKey": "The Martins Collective",
+            "codexNodeId": "cn-1776189118821-pp4icyoj"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197963232-c9rv6uj4",
+            "toId": "cn-1794013103667-brk4hpe7"
+          },
+          {
+            "fromId": "cn-1794013103667-brk4hpe7",
+            "toId": "cn-1776189118821-pp4icyoj"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 14247,
+        "worldH": 7925
+      }
     },
     {
       "name": "Liao",
@@ -496,7 +2061,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198190957-4hj4odld",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Liao",
+            "x": 8740.00107946906,
+            "y": 5220.68,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Liao",
+            "codexNodeId": "cn-1776198190957-4hj4odld"
+          },
+          {
+            "id": "cn-1794013103696-brk7vtbf",
+            "kind": "junction",
+            "x": 8677.970072459302,
+            "y": 5315.572791964283,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103696-brk7vtbf"
+          },
+          {
+            "id": "cn-1776188694977-64cmnrtf",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Omnica Corporation",
+            "x": 8351.939065449542,
+            "y": 5146.465583928566,
+            "scale": 3,
+            "bgColor": "#969696",
+            "factionFilename": "Omnica Corporation",
+            "portraitKey": "Omnica Corporation",
+            "codexNodeId": "cn-1776188694977-64cmnrtf"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198190957-4hj4odld",
+            "toId": "cn-1794013103696-brk7vtbf"
+          },
+          {
+            "fromId": "cn-1794013103696-brk7vtbf",
+            "toId": "cn-1776188694977-64cmnrtf"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 9341,
+        "worldH": 5867
+      }
     },
     {
       "name": "Mirembe",
@@ -536,7 +2160,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198232155-ou5s8rbe",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Maximillien",
+            "x": 4803.880280845172,
+            "y": 7284.6736812252875,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Maximillien",
+            "codexNodeId": "cn-1776198232155-ou5s8rbe"
+          },
+          {
+            "id": "cn-1792619960105-sdnk4w64",
+            "kind": "junction",
+            "x": 4757.707012545161,
+            "y": 7505.137356541018,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792619960105-sdnk4w64"
+          },
+          {
+            "id": "cn-1778780376061-i3eyor8c",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "La Coterie",
+            "x": 4660.962799249785,
+            "y": 7805.142799249785,
+            "scale": 2,
+            "bgColor": "#740e0c",
+            "factionFilename": "La Coterie",
+            "portraitKey": "La Coterie",
+            "codexNodeId": "cn-1778780376061-i3eyor8c"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198232155-ou5s8rbe",
+            "toId": "cn-1792619960105-sdnk4w64"
+          },
+          {
+            "fromId": "cn-1792619960105-sdnk4w64",
+            "toId": "cn-1778780376061-i3eyor8c"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5404,
+        "worldH": 8406
+      }
     },
     {
       "name": "Sanjay",
@@ -552,7 +2235,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198988218-izi2wsik",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Sanjay",
+            "x": 4116.77320066335,
+            "y": 6435.578933112218,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Sanjay",
+            "codexNodeId": "cn-1776198988218-izi2wsik"
+          },
+          {
+            "id": "cn-1794013103640-brk08wjc",
+            "kind": "junction",
+            "x": 4152.600037871431,
+            "y": 6382.1076319977,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103640-brk08wjc"
+          },
+          {
+            "id": "cn-1776188731351-mg1n7cxj",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Vishkar Corporation",
+            "x": 3924.426875079512,
+            "y": 6064.636330883182,
+            "scale": 3,
+            "bgColor": "#aff7f1",
+            "factionFilename": "Vishkar Corporation",
+            "portraitKey": "Vishkar Corporation",
+            "codexNodeId": "cn-1776188731351-mg1n7cxj"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198988218-izi2wsik",
+            "toId": "cn-1794013103640-brk08wjc"
+          },
+          {
+            "fromId": "cn-1794013103640-brk08wjc",
+            "toId": "cn-1776188731351-mg1n7cxj"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 4717,
+        "worldH": 7036
+      }
     },
     {
       "name": "Vialli",
@@ -580,7 +2322,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198330904-1m57omri",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Nameless",
+            "x": 4672.597947964427,
+            "y": 5685.2040173451915,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Nameless",
+            "codexNodeId": "cn-1776198330904-1m57omri"
+          },
+          {
+            "id": "cn-1794013103709-brkkhmoy",
+            "kind": "junction",
+            "x": 4887.494602738126,
+            "y": 5588.953174494422,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103709-brkkhmoy"
+          },
+          {
+            "id": "cn-1791849083648-1x4of3av",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Null Sector",
+            "x": 4730.391257511825,
+            "y": 5120.702331643651,
+            "scale": 5,
+            "bgColor": "#5c1d6e",
+            "factionFilename": "Null Sector",
+            "portraitKey": "Null Sector",
+            "codexNodeId": "cn-1791849083648-1x4of3av"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198330904-1m57omri",
+            "toId": "cn-1794013103709-brkkhmoy"
+          },
+          {
+            "fromId": "cn-1794013103709-brkkhmoy",
+            "toId": "cn-1791849083648-1x4of3av"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5691,
+        "worldH": 6226
+      }
     },
     {
       "name": "Zera",
@@ -596,7 +2397,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776199068032-gsp8p36b",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Zera",
+            "x": 5398.179105841822,
+            "y": 5252.986865368485,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Zera",
+            "codexNodeId": "cn-1776199068032-gsp8p36b"
+          },
+          {
+            "id": "cn-1794013103705-brkh1079",
+            "kind": "junction",
+            "x": 5250.285181676823,
+            "y": 5372.844598506068,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103705-brkh1079"
+          },
+          {
+            "id": "cn-1791849083648-1x4of3av",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Null Sector",
+            "x": 4730.391257511825,
+            "y": 5120.702331643651,
+            "scale": 5,
+            "bgColor": "#5c1d6e",
+            "factionFilename": "Null Sector",
+            "portraitKey": "Null Sector",
+            "codexNodeId": "cn-1791849083648-1x4of3av"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776199068032-gsp8p36b",
+            "toId": "cn-1794013103705-brkh1079"
+          },
+          {
+            "fromId": "cn-1794013103705-brkh1079",
+            "toId": "cn-1791849083648-1x4of3av"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5939,
+        "worldH": 6081
+      }
     },
     {
       "name": "Alisa",
@@ -612,7 +2472,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778802022164-k9v03njq",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Alisa",
+            "x": 9664.218644762486,
+            "y": 9898.815537302075,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Alisa",
+            "codexNodeId": "cn-1778802022164-k9v03njq"
+          },
+          {
+            "id": "cn-1794013103648-brk9k5uu",
+            "kind": "junction",
+            "x": 9723.011227001987,
+            "y": 9790.792011326252,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103648-brk9k5uu"
+          },
+          {
+            "id": "cn-1780424191331-7mgyvyou",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Volskaya Industries",
+            "x": 9553.803809241488,
+            "y": 9454.768485350427,
+            "scale": 3,
+            "bgColor": "#aaadb4",
+            "factionFilename": "Volskaya Industries",
+            "portraitKey": "Volskaya Industries",
+            "codexNodeId": "cn-1780424191331-7mgyvyou"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778802022164-k9v03njq",
+            "toId": "cn-1794013103648-brk9k5uu"
+          },
+          {
+            "fromId": "cn-1794013103648-brk9k5uu",
+            "toId": "cn-1780424191331-7mgyvyou"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10274,
+        "worldH": 10439
+      }
     },
     {
       "name": "Anubis",
@@ -628,7 +2547,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778802028575-xtjczb43",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Anubis",
+            "x": 7493.71,
+            "y": 6609.345258892075,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Anubis",
+            "codexNodeId": "cn-1778802028575-xtjczb43"
+          },
+          {
+            "id": "cn-1794013103678-brkyi8nj",
+            "kind": "junction",
+            "x": 7509.926136689406,
+            "y": 6555.172729105713,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103678-brkyi8nj"
+          },
+          {
+            "id": "cn-1781823765569-9og1696b",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Anubis Directives",
+            "x": 7262.142273378812,
+            "y": 6237.000199319351,
+            "scale": 3,
+            "bgColor": "#feae3e",
+            "factionFilename": "Anubis Directives",
+            "portraitKey": "Anubis Directives",
+            "codexNodeId": "cn-1781823765569-9og1696b"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778802028575-xtjczb43",
+            "toId": "cn-1794013103678-brkyi8nj"
+          },
+          {
+            "fromId": "cn-1794013103678-brkyi8nj",
+            "toId": "cn-1781823765569-9og1696b"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 8094,
+        "worldH": 7210
+      }
     },
     {
       "name": "Aurora",
@@ -644,7 +2622,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776197747185-ov00pu8u",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Aurora",
+            "x": 8413.768287005862,
+            "y": 5656.116442056781,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Aurora",
+            "codexNodeId": "cn-1776197747185-ov00pu8u"
+          },
+          {
+            "id": "cn-1794013103697-brky2qnp",
+            "kind": "junction",
+            "x": 8514.853676227702,
+            "y": 5533.291012992673,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103697-brky2qnp"
+          },
+          {
+            "id": "cn-1776188694977-64cmnrtf",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Omnica Corporation",
+            "x": 8351.939065449542,
+            "y": 5146.465583928566,
+            "scale": 3,
+            "bgColor": "#969696",
+            "factionFilename": "Omnica Corporation",
+            "portraitKey": "Omnica Corporation",
+            "codexNodeId": "cn-1776188694977-64cmnrtf"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776197747185-ov00pu8u",
+            "toId": "cn-1794013103697-brky2qnp"
+          },
+          {
+            "fromId": "cn-1794013103697-brky2qnp",
+            "toId": "cn-1776188694977-64cmnrtf"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 9072,
+        "worldH": 6257
+      }
     },
     {
       "name": "Balderich",
@@ -660,7 +2697,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778944759246-swuthwl4",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Balderich",
+            "x": 11329.179529909628,
+            "y": 9857.585764484611,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Balderich",
+            "codexNodeId": "cn-1778944759246-swuthwl4"
+          },
+          {
+            "id": "cn-1794013103653-brk6110b",
+            "kind": "junction",
+            "x": 11506.27470138378,
+            "y": 9918.996743491614,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103653-brk6110b"
+          },
+          {
+            "id": "cn-1776188809077-v0ocu0zr",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Crusader Initiative",
+            "x": 11527.369872857933,
+            "y": 9824.407722498618,
+            "scale": 2,
+            "bgColor": "#486a71",
+            "factionFilename": "Crusader Initiative",
+            "portraitKey": "Crusader Initiative",
+            "codexNodeId": "cn-1776188809077-v0ocu0zr"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778944759246-swuthwl4",
+            "toId": "cn-1794013103653-brk6110b"
+          },
+          {
+            "fromId": "cn-1794013103653-brk6110b",
+            "toId": "cn-1776188809077-v0ocu0zr"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 12128,
+        "worldH": 10425
+      }
     },
     {
       "name": "Bhatt",
@@ -676,7 +2772,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1779221458220-5oxiyekf",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Bhatt",
+            "x": 3745.45,
+            "y": 6232.529178517364,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Bhatt",
+            "codexNodeId": "cn-1779221458220-5oxiyekf"
+          },
+          {
+            "id": "cn-1794013103642-brkaw1jd",
+            "kind": "junction",
+            "x": 3948.938437539756,
+            "y": 6262.582754700274,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103642-brkaw1jd"
+          },
+          {
+            "id": "cn-1776188731351-mg1n7cxj",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Vishkar Corporation",
+            "x": 3924.426875079512,
+            "y": 6064.636330883182,
+            "scale": 3,
+            "bgColor": "#aff7f1",
+            "factionFilename": "Vishkar Corporation",
+            "portraitKey": "Vishkar Corporation",
+            "codexNodeId": "cn-1776188731351-mg1n7cxj"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1779221458220-5oxiyekf",
+            "toId": "cn-1794013103642-brkaw1jd"
+          },
+          {
+            "fromId": "cn-1794013103642-brkaw1jd",
+            "toId": "cn-1776188731351-mg1n7cxj"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 4645,
+        "worldH": 6785
+      }
     },
     {
       "name": "Mondatta",
@@ -692,7 +2847,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198324203-7ytk5c1w",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Mondatta",
+            "x": 13036.22450841369,
+            "y": 9826.85,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Mondatta",
+            "codexNodeId": "cn-1776198324203-7ytk5c1w"
+          },
+          {
+            "id": "cn-1794013103656-brku1774",
+            "kind": "junction",
+            "x": 13331.315818809395,
+            "y": 9922.850325222335,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103656-brku1774"
+          },
+          {
+            "id": "cn-1776188526366-hpc13j68",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Shambali Order",
+            "x": 13290.4071292051,
+            "y": 9682.85065044467,
+            "scale": 4,
+            "bgColor": "#d99012",
+            "factionFilename": "Shambali Order",
+            "portraitKey": "Shambali Order",
+            "codexNodeId": "cn-1776188526366-hpc13j68"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198324203-7ytk5c1w",
+            "toId": "cn-1794013103656-brku1774"
+          },
+          {
+            "fromId": "cn-1794013103656-brku1774",
+            "toId": "cn-1776188526366-hpc13j68"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 14131,
+        "worldH": 10523
+      }
     },
     {
       "name": "Ngumi",
@@ -720,7 +2934,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198013473-a8laewup",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Katya",
+            "x": 9471.731131984014,
+            "y": 9785.92907383126,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Katya",
+            "codexNodeId": "cn-1776198013473-a8laewup"
+          },
+          {
+            "id": "cn-1794013103647-brk1wk14",
+            "kind": "junction",
+            "x": 9626.767470612751,
+            "y": 9734.348779590844,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103647-brk1wk14"
+          },
+          {
+            "id": "cn-1780424191331-7mgyvyou",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Volskaya Industries",
+            "x": 9553.803809241488,
+            "y": 9454.768485350427,
+            "scale": 3,
+            "bgColor": "#aaadb4",
+            "factionFilename": "Volskaya Industries",
+            "portraitKey": "Volskaya Industries",
+            "codexNodeId": "cn-1780424191331-7mgyvyou"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198013473-a8laewup",
+            "toId": "cn-1794013103647-brk1wk14"
+          },
+          {
+            "fromId": "cn-1794013103647-brk1wk14",
+            "toId": "cn-1780424191331-7mgyvyou"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10274,
+        "worldH": 10326
+      }
     },
     {
       "name": "Osai",
@@ -736,7 +3009,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778802071227-smm0y501",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Osai",
+            "x": 8340.713523326758,
+            "y": 6697.95,
+            "scale": 2,
+            "bgColor": null,
+            "portraitKey": "Osai",
+            "codexNodeId": "cn-1778802071227-smm0y501"
+          },
+          {
+            "id": "cn-1794013103676-brkig8ge",
+            "kind": "junction",
+            "x": 8340.493523326759,
+            "y": 6628.1,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103676-brkig8ge"
+          },
+          {
+            "id": "cn-1776188391402-t41oq8ia",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "IJC",
+            "x": 7997.491862499286,
+            "y": 6222.87,
+            "scale": 4,
+            "bgColor": "#899fbd",
+            "factionFilename": "IJC",
+            "portraitKey": "IJC",
+            "codexNodeId": "cn-1776188391402-t41oq8ia"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778802071227-smm0y501",
+            "toId": "cn-1794013103676-brkig8ge"
+          },
+          {
+            "fromId": "cn-1794013103676-brkig8ge",
+            "toId": "cn-1776188391402-t41oq8ia"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 8941,
+        "worldH": 7298
+      }
     },
     {
       "name": "Portero",
@@ -752,7 +3084,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1778802077375-32o4outh",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Portero",
+            "x": 8128.484099719753,
+            "y": 9548.309497489034,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Portero",
+            "codexNodeId": "cn-1778802077375-32o4outh"
+          },
+          {
+            "id": "cn-1794013103644-brkwnr0d",
+            "kind": "junction",
+            "x": 8141.3399623613805,
+            "y": 9473.635342812502,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103644-brkwnr0d"
+          },
+          {
+            "id": "cn-1776189327254-mrvclha3",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Lumérico Incorporated",
+            "x": 7926.1958250030075,
+            "y": 9170.96118813597,
+            "scale": 3,
+            "bgColor": "#aed0c9",
+            "factionFilename": "Lumérico Incorporated",
+            "portraitKey": "Lumérico Incorporated",
+            "codexNodeId": "cn-1776189327254-mrvclha3"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1778802077375-32o4outh",
+            "toId": "cn-1794013103644-brkwnr0d"
+          },
+          {
+            "fromId": "cn-1794013103644-brkwnr0d",
+            "toId": "cn-1776189327254-mrvclha3"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 8669,
+        "worldH": 10089
+      }
     },
     {
       "name": "Trembley",
@@ -780,7 +3171,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776198219789-bkys0s6a",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Lynx 17",
+            "x": 10056.433535294833,
+            "y": 9371.682273054781,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Lynx 17",
+            "codexNodeId": "cn-1776198219789-bkys0s6a"
+          },
+          {
+            "id": "cn-1792190584457-1qe3j0mm",
+            "kind": "junction",
+            "x": 9927.283018189399,
+            "y": 9621.953101229254,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792190584457-1qe3j0mm"
+          },
+          {
+            "id": "cn-1780424191331-7mgyvyou",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Volskaya Industries",
+            "x": 9553.803809241488,
+            "y": 9454.768485350427,
+            "scale": 3,
+            "bgColor": "#aaadb4",
+            "factionFilename": "Volskaya Industries",
+            "portraitKey": "Volskaya Industries",
+            "codexNodeId": "cn-1780424191331-7mgyvyou"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776198219789-bkys0s6a",
+            "toId": "cn-1792190584457-1qe3j0mm"
+          },
+          {
+            "fromId": "cn-1792190584457-1qe3j0mm",
+            "toId": "cn-1780424191331-7mgyvyou"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10597,
+        "worldH": 10175
+      }
     },
     {
       "name": "Ming",
@@ -808,7 +3258,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1780794563911-ogozbzha",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Palak",
+            "x": 13737.806823363457,
+            "y": 7586.43576448461,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Palak",
+            "codexNodeId": "cn-1780794563911-ogozbzha"
+          },
+          {
+            "id": "cn-1794013103666-brkv6gyo",
+            "kind": "junction",
+            "x": 13746.227748611653,
+            "y": 7509.421255893583,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103666-brkv6gyo"
+          },
+          {
+            "id": "cn-1776189118821-pp4icyoj",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Martins Collective",
+            "x": 13526.648673859849,
+            "y": 7204.406747302556,
+            "scale": 3,
+            "bgColor": "#f5f0d8",
+            "factionFilename": "The Martins Collective",
+            "portraitKey": "The Martins Collective",
+            "codexNodeId": "cn-1776189118821-pp4icyoj"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1780794563911-ogozbzha",
+            "toId": "cn-1794013103666-brkv6gyo"
+          },
+          {
+            "fromId": "cn-1794013103666-brkv6gyo",
+            "toId": "cn-1776189118821-pp4icyoj"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 14278,
+        "worldH": 8127
+      }
     },
     {
       "name": "Emily",
@@ -866,7 +3375,66 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ]
+      ],
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776199020498-imn45tfj",
+            "kind": "npc",
+            "role": "subject",
+            "entityKind": "npc",
+            "entityName": "Sven",
+            "x": 12532.55800165405,
+            "y": 9890.243476109865,
+            "scale": 1.5,
+            "bgColor": null,
+            "portraitKey": "Sven",
+            "codexNodeId": "cn-1776199020498-imn45tfj"
+          },
+          {
+            "id": "cn-1794013103654-brkno6b3",
+            "kind": "junction",
+            "x": 12430.313955222486,
+            "y": 9938.87229444518,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103654-brkno6b3"
+          },
+          {
+            "id": "cn-1776189030714-9smuueld",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Ironclad Guild",
+            "x": 12100.06990879092,
+            "y": 9759.501112780494,
+            "scale": 3,
+            "bgColor": "#494949",
+            "factionFilename": "Ironclad Guild",
+            "portraitKey": "Ironclad Guild",
+            "codexNodeId": "cn-1776189030714-9smuueld"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776199020498-imn45tfj",
+            "toId": "cn-1794013103654-brkno6b3"
+          },
+          {
+            "fromId": "cn-1794013103654-brkno6b3",
+            "toId": "cn-1776189030714-9smuueld"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 13073,
+        "worldH": 10480
+      }
     },
     {
       "name": "Kace",

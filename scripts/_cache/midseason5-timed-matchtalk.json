@@ -1,0 +1,1142 @@
+{
+  "timed": [
+    {
+      "sec": 4.67,
+      "hero": "Ashe",
+      "label": "Looks like I made the right call cutting ties after Grand Mesa, the way things ended up for you",
+      "rel": "Ashe/MatchTalk/00000006B825.0B2-Looks like I made the right call cutting ties after Grand Mesa, the way things ended up for you.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ashe\\MatchTalk\\00000006B825.0B2-Looks like I made the right call cutting ties after Grand Mesa, the way things ended up for you.ogg",
+      "score": 12,
+      "caption": "ties after Grand Mesa. The way things"
+    },
+    {
+      "sec": 12.39,
+      "hero": "Vendetta",
+      "label": "Your pathetic outfit will fall in its own time. You won't need my help for that",
+      "rel": "Vendetta/MatchTalk/00000006C34D.0B2-Your pathetic outfit will fall in its own time. You won't need my help for that.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006C34D.0B2-Your pathetic outfit will fall in its own time. You won't need my help for that.ogg",
+      "score": 12,
+      "caption": "You won't need my help for that."
+    },
+    {
+      "sec": 16.95,
+      "hero": "Ashe",
+      "label": "Aw, sweetheart. I don't think anyone needs your help these days",
+      "rel": "Ashe/MatchTalk/00000006B82C.0B2-Aw, sweetheart. I don't think anyone needs your help these days.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ashe\\MatchTalk\\00000006B82C.0B2-Aw, sweetheart. I don't think anyone needs your help these days.ogg",
+      "score": 12,
+      "caption": "needs your help these days."
+    },
+    {
+      "sec": 28.67,
+      "hero": "Vendetta",
+      "label": "Celebrate, then! It is back in your care, and you may return to cowering behind its power while the Gwishin assau",
+      "rel": "Vendetta/MatchTalk/00000006CAB3.0B2-Celebrate, then! It is back in your care, and you may return to cowering behind its power while the Gwishin assau.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006CAB3.0B2-Celebrate, then! It is back in your care, and you may return to cowering behind its power while the Gwishin assau.ogg",
+      "score": 12,
+      "caption": "and you may return to cowering behind"
+    },
+    {
+      "sec": 37.71,
+      "hero": "Domina",
+      "label": "How unfortunate things ended up this way. All these bad headlines are rather inconvenient",
+      "rel": "Domina/MatchTalk/00000006AB5C.0B2-How unfortunate things ended up this way. All these bad headlines are rather inconvenient.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Domina\\MatchTalk\\00000006AB5C.0B2-How unfortunate things ended up this way. All these bad headlines are rather inconvenient.ogg",
+      "score": 12,
+      "caption": "way. All these bad headlines are rather"
+    },
+    {
+      "sec": 40.75,
+      "hero": "Vendetta",
+      "label": "How terrible for you",
+      "rel": "Vendetta/MatchTalk/00000006B38C.0B2-How terrible for you.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006B38C.0B2-How terrible for you.ogg",
+      "score": 0,
+      "caption": "How terrible for you."
+    },
+    {
+      "sec": 45.43,
+      "hero": "Domina",
+      "label": "Oh don't fret, darling, it's nothing Vishkar won't recover from",
+      "rel": "Domina/MatchTalk/00000006AB60.0B2-Oh don't fret, darling, it's nothing Vishkar won't recover from.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Domina\\MatchTalk\\00000006AB60.0B2-Oh don't fret, darling, it's nothing Vishkar won't recover from.ogg",
+      "score": 12,
+      "caption": "Vishkar won't recover from."
+    },
+    {
+      "sec": 51.79,
+      "hero": "Doomfist",
+      "label": "You have great potential, Marzia. I was a fool to have ignored it before",
+      "rel": "Doomfist/MatchTalk/00000006C655.0B2-You have great potential, Marzia. I was a fool to have ignored it before.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C655.0B2-You have great potential, Marzia. I was a fool to have ignored it before.ogg",
+      "score": 10,
+      "caption": "You have great potential, Mondatta. I"
+    },
+    {
+      "sec": 59.19,
+      "hero": "Vendetta",
+      "label": "When I face you again, I will make you choke on such false praise",
+      "rel": "Vendetta/MatchTalk/00000006CAB0.0B2-When I face you again, I will make you choke on such false praise.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006CAB0.0B2-When I face you again, I will make you choke on such false praise.ogg",
+      "score": 12,
+      "caption": "choke on such false praise."
+    },
+    {
+      "sec": 62.15,
+      "hero": "Doomfist",
+      "label": "I speak the truth. You may not have achieved your ambitions, but you are a worthy adversary even still",
+      "rel": "Doomfist/MatchTalk/00000006C656.0B2-I speak the truth. You may not have achieved your ambitions, but you are a worthy adversary even still.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C656.0B2-I speak the truth. You may not have achieved your ambitions, but you are a worthy adversary even still.ogg",
+      "score": 12,
+      "caption": "You may not have achieved your"
+    },
+    {
+      "sec": 71.99,
+      "hero": "Vendetta",
+      "label": "Are you satisfied, Akande_ Reclaiming Talon just to hide away and atrophy once more_",
+      "rel": "Vendetta/MatchTalk/00000006CAAB.0B2-Are you satisfied, Akande_ Reclaiming Talon just to hide away and atrophy once more_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006CAAB.0B2-Are you satisfied, Akande_ Reclaiming Talon just to hide away and atrophy once more_.ogg",
+      "score": 12,
+      "caption": "Talon just to hide away and that trophy"
+    },
+    {
+      "sec": 76.95,
+      "hero": "Doomfist",
+      "label": "On the contrary. Your crusade has proven that Talon's worth does not lie in its idleness",
+      "rel": "Doomfist/MatchTalk/00000006C654.0B2-On the contrary. Your crusade has proven that Talon's worth does not lie in its idleness.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C654.0B2-On the contrary. Your crusade has proven that Talon's worth does not lie in its idleness.ogg",
+      "score": 12,
+      "caption": "your crusade has proven that Talon's"
+    },
+    {
+      "sec": 83.78999999999999,
+      "hero": "Junker Queen",
+      "label": "Ooh, must sting, yeah_ Schemin' like mad and still floppin'. (laughs)",
+      "rel": "Junker Queen/MatchTalk/00000006B860.0B2-Ooh, must sting, yeah_ Schemin' like mad and still floppin'. (laughs).ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Junker Queen\\MatchTalk\\00000006B860.0B2-Ooh, must sting, yeah_ Schemin' like mad and still floppin'. (laughs).ogg",
+      "score": 10,
+      "caption": "Ooh, must sting, yeah? Scheming like mad"
+    },
+    {
+      "sec": 92.83,
+      "hero": "Vendetta",
+      "label": "Know that when you next fall prey to your own idiocy, I will celebrate your fall",
+      "rel": "Vendetta/MatchTalk/00000006C353.0B2-Know that when you next fall prey to your own idiocy, I will celebrate your fall.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006C353.0B2-Know that when you next fall prey to your own idiocy, I will celebrate your fall.ogg",
+      "score": 12,
+      "caption": "your own idiocy, I will celebrate your"
+    },
+    {
+      "sec": 98.63,
+      "hero": "Mauga",
+      "label": "Well, it was fun while it lasted. Come take over Talon again when you can",
+      "rel": "Mauga/MatchTalk/00000006C674.0B2-Well, it was fun while it lasted. Come take over Talon again when you can.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Mauga\\MatchTalk\\00000006C674.0B2-Well, it was fun while it lasted. Come take over Talon again when you can.ogg",
+      "score": 12,
+      "caption": "take over Talon again when you can."
+    },
+    {
+      "sec": 103.99000000000001,
+      "hero": "Vendetta",
+      "label": "You mock me, Malosi. But we both know you will never be as entertained as you were when I was in charge",
+      "rel": "Vendetta/MatchTalk/00000006CAAF.0B2-You mock me, Malosi. But we both know you will never be as entertained as you were when I was in charge.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006CAAF.0B2-You mock me, Malosi. But we both know you will never be as entertained as you were when I was in charge.ogg",
+      "score": 12,
+      "caption": "will never be as entertained as you were"
+    },
+    {
+      "sec": 109.19,
+      "hero": "Mauga",
+      "label": "Easy, boss! I was being genuine",
+      "rel": "Mauga/MatchTalk/00000006C675.0B2-Easy, boss! I was being genuine.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Mauga\\MatchTalk\\00000006C675.0B2-Easy, boss! I was being genuine.ogg",
+      "score": 0,
+      "caption": "Easy, boss. I was being genuine."
+    },
+    {
+      "sec": 113.03,
+      "hero": "Shion",
+      "label": "Good thing I ditched you... things ended up so messy, didn't they_",
+      "rel": "Shion/MatchTalk/00000006C242.0B2-Good thing I ditched you... things ended up so messy, didn't they_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Shion\\MatchTalk\\00000006C242.0B2-Good thing I ditched you... things ended up so messy, didn't they_.ogg",
+      "score": 12,
+      "caption": "up so messy, didn't they?"
+    },
+    {
+      "sec": 118.11,
+      "hero": "Vendetta",
+      "label": "All you did was hide. The Hashimoto were never strong enough to fight my battles",
+      "rel": "Vendetta/MatchTalk/00000006C35C.0B2-All you did was hide. The Hashimoto were never strong enough to fight my battles.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006C35C.0B2-All you did was hide. The Hashimoto were never strong enough to fight my battles.ogg",
+      "score": 12,
+      "caption": "The Hashimoto were never strong enough"
+    },
+    {
+      "sec": 122.882,
+      "hero": "Shion",
+      "label": "Hmm... well, neither were you",
+      "rel": "Shion/MatchTalk/00000006C241.0B2-Hmm... well, neither were you.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Shion\\MatchTalk\\00000006C241.0B2-Hmm... well, neither were you.ogg",
+      "score": 12,
+      "caption": "Well, neither were you."
+    },
+    {
+      "sec": 130.882,
+      "hero": "Vendetta",
+      "label": "If you wish to goad me, do it on a battlefield. Then we will see who of us is stronger",
+      "rel": "Vendetta/MatchTalk/00000006C33D.0B2-If you wish to goad me, do it on a battlefield. Then we will see who of us is stronger.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006C33D.0B2-If you wish to goad me, do it on a battlefield. Then we will see who of us is stronger.ogg",
+      "score": 12,
+      "caption": "Then we will see who of us is stronger."
+    },
+    {
+      "sec": 135.682,
+      "hero": "Sojourn",
+      "label": "You're going away for a long time, Marzia. Long enough to realize your conquest was never an option",
+      "rel": "Sojourn/MatchTalk/00000006C199.0B2-You're going away for a long time, Marzia. Long enough to realize your conquest was never an option.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C199.0B2-You're going away for a long time, Marzia. Long enough to realize your conquest was never an option.ogg",
+      "score": 12,
+      "caption": "Long enough to realize your conquest was"
+    },
+    {
+      "sec": 146.522,
+      "hero": "Vendetta",
+      "label": "Don't waste your breath condemning me. When Akande sees fit to destroy you, you will wish I was there to oppose h",
+      "rel": "Vendetta/MatchTalk/00000006C347.0B2-Don't waste your breath condemning me. When Akande sees fit to destroy you, you will wish I was there to oppose h.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006C347.0B2-Don't waste your breath condemning me. When Akande sees fit to destroy you, you will wish I was there to oppose h.ogg",
+      "score": 12,
+      "caption": "you will wish I was there to oppose him."
+    },
+    {
+      "sec": 150.042,
+      "hero": "Sombra",
+      "label": "Pobre Vendetta! Guess your little Talon scheme didn't turn out how you planned, huh_",
+      "rel": "Sombra/MatchTalk/00000006B2AA.0B2-Pobre Vendetta! Guess your little Talon scheme didn't turn out how you planned, huh_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sombra\\MatchTalk\\00000006B2AA.0B2-Pobre Vendetta! Guess your little Talon scheme didn't turn out how you planned, huh_.ogg",
+      "score": 12,
+      "caption": "Guess your little Talon scheme didn't"
+    },
+    {
+      "sec": 154.922,
+      "hero": "Vendetta",
+      "label": "Silence, Infame. I will rip out your throat",
+      "rel": "Vendetta/MatchTalk/00000006B392.0B2-Silence, Infame. I will rip out your throat.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006B392.0B2-Silence, Infame. I will rip out your throat.ogg",
+      "score": 7,
+      "caption": "Silence, infame. I will rip out your"
+    },
+    {
+      "sec": 160.362,
+      "hero": "Sombra",
+      "label": "You can try. But those fangs of yours are looking a little dull these days",
+      "rel": "Sombra/MatchTalk/00000006B2AB.0B2-You can try. But those fangs of yours are looking a little dull these days.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sombra\\MatchTalk\\00000006B2AB.0B2-You can try. But those fangs of yours are looking a little dull these days.ogg",
+      "score": 12,
+      "caption": "are looking a little dull these days."
+    },
+    {
+      "sec": 165.122,
+      "hero": "Widowmaker",
+      "label": "Well well... it seems your hunt has ended right where it began",
+      "rel": "Widowmaker/MatchTalk/00000006CDB6.0B2-Well well... it seems your hunt has ended right where it began.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Widowmaker\\MatchTalk\\00000006CDB6.0B2-Well well... it seems your hunt has ended right where it began.ogg",
+      "score": 12,
+      "caption": "it seems your hunt has ended right where"
+    },
+    {
+      "sec": 171.482,
+      "hero": "Vendetta",
+      "label": "And what of yours_ For all your 'newfound independence', you still rely on others to numb your pain",
+      "rel": "Vendetta/MatchTalk/00000006CAA7.0B2-And what of yours_ For all your 'newfound independence', you still rely on others to numb your pain.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Vendetta\\MatchTalk\\00000006CAA7.0B2-And what of yours_ For all your 'newfound independence', you still rely on others to numb your pain.ogg",
+      "score": 12,
+      "caption": "new-found independence, you still rely"
+    },
+    {
+      "sec": 178.802,
+      "hero": "Widowmaker",
+      "label": "Whatever shame I feel, I take comfort in knowing your humiliation far exceeds it",
+      "rel": "Widowmaker/MatchTalk/00000006CDCD.0B2-Whatever shame I feel, I take comfort in knowing your humiliation far exceeds it.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Widowmaker\\MatchTalk\\00000006CDCD.0B2-Whatever shame I feel, I take comfort in knowing your humiliation far exceeds it.ogg",
+      "score": 12,
+      "caption": "knowing your humiliation"
+    },
+    {
+      "sec": 185.762,
+      "hero": "Juno",
+      "label": "You and your Big Omnic Buddy seem very close! I wish I had a friend like him growing up",
+      "rel": "Juno/MatchTalk/00000006DBFC.0B2-You and your Big Omnic Buddy seem very close! I wish I had a friend like him growing up.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBFC.0B2-You and your Big Omnic Buddy seem very close! I wish I had a friend like him growing up.ogg",
+      "score": 12,
+      "caption": "I wish I had a friend like him growing"
+    },
+    {
+      "sec": 193.162,
+      "hero": "Ashe",
+      "label": "Me and him have been through thick and thin, but I'll never trust him at cards. Can't beat that poker face",
+      "rel": "Ashe/MatchTalk/00000006B82D.0B2-Me and him have been through thick and thin, but I'll never trust him at cards. Can't beat that poker face.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ashe\\MatchTalk\\00000006B82D.0B2-Me and him have been through thick and thin, but I'll never trust him at cards. Can't beat that poker face.ogg",
+      "score": 12,
+      "caption": "Can't beat that poker face."
+    },
+    {
+      "sec": 197.562,
+      "hero": "Juno",
+      "label": "I used to believe there was nothing I would not do to save my colony... but what you did is out of the question!",
+      "rel": "Juno/MatchTalk/00000006DBF7.0B2-I used to believe there was nothing I would not do to save my colony... but what you did is out of the question!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBF7.0B2-I used to believe there was nothing I would not do to save my colony... but what you did is out of the question!.ogg",
+      "score": 12,
+      "caption": "would not do to save my colony,"
+    },
+    {
+      "sec": 206.962,
+      "hero": "Doctrine",
+      "label": "Such naïveté is to be expected of a child. Life is not so fair as you believe",
+      "rel": "Doctrine/MatchTalk/00000006D561.0B2-Such naïveté is to be expected of a child. Life is not so fair as you believe.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doctrine\\MatchTalk\\00000006D561.0B2-Such naïveté is to be expected of a child. Life is not so fair as you believe.ogg",
+      "score": 12,
+      "caption": "Life is not so fair as you believe."
+    },
+    {
+      "sec": 218.242,
+      "hero": "Juno",
+      "label": "But I had only travelled to a few places before Brigitte found you... and you were definitely not on Mars",
+      "rel": "Juno/MatchTalk/00000006DBF4.0B2-But I had only travelled to a few places before Brigitte found you... and you were definitely not on Mars.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBF4.0B2-But I had only travelled to a few places before Brigitte found you... and you were definitely not on Mars.ogg",
+      "score": 12,
+      "caption": "before Brigitte found you,"
+    },
+    {
+      "sec": 227.28199999999998,
+      "hero": "Sierra",
+      "label": "I just love looking up at the stars once I hit a summit... I bet the view from Mars is something else!",
+      "rel": "Sierra/MatchTalk/00000006D058.0B2-I just love looking up at the stars once I hit a summit... I bet the view from Mars is something else!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sierra\\MatchTalk\\00000006D058.0B2-I just love looking up at the stars once I hit a summit... I bet the view from Mars is something else!.ogg",
+      "score": 12,
+      "caption": "I hit a summit. I bet the view from Mars"
+    },
+    {
+      "sec": 231.28199999999998,
+      "hero": "Juno",
+      "label": "Oh, it is! I always loved looking down at Earth from the top of Olympus Mons",
+      "rel": "Juno/MatchTalk/00000006DBEE.0B2-Oh, it is! I always loved looking down at Earth from the top of Olympus Mons.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBEE.0B2-Oh, it is! I always loved looking down at Earth from the top of Olympus Mons.ogg",
+      "score": 10,
+      "caption": "Oh, it is. I always love looking down at"
+    },
+    {
+      "sec": 237.442,
+      "hero": "Sierra",
+      "label": "Well, you'll just have to take a picture for me once we get you back up there",
+      "rel": "Sierra/MatchTalk/00000006D05A.0B2-Well, you'll just have to take a picture for me once we get you back up there.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sierra\\MatchTalk\\00000006D05A.0B2-Well, you'll just have to take a picture for me once we get you back up there.ogg",
+      "score": 12,
+      "caption": "for me once we get you back up there."
+    },
+    {
+      "sec": 247.044,
+      "hero": "Juno",
+      "label": "Thank you! Maybe I could visit the Arcology_ Or Spain_  Oh, I cannot decide!",
+      "rel": "Juno/MatchTalk/00000006DBED.0B2-Thank you! Maybe I could visit the Arcology_ Or Spain_  Oh, I cannot decide!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBED.0B2-Thank you! Maybe I could visit the Arcology_ Or Spain_  Oh, I cannot decide!.ogg",
+      "score": 12,
+      "caption": "Maybe I could visit the arcology"
+    },
+    {
+      "sec": 255.764,
+      "hero": "Tracer",
+      "label": "Maybe Athena could help you pick! She's the world's best atlas, if you ask me",
+      "rel": "Tracer/MatchTalk/00000006D01F.0B2-Maybe Athena could help you pick! She's the world's best atlas, if you ask me.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Tracer\\MatchTalk\\00000006D01F.0B2-Maybe Athena could help you pick! She's the world's best atlas, if you ask me.ogg",
+      "score": 12,
+      "caption": "the world's best atlas, if you ask me."
+    },
+    {
+      "sec": 261.764,
+      "hero": "Winston",
+      "label": "Juno, from one extraterrestrial to another... I'm proud of how far you've come. Overwatch is lucky to have you",
+      "rel": "Winston/MatchTalk/00000006CE46.0B2-Juno, from one extraterrestrial to another... I'm proud of how far you've come. Overwatch is lucky to have you.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE46.0B2-Juno, from one extraterrestrial to another... I'm proud of how far you've come. Overwatch is lucky to have you.ogg",
+      "score": 12,
+      "caption": "another, I'm proud of how far you've"
+    },
+    {
+      "sec": 270.564,
+      "hero": "Juno",
+      "label": "Oh, Winston! I have only accomplished so much thanks to the guidance of my space-faring friend",
+      "rel": "Juno/MatchTalk/00000006DBEF.0B2-Oh, Winston! I have only accomplished so much thanks to the guidance of my space-faring friend.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBEF.0B2-Oh, Winston! I have only accomplished so much thanks to the guidance of my space-faring friend.ogg",
+      "score": 12,
+      "caption": "much thanks to the guidance of my"
+    },
+    {
+      "sec": 276.404,
+      "hero": "Winston",
+      "label": "(bashful chuckle) Well, as long as we keep working together, we'll both be out of this world!",
+      "rel": "Winston/MatchTalk/00000006CE4B.0B2-(bashful chuckle) Well, as long as we keep working together, we'll both be out of this world!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE4B.0B2-(bashful chuckle) Well, as long as we keep working together, we'll both be out of this world!.ogg",
+      "score": 12,
+      "caption": "Well, as long as we keep working"
+    },
+    {
+      "sec": 284.644,
+      "hero": "Juno",
+      "label": "Dr. Chao said she would have made a different decision about Project Red Promise if only she had known. But is th",
+      "rel": "Juno/MatchTalk/00000006DBFD.0B2-Dr. Chao said she would have made a different decision about Project Red Promise if only she had known. But is th.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBFD.0B2-Dr. Chao said she would have made a different decision about Project Red Promise if only she had known. But is th.ogg",
+      "score": 12,
+      "caption": "different decision about Project Red"
+    },
+    {
+      "sec": 292.484,
+      "hero": "Wrecking Ball",
+      "label": "(hamster noises) He says, they do have a habit of abandoning projects",
+      "rel": "Wrecking Ball/MatchTalk/00000006B8D7.0B2-(hamster noises) He says, they do have a habit of abandoning projects.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Wrecking Ball\\MatchTalk\\00000006B8D7.0B2-(hamster noises) He says, they do have a habit of abandoning projects.ogg",
+      "score": 12,
+      "caption": "He says they do have a habit of"
+    },
+    {
+      "sec": 297.924,
+      "hero": "Wuyang",
+      "label": "Juno, I was thinking we could do more combat training simulations_ T-together_",
+      "rel": "Wuyang/MatchTalk/00000006D124.0B2-Juno, I was thinking we could do more combat training simulations_ T-together_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Wuyang\\MatchTalk\\00000006D124.0B2-Juno, I was thinking we could do more combat training simulations_ T-together_.ogg",
+      "score": 12,
+      "caption": "I was thinking we could do more combat"
+    },
+    {
+      "sec": 305.684,
+      "hero": "Juno",
+      "label": "Excellent idea! Sierra invited me just the other day. I will tell her you are joining us!",
+      "rel": "Juno/MatchTalk/00000006DBE8.0B2-Excellent idea! Sierra invited me just the other day. I will tell her you are joining us!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBE8.0B2-Excellent idea! Sierra invited me just the other day. I will tell her you are joining us!.ogg",
+      "score": 12,
+      "caption": "the other day. I will tell her you are"
+    },
+    {
+      "sec": 310.564,
+      "hero": "Wuyang",
+      "label": "Oh, I was thinking-- I mean I was hoping it would just be... I-I mean, that sounds great!",
+      "rel": "Wuyang/MatchTalk/00000006D12B.0B2-Oh, I was thinking-- I mean I was hoping it would just be... I-I mean, that sounds great!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Wuyang\\MatchTalk\\00000006D12B.0B2-Oh, I was thinking-- I mean I was hoping it would just be... I-I mean, that sounds great!.ogg",
+      "score": 12,
+      "caption": "hoping it would just be"
+    },
+    {
+      "sec": 316.964,
+      "hero": "Zarya",
+      "label": "So, Juno, how did you like your first post-mission pierogis_",
+      "rel": "Zarya/MatchTalk/00000006C946.0B2-So, Juno, how did you like your first post-mission pierogis_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Zarya\\MatchTalk\\00000006C946.0B2-So, Juno, how did you like your first post-mission pierogis_.ogg",
+      "score": 12,
+      "caption": "post-mission pierogies?"
+    },
+    {
+      "sec": 322.004,
+      "hero": "Juno",
+      "label": "Oh, they were delicious! And just as Auntie Mei said... like dumplings, but with potato!",
+      "rel": "Juno/MatchTalk/00000006DBEB.0B2-Oh, they were delicious! And just as Auntie Mei said... like dumplings, but with potato!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Juno\\MatchTalk\\00000006DBEB.0B2-Oh, they were delicious! And just as Auntie Mei said... like dumplings, but with potato!.ogg",
+      "score": 12,
+      "caption": "And just as Auntie Mei said, like"
+    },
+    {
+      "sec": 334.204,
+      "hero": "Ana",
+      "label": "I've apprehended plenty of criminals, but it isn't often their own family turns them in",
+      "rel": "Ana/MatchTalk/00000006DB78.0B2-I've apprehended plenty of criminals, but it isn't often their own family turns them in.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB78.0B2-I've apprehended plenty of criminals, but it isn't often their own family turns them in.ogg",
+      "score": 12,
+      "caption": "apprehended plenty of criminals, but it"
+    },
+    {
+      "sec": 343.324,
+      "hero": "Doctrine",
+      "label": "My brother's reaction was hyperbolically rash... but he must know I have only acted in the name of his good healt",
+      "rel": "Doctrine/MatchTalk/00000006D562.0B2-My brother's reaction was hyperbolically rash... but he must know I have only acted in the name of his good healt.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doctrine\\MatchTalk\\00000006D562.0B2-My brother's reaction was hyperbolically rash... but he must know I have only acted in the name of his good healt.ogg",
+      "score": 12,
+      "caption": "But, he must know I have only acted in"
+    },
+    {
+      "sec": 348.244,
+      "hero": "Doctrine",
+      "label": "My brother's outburst was a rash mistake... but he must know I did what was best for him",
+      "rel": "Doctrine/MatchTalk/00000006D55E.0B2-My brother's outburst was a rash mistake... but he must know I did what was best for him.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doctrine\\MatchTalk\\00000006D55E.0B2-My brother's outburst was a rash mistake... but he must know I did what was best for him.ogg",
+      "score": 12,
+      "caption": "brother's outburst was a rash mistake."
+    },
+    {
+      "sec": 355.444,
+      "hero": "Ana",
+      "label": "I'd say you'll realize you can't decide for others someday, but you've had more time than even I have to learn th",
+      "rel": "Ana/MatchTalk/00000006DB7F.0B2-I'd say you'll realize you can't decide for others someday, but you've had more time than even I have to learn th.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB7F.0B2-I'd say you'll realize you can't decide for others someday, but you've had more time than even I have to learn th.ogg",
+      "score": 12,
+      "caption": "for others someday, but you've had more"
+    },
+    {
+      "sec": 361.524,
+      "hero": "Doctrine",
+      "label": "Has your proficiency waned over time_ I imagine it must have, given your inevitable decrepitude",
+      "rel": "Doctrine/MatchTalk/00000006D55D.0B2-Has your proficiency waned over time_ I imagine it must have, given your inevitable decrepitude.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doctrine\\MatchTalk\\00000006D55D.0B2-Has your proficiency waned over time_ I imagine it must have, given your inevitable decrepitude.ogg",
+      "score": 12,
+      "caption": "As your proficiency waned over time,"
+    },
+    {
+      "sec": 369.765,
+      "hero": "Ana",
+      "label": "Your own age is getting to you, if you need a reminder of my skill",
+      "rel": "Ana/MatchTalk/00000006DB75.0B2-Your own age is getting to you, if you need a reminder of my skill.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB75.0B2-Your own age is getting to you, if you need a reminder of my skill.ogg",
+      "score": 12,
+      "caption": "need a reminder of my skill."
+    },
+    {
+      "sec": 373.965,
+      "hero": "Doctrine",
+      "label": "My clarity of mind greatly surpasses that of the average elder!",
+      "rel": "Doctrine/MatchTalk/00000006D563.0B2-My clarity of mind greatly surpasses that of the average elder!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doctrine\\MatchTalk\\00000006D563.0B2-My clarity of mind greatly surpasses that of the average elder!.ogg",
+      "score": 12,
+      "caption": "that of the average elder."
+    },
+    {
+      "sec": 379.005,
+      "hero": "Lúcio",
+      "label": "You ever try performing_ I bet you'd rock a stage!",
+      "rel": "Lúcio/MatchTalk/00000006B118.0B2-You ever try performing_ I bet you'd rock a stage!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Lúcio\\MatchTalk\\00000006B118.0B2-You ever try performing_ I bet you'd rock a stage!.ogg",
+      "score": 11,
+      "caption": "You ever try performing? I bet you'd"
+    },
+    {
+      "sec": 386.925,
+      "hero": "Ana",
+      "label": "Funny you say that. I had to pose as a lounge singer for six years on an undercover mission in Beirut",
+      "rel": "Ana/MatchTalk/00000006BEB9.0B2-Funny you say that. I had to pose as a lounge singer for six years on an undercover mission in Beirut.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006BEB9.0B2-Funny you say that. I had to pose as a lounge singer for six years on an undercover mission in Beirut.ogg",
+      "score": 12,
+      "caption": "undercover mission in Beirut."
+    },
+    {
+      "sec": 392.045,
+      "hero": "Ana",
+      "label": "When I heard you left Talon after Vendetta's coup, I thought you had finally come to your senses",
+      "rel": "Ana/MatchTalk/00000006BEA9.0B2-When I heard you left Talon after Vendetta's coup, I thought you had finally come to your senses.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006BEA9.0B2-When I heard you left Talon after Vendetta's coup, I thought you had finally come to your senses.ogg",
+      "score": 12,
+      "caption": "Vendetta's coup, I thought you had"
+    },
+    {
+      "sec": 396.165,
+      "hero": "Reaper",
+      "label": "Sorry to disappoint",
+      "rel": "Reaper/MatchTalk/00000006D368.0B2-Sorry to disappoint.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Reaper\\MatchTalk\\00000006D368.0B2-Sorry to disappoint.ogg",
+      "score": 0,
+      "caption": "Sorry to disappoint."
+    },
+    {
+      "sec": 401.805,
+      "hero": "Ana",
+      "label": "Don't be. It's my own fault, holding onto hope you might change",
+      "rel": "Ana/MatchTalk/00000006BEAD.0B2-Don't be. It's my own fault, holding onto hope you might change.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006BEAD.0B2-Don't be. It's my own fault, holding onto hope you might change.ogg",
+      "score": 12,
+      "caption": "holding on to hope you might change."
+    },
+    {
+      "sec": 403.365,
+      "hero": "Ana",
+      "label": "I've been working with the daughter of an enhanced soldier, Gabriel... She's as gifted as her mother",
+      "rel": "Ana/MatchTalk/00000006DB81.0B2-I've been working with the daughter of an enhanced soldier, Gabriel... She's as gifted as her mother.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB81.0B2-I've been working with the daughter of an enhanced soldier, Gabriel... She's as gifted as her mother.ogg",
+      "score": 10,
+      "caption": "I've been working with a daughter of an"
+    },
+    {
+      "sec": 411.165,
+      "hero": "Reaper",
+      "label": "Hmph. Didn't think they let anyone use the serum anymore",
+      "rel": "Reaper/MatchTalk/00000006D366.0B2-Hmph. Didn't think they let anyone use the serum anymore.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Reaper\\MatchTalk\\00000006D366.0B2-Hmph. Didn't think they let anyone use the serum anymore.ogg",
+      "score": 12,
+      "caption": "Didn't think they let anyone use the"
+    },
+    {
+      "sec": 417.525,
+      "hero": "Ana",
+      "label": "They don't, yet she still shows all the signs. Doesn't that concern you_",
+      "rel": "Ana/MatchTalk/00000006DB77.0B2-They don't, yet she still shows all the signs. Doesn't that concern you_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB77.0B2-They don't, yet she still shows all the signs. Doesn't that concern you_.ogg",
+      "score": 12,
+      "caption": "Doesn't that concern you?"
+    },
+    {
+      "sec": 429.125,
+      "hero": "Ana",
+      "label": "We spent years throwing Doctrine and his like into Grímsvötn. And now you've just let them all out_",
+      "rel": "Ana/MatchTalk/00000006DB82.0B2-We spent years throwing Doctrine and his like into Grímsvötn. And now you've just let them all out_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB82.0B2-We spent years throwing Doctrine and his like into Grímsvötn. And now you've just let them all out_.ogg",
+      "score": 12,
+      "caption": "like into Grimsvotn. And now you've just"
+    },
+    {
+      "sec": 433.085,
+      "hero": "Reaper",
+      "label": "You locked them up once. Just do it again",
+      "rel": "Reaper/MatchTalk/00000006D36B.0B2-You locked them up once. Just do it again.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Reaper\\MatchTalk\\00000006D36B.0B2-You locked them up once. Just do it again.ogg",
+      "score": 6,
+      "caption": "You locked them up once. Just do it"
+    },
+    {
+      "sec": 439.485,
+      "hero": "Ana",
+      "label": "You and Fareeha made a good team in Lagos. I can tell she's happy to have another Helix operative at her side",
+      "rel": "Ana/MatchTalk/00000006DB7A.0B2-You and Fareeha made a good team in Lagos. I can tell she's happy to have another Helix operative at her side.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\00000006DB7A.0B2-You and Fareeha made a good team in Lagos. I can tell she's happy to have another Helix operative at her side.ogg",
+      "score": 12,
+      "caption": "I can tell she's happy to have another"
+    },
+    {
+      "sec": 453.28499999999997,
+      "hero": "Ana",
+      "label": "(soft chuckle) No, this comes with experience",
+      "rel": "Ana/MatchTalk/000000067BCB.0B2-(soft chuckle) No, this comes with experience.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Ana\\MatchTalk\\000000067BCB.0B2-(soft chuckle) No, this comes with experience.ogg",
+      "score": 12,
+      "caption": "No, this comes with experience."
+    },
+    {
+      "sec": 455.445,
+      "hero": "Soldier_ 76",
+      "label": "Give it a few years, kid, and you won't have to ask",
+      "rel": "Soldier_ 76/MatchTalk/000000067BD0.0B2-Give it a few years, kid, and you won't have to ask.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Soldier_ 76\\MatchTalk\\000000067BD0.0B2-Give it a few years, kid, and you won't have to ask.ogg",
+      "score": 10,
+      "caption": "Give it a few years, kid, and you won't"
+    },
+    {
+      "sec": 466.045,
+      "hero": "D.Mon",
+      "label": "MEKA owes you for having our backs, Sojourn. Ping me if there's ever anything we can do for you",
+      "rel": "D.Mon/MatchTalk/00000006C7B4.0B2-MEKA owes you for having our backs, Sojourn. Ping me if there's ever anything we can do for you.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\D.Mon\\MatchTalk\\00000006C7B4.0B2-MEKA owes you for having our backs, Sojourn. Ping me if there's ever anything we can do for you.ogg",
+      "score": 12,
+      "caption": "Sojourn. Ping me if there's ever"
+    },
+    {
+      "sec": 471.885,
+      "hero": "Sojourn",
+      "label": "I will. But after your help in Rome, I'd say we can call it even",
+      "rel": "Sojourn/MatchTalk/00000006C198.0B2-I will. But after your help in Rome, I'd say we can call it even.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C198.0B2-I will. But after your help in Rome, I'd say we can call it even.ogg",
+      "score": 12,
+      "caption": "say we can call it even."
+    },
+    {
+      "sec": 476.125,
+      "hero": "Sojourn",
+      "label": "It doesn't undo anything you've done... but it's not lost on me that you saved my life back in Rome",
+      "rel": "Sojourn/MatchTalk/00000006C18B.0B2-It doesn't undo anything you've done... but it's not lost on me that you saved my life back in Rome.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C18B.0B2-It doesn't undo anything you've done... but it's not lost on me that you saved my life back in Rome.ogg",
+      "score": 12,
+      "caption": "but it's not lost on me that you saved"
+    },
+    {
+      "sec": 482.565,
+      "hero": "Doomfist",
+      "label": "Even at my most arrogant, my respect for you was never in question",
+      "rel": "Doomfist/MatchTalk/00000006C64D.0B2-Even at my most arrogant, my respect for you was never in question.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C64D.0B2-Even at my most arrogant, my respect for you was never in question.ogg",
+      "score": 12,
+      "caption": "my respect for you was never in"
+    },
+    {
+      "sec": 487.805,
+      "hero": "Sojourn",
+      "label": "Guessing I can't convince you to stand down_ Let the world recover from Vendetta's war in peace_",
+      "rel": "Sojourn/MatchTalk/00000006C18C.0B2-Guessing I can't convince you to stand down_ Let the world recover from Vendetta's war in peace_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C18C.0B2-Guessing I can't convince you to stand down_ Let the world recover from Vendetta's war in peace_.ogg",
+      "score": 12,
+      "caption": "down, let the world recover from"
+    },
+    {
+      "sec": 493.647,
+      "hero": "Doomfist",
+      "label": "You know as well as I do that peace breeds complacency. And complacency, vulnerability",
+      "rel": "Doomfist/MatchTalk/00000006C64B.0B2-You know as well as I do that peace breeds complacency. And complacency, vulnerability.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C64B.0B2-You know as well as I do that peace breeds complacency. And complacency, vulnerability.ogg",
+      "score": 12,
+      "caption": "breeds complacency."
+    },
+    {
+      "sec": 499.607,
+      "hero": "Sojourn",
+      "label": "(sigh) Well, I had to ask. We'll just have to do things the hard way",
+      "rel": "Sojourn/MatchTalk/00000006C179.0B2-(sigh) Well, I had to ask. We'll just have to do things the hard way.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C179.0B2-(sigh) Well, I had to ask. We'll just have to do things the hard way.ogg",
+      "score": 12,
+      "caption": "Well, I had to ask. We'll just have to"
+    },
+    {
+      "sec": 510.727,
+      "hero": "Sojourn",
+      "label": "I had to make a choice, Orisa. With the state we were in, we wouldn't have survived that fight",
+      "rel": "Sojourn/MatchTalk/00000006C181.0B2-I had to make a choice, Orisa. With the state we were in, we wouldn't have survived that fight.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C181.0B2-I had to make a choice, Orisa. With the state we were in, we wouldn't have survived that fight.ogg",
+      "score": 12,
+      "caption": "have survived that fight."
+    },
+    {
+      "sec": 517.447,
+      "hero": "Orisa",
+      "label": "There are things more important than survival. Bringing him to justice is one of them",
+      "rel": "Orisa/MatchTalk/00000006C91F.0B2-There are things more important than survival. Bringing him to justice is one of them.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Orisa\\MatchTalk\\00000006C91F.0B2-There are things more important than survival. Bringing him to justice is one of them.ogg",
+      "score": 12,
+      "caption": "Bringing him to justice is one of them."
+    },
+    {
+      "sec": 522.127,
+      "hero": "Orisa",
+      "label": "Efi and I looked up to you, Sojourn. Doomfist deserves to be punished for what he did to our city--our family!",
+      "rel": "Orisa/MatchTalk/00000006C924.0B2-Efi and I looked up to you, Sojourn. Doomfist deserves to be punished for what he did to our city--our family!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Orisa\\MatchTalk\\00000006C924.0B2-Efi and I looked up to you, Sojourn. Doomfist deserves to be punished for what he did to our city--our family!.ogg",
+      "score": 12,
+      "caption": "Doomfist deserves to be punished for"
+    },
+    {
+      "sec": 529.487,
+      "hero": "Sojourn",
+      "label": "Real life isn't as simple as the cartoons, Orisa... as much as I wish it was",
+      "rel": "Sojourn/MatchTalk/00000006C194.0B2-Real life isn't as simple as the cartoons, Orisa... as much as I wish it was.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006C194.0B2-Real life isn't as simple as the cartoons, Orisa... as much as I wish it was.ogg",
+      "score": 12,
+      "caption": "cartoons, Orisa. As much as I wish it"
+    },
+    {
+      "sec": 535.167,
+      "hero": "Tracer",
+      "label": "Hey, Commander... Now that Vendetta's done for, would it be all right if I took some shore leave_",
+      "rel": "Tracer/MatchTalk/00000006D031.0B2-Hey, Commander... Now that Vendetta's done for, would it be all right if I took some shore leave_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Tracer\\MatchTalk\\00000006D031.0B2-Hey, Commander... Now that Vendetta's done for, would it be all right if I took some shore leave_.ogg",
+      "score": 12,
+      "caption": "for, would it be all right if I took"
+    },
+    {
+      "sec": 537.487,
+      "hero": "Sojourn",
+      "label": "Yeah_ What for_",
+      "rel": "Sojourn/MatchTalk/00000006B1AE.0B2-Yeah_ What for_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006B1AE.0B2-Yeah_ What for_.ogg",
+      "score": 0,
+      "caption": "Yeah? What for?"
+    },
+    {
+      "sec": 542.336,
+      "hero": "Tracer",
+      "label": "Well... it's Emily. There's something I've really been wanting to ask her",
+      "rel": "Tracer/MatchTalk/00000006DB8B.0B2-Well... it's Emily. There's something I've really been wanting to ask her.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Tracer\\MatchTalk\\00000006DB8B.0B2-Well... it's Emily. There's something I've really been wanting to ask her.ogg",
+      "score": 12,
+      "caption": "really been wanting to ask her."
+    },
+    {
+      "sec": 545.927,
+      "hero": "Sojourn",
+      "label": "(chuckle) As long as I get an invite when the time comes... permission granted",
+      "rel": "Sojourn/MatchTalk/00000006B1AF.0B2-(chuckle) As long as I get an invite when the time comes... permission granted.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006B1AF.0B2-(chuckle) As long as I get an invite when the time comes... permission granted.ogg",
+      "score": 12,
+      "caption": "As long as I get an invite when the time"
+    },
+    {
+      "sec": 551.407,
+      "hero": "Sojourn",
+      "label": "I wanted to think there was a good reason I saw you with Talon, but after everything Vendetta's done_ It's inexcu",
+      "rel": "Sojourn/MatchTalk/00000006B181.0B2-I wanted to think there was a good reason I saw you with Talon, but after everything Vendetta's done_ It's inexcu.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sojourn\\MatchTalk\\00000006B181.0B2-I wanted to think there was a good reason I saw you with Talon, but after everything Vendetta's done_ It's inexcu.ogg",
+      "score": 12,
+      "caption": "there was a good reason I saw you with"
+    },
+    {
+      "sec": 565.047,
+      "hero": "Freja",
+      "label": "I know. I don't expect forgiveness these days",
+      "rel": "Freja/MatchTalk/00000006B625.0B2-I know. I don't expect forgiveness these days.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Freja\\MatchTalk\\00000006B625.0B2-I know. I don't expect forgiveness these days.ogg",
+      "score": 12,
+      "caption": "I don't expect forgiveness these days."
+    },
+    {
+      "sec": 575.687,
+      "hero": "D.Mon",
+      "label": "Makes sense. You would know a thing or two about having a screw loose",
+      "rel": "D.Mon/MatchTalk/00000006CA52.0B2-Makes sense. You would know a thing or two about having a screw loose.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\D.Mon\\MatchTalk\\00000006CA52.0B2-Makes sense. You would know a thing or two about having a screw loose.ogg",
+      "score": 12,
+      "caption": "two about having a screw loose."
+    },
+    {
+      "sec": 578.007,
+      "hero": "Winston",
+      "label": "I'll admit, I was worried you wouldn't believe me when I said the mech you captured housed an intelligent hamster",
+      "rel": "Winston/MatchTalk/00000006CE43.0B2-I'll admit, I was worried you wouldn't believe me when I said the mech you captured housed an intelligent hamster.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE43.0B2-I'll admit, I was worried you wouldn't believe me when I said the mech you captured housed an intelligent hamster.ogg",
+      "score": 10,
+      "caption": "I will admit I was worried you wouldn't"
+    },
+    {
+      "sec": 585.047,
+      "hero": "D.Mon",
+      "label": "If anyone other than a literal space ape had told me, I probably wouldn't have",
+      "rel": "D.Mon/MatchTalk/00000006CF23.0B2-If anyone other than a literal space ape had told me, I probably wouldn't have.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\D.Mon\\MatchTalk\\00000006CF23.0B2-If anyone other than a literal space ape had told me, I probably wouldn't have.ogg",
+      "score": 10,
+      "caption": "If anyone other than a little spacey pet"
+    },
+    {
+      "sec": 590.607,
+      "hero": "Winston",
+      "label": "(chuckle) I suppose that does give me a bit of credibility",
+      "rel": "Winston/MatchTalk/00000006CE40.0B2-(chuckle) I suppose that does give me a bit of credibility.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE40.0B2-(chuckle) I suppose that does give me a bit of credibility.ogg",
+      "score": 12,
+      "caption": "I suppose that does give me a bit of"
+    },
+    {
+      "sec": 596.487,
+      "hero": "D.Mon",
+      "label": "We went easy on you before, but mess with Busan again and I'll shut you down",
+      "rel": "D.Mon/MatchTalk/00000006CF28.0B2-We went easy on you before, but mess with Busan again and I'll shut you down.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\D.Mon\\MatchTalk\\00000006CF28.0B2-We went easy on you before, but mess with Busan again and I'll shut you down.ogg",
+      "score": 12,
+      "caption": "with Busan again and they'll shut you"
+    },
+    {
+      "sec": 602.367,
+      "hero": "Wrecking Ball",
+      "label": "(hamster noises) He will take you seriously once you defeat your robot squids",
+      "rel": "Wrecking Ball/MatchTalk/00000006B8D3.0B2-(hamster noises) He will take you seriously once you defeat your robot squids.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Wrecking Ball\\MatchTalk\\00000006B8D3.0B2-(hamster noises) He will take you seriously once you defeat your robot squids.ogg",
+      "score": 12,
+      "caption": "defeat your robot squids."
+    },
+    {
+      "sec": 607.927,
+      "hero": "Doomfist",
+      "label": "I was right to seek you out. This gauntlet you've crafted surpasses my every expectation",
+      "rel": "Doomfist/MatchTalk/00000006C651.0B2-I was right to seek you out. This gauntlet you've crafted surpasses my every expectation.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C651.0B2-I was right to seek you out. This gauntlet you've crafted surpasses my every expectation.ogg",
+      "score": 12,
+      "caption": "This gauntlet you've crafted surpasses"
+    },
+    {
+      "sec": 612.288,
+      "hero": "Doctrine",
+      "label": "Ah, one can accomplish much when the wisdom of age comes without cost",
+      "rel": "Doctrine/MatchTalk/00000006D0A8.0B2-Ah, one can accomplish much when the wisdom of age comes without cost.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doctrine\\MatchTalk\\00000006D0A8.0B2-Ah, one can accomplish much when the wisdom of age comes without cost.ogg",
+      "score": 10,
+      "caption": "Yeah, one can accomplish much when the"
+    },
+    {
+      "sec": 619.928,
+      "hero": "Orisa",
+      "label": "Be grateful I was not there to greet you in Rome. You would not have left alive",
+      "rel": "Orisa/MatchTalk/00000006C922.0B2-Be grateful I was not there to greet you in Rome. You would not have left alive.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Orisa\\MatchTalk\\00000006C922.0B2-Be grateful I was not there to greet you in Rome. You would not have left alive.ogg",
+      "score": 12,
+      "caption": "in Rome. You would not have left alive."
+    },
+    {
+      "sec": 622.688,
+      "hero": "Doomfist",
+      "label": "The child has made you strong, Orisa. May she give you the wisdom to understand your leader's choices, next",
+      "rel": "Doomfist/MatchTalk/00000006C64E.0B2-The child has made you strong, Orisa. May she give you the wisdom to understand your leader's choices, next.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C64E.0B2-The child has made you strong, Orisa. May she give you the wisdom to understand your leader's choices, next.ogg",
+      "score": 10,
+      "caption": "The child has made you strong, Odessa."
+    },
+    {
+      "sec": 631.328,
+      "hero": "Sombra",
+      "label": "So when were you planning to tell me your ace in the hole is a geriatric soul-sapper_",
+      "rel": "Sombra/MatchTalk/00000006B2B3.0B2-So when were you planning to tell me your ace in the hole is a geriatric soul-sapper_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sombra\\MatchTalk\\00000006B2B3.0B2-So when were you planning to tell me your ace in the hole is a geriatric soul-sapper_.ogg",
+      "score": 12,
+      "caption": "your ace in the hole is a geriatric soul"
+    },
+    {
+      "sec": 635.368,
+      "hero": "Doomfist",
+      "label": "Tell you_ I thought uncovering information was your expertise",
+      "rel": "Doomfist/MatchTalk/00000006C643.0B2-Tell you_ I thought uncovering information was your expertise.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C643.0B2-Tell you_ I thought uncovering information was your expertise.ogg",
+      "score": 12,
+      "caption": "I thought uncovering information was"
+    },
+    {
+      "sec": 638.088,
+      "hero": "Sombra",
+      "label": "I can't hack your brain, jefe",
+      "rel": "Sombra/MatchTalk/00000006B2B1.0B2-I can't hack your brain, jefe.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Sombra\\MatchTalk\\00000006B2B1.0B2-I can't hack your brain, jefe.ogg",
+      "score": 10,
+      "caption": "I can't hack your brain, Hef."
+    },
+    {
+      "sec": 640.648,
+      "hero": "Doomfist",
+      "label": "Then you still have room to improve",
+      "rel": "Doomfist/MatchTalk/00000006C649.0B2-Then you still have room to improve.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Doomfist\\MatchTalk\\00000006C649.0B2-Then you still have room to improve.ogg",
+      "score": 0,
+      "caption": "Then you still have room to improve."
+    },
+    {
+      "sec": 645.368,
+      "hero": "Tracer",
+      "label": "So glad you're finally back home! Just don't go forgetting your old crew, all right_",
+      "rel": "Tracer/MatchTalk/00000006D02D.0B2-So glad you're finally back home! Just don't go forgetting your old crew, all right_.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Tracer\\MatchTalk\\00000006D02D.0B2-So glad you're finally back home! Just don't go forgetting your old crew, all right_.ogg",
+      "score": 12,
+      "caption": "don't go forgetting your old crew, all"
+    },
+    {
+      "sec": 649.328,
+      "hero": "Genji",
+      "label": "Please, Lena. No matter where I go, I will never forget our team",
+      "rel": "Genji/MatchTalk/00000006D1F6.0B2-Please, Lena. No matter where I go, I will never forget our team.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Genji\\MatchTalk\\00000006D1F6.0B2-Please, Lena. No matter where I go, I will never forget our team.ogg",
+      "score": 12,
+      "caption": "No matter where I go,"
+    },
+    {
+      "sec": 657.008,
+      "hero": "Tracer",
+      "label": "(sniffle) Good. 'Cause you better believe I'm flying everyone out to visit next time we get shore leave!",
+      "rel": "Tracer/MatchTalk/00000006D032.0B2-(sniffle) Good. 'Cause you better believe I'm flying everyone out to visit next time we get shore leave!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Tracer\\MatchTalk\\00000006D032.0B2-(sniffle) Good. 'Cause you better believe I'm flying everyone out to visit next time we get shore leave!.ogg",
+      "score": 12,
+      "caption": "everyone out to visit next time we get"
+    },
+    {
+      "sec": 660.808,
+      "hero": "Winston",
+      "label": "I'm glad to see you reunite with your family after so long, Genji",
+      "rel": "Winston/MatchTalk/00000006CE48.0B2-I'm glad to see you reunite with your family after so long, Genji.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE48.0B2-I'm glad to see you reunite with your family after so long, Genji.ogg",
+      "score": 10,
+      "caption": "I'm glad to see you reunited with your"
+    },
+    {
+      "sec": 668.128,
+      "hero": "Genji",
+      "label": "As am I. Perhaps you can do the same, one day",
+      "rel": "Genji/MatchTalk/00000006D1F7.0B2-As am I. Perhaps you can do the same, one day.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Genji\\MatchTalk\\00000006D1F7.0B2-As am I. Perhaps you can do the same, one day.ogg",
+      "score": 12,
+      "caption": "Perhaps you can do the same one day."
+    },
+    {
+      "sec": 673.608,
+      "hero": "Winston",
+      "label": "Oh, I don't know… I'm not even sure if Hammond still sees me as family",
+      "rel": "Winston/MatchTalk/00000006CE49.0B2-Oh, I don't know… I'm not even sure if Hammond still sees me as family.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE49.0B2-Oh, I don't know… I'm not even sure if Hammond still sees me as family.ogg",
+      "score": 12,
+      "caption": "Hammond still sees me as family."
+    },
+    {
+      "sec": 677.728,
+      "hero": "Genji",
+      "label": "Believe me_ even deep wounds can be mended with time",
+      "rel": "Genji/MatchTalk/00000006D1F8.0B2-Believe me_ even deep wounds can be mended with time.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Genji\\MatchTalk\\00000006D1F8.0B2-Believe me_ even deep wounds can be mended with time.ogg",
+      "score": 12,
+      "caption": "even deep wounds can be mended with"
+    },
+    {
+      "sec": 686.328,
+      "hero": "Genji",
+      "label": "The rift between Hanzo and I is slowly healing. But with others, his unforgiving nature rears its head",
+      "rel": "Genji/MatchTalk/00000006CB37.0B2-The rift between Hanzo and I is slowly healing. But with others, his unforgiving nature rears its head.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Genji\\MatchTalk\\00000006CB37.0B2-The rift between Hanzo and I is slowly healing. But with others, his unforgiving nature rears its head.ogg",
+      "score": 12,
+      "caption": "his unforgiving nature rears its head."
+    },
+    {
+      "sec": 691.568,
+      "hero": "Zenyatta",
+      "label": "What he does not forgive in others reflects what he does not accept of himself",
+      "rel": "Zenyatta/MatchTalk/00000006C5FE.0B2-What he does not forgive in others reflects what he does not accept of himself.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Zenyatta\\MatchTalk\\00000006C5FE.0B2-What he does not forgive in others reflects what he does not accept of himself.ogg",
+      "score": 12,
+      "caption": "reflects what he does not accept of"
+    },
+    {
+      "sec": 697.288,
+      "hero": "Junker Queen",
+      "label": "Maybe I oughtta take my ship up to where you and the champ lived. See how Gracie likes zero-grav",
+      "rel": "Junker Queen/MatchTalk/00000006CB31.0B2-Maybe I oughtta take my ship up to where you and the champ lived. See how Gracie likes zero-grav.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Junker Queen\\MatchTalk\\00000006CB31.0B2-Maybe I oughtta take my ship up to where you and the champ lived. See how Gracie likes zero-grav.ogg",
+      "score": 12,
+      "caption": "where you and the champ lived. See how"
+    },
+    {
+      "sec": 702.968,
+      "hero": "Winston",
+      "label": "Ah, the Lunar Colony would not be easily accessible without... significant upgrades to your craft",
+      "rel": "Winston/MatchTalk/00000006CE41.0B2-Ah, the Lunar Colony would not be easily accessible without... significant upgrades to your craft.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Winston\\MatchTalk\\00000006CE41.0B2-Ah, the Lunar Colony would not be easily accessible without... significant upgrades to your craft.ogg",
+      "score": 12,
+      "caption": "the lunar colony would not be easily"
+    },
+    {
+      "sec": 710.008,
+      "hero": "Junker Queen",
+      "label": "Well that's what the champ's for. He'll figure it out",
+      "rel": "Junker Queen/MatchTalk/00000006CB20.0B2-Well that's what the champ's for. He'll figure it out.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Junker Queen\\MatchTalk\\00000006CB20.0B2-Well that's what the champ's for. He'll figure it out.ogg",
+      "score": 12,
+      "caption": "Well, that's what the champ's for. He'll"
+    },
+    {
+      "sec": 713.008,
+      "hero": "Roadhog",
+      "label": "Busan was nice",
+      "rel": "Roadhog/MatchTalk/00000006DBDE.0B2-Busan was nice.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\Roadhog\\MatchTalk\\00000006DBDE.0B2-Busan was nice.ogg",
+      "score": 0,
+      "caption": "Busan was nice."
+    },
+    {
+      "sec": 717.928,
+      "hero": "D.Va",
+      "label": "Well, it would be nicer if certain tourists didn't leave their junk all over the city!",
+      "rel": "D.Va/MatchTalk/00000006CC80.0B2-Well, it would be nicer if certain tourists didn't leave their junk all over the city!.ogg",
+      "source": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice\\D.Va\\MatchTalk\\00000006CC80.0B2-Well, it would be nicer if certain tourists didn't leave their junk all over the city!.ogg",
+      "score": 12,
+      "caption": "tourists didn't leave their junk all"
+    }
+  ],
+  "unmatched": [
+    {
+      "hero": "Ana",
+      "label": "(sighs) You are not as special as you think",
+      "rel": "Ana/MatchTalk/00000006DB74.0B2-(sighs) You are not as special as you think.ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "label": "(Swedish)_ There isn't bad weather, only bad clothes",
+      "rel": "Brigitte/MatchTalk/00000004A1C7.0B2-(Swedish)_ There isn't bad weather, only bad clothes.ogg"
+    },
+    {
+      "hero": "Emre",
+      "label": "Whatever you think of me, Viv, I promise I've thought worse",
+      "rel": "Emre/MatchTalk/00000006AF80.0B2-Whatever you think of me, Viv, I promise I've thought worse.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "label": "Now this is a place fit for a Queen",
+      "rel": "Junker Queen/MatchTalk/00000006280F.0B2-Now this is a place fit for a Queen.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "label": "You're all mouse-brained since seeing that monkey again. What's gotten into you_",
+      "rel": "Junker Queen/MatchTalk/00000006CB21.0B2-You're all mouse-brained since seeing that monkey again. What's gotten into you_.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "label": "Next chance I get to bash your mech, screws'll be shooting out like candy from a piñata!",
+      "rel": "Junker Queen/MatchTalk/00000006CB2C.0B2-Next chance I get to bash your mech, screws'll be shooting out like candy from a piñata!.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "label": "This place makes me sick",
+      "rel": "Junkrat/MatchTalk/00000000B89F.0B2-This place makes me sick.ogg"
+    },
+    {
+      "hero": "Juno",
+      "label": "I cannot help thinking I have seen you somewhere before, Fika",
+      "rel": "Juno/MatchTalk/00000006DBF2.0B2-I cannot help thinking I have seen you somewhere before, Fika.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "label": "Really_",
+      "rel": "Lúcio/MatchTalk/00000006B11A.0B2-Really_.ogg"
+    },
+    {
+      "hero": "Orisa",
+      "label": "You had Doomfist in your sights, and you let him walk free_",
+      "rel": "Orisa/MatchTalk/00000006C923.0B2-You had Doomfist in your sights, and you let him walk free_.ogg"
+    },
+    {
+      "hero": "Reaper",
+      "label": "It didn't... until now",
+      "rel": "Reaper/MatchTalk/00000006D367.0B2-It didn't... until now.ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "label": "(snort) Thanks. Yeah",
+      "rel": "Roadhog/MatchTalk/000000067BCC.0B2-(snort) Thanks. Yeah.ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "label": "C'mon, got a plague to spread",
+      "rel": "Roadhog/MatchTalk/00000006DBA5.0B2-C'mon, got a plague to spread.ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "label": "Drag em down. Roadhog style",
+      "rel": "Roadhog/MatchTalk/00000006DBA7.0B2-Drag em down. Roadhog style.ogg"
+    },
+    {
+      "hero": "Sierra",
+      "label": "Oh, I just love puffins!",
+      "rel": "Sierra/MatchTalk/00000006BE01.0B2-Oh, I just love puffins!.ogg"
+    },
+    {
+      "hero": "Sierra",
+      "label": "Aw, well I just love working with her too! Those Raptora suits really are something",
+      "rel": "Sierra/MatchTalk/00000006D068.0B2-Aw, well I just love working with her too! Those Raptora suits really are something.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "label": "It's a nice little moon. Why shouldn't I keep it_",
+      "rel": "Sigma/MatchTalk/0000000663E1.0B2-It's a nice little moon. Why shouldn't I keep it_.ogg"
+    },
+    {
+      "hero": "Tracer",
+      "label": "You've come so far since you landed, Juno--and seen so much of the world, too! Where to next_",
+      "rel": "Tracer/MatchTalk/00000006D033.0B2-You've come so far since you landed, Juno--and seen so much of the world, too! Where to next_.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "label": "Your reputation is the least of my concerns, Vaira",
+      "rel": "Vendetta/MatchTalk/00000006B386.0B2-Your reputation is the least of my concerns, Vaira.ogg"
+    },
+    {
+      "hero": "Venture",
+      "label": "If Talon tries anything fishy here, they'll have to get through us!",
+      "rel": "Venture/MatchTalk/00000006C5E4.0B2-If Talon tries anything fishy here, they'll have to get through us!.ogg"
+    },
+    {
+      "hero": "Wuyang",
+      "label": "You get to splash people with water and tell them you thought they needed help Eh_",
+      "rel": "Wuyang/MatchTalk/00000006D13C.0B2-You get to splash people with water and tell them you thought they needed help Eh_.ogg"
+    },
+    {
+      "hero": "Zarya",
+      "label": "Excellent! Then we will have many more. With kolbasas, for extra protein",
+      "rel": "Zarya/MatchTalk/00000006C943.0B2-Excellent! Then we will have many more. With kolbasas, for extra protein.ogg"
+    }
+  ]
+}

@@ -18,6 +18,7 @@ import {
     mergeHeroBirthdaysFromBundledFile,
     mergeHeroDescriptionsFromBundledFile,
     mergeHeroRolesFromBundledArchiveRows,
+    mergeMissingBioArchiveRowsFromBundledFile,
     repairCorruptedHeroArchiveDescriptionsFromFile,
 } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
@@ -47,34 +48,6 @@ function canonicalizeNpcArchiveEventNames(events) {
         }
         return { ...e, name: canon };
     });
-}
-
-/**
- * Append bundled rows missing from localStorage (filter chips with no archive row).
- * @param {unknown[]} events
- * @param {unknown[]|null} fileEvents
- * @returns {unknown[]}
- */
-function mergeMissingSatelliteEventsFromBundledFile(events, fileEvents) {
-    if (!Array.isArray(events)) return [];
-    if (!Array.isArray(fileEvents) || fileEvents.length === 0) return events;
-
-    const names = new Set();
-    for (let i = 0; i < events.length; i++) {
-        const n = String(events[i]?.name != null ? events[i].name : '').trim().toLowerCase();
-        if (n) names.add(n);
-    }
-
-    const out = events.slice();
-    for (let i = 0; i < fileEvents.length; i++) {
-        const fe = fileEvents[i];
-        if (!fe || typeof fe !== 'object') continue;
-        const n = String(fe.name != null ? fe.name : '').trim().toLowerCase();
-        if (!n || names.has(n)) continue;
-        names.add(n);
-        out.push(fe);
-    }
-    return out;
 }
 
 /**
@@ -120,7 +93,7 @@ function dedupeSatelliteEventsByName(events) {
 function applyNpcBundledFileMergeBeforeNormalize(dataService, fileEvents) {
     if (dataService.getArchiveSource() !== 'npcs') return 0;
     dataService.events = canonicalizeNpcArchiveEventNames(dataService.events);
-    dataService.events = mergeMissingSatelliteEventsFromBundledFile(dataService.events, fileEvents);
+    dataService.events = mergeMissingBioArchiveRowsFromBundledFile(dataService.events, fileEvents);
     return mergeNpcCategoriesFromBundledFile(dataService.events, fileEvents);
 }
 
@@ -266,7 +239,7 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
         added = dataService.events.length - beforeBundledMerge;
     } else if (arch === 'heroes') {
         const beforeBundledMerge = dataService.events.length;
-        dataService.events = mergeMissingSatelliteEventsFromBundledFile(
+        dataService.events = mergeMissingBioArchiveRowsFromBundledFile(
             dataService.events,
             fileEvents,
         );
@@ -295,7 +268,7 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
         }
     } else if (arch === 'factions') {
         const beforeBundledMerge = dataService.events.length;
-        dataService.events = mergeMissingSatelliteEventsFromBundledFile(
+        dataService.events = mergeMissingBioArchiveRowsFromBundledFile(
             dataService.events,
             fileEvents,
         );

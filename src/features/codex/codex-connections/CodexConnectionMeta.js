@@ -171,6 +171,7 @@ export function normalizeCodexConnectionMetaRow(row, subjectKind, subjectName) {
             thisEntryLane: row?.thisEntryLane,
             showInCodex: row?.showInCodex,
             hideInCodex: row?.hideInCodex,
+            hideInIntel: row?.hideInIntel,
             pruned: row?.pruned,
             ranges: row?.ranges,
         },
@@ -225,6 +226,13 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
 
         const stored = metaByLinked.get(key);
         const effectivelyPruned = isCodexConnectionPairPruned(sk, sn, kind, name, metaRows);
+        const effectivelyHiddenInIntel = isCodexConnectionPairHiddenInIntel(
+            sk,
+            sn,
+            kind,
+            name,
+            metaRows,
+        );
         const row = stored
             ? {
                 kind: String(stored.linkedKind || stored.kind || kind).toLowerCase(),
@@ -234,6 +242,7 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
                 thisEntryLane: stored.thisEntryLane ?? 'A',
                 showInCodex: stored.showInCodex === true,
                 hideInCodex: stored.hideInCodex === true,
+                hideInIntel: effectivelyHiddenInIntel,
                 pruned: effectivelyPruned,
                 ranges: Array.isArray(stored.ranges) ? stored.ranges : undefined,
             }
@@ -244,6 +253,7 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
                 reasoningLinkedToSubject: '',
                 thisEntryLane: 'A',
                 pruned: effectivelyPruned,
+                hideInIntel: effectivelyHiddenInIntel,
             };
 
         if (!forEdit && effectivelyPruned) continue;
@@ -262,9 +272,10 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
         const key = codexConnectionSubjectLinkedKey(sk, sn, lk, ln);
         if (seen.has(key)) continue;
         const effectivelyPruned = isCodexConnectionPairPruned(sk, sn, lk, ln, metaRows);
+        const effectivelyHiddenInIntel = isCodexConnectionPairHiddenInIntel(sk, sn, lk, ln, metaRows);
         if (!forEdit && effectivelyPruned) continue;
         seen.add(key);
-        out.push({
+        const nextRow = {
             kind: lk,
             name: ln,
             reasoningSubjectToLinked: row.reasoningSubjectToLinked ?? '',
@@ -272,9 +283,12 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
             thisEntryLane: row.thisEntryLane ?? 'A',
             showInCodex: row.showInCodex === true,
             hideInCodex: row.hideInCodex === true,
+            hideInIntel: effectivelyHiddenInIntel,
             pruned: effectivelyPruned,
             ranges: Array.isArray(row.ranges) ? row.ranges : undefined,
-        });
+        };
+        if (!forEdit && !bioConnectionRowIsDisplayable(nextRow)) continue;
+        out.push(nextRow);
     }
 
     return out;
@@ -388,6 +402,14 @@ export function mergeCodexConnectionMetaForSubject(metaRows, subjectKind, subjec
             normalized.linkedName,
             normalized.hideInCodex === true,
         );
+        mirrorCodexConnectionHideInIntelOnReverseSubject(
+            next,
+            sk,
+            sn,
+            normalized.linkedKind,
+            normalized.linkedName,
+            normalized.hideInIntel === true,
+        );
     }
 
     for (const row of metaRows || []) {
@@ -430,24 +452,52 @@ export function mergeCodexConnectionMetaForSubject(metaRows, subjectKind, subjec
         );
     }
 
+    for (const row of metaRows || []) {
+        if (!metaRowMatchesSubject(row, sk, sn) || row.hideInIntel !== true) continue;
+        const lk = String(row.linkedKind || row.kind || 'hero').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (!ln) continue;
+        const pairKey = codexConnectionSubjectLinkedKey(sk, sn, lk, ln);
+        if (!allowed.has(pairKey) || editorPairKeys.has(pairKey)) continue;
+        const normalized = normalizeCodexConnectionMetaRow(row, sk, sn);
+        if (!normalized) continue;
+        next.push(normalized);
+        mirrorCodexConnectionHideInIntelOnReverseSubject(
+            next,
+            sk,
+            sn,
+            normalized.linkedKind,
+            normalized.linkedName,
+            true,
+        );
+    }
+
     return next;
 }
 
 /**
- * Keep hide-in-codex state symmetric — a connection belongs to both archive entries.
  * @param {object[]} rows
  * @param {string} subjectKind
  * @param {string} subjectName
  * @param {string} linkedKind
  * @param {string} linkedName
+ * @param {'hideInCodex'|'hideInIntel'} flag
  * @param {boolean} hidden
  */
-function mirrorCodexConnectionHideOnReverseSubject(rows, subjectKind, subjectName, linkedKind, linkedName, hidden) {
+function mirrorCodexConnectionFlagOnReverseSubject(
+    rows,
+    subjectKind,
+    subjectName,
+    linkedKind,
+    linkedName,
+    flag,
+    hidden,
+) {
     const rsk = String(linkedKind || 'hero').toLowerCase();
     const rsn = String(linkedName || '').trim();
     const sk = String(subjectKind || 'hero').toLowerCase();
     const sn = String(subjectName || '').trim();
-    if (!rsn || !sn) return;
+    if (!rsn || !sn || (flag !== 'hideInCodex' && flag !== 'hideInIntel')) return;
 
     const revKey = codexConnectionSubjectLinkedKey(rsk, rsn, sk, sn);
     let idx = -1;
@@ -464,14 +514,14 @@ function mirrorCodexConnectionHideOnReverseSubject(rows, subjectKind, subjectNam
 
     if (hidden) {
         if (idx >= 0) {
-            rows[idx] = { ...rows[idx], hideInCodex: true };
+            rows[idx] = { ...rows[idx], [flag]: true };
             return;
         }
         const mirror = normalizeCodexConnectionMetaRow(
             {
                 kind: sk,
                 name: sn,
-                hideInCodex: true,
+                [flag]: true,
                 thisEntryLane: 'A',
             },
             rsk,
@@ -481,11 +531,88 @@ function mirrorCodexConnectionHideOnReverseSubject(rows, subjectKind, subjectNam
         return;
     }
 
-    if (idx >= 0 && rows[idx].hideInCodex === true) {
+    if (idx >= 0 && rows[idx][flag] === true) {
         const nextRow = { ...rows[idx] };
-        delete nextRow.hideInCodex;
+        delete nextRow[flag];
         rows[idx] = nextRow;
     }
+}
+
+/**
+ * Keep hide-in-codex state symmetric — a connection belongs to both archive entries.
+ * @param {object[]} rows
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {boolean} hidden
+ */
+function mirrorCodexConnectionHideOnReverseSubject(rows, subjectKind, subjectName, linkedKind, linkedName, hidden) {
+    mirrorCodexConnectionFlagOnReverseSubject(
+        rows,
+        subjectKind,
+        subjectName,
+        linkedKind,
+        linkedName,
+        'hideInCodex',
+        hidden,
+    );
+}
+
+/**
+ * Keep hide-in-intel state symmetric — independent of Codex cord visibility.
+ * @param {object[]} rows
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {boolean} hidden
+ */
+function mirrorCodexConnectionHideInIntelOnReverseSubject(
+    rows,
+    subjectKind,
+    subjectName,
+    linkedKind,
+    linkedName,
+    hidden,
+) {
+    mirrorCodexConnectionFlagOnReverseSubject(
+        rows,
+        subjectKind,
+        subjectName,
+        linkedKind,
+        linkedName,
+        'hideInIntel',
+        hidden,
+    );
+}
+
+/**
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {object[]} metaRows
+ * @param {'hideInCodex'|'hideInIntel'} flag
+ */
+function isCodexConnectionPairFlagged(subjectKind, subjectName, linkedKind, linkedName, metaRows, flag) {
+    const key = codexConnectionSubjectLinkedKey(subjectKind, subjectName, linkedKind, linkedName);
+    for (const row of metaRows || []) {
+        if (!metaRowMatchesSubject(row, subjectKind, subjectName)) continue;
+        const lk = String(row.linkedKind || row.kind || '').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (codexConnectionSubjectLinkedKey(subjectKind, subjectName, lk, ln) !== key) continue;
+        if (row[flag] === true) return true;
+    }
+    const revKey = codexConnectionSubjectLinkedKey(linkedKind, linkedName, subjectKind, subjectName);
+    for (const row of metaRows || []) {
+        if (!metaRowMatchesSubject(row, linkedKind, linkedName)) continue;
+        const lk = String(row.linkedKind || row.kind || '').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (codexConnectionSubjectLinkedKey(linkedKind, linkedName, lk, ln) !== revKey) continue;
+        if (row[flag] === true) return true;
+    }
+    return false;
 }
 
 /**
@@ -496,23 +623,32 @@ function mirrorCodexConnectionHideOnReverseSubject(rows, subjectKind, subjectNam
  * @param {object[]} metaRows
  */
 export function isCodexConnectionPairHiddenInCodex(subjectKind, subjectName, linkedKind, linkedName, metaRows) {
-    const key = codexConnectionSubjectLinkedKey(subjectKind, subjectName, linkedKind, linkedName);
-    for (const row of metaRows || []) {
-        if (!metaRowMatchesSubject(row, subjectKind, subjectName)) continue;
-        const lk = String(row.linkedKind || row.kind || '').toLowerCase();
-        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
-        if (codexConnectionSubjectLinkedKey(subjectKind, subjectName, lk, ln) !== key) continue;
-        if (row.hideInCodex === true) return true;
-    }
-    const revKey = codexConnectionSubjectLinkedKey(linkedKind, linkedName, subjectKind, subjectName);
-    for (const row of metaRows || []) {
-        if (!metaRowMatchesSubject(row, linkedKind, linkedName)) continue;
-        const lk = String(row.linkedKind || row.kind || '').toLowerCase();
-        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
-        if (codexConnectionSubjectLinkedKey(linkedKind, linkedName, lk, ln) !== revKey) continue;
-        if (row.hideInCodex === true) return true;
-    }
-    return false;
+    return isCodexConnectionPairFlagged(
+        subjectKind,
+        subjectName,
+        linkedKind,
+        linkedName,
+        metaRows,
+        'hideInCodex',
+    );
+}
+
+/**
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {object[]} metaRows
+ */
+export function isCodexConnectionPairHiddenInIntel(subjectKind, subjectName, linkedKind, linkedName, metaRows) {
+    return isCodexConnectionPairFlagged(
+        subjectKind,
+        subjectName,
+        linkedKind,
+        linkedName,
+        metaRows,
+        'hideInIntel',
+    );
 }
 
 /**

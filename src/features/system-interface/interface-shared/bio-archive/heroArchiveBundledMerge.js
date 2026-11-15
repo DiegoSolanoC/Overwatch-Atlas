@@ -1,8 +1,38 @@
 /**
- * Merge bundled heroes.json fields into stale localStorage / in-memory rows.
+ * Merge bundled story-archive JSON fields into stale localStorage / in-memory rows.
  */
 
 import { getHeroBirthdayRawFromEntry, writeBirthdayToArchiveRow } from './heroArchiveRowBirthday.js';
+
+/**
+ * Append bundled archive rows that are missing from localStorage (new chips with no row).
+ * GitHub Pages prefers non-empty LS overlays that often predate recent NPC/faction adds.
+ *
+ * @param {unknown[]} events
+ * @param {unknown[]|null} fileEvents
+ * @returns {unknown[]}
+ */
+export function mergeMissingBioArchiveRowsFromBundledFile(events, fileEvents) {
+    if (!Array.isArray(events)) return [];
+    if (!Array.isArray(fileEvents) || fileEvents.length === 0) return events;
+
+    const names = new Set();
+    for (let i = 0; i < events.length; i += 1) {
+        const n = readRowName(events[i]).toLowerCase();
+        if (n) names.add(n);
+    }
+
+    const out = events.slice();
+    for (let i = 0; i < fileEvents.length; i += 1) {
+        const fe = fileEvents[i];
+        if (!fe || typeof fe !== 'object') continue;
+        const n = readRowName(fe).toLowerCase();
+        if (!n || names.has(n)) continue;
+        names.add(n);
+        out.push(fe);
+    }
+    return out;
+}
 
 /**
  * @param {unknown} row

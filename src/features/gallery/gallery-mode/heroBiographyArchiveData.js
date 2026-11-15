@@ -11,6 +11,7 @@ import {
     mergeHeroBirthdaysFromBundledFile,
     mergeHeroDescriptionsFromBundledFile,
     mergeHeroRolesFromBundledArchiveRows,
+    mergeMissingBioArchiveRowsFromBundledFile,
     repairCorruptedHeroArchiveDescriptionsFromFile,
 } from '../../system-interface/interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../system-interface/interface-shared/bio-archive/heroArchiveTimelineFetch.js';
@@ -53,10 +54,16 @@ function archiveRowDescription(ev) {
     return String(ev.description != null ? ev.description : '').trim();
 }
 
-/** @returns {Promise<object[]>} */
-async function fetchBundledHeroArchiveEvents() {
+/**
+ * @param {BioBiographyArchiveCategory} category
+ * @returns {Promise<object[]>}
+ */
+async function fetchBundledBioArchiveEvents(category) {
+    const cat = normalizeBioBiographyCategory(category);
+    const fileUrl = FILES.storyArchive[cat];
+    if (!fileUrl) return [];
     try {
-        const res = await fetch(`${FILES.storyArchive.heroes}?v=${Date.now()}`, { cache: 'no-store' });
+        const res = await fetch(`${fileUrl}?v=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) return [];
         const data = await res.json();
         return Array.isArray(data?.events) ? data.events : [];
@@ -101,15 +108,18 @@ export async function loadBioArchiveEvents(category) {
         } catch (_) {}
 
         if (events.length === 0) {
-            const fileUrl = FILES.storyArchive[cat];
-            try {
-                const res = await fetch(`${fileUrl}?v=${Date.now()}`, { cache: 'no-store' });
-                if (res.ok) {
-                    const data = await res.json();
-                    events = Array.isArray(data?.events) ? data.events : [];
-                }
-            } catch (_) {}
+            events = await fetchBundledBioArchiveEvents(cat);
         }
+    }
+
+    // Pages LS overlays often predate recent NPC/faction rows — always union with bundled.
+    const bundled = await fetchBundledBioArchiveEvents(cat);
+    if (bundled.length > 0) {
+        events = events.length > 0
+            ? mergeMissingBioArchiveRowsFromBundledFile(events, bundled)
+            : bundled.slice();
+        // Fill empty Intel text from committed JSON (same Pages-stale pattern as heroes).
+        events = mergeHeroDescriptionsFromBundledFile(events, bundled).events;
     }
 
     if (cat === 'heroes') {
@@ -117,17 +127,10 @@ export async function loadBioArchiveEvents(category) {
             const name = String(row?.name ?? '').trim();
             return name && !/ (is Born|is Made|Goes Online|was Made|Was Made)$/i.test(name);
         });
-        const bundled = await fetchBundledHeroArchiveEvents();
-        if (bundled.length > 0) {
-            events = events.length > 0
-                ? mergeHeroBirthdaysFromBundledFile(events, bundled)
-                : bundled;
-            if (events.length > 0) {
-                events = mergeHeroRolesFromBundledArchiveRows(events, bundled).events;
-                events = repairCorruptedHeroArchiveDescriptionsFromFile(events, bundled);
-                // Pages localStorage often predates committed Intel bios — fill empties.
-                events = mergeHeroDescriptionsFromBundledFile(events, bundled).events;
-            }
+        if (bundled.length > 0 && events.length > 0) {
+            events = mergeHeroBirthdaysFromBundledFile(events, bundled);
+            events = mergeHeroRolesFromBundledArchiveRows(events, bundled).events;
+            events = repairCorruptedHeroArchiveDescriptionsFromFile(events, bundled);
         }
         events = await syncHeroArchiveBirthdaysFromTimeline(events);
     }

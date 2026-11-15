@@ -264,11 +264,20 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     saveBtn.textContent = 'Save layout';
     saveBtn.hidden = true;
 
+    const resetCodexBtn = document.createElement('button');
+    resetCodexBtn.type = 'button';
+    resetCodexBtn.className =
+        'gallery-mode__archive-description-btn gallery-conn-canvas__tool-btn gallery-conn-canvas__tool-btn--danger';
+    resetCodexBtn.textContent = 'Reset to Codex';
+    resetCodexBtn.title =
+        'Discard this personal layout and rebuild from the live Codex ego graph';
+    resetCodexBtn.hidden = !canEdit;
+
     const hint = document.createElement('span');
     hint.className = 'gallery-conn-canvas__hint';
     hint.textContent = canEdit ? 'Drag background to pan · drag nodes to move' : 'Scroll wheel to zoom';
 
-    toolbar.append(breakBtn, deleteBreakBtn, saveBtn, hint);
+    toolbar.append(breakBtn, deleteBreakBtn, saveBtn, resetCodexBtn, hint);
 
     const viewport = document.createElement('div');
     viewport.className = 'gallery-conn-canvas__viewport';
@@ -448,6 +457,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     function markDirty() {
         dirty = true;
         if (saveBtn) saveBtn.hidden = !canEdit;
+        if (resetCodexBtn) resetCodexBtn.hidden = !canEdit;
         opts.onDirty?.();
     }
 
@@ -1412,6 +1422,15 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
 
         getSaveButton() {
             return saveBtn;
+        },
+
+        getResetCodexButton() {
+            return resetCodexBtn;
+        },
+
+        /** Force next load() to rebuild even if entryKey matches. */
+        invalidateLoadedEntry() {
+            loadedEntryKey = '';
         },
 
         hasContent() {

@@ -40,7 +40,9 @@ export function commentaryNameMatchRank(haystack, needle) {
             const qw = rawWords[i];
             let hit = -1;
             for (let j = from; j < candWords.length; j += 1) {
-                if (candWords[j].startsWith(qw) || qw.startsWith(candWords[j])) {
+                // Candidate may extend the query token ("see" → "seen"), but never the
+                // reverse ("seen" must not match standalone "see" in "Eager to see you").
+                if (candWords[j] === qw || candWords[j].startsWith(qw)) {
                     hit = j;
                     break;
                 }
@@ -77,24 +79,38 @@ export function commentaryNameMatchRank(haystack, needle) {
 
 /**
  * @param {string} value
- * @param {string[]} options
+ * @param {Array<string | { name?: string, listLabel?: string }>} options
  * @param {number} [limit]
- * @returns {string[]}
+ * @returns {string[]} list labels (or names) for the dropdown
  */
 export function buildCommentaryNameMatches(value, options, limit = 8) {
     const segment = String(value || '').trim();
     if (!segment) return [];
     const list = Array.isArray(options) ? options : [];
+    /** @type {{ label: string, rank: number, exactCase: number, len: number }[]} */
     const ranked = [];
     for (let i = 0; i < list.length; i += 1) {
-        const name = String(list[i] || '').trim();
-        if (!name) continue;
+        const raw = list[i];
+        const name = typeof raw === 'string'
+            ? String(raw || '').trim()
+            : String(raw?.name || '').trim();
+        const label = typeof raw === 'string'
+            ? name
+            : String(raw?.listLabel || raw?.name || '').trim();
+        if (!name || !label) continue;
+        // Rank on the real theater name so speaker hints don't dilute exact matches.
         const rank = commentaryNameMatchRank(name, segment);
         if (!Number.isFinite(rank)) continue;
-        ranked.push({ name, rank, len: name.length });
+        const exactCase = name === segment ? 0 : name.toLowerCase() === segment.toLowerCase() ? 1 : 2;
+        ranked.push({ label, rank, exactCase, len: name.length });
     }
-    // Prefer better rank; on ties prefer alphabetical so "Deals with Talon" does not
-    // lose to shorter "Done with Talon" for shared-suffix queries like "with Talon".
-    ranked.sort((a, b) => a.rank - b.rank || a.name.localeCompare(b.name) || a.len - b.len);
-    return ranked.slice(0, Math.max(1, limit)).map((r) => r.name);
+    // Prefer better rank; exact case; then alphabetical.
+    ranked.sort(
+        (a, b) =>
+            a.rank - b.rank
+            || a.exactCase - b.exactCase
+            || a.label.localeCompare(b.label)
+            || a.len - b.len,
+    );
+    return ranked.slice(0, Math.max(1, limit)).map((r) => r.label);
 }

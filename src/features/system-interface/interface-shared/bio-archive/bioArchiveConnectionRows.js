@@ -41,12 +41,33 @@ export function bioConnectionRowIsCodexOnlyStub(c) {
 }
 
 /**
+ * Hidden from Intel list + default Intel connection canvas only.
+ * Independent of {@link bioConnectionRowIsHiddenInCodex} — Codex cords use hideInCodex.
+ * @param {object | null | undefined} c
+ * @returns {boolean}
+ */
+export function bioConnectionRowIsHiddenInIntel(c) {
+    return !!(c && c.hideInIntel === true);
+}
+
+/**
+ * Hidden from Codex board cords only (Intel may still show the link).
+ * @param {object | null | undefined} c
+ * @returns {boolean}
+ */
+export function bioConnectionRowIsHiddenInCodex(c) {
+    return !!(c && c.hideInCodex === true);
+}
+
+/**
  * Biography slides and intel panels: narrative rows and explicit Codex picks.
+ * Respects prune + hideInIntel (not hideInCodex).
  * @param {object | null | undefined} c
  * @returns {boolean}
  */
 export function bioConnectionRowIsDisplayable(c) {
     if (!c || bioConnectionRowIsPruned(c)) return false;
+    if (bioConnectionRowIsHiddenInIntel(c)) return false;
     const name = c.name != null ? String(c.name).trim() : '';
     if (!name) return false;
     if (bioConnectionRowHasNarrativeText(c)) return true;

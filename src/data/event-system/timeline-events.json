@@ -691,7 +691,7 @@
       "name": "Solar Threading",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "The people of the Andean Mountains came up with their own solutions to clean energy. In the sacred valley of Peru, the Paraqina research group combined modern technology with the ancestral traditions and beliefs of the natives, funding heavy research into hydraulic and wind energy as well as agricultural techniques.\n\nBut by far their biggest accomplishment would come with the invention of solar threading, a unique way of harvesting condensed solar energy into beams of light. This technology was so strong that it was capable of giving power to nearly everything around the city of Runasapi and the surrounding areas. \n\n\nThe group grew in numbers and research expanded into multiple other fields, eventually leading into cybernetics, where they found a way to engrave solar threads into human bodies, allowing people to directly harness the power of the sun onto themselves, and channel them into different tools. The few selected for this procedure would become the first of the mythical Inti Warriors, the protectors of the city, their technology and their new-found way of life in the isolated mountains of Peru.",
+      "description": "The people of the Andean Mountains came up with their own solutions to clean energy. In the sacred valley of Peru, the Paraqina research group combined modern technology with the ancestral traditions and beliefs of the natives, funding heavy research into hydraulic and wind energy as well as agricultural techniques.\n\nBut by far their biggest accomplishment would come with the invention of solar threading, a unique way of harvesting condensed solar energy into beams of light. This technology was so strong that it was capable of giving power to nearly everything around the city of Runasapi and the surrounding areas. \n\nThe group grew in numbers and research expanded into multiple other fields, eventually leading into cybernetics, where they found a way to engrave solar threads into human bodies, allowing people to directly harness the power of the sun onto themselves, and channel them into different tools. The few selected for this procedure would become the first of the mythical Inti Warriors, the protectors of the city, their technology and their new-found way of life in the isolated mountains of Peru.",
       "image": "",
       "sources": [
         {
@@ -4196,10 +4196,10 @@
           "theaterId": "00043c02-5434-4698-ad30-4e3cb7f7e89d"
         },
         {
-          "name": "Ana · Match Start — I am watching over you",
+          "name": "Ana · I am watching over you",
           "label": "Over you",
           "theaterId": "chatter-ana",
-          "lineId": "80db2a37-e3c3-49d2-9184-3bd86865bd0c"
+          "lineId": "05e29ce9-da41-449a-a0ce-d91fd4e110f6"
         },
         {
           "name": "Respect, Not Fear",
@@ -4525,21 +4525,15 @@
         },
         {
           "name": "Sojourn · Eichenwalde — Poor Reinhardt. What he must have seen here...",
-          "label": "Poor Reinhardt",
-          "theaterId": "chatter-sojourn",
-          "lineId": "bb907555-eed7-4fdb-9e0b-1408a34559fc"
+          "label": "Poor Reinhardt"
         },
         {
           "name": "Genji · Eichenwalde — At times, I can almost hear the voices of those who lost their lives here.",
-          "label": "The voices",
-          "theaterId": "chatter-genji",
-          "lineId": "a20ce539-3b56-4f1f-845a-7f6112fe70ff"
+          "label": "The voices"
         },
         {
           "name": "Reinhardt · Eichenwalde — We fought a terrible battle here. Many Crusaders lost their lives.",
-          "label": "Lost LIves",
-          "theaterId": "chatter-reinhardt",
-          "lineId": "9d41ed21-2bee-461f-a327-a1fd83e9c395"
+          "label": "Lost LIves"
         }
       ]
     },
@@ -6015,10 +6009,7 @@
       ],
       "yearEnd": null,
       "commentary": [
-        {
-          "name": "Missing an Eye",
-          "theaterId": "b9b3f96e-72e2-4fa3-ab4d-1961c7600d78"
-        }
+        "Missing an Eye"
       ]
     },
     {
@@ -6489,10 +6480,8 @@
       ],
       "commentary": [
         {
-          "name": "Junker Queen · Match Start — Today, you're honorary wastelanders",
-          "label": "Wastelanders",
-          "theaterId": "chatter-junker-queen",
-          "lineId": "9429ed56-3acf-44f6-a7c9-4930b6570c72"
+          "name": "Junker Queen · Today, you're honorary wastelanders",
+          "label": "Wastelanders"
         }
       ]
     },
@@ -7227,18 +7216,9 @@
         "India approves the schooling project for hundreds of orphans"
       ],
       "commentary": [
-        {
-          "name": "Days at the Academy",
-          "theaterId": "694febd3-479f-4f3e-85da-6ca185a7adaa"
-        },
-        {
-          "name": "Best Roommate",
-          "theaterId": "710fc7cc-7e25-4424-bed3-67bbd38c2525"
-        },
-        {
-          "name": "Missing the Academy",
-          "theaterId": "90399d02-2bc1-4d5a-9677-e7664dceacb5"
-        }
+        "Days at the Academy",
+        "Best Roommate",
+        "Missing the Academy"
       ]
     },
     {
@@ -8115,8 +8095,18 @@
         }
       ],
       "commentary": [
-        "Crazy story",
-        "Beautiful"
+        {
+          "name": "Crazy story",
+          "theaterId": "3645b371-4851-4e95-ab45-36260319f79a"
+        },
+        {
+          "name": "Beautiful",
+          "theaterId": "590b9476-60fe-4442-8b02-63085e900f06"
+        },
+        {
+          "name": "Performing",
+          "theaterId": "e6231e40-0461-4ec1-86a9-7adfa5316f2e"
+        }
       ]
     },
     {
@@ -8320,7 +8310,13 @@
           "reasoning": "Goes on Vacations with Reyes, criminals seemignly vanish every time"
         }
       ],
-      "headlines": []
+      "headlines": [],
+      "commentary": [
+        {
+          "name": "Robo Horse",
+          "theaterId": "535d603c-184f-43c0-9621-4b4f2688ccb0"
+        }
+      ]
     },
     {
       "name": "Growing with the Clan",
@@ -8467,14 +8463,9 @@
       "commentary": [
         {
           "name": "Echo · Junkertown or New Junk City — This place confuses me. If it is so hostile to life, why does everyone not leave?",
-          "label": "Hostile Place",
-          "theaterId": "chatter-echo",
-          "lineId": "d6450c04-fb25-472b-9b31-b6fcf2d50a01"
+          "label": "Hostile Place"
         },
-        {
-          "name": "In a Dream",
-          "theaterId": "806c9495-6205-4c7e-9b2d-245f5255de6c"
-        }
+        "In a Dream"
       ]
     },
     {
@@ -8633,14 +8624,8 @@
         }
       ],
       "commentary": [
-        {
-          "name": "Curious Whales",
-          "theaterId": "0bc90184-0893-4b57-ab89-84040aa7cc0b"
-        },
-        {
-          "name": "Visiting the Martinses",
-          "theaterId": "4f138171-9f57-443a-b5f8-a185a80a5477"
-        }
+        "Curious Whales",
+        "Visiting the Martinses"
       ]
     },
     {
@@ -8692,14 +8677,9 @@
       "commentary": [
         {
           "name": "Winston · Circuit Royal — Maximilien's tastes are quite... extravagant.",
-          "label": "Extravagant",
-          "theaterId": "chatter-winston",
-          "lineId": "241a27da-9043-437d-92bf-2a9f4bc750a4"
+          "label": "Extravagant"
         },
-        {
-          "name": "Where Max lives",
-          "theaterId": "95b40731-e2a0-4347-b263-3cb75f12daa5"
-        }
+        "Where Max lives"
       ]
     },
     {
@@ -9062,14 +9042,8 @@
         "Omnic Underworld conditions worsen in London, protests continue"
       ],
       "commentary": [
-        {
-          "name": "The Name Null Sector",
-          "theaterId": "71cd816e-17b3-49f9-a5f9-272498ebcab4"
-        },
-        {
-          "name": "Freeing your Servant",
-          "theaterId": "a1f422ac-4b65-4074-8749-46c774f83ecb"
-        }
+        "The Name Null Sector",
+        "Freeing your Servant"
       ]
     },
     {
@@ -9438,14 +9412,8 @@
         }
       ],
       "commentary": [
-        {
-          "name": "Silhouette",
-          "theaterId": "95f5827c-6076-4577-8f84-c093c80fe430"
-        },
-        {
-          "name": "Bending the Knee",
-          "theaterId": "8a1c5796-d4e8-4a14-a124-d066de92c8d2"
-        }
+        "Silhouette",
+        "Bending the Knee"
       ]
     },
     {
@@ -10032,7 +10000,7 @@
     },
     {
       "name": "Cost of Life",
-      "description": "Tamuka rejoiced for years following Tatenda's recovery, but with this revelation also came an unfamiliar sensation, a craving for more. Saving one person's life through his technology was only a stepping stone into Tamuka's quest for immortality. Having cheated death once, he wished to push even further and discover just how much was possible by siphoning the power of life. Daring to achieve more with his technology, Tamuka dropped all pretenses of moral justification, beginning to see the victims of his crimes not as a tragedy, but rather as food of sorts. Like a mosquito, his goal in life required the death of others to be sustained. He was not hunting out of malice but because it was only natural in his eyes to take in order to evolve.\n\nFor years, Tamuka continued attacking settlements across the world, among those who still struggled to recover from the crisis, becoming bolder and having the whole world scorn when they slowly found out the trail of death he was leaving behind. In his advanced age, the death toll he accumulated powered his body, keeping it physically young as decades passed. Taking his place in what he believed to be the natural order, he compared himself to the Adze, a creature of West African folklore that created havoc upon revealing its human form. While he sympathized with the creature and saw its feasting on lives as a means of survival, he relished the irony of it all, as the media, now fully alert to his activities, painted him as a demon, not far off from the creatures of those children's fables. But while Tamuka thought himself unstoppable, he was caught by surprise when Tatenda found out of his activities. Tatenda had grown suspicious of his brother for years, and when the media caught on to the vampiric monster rampaging through Africa, he connected the dots and decided to see it for himself. \n\nHorrified by the atrocities his brother committed, even more so he called the death of thousands a gift he never agreed to. His heart broke when Tamuka said he only wished to see him smile without pain, when in reality, in spite of his illness, Tatenda always smiled for his brother, happy to have someone as caring in his life. Seeing the monster his brother had become gave Tatenda the strength he needed to make one final call. Behind the scenes, he had already denounced him to Overwatch, and the Search and Rescue team that was looking for the missing civilians planned an ambush with Tatenda's help. Ana and Freja apprehended the doctor, leading to a quick trail he called a farce and life-long sentence at Watchpoint: Grímsvötn, where without his drones, his body would be forced to endure the passage of time, making him look his age, and grow weak in a maximum security cell under the lava streams of the volcano.",
+      "description": "Tamuka rejoiced for years following Tatenda's recovery, but with this revelation also came an unfamiliar sensation, a craving for more. Saving one person's life through his technology was only a stepping stone into Tamuka's quest for immortality. Having cheated death once, he wished to push even further and discover just how much was possible by siphoning the power of life. Daring to achieve more with his technology, Tamuka dropped all pretenses of moral justification, beginning to see the victims of his crimes not as a tragedy, but rather as food. Like a mosquito, his goal in life required the death of others to be sustained. He was not hunting out of malice but because it was only natural in his eyes to take in order to evolve.\n\nFor years, Tamuka continued attacking settlements across the world, becoming bolder and having the whole world scorn when they slowly found out the trail of death he was leaving behind. In his advanced age, the death toll he accumulated powered his body, keeping it physically young as decades passed. Taking his place in what he believed to be the natural order, he compared himself to the Adze, a creature of West African folklore that created havoc upon revealing its human form. While he sympathized with the creature and saw its feasting on lives as a means of survival, he relished the irony of it all, as the media, now fully alert to his activities, painted him as a demon, not far off from the creatures of those children's fables. But while Tamuka thought himself unstoppable, he was caught by surprise when Tatenda found out of his activities. Tatenda had grown suspicious of his brother for years, and when the media caught on to the vampiric monster rampaging through Africa, he connected the dots and decided to see it for himself.\n\nHorrified by the atrocities his brother committed, even more so he called the death of thousands a gift he never agreed to. His heart broke when Tamuka said he only wished to see him smile without pain, when in reality, in spite of his illness, Tatenda always smiled for his brother, happy to have someone as caring in his life. Seeing the monster his brother had become gave Tatenda the strength he needed to make one final call. Behind the scenes, he had already denounced him to Overwatch, and the Search and Rescue team that was looking for the missing civilians planned an ambush with Tatenda's help. Ana and Freja apprehended the doctor, leading to a quick trail he called a farce and life-long sentence at Watchpoint: Grímsvötn, where without his drones, his body would be forced to endure the passage of time, making him look his age, and grow weak in a maximum security cell under the lava streams of the volcano.",
       "locationType": "earth",
       "lat": 64.3984222,
       "lon": -17.3178863,
@@ -10090,6 +10058,20 @@
           "locationName": "",
           "country": "Tatenda,",
           "reasoning": "Sets up a meeting with Tamuka to arrest him"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Expected of a Child",
+          "theaterId": "cca1ff02-a885-4e89-a1f3-92e4eb2096c8"
+        },
+        {
+          "name": "Turned In by Family",
+          "theaterId": "c8ba2df5-071c-4ac1-8917-360f8f8dc3d6"
+        },
+        {
+          "name": "Waned over time",
+          "theaterId": "a8bbc15c-0710-4c5d-9688-b74f3f6dd0a6"
         }
       ]
     },
@@ -11277,18 +11259,9 @@
         }
       ],
       "commentary": [
-        {
-          "name": "Foxes Fight Back",
-          "theaterId": "f609684d-def8-432b-8a98-fce2a0187d75"
-        },
-        {
-          "name": "Message for the Fox",
-          "theaterId": "186ceca4-6d59-4ebb-a498-51f5f348be61"
-        },
-        {
-          "name": "Your Dog",
-          "theaterId": "11715aee-ef31-4581-9860-9cddf691356a"
-        }
+        "Foxes Fight Back",
+        "Message for the Fox",
+        "Your Dog"
       ]
     },
     {
@@ -11345,26 +11318,11 @@
         "Overwatch to recruit time traveling agent"
       ],
       "commentary": [
-        {
-          "name": "Chronal adjustments",
-          "theaterId": "1bd70f84-5800-4573-acba-9881707970dd"
-        },
-        {
-          "name": "Chronal Uncertainty",
-          "theaterId": "4465d5bf-afc9-4aac-b479-5fc402e7299f"
-        },
-        {
-          "name": "An animal",
-          "theaterId": "1efa7c6d-f455-4a49-aab9-9a9710c6fb2e"
-        },
-        {
-          "name": "Presents",
-          "theaterId": "c003233c-09ec-408a-8b16-944894272031"
-        },
-        {
-          "name": "No more Bananas",
-          "theaterId": "9bc28108-50af-45b3-8bde-766271607735"
-        }
+        "Chronal adjustments",
+        "Chronal Uncertainty",
+        "An animal",
+        "Presents",
+        "No more Bananas"
       ]
     },
     {
@@ -12558,8 +12516,18 @@
         }
       ],
       "commentary": [
-        "Phreak Firewalls",
-        "New Chassis"
+        {
+          "name": "Phreak Firewalls",
+          "theaterId": "479c7d38-7141-4013-8dac-a18c15f52ecd"
+        },
+        {
+          "name": "New Chassis",
+          "theaterId": "42a3251e-a3fb-442f-a3ce-cd103625c6ec"
+        },
+        {
+          "name": "Speaking French",
+          "theaterId": "10729ec2-ddcf-4cf3-a49d-159a29bf2fbb"
+        }
       ]
     },
     {
@@ -12617,14 +12585,8 @@
         }
       ],
       "commentary": [
-        {
-          "name": "Dramatic",
-          "theaterId": "c8a56f06-3d79-46c6-8015-5f56f07a0467"
-        },
-        {
-          "name": "Madam Wolf",
-          "theaterId": "49797df5-52d0-464b-a10b-e5e939ab55e8"
-        }
+        "Dramatic",
+        "Madam Wolf"
       ]
     },
     {
@@ -13806,8 +13768,22 @@
         }
       ],
       "commentary": [
-        "Agony",
-        "Pain"
+        {
+          "name": "Agony",
+          "theaterId": "c31203cf-4d30-41b8-84a1-07cd3dfb7c8c"
+        },
+        {
+          "name": "Pain",
+          "theaterId": "a7e7541f-f223-4783-b0af-7bc00f6a027d"
+        },
+        {
+          "name": "Healing and Hurting",
+          "theaterId": "045725d5-31ab-40bf-a27d-2236bdfebee8"
+        },
+        {
+          "name": "Fear the Reaper",
+          "theaterId": "c4b51e51-3599-463d-9776-0caad93ac45b"
+        }
       ]
     },
     {
@@ -14138,8 +14114,18 @@
         }
       ],
       "commentary": [
-        "Esports are Sports",
-        "Ranking Up"
+        {
+          "name": "Esports are Sports",
+          "theaterId": "b2fa292f-aa63-4c7e-9517-8d72f14f2d65"
+        },
+        {
+          "name": "Ranking Up",
+          "theaterId": "2c408896-67c7-4f41-8600-1c9b47581d77"
+        },
+        {
+          "name": "Nano Cola",
+          "theaterId": "199cd012-a0ee-41f4-805a-1dd94e401730"
+        }
       ]
     },
     {
@@ -14274,14 +14260,8 @@
         }
       ],
       "commentary": [
-        {
-          "name": "How's Bars",
-          "theaterId": "1371a4c9-4bdf-4a11-b089-fe9bfc9526d4"
-        },
-        {
-          "name": "Frankie and Bez",
-          "theaterId": "8bc41ec0-e352-416b-8b21-8ccc04da2602"
-        }
+        "How's Bars",
+        "Frankie and Bez"
       ]
     },
     {
@@ -14677,26 +14657,11 @@
         }
       ],
       "commentary": [
-        {
-          "name": "Done with Talon",
-          "theaterId": "6f389c3f-8aed-45f1-b122-c5323f09872d"
-        },
-        {
-          "name": "Show your face",
-          "theaterId": "aa99b18e-d332-47bd-8520-812e590972e3"
-        },
-        {
-          "name": "Right amount of stupid",
-          "theaterId": "b474fdaf-e979-4c0b-9e3e-a37c1070fa08"
-        },
-        {
-          "name": "Short Memory",
-          "theaterId": "7ca614e4-7dd6-4de0-b8a3-4f039e5b0b70"
-        },
-        {
-          "name": "Medical Benefits",
-          "theaterId": "7c533b8c-f283-4521-a1d4-87b1550c4ad8"
-        }
+        "Done with Talon",
+        "Show your face",
+        "Right amount of stupid",
+        "Short Memory",
+        "Medical Benefits"
       ]
     },
     {
@@ -15126,6 +15091,10 @@
         {
           "name": "Not an Omnic",
           "theaterId": "e8ee5529-be36-42a5-abc0-b02e26615610"
+        },
+        {
+          "name": "In a Dream",
+          "theaterId": "806c9495-6205-4c7e-9b2d-245f5255de6c"
         }
       ]
     },
@@ -15463,7 +15432,14 @@
         }
       ],
       "commentary": [
-        "Dorothy"
+        {
+          "name": "Dorothy",
+          "theaterId": "0c7e382d-189c-45dc-89c8-8961d9588b99"
+        },
+        {
+          "name": "View of the Stars",
+          "theaterId": "9a1150a6-6652-47f4-8e77-9728f8250df5"
+        }
       ]
     },
     {
@@ -16239,10 +16215,22 @@
       "commentary": [
         {
           "name": "Junkrat · Black Forest — What a place this is! A ghost in every attic. Maybe this is where I'll retire.",
-          "label": "Ghosts in every attic"
+          "label": "Ghosts in every attic",
+          "theaterId": "chatter-junkrat",
+          "lineId": "ca846ba9-79b1-4126-8094-e93f32186504"
         },
-        "Asleep for a long time",
-        "A Bird Following You"
+        {
+          "name": "Asleep for a long time",
+          "theaterId": "5e96ef1b-2dbc-4e1a-9718-5c3e2a27f91e"
+        },
+        {
+          "name": "A Bird Following You",
+          "theaterId": "e5a43221-dda4-4414-bc83-8ce8eb401d8a"
+        },
+        {
+          "name": "Good Encryption",
+          "theaterId": "bb32ec2b-bdee-457c-a321-ba862b69a72b"
+        }
       ]
     },
     {
@@ -16290,9 +16278,15 @@
       "commentary": [
         {
           "name": "Soldier 76 · Dorado — Los Muertos is a cancer on this city.",
-          "label": "A cancer"
+          "label": "A cancer",
+          "theaterId": "chatter-soldier-76",
+          "lineId": "98fc577c-6ec9-4942-9892-d41e0597383d"
         },
-        "Ilegal Activities"
+        "Ilegal Activities",
+        {
+          "name": "Some Tech",
+          "theaterId": "40371b30-850b-4244-9c9e-21076c5adcfe"
+        }
       ]
     },
     {
@@ -16812,14 +16806,8 @@
         }
       ],
       "commentary": [
-        {
-          "name": "Live Forever",
-          "theaterId": "f572b88e-085f-46a6-9d46-dc7b731a802c"
-        },
-        {
-          "name": "Finding Anyone",
-          "theaterId": "a7f8b911-4769-4c25-b753-46ba0e89bc67"
-        }
+        "Live Forever",
+        "Finding Anyone"
       ]
     },
     {
@@ -18603,6 +18591,24 @@
       "headlines": [
         "The Ironclad Guild unveils a reformed Bastion Unit as one of their new members.",
         "Torbjörn Lindholm advocates for Omnic Integration in recent seminar"
+      ],
+      "commentary": [
+        {
+          "name": "Systems Check",
+          "theaterId": "56e16c5f-9124-4158-921f-5326f88096e1"
+        },
+        {
+          "name": "Nesting Beard",
+          "theaterId": "04ca932f-d01b-4bfd-9fa1-31e9a06bc109"
+        },
+        {
+          "name": "Firewall System",
+          "theaterId": "1526016c-07ca-4e76-bd8e-1514e7b1251f"
+        },
+        {
+          "name": "Rubbed off",
+          "theaterId": "82f0c7ff-6859-4d33-8ffe-c3385c07fe4a"
+        }
       ]
     },
     {
@@ -19935,6 +19941,10 @@
         {
           "name": "Humanity's Laws",
           "theaterId": "67ce117d-909b-40d3-899f-defe3de741ce"
+        },
+        {
+          "name": "Through thick and Thin",
+          "theaterId": "804d05e1-9d53-4d8e-8154-2be64ba92373"
         }
       ]
     },
@@ -20295,6 +20305,10 @@
         {
           "name": "In the West",
           "theaterId": "94c0d066-c429-4d24-afe5-7de3aaac8d58"
+        },
+        {
+          "name": "Full of Surprises",
+          "theaterId": "3739fc23-6692-4c0d-a87a-70a1fd9638b5"
         }
       ]
     },
@@ -20413,6 +20427,10 @@
         {
           "name": "Making a Living",
           "theaterId": "7b60a51f-85e3-40aa-bea5-84e476154c61"
+        },
+        {
+          "name": "The Martinses",
+          "theaterId": "22f8cd3c-a79f-49cf-b2d9-5c83ad908a9f"
         }
       ]
     },
@@ -20489,6 +20507,10 @@
         {
           "name": "Hockey and Basketball",
           "theaterId": "90c30a53-40f1-491f-9966-3ed04b0bec40"
+        },
+        {
+          "name": "Getting Paid",
+          "theaterId": "e3c48e18-5909-43b3-947d-6cec970f8fc1"
         }
       ]
     },
@@ -20605,6 +20627,16 @@
         {
           "text": "Invasion, Ironclad",
           "url": "https://www.youtube.com/watch?v=3QpN9i-GjEI"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "New Armor",
+          "theaterId": "c5a29b13-7a30-4e1d-a00d-aa016cb9a293"
+        },
+        {
+          "name": "Bastion",
+          "theaterId": "chatter-bastion"
         }
       ]
     },
@@ -21028,6 +21060,12 @@
           "text": "The Hunt Begins",
           "url": "https://www.youtube.com/watch?v=pIKLdhMtEd0"
         }
+      ],
+      "commentary": [
+        {
+          "name": "None of  your Business",
+          "theaterId": "3e29f7a7-1dd3-4ff6-9f00-59144934a9e0"
+        }
       ]
     },
     {
@@ -21092,7 +21130,7 @@
       "name": "Warm Welcome",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
-      "description": "No description available.",
+      "description": "With Numbani's defense handled by the Junies and with the IJC approving Overwatch's continued action, Efi was able to convince her parents to let her and Orisa join Overwatch, reaching out to Sojourn, who sent a drop-ship to welcome the pair and bring them into Watchpoint: Gibraltar.\n\nGetting to meet so many of her childhood heroes one day made Efi shy to even talk about them, but Orisa, on the other hand, had no problem. At least they were not the only newcomers, as many other agents joined during the Invasion, including Lúcio who was even more excited to see Efi and Orisa than they were, gifting them many signed album copies to send back home to their family and friends.\n\nAs part of Overwatch, Orisa was able to help anywhere in the world, not just Numbani, but Efi herself also found that her talents were much needed at the base. She proved vital in deciphering a lot of Null Sector's OmniCode, giving the team insight on the war it directives, providing them an upper edge in combat. She also took it to personally upgrade a lot of the outdated equipment from the decommissioned Watchpoint, which Winston had been using for years without a lot of upkeep. They might not be able to solve all the problems overnight, but if Orisa could make the world a little better with the help of Overwatch, that was already a great start in their hearts.",
       "image": "",
       "lat": 36.1407517,
       "lon": -5.345374,
@@ -21102,7 +21140,7 @@
         {
           "locationName": "Watchpoint: Gibraltar",
           "country": "Gibraltar",
-          "reasoning": "",
+          "reasoning": "Orisa and Efi join Overwatch's effort against Null Sector",
           "lat": 36.1407517,
           "lon": -5.345374
         }
@@ -21111,29 +21149,34 @@
         {
           "locationName": "",
           "country": "Juno, Orisa, Lúcio,",
-          "reasoning": ""
+          "reasoning": "Reunited after the charity concert"
         },
         {
           "locationName": "",
-          "country": "Sojourn, Bastion",
-          "reasoning": ""
+          "country": "Sojourn,",
+          "reasoning": "Accomodates for the new recruits"
+        },
+        {
+          "locationName": "",
+          "country": "Bastion, Juno,",
+          "reasoning": "Other recent additions to the team after the initial invasion"
         },
         {
           "locationName": "",
           "country": "Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo, Cassidy, Pharah, Baptiste, Zarya, D.va,",
-          "reasoning": ""
+          "reasoning": "Welcome the new recruits to the team"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch",
-          "reasoning": ""
+          "country": "Overwatch, IJC,",
+          "reasoning": "Allows Efi and Orisa to join the response team"
         },
         {
           "locationName": "",
-          "country": "IJC,",
-          "reasoning": ""
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Celebrates Efi and Orisa joining Overwatch"
         }
       ],
       "yearEnd": null,
@@ -21141,10 +21184,13 @@
         {
           "locationName": "",
           "country": "Efi,",
-          "reasoning": ""
+          "reasoning": "Helps update Gibraltar's systems"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "The Heroes of Numbani join Overwatch in the fight against Null Sector",
+        "Oladele's Junie ddefense network continues to repel incoming Null Sector attacks"
+      ],
       "sources": [
         {
           "text": "Unity",
@@ -21159,12 +21205,20 @@
         {
           "name": "New Single",
           "theaterId": "d210805f-f9d1-4e5d-966a-1273b18003c9"
+        },
+        {
+          "name": "Sticking Around",
+          "theaterId": "381d05e0-592e-4a53-9d52-9a4aa1a0899f"
+        },
+        {
+          "name": "Beeps",
+          "theaterId": "e38c72c2-0436-4e8c-b6e5-d4df6ae1beab"
         }
       ]
     },
     {
       "name": "Partnership",
-      "description": "No description available.",
+      "description": "After her initial visit to the Arcology, Symmetra continued to visit, spending time catching up with Niran, and helping out with the rebuilding after Null Sector's attack. She took particular care of the Omnics who sought refuge in the Arcology, even convincing the Tekhartha Zenyatta to pay the spire a visit and help the Omnics as well. Zenyatta was heartbroken by what Null Sector had done to so many Omnics around the world, believing the inert husks they left behind to be as good as dead, so it moved him that Satya put so much effort into helping out his people. \n\nOvertime Niran also got to grow close with the monk, enough that the three of them would often spend time together during the holidays.Satya's willingness to help out brought her praise from Vishkar, which, combined with her previous success in Suravasa, also made Vice President Singhania consider bringing her along for investor meetings about his to recover from the Rio scandals, as many of Vishkar's executive and investor board found Satya's prior work and out of the box thinking quite inspiring. \n\nIn the background, however, she began researching Vishkar's files on Dr. Bhatt, but the company seemed to put great interest in burying as much of it as they could, making answers hard to come by, still in spite of her continued partnership with both the Arcology and the Shamballi, she chose to stay within the company, as she thought it would be easier to uncover Vishkar's secrets as an ally than as their enemy, perhaps one day she would finally join Niran in the Arcology for good, but until then she was determined to find the truth behind the company and bring it out for the world to see.",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
       "lat": 37.7412,
@@ -21186,41 +21240,44 @@
         {
           "locationName": "Atlantic Arcology",
           "country": "Atlantic Arcology",
-          "reasoning": ""
+          "reasoning": "Symmetra and Zenyatta aid Omnic refugees in  the Arcology"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Symmetra, Lifeweaver,",
-          "reasoning": ""
+          "reasoning": "Collaborate helping Omnics and looking into Vishkar's past"
         },
         {
           "locationName": "",
           "country": "Zenyatta,",
-          "reasoning": ""
+          "reasoning": "Grieves the lost of so many Omnics to the invasion"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "The Martins Collective, Shambali Order,",
-          "reasoning": ""
+          "reasoning": "The Shambali provide support for the Omnic refugees"
         },
         {
           "locationName": "",
           "country": "Vishkar Corporation,",
-          "reasoning": ""
+          "reasoning": "Allows Satya to aid as a Public Relationships move"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Shambali Order leader Tekhartha Zenyatta to visit Omnic refugees in the Atlantic Arcology",
+        "Vishkar Architect helps rebuild parts of the Atlantic Arcology after Null Sector Attack"
+      ]
     },
     {
       "name": "Free the Phreaks",
       "locationType": "earth",
       "cityDisplayName": "Aatlis, Morocco",
-      "description": "No description available.",
+      "description": "As the Phreaks movement grew across the world, it began to clash not just with local authorities but also with international forces. Helix Securities had expanded for years to become the largest peace-keeping militia in the world, and they antagonized the entirety of the movement as criminals, even when many members merely protested and disrupted the system.\n\nThis conflict came to a melting point when the Oasis Ministries allowed Helix to have access to their predictive surveillance crime models, which led to the arrest of a large Phreak cell in the city of Aatlis, Morocco, just as they were preparing to attack a research facility. Many cells protested, tagging the world with messages to free the Phreaks, frustrated at the way their allies were losing ground, and how Oasis' suppressive security systems could capture people even before committing a crime. But Touch-Up had an idea on how to get revenge from Oasis, and give the Phreaks the upper hand.\n\nBreaching through Oasis' database led them to the Vanadium Isotope that the Ministry of Genetics had hoarded for years, it appeared that Dr. Moira O'Deorain was experimenting with the cache as a malleable munition, bursting liquid that could crystallize into deadly shards quickly upon exposure to the air. Oasis planned to give the Vanadium injectors to Helix, as yet another tool to suppress any rebellion in their way, but if the Phreaks stole it, that might make them place among the most wanted criminals in the world, but it could allow them to finally fight back.",
       "image": "",
       "lat": 34.0209,
       "lon": -6.8416,
@@ -21230,25 +21287,33 @@
         {
           "locationName": "Aatlis, Morocco",
           "country": "Morocco",
-          "reasoning": ""
+          "reasoning": "Helix arrests a Phreaks cell using predictive crime modeling from Oasis"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Hazard",
-          "reasoning": ""
+          "reasoning": "Plans on how to get back at both Oasis and Helix"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Phreaks, Helix Securities",
-          "reasoning": ""
+          "reasoning": "Come into conflict several times resulting in premature arrest in Aatlis"
+        },
+        {
+          "locationName": "",
+          "country": "Oasis Ministries,",
+          "reasoning": "Provides Data crucial in arresting the Phreaks"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Phreak criminals arrested in Aatlis thanks to predictive surveilance models from Oasis University",
+        "Phreak rioters cover walls with grafitti calling for the release of the cell arrested in Morocco"
+      ],
       "sources": [
         {
           "text": "Tear it Down",
@@ -21258,13 +21323,20 @@
             "https://www.youtube.com/watch?v=u282-SDwYtg"
           ]
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Touch Up,",
+          "reasoning": "Hacks into Oasis' data bases"
+        }
       ]
     },
     {
       "name": "Reconciliation",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "During Zenyatta's Pilgrimage to Suravasa, he continued to meditate on the last conversation he had with his master, Mondatta, and his closer friend, Rammattra, as their words still wondered in his mind all these years later. Suddenly, he found himself surrounded by Talon agents, led by Widowmaker and Sombra, who were sent to arrange a meeting with the Monk and Null Sector's leader. The ongoing invasion had lasted months and ravaged Omnic communities across the world, so Zenyatta was quite conflicted about what his older brother would have to say, but without much of a choice, Zenyatta agreed, and was escorted into King's Row, the place of their master's death, by the very same woman who pulled the trigger.\n\nRamattra dismissed the two agents, wishing to talk in private with his brother. Ramattra reminisced of their old master, his teachings and advocacy for coexistence, a naïve belief. As he explained his reasons to Zenyatta, he told him how he followed in Aurora's footsteps in trying to answer the question: How to save a world that refuses to be saved? Zenyatta immediately argued that Null Sector also spread suffering and hatred, yet Ramattra insisted his actions are but a fraction of human cruelty. In a final attempt to convince his brother, he tells him the invasion was a means to attach Mind Uploading devices to Omnic Skulls, in order to save and preserve them. Had it not been for Overwatch, he could have saved many thousands more, but he had still managed to retrieve a large enough amount to begin the next steps of his plan, so all that was left was retreating to his base, while Talon took care of the rest.\n\nRamattra asked one final time for his brother to join him in this next phase, alongside the rest of their kin, but Zenyatta still rejected him, unable to look past Ramattra's alliance with Talon, the people responsible for Mondatta's death, even if Ramattra continued to claim he held no sympathy for their greed for conflict. Still, Zenyatta had chosen his own path, believing that peace with humanity was possible. He urged Ramattra to not give up on them completely, and that Mondatta's preaching was not in vain. Ramattra, expectedly disagreed, taking pity on humanity and their misbegotten civilization. So, as they wished the best for each other, and their dreams of peace, they simply parted ways.",
+      "description": "As the invasion raged on and many Omnics fell victim to neural supressors, Zenyatta pondered on the last conversation he had with Mondatta and Rammattra before they left the monastery, pondering upon their differing views on the future of their kind. Suddenly, however, Talon agents led by Widowmaker and Sombra raided his quarters at Suravasa, taking the monk with them, as they were ordered to arrange a meeting with Null Sector's leader. Without much of a choice, Zenyatta was escorted to King's Row, the place of his master's death, by the same woman who pulled the trigger.\n\nThe radical waiting for him at Mondatta's memorial was his long-lost brother Ramattra, who dismissed the Talon agents, wishing to speak in private with his brother. He reminisced of their old master, his teachings of coexistence, now something he saw as naïve, for he had spent years following Aurora's footsteps looking for an answer : How to save a world that refuses to be saved? Zenyatta was not very sympathetic to his brother, as he had seen first hand how Null Sector also spread suffering and hatred towards their people, and yet Ramattra insisted that the actions of his army were but a fraction of human cruelty. After seeing so many of their kin reduced to lifeless husks, Zenyatta could not see how this was any better, but he had misunderstood Null Sector's intentions, as Ramattra explained that this Invasion was only a means to attach these devices to as many Omnics as possibly, liberating their minds from their metal bodies, allowing him to upload and preserve them.\n\nHad it not been for Overwatch, he could have saved thousands more, but by now he had managed to retrieve enough Omnics to begin the next phase of his plane. All he had to do was retreat back to his base, and let Talon do his dirty work, as he watched humanity tear each other apart. Before he left, however, he asked one final time for Zenyatta to join him, so they could wait together for the day their raptured brothers and sisters woke up in a kinder world. Zenyatta refused, unable to look past Ramattra's willingness to work with Talon, the people behind Mondatta's death. Ramattra had his own reservations about Talon, having no sympathy for them, merely using them as a means to an end, but he did not wish to pressure Zenyatta any further. Before they parted, the monk urged Ramattra to not give up on humans all together, as their Master's preaching was not in vain, and while Ramattra disagreed, he took pity on humans, seeing them as a misbegotten civilization. The two walked different paths, dreaming that one day they might see peace for each other, even if in entirely different ways.",
       "image": "",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -21325,16 +21397,25 @@
         }
       ],
       "commentary": [
-        "Always my brother",
-        "Why Withdraw",
-        "Disappointing"
+        {
+          "name": "Always my brother",
+          "theaterId": "10267a28-6a26-430d-ae0f-e414ab01e3e5"
+        },
+        {
+          "name": "Why Withdraw",
+          "theaterId": "8dc62b9d-f769-4760-8e5d-755251a37733"
+        },
+        {
+          "name": "Disappointing",
+          "theaterId": "d0030550-db4c-4dbb-92f0-c9de3ec8fbc3"
+        }
       ]
     },
     {
       "name": "Hazardous Tactics",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
-      "description": "No description available.",
+      "description": "Hazard volunteered to have his body modified by Touch-Up, using the research from Oasis to harness the Vanadium into a living weapon. It was unstable, but it had potential, and to Hazard the side effects that could happen to his body meant little compared to delivering a huge blow to their suppressors and helping free the Phreaks.\n\nJackdaw drove the crew into the Oasis Ministries, allowing for Susie, Boomslang and Hazard to infiltrate into the Ministry of Genetics where they destabilized the Vanadium ferrofluid to contain it in a canister. As soon as the extraction process began, it alerted Helix troops, leading to an all-out gun fight. Hazard managed to extract the Vanadium, but they were now cornered and outnumbered.\n\nCounting his options, Hazard decided his only way out was to insert the vanadium into his body right there. Susie pushed against it as the ferrofluid was not stable enough after extraction, and it could have unforeseen repercussions for his health, but Hazard had already made up his mind long ago. If they are in it with him, they are in it for life. The painful procedure leads to a euphoric rush as he began shooting massive crystals of vanadium at the Helix soldiers, neutralizing them all, allowing the Phreaks to escape, not without vandalizing the place with graffiti before leaving in Jackdaw's van. With the Vanadium I'm his body, Hazard is an unstoppable weapon that can turn the tide for the Phreaks cause, but it's still unclear just how much this could affect his philosophy and health.",
       "image": "",
       "lat": 29.5918,
       "lon": 52.5836,
@@ -21344,36 +21425,31 @@
         {
           "locationName": "Oasis University, Iraq",
           "country": "Iraq",
-          "reasoning": ""
+          "reasoning": "The Phreaks break into Oasis Ministries and steal the Vanadium Isotop"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Hazard",
-          "reasoning": ""
+          "reasoning": "Injects the Vanadium into his body becoming a living wepaon"
         },
         {
           "locationName": "",
           "country": "Moira,",
-          "reasoning": ""
+          "reasoning": "Deals with the complains from the Oasis staff"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "The Phreaks,",
-          "reasoning": ""
+          "reasoning": "Hazard's cell storms Oassis as revence for what happend to the Phreaks in Morrocco"
         },
         {
           "locationName": "",
-          "country": "Oasis Ministries,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Helix Securities,",
-          "reasoning": ""
+          "country": "Oasis Ministries, Helix Securities,",
+          "reasoning": "Security fails to supress the Phreaks after they weaponize the Vanadium"
         }
       ],
       "yearEnd": null,
@@ -21381,10 +21457,18 @@
         {
           "locationName": "",
           "country": "Susannah, Boomslang,",
-          "reasoning": ""
+          "reasoning": "Assist Hazard in stealing the Vanadium"
+        },
+        {
+          "locationName": "",
+          "country": "Jackdaw, Touch Up, Revel,",
+          "reasoning": "Await in the getaway van"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Phreak cell breaks into Oasis and steals important research from the ministry of Genetics",
+        "Helix fails to stop a Phreaks riot due to protester armed with crystalized weaponry augments"
+      ],
       "sources": [
         {
           "text": "Hazardous Tactics",
@@ -21394,7 +21478,7 @@
     },
     {
       "name": "Picture of Sucesss",
-      "description": "No description available.",
+      "description": "Years had passed since Vaira took over as Vice President of Operations and Development, and while the company had seen immense growth since her addition, it had also been caught up in endless scandals, many of which she was directly responsible for. The Rio deal led to the scandal over ownership of the Sonic technology designed by Benicio Dos Santos, as well as the full-on uprising led by the now celebrated activist and member of Overwatch, Lúcio. While talks of a return to Brazil have been discussed within the company, the people of Rio are not satisfied by the tactless attempts Vaira made to plaster her name over the renovations. On the other hand, the expansion in the UK through the Thames District in London seemed promising until the deals with the police ended with the death of an Omnic protestor at the hands of Vishkar's sonic suppressors. \n\nThen was the issue of Niran, who had successfully evaded authorities for over a decade since he moved to the Atlantic Arcology, with any attempt to lure him out failing, as not even a global invasion, and the destruction that followed, which Vishkar secretly sponsored and profited from, were enough to lure Niran out of his sanctuary. Architect Satya Vaswani's efforts at Sanjay's command were pivotal not just in the initial Rio negotiations, but also in dealing with the backlash in Suravasa and in making their attempts to capture Niran look like an altruistic partnership to the media, but in reality it appeared that Satya was more wiling to question Vishkar's leadership, and she had begun looking into the company's archives, just like Niran once did. The pressure was accumulating on Vaira for years, and everything came falling down during the preparations for the Award Ceremony. \n\nShe designed herself as a way to boost the company's image. As she read the script she had been given for it, every little detail seemed designed to disregard her achievements, at least in her perfectionist, paranoic mind. From the way she was introduced, not on her own merits but due to her family's connections to the founders, to spending lengthy amounts of time praising the architects, and not her leadership in the latest endeavors. She intended to speak her mind, off script and truth, to what she believed was fair to her image, but the more she tried to focus the speech on herself, she began to second guess herself, thinking no one would believe or care to hear her side, and that she was better off by giving them what they wanted to hear, a manufactured speech clean and inoffensive, not bringing attention to the shortcomings of the company or Vaira herself. She went out that night, putting on a mask of perfection, while hiding away the fact she was starting to break from years of faking her entire self-image.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -21416,7 +21500,7 @@
         {
           "locationName": "London, United Kingdom",
           "country": "England",
-          "reasoning": "",
+          "reasoning": "Domina breaks down trying to rewrite the ceremony script to her liking",
           "lat": 51.5074456,
           "lon": -0.1277653
         }
@@ -21425,18 +21509,21 @@
         {
           "locationName": "",
           "country": "Domina, Symmetra",
-          "reasoning": ""
+          "reasoning": "Satya's work aids in masking the ugglier side of Vishkar's activity"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar Corporation,",
-          "reasoning": ""
+          "country": "Vishkar Corporation, Talon Empire,",
+          "reasoning": "Vishkar secretly profits from the Invasion but fails to lure Niran out of the Arcology"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Vice President Singhania to speak before the Vihskar Award Cereomny in Thames District",
+        "Rio Residents Vanadlize new statue donated by the Signhania Family"
+      ]
     },
     {
       "name": "Final Failsafe",
@@ -21626,6 +21713,10 @@
         {
           "name": "Periodic Table",
           "theaterId": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d"
+        },
+        {
+          "name": "Something Useful",
+          "theaterId": "74c2f283-e095-4f52-9fff-c7ffaaf8c869"
         }
       ]
     },
@@ -22031,7 +22122,13 @@
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [],
+      "commentary": [
+        {
+          "name": "Abandoning Projects",
+          "theaterId": "ae4e6f68-2b4a-463f-b035-ecda928e538a"
+        }
+      ]
     },
     {
       "name": "Old Friend",
@@ -22381,6 +22478,12 @@
           "country": "The Sombra Collective,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Out of Talon",
+          "theaterId": "e90fc4d3-a2c6-4dea-a731-7d5fbe682bd9"
+        }
       ]
     },
     {
@@ -22588,6 +22691,14 @@
         {
           "name": "Aggression and Ability",
           "theaterId": "980ba389-83d6-41e4-adc0-a50d777961d5"
+        },
+        {
+          "name": "Fighting for Vendetta",
+          "theaterId": "106a8910-2ac6-4228-83e9-3a8d06b4db34"
+        },
+        {
+          "name": "Forgetting about me",
+          "theaterId": "1e971b13-c6cf-459b-85a7-fea652e0434c"
         }
       ]
     },
@@ -22720,6 +22831,10 @@
         {
           "name": "Back Together",
           "theaterId": "cc59636e-0a97-4511-a35b-78ccbb570ad5"
+        },
+        {
+          "name": "Fighting Talon",
+          "theaterId": "4d638a55-7eac-405a-9bfa-21be049bde08"
         }
       ]
     },
@@ -22814,6 +22929,14 @@
         {
           "name": "Sprained Knee",
           "theaterId": "feb813c1-d122-46a2-ad66-89b1040fee36"
+        },
+        {
+          "name": "Lucky Guess",
+          "theaterId": "cac88f7f-a365-42cd-abe3-adbba05f8ec5"
+        },
+        {
+          "name": "You fit right in",
+          "theaterId": "78e3246c-bc82-48fb-af2b-a7e1cea630b1"
         }
       ]
     },
@@ -22912,6 +23035,10 @@
         {
           "name": "Stay Around",
           "theaterId": "8bd1c2dd-5ad6-4c73-aa46-16f70717f4c0"
+        },
+        {
+          "name": "Settling In",
+          "theaterId": "cf65e9c9-0a4c-4e73-9eec-34947b418da4"
         }
       ]
     },
@@ -23182,6 +23309,12 @@
           "locationName": "",
           "country": "Overwatch, Helix Securities,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Inexcusable",
+          "theaterId": "c5bf778f-a57f-4169-9c84-76743bf42036"
         }
       ]
     },
@@ -23561,6 +23694,12 @@
           "country": "Sakura, Nobuto, Chikasa, Ryota,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Healing Wounds",
+          "theaterId": "72bb8118-2564-4b4e-8d92-0231f64d0040"
+        }
       ]
     },
     {
@@ -23831,6 +23970,12 @@
           "country": "Talon Empire,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Pierogis",
+          "theaterId": "a2d1f55e-890f-46be-acf7-198a77d15315"
+        }
       ]
     },
     {
@@ -24078,6 +24223,16 @@
           "country": "Nobuto, Sakura, Chikasa, Ryota,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Never Forget",
+          "theaterId": "01a330a9-f0aa-490c-ad50-4c50b78898d9"
+        },
+        {
+          "name": "Unforgiving Nature",
+          "theaterId": "004d6e70-d3b5-40f6-b414-dd50f0954ebd"
+        }
       ]
     },
     {
@@ -24143,6 +24298,14 @@
         {
           "name": "Tugging Heartstrings",
           "theaterId": "f59eccb7-fe9b-4557-b093-77d13d0ec04c"
+        },
+        {
+          "name": "Enhanced Soldier Children",
+          "theaterId": "6debc0c3-c403-4bdd-a0bf-412f5c50a1df"
+        },
+        {
+          "name": "Helix Pair",
+          "theaterId": "edb6f63a-fd2d-45e9-889a-7082e4b9cde2"
         }
       ]
     },
@@ -24279,50 +24442,11 @@
           "text": "Tough Call",
           "url": "https://www.youtube.com/watch?v=i2zohQuNcbo"
         }
-      ]
-    },
-    {
-      "name": "Living Weapon",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 29.5918,
-      "lon": 52.5836,
-      "image": "",
-      "cityDisplayName": "Oasis University, Iraq",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Oasis University, Iraq",
-          "country": "Iraq",
-          "reasoning": ""
-        }
       ],
-      "headlines": [],
-      "sources": [
+      "commentary": [
         {
-          "text": "Overwatch Website, Sigma",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sigma, Moira,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
+          "name": "Busan was Nice",
+          "theaterId": "363f0d11-b682-4ed7-b72f-c9d436178c4a"
         }
       ]
     },
@@ -24379,6 +24503,67 @@
           "locationName": "",
           "country": "Myung,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Credibility",
+          "theaterId": "83f1887c-aaac-4009-838e-ed4612496b60"
+        },
+        {
+          "name": "Reuniting with Family",
+          "theaterId": "ef94e7f5-51ca-4410-8eea-b0eee1781afc"
+        }
+      ]
+    },
+    {
+      "name": "Living Weapon",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 29.5918,
+      "lon": 52.5836,
+      "image": "",
+      "cityDisplayName": "Oasis University, Iraq",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Sigma",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma, Moira,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Not Trapped",
+          "theaterId": "4f4af237-113f-43b2-8828-c9a35046f567"
         }
       ]
     },
@@ -24525,6 +24710,24 @@
           "country": "Junker Monarchy,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Screw Loose",
+          "theaterId": "65657df3-a34b-485a-b20d-b82194240908"
+        },
+        {
+          "name": "Defeat the Robots first",
+          "theaterId": "ece7abf0-2652-4a66-be0e-23341c039c82"
+        },
+        {
+          "name": "Significant Upgrades",
+          "theaterId": "71b3c179-2c00-4464-adb7-c1b267b74f79"
+        },
+        {
+          "name": "Junker Planet",
+          "theaterId": "924c541c-0c38-4463-b14a-db9bb2bd36d8"
+        }
       ]
     },
     {
@@ -24631,6 +24834,12 @@
           "locationName": "",
           "country": "Helix Securities,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Can't Hack your brain",
+          "theaterId": "2ea32a44-9a72-49c4-8e3e-a3aeb4291636"
         }
       ]
     },
@@ -24745,6 +24954,16 @@
           "country": "Titus,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Where to next",
+          "theaterId": "0158d975-d630-4931-97b0-b07f02cdeb2a"
+        },
+        {
+          "name": "Out of this world",
+          "theaterId": "7960f197-d6d7-425c-a8f2-d8c501ac4b0c"
+        }
       ]
     },
     {
@@ -24854,6 +25073,16 @@
           "country": "Doomfist,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Lock them up again",
+          "theaterId": "0d1e89e5-52f9-4e2d-b77b-22229eb67e31"
+        },
+        {
+          "name": "Wisdom of Age",
+          "theaterId": "4597467e-3d17-41fc-ade0-94065bcf2cb3"
+        }
       ]
     },
     {
@@ -24953,6 +25182,12 @@
           "country": "Emily,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Seen you Before",
+          "theaterId": "17ac0198-dcc4-4b58-93d8-954a3de57620"
+        }
       ]
     },
     {
@@ -25021,6 +25256,9 @@
           "country": "Zephyrus, Maximus,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        "Helping in Rome"
       ]
     },
     {
@@ -25086,6 +25324,16 @@
           "locationName": "",
           "country": "Overwatch,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Dull fangs",
+          "theaterId": "41e0174b-24ff-49d4-b969-91ed7c889fed"
+        },
+        {
+          "name": "Hope from our people",
+          "theaterId": "6105a672-670a-4f22-a700-b3ffed3a8404"
         }
       ]
     },
@@ -25153,6 +25401,40 @@
           "locationName": "",
           "country": "Overwatch,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Bad Headlines",
+          "theaterId": "2621783e-e9b1-4549-a480-869fb7b3f527"
+        },
+        {
+          "name": "Great Potential",
+          "theaterId": "14c7e57d-e00b-4349-b13a-9b8205153375"
+        },
+        {
+          "name": "Still Flopping",
+          "theaterId": "b657f8d4-6007-4e34-bcdb-17dd2cb94506"
+        },
+        {
+          "name": "Don't need your help",
+          "theaterId": "a4c5eae3-6747-4d9a-9e13-96e45d295c5e"
+        },
+        {
+          "name": "Ditching you",
+          "theaterId": "ee733427-b14a-4f82-a884-68f97fb7dbf3"
+        },
+        {
+          "name": "Not lost on me",
+          "theaterId": "21706633-2703-42d6-b028-957099dc7749"
+        },
+        {
+          "name": "Not as Simple as Cartoons",
+          "theaterId": "a3e593c8-d79f-460f-a566-ed0273da8882"
+        },
+        {
+          "name": "Letting Doomfist free",
+          "theaterId": "755813ed-8478-4543-a69a-ca7ff7bd1a9b"
         }
       ]
     },
@@ -25307,6 +25589,32 @@
           "country": "Sven,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Reclaiming Talon",
+          "theaterId": "79f89ee1-54a0-4936-b2a0-04ddfd1d7ce9"
+        },
+        {
+          "name": "Fun while it Lasted",
+          "theaterId": "2435fd40-a6e2-413d-ab07-5c6e0ae5e4fe"
+        },
+        {
+          "name": "Your Hunt ended",
+          "theaterId": "7a49e941-7f47-4bef-9688-23a85aeacaa7"
+        },
+        {
+          "name": "Hope you Might change",
+          "theaterId": "1308182d-9f72-4666-a464-992a2b669be0"
+        },
+        {
+          "name": "Wisdom to Understand",
+          "theaterId": "f1c997b5-ad2f-4ec5-a252-fe15eccd4b5d"
+        },
+        {
+          "name": "Peace breeds Complacency",
+          "theaterId": "67774c4c-2c02-4231-949e-d647f2ab4377"
+        }
       ]
     },
     {
@@ -25378,6 +25686,16 @@
           "locationName": "",
           "country": "Osai,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Going away for a long time",
+          "theaterId": "9fe09285-e909-4b96-b1c1-92765f8312e2"
+        },
+        {
+          "name": "Shore Leave",
+          "theaterId": "d97e6046-a7df-40d7-a3dc-dab7a4ac64b0"
         }
       ]
     }

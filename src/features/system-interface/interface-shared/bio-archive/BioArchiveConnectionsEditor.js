@@ -909,17 +909,36 @@
             laneB.addEventListener('change', onLaneChange);
         }
 
+        const hideFlags = document.createElement('div');
+        hideFlags.className = 'event-slide-bio-conn-row__hide-flags';
+
         const hideCodexCb = document.createElement('input');
         hideCodexCb.type = 'checkbox';
         hideCodexCb.id = rowUid + '-hide-codex';
         hideCodexCb.dataset.role = 'bio-conn-hide-codex';
         const hideCodexLab = document.createElement('label');
         hideCodexLab.htmlFor = hideCodexCb.id;
-        hideCodexLab.className = 'event-slide-bio-conn-row__hide-codex';
+        hideCodexLab.className = 'event-slide-bio-conn-row__hide-flag event-slide-bio-conn-row__hide-codex';
+        hideCodexLab.title = 'Hide this cord on the Codex board. Still shown in Intel until Hide in Intel is set.';
         hideCodexLab.appendChild(hideCodexCb);
         hideCodexLab.appendChild(document.createTextNode(' Hide in Codex'));
         if (data.hideInCodex === true) hideCodexCb.checked = true;
-        toolbarMain.appendChild(hideCodexLab);
+        hideFlags.appendChild(hideCodexLab);
+
+        const hideIntelCb = document.createElement('input');
+        hideIntelCb.type = 'checkbox';
+        hideIntelCb.id = rowUid + '-hide-intel';
+        hideIntelCb.dataset.role = 'bio-conn-hide-intel';
+        const hideIntelLab = document.createElement('label');
+        hideIntelLab.htmlFor = hideIntelCb.id;
+        hideIntelLab.className = 'event-slide-bio-conn-row__hide-flag event-slide-bio-conn-row__hide-intel';
+        hideIntelLab.title = 'Hide from Intel list and connection canvas. Independent of Codex.';
+        hideIntelLab.appendChild(hideIntelCb);
+        hideIntelLab.appendChild(document.createTextNode(' Hide in Intel'));
+        if (data.hideInIntel === true) hideIntelCb.checked = true;
+        hideFlags.appendChild(hideIntelLab);
+
+        toolbarMain.appendChild(hideFlags);
 
         const prunedCb = document.createElement('input');
         prunedCb.type = 'checkbox';
@@ -1056,6 +1075,7 @@
                 const rin = row.querySelector('[data-role="bio-conn-reason-in"]');
                 const prunedEl = row.querySelector('[data-role="bio-conn-pruned"]');
                 const hideCodexEl = row.querySelector('[data-role="bio-conn-hide-codex"]');
+                const hideIntelEl = row.querySelector('[data-role="bio-conn-hide-intel"]');
                 const forcedLane = row.querySelector('[data-role="bio-conn-lane-forced"]');
                 const laneEl = row.querySelector('input[data-role="bio-conn-lane"]:checked');
                 var factionMixed = row.dataset.bioConnFactionMixed === '1';
@@ -1087,6 +1107,7 @@
                     }
                     if (prunedEl && prunedEl.checked) rangedOut.pruned = true;
                     if (hideCodexEl && hideCodexEl.checked) rangedOut.hideInCodex = true;
+                    if (hideIntelEl && hideIntelEl.checked) rangedOut.hideInIntel = true;
                     if (
                         window.BioArchiveConnectionRanges
                         && typeof window.BioArchiveConnectionRanges.syncLegacyReasoningFieldsFromRanges
@@ -1128,6 +1149,7 @@
                 }
                 if (prunedEl && prunedEl.checked) out.pruned = true;
                 if (hideCodexEl && hideCodexEl.checked) out.hideInCodex = true;
+                if (hideIntelEl && hideIntelEl.checked) out.hideInIntel = true;
 
                 return out;
             })
@@ -1138,7 +1160,8 @@
                     entry.reasoningLinkedToSubject ||
                     (Array.isArray(entry.ranges) && entry.ranges.length > 0) ||
                     entry.pruned === true ||
-                    entry.hideInCodex === true
+                    entry.hideInCodex === true ||
+                    entry.hideInIntel === true
                 );
             });
     }

@@ -286,6 +286,13 @@
       "relevantLocations": [],
       "connections": [],
       "factionType": ""
+    },
+    {
+      "name": "Numbani City of Harmony",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
     }
   ]
 }

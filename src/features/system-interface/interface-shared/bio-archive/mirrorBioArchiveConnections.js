@@ -816,6 +816,7 @@
         pruneJunctionPhantomConnectionsInPlace: pruneJunctionPhantomConnectionsInPlace,
         bioConnectionRowIsDisplayable: function (c) {
             if (!c || c.pruned === true) return false;
+            if (c.hideInIntel === true) return false;
             var name = c.name != null ? String(c.name).trim() : '';
             if (!name) return false;
             if (bioConnectionRowHasNarrativeText(c)) return true;

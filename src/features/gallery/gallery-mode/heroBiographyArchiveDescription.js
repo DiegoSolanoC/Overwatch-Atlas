@@ -26,6 +26,10 @@ import { createGalleryConnectionCanvas } from './galleryConnectionCanvas.js';
 import { refreshGalleryConnectionPortraitLooks } from './heroBiographyConnectionPortraitLooks.js';
 import { createInfoDescriptionTextScaleControls } from '../../system-interface/interface-shared/accessibility/infoDescriptionTextScale.js';
 import { listDisplayableConnectionEntities } from './galleryConnectionCanvasModel.js';
+import {
+    resetAllGalleryConnectionCanvasesToCodex,
+    resetGalleryConnectionCanvasToCodex,
+} from './galleryConnectionCanvasReset.js';
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import {
     clearBioArchiveEventsCache,
@@ -126,6 +130,9 @@ let connectionsViewToggleEl = null;
 
 /** @type {ReturnType<typeof createGalleryConnectionCanvas> | null} */
 let connectionsCanvasController = null;
+
+/** @type {HTMLButtonElement | null} */
+let connectionsResetAllBtn = null;
 
 /** @type {'list' | 'canvas'} */
 let connectionsViewMode = 'list';
@@ -332,6 +339,8 @@ function ensureConnectionsCanvasController() {
         });
         const canvasSaveBtn = connectionsCanvasController.getSaveButton();
         canvasSaveBtn?.addEventListener('click', () => void handleCanvasLayoutSave());
+        const canvasResetBtn = connectionsCanvasController.getResetCodexButton();
+        canvasResetBtn?.addEventListener('click', () => void handleCanvasResetToCodex());
     }
     return connectionsCanvasController;
 }
@@ -801,6 +810,132 @@ async function handleCanvasLayoutSave(options = {}) {
     }
 }
 
+async function handleCanvasResetToCodex() {
+    if (
+        !canEditGalleryArchive()
+        || !currentFilterKey
+        || canvasLayoutSaveInFlight
+        || currentCategory === 'locations'
+    ) {
+        return;
+    }
+
+    const ok = window.confirm(
+        `Reset this gallery canvas to the live Codex layout for "${currentDisplayName || currentFilterKey}"?\n\nPersonal node positions and breaks will be replaced.`,
+    );
+    if (!ok) return;
+
+    canvasLayoutSaveInFlight = true;
+    const resetBtn = connectionsCanvasController?.getResetCodexButton?.();
+    const saveBtn = connectionsCanvasController?.getSaveButton?.();
+    if (resetBtn) resetBtn.disabled = true;
+    if (saveBtn) saveBtn.disabled = true;
+    window.updateAppStatus?.('Rebuilding canvas from Codex…', 'info');
+
+    try {
+        const result = await resetGalleryConnectionCanvasToCodex({
+            category: currentCategory,
+            filterKey: currentFilterKey,
+            displayName: currentDisplayName,
+            entry: currentViewEntry || currentEntry,
+        });
+        if (!result.ok) {
+            window.updateAppStatus?.(result.error || 'Could not reset canvas.', 'warning');
+            return;
+        }
+        if (result.entry) {
+            currentEntry = result.entry;
+            currentViewEntry = {
+                ...(currentViewEntry || currentEntry || {}),
+                ...result.entry,
+                connectionCanvas: result.snapshot,
+            };
+        } else if (result.snapshot && currentViewEntry) {
+            currentViewEntry = {
+                ...currentViewEntry,
+                connectionCanvas: result.snapshot,
+            };
+        }
+        clearBioArchiveEventsCache(currentCategory);
+        connectionsCanvasController?.invalidateLoadedEntry?.();
+        connectionsCanvasController?.clearDirtyState?.();
+        await refreshConnectionsCanvas(currentViewEntry);
+        window.SoundEffectsManager?.play?.('save');
+        if (resetBtn && window.flashButton) {
+            window.flashButton(resetBtn, 'flash-green');
+        }
+        window.updateAppStatus?.(
+            `Canvas reset to Codex default for ${currentDisplayName || currentFilterKey}.`,
+            'success',
+        );
+    } catch (err) {
+        console.warn('[gallery] Canvas Codex reset failed:', err);
+        window.updateAppStatus?.('Could not reset canvas from Codex.', 'warning');
+    } finally {
+        canvasLayoutSaveInFlight = false;
+        if (resetBtn) resetBtn.disabled = false;
+        if (saveBtn) saveBtn.disabled = false;
+    }
+}
+
+async function handleResetAllCanvasesToCodex() {
+    if (!canEditGalleryArchive() || canvasLayoutSaveInFlight) return;
+
+    const ok = window.confirm(
+        'Reset ALL gallery connection canvases (heroes, factions, NPCs) to the live Codex layouts?\n\nEvery personal canvas will be replaced. This cannot be undone from the UI.',
+    );
+    if (!ok) return;
+
+    canvasLayoutSaveInFlight = true;
+    if (connectionsResetAllBtn) connectionsResetAllBtn.disabled = true;
+    const resetBtn = connectionsCanvasController?.getResetCodexButton?.();
+    if (resetBtn) resetBtn.disabled = true;
+    window.updateAppStatus?.('Resetting all gallery canvases from Codex…', 'info');
+
+    try {
+        const result = await resetAllGalleryConnectionCanvasesToCodex();
+        if (!result.ok) {
+            window.updateAppStatus?.(result.error || 'Could not reset canvases.', 'warning');
+            return;
+        }
+        clearBioArchiveEventsCache();
+        if (currentFilterKey) {
+            const events = await loadBioArchiveEvents(currentCategory);
+            const refreshed =
+                findBioArchiveEntryByFilterKey(currentCategory, currentFilterKey, events)
+                || null;
+            if (refreshed) {
+                currentEntry = refreshed;
+                currentViewEntry = await resolveViewEntryForConnections(refreshed);
+            }
+            connectionsCanvasController?.invalidateLoadedEntry?.();
+            connectionsCanvasController?.clearDirtyState?.();
+            const refreshedEntry = currentViewEntry || currentEntry;
+            if (connectionsViewMode === 'canvas') {
+                await refreshConnectionsCanvas(refreshedEntry);
+            } else {
+                await refreshConnectionsCanvas(refreshedEntry, { prewarm: true });
+            }
+        }
+        window.SoundEffectsManager?.play?.('save');
+        if (connectionsResetAllBtn && window.flashButton) {
+            window.flashButton(connectionsResetAllBtn, 'flash-green');
+        }
+        window.updateAppStatus?.(
+            `Reset ${result.updated} canvas${result.updated === 1 ? '' : 'es'} from Codex`
+                + (result.skipped ? ` (${result.skipped} skipped).` : '.'),
+            'success',
+        );
+    } catch (err) {
+        console.warn('[gallery] Reset-all canvases failed:', err);
+        window.updateAppStatus?.('Could not reset all canvases from Codex.', 'warning');
+    } finally {
+        canvasLayoutSaveInFlight = false;
+        if (connectionsResetAllBtn) connectionsResetAllBtn.disabled = false;
+        if (resetBtn) resetBtn.disabled = false;
+    }
+}
+
 /**
  * @param {HTMLElement} hostEl — `#atlasGalleryHost`
  */
@@ -901,6 +1036,15 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     connectionsCancelBtn.hidden = true;
     connectionsCancelBtn.addEventListener('click', handleConnectionsCancel);
 
+    connectionsResetAllBtn = document.createElement('button');
+    connectionsResetAllBtn.type = 'button';
+    connectionsResetAllBtn.className =
+        'gallery-mode__archive-description-btn gallery-mode__archive-description-btn--danger';
+    connectionsResetAllBtn.textContent = 'Reset all canvases';
+    connectionsResetAllBtn.title =
+        'Rebuild every gallery personal canvas from the live Codex ego layouts';
+    connectionsResetAllBtn.addEventListener('click', () => void handleResetAllCanvasesToCodex());
+
     connectionsToolbarEl.append(
         connectionsEditBtn,
         connectionsArchiveIo.exportBtn,
@@ -908,6 +1052,7 @@ export function initHeroBiographyArchiveDescription(hostEl) {
         connectionsArchiveIo.saveArchiveBtn,
         connectionsSaveBtn,
         connectionsCancelBtn,
+        connectionsResetAllBtn,
     );
 
     if (!canEditGalleryArchive()) {
@@ -915,6 +1060,8 @@ export function initHeroBiographyArchiveDescription(hostEl) {
         intelEditBtn.disabled = true;
         connectionsEditBtn.hidden = true;
         connectionsEditBtn.disabled = true;
+        connectionsResetAllBtn.hidden = true;
+        connectionsResetAllBtn.disabled = true;
     }
 
     const intelHeadingBlock = document.createElement('div');
@@ -1178,6 +1325,11 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
         connectionsEditBtn.disabled = !canEditGalleryArchive() || !currentEntry;
         connectionsEditBtn.title = 'Edit connections for this entry';
     }
+    if (connectionsResetAllBtn) {
+        const canReset = canEditGalleryArchive() && supportsConnections;
+        connectionsResetAllBtn.hidden = !canReset;
+        connectionsResetAllBtn.disabled = !canReset;
+    }
 }
 
 /**
@@ -1206,6 +1358,7 @@ export function destroyHeroBiographyArchiveDescription() {
     connectionsEditBtn = null;
     connectionsSaveBtn = null;
     connectionsCancelBtn = null;
+    connectionsResetAllBtn = null;
     viewBirthdayMetaEl = null;
     viewCategoryMetaEl = null;
     editBirthdayEl = null;

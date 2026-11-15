@@ -267,6 +267,7 @@ export function normalizeBioArchiveConnectionRow(item, sanitizeName) {
     const thisEntryLane = laneRaw === 'B' ? 'B' : 'A';
     const showInCodex = item?.showInCodex === true;
     const hideInCodex = item?.hideInCodex === true;
+    const hideInIntel = item?.hideInIntel === true;
     const pruned = item?.pruned === true;
     const ranges = normalizeBioConnectionRanges(item?.ranges);
 
@@ -280,6 +281,7 @@ export function normalizeBioArchiveConnectionRow(item, sanitizeName) {
     };
     if (showInCodex) out.showInCodex = true;
     if (hideInCodex) out.hideInCodex = true;
+    if (hideInIntel) out.hideInIntel = true;
     if (pruned) out.pruned = true;
     if (ranges.length) out.ranges = ranges;
 

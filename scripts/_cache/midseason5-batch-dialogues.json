@@ -1,0 +1,1066 @@
+[
+  {
+    "name": "(missing) Vendetta & Ashe — cutting ties / Grand Mesa",
+    "missing": true,
+    "note": "Present in Midseason 5 video; not found in theater after audit"
+  },
+  {
+    "name": "Bad Headlines",
+    "id": "2621783e-e9b1-4549-a480-869fb7b3f527",
+    "heroes": [
+      "Domina",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Domina",
+        "text": "How unfortunate things ended up this way. All these bad headlines are rather inconvenient"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "How terrible for you"
+      },
+      {
+        "hero": "Domina",
+        "text": "Oh don't fret, darling, it's nothing Vishkar won't recover from"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "Your reputation is the least of my concerns, Vaira"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Great Potential",
+    "id": "9d39239c-b221-452a-a0cb-46032d8e5a9e",
+    "heroes": [
+      "Vendetta",
+      "Shion"
+    ],
+    "lines": [
+      {
+        "hero": "Vendetta",
+        "text": "You may not have accomplished all that I desired, but what you did deliver shows great potential."
+      },
+      {
+        "hero": "Shion",
+        "text": "Potential? I handed you carnage in a pretty package."
+      },
+      {
+        "hero": "Vendetta",
+        "text": "It takes more than a honed edge to earn my praise. A weapon must prove itself in battle."
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Reclaiming Talon",
+    "id": "79f89ee1-54a0-4936-b2a0-04ddfd1d7ce9",
+    "heroes": [
+      "Vendetta",
+      "Doomfist"
+    ],
+    "lines": [
+      {
+        "hero": "Vendetta",
+        "text": "Are you satisfied, Akande? Reclaiming Talon just to hide away and atrophy once more?"
+      },
+      {
+        "hero": "Doomfist",
+        "text": "On the contrary. Your crusade has proven that Talon's worth does not lie in its idleness"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Still Flopping",
+    "id": "b657f8d4-6007-4e34-bcdb-17dd2cb94506",
+    "heroes": [
+      "Junker Queen",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Junker Queen",
+        "text": "Ooh, must sting, yeah Schemin' like mad and still floppin'. (laughs)"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "Know that when you next fall prey to your own idiocy, I will celebrate your fall"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Fun while it Lasted",
+    "id": "2435fd40-a6e2-413d-ab07-5c6e0ae5e4fe",
+    "heroes": [
+      "Mauga",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Mauga",
+        "text": "Well, it was fun while it lasted. Come take over Talon again when you can"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "You mock me, Malosi. But we both know you will never be as entertained as you were when I was in charge"
+      },
+      {
+        "hero": "Mauga",
+        "text": "Easy, boss! I was being genuine"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Ditching you",
+    "id": "ee733427-b14a-4f82-a884-68f97fb7dbf3",
+    "heroes": [
+      "Shion",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Shion",
+        "text": "Good thing I ditched you... things ended up so messy, didn't they"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "All you did was hide. The Hashimoto were never strong enough to fight my battles"
+      },
+      {
+        "hero": "Shion",
+        "text": "Hmm... well, neither were you"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "If you wish to goad me, do it on a battlefield. Then we will see who of us is stronger"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Going away for a long time",
+    "id": "9fe09285-e909-4b96-b1c1-92765f8312e2",
+    "heroes": [
+      "Sojourn",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Sojourn",
+        "text": "You're going away for a long time, Marzia. Long enough to realize your conquest was never an option"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "Don't waste your breath condemning me. When Akande sees fit to destroy you, you will wish I was there to oppose him"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Dull fangs",
+    "id": "41e0174b-24ff-49d4-b969-91ed7c889fed",
+    "heroes": [
+      "Sombra",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Sombra",
+        "text": "Pobre Vendetta! Guess your little Talon scheme didn't turn out how you planned, huh"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "Silence, Infame. I will rip out your throat"
+      },
+      {
+        "hero": "Sombra",
+        "text": "You can try. But those fangs of yours are looking a little dull these days"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Your Hunt ended",
+    "id": "7a49e941-7f47-4bef-9688-23a85aeacaa7",
+    "heroes": [
+      "Widowmaker",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "Widowmaker",
+        "text": "Well well... it seems your hunt has ended right where it began"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "And what of yours For all your 'newfound independence', you still rely on others to numb your pain"
+      },
+      {
+        "hero": "Widowmaker",
+        "text": "Whatever shame I feel, I take comfort in knowing your humiliation far exceeds it"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Through thick and Thin",
+    "id": "804d05e1-9d53-4d8e-8154-2be64ba92373",
+    "heroes": [
+      "Juno",
+      "Ashe"
+    ],
+    "lines": [
+      {
+        "hero": "Juno",
+        "text": "You and your Big Omnic Buddy seem very close! I wish I had a friend like him growing up"
+      },
+      {
+        "hero": "Ashe",
+        "text": "Me and him have been through thick and thin, but I'll never trust him at cards. Can't beat that poker face"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Expected of a Child",
+    "id": "cca1ff02-a885-4e89-a1f3-92e4eb2096c8",
+    "heroes": [
+      "Juno",
+      "Doctrine"
+    ],
+    "lines": [
+      {
+        "hero": "Juno",
+        "text": "I used to believe there was nothing I would not do to save my colony... but what you did is out of the question!"
+      },
+      {
+        "hero": "Doctrine",
+        "text": "Such naïveté is to be expected of a child. Life is not so fair as you believe"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Seen you Before",
+    "id": "17ac0198-dcc4-4b58-93d8-954a3de57620",
+    "heroes": [
+      "Juno",
+      "Jetpack Cat"
+    ],
+    "lines": [
+      {
+        "hero": "Juno",
+        "text": "I cannot help thinking I have seen you somewhere before, Fika"
+      },
+      {
+        "hero": "Jetpack Cat",
+        "text": "**evasive meows**"
+      },
+      {
+        "hero": "Juno",
+        "text": "But I had only travelled to a few places before Brigitte found you... and you were definitely not on Mars"
+      },
+      {
+        "hero": "Jetpack Cat",
+        "text": "**innocent meows**"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "View of the Stars",
+    "id": "9a1150a6-6652-47f4-8e77-9728f8250df5",
+    "heroes": [
+      "Sierra",
+      "Juno"
+    ],
+    "lines": [
+      {
+        "hero": "Sierra",
+        "text": "I just love looking up at the stars once I hit a summit... I bet the view from Mars is something else!"
+      },
+      {
+        "hero": "Juno",
+        "text": "Oh, it is! I always loved looking down at Earth from the top of Olympus Mons"
+      },
+      {
+        "hero": "Sierra",
+        "text": "Well, you'll just have to take a picture for me once we get you back up there"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Where to next",
+    "id": "0158d975-d630-4931-97b0-b07f02cdeb2a",
+    "heroes": [
+      "Tracer",
+      "Juno"
+    ],
+    "lines": [
+      {
+        "hero": "Tracer",
+        "text": "You've come so far since you landed, Juno--and seen so much of the world, too! Where to next"
+      },
+      {
+        "hero": "Juno",
+        "text": "Thank you! Maybe I could visit the Arcology Or Spain Oh, I cannot decide!"
+      },
+      {
+        "hero": "Tracer",
+        "text": "Maybe Athena could help you pick! She's the world's best atlas, if you ask me"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Out of this world",
+    "id": "7960f197-d6d7-425c-a8f2-d8c501ac4b0c",
+    "heroes": [
+      "Winston",
+      "Juno"
+    ],
+    "lines": [
+      {
+        "hero": "Winston",
+        "text": "Juno, from one extraterrestrial to another... I'm proud of how far you've come. Overwatch is lucky to have you"
+      },
+      {
+        "hero": "Juno",
+        "text": "Oh, Winston! I have only accomplished so much thanks to the guidance of my space-faring friend"
+      },
+      {
+        "hero": "Winston",
+        "text": "(bashful chuckle) Well, as long as we keep working together, we'll both be out of this world!"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Abandoning Projects",
+    "id": "ae4e6f68-2b4a-463f-b035-ecda928e538a",
+    "heroes": [
+      "Juno",
+      "Wrecking Ball"
+    ],
+    "lines": [
+      {
+        "hero": "Juno",
+        "text": "Dr. Chao said she would have made a different decision about Project Red Promise if only she had known. But is that really true?"
+      },
+      {
+        "hero": "Wrecking Ball",
+        "text": "**hamster noises** He says, they do have a habit of abandoning projects"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Training together",
+    "id": "9abe1137-0612-41c3-9943-3670207d71fe",
+    "heroes": [
+      "Wuyang",
+      "Juno"
+    ],
+    "lines": [
+      {
+        "hero": "Wuyang",
+        "text": "Juno, I was thinking we could do more combat training simulations T-together"
+      },
+      {
+        "hero": "Juno",
+        "text": "Excellent idea! Sierra invited me just the other day. I will tell her you are joining us!"
+      },
+      {
+        "hero": "Wuyang",
+        "text": "Oh, I was thinking-- I mean I was hoping it would just be... I-I mean, that sounds great!"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Pierogis",
+    "id": "a2d1f55e-890f-46be-acf7-198a77d15315",
+    "heroes": [
+      "Zarya",
+      "Juno"
+    ],
+    "lines": [
+      {
+        "hero": "Zarya",
+        "text": "So, Juno, how did you like your first post-mission pierogis"
+      },
+      {
+        "hero": "Juno",
+        "text": "Oh, they were delicious! And just as Auntie Mei said... like dumplings, but with potato!"
+      },
+      {
+        "hero": "Zarya",
+        "text": "Excellent! Then we will have many more. With kolbasas, for extra protein"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Turned In by Family",
+    "id": "c8ba2df5-071c-4ac1-8917-360f8f8dc3d6",
+    "heroes": [
+      "Ana",
+      "Doctrine"
+    ],
+    "lines": [
+      {
+        "hero": "Ana",
+        "text": "I've apprehended plenty of criminals, but it isn't often their own family turns them in"
+      },
+      {
+        "hero": "Doctrine",
+        "text": "My brother's reaction was hyperbolically rash... but he must know I have only acted in the name of his good health."
+      },
+      {
+        "hero": "Doctrine",
+        "text": "My brother's outburst was a rash mistake... but he must know I did what was best for him"
+      },
+      {
+        "hero": "Ana",
+        "text": "I'd say you'll realize you can't decide for others someday, but you've had more time than even I have to learn that lesson."
+      }
+    ],
+    "paths": [
+      "Hyperbolically rash",
+      "Rash mistake"
+    ]
+  },
+  {
+    "name": "Waned over time",
+    "id": "a8bbc15c-0710-4c5d-9688-b74f3f6dd0a6",
+    "heroes": [
+      "Doctrine",
+      "Ana"
+    ],
+    "lines": [
+      {
+        "hero": "Doctrine",
+        "text": "Has your proficiency waned over time? I imagine it must have, given your inevitable decrepitude"
+      },
+      {
+        "hero": "Ana",
+        "text": "Your own age is getting to you, if you need a reminder of my skill"
+      },
+      {
+        "hero": "Doctrine",
+        "text": "My clarity of mind greatly surpasses that of the average elder!"
+      },
+      {
+        "hero": "Ana",
+        "text": "(sighs) You are not as special as you think"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Performing",
+    "id": "e6231e40-0461-4ec1-86a9-7adfa5316f2e",
+    "heroes": [
+      "Lúcio",
+      "Ana"
+    ],
+    "lines": [
+      {
+        "hero": "Lúcio",
+        "text": "You ever try performing? I bet you'd rock a stage!"
+      },
+      {
+        "hero": "Ana",
+        "text": "Funny you say that. I had to pose as a lounge singer for six years on an undercover mission in Beirut"
+      },
+      {
+        "hero": "Lúcio",
+        "text": "Really?"
+      },
+      {
+        "hero": "Ana",
+        "text": "No."
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Hope you Might change",
+    "id": "1308182d-9f72-4666-a464-992a2b669be0",
+    "heroes": [
+      "Ana",
+      "Reaper"
+    ],
+    "lines": [
+      {
+        "hero": "Ana",
+        "text": "When I heard you left Talon after Vendetta's coup, I thought you had finally come to your senses"
+      },
+      {
+        "hero": "Reaper",
+        "text": "Sorry to disappoint"
+      },
+      {
+        "hero": "Ana",
+        "text": "Don't be. It's my own fault, holding onto hope you might change"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Enhanced Soldier Children",
+    "id": "6debc0c3-c403-4bdd-a0bf-412f5c50a1df",
+    "heroes": [
+      "Ana",
+      "Reaper"
+    ],
+    "lines": [
+      {
+        "hero": "Ana",
+        "text": "I've been working with the daughter of an enhanced soldier, Gabriel... She's as gifted as her mother"
+      },
+      {
+        "hero": "Reaper",
+        "text": "Hmph. Didn't think they let anyone use the serum anymore"
+      },
+      {
+        "hero": "Ana",
+        "text": "They don't, yet she still shows all the signs. Doesn't that concern you?"
+      },
+      {
+        "hero": "Reaper",
+        "text": "It didn't... until now"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Lock them up again",
+    "id": "0d1e89e5-52f9-4e2d-b77b-22229eb67e31",
+    "heroes": [
+      "Ana",
+      "Reaper"
+    ],
+    "lines": [
+      {
+        "hero": "Ana",
+        "text": "We spent years throwing Doctrine and his like into Grímsvötn. And now you've just let them all out?"
+      },
+      {
+        "hero": "Reaper",
+        "text": "You locked them up once. Just do it again"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Helix Pair",
+    "id": "edb6f63a-fd2d-45e9-889a-7082e4b9cde2",
+    "heroes": [
+      "Ana",
+      "Sierra"
+    ],
+    "lines": [
+      {
+        "hero": "Ana",
+        "text": "You and Fareeha made a good team in Lagos. I can tell she's happy to have another Helix operative at her side"
+      },
+      {
+        "hero": "Sierra",
+        "text": "Aw, well I just love working with her too! Those Raptora suits really are something"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Call it Even",
+    "id": "ec641988-e649-405e-b828-af34d4f074d7",
+    "heroes": [
+      "D.mon",
+      "Sojourn"
+    ],
+    "lines": [
+      {
+        "hero": "D.mon",
+        "text": "MEKA owes you for having our backs, Sojourn. Ping me if there's ever anything we can do for you"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "I will. But after your help in Rome, I'd say we can call it even"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Not lost on me",
+    "id": "21706633-2703-42d6-b028-957099dc7749",
+    "heroes": [
+      "Sojourn",
+      "Doomfist"
+    ],
+    "lines": [
+      {
+        "hero": "Sojourn",
+        "text": "It doesn't undo anything you've done... but it's not lost on me that you saved my life back in Rome"
+      },
+      {
+        "hero": "Doomfist",
+        "text": "Even at my most arrogant, my respect for you was never in question"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Peace breeds Complacency",
+    "id": "67774c4c-2c02-4231-949e-d647f2ab4377",
+    "heroes": [
+      "Sojourn",
+      "Doomfist"
+    ],
+    "lines": [
+      {
+        "hero": "Sojourn",
+        "text": "Guessing I can't convince you to stand down? Let the world recover from Vendetta's war in peace?"
+      },
+      {
+        "hero": "Doomfist",
+        "text": "You know as well as I do that peace breeds complacency. And complacency, vulnerability"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "(sigh) Well, I had to ask. We'll just have to do things the hard way"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Letting Doomfist free",
+    "id": "755813ed-8478-4543-a69a-ca7ff7bd1a9b",
+    "heroes": [
+      "Orisa",
+      "Sojourn"
+    ],
+    "lines": [
+      {
+        "hero": "Orisa",
+        "text": "You had Doomfist in your sights, and you let him walk free"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "I had to make a choice, Orisa. With the state we were in, we wouldn't have survived that fight"
+      },
+      {
+        "hero": "Orisa",
+        "text": "There are things more important than survival. Bringing him to justice is one of them"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Not as Simple as Cartoons",
+    "id": "a3e593c8-d79f-460f-a566-ed0273da8882",
+    "heroes": [
+      "Orisa",
+      "Sojourn"
+    ],
+    "lines": [
+      {
+        "hero": "Orisa",
+        "text": "Efi and I looked up to you, Sojourn. Doomfist deserves to be punished for what he did to our city--our family!"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "Real life isn't as simple as the cartoons, Orisa... as much as I wish it was"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Shore Leave",
+    "id": "d97e6046-a7df-40d7-a3dc-dab7a4ac64b0",
+    "heroes": [
+      "Tracer",
+      "Sojourn"
+    ],
+    "lines": [
+      {
+        "hero": "Tracer",
+        "text": "Hey, Commander... Now that Vendetta's done for, would it be all right if I took some shore leave"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "Yeah What for"
+      },
+      {
+        "hero": "Tracer",
+        "text": "Well... it's Emily. There's something I've really been wanting to ask her"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "(chuckle) As long as I get an invite when the time comes... permission granted"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Inexcusable",
+    "id": "c5bf778f-a57f-4169-9c84-76743bf42036",
+    "heroes": [
+      "Sojourn",
+      "Emre",
+      "Freja"
+    ],
+    "lines": [
+      {
+        "hero": "Sojourn",
+        "text": "I wanted to think there was a good reason I saw you with Talon, but after everything Vendetta's done It's inexcusable"
+      },
+      {
+        "hero": "Emre",
+        "text": "Whatever you think of me, Viv, I promise I've thought worse"
+      },
+      {
+        "hero": "Freja",
+        "text": "I know. I don't expect forgiveness these days"
+      }
+    ],
+    "paths": [
+      "Emre",
+      "Freja"
+    ]
+  },
+  {
+    "name": "Screw Loose",
+    "id": "65657df3-a34b-485a-b20d-b82194240908",
+    "heroes": [
+      "Junker Queen",
+      "D.mon"
+    ],
+    "lines": [
+      {
+        "hero": "Junker Queen",
+        "text": "Next chance I get to bash your mech, screws'll be shooting out like candy from a piñata!"
+      },
+      {
+        "hero": "D.mon",
+        "text": "Makes sense. You would know a thing or two about having a screw loose"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Credibility",
+    "id": "83f1887c-aaac-4009-838e-ed4612496b60",
+    "heroes": [
+      "Winston",
+      "D.mon"
+    ],
+    "lines": [
+      {
+        "hero": "Winston",
+        "text": "I'll admit, I was worried you wouldn't believe me when I said the mech you captured housed an intelligent hamster"
+      },
+      {
+        "hero": "D.mon",
+        "text": "If anyone other than a literal space ape had told me, I probably wouldn't have"
+      },
+      {
+        "hero": "Winston",
+        "text": "(chuckle) I suppose that does give me a bit of credibility"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Defeat the Robots first",
+    "id": "ece7abf0-2652-4a66-be0e-23341c039c82",
+    "heroes": [
+      "D.mon",
+      "Wrecking Ball"
+    ],
+    "lines": [
+      {
+        "hero": "D.mon",
+        "text": "We went easy on you before, but mess with Busan again and I'll shut you down"
+      },
+      {
+        "hero": "Wrecking Ball",
+        "text": "**hamster noises** He will take you seriously once you defeat your robot squids"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Wisdom of Age",
+    "id": "4597467e-3d17-41fc-ade0-94065bcf2cb3",
+    "heroes": [
+      "Doomfist",
+      "Doctrine"
+    ],
+    "lines": [
+      {
+        "hero": "Doomfist",
+        "text": "I was right to seek you out. This gauntlet you've crafted surpasses my every expectation"
+      },
+      {
+        "hero": "Doctrine",
+        "text": "Ah, one can accomplish much when the wisdom of age comes without cost"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Wisdom to Understand",
+    "id": "f1c997b5-ad2f-4ec5-a252-fe15eccd4b5d",
+    "heroes": [
+      "Orisa",
+      "Doomfist"
+    ],
+    "lines": [
+      {
+        "hero": "Orisa",
+        "text": "Be grateful I was not there to greet you in Rome. You would not have left alive"
+      },
+      {
+        "hero": "Doomfist",
+        "text": "The child has made you strong, Orisa. May she give you the wisdom to understand your leader's choices, next"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Can't Hack your brain",
+    "id": "2ea32a44-9a72-49c4-8e3e-a3aeb4291636",
+    "heroes": [
+      "Sombra",
+      "Doomfist"
+    ],
+    "lines": [
+      {
+        "hero": "Sombra",
+        "text": "So when were you planning to tell me your ace in the hole is a geriatric soul-sapper"
+      },
+      {
+        "hero": "Doomfist",
+        "text": "Tell you I thought uncovering information was your expertise"
+      },
+      {
+        "hero": "Sombra",
+        "text": "I can't hack your brain, jefe"
+      },
+      {
+        "hero": "Doomfist",
+        "text": "Then you still have room to improve"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Never Forget",
+    "id": "01a330a9-f0aa-490c-ad50-4c50b78898d9",
+    "heroes": [
+      "Tracer",
+      "Genji"
+    ],
+    "lines": [
+      {
+        "hero": "Tracer",
+        "text": "So glad you're finally back home! Just don't go forgetting your old crew, all right"
+      },
+      {
+        "hero": "Genji",
+        "text": "Please, Lena. No matter where I go, I will never forget our team"
+      },
+      {
+        "hero": "Tracer",
+        "text": "(sniffle) Good. 'Cause you better believe I'm flying everyone out to visit next time we get shore leave!"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Reuniting with Family",
+    "id": "ef94e7f5-51ca-4410-8eea-b0eee1781afc",
+    "heroes": [
+      "Winston",
+      "Genji"
+    ],
+    "lines": [
+      {
+        "hero": "Winston",
+        "text": "I'm glad to see you reunite with your family after so long, Genji"
+      },
+      {
+        "hero": "Genji",
+        "text": "As am I. Perhaps you can do the same, one day"
+      },
+      {
+        "hero": "Winston",
+        "text": "Oh, I don't know… I'm not even sure if Hammond still sees me as family"
+      },
+      {
+        "hero": "Genji",
+        "text": "Believe me even deep wounds can be mended with time"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Unforgiving Nature",
+    "id": "004d6e70-d3b5-40f6-b414-dd50f0954ebd",
+    "heroes": [
+      "Genji",
+      "Zenyatta"
+    ],
+    "lines": [
+      {
+        "hero": "Genji",
+        "text": "The rift between Hanzo and I is slowly healing. But with others, his unforgiving nature rears its head"
+      },
+      {
+        "hero": "Zenyatta",
+        "text": "What he does not forgive in others reflects what he does not accept of himself"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Significant Upgrades",
+    "id": "71b3c179-2c00-4464-adb7-c1b267b74f79",
+    "heroes": [
+      "Junker Queen",
+      "Winston"
+    ],
+    "lines": [
+      {
+        "hero": "Junker Queen",
+        "text": "Maybe I oughtta take my ship up to where you and the champ lived. See how Gracie likes zero-grav"
+      },
+      {
+        "hero": "Winston",
+        "text": "Ah, the Lunar Colony would not be easily accessible without... significant upgrades to your craft"
+      },
+      {
+        "hero": "Junker Queen",
+        "text": "Well that's what the champ's for. He'll figure it out"
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Busan was Nice",
+    "id": "363f0d11-b682-4ed7-b72f-c9d436178c4a",
+    "heroes": [
+      "Roadhog",
+      "D.va"
+    ],
+    "lines": [
+      {
+        "hero": "Roadhog",
+        "text": "Busan was nice"
+      },
+      {
+        "hero": "D.va",
+        "text": "Well, it would be nicer if certain tourists didn't leave their junk all over the city!"
+      },
+      {
+        "hero": "Roadhog",
+        "text": "Sorry."
+      }
+    ],
+    "paths": []
+  },
+  {
+    "name": "Hope from our people",
+    "id": "6105a672-670a-4f22-a700-b3ffed3a8404",
+    "heroes": [
+      "D.mon",
+      "Vendetta"
+    ],
+    "lines": [
+      {
+        "hero": "D.mon",
+        "text": "That EMP was designed to free Busan from the Gwishin. Nothing you've done could take that hope from our people"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "You have wasted your arsenal on defensive maneuvers. In my hands, the world will know its true strength"
+      },
+      {
+        "hero": "Vendetta",
+        "text": "Celebrate, then! It is back in your care, and you may return to cowering behind its power while the Gwishin assau"
+      }
+    ],
+    "paths": [
+      "Ture Strength",
+      "Celebrate then"
+    ]
+  },
+  {
+    "name": "Loving the Bleach look",
+    "id": "b0244c00-a23d-4558-a6cf-8e3a01c09c41",
+    "heroes": [
+      "Hazard",
+      "Ashe",
+      "Lifeweaver",
+      "Reinhardt",
+      "Sojourn",
+      "Ana",
+      "Soldier 76",
+      "Roadhog"
+    ],
+    "lines": [
+      {
+        "hero": "Hazard",
+        "text": "Lovin' the bleached look. You do that yourself?"
+      },
+      {
+        "hero": "Ashe",
+        "text": "Sweet of you to say so, darlin', but it's natural."
+      },
+      {
+        "hero": "Lifeweaver",
+        "text": "Goodness! No. I was just born this dashing."
+      },
+      {
+        "hero": "Reinhardt",
+        "text": "Of course! It's aged to perfection!"
+      },
+      {
+        "hero": "Sojourn",
+        "text": "Ah. You like it. Gets grayer every time I hear about your escapades."
+      },
+      {
+        "hero": "Hazard",
+        "text": "Right, well... looks class!"
+      },
+      {
+        "hero": "Ana",
+        "text": "(soft chuckle) No, this comes with experience"
+      },
+      {
+        "hero": "Soldier 76",
+        "text": "Give it a few years, kid, and you won't have to ask"
+      },
+      {
+        "hero": "Roadhog",
+        "text": "(snort) Thanks. Yeah"
+      }
+    ],
+    "paths": [
+      "Ashe",
+      "Lifeweaver",
+      "Reinhardt",
+      "Sojourn",
+      "Ana",
+      "Soldier 76",
+      "Roadhog"
+    ]
+  }
+]

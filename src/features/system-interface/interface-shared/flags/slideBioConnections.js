@@ -311,6 +311,8 @@
                 ? window.BioArchiveConnectionsSync.bioConnectionRowIsDisplayable
                 : function (row) {
                     if (!row) return false;
+                    if (row.pruned === true) return false;
+                    if (row.hideInIntel === true) return false;
                     var nm = row.name != null ? String(row.name).trim() : '';
                     if (!nm) return false;
                     var tOut = row.reasoningSubjectToLinked != null
@@ -321,7 +323,6 @@
                         : '';
                     var leg = row.reasoning != null ? String(row.reasoning).trim() : '';
                     if (tOut || tIn || leg) return true;
-                    if (row.pruned === true) return false;
                     return true;
                 };
 

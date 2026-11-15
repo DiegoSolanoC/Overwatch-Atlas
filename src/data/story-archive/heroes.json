@@ -13,6 +13,65 @@
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
       "birthday": "11 November 2054",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196515659-bjdag5mi",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Hazard",
+            "x": 10958.94761889901,
+            "y": 5391.57403694415,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Hazard",
+            "codexNodeId": "cn-1776196515659-bjdag5mi"
+          },
+          {
+            "id": "cn-1794013103688-brkvbpgg",
+            "kind": "junction",
+            "x": 10998.94918121521,
+            "y": 5366.517910709767,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103688-brkvbpgg"
+          },
+          {
+            "id": "cn-1776189155391-blrdsyra",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Phreaks",
+            "x": 10738.95074353141,
+            "y": 5041.461784475385,
+            "scale": 3,
+            "bgColor": "#8000ff",
+            "factionFilename": "The Phreaks",
+            "portraitKey": "The Phreaks",
+            "codexNodeId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196515659-bjdag5mi",
+            "toId": "cn-1794013103688-brkvbpgg"
+          },
+          {
+            "fromId": "cn-1794013103688-brkvbpgg",
+            "toId": "cn-1776189155391-blrdsyra"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 11619,
+        "worldH": 6052
+      },
       "connections": [
         {
           "kind": "faction",
@@ -36,7 +95,34 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "25 May 2031"
+      "birthday": "25 May 2031",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196250777-gqnrvcb6",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Doomfist",
+            "x": 5086.827967873288,
+            "y": 6753.267284784789,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Doomfist",
+            "codexNodeId": "cn-1776196250777-gqnrvcb6"
+          }
+        ],
+        "edges": [],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5747,
+        "worldH": 7414
+      }
     },
     {
       "name": "Winston",
@@ -51,6 +137,65 @@
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
       "birthday": "6 June 2047",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196936200-9siqgmrn",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Winston",
+            "x": 12257.976414943352,
+            "y": 7183.377170113295,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Winston",
+            "codexNodeId": "cn-1776196936200-9siqgmrn"
+          },
+          {
+            "id": "cn-1794013103679-brkdtx8o",
+            "kind": "junction",
+            "x": 12228.583789299611,
+            "y": 7495.3426433927725,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103679-brkdtx8o"
+          },
+          {
+            "id": "cn-1791848476510-njst19xu",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Overwatch",
+            "x": 11755.19116365587,
+            "y": 7363.30811667225,
+            "scale": 5,
+            "bgColor": "#003b62",
+            "factionFilename": "Overwatch",
+            "portraitKey": "Overwatch",
+            "codexNodeId": "cn-1791848476510-njst19xu"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196936200-9siqgmrn",
+            "toId": "cn-1794013103679-brkdtx8o"
+          },
+          {
+            "fromId": "cn-1794013103679-brkdtx8o",
+            "toId": "cn-1791848476510-njst19xu"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 12918,
+        "worldH": 8324
+      },
       "connections": [
         {
           "kind": "faction",
@@ -79,203 +224,50 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1776196943516-m7w9aebw",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Wrecking Ball",
-            "x": 1377.44,
-            "y": 1669.16,
+            "x": 7524.64,
+            "y": 5266.048691645935,
             "scale": 2.5,
-            "portraitKey": "Wrecking Ball"
+            "bgColor": null,
+            "portraitKey": "Wrecking Ball",
+            "codexNodeId": "cn-1776196943516-m7w9aebw"
           },
           {
-            "id": "gcc-link-npc-chao",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Chao",
-            "x": 962.068,
-            "y": 550.232,
-            "scale": 2,
-            "portraitKey": "Chao"
+            "id": "cn-1794013103618-brk9h7h0",
+            "kind": "junction",
+            "x": 7480.931263921295,
+            "y": 5442.956881351098,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103618-brk9h7h0"
           },
           {
-            "id": "gcc-link-hero-doomfist",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Doomfist",
-            "x": 2320.35,
-            "y": 679.2,
-            "scale": 2.5,
-            "portraitKey": "Doomfist"
-          },
-          {
-            "id": "gcc-link-npc-harold",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Harold",
-            "x": 401.483,
-            "y": 815.976,
-            "scale": 1.5,
-            "portraitKey": "Harold"
-          },
-          {
-            "id": "gcc-link-faction-junker-monarchy",
+            "id": "cn-1776189424359-1982a8ml",
             "kind": "faction",
             "role": "linked",
             "entityKind": "faction",
             "entityName": "Junker Monarchy",
-            "x": 2019.63,
-            "y": 1705.47,
+            "x": 7137.2225278425885,
+            "y": 5319.865071056261,
             "scale": 3,
             "bgColor": "#e0c26f",
-            "factionFilename": "Junker Monarchy"
-          },
-          {
-            "id": "gcc-link-hero-junker-queen",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Junker Queen",
-            "x": 2233.32,
-            "y": 1292.85,
-            "scale": 2.5,
-            "portraitKey": "Junker Queen"
-          },
-          {
-            "id": "gcc-link-faction-lucheng-interstellar",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Lucheng Interstellar",
-            "x": 1149.14,
-            "y": 1160.73,
-            "scale": 3,
-            "bgColor": "#999999",
-            "factionFilename": "Lucheng Interstellar"
-          },
-          {
-            "id": "gcc-link-hero-sigma",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Sigma",
-            "x": 1454.37,
-            "y": 732.595,
-            "scale": 2.5,
-            "portraitKey": "Sigma"
-          },
-          {
-            "id": "gcc-link-hero-winston",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Winston",
-            "x": 634.453,
-            "y": 1553.74,
-            "scale": 2.5,
-            "portraitKey": "Winston"
+            "factionFilename": "Junker Monarchy",
+            "portraitKey": "Junker Monarchy",
+            "codexNodeId": "cn-1776189424359-1982a8ml"
           }
         ],
         "edges": [
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-chao"
+            "fromId": "cn-1776196943516-m7w9aebw",
+            "toId": "cn-1794013103618-brk9h7h0"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-doomfist"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-harold"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-junker-monarchy"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-junker-queen"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-lucheng-interstellar"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-sigma"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-winston"
-          },
-          {
-            "fromId": "gcc-link-hero-doomfist",
-            "toId": "gcc-link-npc-chao"
-          },
-          {
-            "fromId": "gcc-link-npc-chao",
-            "toId": "gcc-link-npc-harold"
-          },
-          {
-            "fromId": "gcc-link-faction-lucheng-interstellar",
-            "toId": "gcc-link-npc-chao"
-          },
-          {
-            "fromId": "gcc-link-hero-sigma",
-            "toId": "gcc-link-npc-chao"
-          },
-          {
-            "fromId": "gcc-link-hero-winston",
-            "toId": "gcc-link-npc-chao"
-          },
-          {
-            "fromId": "gcc-link-hero-doomfist",
-            "toId": "gcc-link-npc-harold"
-          },
-          {
-            "fromId": "gcc-link-faction-lucheng-interstellar",
-            "toId": "gcc-link-hero-doomfist"
-          },
-          {
-            "fromId": "gcc-link-hero-doomfist",
-            "toId": "gcc-link-hero-sigma"
-          },
-          {
-            "fromId": "gcc-link-hero-doomfist",
-            "toId": "gcc-link-hero-winston"
-          },
-          {
-            "fromId": "gcc-link-faction-lucheng-interstellar",
-            "toId": "gcc-link-npc-harold"
-          },
-          {
-            "fromId": "gcc-link-hero-sigma",
-            "toId": "gcc-link-npc-harold"
-          },
-          {
-            "fromId": "gcc-link-hero-winston",
-            "toId": "gcc-link-npc-harold"
-          },
-          {
-            "fromId": "gcc-link-faction-junker-monarchy",
-            "toId": "gcc-link-hero-junker-queen"
-          },
-          {
-            "fromId": "gcc-link-faction-lucheng-interstellar",
-            "toId": "gcc-link-hero-sigma"
-          },
-          {
-            "fromId": "gcc-link-faction-lucheng-interstellar",
-            "toId": "gcc-link-hero-winston"
-          },
-          {
-            "fromId": "gcc-link-hero-sigma",
-            "toId": "gcc-link-hero-winston"
+            "fromId": "cn-1794013103618-brk9h7h0",
+            "toId": "cn-1776189424359-1982a8ml"
           }
         ],
         "display": {
@@ -284,11 +276,8 @@
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": -107.26370790116562,
-          "panY": -209.69643220482112,
-          "zoom": 0.37705457664000036
-        }
+        "worldW": 8185,
+        "worldH": 6040
       },
       "connections": [
         {
@@ -317,7 +306,7 @@
     },
     {
       "name": "Mauga",
-      "description": "Maugaloa Malos is a Samoan warrior once part of the Deep Sea Raiders, a Polynesian alliance of eco-terrorists that boarded oil carriers in the Pacific Ocean, hijacking them and crashing them into the Super Coral barrier reef, a modified super organism made to restore the Ocean ecosystems and seen as part of Polynesian patrimony, but one that had become quite troublesome for ship traffic, with many companies advocating for its destruction. The battles over the Super Coral reef led to Over watch's interference, where the Raiders were able to hold their ground, leading to the Polynesian League  seceding from the United Nations, and effectively giving up on stopping the Raiders' activities.\n\nTheir success did not come without a cost, as Mauga was heavily injured during their battles, forcing their medics to implant a cybernetic heart, and then a second one later in life when his organic one began to fail all together. Living with two ticking time bombs in his chest and coming so close to dying reshaped Mauga's outlook on life, to a more careless, apathetic view that he lived every day like it was his last, since his heart could very well fail at any given moment. When the Raiders died down, he challenged the Doomfist, the head of the terrorist group Talon, to an all-out battle that ended in a tie. Doomfist offered him a place in Talon, where he was able to wreak havoc around the world and gain maintenance for his heart.\n\nIn Talon, Mauga made few friends, as his brutish facade and lost cannon mentality caused friction among his peers. The only one who he truly grew close to was Baptiste, a mercenary who used to operate for the Caribbean Coalition. But Baptiste eventually defected Talon, with Mauga eventually leading the hunt to chase him down after everyone else who was sent after him didn't return. Mauga's alliance with Talon is entirely derived from the entertainment he gets from being a part of it, as when Vendetta took over Doomfist's title as leader, he decided to stay and became one of her most efficient and active generals. When Doomfist reclaimed his title from the Wolf of Retribution, however, Mauga remained in Talon, caring little for who was in charge, as he rejoiced in the chaos left from the ever-changing leadership.",
+      "description": "Maugaloa Malos is a Samoan warrior once part of the Deepsea Raiders, a Polynesian alliance of eco-terrorists that boarded oil carriers in the Pacific Ocean, hijacking them and crashing them into the Super Coral barrier reef, a modified super organism made to restore the Ocean ecosystems and seen as part of Polynesian patrimony, but one that had become quite troublesome for ship traffic, with many companies advocating for its destruction. The battles over the Super Coral reef led to Over watch's interference, where the Raiders were able to hold their ground, leading to the Polynesian League  seceding from the United Nations, and effectively giving up on stopping the Raiders' activities.\n\nTheir success did not come without a cost, as Mauga was heavily injured during their battles, forcing their medics to implant a cybernetic heart, and then a second one later in life when his organic one began to fail all together. Living with two ticking time bombs in his chest and coming so close to dying reshaped Mauga's outlook on life, to a more careless, apathetic view that he lived every day like it was his last, since his heart could very well fail at any given moment. When the Raiders died down, he challenged the Doomfist, the head of the terrorist group Talon, to an all-out battle that ended in a tie. Doomfist offered him a place in Talon, where he was able to wreak havoc around the world and gain maintenance for his heart.\n\nIn Talon, Mauga made few friends, as his brutish facade and lost cannon mentality caused friction among his peers. The only one who he truly grew close to was Baptiste, a mercenary who used to operate for the Caribbean Coalition. But Baptiste eventually defected Talon, with Mauga eventually leading the hunt to chase him down after everyone else who was sent after him didn't return. Mauga's alliance with Talon is entirely derived from the entertainment he gets from being a part of it, as when Vendetta took over Doomfist's title as leader, he decided to stay and became one of her most efficient and active generals. When Doomfist reclaimed his title from the Wolf of Retribution, however, Mauga remained in Talon, caring little for who was in charge, as he rejoiced in the chaos left from the ever-changing leadership.",
       "relevantLocations": [
         {
           "locationName": "Apia",
@@ -328,6 +317,91 @@
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
       "birthday": "19 August 2041",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1780263531440-4chlxqh7",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Mauga",
+            "x": 5436.372814386777,
+            "y": 8145.105563524239,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Mauga",
+            "codexNodeId": "cn-1780263531440-4chlxqh7"
+          },
+          {
+            "id": "cn-1792187942745-dlxzdjcc",
+            "kind": "junction",
+            "x": 5908.375698312267,
+            "y": 7939.722227144058,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792187942745-dlxzdjcc"
+          },
+          {
+            "id": "cn-1792188021643-w1unf8ap",
+            "kind": "junction",
+            "x": 5604.372801853657,
+            "y": 7942.627247113712,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792188021643-w1unf8ap"
+          },
+          {
+            "id": "cn-1792188037316-t7o3nyl7",
+            "kind": "junction",
+            "x": 5444.486995145377,
+            "y": 7782.866995145377,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792188037316-t7o3nyl7"
+          },
+          {
+            "id": "cn-1776187942174-ajc0gk24",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Talon Empire",
+            "x": 4905.840460050719,
+            "y": 7393.850599613411,
+            "scale": 5,
+            "bgColor": "#000000",
+            "factionFilename": "Talon Empire",
+            "portraitKey": "Talon Empire",
+            "codexNodeId": "cn-1776187942174-ajc0gk24"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1780263531440-4chlxqh7",
+            "toId": "cn-1792187942745-dlxzdjcc"
+          },
+          {
+            "fromId": "cn-1792187942745-dlxzdjcc",
+            "toId": "cn-1792188021643-w1unf8ap"
+          },
+          {
+            "fromId": "cn-1792188021643-w1unf8ap",
+            "toId": "cn-1792188037316-t7o3nyl7"
+          },
+          {
+            "fromId": "cn-1792188037316-t7o3nyl7",
+            "toId": "cn-1776187942174-ajc0gk24"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6353,
+        "worldH": 8806
+      },
       "connections": [
         {
           "kind": "faction",
@@ -392,88 +466,28 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1776197831375-68zappm3",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "D.mon",
-            "x": 1216,
-            "y": 1300.96,
+            "x": 9791.773258894853,
+            "y": 5342.153258894854,
             "scale": 2.5,
-            "portraitKey": "D.mon"
-          },
-          {
-            "id": "gcc-link-hero-d-va",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "D.va",
-            "x": 1216,
-            "y": 406.113,
-            "scale": 2.5,
-            "portraitKey": "D.va"
-          },
-          {
-            "id": "gcc-link-npc-dae-hyun",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Dae-Hyun",
-            "x": 1934.64,
-            "y": 1644,
-            "scale": 1.5,
-            "portraitKey": "Dae-Hyun"
-          },
-          {
-            "id": "gcc-link-faction-m-e-k-a-squad",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "M.E.K.A Squad",
-            "x": 634,
-            "y": 1536,
-            "scale": 3,
-            "bgColor": "#74f1ab",
-            "factionFilename": "M.E.K.A Squad"
+            "bgColor": null,
+            "portraitKey": "D.mon",
+            "codexNodeId": "cn-1776197831375-68zappm3"
           }
         ],
-        "edges": [
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-d-va"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-dae-hyun"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-m-e-k-a-squad"
-          },
-          {
-            "fromId": "gcc-link-hero-d-va",
-            "toId": "gcc-link-npc-dae-hyun"
-          },
-          {
-            "fromId": "gcc-link-faction-m-e-k-a-squad",
-            "toId": "gcc-link-npc-dae-hyun"
-          },
-          {
-            "fromId": "gcc-link-faction-m-e-k-a-squad",
-            "toId": "gcc-link-hero-d-va"
-          }
-        ],
+        "edges": [],
         "display": {
           "showAngles": true,
           "showBreaks": true,
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": -39.30366478514952,
-          "panY": -142.0081655053134,
-          "zoom": 0.3782347161600001
-        }
+        "worldW": 10452,
+        "worldH": 6003
       }
     },
     {
@@ -488,7 +502,89 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "28 August 2046"
+      "birthday": "28 August 2046",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196245474-7zeubdc1",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Domina",
+            "x": 3919.559178295738,
+            "y": 6645.731478911686,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Domina",
+            "codexNodeId": "cn-1776196245474-7zeubdc1"
+          },
+          {
+            "id": "cn-1793397852754-pbfli4yv",
+            "kind": "junction",
+            "x": 4034.484864566058,
+            "y": 6691.736799336651,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793397852754-pbfli4yv"
+          },
+          {
+            "id": "cn-1793397859689-lzi8f29l",
+            "kind": "junction",
+            "x": 4020.3039269287165,
+            "y": 6303.886073071283,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793397859689-lzi8f29l"
+          },
+          {
+            "id": "cn-1776188731351-mg1n7cxj",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Vishkar Corporation",
+            "x": 3924.426875079512,
+            "y": 6064.636330883182,
+            "scale": 3,
+            "bgColor": "#aff7f1",
+            "factionFilename": "Vishkar Corporation",
+            "portraitKey": "Vishkar Corporation",
+            "codexNodeId": "cn-1776188731351-mg1n7cxj"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196245474-7zeubdc1",
+            "toId": "cn-1793397852754-pbfli4yv"
+          },
+          {
+            "fromId": "cn-1793397852754-pbfli4yv",
+            "toId": "cn-1793397859689-lzi8f29l"
+          },
+          {
+            "fromId": "cn-1793397859689-lzi8f29l",
+            "toId": "cn-1776188731351-mg1n7cxj"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 4645,
+        "worldH": 7306
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Junker Queen",
@@ -502,7 +598,76 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "14 June 2047"
+      "birthday": "14 June 2047",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196540666-6pvolx0z",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Junker Queen",
+            "x": 7317.63,
+            "y": 5676.287756028947,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Junker Queen",
+            "codexNodeId": "cn-1776196540666-6pvolx0z"
+          },
+          {
+            "id": "cn-1794013103617-brkzsqee",
+            "kind": "junction",
+            "x": 7377.426263921294,
+            "y": 5648.076413542603,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103617-brkzsqee"
+          },
+          {
+            "id": "cn-1776189424359-1982a8ml",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Junker Monarchy",
+            "x": 7137.2225278425885,
+            "y": 5319.865071056261,
+            "scale": 3,
+            "bgColor": "#e0c26f",
+            "factionFilename": "Junker Monarchy",
+            "portraitKey": "Junker Monarchy",
+            "codexNodeId": "cn-1776189424359-1982a8ml"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196540666-6pvolx0z",
+            "toId": "cn-1794013103617-brkzsqee"
+          },
+          {
+            "fromId": "cn-1794013103617-brkzsqee",
+            "toId": "cn-1776189424359-1982a8ml"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7978,
+        "worldH": 6337
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ramattra",
@@ -516,7 +681,76 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "29 March 2051"
+      "birthday": "29 March 2051",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196781651-ocp88l4m",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Ramattra",
+            "x": 5103.101270602882,
+            "y": 5745.498729397118,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Ramattra",
+            "codexNodeId": "cn-1776196781651-ocp88l4m"
+          },
+          {
+            "id": "cn-1794013103707-brkgvruc",
+            "kind": "junction",
+            "x": 5138.746264057354,
+            "y": 5655.100530520384,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103707-brkgvruc"
+          },
+          {
+            "id": "cn-1791849083648-1x4of3av",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Null Sector",
+            "x": 4730.391257511825,
+            "y": 5120.702331643651,
+            "scale": 5,
+            "bgColor": "#5c1d6e",
+            "factionFilename": "Null Sector",
+            "portraitKey": "Null Sector",
+            "codexNodeId": "cn-1791849083648-1x4of3av"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196781651-ocp88l4m",
+            "toId": "cn-1794013103707-brkgvruc"
+          },
+          {
+            "fromId": "cn-1794013103707-brkgvruc",
+            "toId": "cn-1791849083648-1x4of3av"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5764,
+        "worldH": 6406
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Null Sector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Reinhardt",
@@ -545,6 +779,65 @@
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
       "birthday": "15 March 2015",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196835600-1h52n95b",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Sigma",
+            "x": 5664.60057455835,
+            "y": 7554.54,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Sigma",
+            "codexNodeId": "cn-1776196835600-1h52n95b"
+          },
+          {
+            "id": "cn-1792624088258-0op7edzk",
+            "kind": "junction",
+            "x": 5225.637812184167,
+            "y": 7686.53676395951,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792624088258-0op7edzk"
+          },
+          {
+            "id": "cn-1776187942174-ajc0gk24",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Talon Empire",
+            "x": 4905.840460050719,
+            "y": 7393.850599613411,
+            "scale": 5,
+            "bgColor": "#000000",
+            "factionFilename": "Talon Empire",
+            "portraitKey": "Talon Empire",
+            "codexNodeId": "cn-1776187942174-ajc0gk24"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196835600-1h52n95b",
+            "toId": "cn-1792624088258-0op7edzk"
+          },
+          {
+            "fromId": "cn-1792624088258-0op7edzk",
+            "toId": "cn-1776187942174-ajc0gk24"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6325,
+        "worldH": 8354
+      },
       "connections": [
         {
           "kind": "faction",
@@ -609,122 +902,28 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1781046157550-eu5ouldv",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Shion",
-            "x": 1417.11,
-            "y": 1164.04,
+            "x": 4561.5816487757465,
+            "y": 8365.831742309918,
             "scale": 2.5,
-            "portraitKey": "Shion"
-          },
-          {
-            "id": "gcc-link-faction-hashimoto-clan",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Hashimoto Clan",
-            "x": 1790.16,
-            "y": 634.908,
-            "scale": 3,
-            "factionFilename": "Hashimoto Clan"
-          },
-          {
-            "id": "gcc-link-hero-mauga",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Mauga",
-            "x": 826.538,
-            "y": 791.066,
-            "scale": 2.5,
-            "portraitKey": "Mauga"
-          },
-          {
-            "id": "gcc-link-hero-mizuki",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Mizuki",
-            "x": 1779.78,
-            "y": 1521.75,
-            "scale": 2.5,
-            "portraitKey": "Mizuki"
-          },
-          {
-            "id": "gcc-link-npc-pompamoto",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Pompamoto",
-            "x": 1489.11,
-            "y": 704.747,
-            "scale": 1.5,
-            "portraitKey": "Pompamoto"
-          },
-          {
-            "id": "gcc-link-faction-talon-empire",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Talon Empire",
-            "x": 430.895,
-            "y": 1213.87,
-            "scale": 5,
-            "bgColor": "#000000",
-            "factionFilename": "Talon Empire"
+            "bgColor": null,
+            "portraitKey": "Shion",
+            "codexNodeId": "cn-1781046157550-eu5ouldv"
           }
         ],
-        "edges": [
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-hashimoto-clan"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-mauga"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-mizuki"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-pompamoto"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-talon-empire"
-          },
-          {
-            "fromId": "gcc-link-faction-hashimoto-clan",
-            "toId": "gcc-link-hero-mizuki"
-          },
-          {
-            "fromId": "gcc-link-faction-hashimoto-clan",
-            "toId": "gcc-link-npc-pompamoto"
-          },
-          {
-            "fromId": "gcc-link-faction-hashimoto-clan",
-            "toId": "gcc-link-faction-talon-empire"
-          },
-          {
-            "fromId": "gcc-link-faction-talon-empire",
-            "toId": "gcc-link-hero-mauga"
-          }
-        ],
+        "edges": [],
         "display": {
           "showAngles": true,
           "showBreaks": true,
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": -85.41633918179686,
-          "panY": -204.33925165216192,
-          "zoom": 0.4236228820992001
-        }
+        "worldW": 5222,
+        "worldH": 9026
       }
     },
     {
@@ -744,121 +943,28 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1776196911100-qr8yi5kw",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Tracer",
-            "x": 1176,
-            "y": 1160,
+            "x": 11264.533648654331,
+            "y": 6114.668298867059,
             "scale": 2.5,
-            "portraitKey": "Tracer"
-          },
-          {
-            "id": "gcc-link-npc-emily",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Emily",
-            "x": 1216,
-            "y": 528,
-            "scale": 1.5,
-            "portraitKey": "Emily"
-          },
-          {
-            "id": "gcc-link-npc-iggy",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Iggy",
-            "x": 1798,
-            "y": 864,
-            "scale": 2,
-            "portraitKey": "Iggy"
-          },
-          {
-            "id": "gcc-link-hero-l-cio",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Lúcio",
-            "x": 1798,
-            "y": 1536,
-            "scale": 2.5,
-            "portraitKey": "Lúcio"
-          },
-          {
-            "id": "gcc-link-hero-mei",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Mei",
-            "x": 1216,
-            "y": 1872,
-            "scale": 2.5,
-            "portraitKey": "Mei"
-          },
-          {
-            "id": "gcc-link-faction-overwatch",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Overwatch",
-            "x": 500.646,
-            "y": 1475.35,
-            "scale": 5,
-            "bgColor": "#003b62",
-            "factionFilename": "Overwatch"
-          },
-          {
-            "id": "gcc-link-hero-winston",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Winston",
-            "x": 634,
-            "y": 864,
-            "scale": 2.5,
-            "portraitKey": "Winston"
+            "bgColor": null,
+            "portraitKey": "Tracer",
+            "codexNodeId": "cn-1776196911100-qr8yi5kw"
           }
         ],
-        "edges": [
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-emily"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-iggy"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-l-cio"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-mei"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-overwatch"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-winston"
-          }
-        ],
+        "edges": [],
         "display": {
           "showAngles": true,
           "showBreaks": true,
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": 63.99999999999994,
-          "panY": 34.25,
-          "zoom": 0.256875
-        }
+        "worldW": 11925,
+        "worldH": 6775
       }
     },
     {
@@ -874,6 +980,91 @@
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
       "birthday": "15 February 2050",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196918049-3szka57e",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Vendetta",
+            "x": 3969.9791455187233,
+            "y": 7287.610854481277,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Vendetta",
+            "codexNodeId": "cn-1776196918049-3szka57e"
+          },
+          {
+            "id": "cn-1792619758272-a554v05x",
+            "kind": "junction",
+            "x": 4155.131520267998,
+            "y": 7454.89,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792619758272-a554v05x"
+          },
+          {
+            "id": "cn-1792619740009-s000jqzh",
+            "kind": "junction",
+            "x": 4538.550867882808,
+            "y": 7454.89,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792619740009-s000jqzh"
+          },
+          {
+            "id": "cn-1792619746311-riv8ztb5",
+            "kind": "junction",
+            "x": 4793.010867882808,
+            "y": 7707.81,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792619746311-riv8ztb5"
+          },
+          {
+            "id": "cn-1776187942174-ajc0gk24",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Talon Empire",
+            "x": 4905.840460050719,
+            "y": 7393.850599613411,
+            "scale": 5,
+            "bgColor": "#000000",
+            "factionFilename": "Talon Empire",
+            "portraitKey": "Talon Empire",
+            "codexNodeId": "cn-1776187942174-ajc0gk24"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196918049-3szka57e",
+            "toId": "cn-1792619758272-a554v05x"
+          },
+          {
+            "fromId": "cn-1792619758272-a554v05x",
+            "toId": "cn-1792619740009-s000jqzh"
+          },
+          {
+            "fromId": "cn-1792619740009-s000jqzh",
+            "toId": "cn-1792619746311-riv8ztb5"
+          },
+          {
+            "fromId": "cn-1792619746311-riv8ztb5",
+            "toId": "cn-1776187942174-ajc0gk24"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 5866,
+        "worldH": 8354
+      },
       "connections": [
         {
           "kind": "faction",
@@ -940,6 +1131,91 @@
       "heroRole": "Damage",
       "heroSubRole": "Recon",
       "birthday": "15 April 2045",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196774051-4c33pw30",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Pharah",
+            "x": 9682.094691694538,
+            "y": 7201.703777059762,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Pharah",
+            "codexNodeId": "cn-1776196774051-4c33pw30"
+          },
+          {
+            "id": "cn-1792099723296-cfeqjnzv",
+            "kind": "junction",
+            "x": 9697.129972121262,
+            "y": 7254.25,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792099723296-cfeqjnzv"
+          },
+          {
+            "id": "cn-1792099730900-8frccqxy",
+            "kind": "junction",
+            "x": 9455.013828732597,
+            "y": 7254.253828732597,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792099730900-8frccqxy"
+          },
+          {
+            "id": "cn-1792099760262-zzbq7xkt",
+            "kind": "junction",
+            "x": 9357.78089937278,
+            "y": 7157.02089937278,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792099760262-zzbq7xkt"
+          },
+          {
+            "id": "cn-1776188753741-063ofkct",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Helix Securities",
+            "x": 9180.241657492008,
+            "y": 6872.448711895197,
+            "scale": 3,
+            "bgColor": "#efe1c6",
+            "factionFilename": "Helix Securities",
+            "portraitKey": "Helix Securities",
+            "codexNodeId": "cn-1776188753741-063ofkct"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196774051-4c33pw30",
+            "toId": "cn-1792099723296-cfeqjnzv"
+          },
+          {
+            "fromId": "cn-1792099723296-cfeqjnzv",
+            "toId": "cn-1792099730900-8frccqxy"
+          },
+          {
+            "fromId": "cn-1792099730900-8frccqxy",
+            "toId": "cn-1792099760262-zzbq7xkt"
+          },
+          {
+            "fromId": "cn-1792099760262-zzbq7xkt",
+            "toId": "cn-1776188753741-063ofkct"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 10343,
+        "worldH": 7862
+      },
       "connections": [
         {
           "kind": "faction",
@@ -964,6 +1240,65 @@
       "heroRole": "Damage",
       "heroSubRole": "Recon",
       "birthday": "17 April 2054",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196828122-lxi2dv4l",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Sierra",
+            "x": 8908.298998854827,
+            "y": 7209.490032830612,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Sierra",
+            "codexNodeId": "cn-1776196828122-lxi2dv4l"
+          },
+          {
+            "id": "cn-1794013103674-brknko1x",
+            "kind": "junction",
+            "x": 9194.270328173418,
+            "y": 7190.969372362904,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103674-brknko1x"
+          },
+          {
+            "id": "cn-1776188753741-063ofkct",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Helix Securities",
+            "x": 9180.241657492008,
+            "y": 6872.448711895197,
+            "scale": 3,
+            "bgColor": "#efe1c6",
+            "factionFilename": "Helix Securities",
+            "portraitKey": "Helix Securities",
+            "codexNodeId": "cn-1776188753741-063ofkct"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196828122-lxi2dv4l",
+            "toId": "cn-1794013103674-brknko1x"
+          },
+          {
+            "fromId": "cn-1794013103674-brknko1x",
+            "toId": "cn-1776188753741-063ofkct"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 9901,
+        "worldH": 7870
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1002,6 +1337,65 @@
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
       "birthday": "8 November 2034",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1779018790899-k6ebd8ik",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Emre",
+            "x": 8255.677237867701,
+            "y": 8085.317951746121,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Emre",
+            "codexNodeId": "cn-1779018790899-k6ebd8ik"
+          },
+          {
+            "id": "cn-1794013103670-brk8jn9p",
+            "kind": "junction",
+            "x": 8235.053618914208,
+            "y": 8064.861414452431,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103670-brk8jn9p"
+          },
+          {
+            "id": "cn-1776188568433-ct7ioax0",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Chernobog Conspiracy",
+            "x": 7858.325819121531,
+            "y": 7680.653725751763,
+            "scale": 4,
+            "bgColor": "#bb2516",
+            "factionFilename": "The Chernobog Conspiracy",
+            "portraitKey": "The Chernobog Conspiracy",
+            "codexNodeId": "cn-1776188568433-ct7ioax0"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1779018790899-k6ebd8ik",
+            "toId": "cn-1794013103670-brk8jn9p"
+          },
+          {
+            "fromId": "cn-1794013103670-brk8jn9p",
+            "toId": "cn-1776188568433-ct7ioax0"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 8916,
+        "worldH": 8746
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1072,101 +1466,50 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1776196880352-54bx34qm",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Symmetra",
-            "x": 1144.77,
-            "y": 992.002,
+            "x": 3672.1336381806805,
+            "y": 5812.92363818068,
             "scale": 2.5,
-            "portraitKey": "Symmetra"
+            "bgColor": null,
+            "portraitKey": "Symmetra",
+            "codexNodeId": "cn-1776196880352-54bx34qm"
           },
           {
-            "id": "gcc-link-npc-bhatt",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Bhatt",
-            "x": 1216,
-            "y": 528,
-            "scale": 1.5,
-            "portraitKey": "Bhatt"
+            "id": "cn-1794013103643-brk4ct5x",
+            "kind": "junction",
+            "x": 3948.280256630096,
+            "y": 6088.779984531931,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103643-brk4ct5x"
           },
           {
-            "id": "gcc-link-hero-domina",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Domina",
-            "x": 1615.79,
-            "y": 221.218,
-            "scale": 2.5,
-            "portraitKey": "Domina"
-          },
-          {
-            "id": "gcc-link-hero-lifeweaver",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Lifeweaver",
-            "x": 1774.5,
-            "y": 1393.64,
-            "scale": 2.5,
-            "portraitKey": "Lifeweaver"
-          },
-          {
-            "id": "gcc-link-faction-vishkar-corporation",
+            "id": "cn-1776188731351-mg1n7cxj",
             "kind": "faction",
             "role": "linked",
             "entityKind": "faction",
             "entityName": "Vishkar Corporation",
-            "x": 2036.85,
-            "y": 642.274,
+            "x": 3924.426875079512,
+            "y": 6064.636330883182,
             "scale": 3,
             "bgColor": "#aff7f1",
-            "factionFilename": "Vishkar Corporation"
-          },
-          {
-            "id": "gcc-link-hero-zenyatta",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Zenyatta",
-            "x": 577,
-            "y": 992,
-            "scale": 2.5,
-            "portraitKey": "Zenyatta"
+            "factionFilename": "Vishkar Corporation",
+            "portraitKey": "Vishkar Corporation",
+            "codexNodeId": "cn-1776188731351-mg1n7cxj"
           }
         ],
         "edges": [
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-bhatt"
+            "fromId": "cn-1776196880352-54bx34qm",
+            "toId": "cn-1794013103643-brk4ct5x"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-domina"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-lifeweaver"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-vishkar-corporation"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-zenyatta"
-          },
-          {
-            "fromId": "gcc-link-npc-bhatt",
-            "toId": "gcc-link-faction-vishkar-corporation"
-          },
-          {
-            "fromId": "gcc-link-hero-domina",
-            "toId": "gcc-link-faction-vishkar-corporation"
+            "fromId": "cn-1794013103643-brk4ct5x",
+            "toId": "cn-1776188731351-mg1n7cxj"
           }
         ],
         "display": {
@@ -1175,11 +1518,8 @@
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": -70.85344569845583,
-          "panY": 3.3243217591505356,
-          "zoom": 0.36089088000000014
-        }
+        "worldW": 4645,
+        "worldH": 6785
       },
       "connections": [
         {
@@ -1205,6 +1545,78 @@
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
       "birthday": "21 September 2019",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196905749-nf6n8qe5",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Torbjörn",
+            "x": 12264.600666135704,
+            "y": 9289.93696537704,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Torbjörn",
+            "codexNodeId": "cn-1776196905749-nf6n8qe5"
+          },
+          {
+            "id": "cn-1792806732919-6hkqz0bu",
+            "kind": "junction",
+            "x": 12395.658724454563,
+            "y": 9557.68849748655,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792806732919-6hkqz0bu"
+          },
+          {
+            "id": "cn-1792806671376-3wa6baln",
+            "kind": "junction",
+            "x": 12268.9,
+            "y": 9683.113929985968,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792806671376-3wa6baln"
+          },
+          {
+            "id": "cn-1776189030714-9smuueld",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Ironclad Guild",
+            "x": 12100.06990879092,
+            "y": 9759.501112780494,
+            "scale": 3,
+            "bgColor": "#494949",
+            "factionFilename": "Ironclad Guild",
+            "portraitKey": "Ironclad Guild",
+            "codexNodeId": "cn-1776189030714-9smuueld"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196905749-nf6n8qe5",
+            "toId": "cn-1792806732919-6hkqz0bu"
+          },
+          {
+            "fromId": "cn-1792806732919-6hkqz0bu",
+            "toId": "cn-1792806671376-3wa6baln"
+          },
+          {
+            "fromId": "cn-1792806671376-3wa6baln",
+            "toId": "cn-1776189030714-9smuueld"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 12925,
+        "worldH": 10480
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1229,6 +1641,65 @@
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
       "birthday": "1 October 2037",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1791839859282-8n8yl2te",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Ashe",
+            "x": 6382.569225296823,
+            "y": 6438.620774703177,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Ashe",
+            "codexNodeId": "cn-1791839859282-8n8yl2te"
+          },
+          {
+            "id": "cn-1794013103701-brkmvjbn",
+            "kind": "junction",
+            "x": 6422.769612648412,
+            "y": 6420.319156337178,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103701-brkmvjbn"
+          },
+          {
+            "id": "cn-1792630940143-4ay56gm8",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Deadlock Rebels",
+            "x": 6162.97,
+            "y": 6102.01753797118,
+            "scale": 3,
+            "bgColor": "#5a1f1e",
+            "factionFilename": "Deadlock Rebels",
+            "portraitKey": "Deadlock Rebels",
+            "codexNodeId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1791839859282-8n8yl2te",
+            "toId": "cn-1794013103701-brkmvjbn"
+          },
+          {
+            "fromId": "cn-1794013103701-brkmvjbn",
+            "toId": "cn-1792630940143-4ay56gm8"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7043,
+        "worldH": 7099
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1267,6 +1738,65 @@
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
       "birthday": "3 November 2038",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196496819-icb5pcwb",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Hanzo",
+            "x": 5192.815498455766,
+            "y": 8623.918915447295,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Hanzo",
+            "codexNodeId": "cn-1776196496819-icb5pcwb"
+          },
+          {
+            "id": "cn-1794013103626-brks9qt0",
+            "kind": "junction",
+            "x": 5503.186445769114,
+            "y": 8832.867064641185,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103626-brks9qt0"
+          },
+          {
+            "id": "cn-1776189217121-65fhi9r3",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Shimada Clan",
+            "x": 5513.557393082461,
+            "y": 8741.815213835076,
+            "scale": 3,
+            "bgColor": null,
+            "factionFilename": "Shimada Clan",
+            "portraitKey": "Shimada Clan",
+            "codexNodeId": "cn-1776189217121-65fhi9r3"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196496819-icb5pcwb",
+            "toId": "cn-1794013103626-brks9qt0"
+          },
+          {
+            "fromId": "cn-1794013103626-brks9qt0",
+            "toId": "cn-1776189217121-65fhi9r3"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 6234,
+        "worldH": 9462
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1319,6 +1849,65 @@
       "heroRole": "Support",
       "heroSubRole": "Tactician",
       "birthday": "31 December 2046",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196863784-f3kkr8v0",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Sombra",
+            "x": 8574.724568331807,
+            "y": 9079.335431668193,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Sombra",
+            "codexNodeId": "cn-1776196863784-f3kkr8v0"
+          },
+          {
+            "id": "cn-1794013103645-brk7p7pk",
+            "kind": "junction",
+            "x": 8856.392272970952,
+            "y": 9371.635466751175,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103645-brk7p7pk"
+          },
+          {
+            "id": "cn-1776188555343-jwbghswm",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "The Sombra Collective",
+            "x": 8766.059977610095,
+            "y": 9291.935501834158,
+            "scale": 4,
+            "bgColor": "#6433b7",
+            "factionFilename": "The Sombra Collective",
+            "portraitKey": "The Sombra Collective",
+            "codexNodeId": "cn-1776188555343-jwbghswm"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196863784-f3kkr8v0",
+            "toId": "cn-1794013103645-brk7p7pk"
+          },
+          {
+            "fromId": "cn-1794013103645-brk7p7pk",
+            "toId": "cn-1776188555343-jwbghswm"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 9607,
+        "worldH": 10132
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1386,154 +1975,154 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1776189507539-assf49p2",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Ana",
-            "x": 1215.43,
-            "y": 1180.83,
+            "x": 10688.141428624242,
+            "y": 8098.543085962947,
             "scale": 2.5,
-            "portraitKey": "Ana"
+            "bgColor": null,
+            "portraitKey": "Ana",
+            "codexNodeId": "cn-1776189507539-assf49p2"
           },
           {
-            "id": "gcc-link-hero-cassidy",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Cassidy",
-            "x": 1216,
-            "y": 528,
-            "scale": 2.5,
-            "portraitKey": "Cassidy"
+            "id": "cn-1792428030307-s7980374",
+            "kind": "junction",
+            "x": 10820.1,
+            "y": 8298.665534126347,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792428030307-s7980374"
           },
           {
-            "id": "gcc-link-hero-emre",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Emre",
-            "x": 1691,
-            "y": 725,
-            "scale": 2.5,
-            "portraitKey": "Emre"
+            "id": "cn-1792112563502-lcntz258",
+            "kind": "junction",
+            "x": 10693.925512749325,
+            "y": 8171.198888788895,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792112563502-lcntz258"
           },
           {
-            "id": "gcc-link-faction-overwatch",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Overwatch",
-            "x": 1899.09,
-            "y": 980,
-            "scale": 5,
-            "bgColor": "#003b62",
-            "factionFilename": "Overwatch"
+            "id": "cn-1792426888865-z7dg9xgl",
+            "kind": "junction",
+            "x": 10253.923358117734,
+            "y": 8171.194450684074,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792426888865-z7dg9xgl"
           },
           {
-            "id": "gcc-link-hero-pharah",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Pharah",
-            "x": 1691,
-            "y": 1675,
-            "scale": 2.5,
-            "portraitKey": "Pharah"
+            "id": "cn-1792112560156-yd2fefew",
+            "kind": "junction",
+            "x": 10221.1,
+            "y": 8139.661918907968,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792112560156-yd2fefew"
           },
           {
-            "id": "gcc-link-hero-reaper",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Reaper",
-            "x": 1216,
-            "y": 1872,
-            "scale": 2.5,
-            "portraitKey": "Reaper"
+            "id": "cn-1792102958102-nobafkld",
+            "kind": "junction",
+            "x": 10221.090439155147,
+            "y": 7996.220439155147,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792102958102-nobafkld"
           },
           {
-            "id": "gcc-link-hero-reinhardt",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Reinhardt",
-            "x": 741,
-            "y": 1675,
-            "scale": 2.5,
-            "portraitKey": "Reinhardt"
+            "id": "cn-1792103136357-0gh6z1tj",
+            "kind": "junction",
+            "x": 10029.70186501684,
+            "y": 7804.830227862941,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792103136357-0gh6z1tj"
           },
           {
-            "id": "gcc-link-npc-sam",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Sam",
-            "x": 634,
-            "y": 1536,
-            "scale": 1.5,
-            "portraitKey": "Sam"
+            "id": "cn-1792104451208-iyk0hjew",
+            "kind": "junction",
+            "x": 9984.559573939703,
+            "y": 7757.474573939704,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792104451208-iyk0hjew"
           },
           {
-            "id": "gcc-link-faction-search-rescue",
+            "id": "cn-1792104658497-s0lqr5go",
+            "kind": "junction",
+            "x": 9763.45127594299,
+            "y": 7756.01,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792104658497-s0lqr5go"
+          },
+          {
+            "id": "cn-1792104616149-kh3xco17",
+            "kind": "junction",
+            "x": 9637.450482616347,
+            "y": 7754.5470639550895,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792104616149-kh3xco17"
+          },
+          {
+            "id": "cn-1776188382194-qbacqou6",
             "kind": "faction",
             "role": "linked",
             "entityKind": "faction",
             "entityName": "Search & Rescue",
-            "x": 544,
-            "y": 1200,
+            "x": 9452.44,
+            "y": 7616.984791108163,
             "scale": 2,
             "bgColor": "#e8b460",
-            "factionFilename": "Search & Rescue"
-          },
-          {
-            "id": "gcc-link-hero-soldier-76",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Soldier 76",
-            "x": 741,
-            "y": 725,
-            "scale": 2.5,
-            "portraitKey": "Soldier 76"
+            "factionFilename": "Search & Rescue",
+            "portraitKey": "Search & Rescue",
+            "codexNodeId": "cn-1776188382194-qbacqou6"
           }
         ],
         "edges": [
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-cassidy"
+            "fromId": "cn-1776189507539-assf49p2",
+            "toId": "cn-1792428030307-s7980374"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-emre"
+            "fromId": "cn-1792428030307-s7980374",
+            "toId": "cn-1792112563502-lcntz258"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-overwatch"
+            "fromId": "cn-1792112563502-lcntz258",
+            "toId": "cn-1792426888865-z7dg9xgl"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-pharah"
+            "fromId": "cn-1792426888865-z7dg9xgl",
+            "toId": "cn-1792112560156-yd2fefew"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-reaper"
+            "fromId": "cn-1792112560156-yd2fefew",
+            "toId": "cn-1792102958102-nobafkld"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-reinhardt"
+            "fromId": "cn-1792102958102-nobafkld",
+            "toId": "cn-1792103136357-0gh6z1tj"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-search-rescue"
+            "fromId": "cn-1792103136357-0gh6z1tj",
+            "toId": "cn-1792104451208-iyk0hjew"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-soldier-76"
+            "fromId": "cn-1792104451208-iyk0hjew",
+            "toId": "cn-1792104658497-s0lqr5go"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-sam"
+            "fromId": "cn-1792104658497-s0lqr5go",
+            "toId": "cn-1792104616149-kh3xco17"
+          },
+          {
+            "fromId": "cn-1792104616149-kh3xco17",
+            "toId": "cn-1776188382194-qbacqou6"
           }
         ],
         "display": {
@@ -1542,11 +2131,8 @@
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": 19.427637513659562,
-          "panY": -111.26781920742194,
-          "zoom": 0.2534138880000001
-        }
+        "worldW": 11349,
+        "worldH": 8759
       },
       "connections": [
         {
@@ -1600,6 +2186,65 @@
       "heroRole": "Support",
       "heroSubRole": "Tactician",
       "birthday": "14 July 2045",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196962623-ddk7o1p4",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Zenyatta",
+            "x": 13496.55050426443,
+            "y": 9372.35840740179,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Zenyatta",
+            "codexNodeId": "cn-1776196962623-ddk7o1p4"
+          },
+          {
+            "id": "cn-1794013103657-brk3cabd",
+            "kind": "junction",
+            "x": 13579.478816734765,
+            "y": 9713.604528923232,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103657-brk3cabd"
+          },
+          {
+            "id": "cn-1776188526366-hpc13j68",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Shambali Order",
+            "x": 13290.4071292051,
+            "y": 9682.85065044467,
+            "scale": 4,
+            "bgColor": "#d99012",
+            "factionFilename": "Shambali Order",
+            "portraitKey": "Shambali Order",
+            "codexNodeId": "cn-1776188526366-hpc13j68"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196962623-ddk7o1p4",
+            "toId": "cn-1794013103657-brk3cabd"
+          },
+          {
+            "fromId": "cn-1794013103657-brk3cabd",
+            "toId": "cn-1776188526366-hpc13j68"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 14157,
+        "worldH": 10523
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1628,159 +2273,50 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1780236405965-1wyqsh9p",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Kiriko",
-            "x": 1500.86,
-            "y": 636.589,
+            "x": 5863.234416133674,
+            "y": 9490.118113616803,
             "scale": 2.5,
-            "portraitKey": "Kiriko"
+            "bgColor": null,
+            "portraitKey": "Kiriko",
+            "codexNodeId": "cn-1780236405965-1wyqsh9p"
           },
           {
-            "id": "gcc-link-npc-asa",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Asa",
-            "x": 763.057,
-            "y": 1515.11,
-            "scale": 1.5,
-            "portraitKey": "Asa"
+            "id": "cn-1793969484722-fsb80ogn",
+            "kind": "junction",
+            "x": 6246.438119638516,
+            "y": 9786.934472911604,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1793969484722-fsb80ogn"
           },
           {
-            "id": "gcc-link-hero-hanzo",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Hanzo",
-            "x": 691.057,
-            "y": 433.571,
-            "scale": 2.5,
-            "portraitKey": "Hanzo"
-          },
-          {
-            "id": "gcc-link-npc-kamori-san",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Kamori-san",
-            "x": 328.005,
-            "y": 1078.24,
-            "scale": 1.5,
-            "portraitKey": "Kamori-san"
-          },
-          {
-            "id": "gcc-link-hero-mizuki",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Mizuki",
-            "x": 1764.93,
-            "y": 1513.03,
-            "scale": 2.5,
-            "portraitKey": "Mizuki"
-          },
-          {
-            "id": "gcc-link-npc-toshiro",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Toshiro",
-            "x": 1120.15,
-            "y": 1868.57,
-            "scale": 2,
-            "portraitKey": "Toshiro"
-          },
-          {
-            "id": "gcc-link-faction-yamagami-blades",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Yamagami Blades",
-            "x": 1121.51,
-            "y": 1087.81,
-            "scale": 2,
-            "factionFilename": "Yamagami Blades"
-          },
-          {
-            "id": "gcc-link-faction-yokai-gang",
+            "id": "cn-1776189240157-xzlqn0e9",
             "kind": "faction",
             "role": "linked",
             "entityKind": "faction",
             "entityName": "Yokai Gang",
-            "x": 2032.11,
-            "y": 785.654,
+            "x": 6212.199569159265,
+            "y": 9646.735570847319,
             "scale": 3,
             "bgColor": "#5acfe5",
-            "factionFilename": "Yokai Gang"
+            "factionFilename": "Yokai Gang",
+            "portraitKey": "Yokai Gang",
+            "codexNodeId": "cn-1776189240157-xzlqn0e9"
           }
         ],
         "edges": [
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-asa"
+            "fromId": "cn-1780236405965-1wyqsh9p",
+            "toId": "cn-1793969484722-fsb80ogn"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-hanzo"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-kamori-san"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-mizuki"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-toshiro"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-yamagami-blades"
-          },
-          {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-yokai-gang"
-          },
-          {
-            "fromId": "gcc-link-npc-asa",
-            "toId": "gcc-link-faction-yamagami-blades"
-          },
-          {
-            "fromId": "gcc-link-hero-mizuki",
-            "toId": "gcc-link-faction-yokai-gang"
-          },
-          {
-            "fromId": "gcc-link-hero-hanzo",
-            "toId": "gcc-link-npc-asa"
-          },
-          {
-            "fromId": "gcc-link-npc-asa",
-            "toId": "gcc-link-npc-kamori-san"
-          },
-          {
-            "fromId": "gcc-link-npc-asa",
-            "toId": "gcc-link-npc-toshiro"
-          },
-          {
-            "fromId": "gcc-link-hero-hanzo",
-            "toId": "gcc-link-npc-toshiro"
-          },
-          {
-            "fromId": "gcc-link-npc-kamori-san",
-            "toId": "gcc-link-npc-toshiro"
-          },
-          {
-            "fromId": "gcc-link-hero-mizuki",
-            "toId": "gcc-link-npc-toshiro"
-          },
-          {
-            "fromId": "gcc-link-faction-yamagami-blades",
-            "toId": "gcc-link-npc-toshiro"
+            "fromId": "cn-1793969484722-fsb80ogn",
+            "toId": "cn-1776189240157-xzlqn0e9"
           }
         ],
         "display": {
@@ -1789,11 +2325,8 @@
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": -31.203248742187725,
-          "panY": -117.74218896679702,
-          "zoom": 0.3608908800000002
-        }
+        "worldW": 6933,
+        "worldH": 10367
       },
       "connections": [
         {
@@ -1847,6 +2380,65 @@
       "heroRole": "Support",
       "heroSubRole": "Medic",
       "birthday": "4 April 2029",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196706068-vf6jo3yv",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Moira",
+            "x": 6228.59539844035,
+            "y": 7453.042597702217,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Moira",
+            "codexNodeId": "cn-1776196706068-vf6jo3yv"
+          },
+          {
+            "id": "cn-1794013103638-brkjxyxm",
+            "kind": "junction",
+            "x": 6493.076321482022,
+            "y": 7455.677719801801,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103638-brkjxyxm"
+          },
+          {
+            "id": "cn-1776189352476-l8qtx93r",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Oasis Ministries",
+            "x": 6457.557244523692,
+            "y": 7158.312841901385,
+            "scale": 3,
+            "bgColor": "#8c71be",
+            "factionFilename": "Oasis Ministries",
+            "portraitKey": "Oasis Ministries",
+            "codexNodeId": "cn-1776189352476-l8qtx93r"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196706068-vf6jo3yv",
+            "toId": "cn-1794013103638-brkjxyxm"
+          },
+          {
+            "fromId": "cn-1794013103638-brkjxyxm",
+            "toId": "cn-1776189352476-l8qtx93r"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 7178,
+        "worldH": 8114
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1871,6 +2463,104 @@
       "heroRole": "Support",
       "heroSubRole": "Survivor",
       "birthday": "22 September 2053",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196223986-3odd2n1h",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Brigitte",
+            "x": 11980.976892539586,
+            "y": 8523.82,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Brigitte",
+            "codexNodeId": "cn-1776196223986-3odd2n1h"
+          },
+          {
+            "id": "cn-1792807014651-rprscp25",
+            "kind": "junction",
+            "x": 12113,
+            "y": 8994.786878765462,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792807014651-rprscp25"
+          },
+          {
+            "id": "cn-1792807018948-0kt3987a",
+            "kind": "junction",
+            "x": 11698.71408369271,
+            "y": 9406.943657033342,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792807018948-0kt3987a"
+          },
+          {
+            "id": "cn-1792807058391-ey9cxbne",
+            "kind": "junction",
+            "x": 11697.240069195615,
+            "y": 9764.850069195614,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792807058391-ey9cxbne"
+          },
+          {
+            "id": "cn-1792807062067-boy752qa",
+            "kind": "junction",
+            "x": 11859.125243571947,
+            "y": 9926.705783273166,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792807062067-boy752qa"
+          },
+          {
+            "id": "cn-1776189030714-9smuueld",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Ironclad Guild",
+            "x": 12100.06990879092,
+            "y": 9759.501112780494,
+            "scale": 3,
+            "bgColor": "#494949",
+            "factionFilename": "Ironclad Guild",
+            "portraitKey": "Ironclad Guild",
+            "codexNodeId": "cn-1776189030714-9smuueld"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196223986-3odd2n1h",
+            "toId": "cn-1792807014651-rprscp25"
+          },
+          {
+            "fromId": "cn-1792807014651-rprscp25",
+            "toId": "cn-1792807018948-0kt3987a"
+          },
+          {
+            "fromId": "cn-1792807018948-0kt3987a",
+            "toId": "cn-1792807058391-ey9cxbne"
+          },
+          {
+            "fromId": "cn-1792807058391-ey9cxbne",
+            "toId": "cn-1792807062067-boy752qa"
+          },
+          {
+            "fromId": "cn-1792807062067-boy752qa",
+            "toId": "cn-1776189030714-9smuueld"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 12821,
+        "worldH": 10480
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1895,6 +2585,65 @@
       "heroRole": "Support",
       "heroSubRole": "Survivor",
       "birthday": "21 December 2060",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "cn-1776196520283-ijn6b6y7",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Illari",
+            "x": 7502.630269622761,
+            "y": 9738.55,
+            "scale": 2.5,
+            "bgColor": null,
+            "portraitKey": "Illari",
+            "codexNodeId": "cn-1776196520283-ijn6b6y7"
+          },
+          {
+            "id": "cn-1794013103621-brk45rfn",
+            "kind": "junction",
+            "x": 7455.120134811381,
+            "y": 9870.550079981092,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1794013103621-brk45rfn"
+          },
+          {
+            "id": "cn-1776188817340-0bswtany",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Inti Warriors",
+            "x": 7107.61,
+            "y": 9702.550159962186,
+            "scale": 3,
+            "bgColor": "#105b84",
+            "factionFilename": "Inti Warriors",
+            "portraitKey": "Inti Warriors",
+            "codexNodeId": "cn-1776188817340-0bswtany"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "cn-1776196520283-ijn6b6y7",
+            "toId": "cn-1794013103621-brk45rfn"
+          },
+          {
+            "fromId": "cn-1794013103621-brk45rfn",
+            "toId": "cn-1776188817340-0bswtany"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "worldW": 8163,
+        "worldH": 10423
+      },
       "connections": [
         {
           "kind": "faction",
@@ -1937,128 +2686,180 @@
         "v": 1,
         "nodes": [
           {
-            "id": "gcc-subject",
+            "id": "cn-1778780254335-7peq5ez9",
             "kind": "hero",
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Mizuki",
-            "x": 543.351,
-            "y": 1112.35,
+            "x": 10720.47861685549,
+            "y": 7236.70043718151,
             "scale": 2.5,
-            "portraitKey": "Mizuki"
+            "bgColor": null,
+            "portraitKey": "Mizuki",
+            "codexNodeId": "cn-1778780254335-7peq5ez9"
           },
           {
-            "id": "gcc-link-faction-hashimoto-clan",
-            "kind": "faction",
-            "role": "linked",
-            "entityKind": "faction",
-            "entityName": "Hashimoto Clan",
-            "x": 1912.18,
-            "y": 1660.32,
+            "id": "cn-1792767169524-g4cnlwof",
+            "kind": "junction",
+            "x": 10917.911123289545,
+            "y": 7434.111123289544,
             "scale": 3,
-            "factionFilename": "Hashimoto Clan"
+            "bgColor": null,
+            "codexNodeId": "cn-1792767169524-g4cnlwof"
           },
           {
-            "id": "gcc-link-hero-kiriko",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Kiriko",
-            "x": 1871.63,
-            "y": 777.997,
-            "scale": 2.5,
-            "portraitKey": "Kiriko"
+            "id": "cn-1792767171839-33hwrmyo",
+            "kind": "junction",
+            "x": 10975.30467782211,
+            "y": 7433.589033413486,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792767171839-33hwrmyo"
           },
           {
-            "id": "gcc-link-npc-nobuto",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Nobuto",
-            "x": 1034.54,
-            "y": 355.708,
-            "scale": 1.5,
-            "portraitKey": "Nobuto"
+            "id": "cn-1792767007313-aptd9trn",
+            "kind": "junction",
+            "x": 10974.941384094413,
+            "y": 7598.601384094412,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792767007313-aptd9trn"
           },
           {
-            "id": "gcc-link-hero-shion",
-            "kind": "hero",
-            "role": "linked",
-            "entityKind": "hero",
-            "entityName": "Shion",
-            "x": 1176,
-            "y": 1696.32,
-            "scale": 2.5,
-            "portraitKey": "Shion"
+            "id": "cn-1792767566920-8lnlscu4",
+            "kind": "junction",
+            "x": 11525.238189246558,
+            "y": 8147.624028416207,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792767566920-8lnlscu4"
           },
           {
-            "id": "gcc-link-npc-toshiro",
-            "kind": "npc",
-            "role": "linked",
-            "entityKind": "npc",
-            "entityName": "Toshiro",
-            "x": 1579.99,
-            "y": 1145.58,
-            "scale": 2,
-            "portraitKey": "Toshiro"
+            "id": "cn-1792767526156-841ab7yv",
+            "kind": "junction",
+            "x": 11526.11404750483,
+            "y": 8207.335488943369,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792767526156-841ab7yv"
           },
           {
-            "id": "gcc-link-faction-yokai-gang",
+            "id": "cn-1792767008070-c2eviruc",
+            "kind": "junction",
+            "x": 11404.708619745883,
+            "y": 8328.731380254118,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792767008070-c2eviruc"
+          },
+          {
+            "id": "cn-1792767009294-negfj6av",
+            "kind": "junction",
+            "x": 11404.7,
+            "y": 9210.470106890914,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792767009294-negfj6av"
+          },
+          {
+            "id": "cn-1792766902662-h8eh4xz3",
+            "kind": "junction",
+            "x": 10301.842419322771,
+            "y": 10316.29316620985,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792766902662-h8eh4xz3"
+          },
+          {
+            "id": "cn-1792766919820-vpal8acs",
+            "kind": "junction",
+            "x": 7634.194377947566,
+            "y": 10318.349999999999,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792766919820-vpal8acs"
+          },
+          {
+            "id": "cn-1792766946111-37mflom0",
+            "kind": "junction",
+            "x": 7476.042929947154,
+            "y": 10161.4,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792766946111-37mflom0"
+          },
+          {
+            "id": "cn-1792766956270-13zlkv2g",
+            "kind": "junction",
+            "x": 6726.831983305061,
+            "y": 10161.371983305062,
+            "scale": 3,
+            "bgColor": null,
+            "codexNodeId": "cn-1792766956270-13zlkv2g"
+          },
+          {
+            "id": "cn-1776189240157-xzlqn0e9",
             "kind": "faction",
             "role": "linked",
             "entityKind": "faction",
             "entityName": "Yokai Gang",
-            "x": 1708.53,
-            "y": 247.708,
+            "x": 6212.199569159265,
+            "y": 9646.735570847319,
             "scale": 3,
             "bgColor": "#5acfe5",
-            "factionFilename": "Yokai Gang"
+            "factionFilename": "Yokai Gang",
+            "portraitKey": "Yokai Gang",
+            "codexNodeId": "cn-1776189240157-xzlqn0e9"
           }
         ],
         "edges": [
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-hashimoto-clan"
+            "fromId": "cn-1778780254335-7peq5ez9",
+            "toId": "cn-1792767169524-g4cnlwof"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-kiriko"
+            "fromId": "cn-1792767169524-g4cnlwof",
+            "toId": "cn-1792767171839-33hwrmyo"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-nobuto"
+            "fromId": "cn-1792767171839-33hwrmyo",
+            "toId": "cn-1792767007313-aptd9trn"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-hero-shion"
+            "fromId": "cn-1792767007313-aptd9trn",
+            "toId": "cn-1792767566920-8lnlscu4"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-npc-toshiro"
+            "fromId": "cn-1792767566920-8lnlscu4",
+            "toId": "cn-1792767526156-841ab7yv"
           },
           {
-            "fromId": "gcc-subject",
-            "toId": "gcc-link-faction-yokai-gang"
+            "fromId": "cn-1792767526156-841ab7yv",
+            "toId": "cn-1792767008070-c2eviruc"
           },
           {
-            "fromId": "gcc-link-hero-kiriko",
-            "toId": "gcc-link-faction-yokai-gang"
+            "fromId": "cn-1792767008070-c2eviruc",
+            "toId": "cn-1792767009294-negfj6av"
           },
           {
-            "fromId": "gcc-link-npc-nobuto",
-            "toId": "gcc-link-faction-yokai-gang"
+            "fromId": "cn-1792767009294-negfj6av",
+            "toId": "cn-1792766902662-h8eh4xz3"
           },
           {
-            "fromId": "gcc-link-faction-hashimoto-clan",
-            "toId": "gcc-link-hero-shion"
+            "fromId": "cn-1792766902662-h8eh4xz3",
+            "toId": "cn-1792766919820-vpal8acs"
           },
           {
-            "fromId": "gcc-link-faction-hashimoto-clan",
-            "toId": "gcc-link-npc-toshiro"
+            "fromId": "cn-1792766919820-vpal8acs",
+            "toId": "cn-1792766946111-37mflom0"
           },
           {
-            "fromId": "gcc-link-hero-kiriko",
-            "toId": "gcc-link-npc-toshiro"
+            "fromId": "cn-1792766946111-37mflom0",
+            "toId": "cn-1792766956270-13zlkv2g"
+          },
+          {
+            "fromId": "cn-1792766956270-13zlkv2g",
+            "toId": "cn-1776189240157-xzlqn0e9"
           }
         ],
         "display": {
@@ -2067,11 +2868,8 @@
           "showPackets": true,
           "snapAngles": true
         },
-        "view": {
-          "panX": -83.6958388221878,
-          "panY": -70.183968166797,
-          "zoom": 0.3608908800000002
-        }
+        "worldW": 11971,
+        "worldH": 10763
       },
       "connections": [
         {
@@ -2110,8 +2908,8 @@
       "name": "Hudson",
       "description": "",
       "relevantLocations": [],
-      "heroRole": "Support",
-      "heroSubRole": "",
+      "heroRole": "Damage",
+      "heroSubRole": "Recon",
       "birthday": ""
     }
   ]

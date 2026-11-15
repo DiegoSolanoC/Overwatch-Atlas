@@ -387,29 +387,44 @@ export function isActiveChatterLineForCommentary(line) {
 }
 
 /**
- * @param {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
- * @returns {string[]}
+ * @param {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation | null | undefined} conversation
+ * @returns {string}
  */
-export function listStoryCommentaryTheaterNames(conversations) {
+function speakersHintForDialogue(conversation) {
+    const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
     /** @type {string[]} */
-    const out = [];
+    const heroes = [];
     const seen = new Set();
-
-    const push = (raw) => {
-        const name = String(raw || '').trim();
-        if (!name) return;
-        const key = normalizeForPredictiveMatch(name);
-        if (!key || seen.has(key)) return;
+    for (const line of lines) {
+        const hero = String(line?.hero || '').trim();
+        if (!hero) continue;
+        const key = hero.toLowerCase();
+        if (seen.has(key)) continue;
         seen.add(key);
-        out.push(name);
-    };
+        heroes.push(hero);
+        if (heroes.length >= 3) break;
+    }
+    return heroes.join(' · ');
+}
+
+/**
+ * Autocomplete options for story commentary. Duplicate normalized titles
+ * (e.g. "Seen you before" vs "Seen you Before") stay separate and get a
+ * speaker hint in {@link listLabel} so the picker can tell them apart.
+ * @param {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @returns {{ name: string, listLabel: string, theaterId?: string, lineId?: string }[]}
+ */
+export function listStoryCommentaryTheaterOptions(conversations) {
+    /** @type {{ name: string, listLabel: string, theaterId?: string, lineId?: string, norm: string }[]} */
+    const raw = [];
+    /** @type {Map<string, number>} */
+    const normCounts = new Map();
 
     const list = Array.isArray(conversations) ? conversations : [];
     for (const row of list) {
         if (!row) continue;
 
         if (isChatterEntry(row)) {
-            // Chatter hubs stay active; Classic map lines are gated per-line below.
             if (String(row.status || 'active') === 'removed') continue;
             const labelCounts = new Map();
             for (const line of row.lines || []) {
@@ -422,16 +437,58 @@ export function listStoryCommentaryTheaterNames(conversations) {
                 if (!base) continue;
                 const n = (labelCounts.get(base) || 0) + 1;
                 labelCounts.set(base, n);
-                push(n === 1 ? base : `${base} (${n})`);
+                const name = n === 1 ? base : `${base} (${n})`;
+                const norm = normalizeForPredictiveMatch(name);
+                if (!norm) continue;
+                normCounts.set(norm, (normCounts.get(norm) || 0) + 1);
+                raw.push({
+                    name,
+                    listLabel: name,
+                    theaterId: String(row.id || '').trim() || undefined,
+                    lineId: String(line.id || '').trim() || undefined,
+                    norm,
+                });
             }
             continue;
         }
 
         if (!isDialogueEligibleForCommentary(row)) continue;
-        push(row.name);
+        const name = String(row.name || '').trim();
+        if (!name) continue;
+        const norm = normalizeForPredictiveMatch(name);
+        if (!norm) continue;
+        normCounts.set(norm, (normCounts.get(norm) || 0) + 1);
+        raw.push({
+            name,
+            listLabel: name,
+            theaterId: String(row.id || '').trim() || undefined,
+            norm,
+        });
     }
 
-    return out.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+    for (const opt of raw) {
+        if ((normCounts.get(opt.norm) || 0) < 2 || !opt.theaterId || opt.lineId) continue;
+        const row = list.find((r) => String(r?.id || '') === opt.theaterId);
+        if (!row || isChatterEntry(row)) continue;
+        const hint = speakersHintForDialogue(row);
+        if (hint) opt.listLabel = `${opt.name} (${hint})`;
+    }
+
+    raw.sort((a, b) => a.listLabel.localeCompare(b.listLabel, undefined, { sensitivity: 'base' }));
+    return raw.map(({ name, listLabel, theaterId, lineId }) => ({
+        name,
+        listLabel,
+        theaterId,
+        lineId,
+    }));
+}
+
+/**
+ * @param {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @returns {string[]}
+ */
+export function listStoryCommentaryTheaterNames(conversations) {
+    return listStoryCommentaryTheaterOptions(conversations).map((opt) => opt.listLabel);
 }
 
 /**
@@ -499,21 +556,41 @@ export function resolveStoryCommentaryTheaterTarget(nameOrEntry, conversations) 
         }
     }
 
-    // 2) Legacy / autocomplete: exact conversation / chatter-hub name.
+    // 2) Legacy / autocomplete: conversation / chatter-hub name.
+    // Prefer exact string, then unique case-insensitive — never silently pick the
+    // wrong dialogue when titles only differ by capitalization
+    // ("Seen you Before" vs "Seen you before").
     const needle = normalizeForPredictiveMatch(name);
     if (!needle) return null;
 
-    const nameMatches = list.filter(
-        (row) => normalizeForPredictiveMatch(row?.name) === needle,
+    const exactNameMatches = list.filter(
+        (row) => String(row?.name || '').trim() === name,
     );
-    if (nameMatches.length) {
-        const row =
-            nameMatches.find((r) => String(r.status || 'active') !== 'removed')
-            || nameMatches[0];
+    if (exactNameMatches.length === 1) {
+        const row = exactNameMatches[0];
         if (isChatterEntry(row)) {
             return { kind: 'chatter-hub', conversation: row, line: null };
         }
         return { kind: 'dialogue', conversation: row, line: null };
+    }
+
+    const nameMatches = list.filter(
+        (row) => normalizeForPredictiveMatch(row?.name) === needle,
+    );
+    const activeNameMatches = nameMatches.filter(
+        (r) => String(r.status || 'active') !== 'removed',
+    );
+    const pool = activeNameMatches.length ? activeNameMatches : nameMatches;
+    if (pool.length === 1) {
+        const row = pool[0];
+        if (isChatterEntry(row)) {
+            return { kind: 'chatter-hub', conversation: row, line: null };
+        }
+        return { kind: 'dialogue', conversation: row, line: null };
+    }
+    if (pool.length > 1) {
+        // Ambiguous without theaterId — do not guess.
+        return null;
     }
 
     // 2b) Soft dialogue name (typos like "Ilegal Activities" → "Illegal Activities").
