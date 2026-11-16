@@ -8,6 +8,12 @@ import {
 } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { FILES } from '../../../../data/registry.js';
 
+/**
+ * Stable cache key for static `codex-labels.json`.
+ * Bump when the checked-in JSON changes so browsers refresh without Date.now().
+ */
+export const CODEX_LABELS_CACHE_VERSION = '2026-11-15';
+
 function countCodexNodes(data) {
     if (!data) return 0;
     if (Array.isArray(data)) return data.length;
@@ -19,7 +25,9 @@ function countCodexNodes(data) {
 
 async function fetchStaticCodexJson() {
     try {
-        const r = await fetch(`${FILES.connectionCodex.codexLabels}?v=${Date.now()}`);
+        const r = await fetch(
+            `${FILES.connectionCodex.codexLabels}?v=${encodeURIComponent(CODEX_LABELS_CACHE_VERSION)}`,
+        );
         if (!r.ok) return { ok: false };
         const data = await r.json();
         return { ok: true, data };
@@ -31,7 +39,10 @@ async function fetchStaticCodexJson() {
 async function fetchDevApiCodexJson() {
     if (!isCodexPersistToRepoAvailable()) return { ok: false };
     try {
-        const codexGet = resolveCodexRepoApiUrl(`api/codex?v=${Date.now()}`);
+        // Stable query — rely on server freshness when editing; avoid busting every open.
+        const codexGet = resolveCodexRepoApiUrl(
+            `api/codex?v=${encodeURIComponent(CODEX_LABELS_CACHE_VERSION)}`,
+        );
         const r = await fetch(codexGet);
         if (!r.ok) return { ok: false };
         const ct = r.headers.get('content-type') || '';
@@ -44,9 +55,9 @@ async function fetchDevApiCodexJson() {
 }
 
 /**
- * Canonical Codex snapshot: dev API when it returns nodes; otherwise static JSON on disk.
- * If the API responds 200 with an empty graph (e.g. server not restarted after a data path move),
- * fall back to `src/data/codex/codex-labels.json` instead of wiping the board.
+ * Canonical Codex snapshot: prefer API when it has nodes; otherwise static JSON.
+ * When the persist API is available, fetch API + static in parallel so an empty
+ * or slow API never serializes ahead of the cached static file.
  * @returns {Promise<{ ok: true, data: unknown } | { ok: false }>}
  */
 export async function fetchCanonicalCodexJson() {
@@ -54,15 +65,22 @@ export async function fetchCanonicalCodexJson() {
         && (window.location.protocol === 'http:' || window.location.protocol === 'https:');
     if (!isHttp) return { ok: false };
 
-    const fromApi = await fetchDevApiCodexJson();
+    const persist = isCodexPersistToRepoAvailable();
+
+    if (!persist) {
+        return fetchStaticCodexJson();
+    }
+
+    const [fromApi, fromStatic] = await Promise.all([
+        fetchDevApiCodexJson(),
+        fetchStaticCodexJson(),
+    ]);
     const apiNodeCount = fromApi.ok ? countCodexNodes(fromApi.data) : 0;
+    const staticNodeCount = fromStatic.ok ? countCodexNodes(fromStatic.data) : 0;
 
     if (fromApi.ok && apiNodeCount > 0) {
         return fromApi;
     }
-
-    const fromStatic = await fetchStaticCodexJson();
-    const staticNodeCount = fromStatic.ok ? countCodexNodes(fromStatic.data) : 0;
 
     if (fromStatic.ok && staticNodeCount > 0) {
         if (fromApi.ok && apiNodeCount === 0) {

@@ -120,6 +120,64 @@ function saveState(state) {
     }
 }
 
+function buildTweaksPayload(badge, sides) {
+    return {
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        badge: sanitizeState(badge),
+        sides: sanitizeSidesState(sides),
+    };
+}
+
+/**
+ * Merge a pasted/imported payload into live bags. Accepts `{ badge, sides }`
+ * or a legacy flat badge-only object.
+ * @returns {{ ok: true } | { ok: false, error: string }}
+ */
+function applyTweaksPayload(raw, badge, sides) {
+    try {
+        const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
+        if (!parsed || typeof parsed !== 'object') {
+            return { ok: false, error: 'Invalid JSON' };
+        }
+        const badgeSrc =
+            parsed.badge && typeof parsed.badge === 'object' ? parsed.badge : parsed;
+        const sidesSrc =
+            parsed.sides && typeof parsed.sides === 'object' ? parsed.sides : null;
+
+        const nextBadge = cloneDefaults();
+        for (const key of Object.keys(HEADER_BADGE_TWEAK_DEFAULTS)) {
+            if (badgeSrc[key] != null && Number.isFinite(Number(badgeSrc[key]))) {
+                nextBadge[key] = Number(badgeSrc[key]);
+            }
+        }
+        Object.assign(badge, sanitizeState(nextBadge));
+
+        if (sidesSrc) {
+            const nextSides = cloneSidesDefaults();
+            for (const key of Object.keys(HEADER_SIDES_TWEAK_DEFAULTS)) {
+                if (sidesSrc[key] != null && Number.isFinite(Number(sidesSrc[key]))) {
+                    nextSides[key] = Number(sidesSrc[key]);
+                }
+            }
+            Object.assign(sides, sanitizeSidesState(nextSides));
+        }
+        return { ok: true };
+    } catch (err) {
+        return { ok: false, error: err?.message || 'Import failed' };
+    }
+}
+
+function downloadTweaksJson(payload) {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `atlas-ui-tweaks-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
 function clamp(n, lo, hi) {
     return Math.min(hi, Math.max(lo, n));
 }
@@ -979,27 +1037,90 @@ function mountControls(panel, bags, hooks) {
         mountControls(panel, bags, hooks);
     });
 
+    const exportBtn = document.createElement('button');
+    exportBtn.type = 'button';
+    exportBtn.textContent = 'Export';
+    exportBtn.title = 'Download UI Tweaks as JSON';
+    exportBtn.addEventListener('click', () => {
+        try {
+            downloadTweaksJson(buildTweaksPayload(badge, sides));
+            exportBtn.textContent = 'Exported';
+            setTimeout(() => {
+                exportBtn.textContent = 'Export';
+            }, 1200);
+        } catch {
+            exportBtn.textContent = 'Export failed';
+            setTimeout(() => {
+                exportBtn.textContent = 'Export';
+            }, 1600);
+        }
+    });
+
+    const importBtn = document.createElement('button');
+    importBtn.type = 'button';
+    importBtn.textContent = 'Import';
+    importBtn.title = 'Load UI Tweaks from a JSON file';
+
+    const importInput = document.createElement('input');
+    importInput.type = 'file';
+    importInput.accept = 'application/json,.json';
+    importInput.hidden = true;
+    importInput.addEventListener('change', async () => {
+        const file = importInput.files?.[0];
+        importInput.value = '';
+        if (!file) return;
+        try {
+            const text = await file.text();
+            const result = applyTweaksPayload(text, badge, sides);
+            if (!result.ok) {
+                importBtn.textContent = 'Bad file';
+                setTimeout(() => {
+                    importBtn.textContent = 'Import';
+                }, 1600);
+                return;
+            }
+            hooks.onPreview();
+            mountControls(panel, bags, hooks);
+            importBtn.textContent = 'Imported';
+            setTimeout(() => {
+                importBtn.textContent = 'Import';
+            }, 1200);
+        } catch {
+            importBtn.textContent = 'Import failed';
+            setTimeout(() => {
+                importBtn.textContent = 'Import';
+            }, 1600);
+        }
+    });
+    importBtn.addEventListener('click', () => importInput.click());
+
     const copyBtn = document.createElement('button');
     copyBtn.type = 'button';
     copyBtn.textContent = 'Copy JSON';
+    copyBtn.title = 'Copy UI Tweaks JSON to clipboard';
     copyBtn.addEventListener('click', async () => {
         try {
-            await navigator.clipboard.writeText(JSON.stringify({
-                badge: sanitizeState(badge),
-                sides: sanitizeSidesState(sides),
-            }, null, 2));
+            await navigator.clipboard.writeText(
+                JSON.stringify(buildTweaksPayload(badge, sides), null, 2),
+            );
             copyBtn.textContent = 'Copied';
             setTimeout(() => {
                 copyBtn.textContent = 'Copy JSON';
             }, 1200);
         } catch {
             copyBtn.textContent = 'Copy failed';
+            setTimeout(() => {
+                copyBtn.textContent = 'Copy JSON';
+            }, 1600);
         }
     });
 
     actions.appendChild(saveBtn);
     actions.appendChild(resetBtn);
+    actions.appendChild(exportBtn);
+    actions.appendChild(importBtn);
     actions.appendChild(copyBtn);
+    panel.appendChild(importInput);
     panel.appendChild(actions);
 
     refreshReadouts();
@@ -1049,16 +1170,31 @@ export function setupHeaderTitleBadgeTweaker() {
         };
 
         preview();
-        if (document.getElementById(TOGGLE_ID)) return;
+
+        const existingToggle = document.getElementById(TOGGLE_ID);
+        if (existingToggle?.classList.contains('header-hub-btn--ui-tweaks')) return;
+        existingToggle?.remove();
+        document.querySelector('.header-badge-tweaker-toggle')?.remove();
 
         const toggle = document.createElement('button');
         toggle.type = 'button';
         toggle.id = TOGGLE_ID;
-        toggle.className = 'header-badge-tweaker-toggle';
+        toggle.className = 'header-hub-btn header-hub-btn--icon header-hub-btn--ui-tweaks';
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-controls', PANEL_ID);
+        toggle.setAttribute('aria-label', 'UI Tweaks');
         toggle.title = 'UI Tweaks';
-        toggle.textContent = 'UI Tweaks';
+
+        const iconWrap = document.createElement('span');
+        iconWrap.id = 'uiTweaksIcon';
+        iconWrap.className = 'header-hub-icon-wrap';
+        const icon = document.createElement('img');
+        icon.className = 'header-hub-icon';
+        icon.src = 'src/assets/images/Icons/Utility%20Icons/Config%20Icon.png';
+        icon.alt = '';
+        icon.decoding = 'async';
+        iconWrap.appendChild(icon);
+        toggle.appendChild(iconWrap);
 
         const panel = document.createElement('div');
         panel.id = PANEL_ID;
@@ -1091,11 +1227,21 @@ export function setupHeaderTitleBadgeTweaker() {
             panel.hidden = !open;
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             toggle.classList.toggle('is-active', open);
-            toggle.textContent = open ? 'Close' : 'UI Tweaks';
+            toggle.classList.toggle('header-hub-btn--active', open);
             if (open) mountControls(panel, bags, hooks);
         });
 
-        document.body.appendChild(toggle);
+        const greySlot = document.getElementById('headerHubRightGreySlot');
+        if (greySlot) {
+            greySlot.appendChild(toggle);
+            // Palette may mount later; keep Config to its right when both exist.
+            const paletteBtn = document.getElementById('colorPaletteToggle');
+            if (paletteBtn?.parentElement === greySlot) {
+                greySlot.appendChild(toggle);
+            }
+        } else {
+            document.body.appendChild(toggle);
+        }
         document.body.appendChild(panel);
     } catch (err) {
         console.error('[UI Tweaks] setup failed:', err);

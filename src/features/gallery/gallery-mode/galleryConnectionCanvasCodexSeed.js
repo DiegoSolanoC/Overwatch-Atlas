@@ -111,7 +111,9 @@ function resolveEntityCodexId(ent, nodes, filterKey) {
  * @param {{ kind: string, name: string }[]} opts.linkedEntities
  * @param {object[]} opts.codexNodes
  * @param {{ fromId: string, toId: string }[]} opts.codexEdges
- * @param {boolean} [opts.includePeerPaths] also path between linked bios when Codex connects them
+ * @param {boolean} [opts.includePeerPaths=false] opt-in: also path between linked bios
+ *   when Codex junction-connects them. Off by default — global mesh detours between
+ *   peers are not authored ego relationships (e.g. Sombra↔Orisa on Doomfist’s board).
  * @returns {{
  *   ok: boolean,
  *   subjectCodexId: string,
@@ -180,7 +182,7 @@ export function extractCodexEgoSubgraphForGallery(opts) {
         }
     }
 
-    if (opts.includePeerPaths !== false && linkedIdList.length > 1) {
+    if (opts.includePeerPaths === true && linkedIdList.length > 1) {
         for (let i = 0; i < linkedIdList.length; i += 1) {
             for (let j = i + 1; j < linkedIdList.length; j += 1) {
                 const a = linkedIdList[i];

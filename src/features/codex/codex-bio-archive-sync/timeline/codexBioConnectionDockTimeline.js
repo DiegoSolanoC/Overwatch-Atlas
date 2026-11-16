@@ -105,10 +105,15 @@ function readLocalArchiveEvents(storageKey) {
     }
 }
 
+/** Stable cache key — bump when story-archive timeline JSONs change. */
+const ARCHIVE_TIMELINE_CACHE_VERSION = '2026-11-15';
+
 async function fetchArchiveEvents(url) {
     try {
         const sep = url.includes('?') ? '&' : '?';
-        const res = await fetch(`${url}${sep}v=${Date.now()}`, { cache: 'no-store' });
+        const res = await fetch(
+            `${url}${sep}v=${encodeURIComponent(ARCHIVE_TIMELINE_CACHE_VERSION)}`,
+        );
         if (!res.ok) return [];
         const data = await res.json();
         return Array.isArray(data.events) ? data.events : [];

@@ -611,9 +611,26 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
     display: flex;
     align-items: stretch;
     justify-content: center;
+    gap: 2px;
     min-width: 0;
     position: relative;
     z-index: 2;
+    /* Same parallelogram as chrome grey — square button hovers clip to the slant. */
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--header-hub-btn-slant)) 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.header-hub.header-hub--right .header-hub-grey-slot {
+    clip-path: polygon(
+        var(--header-hub-btn-slant) 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
 }
 
 .header-hub-bar-slot {
@@ -625,14 +642,14 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
     z-index: 1;
 }
 
+/* Tuck under grey’s slant (same overlap as chrome bar). No padding — edge
+   button hover must meet the slant with no dark gap. */
 #headerHub .header-hub-bar-slot {
     margin-left: calc(-1 * var(--header-hub-btn-slant));
-    padding-left: var(--header-hub-btn-slant);
 }
 
 .header-hub.header-hub--right .header-hub-bar-slot {
     margin-right: calc(-1 * var(--header-hub-btn-slant));
-    padding-right: var(--header-hub-btn-slant);
 }
 
 .header-hub-bar-slot > .header-hub-group {
@@ -668,11 +685,25 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
     box-shadow: inset 0 -3px 0 rgba(var(--accent-primary-rgb), 0.9);
 }
 
+/* Grey-cap controls sit on chrome grey — no parallelogram clips / overlap
+   (those were splitting the cap into jagged pieces once Config joined Palette). */
 .header-hub-grey-slot .header-hub-btn {
-    flex: 1 1 auto;
-    width: 100%;
+    flex: 1 1 0;
+    width: auto;
     min-width: 0;
     border: none !important;
+    clip-path: none !important;
+    margin-left: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.header-hub-grey-slot .header-hub-btn:hover,
+.header-hub-grey-slot .header-hub-btn.is-active,
+.header-hub-grey-slot .header-hub-btn.header-hub-btn--active,
+.header-hub-grey-slot .header-hub-btn.active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
 }
 
 /* Home in left grey: icon + label. */
@@ -687,7 +718,7 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
 
 /* Palette in right grey: accent circle only. */
 .header-hub-btn--palette-swatch {
-    flex: 1 1 auto !important;
+    flex: 1 1 0 !important;
     padding: 0 !important;
     gap: 0 !important;
 }
@@ -710,6 +741,32 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
     border: 2px solid rgba(255, 255, 255, 0.55);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.35);
     flex: 0 0 auto;
+}
+
+/* UI Tweaks (Config) — right of palette swatch in grey cap. */
+.header-hub-btn--ui-tweaks {
+    flex: 1 1 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+.header-hub-btn--ui-tweaks .header-hub-icon-wrap {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header-hub-btn--ui-tweaks .header-hub-icon {
+    width: clamp(18px, 2.4vw, 28px);
+    height: clamp(18px, 2.4vw, 28px);
+    object-fit: contain;
+}
+
+.header-hub-btn--ui-tweaks.is-active,
+.header-hub-btn--ui-tweaks.header-hub-btn--active {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 /*
@@ -1057,14 +1114,7 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     );
 }
 
-#headerHubRight #colorPaletteToggle.header-hub-btn {
-    clip-path: polygon(
-        var(--hub-btn-slant) 0%,
-        100% 0%,
-        100% 100%,
-        0% 100%
-    );
-}
+/* Palette is no longer the sole outer grey control — clip cleared via .header-hub-grey-slot. */
 
 /* Overlap neighboring buttons so angled edges meet cleanly */
 .header-hub .header-hub-btn + .header-hub-btn {
@@ -1493,31 +1543,7 @@ footer.timeline-loaded .footer-atlas-news {
     }
 }
 
-/* ——— Center badge live tweaker (design mode) ——— */
-.header-badge-tweaker-toggle {
-    position: fixed;
-    top: calc(var(--header-height, 72px) + 12px);
-    left: 20px;
-    right: auto;
-    z-index: 2500;
-    padding: 12px 18px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #e8f4ff;
-    background: rgba(12, 28, 48, 0.92);
-    border: 1px solid rgba(180, 220, 255, 0.55);
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
-.header-badge-tweaker-toggle.is-active,
-.header-badge-tweaker-toggle:hover {
-    background: rgba(20, 56, 96, 0.96);
-    border-color: rgba(210, 235, 255, 0.85);
-}
-
+/* ——— UI Tweaks panel (toggle lives in header grey cap) ——— */
 .header-badge-tweaker-panel {
     position: fixed;
     top: var(--header-height, 72px);

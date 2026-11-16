@@ -5,7 +5,7 @@
 
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import { setButtonState } from '../../universal-features/atlas-shared-ui/dom/setButtonState.js';
-import { clearCodexShellForGlobeInit } from '../../codex/codex-canvas/mode/mode-entry/CodexModeService.js';
+import { clearCodexShellForGlobeInit } from '../../codex/codex-canvas/mode/mode-entry/CodexShellClear.js';
 
 /**
  * Sets up globe container for initialization (invisible but functional)

@@ -88,6 +88,14 @@ function yieldForCodexPostOpenPaint() {
     });
 }
 
+function scheduleCodexIdleWork(fn, timeoutMs) {
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(() => { fn(); }, { timeout: timeoutMs });
+        return;
+    }
+    setTimeout(fn, Math.min(timeoutMs, 120));
+}
+
 async function runCodexPostOpenPaint() {
     const generation = ++codexPostOpenGeneration;
     const overlayLine = getCodexLoadingOverlayLineSetter();
@@ -98,7 +106,7 @@ async function runCodexPostOpenPaint() {
     const edgeCount = s.codexEdges?.length ?? 0;
     reportConnectionLoadProgress({ fraction: 0 });
     if (overlayLine) {
-        overlayLine(edgeCount > 0 ? `Planning connections… 0 / ${edgeCount}` : 'Preparing Codex…');
+        overlayLine(edgeCount > 0 ? `Drawing connections…` : 'Preparing Codex…');
     }
 
     s.codexSkipAllEdgeRedraws = false;
@@ -107,14 +115,22 @@ async function runCodexPostOpenPaint() {
 
     applyCodexModeDockToggles({ redraw: false });
 
-    await redrawCodexEdgesDuringLoad({
+    // Kick full edge paint in the background so overlay can finish after nodes.
+    // Status/progress callbacks no-op once enterCodexMode clears the overlay hooks.
+    void redrawCodexEdgesDuringLoad({
         force: true,
-        onProgress: (info) => reportConnectionLoadProgress(info),
-        onStatusLine: (line) => {
-            if (overlayLine) overlayLine(line);
+        onProgress: (info) => {
+            if (!stillActive()) return;
+            reportConnectionLoadProgress(info);
         },
+        onStatusLine: (line) => {
+            if (!stillActive()) return;
+            const lineSetter = getCodexLoadingOverlayLineSetter();
+            if (lineSetter) lineSetter(line);
+        },
+    }).catch((err) => {
+        console.warn('[Codex] background edge paint failed:', err);
     });
-    if (!stillActive()) return;
 
     if (codexFiltersActive()) {
         api.applyCodexFilterState?.();
@@ -122,36 +138,36 @@ async function runCodexPostOpenPaint() {
     await yieldForCodexPostOpenPaint();
     if (!stillActive()) return;
 
-    const schedulePortraitHydrate = () => {
-        if (!s.root) return;
-        // View mode is a static full board — hydrate every portrait so pan never
-        // reveals empty hexes waiting on IntersectionObserver.
-        if (s.codexMode === 'view') {
-            void hydrateAllCodexPortraitImages(s.root);
-            return;
-        }
-        hydrateCodexPortraitImagesInViewport(s.root);
-    };
-    if (typeof requestIdleCallback === 'function') {
-        requestIdleCallback(schedulePortraitHydrate, { timeout: 800 });
-    } else {
-        schedulePortraitHydrate();
-    }
     api.ensureCodexToolbar();
-    reportCodexLoadStageProgress({ stage: 'finalize', fraction: 0.6 });
-    if (overlayLine) overlayLine('Loading portraits…');
-    reportCodexLoadStageProgress({ stage: 'finalize', fraction: 1 });
+    reportCodexLoadStageProgress({ stage: 'connections', fraction: 1 });
+    reportCodexLoadStageProgress({ stage: 'finalize', fraction: 0.5 });
     if (overlayLine) overlayLine('Codex ready');
+    reportCodexLoadStageProgress({ stage: 'finalize', fraction: 1 });
 
     s.codexSkipAllEdgeRedraws = false;
     s.codexSkipEdgeRedraw = false;
 
-    void refreshCodexBioConnectionTimelineIndex().then(() => {
-        if (!s.root) return;
-        applyCodexTimelineRangeVisualRefresh();
-        scheduleRedrawCodexEdges();
-    });
-    ensureCodexTargetedArchiveCache().catch(() => {});
+    scheduleCodexIdleWork(() => {
+        if (!stillActive() || !s.root) return;
+        // Viewport first; full-board hydrate only after a longer idle so open stays light.
+        hydrateCodexPortraitImagesInViewport(s.root);
+        if (s.codexMode === 'view') {
+            scheduleCodexIdleWork(() => {
+                if (!stillActive() || !s.root) return;
+                void hydrateAllCodexPortraitImages(s.root);
+            }, 2500);
+        }
+    }, 1200);
+
+    scheduleCodexIdleWork(() => {
+        if (!stillActive()) return;
+        void refreshCodexBioConnectionTimelineIndex().then(() => {
+            if (!stillActive() || !s.root) return;
+            applyCodexTimelineRangeVisualRefresh();
+            scheduleRedrawCodexEdges();
+        });
+        ensureCodexTargetedArchiveCache().catch(() => {});
+    }, 2800);
 }
 
 export function initCodexCanvas(rootElement) {

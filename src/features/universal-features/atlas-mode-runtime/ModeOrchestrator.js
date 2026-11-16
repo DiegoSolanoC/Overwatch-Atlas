@@ -149,6 +149,12 @@ export class ModeOrchestrator {
         return this.runWorldComponents(isAutoLoad);
     }
 
+    async _ensureCodexModeService() {
+        if (window.CodexModeService?.enterCodexMode) return window.CodexModeService;
+        await import('../../codex/codex-canvas/mode/mode-entry/CodexModeService.js');
+        return window.CodexModeService || null;
+    }
+
     async runCodexComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
             mode: ATLAS_MODE.CODEX,
@@ -158,8 +164,9 @@ export class ModeOrchestrator {
             errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.CODEX]} load`,
             isAutoLoad,
         }, async () => {
-            if (window.CodexModeService && typeof window.CodexModeService.enterCodexMode === 'function') {
-                await window.CodexModeService.enterCodexMode();
+            const service = await this._ensureCodexModeService();
+            if (service && typeof service.enterCodexMode === 'function') {
+                await service.enterCodexMode();
             } else {
                 updateStatus('ERR - CodexModeService not available', 'error');
             }
@@ -427,8 +434,13 @@ export class ModeOrchestrator {
                     console.warn('Error unloading globe base during Codex kill:', err);
                 }
             }
-            if (window.CodexModeService && typeof window.CodexModeService.clearCodexShellForGlobeInit === 'function') {
+            if (window.CodexModeService?.clearCodexShellForGlobeInit) {
                 window.CodexModeService.clearCodexShellForGlobeInit();
+            } else {
+                const { clearCodexShellForGlobeInit } = await import(
+                    '../../codex/codex-canvas/mode/mode-entry/CodexShellClear.js'
+                );
+                clearCodexShellForGlobeInit();
             }
         });
     }

@@ -10,6 +10,13 @@ export {
     applyCodexShell,
     clearCodexShellForGlobeInit
 } from './codex-canvas/mode/mode-entry/CodexModeService.js';
-export { fetchCanonicalCodexJson } from './codex-data/load/CodexJsonRepository.js';
+export {
+    clearCodexShellDom,
+    clearCodexShellForGlobeInit as clearCodexShellLight,
+} from './codex-canvas/mode/mode-entry/CodexShellClear.js';
+export {
+    fetchCanonicalCodexJson,
+    CODEX_LABELS_CACHE_VERSION,
+} from './codex-data/load/CodexJsonRepository.js';
 export { parseMigrateAndDedupeCodexSource } from './codex-data/migration/CodexPayloadMigration.js';
 export { syncCodexEdgesFromBioArchiveConnections } from './codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';

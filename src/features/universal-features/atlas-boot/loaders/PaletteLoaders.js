@@ -56,6 +56,12 @@ export async function loadPalette(loadedComponents) {
             if (label) label.remove();
         }
 
+        // UI Tweaks (Config) sits to the right of the palette swatch in the grey cap.
+        const uiTweaksBtn = document.getElementById('uiTweaksToggle');
+        if (uiTweaksBtn && greySlot) {
+            greySlot.appendChild(uiTweaksBtn);
+        }
+
         loadSoundEffect('colorChange', 'src/assets/audio/sfx/Color Change.mp3', 'Loading palette sound effect...');
 
         setupPaletteToggle();

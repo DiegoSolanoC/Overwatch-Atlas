@@ -9,7 +9,6 @@
  * be cleaned up manually after open.
  */
 
-import { resolveCodexConnectionsForSubject } from '../../codex/codex-connections/CodexConnectionMeta.js';
 import { normalizeBioNameLoose } from '../../codex/codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { bioConnectionRowIsDisplayable } from '../../system-interface/interface-shared/bio-archive/bioArchiveConnectionRows.js';
 import {
@@ -465,8 +464,9 @@ export function buildGalleryConnectionCanvasModel(
     const savedNodes = Array.isArray(saved?.nodes) ? saved.nodes : [];
     const savedEdges = Array.isArray(saved?.edges) ? saved.edges : [];
 
-    // Subject → each linked path, plus Codex paths among neighbors who also connect
-    // to each other (e.g. Doomfist’s linked cast that share cords on the board).
+    // Ego canvas = subject → each linked only. Do NOT import junction mesh routes
+    // among peers (e.g. Sombra↔Orisa on the global board) — that falsely implies
+    // those peers relate on this hero’s intel entry.
     const seed = codexGraph?.nodes?.length
         ? extractCodexEgoSubgraphForGallery({
             subjectKind,
@@ -475,7 +475,7 @@ export function buildGalleryConnectionCanvasModel(
             linkedEntities,
             codexNodes: codexGraph.nodes,
             codexEdges: codexGraph.edges || [],
-            includePeerPaths: true,
+            includePeerPaths: false,
         })
         : null;
 
@@ -687,45 +687,8 @@ export function buildGalleryConnectionCanvasModel(
             edgeSet.add(key);
         });
 
-        // Peer paths among linked when Codex connects them and canvas has no path yet.
-        if (codexGraph) {
-            const meta = Array.isArray(codexGraph.connections) ? codexGraph.connections : [];
-            /** @type {Map<string, { kind: string, name: string, id: string }>} */
-            const byKey = new Map();
-            linkedCanvasIds.forEach((id, key) => {
-                const ent = linkedEntities.find(
-                    (row) => linkedEntityKey(row.kind, row.name) === key,
-                );
-                if (ent) byKey.set(key, { kind: ent.kind, name: ent.name, id });
-            });
-            byKey.forEach((fromEnt) => {
-                const rows = resolveCodexConnectionsForSubject(
-                    fromEnt.kind,
-                    fromEnt.name,
-                    codexGraph.nodes || [],
-                    codexGraph.edges || [],
-                    meta,
-                    { forEdit: false },
-                );
-                for (let r = 0; r < rows.length; r += 1) {
-                    const row = rows[r];
-                    if (!bioConnectionRowIsDisplayable(row)) continue;
-                    const toEnt = byKey.get(linkedEntityKey(row.kind, row.name));
-                    if (!toEnt || toEnt.id === fromEnt.id) continue;
-                    if (reachesNode(edges, fromEnt.id, toEnt.id)) continue;
-                    const path = undirectedPathIds(seed.edges, fromEnt.id, toEnt.id);
-                    if (path?.length) {
-                        adoptSeedPath(nodeById, edges, edgeSet, path, seed.nodes);
-                        continue;
-                    }
-                    const key = undirectedEdgeKey(fromEnt.id, toEnt.id);
-                    if (!edgeSet.has(key)) {
-                        edges.push({ fromId: fromEnt.id, toId: toEnt.id });
-                        edgeSet.add(key);
-                    }
-                }
-            });
-        }
+        // Intentionally no peer-path import among linked bios — ego canvas stays a star
+        // through the subject (Doomfist→Sombra and Doomfist→Orisa, not Sombra↔Orisa).
     }
 
     // World sized to content (Codex coords can be huge).

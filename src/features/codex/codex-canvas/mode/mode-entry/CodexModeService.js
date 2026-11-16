@@ -5,13 +5,17 @@
  * `createLoadProgressTracker` so Codex feels the same as Worldview and
  * Data Archive: every stage has a label, the bar reflects the
  * declared-stages-done percentage, and it reaches 100% on success.
+ *
+ * Canvas modules are dynamic-imported on first enter so Worldview boot does
+ * not pay the full Codex JS parse cost.
  */
 
-import { initCodexCanvas, destroyCodexCanvas } from '../../CodexCanvasEntry.js';
 import { createLoadProgressTracker } from '../../../../universal-features/atlas-mode-runtime/loadProgressTracker.js';
 import { updateStatus } from '../../../../universal-features/atlas-mode-runtime/statusFeed.js';
-
-const CODEX_ROOT_ID = 'codex-view-root';
+import {
+    CODEX_ROOT_ID,
+    clearCodexShellForGlobeInit as clearCodexShellDomAndCanvas,
+} from './CodexShellClear.js';
 
 /**
  * Declared stages for `enterCodexMode`. We always declare the timeline
@@ -23,6 +27,15 @@ const CODEX_LOAD_STAGES = Object.freeze([
     { id: 'mountShell', label: 'Mounting Codex shell' },
     { id: 'loadCanvas', label: 'Loading Codex canvas + layout' }
 ]);
+
+let codexCanvasModulePromise = null;
+
+function loadCodexCanvasModule() {
+    if (!codexCanvasModulePromise) {
+        codexCanvasModulePromise = import('../../CodexCanvasEntry.js');
+    }
+    return codexCanvasModulePromise;
+}
 
 function setCodexEntryOverlayChrome(active) {
     // No-op - main loading overlay handles chrome
@@ -47,13 +60,7 @@ function yieldForLoadingOverlayPaint() {
  * @param {HTMLElement|null} [container]
  */
 export function clearCodexShellForGlobeInit(container) {
-    destroyCodexCanvas();
-    const el = container || document.getElementById('globe-container');
-    if (!el) return;
-    // Always clear container when switching modes - ensures clean state
-    el.innerHTML = '';
-    document.body.classList.remove('codex-mode-active');
-    el.classList.remove('codex-mode');
+    clearCodexShellDomAndCanvas(container);
 }
 
 /**
@@ -106,6 +113,7 @@ export async function applyCodexShell() {
     const root = await mountCodexShellDom();
     if (!root) return;
 
+    const { initCodexCanvas } = await loadCodexCanvasModule();
     await initCodexCanvas(root);
 
     try {
@@ -183,12 +191,14 @@ export async function enterCodexMode() {
                 if (!root) {
                     throw new Error('Codex root element missing after shell mount');
                 }
+                setProgress(0.1);
+                const { initCodexCanvas } = await loadCodexCanvasModule();
                 setProgress(0.15);
                 window.__codexLoadStageProgress = (spec) => {
                     const ranges = {
                         fetch: [0.15, 0.28],
-                        nodes: [0.28, 0.72],
-                        connections: [0.72, 0.96],
+                        nodes: [0.28, 0.78],
+                        connections: [0.78, 0.96],
                         finalize: [0.96, 0.99],
                     };
                     let stage = 'nodes';
