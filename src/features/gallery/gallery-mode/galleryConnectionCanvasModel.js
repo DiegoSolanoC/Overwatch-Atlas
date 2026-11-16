@@ -10,6 +10,7 @@
  */
 
 import { normalizeBioNameLoose } from '../../codex/codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { resolveCodexConnectionsForSubject } from '../../codex/codex-connections/CodexConnectionMeta.js';
 import { bioConnectionRowIsDisplayable } from '../../system-interface/interface-shared/bio-archive/bioArchiveConnectionRows.js';
 import {
     boundsForGalleryCanvasNodes,
@@ -464,9 +465,9 @@ export function buildGalleryConnectionCanvasModel(
     const savedNodes = Array.isArray(saved?.nodes) ? saved.nodes : [];
     const savedEdges = Array.isArray(saved?.edges) ? saved.edges : [];
 
-    // Ego canvas = subject → each linked only. Do NOT import junction mesh routes
-    // among peers (e.g. Sombra↔Orisa on the global board) — that falsely implies
-    // those peers relate on this hero’s intel entry.
+    // Ego canvas = subject → each linked, plus authored peer cords when two linked
+    // bios also connect to each other in Codex (Reaper↔Widowmaker on Doomfist).
+    // Pruned mesh pairs (Sombra↔Orisa) stay out via resolveCodexConnectionsForSubject.
     const seed = codexGraph?.nodes?.length
         ? extractCodexEgoSubgraphForGallery({
             subjectKind,
@@ -475,7 +476,8 @@ export function buildGalleryConnectionCanvasModel(
             linkedEntities,
             codexNodes: codexGraph.nodes,
             codexEdges: codexGraph.edges || [],
-            includePeerPaths: false,
+            codexConnections: Array.isArray(codexGraph.connections) ? codexGraph.connections : [],
+            includeAuthoredPeerPaths: true,
         })
         : null;
 
@@ -687,8 +689,47 @@ export function buildGalleryConnectionCanvasModel(
             edgeSet.add(key);
         });
 
-        // Intentionally no peer-path import among linked bios — ego canvas stays a star
-        // through the subject (Doomfist→Sombra and Doomfist→Orisa, not Sombra↔Orisa).
+        // Authored peer cords among linked bios (same rules as fresh seed).
+        if (codexGraph) {
+            const meta = Array.isArray(codexGraph.connections) ? codexGraph.connections : [];
+            /** @type {Map<string, { kind: string, name: string, id: string }>} */
+            const byKey = new Map();
+            linkedCanvasIds.forEach((id, key) => {
+                const ent = linkedEntities.find(
+                    (row) => linkedEntityKey(row.kind, row.name) === key,
+                );
+                if (ent) byKey.set(key, { kind: ent.kind, name: ent.name, id });
+            });
+            byKey.forEach((fromEnt) => {
+                const rows = resolveCodexConnectionsForSubject(
+                    fromEnt.kind,
+                    fromEnt.name,
+                    codexGraph.nodes || [],
+                    codexGraph.edges || [],
+                    meta,
+                    { forEdit: false },
+                );
+                for (let r = 0; r < rows.length; r += 1) {
+                    const row = rows[r];
+                    if (!bioConnectionRowIsDisplayable(row)) continue;
+                    const toEnt = byKey.get(linkedEntityKey(row.kind, row.name));
+                    if (!toEnt || toEnt.id === fromEnt.id) continue;
+                    // Prefer the Codex peer corridor from the seed even if peers already
+                    // reach each other via the subject (star alone is not the peer cord).
+                    const path = undirectedPathIds(seed.edges, fromEnt.id, toEnt.id);
+                    if (path?.length) {
+                        adoptSeedPath(nodeById, edges, edgeSet, path, seed.nodes);
+                        continue;
+                    }
+                    if (reachesNode(edges, fromEnt.id, toEnt.id)) continue;
+                    const key = undirectedEdgeKey(fromEnt.id, toEnt.id);
+                    if (!edgeSet.has(key)) {
+                        edges.push({ fromId: fromEnt.id, toId: toEnt.id });
+                        edgeSet.add(key);
+                    }
+                }
+            });
+        }
     }
 
     // World sized to content (Codex coords can be huge).

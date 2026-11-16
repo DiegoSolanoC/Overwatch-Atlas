@@ -10,6 +10,7 @@ import {
     shortestPathNodeIdsForTargetedRoutePreview,
 } from '../../codex/codex-controls-ui/stage/CodexTargetedSelection.js';
 import { normalizeBioNameLoose } from '../../codex/codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { resolveCodexConnectionsForSubject } from '../../codex/codex-connections/CodexConnectionMeta.js';
 
 /**
  * @param {object|null|undefined} node
@@ -111,9 +112,11 @@ function resolveEntityCodexId(ent, nodes, filterKey) {
  * @param {{ kind: string, name: string }[]} opts.linkedEntities
  * @param {object[]} opts.codexNodes
  * @param {{ fromId: string, toId: string }[]} opts.codexEdges
- * @param {boolean} [opts.includePeerPaths=false] opt-in: also path between linked bios
- *   when Codex junction-connects them. Off by default — global mesh detours between
- *   peers are not authored ego relationships (e.g. Sombra↔Orisa on Doomfist’s board).
+ * @param {object[]} [opts.codexConnections] Codex connection meta rows
+ * @param {boolean} [opts.includeAuthoredPeerPaths=true] when two linked bios on this
+ *   ego canvas also have a displayable (non-pruned) Codex connection to each other
+ *   (e.g. Reaper↔Widowmaker on Doomfist’s board), import that junction path too.
+ *   Mesh-only / pruned pairs (e.g. Sombra↔Orisa) are skipped.
  * @returns {{
  *   ok: boolean,
  *   subjectCodexId: string,
@@ -125,6 +128,7 @@ function resolveEntityCodexId(ent, nodes, filterKey) {
 export function extractCodexEgoSubgraphForGallery(opts) {
     const codexNodes = Array.isArray(opts?.codexNodes) ? opts.codexNodes : [];
     const codexEdges = Array.isArray(opts?.codexEdges) ? opts.codexEdges : [];
+    const codexConnections = Array.isArray(opts?.codexConnections) ? opts.codexConnections : [];
     const linkedEntities = Array.isArray(opts?.linkedEntities) ? opts.linkedEntities : [];
     if (!codexNodes.length) return null;
 
@@ -182,20 +186,58 @@ export function extractCodexEgoSubgraphForGallery(opts) {
         }
     }
 
-    if (opts.includePeerPaths === true && linkedIdList.length > 1) {
-        for (let i = 0; i < linkedIdList.length; i += 1) {
-            for (let j = i + 1; j < linkedIdList.length; j += 1) {
-                const a = linkedIdList[i];
-                const b = linkedIdList[j];
+    // Peer cords: only when two subject-linked bios have a real Codex connection
+    // to each other (resolveCodexConnections skips pruned / hidden-in-intel).
+    const includeAuthoredPeerPaths = opts.includeAuthoredPeerPaths !== false;
+    if (includeAuthoredPeerPaths && linkedEntities.length > 1) {
+        /** @type {Map<string, { kind: string, name: string, id: string }>} */
+        const linkedByKey = new Map();
+        linkedCodexIds.forEach((id, key) => {
+            const ent = linkedEntities.find(
+                (row) => `${String(row.kind || 'hero').toLowerCase()}:${normalizeBioNameLoose(row.name)}` === key,
+            );
+            if (ent) linkedByKey.set(key, { kind: ent.kind, name: ent.name, id });
+        });
+
+        /** @type {Set<string>} */
+        const peerPairDone = new Set();
+        linkedByKey.forEach((fromEnt) => {
+            const rows = resolveCodexConnectionsForSubject(
+                fromEnt.kind,
+                fromEnt.name,
+                codexNodes,
+                codexEdges,
+                codexConnections,
+                { forEdit: false },
+            );
+            for (let r = 0; r < rows.length; r += 1) {
+                const row = rows[r];
+                const toKey = `${String(row.kind || 'hero').toLowerCase()}:${normalizeBioNameLoose(row.name)}`;
+                const toEnt = linkedByKey.get(toKey);
+                if (!toEnt || toEnt.id === fromEnt.id) continue;
+                const pairKey = fromEnt.id < toEnt.id
+                    ? `${fromEnt.id}\0${toEnt.id}`
+                    : `${toEnt.id}\0${fromEnt.id}`;
+                if (peerPairDone.has(pairKey)) continue;
+                peerPairDone.add(pairKey);
                 const path = shortestPathNodeIdsForTargetedRoutePreview(
                     adj,
                     kindById,
-                    a,
-                    b,
+                    fromEnt.id,
+                    toEnt.id,
                 );
                 if (path?.length) addPathToSubgraph(path, nodeIds, edges, edgeKeys);
+                else {
+                    // No junction path — still add a direct spoke between peers.
+                    nodeIds.add(fromEnt.id);
+                    nodeIds.add(toEnt.id);
+                    if (!edgeKeys.has(pairKey)) {
+                        edgeKeys.add(pairKey);
+                        edges.push({ fromId: fromEnt.id, toId: toEnt.id });
+                    }
+                }
             }
-        }
+        });
     }
 
     const byId = new Map();
