@@ -171,11 +171,15 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     s.codexSkipAllEdgeRedraws = true;
     s.codexSkipEdgeRedraw = true;
 
-    setLine(`Codex import: placing visible nodes…`);
+    setLine(`Codex import: placing ${nodes.length} nodes…`);
     await yieldImportPaint();
-    updateCodexVirtualScroll();
-    if (s.codexRenderedNodeIds.size === 0 && nodes.length > 0) {
-        await api.placeCodexNodeRecordsInChunks(nodes.slice(0, Math.min(64, nodes.length)));
+    if (s.codexMode === 'view' && nodes.length > 0) {
+        await api.placeCodexNodeRecordsInChunks(nodes);
+    } else {
+        updateCodexVirtualScroll();
+        if (s.codexRenderedNodeIds.size === 0 && nodes.length > 0) {
+            await api.placeCodexNodeRecordsInChunks(nodes);
+        }
     }
 
     api.syncCodexNodeDomCullFromView?.();

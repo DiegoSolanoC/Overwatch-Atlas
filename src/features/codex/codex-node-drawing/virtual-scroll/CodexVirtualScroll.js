@@ -1,11 +1,6 @@
 /**
- * Virtual scrolling for Codex nodes (view + dev).
- * Off-screen nodes stay in `codexAllNodes`; edges use layout coords when DOM is missing.
- *
- * Cords can paint from layout instantly; node shells need DOM. To close that gap we:
- *  - mount shells during pan (mount-only, no cull) so hexes appear with the view
- *  - batch appends via DocumentFragment
- *  - rely on CSS frame backgrounds for same-tick shell paint
+ * Virtual scrolling for Codex nodes in **dev** mode.
+ * View mode keeps a full static DOM board so pan stays CSS-transform-only.
  */
 
 import {
@@ -19,15 +14,6 @@ let _rt = null;
 
 /** @type {number} */
 let codexVirtualScrollRaf = 0;
-
-/** @type {{ mountOnly?: boolean }|null} */
-let pendingScrollOpts = null;
-
-/**
- * Soft cap per update so a huge zoom-out still paints some shells this frame.
- * Remaining mounts continue on the next rAF.
- */
-const CODEX_VIRTUAL_MOUNT_CAP = 36;
 
 /**
  * @typedef {object} CodexVirtualScrollRuntime
@@ -57,7 +43,6 @@ export function unregisterCodexVirtualScrollRuntime() {
         cancelAnimationFrame(codexVirtualScrollRaf);
         codexVirtualScrollRaf = 0;
     }
-    pendingScrollOpts = null;
     if (_rt) {
         clearCodexVirtualScroll();
     }
@@ -65,44 +50,45 @@ export function unregisterCodexVirtualScrollRuntime() {
 }
 
 /**
- * @param {{ mountOnly?: boolean }} [opts]
- *   mountOnly — add newly visible shells without culling (used mid-pan).
+ * @param {{ mountOnly?: boolean }} [opts] ignored — kept for call-site compatibility
  */
 export function scheduleUpdateCodexVirtualScroll(opts = {}) {
-    if (!_rt) return;
-    if (opts.mountOnly) {
-        // Preserve a pending full sync if one was already queued.
-        if (!pendingScrollOpts || pendingScrollOpts.mountOnly !== false) {
-            pendingScrollOpts = { mountOnly: true };
-        }
-    } else {
-        pendingScrollOpts = { mountOnly: false };
-    }
-    if (codexVirtualScrollRaf) return;
+    void opts;
+    if (codexVirtualScrollRaf || !_rt) return;
     codexVirtualScrollRaf = requestAnimationFrame(() => {
         codexVirtualScrollRaf = 0;
-        const runOpts = pendingScrollOpts || {};
-        pendingScrollOpts = null;
-        updateCodexVirtualScroll(runOpts);
+        updateCodexVirtualScroll();
     });
 }
 
-/**
- * @param {{ mountOnly?: boolean }} [opts]
- */
-export function updateCodexVirtualScroll(opts = {}) {
+/** Virtual Scrolling: Render only visible nodes, remove off-screen ones (dev). */
+export function updateCodexVirtualScroll() {
     if (!_rt) return;
     const root = _rt.getRoot();
-    const world = _rt.getWorldEl?.() || root;
     const allNodes = _rt.getAllNodes();
     if (!root || !allNodes.length) return;
 
-    const mountOnly = opts.mountOnly === true;
     const CODEX_PERFORMANCE_DEBUG = _rt.getPerfDebug();
     const startTime = performance.now();
-
     const renderedIds = _rt.getRenderedNodeIds();
     const nodeElements = _rt.getNodeElementsMap();
+
+    // View mode: static full board — never cull; only fill any missing ids.
+    if (_rt.getMode() === 'view') {
+        let placed = 0;
+        for (const node of allNodes) {
+            if (renderedIds.has(node.id)) continue;
+            _rt.placeLoadedCodexNodeRecord(node);
+            renderedIds.add(node.id);
+            placed += 1;
+        }
+        if (placed > 0) hydrateCodexPortraitImagesInViewport(root);
+        if (CODEX_PERFORMANCE_DEBUG) {
+            console.log(`[Codex Perf] View Mode fill-missing ${placed} in ${(performance.now() - startTime).toFixed(1)}ms`);
+        }
+        return;
+    }
+
     const { panX, panY, zoom } = _rt.getViewPanZoom();
     const viewport = computeCodexVirtualViewportBounds(
         { clientWidth: root.clientWidth, clientHeight: root.clientHeight },
@@ -121,53 +107,40 @@ export function updateCodexVirtualScroll(opts = {}) {
         }
     }
 
-    if (!mountOnly) {
-        const nodesToRemove = [];
-        for (const id of renderedIds) {
-            if (!visibleNodeIds.has(id)) nodesToRemove.push(id);
-        }
-        for (const id of nodesToRemove) {
-            const el = nodeElements.get(id);
-            if (el) {
-                el.remove();
-                renderedIds.delete(id);
-                nodeElements.delete(id);
-            }
+    const nodesToRemove = [];
+    for (const id of renderedIds) {
+        if (!visibleNodeIds.has(id)) nodesToRemove.push(id);
+    }
+
+    for (const id of nodesToRemove) {
+        const el = nodeElements.get(id);
+        if (el) {
+            el.remove();
+            renderedIds.delete(id);
+            nodeElements.delete(id);
         }
     }
 
-    const batch = nodesToRender.slice(0, CODEX_VIRTUAL_MOUNT_CAP);
-    const leftover = nodesToRender.length - batch.length;
+    for (const node of nodesToRender) {
+        _rt.placeLoadedCodexNodeRecord(node);
+        renderedIds.add(node.id);
+    }
 
-    if (batch.length && world) {
-        // placeCodexNode appends to world by default; temporary mountParent isn't on placeLoaded.
-        // Place sequentially into world — still cheaper than waiting until pan end for all.
-        for (const node of batch) {
-            _rt.placeLoadedCodexNodeRecord(node);
-            renderedIds.add(node.id);
-        }
+    if (nodesToRender.length > 0) {
         hydrateCodexPortraitImagesInViewport(root);
     }
 
-    if (leftover > 0) {
-        // Continue mounting remaining shells next frame.
-        scheduleUpdateCodexVirtualScroll(mountOnly ? { mountOnly: true } : {});
+    const { skipAll, skipEdge } = _rt.getSkipEdgeRedrawFlags();
+    if (!skipAll && !skipEdge) {
+        _rt.scheduleRedrawCodexEdges();
     }
 
-    if (!mountOnly) {
-        const { skipAll, skipEdge } = _rt.getSkipEdgeRedrawFlags();
-        if (!skipAll && !skipEdge) {
-            _rt.scheduleRedrawCodexEdges();
-        }
-        if (typeof _rt.syncCodexTargetedSelectionDom === 'function') {
-            _rt.syncCodexTargetedSelectionDom();
-        }
+    if (typeof _rt.syncCodexTargetedSelectionDom === 'function') {
+        _rt.syncCodexTargetedSelectionDom();
     }
 
     if (CODEX_PERFORMANCE_DEBUG) {
-        console.log(
-            `[Codex Perf] virtual scroll mount=${batch.length} left=${leftover} mountOnly=${mountOnly} in ${(performance.now() - startTime).toFixed(1)}ms`
-        );
+        console.log(`[Codex Perf] updateCodexVirtualScroll completed in ${(performance.now() - startTime).toFixed(2)}ms`);
     }
 }
 

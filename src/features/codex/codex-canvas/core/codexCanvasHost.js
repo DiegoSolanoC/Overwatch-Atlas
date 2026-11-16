@@ -475,6 +475,7 @@ export function destroyCodexCanvas() {
         if (window.CodexTimelineGate) delete window.CodexTimelineGate;
     }
     api.clearCodexEventThumbnailFilterHover();
+    api.teardownCodexNodeInteractionDelegation?.();
     s.root = null;
     s.hitLayerEl = null;
     s.codexWorldEl = null;

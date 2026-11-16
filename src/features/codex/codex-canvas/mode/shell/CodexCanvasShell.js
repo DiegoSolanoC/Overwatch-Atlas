@@ -16,6 +16,7 @@ function ensureCodexWorld() {
     w.style.width = `${CODEX_WORLD_W}px`;
     w.style.height = `${CODEX_WORLD_H}px`;
     api.applyCodexWorldTransformStyle();
+    api.ensureCodexNodeInteractionDelegation?.();
     return w;
 }
 

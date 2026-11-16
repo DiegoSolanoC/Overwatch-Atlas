@@ -20,22 +20,24 @@ function applyCodexViewTransform() {
     applyCodexWorldTransformStyle();
     // Pause/resume packet RAF by zoom LOD without waiting for the debounced edge redraw.
     syncCodexPacketAnimForViewZoom();
-    // Skip edge redraws during virtual scroll to prevent freeze (same as pan)
     s.codexSkipAllEdgeRedraws = true;
-    s.codexSkipEdgeRedraw = true; // Also skip the internal redraw from updateCodexVirtualScroll
-    // Mount shells during zoom (same reason as pan — cords shouldn't lead empty space).
-    scheduleUpdateCodexVirtualScroll({ mountOnly: true });
+    s.codexSkipEdgeRedraw = true;
+    // Dev only: remount viewport during zoom. View mode keeps a full static board.
+    if (s.codexMode !== 'view') {
+        scheduleUpdateCodexVirtualScroll();
+    }
     clearCodexEdgeRedrawSchedule();
-    // Debounce the final redraw to prevent multiple rapid calls during zoom
     if (s.codexZoomDebounceTimer) {
         clearTimeout(s.codexZoomDebounceTimer);
     }
     s.codexZoomDebounceTimer = setTimeout(() => {
-        scheduleUpdateCodexVirtualScroll({ mountOnly: false });
+        if (s.codexMode !== 'view') {
+            scheduleUpdateCodexVirtualScroll();
+        }
         s.codexSkipAllEdgeRedraws = false;
-        s.codexSkipEdgeRedraw = false; // Reset before calling redrawCodexEdges
+        s.codexSkipEdgeRedraw = false;
         hydrateCodexPortraitImagesInViewport(s.root);
-        redrawCodexEdges(); // Call directly to bypass RAF throttling
+        redrawCodexEdges();
         s.codexZoomDebounceTimer = null;
     }, 200);
 }
@@ -44,7 +46,6 @@ function applyCodexZoomWithAnchor(clientX, clientY, newZoom) {
     if (!s.root) return;
     const rr = s.root.getBoundingClientRect();
     const layoutScale = api.getCodexBodyLayoutPerViewportPx();
-    const oldZoom = s.codexViewZoom;
     const lx = (clientX - rr.left) / layoutScale;
     const ly = (clientY - rr.top) / layoutScale;
     const w = api.clientToWorldCodex(clientX, clientY);
@@ -52,10 +53,6 @@ function applyCodexZoomWithAnchor(clientX, clientY, newZoom) {
     s.codexViewPanX = lx - w.x * s.codexViewZoom;
     s.codexViewPanY = ly - w.y * s.codexViewZoom;
     applyCodexViewTransform();
-    // Update virtual scroll if zoom changed significantly (>10%)
-    if (Math.abs(s.codexViewZoom - oldZoom) / oldZoom > 0.1) {
-        scheduleUpdateCodexVirtualScroll();
-    }
 }
 
 function codexZoomByFactorAt(factor, clientX, clientY) {

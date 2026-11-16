@@ -15,17 +15,13 @@ import { getCodexLoadingOverlayLineSetter } from '../../codex-canvas/bridge/Code
 import { normalizeCodexCountryKey, resolveCodexNodeScale } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { clearCodexVirtualScroll, updateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
-import {
-    computeCodexVirtualViewportBounds,
-    isCodexNodeInVirtualViewport,
-} from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { hydrateCodexPortraitImagesInViewport, observeCodexImage } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
 /** Soft cap per turn; time budget usually yields sooner. */
-const CODEX_LOAD_NODE_CHUNK = 48;
+const CODEX_LOAD_NODE_CHUNK = 120;
 /** Max ms of sync DOM work before yielding to the browser. */
-const CODEX_LOAD_NODE_BUDGET_MS = 6;
+const CODEX_LOAD_NODE_BUDGET_MS = 12;
 
 function placeLoadedCodexNodeRecord(L, extraOpts = {}) {
     if (!L || typeof L !== 'object') return;
@@ -147,80 +143,32 @@ function scheduleDeferredCodexWork(fn) {
     }
 }
 
-function splitCodexNodesByViewport(nodes) {
-    const root = s.root;
-    if (!root || !nodes.length) {
-        return { near: nodes.slice(), far: [] };
-    }
-    const viewport = computeCodexVirtualViewportBounds(
-        { clientWidth: root.clientWidth || 1, clientHeight: root.clientHeight || 1 },
-        { panX: s.codexViewPanX, panY: s.codexViewPanY, zoom: s.codexViewZoom },
-    );
-    const near = [];
-    const far = [];
-    for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i];
-        if (isCodexNodeInVirtualViewport(node, viewport)) near.push(node);
-        else far.push(node);
-    }
-    return { near, far };
-}
-
 /**
- * View-mode open: mount the viewport first (overlay can finish), then backfill the rest.
- * Edges use saved layout coords so missing off-screen DOM does not block cords.
+ * Mount the full node board with time-budgeted DocumentFragment batches.
+ * View mode keeps every shell in the DOM so pan stays CSS-transform-only (smooth).
  */
 async function placeCodexNodeRecordsInChunks(nodes) {
     const overlayLine = getCodexLoadingOverlayLineSetter();
     if (overlayLine && nodes.length) {
-        overlayLine(`Placing nodes…`);
+        overlayLine(`Placing ${nodes.length} nodes…`);
     }
     await yieldCodexBrowserPaint();
 
-    const { near, far } = splitCodexNodesByViewport(nodes);
-    const generation = ++s.codexNodeBackfillGeneration;
+    s.codexViewBoardMountComplete = false;
+    ++s.codexNodeBackfillGeneration;
 
-    // Viewport unknown (e.g. 0×0 root) — fast-mount the full board on the critical path.
-    if (!near.length) {
-        s.codexViewBoardMountComplete = false;
-        await placeCodexNodeRecordsFast(nodes, { report: true, overlayEvery: 440 });
-        observePendingCodexNodeImages(s.codexWorldEl || s.root);
-        hydrateCodexPortraitImagesInViewport(s.root);
-        s.codexViewBoardMountComplete = true;
-        reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
-        return;
-    }
-
-    s.codexViewBoardMountComplete = far.length === 0;
-    await placeCodexNodeRecordsFast(near, { report: true, overlayEvery: 200 });
+    api.ensureCodexNodeInteractionDelegation?.();
+    await placeCodexNodeRecordsFast(nodes, {
+        report: true,
+        overlayEvery: 400,
+        budgetMs: 14,
+    });
     observePendingCodexNodeImages(s.codexWorldEl || s.root);
     hydrateCodexPortraitImagesInViewport(s.root);
 
-    if (!far.length) {
-        s.codexViewBoardMountComplete = true;
-        reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
-        return;
-    }
-
+    s.codexViewBoardMountComplete = true;
+    s.codexViewModeInitialRenderDone = true;
     reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
-
-    // Background backfill via rAF chain (not one fat idleCallback — that was ~2.5s stalls).
-    const backfill = async () => {
-        if (generation !== s.codexNodeBackfillGeneration || !s.root) return;
-        await placeCodexNodeRecordsFast(far, {
-            report: false,
-            overlayEvery: 800,
-            budgetMs: 5,
-        });
-        if (generation !== s.codexNodeBackfillGeneration || !s.root) return;
-        // Hydrate viewport portraits; observer picks up the rest on pan.
-        hydrateCodexPortraitImagesInViewport(s.root);
-        observePendingCodexNodeImages(s.codexWorldEl || s.root);
-        s.codexViewBoardMountComplete = true;
-        s.codexViewModeInitialRenderDone = true;
-        // Packet RAF (if already running) resumes on the next tick.
-    };
-    setTimeout(() => { void backfill(); }, 120);
 }
 
 function yieldCodexBrowserPaint() {
@@ -301,9 +249,10 @@ async function loadCodexState() {
     api.clearCodexTargetedSelection();
 
     s.codexViewModeInitialRenderDone = false;
-    s.codexViewBoardMountComplete = true;
+    s.codexViewBoardMountComplete = false;
 
     if (!nodes.length) {
+        s.codexViewBoardMountComplete = true;
         api.centerCodexViewOnWorldCenter();
         api.applyCodexWorldTransformStyle();
         redrawCodexEdges();
@@ -321,13 +270,14 @@ async function loadCodexState() {
     s.codexSkipAllEdgeRedraws = true;
     s.codexSkipEdgeRedraw = true;
 
-    // View + dev: mount viewport only. Edges use layout coords for off-screen ends.
-    {
-        const overlayLine = getCodexLoadingOverlayLineSetter();
-        if (overlayLine) overlayLine('Placing visible nodes…');
+    // View: full board (smooth CSS pan). Dev: viewport virtual scroll.
+    if (s.codexMode === 'view' && nodes.length > 0) {
+        await placeCodexNodeRecordsInChunks(nodes);
+    } else {
+        updateCodexVirtualScroll();
+        s.codexViewBoardMountComplete = true;
+        reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
     }
-    updateCodexVirtualScroll();
-    reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
 
     {
         const overlayLine = getCodexLoadingOverlayLineSetter();
@@ -338,13 +288,9 @@ async function loadCodexState() {
     }
     reportCodexLoadStageProgress({ stage: 'connections', fraction: 0 });
 
-    // Failsafe: viewport empty (0×0 root) — place a small starter set, not the full board.
+    // Failsafe if nothing mounted
     if (s.codexRenderedNodeIds.size === 0 && nodes.length > 0) {
-        const starter = nodes.slice(0, Math.min(64, nodes.length));
-        for (const node of starter) {
-            placeLoadedCodexNodeRecord(node);
-            s.codexRenderedNodeIds.add(node.id);
-        }
+        await placeCodexNodeRecordsInChunks(nodes);
     }
 
     if (migratedNow) {

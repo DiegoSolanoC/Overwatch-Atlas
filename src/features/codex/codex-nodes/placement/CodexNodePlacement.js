@@ -52,26 +52,68 @@ function findCodexDuplicatePortraitNodeId(kind, heroName, faction, countryKey) {
 
 
 
-function applyNodeScale(el, scale, skipRedraw) {
+function applyNodeScale(el, scale, skipRedraw, opts = {}) {
     const nodeScale = Math.max(CODEX_SCALE_MIN, Math.min(CODEX_SCALE_MAX, Number(scale) || 1));
     el.dataset.codexScale = String(nodeScale);
     const junction = el.classList.contains('codex-node--junction');
     const simplified = el.classList.contains('codex-node--simplified');
     const basePx = junction ? CODEX_JUNCTION_BASE_PX : CODEX_IMG_BASE_PX;
     const px = basePx * nodeScale;
-    if (junction) {
-        el.style.width = `${px}px`;
-        el.style.height = `${px}px`;
-    } else if (simplified) {
+    if (junction || simplified) {
         el.style.width = `${px}px`;
         el.style.height = `${px}px`;
     }
-    const nodeId = el.dataset.codexNodeId;
-    if (nodeId) {
-        const nodeObj = s.codexAllNodes.find((n) => n && n.id === nodeId);
-        if (nodeObj) nodeObj.scale = nodeScale;
+    if (!opts.skipLayoutSync) {
+        const nodeId = el.dataset.codexNodeId;
+        if (nodeId) {
+            const nodeObj = s.codexNodeLayoutById instanceof Map
+                ? s.codexNodeLayoutById.get(nodeId)
+                : null;
+            if (nodeObj) nodeObj.scale = nodeScale;
+        }
     }
     if (!skipRedraw) redrawCodexEdges();
+}
+
+/** @type {HTMLElement|null} */
+let portraitNodeTemplate = null;
+/** @type {HTMLElement|null} */
+let junctionNodeTemplate = null;
+
+function getPortraitNodeTemplate() {
+    if (portraitNodeTemplate) return portraitNodeTemplate;
+    const el = document.createElement('div');
+    el.className = 'codex-node codex-node--simplified';
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'codex-node__img-wrapper';
+    const img = document.createElement('img');
+    img.className = 'codex-node__img';
+    img.draggable = false;
+    img.decoding = 'async';
+    const bg = document.createElement('div');
+    bg.className = 'codex-node__bg';
+    imgWrapper.append(img, bg);
+    const frame = document.createElement('img');
+    frame.className = 'codex-node__frame';
+    frame.alt = '';
+    frame.draggable = false;
+    frame.decoding = 'async';
+    frame.setAttribute('aria-hidden', 'true');
+    el.append(imgWrapper, frame);
+    portraitNodeTemplate = el;
+    return el;
+}
+
+function getJunctionNodeTemplate() {
+    if (junctionNodeTemplate) return junctionNodeTemplate;
+    const el = document.createElement('div');
+    el.className = 'codex-node codex-node--junction';
+    const dot = document.createElement('div');
+    dot.className = 'codex-node__junction';
+    dot.setAttribute('aria-hidden', 'true');
+    el.appendChild(dot);
+    junctionNodeTemplate = el;
+    return el;
 }
 
 function armCodexNodeEnterFade(el) {
@@ -85,29 +127,33 @@ function armCodexNodeEnterFade(el) {
 }
 
 function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
-    const el = document.createElement('div');
-    el.className = 'codex-node';
+    const fromSaved = opts.fromSaved === true;
+    const skipImageObserve = opts.skipImageObserve === true;
+    const scaleOpts = fromSaved ? { skipLayoutSync: true } : undefined;
+
+    if (kind === 'junction') {
+        const el = /** @type {HTMLElement} */ (getJunctionNodeTemplate().cloneNode(true));
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+        el.style.zIndex = String(++s.nodeZ);
+        el.dataset.codexNodeId = opts.id || generateNodeId();
+        el.dataset.codexKind = 'junction';
+        if (!opts.skipEnterFade) armCodexNodeEnterFade(el);
+        applyNodeScale(el, resolveCodexNodeScale('junction', opts.scale), true, scaleOpts);
+        ensureCodexNodeInteractionDelegation();
+        return el;
+    }
+
+    const el = /** @type {HTMLElement} */ (getPortraitNodeTemplate().cloneNode(true));
     el.style.left = `${x}px`;
     el.style.top = `${y}px`;
     el.style.zIndex = String(++s.nodeZ);
     el.dataset.codexNodeId = opts.id || generateNodeId();
-
     el.dataset.codexKind = kind;
     if (!opts.skipEnterFade) armCodexNodeEnterFade(el);
-    const skipImageObserve = opts.skipImageObserve === true;
 
     if (!isCodexNodeBgDefault(opts.bgColor)) {
         el.dataset.codexBgColor = resolveCodexNodeBgColor(opts.bgColor);
-    }
-    if (kind === 'junction') {
-        el.classList.add('codex-node--junction');
-        const dot = document.createElement('div');
-        dot.className = 'codex-node__junction';
-        dot.setAttribute('aria-hidden', 'true');
-        el.appendChild(dot);
-        applyNodeScale(el, resolveCodexNodeScale('junction', opts.scale));
-        bindCodexNodeInteraction(el);
-        return el;
     }
     if (kind === 'hero') {
         el.dataset.codexHero = heroName || '';
@@ -126,6 +172,7 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
     const hexRotationDeg = codexHexRotationDegreesForId(nid);
     el.dataset.codexFrameVariant = String(frameVariant);
     el.dataset.codexHexRotation = String(hexRotationDeg);
+    el.style.setProperty('--codex-hex-rotation', `${hexRotationDeg}deg`);
 
     let imgSrc = '';
     let imgAlt = '';
@@ -144,55 +191,31 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
         imgAlt = faction.displayName || '';
     }
 
-    const frameSrc = `${CODEX_FRAME_PATH}${frameVariant}.png`;
+    const imgWrapper = /** @type {HTMLElement} */ (el.firstElementChild);
+    const img = /** @type {HTMLImageElement} */ (imgWrapper.firstElementChild);
+    const bg = /** @type {HTMLElement} */ (imgWrapper.lastElementChild);
+    const frame = /** @type {HTMLImageElement} */ (el.lastElementChild);
 
-    el.classList.add('codex-node--simplified');
-    el.style.setProperty('--codex-hex-rotation', `${hexRotationDeg}deg`);
-
-    const imgWrapper = document.createElement('div');
-    imgWrapper.className = 'codex-node__img-wrapper';
-
-    // Frame + mask are shared (3 variants) — always eager so hex shell appears with cords.
-    const frame = document.createElement('img');
-    frame.className = 'codex-node__frame';
-    frame.alt = '';
-    frame.draggable = false;
-    frame.decoding = 'async';
-    frame.setAttribute('aria-hidden', 'true');
-    frame.src = frameSrc;
-
-    const img = document.createElement('img');
-    img.className = 'codex-node__img';
-    img.draggable = false;
-    img.decoding = 'async';
+    // Frame variants are shared (3) — browser cache hits after the first of each.
+    frame.src = `${CODEX_FRAME_PATH}${frameVariant}.png`;
     img.alt = imgAlt;
-    const clearPortraitLoading = () => {
-        el.classList.remove('codex-node--portrait-loading');
-    };
-    img.addEventListener('load', clearPortraitLoading, { once: true });
     img.onerror = () => {
         img.style.opacity = '0.35';
-        clearPortraitLoading();
+        el.classList.remove('codex-node--portrait-loading');
     };
 
     el.classList.add('codex-node--portrait-loading');
     if (opts.skipLazyLoad) {
         img.src = imgSrc;
+        const clearLoading = () => el.classList.remove('codex-node--portrait-loading');
+        img.addEventListener('load', clearLoading, { once: true });
+        if (img.complete && img.naturalWidth > 0) clearLoading();
     } else {
         img.dataset.src = imgSrc;
         if (!skipImageObserve) observeCodexImage(img);
     }
 
-    imgWrapper.appendChild(img);
-
-    const bg = document.createElement('div');
-    bg.className = 'codex-node__bg';
-    const savedBgColor = resolveCodexNodeBgColor(el.dataset.codexBgColor);
-    bg.style.backgroundColor = savedBgColor;
-    imgWrapper.appendChild(bg);
-
-    el.appendChild(imgWrapper);
-    el.appendChild(frame);
+    bg.style.backgroundColor = resolveCodexNodeBgColor(el.dataset.codexBgColor);
 
     const portraitKind = kind === 'faction'
         ? 'faction'
@@ -201,8 +224,8 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
             : kind === 'npc'
                 ? 'npc'
                 : 'hero';
-    applyNodeScale(el, resolveCodexNodeScale(portraitKind, opts.scale));
-    bindCodexNodeInteraction(el);
+    applyNodeScale(el, resolveCodexNodeScale(portraitKind, opts.scale), true, scaleOpts);
+    ensureCodexNodeInteractionDelegation();
     return el;
 }
 
@@ -264,9 +287,12 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
         api.markCodexLayoutDirty();
         api.selectCodexNode(el);
     }
-    api.applyCodexNodeFilterClassesToEl?.(el);
-    if (s.codexTargetedSelectionActive) api.syncCodexTargetedSelectionDom();
-    if (kind === 'faction') {
+    // Filters are off on cold open — skip per-node class churn during bulk load.
+    if (!fromSaved || s.codexFilterReachableNodeIds) {
+        api.applyCodexNodeFilterClassesToEl?.(el);
+    }
+    if (!fromSaved && s.codexTargetedSelectionActive) api.syncCodexTargetedSelectionDom();
+    if (!fromSaved && kind === 'faction') {
         void import('../../codex-bio-archive-sync/timeline/CodexFactionPortraitLookSync.js')
             .then((m) => m.applyCodexFactionPortraitLooksNow())
             .catch(() => {});
@@ -275,192 +301,230 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
     return el;
 }
 
-function bindCodexNodeInteraction(el) {
-    el.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+function closestCodexNodeEl(target) {
+    if (!(target instanceof Element)) return null;
+    return target.closest('.codex-node');
+}
 
-        // Prevent deletion in view mode
-        if (s.codexMode === 'view') return;
+function onCodexNodeDelegatedContextMenu(e) {
+    const el = closestCodexNodeEl(e.target);
+    if (!el) return;
+    e.preventDefault();
+    e.stopPropagation();
 
-        const now = Date.now();
-        api.pruneStaleCodexSelection();
-        const inSelection = s.codexSelectedNodeEls.has(el);
-        const multi = s.codexSelectedNodeEls.size > 1 && inSelection;
+    // Prevent deletion in view mode
+    if (s.codexMode === 'view') return;
 
-        if (multi) {
-            const bulkAge = now - s.codexBulkNodeDeleteArmedAt;
-            if (bulkAge < DOUBLE_RIGHT_MS && s.codexBulkNodeDeleteArmedAt > 0) {
-                const toRemove = [...s.codexSelectedNodeEls].filter((n) => s.root && s.root.contains(n));
-                const ids = toRemove.map((n) => n.dataset.codexNodeId).filter(Boolean);
-                api.clearPendingCodexDeleteState();
-                api.removeEdgesForDeletedNodesWithJunctionBridging(ids);
-                // Remove from s.codexAllNodes for save persistence
-                s.codexAllNodes = s.codexAllNodes.filter(n => !ids.includes(n.id));
-                api.markCodexLayoutDirty();
-                s.codexSelectedNodeEls.clear();
-                s.codexPrimarySelectedNodeEl = null;
-                for (const id of ids) api.unregisterCodexNodeRenderTracking(id);
-                toRemove.forEach((n) => n.remove());
-                api.applyCodexSelectionToDom();
-                redrawCodexEdges();
-                api.updateCodexToolbar();
-                scheduleUpdateCodexVirtualScroll();
-            } else {
-                api.clearPendingCodexDeleteState();
-                s.codexBulkNodeDeleteArmedAt = now;
-                s.codexSelectedNodeEls.forEach((n) => {
-                    if (s.root && s.root.contains(n)) n.classList.add('codex-node--pending-delete');
-                });
-                redrawCodexEdges();
-            }
-            return;
-        }
+    const now = Date.now();
+    api.pruneStaleCodexSelection();
+    const inSelection = s.codexSelectedNodeEls.has(el);
+    const multi = s.codexSelectedNodeEls.size > 1 && inSelection;
 
-        s.codexBulkNodeDeleteArmedAt = 0;
-        const nid = el.dataset.codexNodeId;
-        if (!nid) return;
-        const prevTs = s.codexNodeDeleteLastRightTs.get(nid) || 0;
-        if (prevTs > 0 && now - prevTs < DOUBLE_RIGHT_MS) {
-            s.codexNodeDeleteLastRightTs.delete(nid);
+    if (multi) {
+        const bulkAge = now - s.codexBulkNodeDeleteArmedAt;
+        if (bulkAge < DOUBLE_RIGHT_MS && s.codexBulkNodeDeleteArmedAt > 0) {
+            const toRemove = [...s.codexSelectedNodeEls].filter((n) => s.root && s.root.contains(n));
+            const ids = toRemove.map((n) => n.dataset.codexNodeId).filter(Boolean);
             api.clearPendingCodexDeleteState();
-            api.removeEdgesForDeletedNodesWithJunctionBridging([nid]);
-            // Remove from s.codexAllNodes for save persistence
-            s.codexAllNodes = s.codexAllNodes.filter(n => n.id !== nid);
+            api.removeEdgesForDeletedNodesWithJunctionBridging(ids);
+            s.codexAllNodes = s.codexAllNodes.filter((n) => !ids.includes(n.id));
             api.markCodexLayoutDirty();
-            s.codexSelectedNodeEls.delete(el);
-            if (s.codexPrimarySelectedNodeEl === el) {
-                const rest = [...s.codexSelectedNodeEls];
-                s.codexPrimarySelectedNodeEl = rest.length ? rest[rest.length - 1] : null;
-            }
+            s.codexSelectedNodeEls.clear();
+            s.codexPrimarySelectedNodeEl = null;
+            for (const id of ids) api.unregisterCodexNodeRenderTracking(id);
+            toRemove.forEach((n) => n.remove());
             api.applyCodexSelectionToDom();
-            api.unregisterCodexNodeRenderTracking(nid);
-            el.remove();
             redrawCodexEdges();
             api.updateCodexToolbar();
             scheduleUpdateCodexVirtualScroll();
         } else {
             api.clearPendingCodexDeleteState();
-            el.classList.add('codex-node--pending-delete');
-            s.codexNodeDeleteLastRightTs.set(nid, now);
+            s.codexBulkNodeDeleteArmedAt = now;
+            s.codexSelectedNodeEls.forEach((n) => {
+                if (s.root && s.root.contains(n)) n.classList.add('codex-node--pending-delete');
+            });
             redrawCodexEdges();
         }
-    }, true);
+        return;
+    }
 
-    el.addEventListener('pointerdown', (e) => {
-        if (e.button === 0 && s.codexMode === 'dev' && el.dataset.codexNodeId) {
-            s.codexNodeDeleteLastRightTs.delete(el.dataset.codexNodeId);
+    s.codexBulkNodeDeleteArmedAt = 0;
+    const nid = el.dataset.codexNodeId;
+    if (!nid) return;
+    const prevTs = s.codexNodeDeleteLastRightTs.get(nid) || 0;
+    if (prevTs > 0 && now - prevTs < DOUBLE_RIGHT_MS) {
+        s.codexNodeDeleteLastRightTs.delete(nid);
+        api.clearPendingCodexDeleteState();
+        api.removeEdgesForDeletedNodesWithJunctionBridging([nid]);
+        s.codexAllNodes = s.codexAllNodes.filter((n) => n.id !== nid);
+        api.markCodexLayoutDirty();
+        s.codexSelectedNodeEls.delete(el);
+        if (s.codexPrimarySelectedNodeEl === el) {
+            const rest = [...s.codexSelectedNodeEls];
+            s.codexPrimarySelectedNodeEl = rest.length ? rest[rest.length - 1] : null;
         }
-        if (e.button !== 0) return;
-        e.stopPropagation();
-        api.clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
+        api.applyCodexSelectionToDom();
+        api.unregisterCodexNodeRenderTracking(nid);
+        el.remove();
+        redrawCodexEdges();
+        api.updateCodexToolbar();
+        scheduleUpdateCodexVirtualScroll();
+    } else {
+        api.clearPendingCodexDeleteState();
+        el.classList.add('codex-node--pending-delete');
+        s.codexNodeDeleteLastRightTs.set(nid, now);
+        redrawCodexEdges();
+    }
+}
 
-        // Prevent selection of filtered-out or targeted-hidden nodes
-        if (
-            el.classList.contains('codex-node--filtered-out')
-            || el.classList.contains('codex-node--target-hidden')
-        ) {
-            return;
-        }
-        
-        // In View Mode, allow selection but not editing/moving
-        if (s.codexMode === 'view') {
-            // Play node select sound
-            playSoundEffect('nodeSelect');
-            // Select the node
-            api.selectCodexNode(el);
-            maybeOpenStoryArchiveFromCodexNodeEl(el);
-            return;
-        }
-        
-        if (s.codexInteractionMode === 'network') {
-            e.preventDefault();
-            api.handleNetworkNodeActivate(el);
-            return;
-        }
-        api.cancelPointerPending();
+function onCodexNodeDelegatedPointerDown(e) {
+    const el = closestCodexNodeEl(e.target);
+    if (!el) return;
+    if (e.button === 0 && s.codexMode === 'dev' && el.dataset.codexNodeId) {
+        s.codexNodeDeleteLastRightTs.delete(el.dataset.codexNodeId);
+    }
+    if (e.button !== 0) return;
+    e.stopPropagation();
+    api.clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
 
-        api.cancelBackgroundPanPointerPending();
+    if (
+        el.classList.contains('codex-node--filtered-out')
+        || el.classList.contains('codex-node--target-hidden')
+    ) {
+        return;
+    }
 
-        const baseLeft = parseFloat(el.style.left) || 0;
-        const baseTop = parseFloat(el.style.top) || 0;
-        const w = el.offsetWidth;
-        const h = el.offsetHeight;
-        if (!s.root) return;
+    if (s.codexMode === 'view') {
+        playSoundEffect('nodeSelect');
+        api.selectCodexNode(el);
+        maybeOpenStoryArchiveFromCodexNodeEl(el);
+        return;
+    }
 
-        let maxX;
-        let maxY;
-        let grabOffX;
-        let grabOffY;
-        let layerLeft = 0;
-        let layerTop = 0;
+    if (s.codexInteractionMode === 'network') {
+        e.preventDefault();
+        api.handleNetworkNodeActivate(el);
+        return;
+    }
+    api.cancelPointerPending();
+    api.cancelBackgroundPanPointerPending();
 
-        if (s.codexWorldEl) {
-            maxX = Math.max(0, CODEX_WORLD_W - w);
-            maxY = Math.max(0, CODEX_WORLD_H - h);
-            const pw = api.clientToWorldCodex(e.clientX, e.clientY);
-            grabOffX = pw.x - baseLeft;
-            grabOffY = pw.y - baseTop;
-        } else {
-            const layer = s.hitLayerEl || s.root;
-            const lr = layer.getBoundingClientRect();
-            const layoutScale = api.getCodexBodyLayoutPerViewportPx();
-            layerLeft = lr.left;
-            layerTop = lr.top;
-            maxX = Math.max(0, s.root.clientWidth - w);
-            maxY = Math.max(0, s.root.clientHeight - h);
-            grabOffX = (e.clientX - lr.left) / layoutScale - baseLeft;
-            grabOffY = (e.clientY - lr.top) / layoutScale - baseTop;
-        }
+    const baseLeft = parseFloat(el.style.left) || 0;
+    const baseTop = parseFloat(el.style.top) || 0;
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+    if (!s.root) return;
 
-        s.pointerPending = {
-            el,
-            dragGroup: api.selectDragGroupForNode(el),
-            pointerId: e.pointerId,
-            baseLeft,
-            baseTop,
-            layerLeft,
-            layerTop,
-            maxX,
-            maxY,
-            grabOffX,
-            grabOffY,
-            startCX: e.clientX,
-            startCY: e.clientY,
-            shiftKey: !!e.shiftKey
-        };
-        document.addEventListener('pointermove', api.onPointerMoveMaybeDrag, capOpts);
-        document.addEventListener('pointerup', api.onPointerUpMaybeSelect, capOpts);
-        document.addEventListener('pointercancel', api.onPointerUpMaybeSelect, capOpts);
-    });
+    let maxX;
+    let maxY;
+    let grabOffX;
+    let grabOffY;
+    let layerLeft = 0;
+    let layerTop = 0;
 
-    el.addEventListener('pointerenter', () => {
-        // View mode: node BGs are opaque and hide cords already — skip O(N) mask rebuilds on hover.
-        if (!el.classList.contains('codex-node--junction') && s.codexMode !== 'view') {
-            animateCodexNodeHoverMaskScale(el, readCodexNodeHoverVisualScale(el), () => {
-                api.syncCodexEdgeNodeMaskDom?.();
-            });
-        }
-        if (typeof api.onCodexNodeTargetedRoutePointerEnter === 'function') {
-            api.onCodexNodeTargetedRoutePointerEnter(el);
-        }
-        if (typeof api.onCodexNodeFilterRoutePointerEnter === 'function') {
-            api.onCodexNodeFilterRoutePointerEnter(el);
-        }
-    });
-    el.addEventListener('pointerleave', (e) => {
-        if (!el.classList.contains('codex-node--junction') && s.codexMode !== 'view') {
-            animateCodexNodeHoverMaskScale(el, 1, () => {
-                api.syncCodexEdgeNodeMaskDom?.();
-            });
-        }
-        if (typeof api.onCodexNodeTargetedRoutePointerLeave === 'function') {
-            api.onCodexNodeTargetedRoutePointerLeave(e, el);
-        }
-        if (typeof api.onCodexNodeFilterRoutePointerLeave === 'function') {
-            api.onCodexNodeFilterRoutePointerLeave(e, el);
-        }
-    });
+    if (s.codexWorldEl) {
+        maxX = Math.max(0, CODEX_WORLD_W - w);
+        maxY = Math.max(0, CODEX_WORLD_H - h);
+        const pw = api.clientToWorldCodex(e.clientX, e.clientY);
+        grabOffX = pw.x - baseLeft;
+        grabOffY = pw.y - baseTop;
+    } else {
+        const layer = s.hitLayerEl || s.root;
+        const lr = layer.getBoundingClientRect();
+        const layoutScale = api.getCodexBodyLayoutPerViewportPx();
+        layerLeft = lr.left;
+        layerTop = lr.top;
+        maxX = Math.max(0, s.root.clientWidth - w);
+        maxY = Math.max(0, s.root.clientHeight - h);
+        grabOffX = (e.clientX - lr.left) / layoutScale - baseLeft;
+        grabOffY = (e.clientY - lr.top) / layoutScale - baseTop;
+    }
+
+    s.pointerPending = {
+        el,
+        dragGroup: api.selectDragGroupForNode(el),
+        pointerId: e.pointerId,
+        baseLeft,
+        baseTop,
+        layerLeft,
+        layerTop,
+        maxX,
+        maxY,
+        grabOffX,
+        grabOffY,
+        startCX: e.clientX,
+        startCY: e.clientY,
+        shiftKey: !!e.shiftKey,
+    };
+    document.addEventListener('pointermove', api.onPointerMoveMaybeDrag, capOpts);
+    document.addEventListener('pointerup', api.onPointerUpMaybeSelect, capOpts);
+    document.addEventListener('pointercancel', api.onPointerUpMaybeSelect, capOpts);
+}
+
+function onCodexNodeDelegatedPointerOver(e) {
+    const el = closestCodexNodeEl(e.target);
+    if (!el) return;
+    if (closestCodexNodeEl(e.relatedTarget) === el) return;
+
+    if (!el.classList.contains('codex-node--junction') && s.codexMode !== 'view') {
+        animateCodexNodeHoverMaskScale(el, readCodexNodeHoverVisualScale(el), () => {
+            api.syncCodexEdgeNodeMaskDom?.();
+        });
+    }
+    if (typeof api.onCodexNodeTargetedRoutePointerEnter === 'function') {
+        api.onCodexNodeTargetedRoutePointerEnter(el);
+    }
+    if (typeof api.onCodexNodeFilterRoutePointerEnter === 'function') {
+        api.onCodexNodeFilterRoutePointerEnter(el);
+    }
+}
+
+function onCodexNodeDelegatedPointerOut(e) {
+    const el = closestCodexNodeEl(e.target);
+    if (!el) return;
+    if (closestCodexNodeEl(e.relatedTarget) === el) return;
+
+    if (!el.classList.contains('codex-node--junction') && s.codexMode !== 'view') {
+        animateCodexNodeHoverMaskScale(el, 1, () => {
+            api.syncCodexEdgeNodeMaskDom?.();
+        });
+    }
+    if (typeof api.onCodexNodeTargetedRoutePointerLeave === 'function') {
+        api.onCodexNodeTargetedRoutePointerLeave(e, el);
+    }
+    if (typeof api.onCodexNodeFilterRoutePointerLeave === 'function') {
+        api.onCodexNodeFilterRoutePointerLeave(e, el);
+    }
+}
+
+function teardownCodexNodeInteractionDelegation() {
+    const host = s.codexNodeInteractionHost;
+    if (!host) return;
+    host.removeEventListener('contextmenu', onCodexNodeDelegatedContextMenu, true);
+    host.removeEventListener('pointerdown', onCodexNodeDelegatedPointerDown);
+    host.removeEventListener('pointerover', onCodexNodeDelegatedPointerOver);
+    host.removeEventListener('pointerout', onCodexNodeDelegatedPointerOut);
+    s.codexNodeInteractionHost = null;
+}
+
+/**
+ * One listener set on the world — avoids ~4 listeners × thousands of nodes at mount.
+ */
+function ensureCodexNodeInteractionDelegation() {
+    const host = s.codexWorldEl || s.root;
+    if (!host) return;
+    if (s.codexNodeInteractionHost === host) return;
+    teardownCodexNodeInteractionDelegation();
+    host.addEventListener('contextmenu', onCodexNodeDelegatedContextMenu, true);
+    host.addEventListener('pointerdown', onCodexNodeDelegatedPointerDown);
+    host.addEventListener('pointerover', onCodexNodeDelegatedPointerOver);
+    host.addEventListener('pointerout', onCodexNodeDelegatedPointerOut);
+    s.codexNodeInteractionHost = host;
+}
+
+/** @deprecated Prefer ensureCodexNodeInteractionDelegation — kept for call-site compat. */
+function bindCodexNodeInteraction(_el) {
+    ensureCodexNodeInteractionDelegation();
 }
 
 function maybeOpenStoryArchiveFromCodexNodeEl(nodeEl, opts) {
@@ -549,6 +613,8 @@ api.applyNodeScale = applyNodeScale;
 api.createCodexNodeElement = createCodexNodeElement;
 api.placeCodexNode = placeCodexNode;
 api.bindCodexNodeInteraction = bindCodexNodeInteraction;
+api.ensureCodexNodeInteractionDelegation = ensureCodexNodeInteractionDelegation;
+api.teardownCodexNodeInteractionDelegation = teardownCodexNodeInteractionDelegation;
 api.maybeOpenStoryArchiveFromCodexNodeEl = maybeOpenStoryArchiveFromCodexNodeEl;
 api.codexNodeElSupportsStoryArchiveLink = codexNodeElSupportsStoryArchiveLink;
 api.codexBioLinkSpecFromNodeEl = codexBioLinkSpecFromNodeEl;

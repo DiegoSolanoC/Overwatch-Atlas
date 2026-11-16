@@ -229,7 +229,6 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
     let pendingCX = firstMoveEv.clientX;
     let pendingCY = firstMoveEv.clientY;
     let panRaf = 0;
-    let panMountTick = 0;
 
     const flushPan = () => {
         panRaf = 0;
@@ -237,11 +236,6 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
         s.codexViewPanY = origPanY + (pendingCY - startCY) / layoutPerVp;
         /* Cords live under .codex-world; pan is CSS translate only — no full SVG rebuild per move. */
         api.applyCodexWorldTransformStyle();
-        // Mount newly visible hex shells while panning (no cull) so cords aren't orphaned.
-        panMountTick += 1;
-        if (panMountTick % 2 === 0) {
-            scheduleUpdateCodexVirtualScroll({ mountOnly: true });
-        }
     };
 
     const applyClient = (clientX, clientY) => {
@@ -284,15 +278,25 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
 
         if (s.codexZoomDebounceTimer) clearTimeout(s.codexZoomDebounceTimer);
 
-        // Full sync after pan (cull off-screen + finish mounts), then hydrate portraits.
+        // View mode: full board already mounted — pan was CSS-only; just resume packets.
+        if (s.codexMode === 'view') {
+            s.codexSkipAllEdgeRedraws = false;
+            s.codexSkipEdgeRedraw = false;
+            hydrateCodexPortraitImagesInViewport(s.root);
+            s.codexZoomDebounceTimer = setTimeout(() => {
+                applyCodexCordPacketAnimPref();
+                s.codexZoomDebounceTimer = null;
+            }, 48);
+            return;
+        }
+
+        // Dev mode: virtual-scroll mount/unmount + cull after the gesture.
         s.codexSkipAllEdgeRedraws = true;
         s.codexSkipEdgeRedraw = true;
-        scheduleUpdateCodexVirtualScroll({ mountOnly: false });
+        scheduleUpdateCodexVirtualScroll();
         s.codexZoomDebounceTimer = setTimeout(() => {
             requestAnimationFrame(() => {
-                if (s.codexMode !== 'view') {
-                    api.syncCodexNodeDomCullFromView();
-                }
+                api.syncCodexNodeDomCullFromView();
                 hydrateCodexPortraitImagesInViewport(s.root);
                 requestAnimationFrame(() => {
                     s.codexSkipAllEdgeRedraws = false;

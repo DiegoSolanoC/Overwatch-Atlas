@@ -40,6 +40,8 @@ export const s = {
     codexEdgeDragUseLightSync: false,
     codexUnsavedEdgeKeys: /** @type {Set<string>} */ (new Set()),
     codexWorldEl: /** @type {HTMLElement|null} */ (null),
+    /** Host element for delegated node pointer/context handlers (one set for the whole board). */
+    codexNodeInteractionHost: /** @type {HTMLElement|null} */ (null),
     codexViewPanX: 0,
     codexViewPanY: 0,
     codexViewZoom: CODEX_ZOOM_INITIAL,
@@ -124,6 +126,7 @@ export function resetCanvasSession() {
     s.codexEdgeDragUseLightSync = false;
     s.codexUnsavedEdgeKeys.clear();
     s.codexWorldEl = null;
+    s.codexNodeInteractionHost = null;
     s.codexViewPanX = 0;
     s.codexViewPanY = 0;
     s.codexViewZoom = CODEX_ZOOM_INITIAL;

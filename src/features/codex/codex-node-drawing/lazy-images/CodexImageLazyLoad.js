@@ -47,6 +47,14 @@ function clearCodexPortraitLoadingState(img) {
     if (node) node.classList.remove('codex-node--portrait-loading');
 }
 
+function armCodexPortraitLoadClear(img) {
+    if (!(img instanceof HTMLImageElement) || img.dataset.codexLoadArmed === '1') return;
+    img.dataset.codexLoadArmed = '1';
+    const clear = () => clearCodexPortraitLoadingState(img);
+    img.addEventListener('load', clear, { once: true });
+    img.addEventListener('error', clear, { once: true });
+}
+
 function hydrateCodexImageNow(img) {
     if (!img) return;
     pendingHydrateImgs.delete(img);
@@ -55,7 +63,8 @@ function hydrateCodexImageNow(img) {
         img.removeAttribute('data-src');
     }
     codexImageObserver?.unobserve(img);
-    // load/error handlers on the img also clear; this covers cached instant decode.
+    armCodexPortraitLoadClear(img);
+    // Cached instant decode — clear without waiting for a load event.
     if (img.complete && img.naturalWidth > 0) clearCodexPortraitLoadingState(img);
 }
 
@@ -113,6 +122,7 @@ export function hydrateCodexPortraitImagesInViewport(root) {
         img.removeAttribute('data-src');
         if (codexImageObserver) codexImageObserver.unobserve(img);
         pendingHydrateImgs.delete(img);
+        armCodexPortraitLoadClear(img);
         if (img.complete && img.naturalWidth > 0) clearCodexPortraitLoadingState(img);
     });
 }
@@ -138,6 +148,8 @@ export async function hydrateAllCodexPortraitImages(root, opts = {}) {
             img.removeAttribute('data-src');
             codexImageObserver?.unobserve(img);
             pendingHydrateImgs.delete(img);
+            armCodexPortraitLoadClear(img);
+            if (img.complete && img.naturalWidth > 0) clearCodexPortraitLoadingState(img);
         }
         if (i + chunkSize < imgs.length) {
             await new Promise((r) => requestAnimationFrame(r));
