@@ -24,10 +24,15 @@ export class WorldviewLocationCatalog {
      */
     async loadData() {
         try {
-            // Load locations
-            const locationsResponse = await fetch('src/data/worldview/locations.json');
-            const locationsData = await locationsResponse.json();
-            
+            const [locationsResponse, connectionsResponse] = await Promise.all([
+                fetch('src/data/worldview/locations.json'),
+                fetch('src/data/codex/connections.json'),
+            ]);
+            const [locationsData, connectionsData] = await Promise.all([
+                locationsResponse.json(),
+                connectionsResponse.json(),
+            ]);
+
             // Check localStorage first for events (user's saved events)
             const savedEvents = localStorage.getItem('timelineEvents');
             if (savedEvents) {
@@ -44,16 +49,13 @@ export class WorldviewLocationCatalog {
                 this.events = [];
                 console.log('WorldviewLocationCatalog: No saved events in localStorage, using empty array');
             }
-            
+
             this.cities = locationsData.cities || [];
             this.fictionalCities = locationsData.fictionalCities || [];
             this.airports = locationsData.airports || [];
             this.seaports = locationsData.seaports || [];
             this.allSeaports = [...(locationsData.seaports || [])]; // Store all seaports before filtering
 
-            // Load connections
-            const connectionsResponse = await fetch('src/data/codex/connections.json');
-            const connectionsData = await connectionsResponse.json();
             this.trainConnections = connectionsData.trainConnections || [];
             this.secondaryConnections = connectionsData.secondaryConnections || [];
             this.seaportConnections = connectionsData.seaportConnections || [];

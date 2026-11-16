@@ -1,5 +1,7 @@
 /**
- * Night-time city lights: instanced circles on the globe with soft glow (additive) and a few real PointLights.
+ * Night-time city lights: instanced additive dots on the globe (shader-faded by sun).
+ * No real PointLights — those lit every MeshStandard fragment on Earth/clouds and
+ * tanked frame time while transport was moving.
  * Placement is filtered by equirectangular land mask (Alpha.png) so lights do not appear over ocean.
  */
 
@@ -13,19 +15,16 @@ import {
 import { loadEarthLandMask, isLatLonOnLand } from '../../../worldview-shared-assets/utils/EarthLandMask.js';
 import { EARTH_GLOBE_LIGHT_LAYER } from '../../../worldview-shared-assets/constants/WorldviewLightingConstants.js';
 
-const DEFAULT_LIGHTS_PER_HUB = 20;
+const DEFAULT_LIGHTS_PER_HUB = 12;
 /** Degrees: scatter radius around each hub (lat/lon disk). */
 const DEFAULT_CLUSTER_RADIUS_DEG = 5.5;
 const DEFAULT_SURFACE_RADIUS = 1.0035;
-const DOT_RADIUS = 0.0036;
-const DOT_SEGMENTS = 7;
-const MAX_ATTEMPTS_PER_DOT = 50;
-/** How many warm point lights sample real PBR on the globe (perf cap). */
-const ACCENT_POINT_LIGHT_COUNT = 12;
+const DOT_RADIUS = 0.0038;
+const DOT_SEGMENTS = 5;
+const MAX_ATTEMPTS_PER_DOT = 40;
 
 const _zAxis = new THREE.Vector3(0, 0, 1);
 const _normal = new THREE.Vector3();
-const _tmpMat = new THREE.Matrix4();
 
 /**
  * Must not redeclare built-in Three.js shader prefixes (attributes/uniforms).
@@ -60,6 +59,8 @@ void main() {
     vec3 s = normalize(uSunDirWorld);
     float nd = dot(n, s);
     float night = 1.0 - smoothstep(-0.1, 0.22, nd);
+    // Day-side dots contribute nothing — bail before glow math / blend.
+    if (night <= 0.004) discard;
 
     float r = length(vLocalXY) / uDotRadius;
     float t = clamp(r, 0.0, 1.0);
@@ -68,7 +69,7 @@ void main() {
     float halo = exp(-t * 6.2) * 0.35;
     float lum = core + glow + halo;
 
-    vec3 rgb = uColor * (1.05 + core * 0.95 + glow * 0.55 + halo * 0.25);
+    vec3 rgb = uColor * (1.12 + core * 1.05 + glow * 0.6 + halo * 0.28);
     float alpha = clamp(uOpacity * lum * night, 0.0, 1.0);
     gl_FragColor = vec4(rgb * alpha, alpha);
 }
@@ -79,7 +80,7 @@ function createEarthCityLightsMaterial(dotRadius) {
         uniforms: {
             uSunDirWorld: { value: new THREE.Vector3(0, 0, 1) },
             uColor: { value: new THREE.Color(0xffd060) },
-            uOpacity: { value: 1.05 },
+            uOpacity: { value: 1.2 },
             uDotRadius: { value: dotRadius }
         },
         vertexShader: CITY_LIGHTS_VERTEX_SHADER,
@@ -91,22 +92,6 @@ function createEarthCityLightsMaterial(dotRadius) {
         blending: THREE.AdditiveBlending,
         side: THREE.DoubleSide
     });
-}
-
-/**
- * @param {number} count
- * @returns {number[]}
- */
-function shuffledIndices(count) {
-    const idx = new Array(count);
-    for (let i = 0; i < count; i++) idx[i] = i;
-    for (let i = count - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const t = idx[i];
-        idx[i] = idx[j];
-        idx[j] = t;
-    }
-    return idx;
 }
 
 /**
@@ -187,7 +172,7 @@ export async function createEarthCityLightsPoints(dataModel, opts = {}) {
 
     const inst = new THREE.InstancedMesh(geometry, material, count);
     inst.name = 'earthCityLights';
-    inst.frustumCulled = false;
+    inst.frustumCulled = true;
     inst.renderOrder = 4;
     inst.userData.isEarthCityLights = true;
     inst.layers.set(EARTH_GLOBE_LIGHT_LAYER);
@@ -197,24 +182,8 @@ export async function createEarthCityLightsPoints(dataModel, opts = {}) {
     }
     inst.instanceMatrix.needsUpdate = true;
 
-    const accentPointLights = [];
-    const nAccent = Math.min(ACCENT_POINT_LIGHT_COUNT, count);
-    const order = shuffledIndices(count);
-    const tmpPos = new THREE.Vector3();
-    const accentColor = new THREE.Color(0xffcc66);
-    for (let k = 0; k < nAccent; k++) {
-        _tmpMat.copy(mats[order[k]]);
-        tmpPos.setFromMatrixPosition(_tmpMat);
-        accentColor.setHex(0xffcc66);
-        accentColor.offsetHSL((Math.random() - 0.5) * 0.03, (Math.random() - 0.5) * 0.08, (Math.random() - 0.5) * 0.06);
-        const L = new THREE.PointLight(accentColor.getHex(), 0.22 + Math.random() * 0.28, 0.72, 2);
-        L.position.copy(tmpPos);
-        L.layers.set(EARTH_GLOBE_LIGHT_LAYER);
-        L.name = `earthCityAccentLight_${k}`;
-        accentPointLights.push(L);
-    }
-
-    return { instancedMesh: inst, accentPointLights };
+    // Keep empty array for call-site compat (old accent PointLights removed for perf).
+    return { instancedMesh: inst, accentPointLights: [] };
 }
 
 /**

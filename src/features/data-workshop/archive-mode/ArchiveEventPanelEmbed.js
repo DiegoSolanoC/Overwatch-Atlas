@@ -19,6 +19,7 @@ import {
     mountStoryViewToggle,
     unmountStoryViewToggle,
 } from '../../story/story-mode/StoryViewToggle.js';
+import { getStoryArchiveViewModePreference } from '../../story/story-mode/storyArchivePreviewContext.js';
 
 /**
  * @param {HTMLElement|null|undefined} storyContainer
@@ -162,6 +163,21 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
         storeOriginalPanelState(eventsManagePanel.parentNode, eventsManagePanel.className);
     }
 
+    // Mark embedded (+ preferred story view) BEFORE load/render so timeline
+    // mode skips building the full hidden event-card list under the overlay.
+    eventsManagePanel.classList.remove('events-manage-panel');
+    eventsManagePanel.classList.add('story-viewer-panel-embedded');
+    if (archiveSource === 'story') {
+        const preferTimeline = getStoryArchiveViewModePreference() === 'timeline';
+        eventsManagePanel.classList.toggle('story-viewer-panel-embedded--timeline-view', preferTimeline);
+        eventsManagePanel.classList.toggle('story-viewer-panel-embedded--list-view', !preferTimeline);
+    } else {
+        eventsManagePanel.classList.remove(
+            'story-viewer-panel-embedded--timeline-view',
+            'story-viewer-panel-embedded--list-view',
+        );
+    }
+
     try {
         await loadEmbeddedArchiveSource(archiveSource);
     } catch (err) {
@@ -173,8 +189,6 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
 
     syncDataWorkshopBioArchivePanelClass(eventsManagePanel, archiveSource);
 
-    eventsManagePanel.classList.remove('events-manage-panel');
-    eventsManagePanel.classList.add('story-viewer-panel-embedded');
     eventsManagePanel.style.right = 'auto';
     eventsManagePanel.style.position = 'relative';
     eventsManagePanel.style.width = '100%';

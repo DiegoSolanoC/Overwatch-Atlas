@@ -63,7 +63,8 @@ export async function mountDialogueTheaterMode() {
     content.appendChild(host);
 
     await mountDialogueTheaterListView(host);
-    await ensureDialogueTheaterDockAssets();
+    // Assets already warmed during list mount — cache hit only.
+    void ensureDialogueTheaterDockAssets();
     refreshDialogueTheaterDockPagination();
     window.dispatchEvent(new CustomEvent('atlas-dialogue-theater-dock-mode', { detail: { active: true } }));
 }

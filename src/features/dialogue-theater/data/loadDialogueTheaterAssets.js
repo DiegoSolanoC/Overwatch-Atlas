@@ -94,18 +94,26 @@ function parseJsonAllowingTrailingJunk(text) {
  * @param {number} [timeoutMs]
  * @returns {Promise<unknown>}
  */
-async function fetchTheaterJson(url, timeoutMs = 10000) {
-    const separator = url.includes('?') ? '&' : '?';
-    const cacheBuster = `${separator}v=${Date.now()}&_=${Math.random().toString(36).slice(2, 9)}&nocache=true`;
-    const fullUrl = url + cacheBuster;
+/**
+ * @param {string} url
+ * @param {number} [timeoutMs]
+ * @param {{ bustCache?: boolean }} [opts]
+ */
+async function fetchTheaterJson(url, timeoutMs = 10000, opts = {}) {
+    const bustCache = opts.bustCache === true;
+    const fullUrl = bustCache
+        ? `${url}${url.includes('?') ? '&' : '?'}v=${Date.now()}`
+        : url;
     const res = await Promise.race([
-        fetch(fullUrl, {
-            cache: 'no-store',
-            headers: {
-                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                Pragma: 'no-cache',
-            },
-        }),
+        fetch(fullUrl, bustCache
+            ? {
+                cache: 'no-store',
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    Pragma: 'no-cache',
+                },
+            }
+            : undefined),
         new Promise((_, reject) => {
             setTimeout(() => reject(new Error(`Timeout: ${url} took longer than ${timeoutMs}ms`)), timeoutMs);
         }),
@@ -134,6 +142,8 @@ export async function loadDialogueTheaterAssets({ force = false } = {}) {
         try {
             const manifest = await fetchTheaterJson(
                 'src/data/dialogue-theater/theater-assets-manifest.json',
+                10000,
+                { bustCache: force },
             );
             manifestAssets = normalizeAssets(manifest);
         } catch (err) {

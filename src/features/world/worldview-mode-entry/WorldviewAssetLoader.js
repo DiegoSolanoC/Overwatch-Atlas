@@ -39,7 +39,8 @@ import {
 } from './entry/WorldviewMapLaunchChoice.js';
 import { isEventSystemLoadOutActive } from '../../system-interface/interface-load-unload/integration/eventSystemAutoPreload.js';
 
-const STAGE_SETTLE_MS = 300;
+/** Tiny yield between stages so the progress bar can paint — not a fake delay. */
+const STAGE_SETTLE_MS = 0;
 
 /**
  * Declared up-front so the tracker knows the full denominator. The Event
@@ -226,5 +227,6 @@ async function runEventMarkersStage(progress) {
 }
 
 function sleep(ms) {
+    if (!(ms > 0)) return Promise.resolve();
     return new Promise((resolve) => setTimeout(resolve, ms));
 }

@@ -9,9 +9,6 @@
 
 import { createLoadProgressTracker } from './loadProgressTracker.js';
 
-const SETTLE_TOTAL_MS = 800;
-const SETTLE_STEP_MS = 80;
-
 const SHELL_PREP_STAGE = Object.freeze({
     id: 'shellPrep',
     label: 'Preparing mode shell',
@@ -34,14 +31,13 @@ export function buildLinearModeStages(mountStage) {
 export function yieldForLoadingOverlayPaint() {
     return new Promise((resolve) => {
         requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                setTimeout(resolve, 48);
-            });
+            requestAnimationFrame(resolve);
         });
     });
 }
 
 /**
+ * One paint tick — no artificial 800ms “settle” tax on every mode open.
  * @param {import('./loadProgressTracker.js').LoadProgressTracker} progress
  * @param {{ beginMessage?: string }} [opts]
  */
@@ -49,11 +45,9 @@ export async function runLinearModeSettleStage(progress, opts = {}) {
     await progress.runStage(
         'settle',
         async ({ setProgress }) => {
-            const steps = Math.max(1, Math.round(SETTLE_TOTAL_MS / SETTLE_STEP_MS));
-            for (let i = 1; i <= steps; i += 1) {
-                await new Promise((r) => setTimeout(r, SETTLE_STEP_MS));
-                setProgress(i / steps);
-            }
+            setProgress(0.5);
+            await new Promise((r) => requestAnimationFrame(r));
+            setProgress(1);
         },
         opts,
     );

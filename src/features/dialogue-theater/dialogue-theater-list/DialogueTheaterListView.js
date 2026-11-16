@@ -1143,12 +1143,16 @@ export async function mountDialogueTheaterListView(container) {
         floatArchiveFileActions(theaterActionsEarly, 'theater');
     }
 
-    await dialogueTheaterDataService.load();
+    // Conversations + asset manifest are independent — load in parallel under the overlay.
+    const [, assets] = await Promise.all([
+        dialogueTheaterDataService.load(),
+        loadDialogueTheaterAssets(),
+    ]);
     // Drop any mid-load empty list cache / pending rAF from chrome mounted before data was ready.
     renderListScheduled = false;
     renderListRoot = null;
     invalidateListCaches({ fullRebuild: true });
-    listThumbAssets = await loadDialogueTheaterAssets();
+    listThumbAssets = assets;
     refreshEraFilterOptions(container);
     pairSearchControls = await wireDialogueTheaterPairSearch(container, {
         getConversations: () => getModeConversations(),
