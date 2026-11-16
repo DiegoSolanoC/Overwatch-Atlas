@@ -152,12 +152,30 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
     const imgWrapper = document.createElement('div');
     imgWrapper.className = 'codex-node__img-wrapper';
 
+    // Frame + mask are shared (3 variants) — always eager so hex shell appears with cords.
+    const frame = document.createElement('img');
+    frame.className = 'codex-node__frame';
+    frame.alt = '';
+    frame.draggable = false;
+    frame.decoding = 'async';
+    frame.setAttribute('aria-hidden', 'true');
+    frame.src = frameSrc;
+
     const img = document.createElement('img');
     img.className = 'codex-node__img';
     img.draggable = false;
     img.decoding = 'async';
     img.alt = imgAlt;
-    img.onerror = () => { img.style.opacity = '0.35'; };
+    const clearPortraitLoading = () => {
+        el.classList.remove('codex-node--portrait-loading');
+    };
+    img.addEventListener('load', clearPortraitLoading, { once: true });
+    img.onerror = () => {
+        img.style.opacity = '0.35';
+        clearPortraitLoading();
+    };
+
+    el.classList.add('codex-node--portrait-loading');
     if (opts.skipLazyLoad) {
         img.src = imgSrc;
     } else {
@@ -167,27 +185,13 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
 
     imgWrapper.appendChild(img);
 
-    const frame = document.createElement('img');
-    frame.className = 'codex-node__frame';
-    frame.alt = '';
-    frame.draggable = false;
-    frame.decoding = 'async';
-    frame.setAttribute('aria-hidden', 'true');
-    if (opts.skipLazyLoad) {
-        frame.src = frameSrc;
-    } else {
-        frame.dataset.src = frameSrc;
-        if (!skipImageObserve) observeCodexImage(frame);
-    }
-
-    el.appendChild(imgWrapper);
-
     const bg = document.createElement('div');
     bg.className = 'codex-node__bg';
     const savedBgColor = resolveCodexNodeBgColor(el.dataset.codexBgColor);
     bg.style.backgroundColor = savedBgColor;
     imgWrapper.appendChild(bg);
 
+    el.appendChild(imgWrapper);
     el.appendChild(frame);
 
     const portraitKind = kind === 'faction'

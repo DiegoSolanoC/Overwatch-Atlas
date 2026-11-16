@@ -45,7 +45,8 @@ function placeLoadedCodexNodeRecord(L, extraOpts = {}) {
         // Lazy portraits during bulk load — eager decode of 2000+ hexes blocks the overlay at the end.
         skipLazyLoad: false,
         skipEnterFade: true,
-        skipImageObserve: true,
+        // Observe portraits by default so virtual-scroll remounts hydrate on pan/zoom.
+        skipImageObserve: false,
         id: L.id,
         scale: resolveCodexNodeScale(placeKind, L.scale),
         bgColor: L.bgColor || null,
@@ -101,7 +102,7 @@ async function placeCodexNodeRecordsFast(nodes, opts = {}) {
         while (i < total && turnCount < CODEX_LOAD_NODE_CHUNK) {
             const node = nodes[i++];
             if (!node?.id || s.codexRenderedNodeIds.has(node.id)) continue;
-            placeLoadedCodexNodeRecord(node, { mountParent: frag });
+            placeLoadedCodexNodeRecord(node, { mountParent: frag, skipImageObserve: true });
             s.codexRenderedNodeIds.add(node.id);
             turnCount += 1;
             if (performance.now() - turnStart >= budgetMs) break;

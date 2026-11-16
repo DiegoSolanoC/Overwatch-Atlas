@@ -6,6 +6,7 @@ import { CODEX_ZOOM_FACTOR, CODEX_ZOOM_INITIAL, CODEX_ZOOM_MAX, CODEX_ZOOM_MIN }
 import { clearCodexEdgeRedrawSchedule, redrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { syncCodexPacketAnimForViewZoom } from '../../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { scheduleUpdateCodexVirtualScroll, updateCodexVirtualScroll } from '../../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
+import { hydrateCodexPortraitImagesInViewport } from '../../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../../codex-canvas/core/canvasConstants.js';
 
 
@@ -22,15 +23,18 @@ function applyCodexViewTransform() {
     // Skip edge redraws during virtual scroll to prevent freeze (same as pan)
     s.codexSkipAllEdgeRedraws = true;
     s.codexSkipEdgeRedraw = true; // Also skip the internal redraw from updateCodexVirtualScroll
-    scheduleUpdateCodexVirtualScroll();
+    // Mount shells during zoom (same reason as pan — cords shouldn't lead empty space).
+    scheduleUpdateCodexVirtualScroll({ mountOnly: true });
     clearCodexEdgeRedrawSchedule();
     // Debounce the final redraw to prevent multiple rapid calls during zoom
     if (s.codexZoomDebounceTimer) {
         clearTimeout(s.codexZoomDebounceTimer);
     }
     s.codexZoomDebounceTimer = setTimeout(() => {
+        scheduleUpdateCodexVirtualScroll({ mountOnly: false });
         s.codexSkipAllEdgeRedraws = false;
         s.codexSkipEdgeRedraw = false; // Reset before calling redrawCodexEdges
+        hydrateCodexPortraitImagesInViewport(s.root);
         redrawCodexEdges(); // Call directly to bypass RAF throttling
         s.codexZoomDebounceTimer = null;
     }, 200);

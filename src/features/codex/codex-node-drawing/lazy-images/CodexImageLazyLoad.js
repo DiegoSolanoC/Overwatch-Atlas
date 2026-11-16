@@ -40,6 +40,13 @@ function ensureCodexImageObserver() {
 /**
  * @param {HTMLImageElement} img
  */
+function clearCodexPortraitLoadingState(img) {
+    if (!(img instanceof HTMLImageElement)) return;
+    if (!img.classList.contains('codex-node__img')) return;
+    const node = img.closest('.codex-node');
+    if (node) node.classList.remove('codex-node--portrait-loading');
+}
+
 function hydrateCodexImageNow(img) {
     if (!img) return;
     pendingHydrateImgs.delete(img);
@@ -48,6 +55,8 @@ function hydrateCodexImageNow(img) {
         img.removeAttribute('data-src');
     }
     codexImageObserver?.unobserve(img);
+    // load/error handlers on the img also clear; this covers cached instant decode.
+    if (img.complete && img.naturalWidth > 0) clearCodexPortraitLoadingState(img);
 }
 
 export function observeCodexImage(img) {
@@ -104,6 +113,7 @@ export function hydrateCodexPortraitImagesInViewport(root) {
         img.removeAttribute('data-src');
         if (codexImageObserver) codexImageObserver.unobserve(img);
         pendingHydrateImgs.delete(img);
+        if (img.complete && img.naturalWidth > 0) clearCodexPortraitLoadingState(img);
     });
 }
 

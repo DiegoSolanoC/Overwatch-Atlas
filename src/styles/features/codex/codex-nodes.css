@@ -618,6 +618,22 @@ body:has(#paginationDock) .codex-visual-panel {
     height: 144px;
     transform: rotate(var(--codex-hex-rotation, 0deg));
     transform-origin: center center;
+    /* CSS frame paints in the same tick as mount — no wait on <img> decode. */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.codex-node--simplified[data-codex-frame-variant="1"] {
+    background-image: url('../../../assets/images/Codex/Node1.png');
+}
+
+.codex-node--simplified[data-codex-frame-variant="2"] {
+    background-image: url('../../../assets/images/Codex/Node2.png');
+}
+
+.codex-node--simplified[data-codex-frame-variant="3"] {
+    background-image: url('../../../assets/images/Codex/Node3.png');
 }
 
 /* Wrapper element: positioned inside rotating root, gets masked, contains image */
@@ -677,11 +693,33 @@ body:has(#paginationDock) .codex-visual-panel {
     object-fit: cover;
 }
 
-/* Frame rotates with parent and scales via percentage sizing */
+/*
+ * Portrait still loading — black hex fill + loading-asset GIF sized to the
+ * masked portrait area (same GIF as archive/menu thumbs).
+ */
+.codex-node--simplified.codex-node--portrait-loading .codex-node__img-wrapper {
+    background-color: #000000;
+    background-image: url('../../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.codex-node--simplified.codex-node--portrait-loading .codex-node__img {
+    opacity: 0;
+}
+
+.codex-node--simplified.codex-node--portrait-loading .codex-node__bg {
+    opacity: 0;
+}
+
+/* Frame <img> kept for alpha/SVG mask sync; visual shell is CSS background above. */
 .codex-node--simplified .codex-node__frame {
     width: 100% !important;
     height: 100% !important;
     transform: none;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Faction logos: contain so the full emblem fits inside the hex (inset vs hero fill) */

@@ -20,6 +20,7 @@ class NewsTickerService {
         this.tickerContent = null;
         this.currentHeadlines = [];
         this.animationId = null;
+        this._tickerResizeHandler = null;
         this._handlersAttached = false;
     }
 
@@ -223,15 +224,18 @@ class NewsTickerService {
             return;
         }
 
-        const contentWidth = tickerContent.offsetWidth;
-        if (contentWidth === 0) {
+        const measureSpacing = () => {
+            const contentWidth = tickerContent.offsetWidth;
+            const containerWidth = tickerContainer.offsetWidth;
+            /* If content is shorter than container, pad so we still loop seamlessly. */
+            return Math.max(contentWidth, containerWidth + 100);
+        };
+
+        let spacing = measureSpacing();
+        if (spacing === 0 || tickerContent.offsetWidth === 0) {
             setTimeout(() => this.startAnimation(), 50);
             return;
         }
-
-        const containerWidth = tickerContainer.offsetWidth;
-        /* If content is shorter than container, pad to "container + 100" so we still loop seamlessly. */
-        const spacing = Math.max(contentWidth, containerWidth + 100);
 
         let position = 0;
         tickerContent.style.transform = 'translateX(0px)';
@@ -239,18 +243,29 @@ class NewsTickerService {
         duplicate.style.visibility = 'visible';
 
         const speed = 0.5;
+        let framesUntilRemeasure = 0;
+
+        const onResize = () => {
+            framesUntilRemeasure = 0;
+        };
+        this._tickerResizeHandler = onResize;
+        window.addEventListener('resize', onResize, { passive: true });
 
         const animate = () => {
             position -= speed;
-            const currentContentWidth = tickerContent.offsetWidth;
-            const currentContainerWidth = tickerContainer.offsetWidth;
-            const currentSpacing = Math.max(currentContentWidth, currentContainerWidth + 100);
+            // Remeasure rarely (resize / every ~2s) — reading layout every frame caused reflow storms.
+            if (framesUntilRemeasure <= 0) {
+                spacing = measureSpacing();
+                framesUntilRemeasure = 120;
+            } else {
+                framesUntilRemeasure -= 1;
+            }
 
-            if (currentSpacing > 0 && Math.abs(position) >= currentSpacing) position = 0;
+            if (spacing > 0 && Math.abs(position) >= spacing) position = 0;
 
             tickerContent.style.transform = `translateX(${position}px)`;
-            if (duplicate && currentSpacing > 0) {
-                duplicate.style.transform = `translateX(${position + currentSpacing}px)`;
+            if (duplicate && spacing > 0) {
+                duplicate.style.transform = `translateX(${position + spacing}px)`;
             }
             this.animationId = requestAnimationFrame(animate);
         };
@@ -261,6 +276,10 @@ class NewsTickerService {
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);
             this.animationId = null;
+        }
+        if (this._tickerResizeHandler) {
+            window.removeEventListener('resize', this._tickerResizeHandler);
+            this._tickerResizeHandler = null;
         }
     }
 

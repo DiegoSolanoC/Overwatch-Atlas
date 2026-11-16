@@ -168,6 +168,11 @@ export function initCodexCanvas(rootElement) {
     s.root = rootElement;
     if (!s.root) return Promise.resolve();
 
+    // Warm shared hex frames/masks/alphas + loading GIF (non-blocking).
+    void import('../../codex-nodes/placement/CodexNodeChromePreload.js')
+        .then((m) => m.preloadCodexNodeChromeAssets())
+        .catch(() => {});
+
     api.resetCodexOpenSessionDefaults?.();
     api.loadCodexTargetedLinkPref();
     api.loadCodexVisualPrefs();

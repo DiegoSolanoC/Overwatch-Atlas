@@ -8,6 +8,7 @@ import {
     applyCodexCordPacketAnimPref,
     codexStopCordAnimRafOnly,
 } from '../../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
+import { hydrateCodexPortraitImagesInViewport } from '../../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../../codex-canvas/core/canvasConstants.js';
 
 
@@ -228,6 +229,7 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
     let pendingCX = firstMoveEv.clientX;
     let pendingCY = firstMoveEv.clientY;
     let panRaf = 0;
+    let panMountTick = 0;
 
     const flushPan = () => {
         panRaf = 0;
@@ -235,6 +237,11 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
         s.codexViewPanY = origPanY + (pendingCY - startCY) / layoutPerVp;
         /* Cords live under .codex-world; pan is CSS translate only — no full SVG rebuild per move. */
         api.applyCodexWorldTransformStyle();
+        // Mount newly visible hex shells while panning (no cull) so cords aren't orphaned.
+        panMountTick += 1;
+        if (panMountTick % 2 === 0) {
+            scheduleUpdateCodexVirtualScroll({ mountOnly: true });
+        }
     };
 
     const applyClient = (clientX, clientY) => {
@@ -277,24 +284,16 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
 
         if (s.codexZoomDebounceTimer) clearTimeout(s.codexZoomDebounceTimer);
 
-        // View mode: board is fully mounted + no cv-cull — only resume packets.
-        if (s.codexMode === 'view') {
-            s.codexSkipAllEdgeRedraws = false;
-            s.codexSkipEdgeRedraw = false;
-            s.codexZoomDebounceTimer = setTimeout(() => {
-                applyCodexCordPacketAnimPref();
-                s.codexZoomDebounceTimer = null;
-            }, 48);
-            return;
-        }
-
-        // Dev mode: virtual-scroll mount/unmount + cull after the gesture.
+        // Full sync after pan (cull off-screen + finish mounts), then hydrate portraits.
         s.codexSkipAllEdgeRedraws = true;
         s.codexSkipEdgeRedraw = true;
-        scheduleUpdateCodexVirtualScroll();
+        scheduleUpdateCodexVirtualScroll({ mountOnly: false });
         s.codexZoomDebounceTimer = setTimeout(() => {
             requestAnimationFrame(() => {
-                api.syncCodexNodeDomCullFromView();
+                if (s.codexMode !== 'view') {
+                    api.syncCodexNodeDomCullFromView();
+                }
+                hydrateCodexPortraitImagesInViewport(s.root);
                 requestAnimationFrame(() => {
                     s.codexSkipAllEdgeRedraws = false;
                     s.codexSkipEdgeRedraw = false;
