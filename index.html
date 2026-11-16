@@ -162,11 +162,31 @@
 
     <header>
         <div class="header-hub" id="headerHub" aria-label="Mode hub">
-            <div class="header-hub-stack" id="headerHubMapStack" aria-label="View controls" data-header-order="30"></div>
-            <div class="header-hub-group" id="headerHubButtonGroup" data-header-order="31" aria-label="Primary apps"></div>
+            <div class="header-hub-chrome" aria-hidden="true">
+                <div class="header-hub-chrome__grey"></div>
+                <div class="header-hub-chrome__bar"></div>
+                <!-- rim SVG injected by HeaderSidesChrome -->
+            </div>
+            <div class="header-hub-ui">
+                <div class="header-hub-grey-slot" id="headerHubGreySlot" aria-label="Home"></div>
+                <div class="header-hub-bar-slot">
+                    <div class="header-hub-stack" id="headerHubMapStack" aria-label="View controls" data-header-order="30"></div>
+                    <div class="header-hub-group" id="headerHubButtonGroup" data-header-order="31" aria-label="Primary apps"></div>
+                </div>
+            </div>
         </div>
         <div class="header-hub header-hub--right" id="headerHubRight" aria-label="Main menu">
-            <div class="header-hub-group" id="headerHubRightButtonGroup" aria-label="Session controls"></div>
+            <div class="header-hub-chrome" aria-hidden="true">
+                <div class="header-hub-chrome__grey"></div>
+                <div class="header-hub-chrome__bar"></div>
+                <!-- rim SVG injected by HeaderSidesChrome -->
+            </div>
+            <div class="header-hub-ui">
+                <div class="header-hub-grey-slot" id="headerHubRightGreySlot" aria-label="Color palette"></div>
+                <div class="header-hub-bar-slot">
+                    <div class="header-hub-group" id="headerHubRightButtonGroup" aria-label="Session controls"></div>
+                </div>
+            </div>
         </div>
         <a class="header-title-badge header-title-badge--link" id="headerTitleBadge" href="https://overwatch.blizzard.com/en-us/" target="_blank" rel="noopener noreferrer" aria-label="Open official Overwatch website" title="Go to official website">
             <svg class="header-title-badge-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -180,8 +200,10 @@
                     </clipPath>
                 </defs>
                 <path class="header-title-badge-path" fill="url(#headerTitleBadgeFill)" d="M7 8 L93 8 L96 20 L83 98 L17 98 L4 20 Z"></path>
-                <path class="header-title-badge-stroke header-title-badge-stroke--top" fill="none" stroke="rgb(64, 210, 255)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" clip-path="url(#headerTitleBadgeClip)" d=""></path>
-                <path class="header-title-badge-stroke header-title-badge-stroke--bottom" fill="none" stroke="rgb(64, 210, 255)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" clip-path="url(#headerTitleBadgeClip)" d=""></path>
+                <g class="header-title-badge-rim" clip-path="url(#headerTitleBadgeClip)">
+                    <path class="header-title-badge-stroke header-title-badge-stroke--top" fill="none" stroke="rgb(64, 210, 255)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" d=""></path>
+                    <path class="header-title-badge-stroke header-title-badge-stroke--bottom" fill="none" stroke="rgb(64, 210, 255)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" d=""></path>
+                </g>
             </svg>
             <img class="header-title-badge-logo" src="src/assets/images/Misc/Website%20Icons/Website.png" alt="Overwatch Website" />
             <span class="header-title-badge-sr">Overwatch Atlas</span>
@@ -565,6 +587,6 @@
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=106"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=124"></script>
 </body>
 </html>

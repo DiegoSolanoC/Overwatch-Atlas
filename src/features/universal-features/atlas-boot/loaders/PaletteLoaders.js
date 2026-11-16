@@ -26,17 +26,35 @@ export async function loadPalette(loadedComponents) {
     await withLoadLifecycle(async () => {
         createHeaderHubButton({
             id: 'colorPaletteToggle',
-            className: 'header-hub-btn--wide',
+            className: 'header-hub-btn--palette-swatch',
             title: 'Toggle Color Palette',
-            label: 'Palette',
+            label: null,
             iconPath: 'src/assets/images/Icons/Mode%20Icons/Palette%20Icon.png',
             iconAlt: 'Color Palette',
-            parentId: 'headerHubRightButtonGroup',
+            parentId: 'headerHubRightGreySlot',
             baseClass: 'header-hub-btn header-hub-btn--icon',
             iconSpanId: 'colorPaletteIcon',
-            // Last on the right; flex-grow 2 so 4 tiles still read as 5 equal segments.
-            headerOrder: 70
+            headerOrder: 70,
         });
+
+        // Grey-cap control: accent circle (current palette), opens palette menu on click.
+        const paletteBtn = document.getElementById('colorPaletteToggle');
+        const greySlot = document.getElementById('headerHubRightGreySlot');
+        if (paletteBtn && greySlot && paletteBtn.parentElement !== greySlot) {
+            greySlot.appendChild(paletteBtn);
+        }
+        if (paletteBtn) {
+            paletteBtn.classList.add('header-hub-btn--palette-swatch');
+            paletteBtn.classList.remove('header-hub-btn--wide');
+            const iconWrap = paletteBtn.querySelector('#colorPaletteIcon');
+            if (iconWrap) {
+                iconWrap.classList.add('header-hub-icon-wrap');
+                iconWrap.innerHTML =
+                    '<span class="header-hub-palette-dot" aria-hidden="true"></span>';
+            }
+            const label = paletteBtn.querySelector('.header-hub-btn-label');
+            if (label) label.remove();
+        }
 
         loadSoundEffect('colorChange', 'src/assets/audio/sfx/Color Change.mp3', 'Loading palette sound effect...');
 

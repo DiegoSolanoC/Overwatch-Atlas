@@ -23,6 +23,15 @@ body {
     --header-badge-half: calc(var(--header-badge-outer-w) / 2);
     --header-badge-logo-percent: 82%;
     --header-badge-logo-max: 86px;
+    /*
+     * Hub ↔ badge gap + side chrome colors live on body so UI Tweaks
+     * (inline on body) win over stylesheet defaults. Do not redeclare on header.
+     */
+    --header-badge-gap: -28px;
+    --header-side-grad-inner: #1a2a44;
+    --header-side-grad-outer: #070b12;
+    --header-side-grey: #161a22;
+    --header-side-grey-pct: 16%;
     /* Black header paints to hub row bottom (aligned with buttons) */
     --header-chrome-paint-h: calc(
         var(--header-chrome-align-top)
@@ -79,11 +88,6 @@ body {
 header {
     background: #000;
     --header-title-size: 26px;
-    /*
-     * Hub inner edges vs badge bbox: small negative % pulls toward hex; tune for a sliver of gap.
-     * #headerTitleBadge z-index stays above hubs in overlap with the link hit area.
-     */
-    --header-badge-gap: calc(var(--header-badge-outer-w) * -0.08);
     --header-hub-stack-w: clamp(56px, 7.5vw, 88px);
     padding: 0; /* allow hub sections to be seamless full-height blocks */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -463,6 +467,252 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
 }
 
 /*
+ * Side chrome: sideways dark gradient (brighter inward) + solid grey outer cap.
+ * Enabled per-hub via .header-hub--chrome (no body class — avoids tweaker MO loops).
+ */
+.header-hub-chrome {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: none;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.header-hub.header-hub--chrome > .header-hub-chrome {
+    display: flex;
+}
+
+/* Parallelogram fill — JS overrides clip-path with center corner rounds. */
+#headerHub.header-hub--chrome > .header-hub-chrome {
+    flex-direction: row;
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--header-hub-btn-slant)) 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.header-hub.header-hub--right.header-hub--chrome > .header-hub-chrome {
+    flex-direction: row-reverse;
+    clip-path: polygon(
+        var(--header-hub-btn-slant) 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.header-hub-chrome__grey {
+    flex: 0 0 var(--header-side-grey-pct);
+    width: var(--header-side-grey-pct);
+    background: var(--header-side-grey);
+    position: relative;
+    z-index: 1;
+}
+
+/* Grey ↔ gradient join uses the same parallelogram slant as the stripe. */
+#headerHub .header-hub-chrome__grey {
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--header-hub-btn-slant)) 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.header-hub.header-hub--right .header-hub-chrome__grey {
+    clip-path: polygon(
+        var(--header-hub-btn-slant) 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.header-hub-chrome__bar {
+    flex: 1 1 auto;
+    min-width: 0;
+    position: relative;
+    z-index: 0;
+}
+
+#headerHub .header-hub-chrome__bar {
+    /* Tuck under grey’s slanted inner edge (same overlap trick as hub buttons). */
+    margin-left: calc(-1 * var(--header-hub-btn-slant));
+    background: linear-gradient(
+        to left,
+        var(--header-side-grad-inner),
+        var(--header-side-grad-outer)
+    );
+}
+
+.header-hub.header-hub--right .header-hub-chrome__bar {
+    margin-right: calc(-1 * var(--header-hub-btn-slant));
+    background: linear-gradient(
+        to right,
+        var(--header-side-grad-inner),
+        var(--header-side-grad-outer)
+    );
+}
+
+/* L-rim inside clipped chrome: separate inward + bottom 2× strokes. */
+.header-hub-chrome__rim {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.header-hub-chrome__rim-inward,
+.header-hub-chrome__rim-bottom {
+    fill: none;
+    stroke-linecap: butt;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.header-hub.header-hub--chrome#headerHub {
+    padding-left: 0;
+}
+
+/* Button row over chrome: grey cap + gradient bar mirror the stripe layout. */
+.header-hub-ui {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    pointer-events: none;
+}
+
+.header-hub-ui > * {
+    pointer-events: auto;
+}
+
+#headerHub.header-hub--chrome > .header-hub-ui {
+    flex-direction: row;
+}
+
+.header-hub.header-hub--right.header-hub--chrome > .header-hub-ui {
+    flex-direction: row-reverse;
+}
+
+.header-hub-grey-slot {
+    flex: 0 0 var(--header-side-grey-pct);
+    width: var(--header-side-grey-pct);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.header-hub-bar-slot {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+}
+
+#headerHub .header-hub-bar-slot {
+    margin-left: calc(-1 * var(--header-hub-btn-slant));
+    padding-left: var(--header-hub-btn-slant);
+}
+
+.header-hub.header-hub--right .header-hub-bar-slot {
+    margin-right: calc(-1 * var(--header-hub-btn-slant));
+    padding-right: var(--header-hub-btn-slant);
+}
+
+.header-hub-bar-slot > .header-hub-group {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+}
+
+.header-hub.header-hub--chrome .header-hub-stack {
+    display: none !important;
+}
+
+.header-hub.header-hub--chrome .header-hub-group::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Transparent tiles so grey / gradient chrome reads through. */
+.header-hub.header-hub--chrome .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn) {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.header-hub.header-hub--chrome .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn):hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+}
+
+.header-hub.header-hub--chrome .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn).header-hub-btn--active,
+.header-hub.header-hub--chrome .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn).active {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 -3px 0 rgba(var(--accent-primary-rgb), 0.9);
+}
+
+.header-hub-grey-slot .header-hub-btn {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    border: none !important;
+}
+
+/* Home in left grey: icon + label. */
+#headerHubGreySlot .header-hub-icon-wrap {
+    display: flex;
+}
+
+#headerHubGreySlot .header-hub-btn-label {
+    display: inline-flex;
+    text-transform: uppercase;
+}
+
+/* Palette in right grey: accent circle only. */
+.header-hub-btn--palette-swatch {
+    flex: 1 1 auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+.header-hub-btn--palette-swatch .header-hub-icon-wrap {
+    display: flex !important;
+    width: 100%;
+    height: 100%;
+}
+
+.header-hub-btn--palette-swatch .header-hub-btn-label {
+    display: none !important;
+}
+
+.header-hub-palette-dot {
+    width: clamp(18px, 2.4vw, 28px);
+    height: clamp(18px, 2.4vw, 28px);
+    border-radius: 50%;
+    background: rgb(var(--accent-primary-rgb));
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.35);
+    flex: 0 0 auto;
+}
+
+/*
  * White rim under hub rows — asymmetric inset: no top, bottom + inward (toward badge) only.
  * Left hub: inward = right; right hub: inward = left.
  */
@@ -703,7 +953,7 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     display: inline-flex;
     align-items: center;
     font-family: var(--font-menu-title, var(--font-default, 'Config', sans-serif));
-    font-size: 20px;
+    font-size: clamp(26px, 2.1vw, 34px);
     font-weight: 700;
     font-style: italic;
     letter-spacing: 0.05em;
@@ -934,8 +1184,6 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     header {
         --header-title-size: 18px;
         --header-hub-stack-w: clamp(48px, 12vw, 72px);
-        /* Desktop uses a negative gap for overlap; keep the mobile positive gap */
-        --header-badge-gap: clamp(8px, 2.2vw, 14px);
     }
 
     /* Match desktop: each hub button grows to fill its column (flex 1 1 0 from .header-hub-btn). */
@@ -999,10 +1247,6 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
         --header-chrome-align-extra: 20px;
         --header-badge-outer-w: clamp(108px, 28vw, 136px);
         --header-badge-half: calc(var(--header-badge-outer-w) / 2);
-        --header-badge-gap: clamp(8px, 2.4vw, 12px);
-    }
-
-    header {
         --header-badge-gap: clamp(8px, 2.4vw, 12px);
     }
 
@@ -1253,7 +1497,8 @@ footer.timeline-loaded .footer-atlas-news {
 .header-badge-tweaker-toggle {
     position: fixed;
     top: calc(var(--header-height, 72px) + 12px);
-    right: 20px;
+    left: 20px;
+    right: auto;
     z-index: 2500;
     padding: 12px 18px;
     font-size: 16px;
@@ -1283,7 +1528,8 @@ footer.timeline-loaded .footer-atlas-news {
     width: auto;
     max-height: none;
     overflow: auto;
-    padding: 28px 120px 48px 40px;
+    padding: 24px 28px 48px;
+    padding-right: max(28px, 140px);
     color: #e8f4ff;
     background: rgba(6, 12, 22, 0.97);
     border: none;
@@ -1298,7 +1544,8 @@ footer.timeline-loaded .footer-atlas-news {
     gap: 18px;
     flex-wrap: wrap;
     margin-bottom: 8px;
-    max-width: 1400px;
+    width: 100%;
+    max-width: none;
 }
 
 .header-badge-tweaker__title {
@@ -1307,6 +1554,41 @@ footer.timeline-loaded .footer-atlas-news {
     margin: 0;
     line-height: 1.15;
     letter-spacing: 0.02em;
+}
+
+.header-badge-tweaker__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 18px;
+    width: 100%;
+}
+
+.header-badge-tweaker__tab {
+    appearance: none;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(200, 225, 255, 0.82);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(160, 200, 240, 0.28);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.header-badge-tweaker__tab:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(180, 220, 255, 0.5);
+}
+
+.header-badge-tweaker__tab.is-active,
+.header-badge-tweaker__tab[aria-selected='true'] {
+    color: #e8f4ff;
+    background: rgba(40, 90, 140, 0.85);
+    border-color: rgba(120, 200, 255, 0.75);
+    box-shadow: inset 0 -3px 0 rgba(64, 210, 255, 0.85);
 }
 
 .header-badge-tweaker__status {
@@ -1329,8 +1611,8 @@ footer.timeline-loaded .footer-atlas-news {
     font-size: 18px;
     line-height: 1.45;
     color: rgba(220, 235, 255, 0.82);
-    margin: 0 0 18px;
-    max-width: 1100px;
+    margin: 0 0 14px;
+    max-width: none;
 }
 
 .header-badge-tweaker__meta {
@@ -1338,7 +1620,8 @@ footer.timeline-loaded .footer-atlas-news {
     flex-direction: column;
     gap: 12px;
     margin-bottom: 22px;
-    max-width: 1400px;
+    width: 100%;
+    max-width: none;
 }
 
 .header-badge-tweaker__palette {
@@ -1349,8 +1632,9 @@ footer.timeline-loaded .footer-atlas-news {
 
 .header-badge-tweaker__swatches {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 160px));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 12px 18px;
+    max-width: none;
 }
 
 .header-badge-tweaker__swatch {
@@ -1371,13 +1655,20 @@ footer.timeline-loaded .footer-atlas-news {
 
 .header-badge-tweaker__grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px 28px;
-    max-width: 1400px;
+    width: 100%;
+    max-width: none;
     margin-bottom: 24px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1400px) {
+    .header-badge-tweaker__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
     .header-badge-tweaker__grid {
         grid-template-columns: 1fr;
     }
@@ -1448,7 +1739,8 @@ footer.timeline-loaded .footer-atlas-news {
 .header-badge-tweaker__actions {
     display: flex;
     gap: 14px;
-    max-width: 1400px;
+    width: 100%;
+    max-width: none;
     position: sticky;
     bottom: 0;
     padding: 14px 0 6px;

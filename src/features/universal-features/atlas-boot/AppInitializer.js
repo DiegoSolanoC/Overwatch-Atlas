@@ -222,11 +222,15 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupHeaderHub);
     document.addEventListener('DOMContentLoaded', setupZoomControls);
     document.addEventListener('DOMContentLoaded', setupOfficialSiteLinkSound);
-    document.addEventListener('DOMContentLoaded', setupHeaderTitleBadgeTweaker);
+    document.addEventListener('DOMContentLoaded', () => {
+        try { setupHeaderTitleBadgeTweaker(); }
+        catch (err) { console.error('[AppInitializer] UI Tweaks setup failed:', err); }
+    });
 } else {
     initMobilePortraitGate();
     setupHeaderHub();
     setupZoomControls();
     setupOfficialSiteLinkSound();
-    setupHeaderTitleBadgeTweaker();
+    try { setupHeaderTitleBadgeTweaker(); }
+    catch (err) { console.error('[AppInitializer] UI Tweaks setup failed:', err); }
 }

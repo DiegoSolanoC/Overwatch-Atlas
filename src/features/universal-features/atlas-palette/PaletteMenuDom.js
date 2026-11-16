@@ -88,6 +88,22 @@ export function updatePaletteButtonIcon(palette) {
     const iconSpan = colorPaletteToggle.querySelector('#colorPaletteIcon');
     if (!iconSpan) return;
 
+    // Chrome grey-cap: live accent swatch circle (falls back to classic icon if missing).
+    let dot = iconSpan.querySelector('.header-hub-palette-dot');
+    if (dot || colorPaletteToggle.classList.contains('header-hub-btn--palette-swatch')) {
+        if (!dot) {
+            iconSpan.innerHTML = '';
+            dot = document.createElement('span');
+            dot.className = 'header-hub-palette-dot';
+            dot.setAttribute('aria-hidden', 'true');
+            iconSpan.appendChild(dot);
+        }
+        colorPaletteToggle.dataset.palette = String(palette || 'blue');
+        // Accent CSS vars update with the active palette — keep the dot in sync.
+        dot.style.background = 'rgb(var(--accent-primary-rgb))';
+        return;
+    }
+
     let iconPath = ICON_BLUE;
     if (palette === 'gray') iconPath = ICON_GRAY;
     else if (palette === 'crimson') iconPath = ICON_CRIMSON;

@@ -1,15 +1,30 @@
 /**
- * Live tweaker for the center header official-site badge (hex / inverted trap).
- *
- * Fill = darkened accent gradient.
- * Border = filled outward ribbons (split top/bottom) with one-sided pointy tips
- * and a neon/sky rim color derived from the palette hue.
+ * UI Tweaks — stackable design panel (center badge + header sides).
  * Live preview while dragging; Save writes localStorage.
  */
 
+import {
+    HEADER_SIDES_TWEAK_DEFAULTS,
+    applyHeaderSidesChrome,
+    cloneSidesDefaults,
+    loadSidesState,
+    sanitizeSidesState,
+    saveSidesState,
+} from './HeaderSidesChrome.js';
+
 const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
-const PANEL_ID = 'headerTitleBadgeTweakerPanel';
-const TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
+const PANEL_ID = 'uiTweaksPanel';
+const TOGGLE_ID = 'uiTweaksToggle';
+const LEGACY_PANEL_ID = 'headerTitleBadgeTweakerPanel';
+const LEGACY_TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
+
+/** @type {'sides' | 'badge'} */
+let activeUiTweaksSection = 'sides';
+
+const UI_TWEAK_TABS = Object.freeze([
+    { id: 'sides', label: 'Header sides' },
+    { id: 'badge', label: 'Center badge' },
+]);
 
 /** @typedef {object} BadgeTweakState */
 
@@ -112,6 +127,11 @@ function clamp(n, lo, hi) {
 function sanitizeState(s) {
     const next = { ...s };
     const pad = 4;
+
+    next.widthPx = clamp(Number(next.widthPx), 200, 440);
+    next.heightExtraPx = clamp(Number(next.heightExtraPx), 10, 90);
+    next.logoPercent = clamp(Number(next.logoPercent), 40, 100);
+    next.logoMaxPx = clamp(Number(next.logoMaxPx), 40, 140);
 
     next.topY = clamp(Number(next.topY), 4, 28);
     next.bottomY = clamp(Number(next.bottomY), next.topY + 36, 96);
@@ -462,28 +482,34 @@ function ensureBadgeSvgParts(badge) {
     }
     fill.setAttribute('fill', 'url(#headerTitleBadgeFill)');
     fill.style.stroke = 'none';
+    fill.removeAttribute('stroke');
 
-    const ensureRim = (cls) => {
-        let el = svg.querySelector(`.${cls}`);
-        if (!el) {
-            el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            el.setAttribute('class', `header-title-badge-stroke ${cls}`);
-        }
-        // 2× stroke clipped to fill: outer flush to outline, inside tip from round cap.
+    // One rim layer only: strip legacy tips / duplicate strokes / old per-path clips.
+    svg.querySelectorAll('.header-title-badge-tips').forEach((el) => el.remove());
+    svg.querySelectorAll('.header-title-badge-stroke').forEach((el) => el.remove());
+    svg.querySelectorAll('.header-title-badge-rim').forEach((el) => el.remove());
+
+    svg.appendChild(fill);
+
+    // Clip the group (not each path) so non-scaling 2× strokes don't ghost outside.
+    const rimGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    rimGroup.setAttribute('class', 'header-title-badge-rim');
+    rimGroup.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
+
+    const mkStroke = (cls) => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        el.setAttribute('class', `header-title-badge-stroke ${cls}`);
         el.setAttribute('fill', 'none');
         el.style.fill = 'none';
-        el.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
         el.setAttribute('vector-effect', 'non-scaling-stroke');
         el.setAttribute('stroke-linecap', 'round');
         el.setAttribute('stroke-linejoin', 'round');
-        svg.appendChild(el);
+        rimGroup.appendChild(el);
         return el;
     };
-    // Drop legacy tip / filled-ribbon layers if present from earlier builds.
-    svg.querySelectorAll('.header-title-badge-tips').forEach((el) => el.remove());
-    svg.appendChild(fill);
-    ensureRim('header-title-badge-stroke--top');
-    ensureRim('header-title-badge-stroke--bottom');
+    mkStroke('header-title-badge-stroke--top');
+    mkStroke('header-title-badge-stroke--bottom');
+    svg.appendChild(rimGroup);
 }
 
 export function applyHeaderTitleBadgeTweaks(state) {
@@ -543,7 +569,7 @@ export function applyHeaderTitleBadgeTweaks(state) {
         fill.setAttribute('fill', 'url(#headerTitleBadgeFill)');
         fill.style.stroke = 'none';
     }
-    // Round caps + clip → one-sided tip (outer flush, inside curves into the tip).
+    // Round caps + group clip → one-sided tip (no second unclipped ghost stroke).
     if (topStroke) {
         topStroke.setAttribute('fill', 'none');
         topStroke.style.fill = 'none';
@@ -553,7 +579,7 @@ export function applyHeaderTitleBadgeTweaks(state) {
         topStroke.setAttribute('stroke-linecap', 'round');
         topStroke.setAttribute('stroke-linejoin', 'round');
         topStroke.setAttribute('vector-effect', 'non-scaling-stroke');
-        topStroke.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
+        topStroke.removeAttribute('clip-path');
     }
     if (botStroke) {
         botStroke.setAttribute('fill', 'none');
@@ -564,8 +590,10 @@ export function applyHeaderTitleBadgeTweaks(state) {
         botStroke.setAttribute('stroke-linecap', 'round');
         botStroke.setAttribute('stroke-linejoin', 'round');
         botStroke.setAttribute('vector-effect', 'non-scaling-stroke');
-        botStroke.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
+        botStroke.removeAttribute('clip-path');
     }
+    const rimGroup = badge.querySelector('.header-title-badge-rim');
+    if (rimGroup) rimGroup.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
 
     const root = document.body;
     root.style.setProperty('--header-badge-outer-w', `${clean.widthPx}px`);
@@ -577,8 +605,8 @@ export function applyHeaderTitleBadgeTweaks(state) {
     const bottomY = pts[3][1];
     const dx = Math.abs(pts[2][0] - pts[3][0]);
     const dy = Math.abs(bottomY - notchY) || 1;
+    // Strip top + slant follow badge notch; strip/paint bottom is owned by Header sides.
     root.style.setProperty('--header-hub-hex-y-top', String(notchY));
-    root.style.setProperty('--header-hub-hex-y-bottom', String(bottomY));
     root.style.setProperty('--header-hub-hex-edge-dx', String(dx));
     root.style.setProperty('--header-hub-hex-edge-dy', String(dy));
     root.style.setProperty(
@@ -598,11 +626,12 @@ export function applyHeaderTitleBadgeTweaks(state) {
 
 /**
  * @param {HTMLElement} panel
- * @param {BadgeTweakState} state
+ * @param {{ badge: object, sides: object }} bags
  * @param {{ onPreview: () => void, onSave: () => void, isDirty: () => boolean }} hooks
  */
-function mountControls(panel, state, hooks) {
+function mountControls(panel, bags, hooks) {
     panel.replaceChildren();
+    const { badge, sides } = bags;
 
     const head = document.createElement('div');
     head.className = 'header-badge-tweaker__head';
@@ -610,7 +639,7 @@ function mountControls(panel, state, hooks) {
 
     const title = document.createElement('div');
     title.className = 'header-badge-tweaker__title';
-    title.textContent = 'Center badge tweaker';
+    title.textContent = 'UI Tweaks';
     head.appendChild(title);
 
     const status = document.createElement('div');
@@ -620,8 +649,31 @@ function mountControls(panel, state, hooks) {
     const hint = document.createElement('p');
     hint.className = 'header-badge-tweaker__hint';
     hint.textContent =
-        'Drag for live preview · Save to keep · Rim is a clipped stroke on the rounded outline (even thickness, flush outer edge, round tip caps)';
+        'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
     panel.appendChild(hint);
+
+    const tabs = document.createElement('div');
+    tabs.className = 'header-badge-tweaker__tabs';
+    tabs.setAttribute('role', 'tablist');
+    tabs.setAttribute('aria-label', 'UI Tweaks sections');
+    panel.appendChild(tabs);
+
+    for (const tab of UI_TWEAK_TABS) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'header-badge-tweaker__tab';
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', tab.id === activeUiTweaksSection ? 'true' : 'false');
+        btn.dataset.section = tab.id;
+        btn.textContent = tab.label;
+        if (tab.id === activeUiTweaksSection) btn.classList.add('is-active');
+        btn.addEventListener('click', () => {
+            if (activeUiTweaksSection === tab.id) return;
+            activeUiTweaksSection = tab.id;
+            mountControls(panel, bags, hooks);
+        });
+        tabs.appendChild(btn);
+    }
 
     const meta = document.createElement('div');
     meta.className = 'header-badge-tweaker__meta';
@@ -635,30 +687,100 @@ function mountControls(panel, state, hooks) {
     swatches.className = 'header-badge-tweaker__swatches';
     meta.appendChild(swatches);
 
-    /** @type {{ title: string, items: { key: keyof typeof HEADER_BADGE_TWEAK_DEFAULTS, label: string, min: number, max: number, step: number }[] }[]} */
-    const sections = [
+    /** @type {{ group: string, title: string, bag: 'badge' | 'sides', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number }[] }[]} */
+    const allSections = [
         {
+            group: 'Header sides',
+            title: 'Gap & layout',
+            bag: 'sides',
+            defaults: HEADER_SIDES_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidesState,
+            items: [
+                {
+                    key: 'heightExtraPx',
+                    label: 'Overall height (badge + sides)',
+                    min: 10,
+                    max: 90,
+                    step: 1,
+                    bag: 'badge',
+                },
+                { key: 'sideGapPx', label: 'Gap to badge (neg = under)', min: -80, max: 48, step: 1 },
+                {
+                    key: 'sideStripBottomY',
+                    label: 'Strip + paint bottom Y',
+                    min: 48,
+                    max: 100,
+                    step: 0.5,
+                },
+                { key: 'sideGreyWidthPct', label: 'Grey outer width %', min: 6, max: 40, step: 1 },
+                { key: 'sideRimCornerRadius', label: 'Corner round', min: 0, max: 28, step: 0.5 },
+            ],
+        },
+        {
+            group: 'Header sides',
+            title: 'Side coloration',
+            bag: 'sides',
+            defaults: HEADER_SIDES_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidesState,
+            items: [
+                { key: 'sideInnerDarkness', label: 'Inner (brighter) darkness', min: 40, max: 95, step: 1 },
+                { key: 'sideOuterDarkness', label: 'Outer (darker) darkness', min: 55, max: 98, step: 1 },
+                { key: 'sideSaturation', label: 'Gradient saturation', min: 0, max: 80, step: 1 },
+                { key: 'sideGreyLevel', label: 'Grey outer level', min: 6, max: 40, step: 1 },
+            ],
+        },
+        {
+            group: 'Header sides',
+            title: 'Side border (inward + bottom)',
+            bag: 'sides',
+            defaults: HEADER_SIDES_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidesState,
+            items: [
+                { key: 'sideRimInwardWidth', label: 'Inward thickness', min: 0, max: 14, step: 0.25 },
+                { key: 'sideRimBottomWidth', label: 'Bottom thickness', min: 0, max: 16, step: 0.25 },
+                { key: 'sideRimFadeReach', label: 'Bottom fade reach', min: 20, max: 100, step: 1 },
+                { key: 'sideRimHueShift', label: 'Rim hue shift', min: -40, max: 40, step: 1 },
+                { key: 'sideRimSaturation', label: 'Rim saturation', min: 0, max: 100, step: 1 },
+                { key: 'sideRimLightness', label: 'Rim lightness', min: 8, max: 70, step: 1 },
+                { key: 'sideRimDarkness', label: 'Rim darkness', min: 0, max: 100, step: 1 },
+                { key: 'sideRimGlow', label: 'Rim neon glow', min: 0, max: 100, step: 1 },
+                { key: 'sideRimOpacity', label: 'Rim opacity', min: 0, max: 100, step: 1 },
+            ],
+        },
+        {
+            group: 'Center badge',
             title: 'Size & logo',
+            bag: 'badge',
+            defaults: HEADER_BADGE_TWEAK_DEFAULTS,
+            sanitize: sanitizeState,
             items: [
                 { key: 'widthPx', label: 'Width', min: 200, max: 440, step: 2 },
-                { key: 'heightExtraPx', label: 'Height extra', min: 10, max: 60, step: 1 },
+                { key: 'heightExtraPx', label: 'Overall height (badge + sides)', min: 10, max: 90, step: 1 },
                 { key: 'logoPercent', label: 'Logo %', min: 50, max: 95, step: 1 },
                 { key: 'logoMaxPx', label: 'Logo max px', min: 40, max: 120, step: 1 },
             ],
         },
         {
+            group: 'Center badge',
             title: 'Border shape',
+            bag: 'badge',
+            defaults: HEADER_BADGE_TWEAK_DEFAULTS,
+            sanitize: sanitizeState,
             items: [
                 { key: 'topStrokeWidth', label: 'Top border thickness', min: 1, max: 12, step: 0.25 },
                 { key: 'bottomStrokeWidth', label: 'Bottom border thickness', min: 1, max: 14, step: 0.25 },
-                { key: 'borderGap', label: 'Gap size', min: 4, max: 40, step: 1 },
-                { key: 'borderGapCenter', label: 'Gap position (↑↓)', min: 18, max: 82, step: 1 },
+                { key: 'borderGap', label: 'Rim gap size', min: 4, max: 40, step: 1 },
+                { key: 'borderGapCenter', label: 'Rim gap position (↑↓)', min: 18, max: 82, step: 1 },
                 { key: 'tipPointiness', label: 'Tip pointiness', min: 0, max: 100, step: 1 },
                 { key: 'cornerRadius', label: 'Shape / border corner round', min: 0, max: 12, step: 0.25 },
             ],
         },
         {
+            group: 'Center badge',
             title: 'Border color',
+            bag: 'badge',
+            defaults: HEADER_BADGE_TWEAK_DEFAULTS,
+            sanitize: sanitizeState,
             items: [
                 { key: 'borderHueShift', label: 'Hue shift', min: -40, max: 40, step: 1 },
                 { key: 'borderSaturation', label: 'Saturation', min: 50, max: 100, step: 1 },
@@ -668,14 +790,22 @@ function mountControls(panel, state, hooks) {
             ],
         },
         {
+            group: 'Center badge',
             title: 'Fill',
+            bag: 'badge',
+            defaults: HEADER_BADGE_TWEAK_DEFAULTS,
+            sanitize: sanitizeState,
             items: [
                 { key: 'fillDarkness', label: 'Top darkness', min: 0, max: 100, step: 1 },
                 { key: 'fillBrightness', label: 'Bottom lift', min: 0, max: 100, step: 1 },
             ],
         },
         {
+            group: 'Center badge',
             title: 'Geometry',
+            bag: 'badge',
+            defaults: HEADER_BADGE_TWEAK_DEFAULTS,
+            sanitize: sanitizeState,
             items: [
                 { key: 'topY', label: 'Top Y', min: 2, max: 24, step: 0.5 },
                 { key: 'bottomY', label: 'Bottom Y', min: 70, max: 98, step: 0.5 },
@@ -687,6 +817,8 @@ function mountControls(panel, state, hooks) {
         },
     ];
 
+    const sections = allSections.filter((s) => s.bag === activeUiTweaksSection);
+
     const grid = document.createElement('div');
     grid.className = 'header-badge-tweaker__grid';
     panel.appendChild(grid);
@@ -697,18 +829,34 @@ function mountControls(panel, state, hooks) {
     };
 
     const refreshReadouts = () => {
-        const result = applyHeaderTitleBadgeTweaks(state);
-        if (!result) return;
-        const { accent, fillTop, fillBottom, borderRgb } = result;
-        paletteNote.textContent = `Accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
+        const badgeResult = applyHeaderTitleBadgeTweaks(badge);
+        const sideResult = applyHeaderSidesChrome(sides);
+        if (!badgeResult || !sideResult) return;
+        const { accent, fillTop, fillBottom, borderRgb } = badgeResult;
+
+        const swatchRows =
+            activeUiTweaksSection === 'sides'
+                ? [
+                    ['Accent', accent],
+                    ['Side inner', sideResult.inner],
+                    ['Side outer', sideResult.outer],
+                    ['Side grey', sideResult.grey],
+                    ['Side rim', sideResult.rimRgb || accent],
+                ]
+                : [
+                    ['Accent', accent],
+                    ['Badge fill', fillTop],
+                    ['Fill bottom', fillBottom],
+                    ['Badge rim', borderRgb],
+                ];
+
+        paletteNote.textContent =
+            activeUiTweaksSection === 'sides'
+                ? `Header sides  ·  ${sideResult.inner.join(', ')} → ${sideResult.outer.join(', ')}`
+                : `Center badge  ·  accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
 
         swatches.replaceChildren();
-        for (const [label, rgb] of [
-            ['Accent', accent],
-            ['Fill top', fillTop],
-            ['Fill bottom', fillBottom],
-            ['Border', borderRgb],
-        ]) {
+        for (const [label, rgb] of swatchRows) {
             const cell = document.createElement('div');
             cell.className = 'header-badge-tweaker__swatch';
             const chip = document.createElement('span');
@@ -726,11 +874,13 @@ function mountControls(panel, state, hooks) {
     const syncRowValues = () => {
         panel.querySelectorAll('[data-tweak-key]').forEach((el) => {
             const key = el.getAttribute('data-tweak-key');
-            if (!key || !(key in state)) return;
+            const bagName = el.getAttribute('data-tweak-bag');
+            const bag = bagName === 'sides' ? sides : badge;
+            if (!key || !(key in bag)) return;
             const range = el.querySelector('input[type="range"]');
             const v = el.querySelector('.header-badge-tweaker__val');
-            if (range) range.value = String(state[key]);
-            if (v) v.textContent = String(state[key]);
+            if (range) range.value = String(bag[key]);
+            if (v) v.textContent = String(bag[key]);
         });
     };
 
@@ -744,9 +894,17 @@ function mountControls(panel, state, hooks) {
         card.appendChild(h);
 
         for (const spec of section.items) {
+            const itemBagName = spec.bag || section.bag;
+            const bag = itemBagName === 'sides' ? sides : badge;
+            const itemDefaults =
+                itemBagName === 'sides' ? HEADER_SIDES_TWEAK_DEFAULTS : HEADER_BADGE_TWEAK_DEFAULTS;
+            const itemSanitize =
+                itemBagName === 'sides' ? sanitizeSidesState : sanitizeState;
+
             const row = document.createElement('div');
             row.className = 'header-badge-tweaker__row';
             row.dataset.tweakKey = spec.key;
+            row.dataset.tweakBag = itemBagName;
 
             const lab = document.createElement('span');
             lab.className = 'header-badge-tweaker__label';
@@ -757,12 +915,12 @@ function mountControls(panel, state, hooks) {
             input.min = String(spec.min);
             input.max = String(spec.max);
             input.step = String(spec.step);
-            input.value = String(state[spec.key]);
+            input.value = String(bag[spec.key]);
             input.setAttribute('aria-label', spec.label);
 
             const val = document.createElement('span');
             val.className = 'header-badge-tweaker__val';
-            val.textContent = String(state[spec.key]);
+            val.textContent = String(bag[spec.key]);
 
             const resetOne = document.createElement('button');
             resetOne.type = 'button';
@@ -770,16 +928,16 @@ function mountControls(panel, state, hooks) {
             resetOne.title = `Reset ${spec.label}`;
             resetOne.textContent = 'Reset';
             resetOne.addEventListener('click', () => {
-                state[spec.key] = HEADER_BADGE_TWEAK_DEFAULTS[spec.key];
-                Object.assign(state, sanitizeState(state));
+                bag[spec.key] = itemDefaults[spec.key];
+                Object.assign(bag, itemSanitize(bag));
                 syncRowValues();
                 hooks.onPreview();
                 refreshReadouts();
             });
 
             input.addEventListener('input', () => {
-                state[spec.key] = Number(input.value);
-                Object.assign(state, sanitizeState(state));
+                bag[spec.key] = Number(input.value);
+                Object.assign(bag, itemSanitize(bag));
                 syncRowValues();
                 hooks.onPreview();
                 refreshReadouts();
@@ -815,9 +973,10 @@ function mountControls(panel, state, hooks) {
     resetBtn.type = 'button';
     resetBtn.textContent = 'Reset all';
     resetBtn.addEventListener('click', () => {
-        Object.assign(state, cloneDefaults());
+        Object.assign(badge, cloneDefaults());
+        Object.assign(sides, cloneSidesDefaults());
         hooks.onPreview();
-        mountControls(panel, state, hooks);
+        mountControls(panel, bags, hooks);
     });
 
     const copyBtn = document.createElement('button');
@@ -825,7 +984,10 @@ function mountControls(panel, state, hooks) {
     copyBtn.textContent = 'Copy JSON';
     copyBtn.addEventListener('click', async () => {
         try {
-            await navigator.clipboard.writeText(JSON.stringify(sanitizeState(state), null, 2));
+            await navigator.clipboard.writeText(JSON.stringify({
+                badge: sanitizeState(badge),
+                sides: sanitizeSidesState(sides),
+            }, null, 2));
             copyBtn.textContent = 'Copied';
             setTimeout(() => {
                 copyBtn.textContent = 'Copy JSON';
@@ -844,70 +1006,100 @@ function mountControls(panel, state, hooks) {
 }
 
 export function setupHeaderTitleBadgeTweaker() {
-    const badge = document.getElementById('headerTitleBadge');
-    if (!badge) return;
+    try {
+        const badgeEl = document.getElementById('headerTitleBadge');
+        if (!badgeEl) return;
 
-    ensureBadgeSvgParts(badge);
-    const state = loadState();
-    let savedSnapshot = sanitizeState({ ...state });
-    let dirty = false;
+        document.getElementById(LEGACY_TOGGLE_ID)?.remove();
+        document.getElementById(LEGACY_PANEL_ID)?.remove();
 
-    const preview = () => {
-        applyHeaderTitleBadgeTweaks(state);
-        dirty = JSON.stringify(sanitizeState(state)) !== JSON.stringify(savedSnapshot);
-    };
-    const persist = () => {
-        Object.assign(state, sanitizeState(state));
-        saveState(state);
-        savedSnapshot = sanitizeState({ ...state });
-        dirty = false;
-        applyHeaderTitleBadgeTweaks(state);
-    };
+        ensureBadgeSvgParts(badgeEl);
+        const badge = loadState();
+        const sides = loadSidesState();
+        let savedBadge = sanitizeState({ ...badge });
+        let savedSides = sanitizeSidesState({ ...sides });
+        let dirty = false;
+        const bags = { badge, sides };
 
-    preview();
-    if (document.getElementById(TOGGLE_ID)) return;
+        const preview = () => {
+            try {
+                applyHeaderTitleBadgeTweaks(badge);
+                applyHeaderSidesChrome(sides);
+                dirty =
+                    JSON.stringify(sanitizeState(badge)) !== JSON.stringify(savedBadge)
+                    || JSON.stringify(sanitizeSidesState(sides)) !== JSON.stringify(savedSides);
+            } catch (err) {
+                console.error('[UI Tweaks] preview failed:', err);
+            }
+        };
+        const persist = () => {
+            try {
+                Object.assign(badge, sanitizeState(badge));
+                Object.assign(sides, sanitizeSidesState(sides));
+                saveState(badge);
+                saveSidesState(sides);
+                savedBadge = sanitizeState({ ...badge });
+                savedSides = sanitizeSidesState({ ...sides });
+                dirty = false;
+                applyHeaderTitleBadgeTweaks(badge);
+                applyHeaderSidesChrome(sides);
+            } catch (err) {
+                console.error('[UI Tweaks] save failed:', err);
+            }
+        };
 
-    const toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.id = TOGGLE_ID;
-    toggle.className = 'header-badge-tweaker-toggle';
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-controls', PANEL_ID);
-    toggle.title = 'Tweak center official-site badge';
-    toggle.textContent = 'Badge';
+        preview();
+        if (document.getElementById(TOGGLE_ID)) return;
 
-    const panel = document.createElement('div');
-    panel.id = PANEL_ID;
-    panel.className = 'header-badge-tweaker-panel';
-    panel.hidden = true;
-    panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-label', 'Center badge geometry tweaker');
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.id = TOGGLE_ID;
+        toggle.className = 'header-badge-tweaker-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-controls', PANEL_ID);
+        toggle.title = 'UI Tweaks';
+        toggle.textContent = 'UI Tweaks';
 
-    const hooks = {
-        onPreview: preview,
-        onSave: persist,
-        isDirty: () => dirty,
-    };
+        const panel = document.createElement('div');
+        panel.id = PANEL_ID;
+        panel.className = 'header-badge-tweaker-panel';
+        panel.hidden = true;
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-label', 'UI Tweaks');
 
-    mountControls(panel, state, hooks);
+        const hooks = {
+            onPreview: preview,
+            onSave: persist,
+            isDirty: () => dirty,
+        };
 
-    const mo = new MutationObserver(() => {
-        applyHeaderTitleBadgeTweaks(state);
-        if (!panel.hidden) mountControls(panel, state, hooks);
-    });
-    mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        mountControls(panel, bags, hooks);
 
-    toggle.addEventListener('click', () => {
-        const open = panel.hidden;
-        panel.hidden = !open;
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        toggle.classList.toggle('is-active', open);
-        toggle.textContent = open ? 'Close' : 'Badge';
-        if (open) mountControls(panel, state, hooks);
-    });
+        // Palette class changes only — recolor; do not remount (avoids loops).
+        const mo = new MutationObserver(() => {
+            try {
+                applyHeaderTitleBadgeTweaks(badge);
+                applyHeaderSidesChrome(sides);
+            } catch (err) {
+                console.error('[UI Tweaks] palette recolor failed:', err);
+            }
+        });
+        mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-    document.body.appendChild(toggle);
-    document.body.appendChild(panel);
+        toggle.addEventListener('click', () => {
+            const open = panel.hidden;
+            panel.hidden = !open;
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.classList.toggle('is-active', open);
+            toggle.textContent = open ? 'Close' : 'UI Tweaks';
+            if (open) mountControls(panel, bags, hooks);
+        });
+
+        document.body.appendChild(toggle);
+        document.body.appendChild(panel);
+    } catch (err) {
+        console.error('[UI Tweaks] setup failed:', err);
+    }
 }
 
 if (typeof window !== 'undefined') {
@@ -915,5 +1107,6 @@ if (typeof window !== 'undefined') {
         setupHeaderTitleBadgeTweaker,
         applyHeaderTitleBadgeTweaks,
         HEADER_BADGE_TWEAK_DEFAULTS,
+        HEADER_SIDES_TWEAK_DEFAULTS,
     };
 }

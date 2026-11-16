@@ -1,9 +1,8 @@
 /**
  * HeaderModeButtons — mounts primary mode-entry header buttons.
  *
- * Left hub (`#headerHubButtonGroup`): Home, World, Codex, Story, Intel.
- * Right hub: Gallery, Theater, Archive, Workshop, Palette (Palette is mounted by
- * `PaletteLoaders` at double width so the right strip still reads as five segments).
+ * Left grey slot: Home. Left gradient (`#headerHubButtonGroup`): World, Codex, Story, Intel.
+ * Right gradient: Theater, Archive, Gallery. Right grey slot: Palette (PaletteLoaders).
  *
  * Each tile delegates to the matching `runXComponents` global from the orchestrator.
  * On mobile portrait main menu: first tap slides to that mode; second tap selects it.
@@ -82,21 +81,31 @@ function attachGalleryHubBootstrap() {
     attachModeBootstrap('headerGalleryHubBtn', 'gallery', launch);
 }
 
+function ensureButtonParent(btnId, parentId) {
+    const btn = document.getElementById(btnId);
+    const parent = document.getElementById(parentId);
+    if (btn && parent && btn.parentElement !== parent) {
+        parent.appendChild(btn);
+    }
+}
+
 export function loadHeaderModeButtons() {
     createHeaderHubButton({
         id: 'homeBtn',
-        className: '',
+        className: 'header-hub-btn--home',
         title: 'Return to Home',
         label: 'Home',
         iconPath: 'src/assets/images/Icons/Mode%20Icons/Home%20Button.png',
         iconAlt: 'Home',
-        parentId: 'headerHubButtonGroup',
+        parentId: 'headerHubGreySlot',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'homeBtnIcon',
-        headerOrder: 10
+        headerOrder: 10,
     });
+    ensureButtonParent('homeBtn', 'headerHubGreySlot');
     const homeButton = document.getElementById('homeBtn');
     if (homeButton) {
+        homeButton.classList.add('header-hub-btn--home');
         attachHomeButtonHandler(homeButton);
     }
 
