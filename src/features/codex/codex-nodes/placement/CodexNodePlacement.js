@@ -94,6 +94,7 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
 
     el.dataset.codexKind = kind;
     if (!opts.skipEnterFade) armCodexNodeEnterFade(el);
+    const skipImageObserve = opts.skipImageObserve === true;
 
     if (!isCodexNodeBgDefault(opts.bgColor)) {
         el.dataset.codexBgColor = resolveCodexNodeBgColor(opts.bgColor);
@@ -157,8 +158,12 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
     img.decoding = 'async';
     img.alt = imgAlt;
     img.onerror = () => { img.style.opacity = '0.35'; };
-    if (opts.skipLazyLoad) { img.src = imgSrc; }
-    else { img.dataset.src = imgSrc; observeCodexImage(img); }
+    if (opts.skipLazyLoad) {
+        img.src = imgSrc;
+    } else {
+        img.dataset.src = imgSrc;
+        if (!skipImageObserve) observeCodexImage(img);
+    }
 
     imgWrapper.appendChild(img);
 
@@ -168,8 +173,12 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
     frame.draggable = false;
     frame.decoding = 'async';
     frame.setAttribute('aria-hidden', 'true');
-    if (opts.skipLazyLoad) { frame.src = frameSrc; }
-    else { frame.dataset.src = frameSrc; observeCodexImage(frame); }
+    if (opts.skipLazyLoad) {
+        frame.src = frameSrc;
+    } else {
+        frame.dataset.src = frameSrc;
+        if (!skipImageObserve) observeCodexImage(frame);
+    }
 
     el.appendChild(imgWrapper);
 
@@ -211,7 +220,8 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
         }
     }
     const el = createCodexNodeElement(cx, cy, kind, heroName, faction, { ...opts, scale });
-    (s.codexWorldEl || s.root).appendChild(el);
+    const mountParent = opts.mountParent || s.codexWorldEl || s.root;
+    mountParent.appendChild(el);
 
     // Add to Map for O(1) lookups (performance optimization)
     const nodeId = el.dataset.codexNodeId;
@@ -239,9 +249,12 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
             newNode.countryKey = opts.countryKey;
         }
         s.codexAllNodes.push(newNode);
-        /* Dev virtual scroll: mark as rendered so updateCodexVirtualScroll does not call
-         * placeLoadedCodexNodeRecord again (would append a second DOM node and orphan the first). */
-        if (nodeId) s.codexRenderedNodeIds.add(nodeId);
+        if (nodeId) {
+            if (!(s.codexNodeLayoutById instanceof Map)) s.codexNodeLayoutById = new Map();
+            s.codexNodeLayoutById.set(nodeId, newNode);
+            /* Mark rendered so virtual scroll does not place a duplicate DOM node. */
+            s.codexRenderedNodeIds.add(nodeId);
+        }
 
         api.markNodeVisualUnsaved(el);
         api.markCodexLayoutDirty();

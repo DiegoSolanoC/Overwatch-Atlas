@@ -110,7 +110,8 @@ function syncCodexModeClass() {
 
     if (s.codexMode === 'view') {
         s.codexViewModeInitialRenderDone = false;
-        // Drop any leftover content-visibility cull from Dev Mode — view board is static.
+        s.codexViewBoardMountComplete = true;
+        // View mode is virtualized like dev — clear leftover cull classes only.
         if (typeof api.clearCodexNodeCvOffscreenClasses === 'function') {
             api.clearCodexNodeCvOffscreenClasses();
         } else {

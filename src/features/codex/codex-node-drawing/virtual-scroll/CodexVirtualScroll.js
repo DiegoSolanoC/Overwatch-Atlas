@@ -1,6 +1,6 @@
 /**
- * Virtual scrolling for Codex nodes in dev mode (view mode renders all nodes for correct edges).
- * Canvas registers getters/setters once per mount.
+ * Virtual scrolling for Codex nodes (view + dev).
+ * Off-screen nodes stay in `codexAllNodes`; edges use layout coords when DOM is missing.
  */
 
 import {
@@ -22,6 +22,7 @@ let codexVirtualScrollRaf = 0;
  * @property {() => Set<string>} getRenderedNodeIds
  * @property {() => Map<string, HTMLElement>} getNodeElementsMap
  * @property {() => 'dev'|'view'} getMode
+ * @property {() => boolean} [getViewBoardMountComplete]
  * @property {() => { panX: number, panY: number, zoom: number }} getViewPanZoom
  * @property {() => { skipAll: boolean, skipEdge: boolean }} getSkipEdgeRedrawFlags
  * @property {(skipAll: boolean, skipEdge: boolean) => void} setSkipEdgeRedrawFlags
@@ -55,7 +56,7 @@ export function scheduleUpdateCodexVirtualScroll() {
     });
 }
 
-/** Virtual Scrolling: Render only visible nodes, remove off-screen ones */
+/** Virtual Scrolling: Render only visible nodes, remove off-screen ones. */
 export function updateCodexVirtualScroll() {
     if (!_rt) return;
     const root = _rt.getRoot();
@@ -63,7 +64,6 @@ export function updateCodexVirtualScroll() {
     if (!root || !allNodes.length) return;
 
     const CODEX_PERFORMANCE_DEBUG = _rt.getPerfDebug();
-
     const startTime = performance.now();
     if (CODEX_PERFORMANCE_DEBUG) {
         console.log('[Codex Perf] updateCodexVirtualScroll started');
@@ -71,40 +71,6 @@ export function updateCodexVirtualScroll() {
 
     const renderedIds = _rt.getRenderedNodeIds();
     const nodeElements = _rt.getNodeElementsMap();
-
-    if (_rt.getMode() === 'view') {
-        const nodesToRender = [];
-        for (const node of allNodes) {
-            if (!renderedIds.has(node.id)) {
-                nodesToRender.push(node);
-            }
-        }
-
-        if (CODEX_PERFORMANCE_DEBUG) {
-            console.log(`[Codex Perf] View Mode: Rendering all ${nodesToRender.length} nodes`);
-        }
-
-        for (const node of nodesToRender) {
-            _rt.placeLoadedCodexNodeRecord(node);
-            renderedIds.add(node.id);
-        }
-
-        _rt.setSkipEdgeRedrawFlags(false, false);
-
-        if (nodesToRender.length > 0) {
-            if (CODEX_PERFORMANCE_DEBUG) {
-                console.log('[Codex Perf] View Mode: Triggering edge redraw after rendering nodes');
-            }
-            _rt.redrawCodexEdges();
-        }
-
-        const elapsed = performance.now() - startTime;
-        if (CODEX_PERFORMANCE_DEBUG) {
-            console.log(`[Codex Perf] updateCodexVirtualScroll completed in ${elapsed.toFixed(2)}ms`);
-        }
-        return;
-    }
-
     const { panX, panY, zoom } = _rt.getViewPanZoom();
     const viewport = computeCodexVirtualViewportBounds(
         { clientWidth: root.clientWidth, clientHeight: root.clientHeight },
@@ -165,9 +131,8 @@ export function updateCodexVirtualScroll() {
         _rt.syncCodexTargetedSelectionDom();
     }
 
-    const elapsed = performance.now() - startTime;
     if (CODEX_PERFORMANCE_DEBUG) {
-        console.log(`[Codex Perf] updateCodexVirtualScroll completed in ${elapsed.toFixed(2)}ms`);
+        console.log(`[Codex Perf] updateCodexVirtualScroll completed in ${(performance.now() - startTime).toFixed(2)}ms`);
     }
 }
 

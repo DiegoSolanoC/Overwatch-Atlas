@@ -15,10 +15,19 @@ import { getCodexLoadingOverlayLineSetter } from '../../codex-canvas/bridge/Code
 import { normalizeCodexCountryKey, resolveCodexNodeScale } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { clearCodexVirtualScroll, updateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
+import {
+    computeCodexVirtualViewportBounds,
+    isCodexNodeInVirtualViewport,
+} from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
+import { hydrateCodexPortraitImagesInViewport, observeCodexImage } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
+/** Soft cap per turn; time budget usually yields sooner. */
+const CODEX_LOAD_NODE_CHUNK = 48;
+/** Max ms of sync DOM work before yielding to the browser. */
+const CODEX_LOAD_NODE_BUDGET_MS = 6;
 
-function placeLoadedCodexNodeRecord(L) {
+function placeLoadedCodexNodeRecord(L, extraOpts = {}) {
     if (!L || typeof L !== 'object') return;
     const placeKind =
         L.kind === 'junction'
@@ -35,9 +44,12 @@ function placeLoadedCodexNodeRecord(L) {
         skipRedraw: true,
         // Lazy portraits during bulk load — eager decode of 2000+ hexes blocks the overlay at the end.
         skipLazyLoad: false,
+        skipEnterFade: true,
+        skipImageObserve: true,
         id: L.id,
         scale: resolveCodexNodeScale(placeKind, L.scale),
-        bgColor: L.bgColor || null
+        bgColor: L.bgColor || null,
+        ...extraOpts,
     };
     if (L.kind === 'hero' && L.heroName) {
         api.placeCodexNode(L.x, L.y, 'hero', L.heroName, null, opts);
@@ -55,6 +67,59 @@ function placeLoadedCodexNodeRecord(L) {
         });
     } else if (L.kind === 'junction') {
         api.placeCodexNode(L.x, L.y, 'junction', null, null, opts);
+    }
+}
+
+function observePendingCodexNodeImages(rootEl) {
+    if (!rootEl) return;
+    rootEl.querySelectorAll('img.codex-node__img[data-src], img.codex-node__frame[data-src]').forEach((img) => {
+        if (img instanceof HTMLImageElement) observeCodexImage(img);
+    });
+}
+
+/**
+ * Place nodes in short time-budgeted turns (DocumentFragment per turn).
+ * @param {object[]} nodes
+ * @param {{ report?: boolean, overlayEvery?: number, budgetMs?: number }} [opts]
+ */
+async function placeCodexNodeRecordsFast(nodes, opts = {}) {
+    if (!nodes.length) return;
+    const overlayLine = getCodexLoadingOverlayLineSetter();
+    const world = s.codexWorldEl || s.root;
+    if (!world) return;
+
+    const report = opts.report !== false;
+    const overlayEvery = Math.max(1, opts.overlayEvery || 440);
+    const budgetMs = Math.max(3, opts.budgetMs || CODEX_LOAD_NODE_BUDGET_MS);
+    let i = 0;
+    const total = nodes.length;
+
+    while (i < total) {
+        const turnStart = performance.now();
+        const frag = document.createDocumentFragment();
+        let turnCount = 0;
+        while (i < total && turnCount < CODEX_LOAD_NODE_CHUNK) {
+            const node = nodes[i++];
+            if (!node?.id || s.codexRenderedNodeIds.has(node.id)) continue;
+            placeLoadedCodexNodeRecord(node, { mountParent: frag });
+            s.codexRenderedNodeIds.add(node.id);
+            turnCount += 1;
+            if (performance.now() - turnStart >= budgetMs) break;
+        }
+        if (frag.childNodes.length) world.appendChild(frag);
+
+        if (report) {
+            reportCodexLoadStageProgress({
+                stage: 'nodes',
+                fraction: Math.min(1, i / total),
+            });
+        }
+        if (overlayLine && (i >= total || i % overlayEvery < CODEX_LOAD_NODE_CHUNK)) {
+            overlayLine(`Placing nodes… ${i} / ${total}`);
+        }
+        if (i < total) {
+            await yieldBetweenCodexLoadChunks();
+        }
     }
 }
 
@@ -81,53 +146,95 @@ function scheduleDeferredCodexWork(fn) {
     }
 }
 
+function splitCodexNodesByViewport(nodes) {
+    const root = s.root;
+    if (!root || !nodes.length) {
+        return { near: nodes.slice(), far: [] };
+    }
+    const viewport = computeCodexVirtualViewportBounds(
+        { clientWidth: root.clientWidth || 1, clientHeight: root.clientHeight || 1 },
+        { panX: s.codexViewPanX, panY: s.codexViewPanY, zoom: s.codexViewZoom },
+    );
+    const near = [];
+    const far = [];
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        if (isCodexNodeInVirtualViewport(node, viewport)) near.push(node);
+        else far.push(node);
+    }
+    return { near, far };
+}
+
+/**
+ * View-mode open: mount the viewport first (overlay can finish), then backfill the rest.
+ * Edges use saved layout coords so missing off-screen DOM does not block cords.
+ */
 async function placeCodexNodeRecordsInChunks(nodes) {
     const overlayLine = getCodexLoadingOverlayLineSetter();
     if (overlayLine && nodes.length) {
-        overlayLine(`Placing ${nodes.length} nodes…`);
+        overlayLine(`Placing nodes…`);
     }
     await yieldCodexBrowserPaint();
 
-    const CODEX_LOAD_NODE_CHUNK = 64;
-    const nodeYield = { units: 0 };
-    for (let start = 0; start < nodes.length; start += CODEX_LOAD_NODE_CHUNK) {
-        const end = Math.min(start + CODEX_LOAD_NODE_CHUNK, nodes.length);
-        for (let i = start; i < end; i++) {
-            placeLoadedCodexNodeRecord(nodes[i]);
-            s.codexRenderedNodeIds.add(nodes[i].id);
-        }
-        reportCodexLoadStageProgress({ stage: 'nodes', fraction: end / nodes.length });
-        if (overlayLine) {
-            overlayLine(`Placing nodes… ${end} / ${nodes.length}`);
-        }
-        if (end < nodes.length) {
-            nodeYield.units += end - start;
-            if (nodeYield.units >= 128) {
-                nodeYield.units = 0;
-                await yieldBetweenCodexLoadChunks();
-            }
-        }
+    const { near, far } = splitCodexNodesByViewport(nodes);
+    const generation = ++s.codexNodeBackfillGeneration;
+
+    // Viewport unknown (e.g. 0×0 root) — fast-mount the full board on the critical path.
+    if (!near.length) {
+        s.codexViewBoardMountComplete = false;
+        await placeCodexNodeRecordsFast(nodes, { report: true, overlayEvery: 440 });
+        observePendingCodexNodeImages(s.codexWorldEl || s.root);
+        hydrateCodexPortraitImagesInViewport(s.root);
+        s.codexViewBoardMountComplete = true;
+        reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
+        return;
     }
+
+    s.codexViewBoardMountComplete = far.length === 0;
+    await placeCodexNodeRecordsFast(near, { report: true, overlayEvery: 200 });
+    observePendingCodexNodeImages(s.codexWorldEl || s.root);
+    hydrateCodexPortraitImagesInViewport(s.root);
+
+    if (!far.length) {
+        s.codexViewBoardMountComplete = true;
+        reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
+        return;
+    }
+
     reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
+
+    // Background backfill via rAF chain (not one fat idleCallback — that was ~2.5s stalls).
+    const backfill = async () => {
+        if (generation !== s.codexNodeBackfillGeneration || !s.root) return;
+        await placeCodexNodeRecordsFast(far, {
+            report: false,
+            overlayEvery: 800,
+            budgetMs: 5,
+        });
+        if (generation !== s.codexNodeBackfillGeneration || !s.root) return;
+        // Hydrate viewport portraits; observer picks up the rest on pan.
+        hydrateCodexPortraitImagesInViewport(s.root);
+        observePendingCodexNodeImages(s.codexWorldEl || s.root);
+        s.codexViewBoardMountComplete = true;
+        s.codexViewModeInitialRenderDone = true;
+        // Packet RAF (if already running) resumes on the next tick.
+    };
+    setTimeout(() => { void backfill(); }, 120);
 }
 
 function yieldCodexBrowserPaint() {
     return new Promise((resolve) => {
         requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                setTimeout(resolve, 0);
-            });
+            requestAnimationFrame(resolve);
         });
     });
 }
 
 function yieldBetweenCodexLoadChunks() {
+    // Single rAF — idleCallback was waiting for quiet time and stretched open to minutes
+    // when the main thread was busy (font warnings, overlay text, etc.).
     return new Promise((resolve) => {
-        if (typeof requestIdleCallback === 'function') {
-            requestIdleCallback(() => resolve(), { timeout: 48 });
-        } else {
-            requestAnimationFrame(resolve);
-        }
+        requestAnimationFrame(resolve);
     });
 }
 
@@ -182,15 +289,19 @@ async function loadCodexState() {
     s.codexUnsavedEdgeKeys.clear();
     s.codexViewZoom = CODEX_ZOOM_INITIAL;
     
-    // Store all nodes for virtual scrolling
+    // Store all nodes for virtual scrolling + edge layout fallback
     s.codexAllNodes = nodes || [];
-    // Clear previously rendered nodes
+    s.codexNodeLayoutById = new Map();
+    for (let i = 0; i < s.codexAllNodes.length; i++) {
+        const n = s.codexAllNodes[i];
+        if (n?.id) s.codexNodeLayoutById.set(n.id, n);
+    }
     clearCodexVirtualScroll();
     api.clearCodexTargetedSelection();
-    
-    // Reset View Mode initial render flag when loading new layout
+
     s.codexViewModeInitialRenderDone = false;
-    
+    s.codexViewBoardMountComplete = true;
+
     if (!nodes.length) {
         api.centerCodexViewOnWorldCenter();
         api.applyCodexWorldTransformStyle();
@@ -209,32 +320,30 @@ async function loadCodexState() {
     s.codexSkipAllEdgeRedraws = true;
     s.codexSkipEdgeRedraw = true;
 
-    // View mode needs every node in the DOM for edges; chunk placement so the loader can breathe.
-    if (s.codexMode === 'view' && nodes.length > 0) {
-        await placeCodexNodeRecordsInChunks(nodes);
-    } else {
-        updateCodexVirtualScroll();
+    // View + dev: mount viewport only. Edges use layout coords for off-screen ends.
+    {
+        const overlayLine = getCodexLoadingOverlayLineSetter();
+        if (overlayLine) overlayLine('Placing visible nodes…');
     }
-
-    // Keep edge redraw suppressed until post-open paint (codexCanvasHost).
+    updateCodexVirtualScroll();
     reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
 
-    const overlayLine = getCodexLoadingOverlayLineSetter();
-    if (overlayLine && nodes.length > 0) {
-        const edgeCount = edges?.length ?? 0;
-        overlayLine(edgeCount > 0 ? `Planning connections… 0 / ${edgeCount}` : 'Preparing Codex…');
+    {
+        const overlayLine = getCodexLoadingOverlayLineSetter();
+        if (overlayLine && nodes.length > 0) {
+            const edgeCount = edges?.length ?? 0;
+            overlayLine(edgeCount > 0 ? `Drawing connections…` : 'Preparing Codex…');
+        }
     }
     reportCodexLoadStageProgress({ stage: 'connections', fraction: 0 });
 
-    // Failsafe: if no nodes rendered after initial load, render all nodes
+    // Failsafe: viewport empty (0×0 root) — place a small starter set, not the full board.
     if (s.codexRenderedNodeIds.size === 0 && nodes.length > 0) {
-        s.codexSkipAllEdgeRedraws = true;
-        s.codexSkipEdgeRedraw = true;
-        for (const node of nodes) {
+        const starter = nodes.slice(0, Math.min(64, nodes.length));
+        for (const node of starter) {
             placeLoadedCodexNodeRecord(node);
             s.codexRenderedNodeIds.add(node.id);
         }
-        // Don't reset flags or schedule redraw here - let the main redraw handle it
     }
 
     if (migratedNow) {

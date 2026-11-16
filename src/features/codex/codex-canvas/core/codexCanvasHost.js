@@ -37,7 +37,6 @@ import { registerCodexEdgeRedrawRuntime, unregisterCodexEdgeRedrawRuntime, redra
 import { registerCodexCordPacketRuntime, unregisterCodexCordPacketRuntime, stopCordAnimAndClearCordPacketState } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import {
     disconnectCodexImageObserver,
-    hydrateAllCodexPortraitImages,
     hydrateCodexPortraitImagesInViewport,
 } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { codexFiltersActive } from '../../codex-nodes/filters/CodexNodeFilterMatch.js';
@@ -149,15 +148,9 @@ async function runCodexPostOpenPaint() {
 
     scheduleCodexIdleWork(() => {
         if (!stillActive() || !s.root) return;
-        // Viewport first; full-board hydrate only after a longer idle so open stays light.
+        // Virtual scroll: only hydrate what's on screen (pan mounts + hydrates the rest).
         hydrateCodexPortraitImagesInViewport(s.root);
-        if (s.codexMode === 'view') {
-            scheduleCodexIdleWork(() => {
-                if (!stillActive() || !s.root) return;
-                void hydrateAllCodexPortraitImages(s.root);
-            }, 2500);
-        }
-    }, 1200);
+    }, 400);
 
     scheduleCodexIdleWork(() => {
         if (!stillActive()) return;
@@ -207,6 +200,7 @@ export function initCodexCanvas(rootElement) {
         getRenderedNodeIds: () => s.codexRenderedNodeIds,
         getNodeElementsMap: () => s.codexNodeElements,
         getMode: () => s.codexMode,
+        getViewBoardMountComplete: () => s.codexViewBoardMountComplete !== false,
         getViewPanZoom: () => ({ panX: s.codexViewPanX, panY: s.codexViewPanY, zoom: s.codexViewZoom }),
         getSkipEdgeRedrawFlags: () => ({ skipAll: s.codexSkipAllEdgeRedraws, skipEdge: s.codexSkipEdgeRedraw }),
         setSkipEdgeRedrawFlags: (all, edge) => {

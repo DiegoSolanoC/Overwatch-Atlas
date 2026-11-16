@@ -609,6 +609,12 @@ function codexCordAnimationTick(ts) {
     }
     cordAnimRafId = requestAnimationFrame(codexCordAnimationTick);
 
+    // Skip while view-mode board is still mounting off-screen nodes.
+    if (s.codexViewBoardMountComplete === false) {
+        cordAnimLastTs = ts;
+        return;
+    }
+
     // Pan owns the compositor — skip packet paints until settle.
     if (s.backgroundPanPointerId != null) {
         cordAnimLastTs = ts;

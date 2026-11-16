@@ -312,15 +312,34 @@ function clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded() {
     if (had) scheduleRedrawCodexEdges();
 }
 
+function getCodexLayoutNodeMap() {
+    if (s.codexNodeLayoutById instanceof Map && s.codexNodeLayoutById.size) {
+        return s.codexNodeLayoutById;
+    }
+    const map = new Map();
+    const nodes = s.codexAllNodes;
+    if (Array.isArray(nodes)) {
+        for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            if (n?.id) map.set(n.id, n);
+        }
+    }
+    s.codexNodeLayoutById = map;
+    return map;
+}
+
 function buildPolylineForEdge(edge) {
     if (!s.root) return null;
     // Use Map for O(1) lookups instead of querySelector (performance optimization)
     const a = s.codexNodeElements.get(edge.fromId);
     const b = s.codexNodeElements.get(edge.toId);
-    if (!a || !b) return null;
-    const ca = api.getNodeCenterWorldPx(a);
-    const cb = api.getNodeCenterWorldPx(b);
-    return [{ x: ca.x, y: ca.y }, { x: cb.x, y: cb.y }];
+    if (a && b) {
+        const ca = api.getNodeCenterWorldPx(a);
+        const cb = api.getNodeCenterWorldPx(b);
+        return [{ x: ca.x, y: ca.y }, { x: cb.x, y: cb.y }];
+    }
+    // View-mode virtual scroll keeps off-screen nodes unmounted — use layout coords.
+    return buildPolylineForEdgeFromSavedLayout(edge, getCodexLayoutNodeMap());
 }
 
 /**

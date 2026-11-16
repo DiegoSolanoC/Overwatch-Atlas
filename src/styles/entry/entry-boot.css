@@ -158,6 +158,8 @@ body:not(.app-booted) > *:not(.loading-overlay):not(.mobile-portrait-gate) {
     text-align: center;
     padding: 10px;
     background: transparent;
+    /* Avoid Config Italic glyph-bbox console storms during long Codex loads. */
+    font-style: normal;
 }
 
 /* Main menu button layout - for Menu Components */

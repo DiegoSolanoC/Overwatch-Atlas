@@ -14,6 +14,8 @@ export const s = {
     nodeZ: 20,
     pendingNodePos: /** @type {{ x: number, y: number }|null} */ (null),
     codexAllNodes: /** @type {object[]} */ ([]),
+    /** id → layout record (for edge polylines when DOM is virtualized away). */
+    codexNodeLayoutById: /** @type {Map<string, object>} */ (new Map()),
     codexRenderedNodeIds: /** @type {Set<string>} */ (new Set()),
     codexNodeElements: /** @type {Map<string, HTMLElement>} */ (new Map()),
     codexSkipEdgeRedraw: false,
@@ -67,6 +69,10 @@ export const s = {
     onWindowResizeRedraw: /** @type {(() => void)|null} */ (null),
     onCodexGlobalKeydown: /** @type {((e: KeyboardEvent) => void)|null} */ (null),
     codexViewModeInitialRenderDone: false,
+    /** False while view-mode open is still mounting off-screen nodes in the background. */
+    codexViewBoardMountComplete: true,
+    /** Generation bump cancels in-flight progressive node backfill. */
+    codexNodeBackfillGeneration: 0,
     codexZoomDebounceTimer: /** @type {ReturnType<typeof setTimeout>|null} */ (null),
     /** Portrait + junction ids reachable from active filters (null when filters off). */
     codexFilterReachableNodeIds: /** @type {Set<string>|null} */ (null),
@@ -93,6 +99,7 @@ export function resetCanvasSession() {
     s.nodeZ = 20;
     s.pendingNodePos = null;
     s.codexAllNodes = [];
+    s.codexNodeLayoutById = new Map();
     s.codexRenderedNodeIds = new Set();
     s.codexNodeElements = new Map();
     s.codexSkipEdgeRedraw = false;
@@ -144,6 +151,8 @@ export function resetCanvasSession() {
     s.onWindowResizeRedraw = null;
     s.onCodexGlobalKeydown = null;
     s.codexViewModeInitialRenderDone = false;
+    s.codexViewBoardMountComplete = true;
+    s.codexNodeBackfillGeneration += 1;
     s.codexZoomDebounceTimer = null;
     s.codexFilterReachableNodeIds = null;
     s.codexFilterConnectionEndpointNodeIds = null;
