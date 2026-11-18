@@ -48,6 +48,7 @@ import {
   setupDockEraMenu,
   teardownDockEraMenu,
 } from "../interface-bottom-dock/dockEraMenu.js";
+import { installAtlasNewsChrome } from "../interface-platform-input/news-ticker/mountAtlasNewsChrome.js?v=5";
 import { refreshDockTimelinePagination } from "../interface-bottom-dock/refreshDockTimelinePagination.js";
 
 installEventSlidePlainPasteGuard();
@@ -155,6 +156,8 @@ export async function loadEventSystem(testBtn) {
     if (footer) {
       footer.classList.add("timeline-loaded");
     }
+    // Float Atlas News above footer/dock so the flex footer band cannot clip it.
+    installAtlasNewsChrome();
 
     // Initialize news ticker
     if (!window.newsTickerService) {

@@ -46,8 +46,8 @@
     transform: skewX(-11deg) scale(0.98) !important;
 }
 
-/* Page input container: trapezium shape matching parallelogram slopes */
-.dock-globe-rail--center > .page-input-container {
+/* Page input container — legacy rail chrome (non-trap only). */
+.dock-globe-rail--center > .page-input-container:not(.dock-page-field--bare) {
     position: relative !important;
     inset: auto !important;
     transform: none !important;
@@ -65,11 +65,80 @@
     transition: transform 0.2s ease, background 0.2s ease, filter 0.2s ease !important;
 }
 
+/*
+ * Trap page field: fully bare. backdrop-filter was frosting the hex pattern
+ * into a solid slab even when background was transparent.
+ */
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container.dock-page-field--bare,
+.dock-globe-rail--center > .page-input-container.dock-page-field--bare {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    height: auto !important;
+    min-width: 0 !important;
+    padding: 2px 0 !important;
+    transform: none !important;
+}
+
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container:hover,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container.dock-page-field--bare:hover,
+.dock-globe-rail--center > .page-input-container.dock-page-field--bare:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container
+    .page-input,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container
+    #pageInput,
+.dock-page-input--bare {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
 .dock-globe-rail--center > .page-input-container > * {
     transform: none !important;
 }
 
-.dock-globe-rail--center > .page-input-container:hover {
+.dock-globe-rail--center > .page-input-container:not(.dock-page-field--bare):hover {
     transform: translateY(-2px) scale(1.02) !important;
     background: rgba(13, 71, 161, 1) !important;
     filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4)) !important;

@@ -27,7 +27,8 @@ import {
 import { setupHeaderTitleBadgeTweaker } from '../atlas-header/HeaderTitleBadgeTweaker.js';
 import { initMobilePortraitGate } from './mobilePortraitGate.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
-import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=102';
+import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=105';
+import { installAtlasNewsChrome } from '../../system-interface/interface-platform-input/news-ticker/mountAtlasNewsChrome.js?v=5';
 import {
     setRunOperation,
     showLoadingOverlay,
@@ -152,6 +153,8 @@ async function autoLoadEventSystem(logPrefix) {
     writeOverlayStatus('Loading Event System...');
     try {
         await loadEventSystem(null);
+        // Ensure Atlas News trapezoid is floated above footer/dock after load.
+        installAtlasNewsChrome();
         console.log(`${logPrefix} ✓ Event System auto-loaded`);
     } catch (error) {
         console.error(`${logPrefix} Error auto-loading Event System:`, error);

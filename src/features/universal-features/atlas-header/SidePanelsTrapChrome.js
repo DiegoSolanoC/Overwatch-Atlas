@@ -40,6 +40,11 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     dockBorderWidth: 20,
     /** Corner rounding on dock trap path (viewBox units). */
     dockBorderRadius: 0,
+    /**
+     * Whole dock-trap button unit Y (CSS px). Positive = down into the
+     * merged trap/dock band; negative = up toward the nub.
+     */
+    dockButtonsOffsetYPx: 0,
 
     /**
      * White filled “nub” tabs (replace Drag/Controller Border images).
@@ -50,6 +55,11 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     sideNubTaperPct: 14,
     sideNubRadiusPx: 0,
     sideNubArrowPx: 28,
+    /** Colored label pill behind the trap logo (side panels only). */
+    sideTrapBtnRadiusPx: 48,
+    sideTrapBtnWidthPx: 40,
+    sideTrapBtnHeightPx: 96,
+    sideTrapIconPx: 28,
     dockNubWidthPx: 120,
     dockNubHeightPx: 40,
     dockNubTaperPct: 14,
@@ -71,7 +81,7 @@ export function cloneSidePanelsTrapDefaults() {
 
 export function sanitizeSidePanelsTrapState(s) {
     const next = { ...s };
-    next.trapHeightPx = clamp(Math.round(Number(next.trapHeightPx)), 80, 320);
+    next.trapHeightPx = clamp(Math.round(Number(next.trapHeightPx)), 80, 560);
     next.trapProtrudePx = clamp(Math.round(Number(next.trapProtrudePx)), 36, 120);
     next.trapTaperPct = clamp(Number(next.trapTaperPct), 0, 28);
     next.sideBorderWidth = clamp(Number(next.sideBorderWidth), 8, 36);
@@ -90,16 +100,21 @@ export function sanitizeSidePanelsTrapState(s) {
     next.dockTrapTaperPct = clamp(Number(next.dockTrapTaperPct), 0, 28);
     next.dockBorderWidth = clamp(Number(next.dockBorderWidth), 8, 36);
     next.dockBorderRadius = clamp(Number(next.dockBorderRadius), 0, 24);
+    next.dockButtonsOffsetYPx = clamp(Math.round(Number(next.dockButtonsOffsetYPx)), -48, 96);
 
     next.sideNubDepthPx = clamp(Math.round(Number(next.sideNubDepthPx)), 16, 80);
     next.sideNubLengthPx = clamp(Math.round(Number(next.sideNubLengthPx)), 36, 180);
     next.sideNubTaperPct = clamp(Number(next.sideNubTaperPct), 0, 28);
-    next.sideNubRadiusPx = clamp(Number(next.sideNubRadiusPx), 0, 20);
+    next.sideNubRadiusPx = clamp(Number(next.sideNubRadiusPx), 0, 40);
     next.sideNubArrowPx = clamp(Math.round(Number(next.sideNubArrowPx)), 10, 96);
+    next.sideTrapBtnRadiusPx = clamp(Math.round(Number(next.sideTrapBtnRadiusPx)), 0, 48);
+    next.sideTrapBtnWidthPx = clamp(Math.round(Number(next.sideTrapBtnWidthPx)), 24, 96);
+    next.sideTrapBtnHeightPx = clamp(Math.round(Number(next.sideTrapBtnHeightPx)), 48, 200);
+    next.sideTrapIconPx = clamp(Math.round(Number(next.sideTrapIconPx)), 12, 96);
     next.dockNubWidthPx = clamp(Math.round(Number(next.dockNubWidthPx)), 48, 280);
     next.dockNubHeightPx = clamp(Math.round(Number(next.dockNubHeightPx)), 16, 96);
     next.dockNubTaperPct = clamp(Number(next.dockNubTaperPct), 0, 28);
-    next.dockNubRadiusPx = clamp(Number(next.dockNubRadiusPx), 0, 20);
+    next.dockNubRadiusPx = clamp(Number(next.dockNubRadiusPx), 0, 40);
     next.dockNubArrowPx = clamp(Math.round(Number(next.dockNubArrowPx)), 10, 96);
     return next;
 }
@@ -545,8 +560,8 @@ function sideTrapViewportFit(s) {
      * Dual filters/music traps share one panel height — each must stay under ~half
      * the free column or they collide. Single info trap can be a bit taller.
      */
-    const dualMaxH = Math.max(72, panelH * 0.34);
-    const heightPx = Math.round(Math.min(s.trapHeightPx, dualMaxH, vh * 0.26));
+    const dualMaxH = Math.max(72, panelH * 0.42);
+    const heightPx = Math.round(Math.min(s.trapHeightPx, dualMaxH, vh * 0.42));
     /* Left + right protrude into the hub; keep a wide center band on small widths. */
     const protrudePx = Math.round(
         Math.min(s.trapProtrudePx, Math.max(28, vw * 0.042), Math.max(28, (vw - 420) * 0.08)),
@@ -612,6 +627,10 @@ export function applySidePanelsTrapChrome(state) {
     root.style.setProperty('--side-nub-taper', String(s.sideNubTaperPct));
     root.style.setProperty('--side-nub-radius', `${s.sideNubRadiusPx}px`);
     root.style.setProperty('--side-nub-arrow-size', `${s.sideNubArrowPx}px`);
+    root.style.setProperty('--side-trap-btn-radius', `${s.sideTrapBtnRadiusPx}px`);
+    root.style.setProperty('--side-trap-btn-width', `${s.sideTrapBtnWidthPx}px`);
+    root.style.setProperty('--side-trap-btn-height', `${s.sideTrapBtnHeightPx}px`);
+    root.style.setProperty('--side-trap-icon-size', `${s.sideTrapIconPx}px`);
     root.style.setProperty(
         '--side-nub-fill-img',
         buildNubFillUrl('right', s.sideNubTaperPct, s.sideNubRadiusPx),
@@ -646,6 +665,12 @@ export function applySidePanelsTrapChrome(state) {
      * Do NOT rewrite --dock-border-seam-h / img-h (those seat the cap row).
      */
     root.style.setProperty('--dock-trap-height', `${s.dockTrapHeightPx}px`);
+    /* Set on :root + body — body dock rules redefine many vars and would shadow :root alone. */
+    const buttonsOffsetY = `${s.dockButtonsOffsetYPx}px`;
+    root.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
+    if (document.body) {
+        document.body.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
+    }
     const dockGeo = syncDockEdgeStroke(s, dockTrapGeometry(s)) || dockTrapGeometry(s);
     applyDockFillFromBorder(root.style, s, dockGeo);
 

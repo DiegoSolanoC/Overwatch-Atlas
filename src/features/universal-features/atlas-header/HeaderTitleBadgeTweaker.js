@@ -801,7 +801,7 @@ function mountControls(panel, bags, hooks) {
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
             sanitize: sanitizeSidePanelsTrapState,
             items: [
-                { key: 'trapHeightPx', label: 'Trapezium height', min: 80, max: 320, step: 2 },
+                { key: 'trapHeightPx', label: 'Trapezium height', min: 80, max: 560, step: 2 },
                 { key: 'trapProtrudePx', label: 'Side depth (outward)', min: 36, max: 120, step: 1 },
                 { key: 'trapTaperPct', label: 'Side taper (0=rect)', min: 0, max: 28, step: 0.5 },
                 { key: 'sideBorderWidth', label: 'White border thickness', min: 8, max: 36, step: 0.5 },
@@ -855,6 +855,22 @@ function mountControls(panel, bags, hooks) {
         },
         {
             group: 'Side panels',
+            title: 'Dock trap buttons',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'dockButtonsOffsetYPx',
+                    label: 'Buttons Y (↓ into dock)',
+                    min: -48,
+                    max: 96,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Side panels',
             title: 'Side nub (inward tip)',
             bag: 'panels',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
@@ -863,8 +879,21 @@ function mountControls(panel, bags, hooks) {
                 { key: 'sideNubDepthPx', label: 'Nub depth', min: 16, max: 80, step: 1 },
                 { key: 'sideNubLengthPx', label: 'Nub length', min: 36, max: 180, step: 2 },
                 { key: 'sideNubTaperPct', label: 'Nub taper (0=rect)', min: 0, max: 28, step: 0.5 },
-                { key: 'sideNubRadiusPx', label: 'Nub corner rounding', min: 0, max: 20, step: 1 },
+                { key: 'sideNubRadiusPx', label: 'Nub corner rounding', min: 0, max: 40, step: 1 },
                 { key: 'sideNubArrowPx', label: 'Arrow icon size', min: 10, max: 96, step: 1 },
+            ],
+        },
+        {
+            group: 'Side panels',
+            title: 'Side trap label (pill)',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'sideTrapBtnRadiusPx', label: 'Label corner rounding', min: 0, max: 48, step: 1 },
+                { key: 'sideTrapBtnWidthPx', label: 'Label horizontal size', min: 24, max: 96, step: 1 },
+                { key: 'sideTrapBtnHeightPx', label: 'Label vertical size', min: 48, max: 200, step: 2 },
+                { key: 'sideTrapIconPx', label: 'Logo icon size', min: 12, max: 96, step: 1 },
             ],
         },
         {
@@ -877,7 +906,7 @@ function mountControls(panel, bags, hooks) {
                 { key: 'dockNubWidthPx', label: 'Nub width', min: 48, max: 280, step: 2 },
                 { key: 'dockNubHeightPx', label: 'Nub height', min: 16, max: 96, step: 1 },
                 { key: 'dockNubTaperPct', label: 'Nub taper (0=rect)', min: 0, max: 28, step: 0.5 },
-                { key: 'dockNubRadiusPx', label: 'Nub corner rounding', min: 0, max: 20, step: 1 },
+                { key: 'dockNubRadiusPx', label: 'Nub corner rounding', min: 0, max: 40, step: 1 },
                 { key: 'dockNubArrowPx', label: 'Arrow icon size', min: 10, max: 96, step: 1 },
             ],
         },

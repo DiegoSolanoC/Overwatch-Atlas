@@ -31,35 +31,40 @@ body.color-palette-crimson main {
 }
 
 body.color-palette-crimson .panel-resize-handle__pill {
-    background-color: transparent !important;
-    background-image: var(--side-nub-fill-img) !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    -webkit-mask-image: var(--side-nub-fill-img) !important;
+    mask-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-crimson .panel-resize-handle:hover .panel-resize-handle__pill,
 body.color-palette-crimson .panel-resize-handle:focus-visible .panel-resize-handle__pill {
-    background-color: transparent !important;
-    background-image: var(--side-nub-fill-img) !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    -webkit-mask-image: var(--side-nub-fill-img) !important;
+    mask-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-crimson .panel--resizing .panel-resize-handle__pill {
-    background-color: transparent !important;
-    background-image: var(--side-nub-fill-img) !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    -webkit-mask-image: var(--side-nub-fill-img) !important;
+    mask-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-crimson .pagination-dock-collapse-pill {
-    background-color: transparent !important;
-    background-image: var(--dock-nub-fill-img) !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    background-size: 100% 100% !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    -webkit-mask-image: var(--dock-nub-fill-img) !important;
+    mask-image: var(--dock-nub-fill-img) !important;
     border: none !important;
     box-shadow: none !important;
 }
 
 body.color-palette-crimson .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
 body.color-palette-crimson .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
-    background-image: var(--dock-nub-fill-img) !important;
-    background-size: 100% 100% !important;
+    -webkit-mask-image: var(--dock-nub-fill-img) !important;
+    mask-image: var(--dock-nub-fill-img) !important;
     box-shadow: none !important;
 }
 
@@ -125,6 +130,21 @@ body.color-palette-crimson .dock-globe-rail--center > #nextEventBtn {
 body.color-palette-crimson .dock-globe-rail--center > .page-input-container {
     background: var(--btn-crimson-bg) !important;
     border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Trap page field is bare against the dock fill (no label pill). */
+body.color-palette-crimson
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container,
+body.color-palette-crimson
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #globalImageToggle.dock-globe-rail__btn,

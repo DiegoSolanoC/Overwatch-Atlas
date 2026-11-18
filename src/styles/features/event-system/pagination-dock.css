@@ -105,6 +105,8 @@
         line-height: 0;
         z-index: 4;
         pointer-events: none;
+        /* Let translated trap buttons paint down into the dock body. */
+        overflow: visible;
     }
 
     /* Flex spacers only — lip stroke is part of the cap-row continuous path. */
@@ -126,6 +128,8 @@
     /*
      * Dock trap chrome only — pattern/tint come from .pagination-dock::before/::after
      * (one continuous silhouette, same idea as side-panel traps).
+     * No clip-path on the host: button unit may translate down into the merged dock band
+     * (UI Tweaks → Dock trap buttons Y). Fill silhouette stays on dock ::before/::after.
      */
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
         --dock-trap-inset: calc(var(--dock-trap-taper, 12) * 1%);
@@ -149,12 +153,7 @@
         box-sizing: border-box;
         overflow: visible;
         background: transparent;
-        clip-path: polygon(
-            var(--dock-trap-inset) 0%,
-            calc(100% - var(--dock-trap-inset)) 0%,
-            100% 100%,
-            0% 100%
-        );
+        clip-path: none;
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid::before {
@@ -222,28 +221,60 @@
         );
     }
 
+    /*
+     * Opaque base + pattern for the full dock∪trap silhouette (same language as
+     * side-panel .open::before). Pattern-only at 0.62 left the trap see-through.
+     */
     body:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
-        background-repeat: repeat;
-        background-size: clamp(720px, 58vw, 1360px) auto;
-        background-position: center center;
-        opacity: 0.62;
+        opacity: 1;
+        background-color: var(--bg-main, #0a1929);
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent),
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent)
+            ),
+            url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
+        background-repeat: repeat, repeat;
+        background-size:
+            clamp(720px, 58vw, 1360px) auto,
+            clamp(720px, 58vw, 1360px) auto;
+        background-position: center center, center center;
     }
 
     body.color-palette-blue:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent),
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent)
+            ),
+            url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
     }
 
     body.color-palette-gray:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/Background%20Pattern/Pattern Dark.png');
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent),
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent)
+            ),
+            url('../../../assets/images/Background%20Pattern/Pattern Dark.png');
     }
 
     body.color-palette-crimson:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/Background%20Pattern/Pattern Crimson.png');
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent),
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent)
+            ),
+            url('../../../assets/images/Background%20Pattern/Pattern Crimson.png');
     }
 
     body.color-palette-nulled:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/Background%20Pattern/Pattern Nulled.png');
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent),
+                color-mix(in srgb, var(--bg-main, #0a1929) 38%, transparent)
+            ),
+            url('../../../assets/images/Background%20Pattern/Pattern Nulled.png');
     }
 
     body:has(#paginationDock) .pagination-dock::after {
@@ -286,6 +317,7 @@
         --dock-top-cap-lift: 0px;
         /* Extra vertical shift for center rail inside trapezoid (negative = up). */
         --dock-trapezoid-rail-shift-y: -3px;
+        /* --dock-buttons-offset-y is live from SidePanelsTrapChrome (:root / body inline). */
         /* Seam/img-h stay on :root — not rewritten by dock trap height tweaks. */
         --dock-collapse-pill-width: min(280px, 46vw);
         --dock-collapse-pill-top-radius: 22px;
@@ -401,72 +433,7 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     }
 
     /* Beat viewport.css 48×42 / 32px icon caps inside the trap */
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > .globe-control-btn.dock-globe-rail__btn,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > .globe-control-btn {
-        width: auto !important;
-        min-width: 44px !important;
-        height: 100% !important;
-        min-height: 52px !important;
-        max-height: none !important;
-        font-size: 14px !important;
-        padding: 0 4px !important;
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > .globe-control-btn
-        [id$='Icon'],
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > .globe-control-btn
-        img,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > #globalImageToggle.dock-globe-rail__btn
-        img,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > #erasToggle.dock-globe-rail__btn
-        img {
-        width: 36px !important;
-        height: 36px !important;
-        max-width: 36px !important;
-        max-height: 36px !important;
-        object-fit: contain !important;
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > .page-input-container {
-        flex: 1.15 1 0 !important;
-        min-width: 52px !important;
-        padding: 4px 6px !important;
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center
-        > .page-input-container
-        .page-input {
-        width: 2.6rem !important;
-        min-width: 40px !important;
-        max-width: 56px !important;
-        height: 36px !important;
-        padding: 0 4px !important;
-        font-size: 17px !important;
-        font-weight: 700 !important;
-    }
+    /* Trap button sizing lives in globe-core (larger concept chrome). */
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock {

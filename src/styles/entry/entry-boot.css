@@ -98,8 +98,14 @@ body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
  * `body.app-booted` is set (immediately before `hideLoadingOverlayElement`
  * runs in `AppInitializer.js`) every child becomes visible at once and
  * the overlay then fades to reveal the final composed UI. */
-body:not(.app-booted) > *:not(.loading-overlay):not(.mobile-portrait-gate) {
+body:not(.app-booted) > *:not(.loading-overlay):not(.mobile-portrait-gate):not(header) {
     visibility: hidden !important;
+}
+
+/* Keep header + center badge painted above the boot/loading band (match dock/side chrome). */
+body:not(.app-booted) > header {
+    visibility: visible !important;
+    z-index: 2100;
 }
 
 .loading-status-overlay {

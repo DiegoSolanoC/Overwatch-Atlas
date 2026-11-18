@@ -91,8 +91,8 @@ header {
     --header-hub-stack-w: clamp(56px, 7.5vw, 88px);
     padding: 0; /* allow hub sections to be seamless full-height blocks */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    /* Above side panels (filters / info / music ~540) so hub white rim stays visible; below dock (~620) and modals (1000+) */
-    z-index: 560;
+    /* Above side panels (~540) and dock (~620) so hub + badge stay over the stage/loading band; below footer headlines (~700) and modals (1000+) */
+    z-index: 650;
     height: var(--header-chrome-paint-h);
     min-height: var(--header-chrome-paint-h);
     max-height: var(--header-chrome-paint-h);
@@ -1423,6 +1423,8 @@ footer {
     border-top: none; /* Explicitly remove top border */
     box-sizing: border-box;
     position: relative;
+    /* Atlas News is position:fixed (taller than this band) — keep footer from clipping. */
+    overflow: visible !important;
     /* Remove any potential white line at top */
     outline: none;
     box-shadow: none;
@@ -1466,7 +1468,9 @@ footer.timeline-loaded {
         var(--bg-primary) 100%
     );
     position: relative;
-    z-index: 700; /* Keep headlines/logo above pagination dock (~620), below modals (~1000) */
+    /* Above pagination dock (~620) so the headline strip is not covered by dock fill. */
+    z-index: 800 !important;
+    overflow: visible !important;
 }
 
 /* Gray palette: headline strip + bottom bar (theme file may override with !important) */
@@ -1484,62 +1488,68 @@ footer.timeline-loaded p {
     display: none;
 }
 
-/* Show and enlarge Atlas News when timeline is loaded - bottom left, aligned with bottom of screen */
-footer.timeline-loaded .footer-atlas-news {
-    display: flex; /* Show when timeline is loaded */
-    background: #C93439; /* Red trapezoid background */
-    width: 120px; /* Reduced from 160px */
-    height: 100px; /* Reduced from 130px */
-    left: -10px; /* Moved slightly left from screen border */
-    bottom: 0; /* Align bottom with screen bottom */
-    top: auto; /* Remove top positioning */
-    z-index: 710; /* Above footer headline strip and dock chrome */
-    padding: 0.5rem; /* Reduced from 0.7rem */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-    transform: none; /* Remove centering transform */
-    /* Trapezoid shape: straight left, sloped right, top longer than bottom - extended top side to the right */
-    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
-    /* Rounded edges on right half only (top-right and bottom-right corners) */
-    border-top-right-radius: 6px; /* Reduced from 8px */
-    border-bottom-right-radius: 6px; /* Reduced from 8px */
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+/*
+ * Atlas News badge — taller than the footer, must paint above footer + dock.
+ * JS reparents it onto body (.footer-atlas-news--floating) so the footer flex
+ * band cannot clip it. Body is transform-scaled → fixed is relative to body.
+ */
+footer.timeline-loaded .footer-atlas-news,
+.footer-atlas-news.footer-atlas-news--floating {
+    display: flex !important;
+    position: fixed !important;
+    background: #C93439 !important;
+    /* Clear of dock page pill; still room for full wreath. */
+    width: 128px !important;
+    height: 112px !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: 0 !important;
+    top: auto !important;
+    /* Independent layer above footer (800), ticker (705), dock (620). */
+    z-index: 2500 !important;
+    padding: 6px 8px 6px 6px !important;
+    margin: 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    transform: none !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    clip-path: polygon(0% 0%, 100% 0%, 88% 100%, 0% 100%) !important;
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
 }
 
-/* Mobile responsive adjustments for Atlas News */
+footer.timeline-loaded .footer-atlas-news img,
+.footer-atlas-news.footer-atlas-news--floating img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
 @media (max-width: 768px) {
-    footer.timeline-loaded .footer-atlas-news {
-        width: 100px; /* Reduced from 130px */
-        height: 85px; /* Reduced from 110px */
-        left: -8px; /* Moved slightly left from screen border */
-        bottom: 0; /* Align bottom with screen bottom */
-        top: auto; /* Remove top positioning */
-        padding: 0.4rem; /* Reduced from 0.6rem */
-        transform: none; /* Remove centering transform */
-        /* Maintain trapezoid shape with extended top side and rounded right edges */
-        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
-        border-top-right-radius: 5px; /* Reduced from 6px */
-        border-bottom-right-radius: 5px; /* Reduced from 6px */
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+    footer.timeline-loaded .footer-atlas-news,
+    .footer-atlas-news.footer-atlas-news--floating {
+        width: 112px !important;
+        height: 98px !important;
+        padding: 5px 7px 5px 5px !important;
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
     }
 }
 
 @media (max-width: 480px) {
-    footer.timeline-loaded .footer-atlas-news {
-        width: 85px; /* Reduced from 110px */
-        height: 70px; /* Reduced from 90px */
-        left: -6px; /* Moved slightly left from screen border */
-        bottom: 0; /* Align bottom with screen bottom */
-        top: auto; /* Remove top positioning */
-        padding: 0.35rem; /* Reduced from 0.5rem */
-        transform: none; /* Remove centering transform */
-        /* Maintain trapezoid shape with extended top side and rounded right edges */
-        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
-        border-top-right-radius: 4px; /* Reduced from 5px */
-        border-bottom-right-radius: 4px; /* Reduced from 5px */
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+    footer.timeline-loaded .footer-atlas-news,
+    .footer-atlas-news.footer-atlas-news--floating {
+        width: 98px !important;
+        height: 86px !important;
+        padding: 4px 6px 4px 4px !important;
+        border-top-right-radius: 4px !important;
+        border-bottom-right-radius: 4px !important;
     }
 }
 

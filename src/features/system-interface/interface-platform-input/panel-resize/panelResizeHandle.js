@@ -141,6 +141,9 @@ function createHandle(cfg, options) {
         const trapLabel = document.createElement('span');
         trapLabel.className = 'panel-resize-handle__trap-label';
         trapLabel.setAttribute('aria-hidden', 'true');
+        /* Colored rounded pill behind the trap icon (concept chrome). */
+        const trapBtn = document.createElement('span');
+        trapBtn.className = 'panel-resize-handle__trap-btn';
         const trapImg = document.createElement('img');
         trapImg.className = 'panel-resize-handle__trap-icon';
         trapImg.alt = '';
@@ -154,7 +157,8 @@ function createHandle(cfg, options) {
             trapImg.src = FILTERS_TRAP_ICONS.empty;
             syncFiltersPanelTrapIcon(trapImg);
         }
-        trapLabel.appendChild(trapImg);
+        trapBtn.appendChild(trapImg);
+        trapLabel.appendChild(trapBtn);
         /* Nub lives on the trapezium so trap tweaks cannot disconnect it. */
         trapLabel.appendChild(pill);
         btn.appendChild(trapLabel);

@@ -61,13 +61,41 @@ function clearDockChromeMoveStyles(el) {
     el.style.bottom = '';
 }
 
+/** Trap page field: kill pill/frost so hex pattern shows through. */
+function bareTrapPageField(pageInputContainer) {
+    if (!pageInputContainer) return;
+    pageInputContainer.classList.add('dock-page-field--bare');
+    pageInputContainer.style.setProperty('background', 'transparent', 'important');
+    pageInputContainer.style.setProperty('background-color', 'transparent', 'important');
+    pageInputContainer.style.setProperty('background-image', 'none', 'important');
+    pageInputContainer.style.setProperty('box-shadow', 'none', 'important');
+    pageInputContainer.style.setProperty('border', 'none', 'important');
+    pageInputContainer.style.setProperty('filter', 'none', 'important');
+    pageInputContainer.style.setProperty('backdrop-filter', 'none', 'important');
+    pageInputContainer.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+    pageInputContainer.style.setProperty('clip-path', 'none', 'important');
+
+    const input =
+        pageInputContainer.querySelector('#pageInput, .page-input') ||
+        document.getElementById('pageInput');
+    if (!input) return;
+    input.classList.add('dock-page-input--bare');
+    input.style.setProperty('background', 'transparent', 'important');
+    input.style.setProperty('background-color', 'transparent', 'important');
+    input.style.setProperty('background-image', 'none', 'important');
+    input.style.setProperty('box-shadow', 'none', 'important');
+    input.style.setProperty('filter', 'none', 'important');
+    input.style.setProperty('backdrop-filter', 'none', 'important');
+    input.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+}
+
 /**
  * Full dock chrome reflow. Computes the canonical control order for the
  * current viewport and reparents the 7 controls accordingly.
  *
- * Dock bar order: Prev Page, Prev Event, Image, Textbox (page input), Eras,
- * Next Event, Next Page. Image/Eras join the center rail when the trapezoid
- * dock is mounted, otherwise they live on the right rail.
+ * Trapezoid dock (CSS grid): Prev Page, Prev Event, Page, Next Event, Next Page
+ * on the top row; Image + Eras on the bottom spanning outer columns; Page spans
+ * the center column. Without the trapezoid, Image lives on the right rail.
  */
 export function reflowDockChromeRails() {
     const pageInputContainer = document.querySelector('.page-input-container');
@@ -80,14 +108,15 @@ export function reflowDockChromeRails() {
     const globalImageToggleBtn = document.getElementById('globalImageToggle');
     const erasBtn = document.getElementById('erasToggle');
 
+    /* Trap layout (CSS grid): top nav + bottom image/eras, page spans center column. */
     const centerChromeDockBarOrder = [
         prevPageBtn,
         prevEventBtn,
-        globalImageToggleBtn,
         pageInputContainer,
-        erasBtn,
         nextEventBtn,
         nextPageBtn,
+        globalImageToggleBtn,
+        erasBtn,
     ];
     const centerChromePaginationOnly = [
         prevPageBtn,
@@ -124,17 +153,18 @@ export function reflowDockChromeRails() {
         const orderedChrome = [
             document.getElementById('prevPageBtn'),
             document.getElementById('prevEventBtn'),
-            document.getElementById('globalImageToggle'),
             pageInputWrap,
-            document.getElementById('erasToggle'),
             document.getElementById('nextEventBtn'),
             document.getElementById('nextPageBtn'),
+            document.getElementById('globalImageToggle'),
+            document.getElementById('erasToggle'),
         ].filter(Boolean);
         orderedChrome.forEach((element) => {
             if (!element.isConnected) return;
             clearDockChromeMoveStyles(element);
             centerRail.appendChild(element);
         });
+        bareTrapPageField(pageInputWrap);
     }
 
     const rightRailTargets = useTrapezoidSideChrome ? [] : [globalImageToggleBtn].filter(Boolean);

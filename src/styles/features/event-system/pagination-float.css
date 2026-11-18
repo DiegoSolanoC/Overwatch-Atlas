@@ -224,11 +224,18 @@
         width: var(--dock-nub-width, 120px);
         height: var(--dock-nub-height, 28px);
         border-radius: 0;
-        background-color: transparent;
-        background-image: var(--dock-nub-fill-img);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: 100% 100%;
+        /* Masked white fill — SVG fillets drive corner rounding (no sharp clip-path). */
+        background-color: #ffffff !important;
+        background-image: none;
+        -webkit-mask-image: var(--dock-nub-fill-img);
+        mask-image: var(--dock-nub-fill-img);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center center;
+        mask-position: center center;
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        clip-path: none;
         border: none;
         display: flex;
         align-items: center;
@@ -265,8 +272,10 @@
 
     body:has(#paginationDock) .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
     body:has(#paginationDock) .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
-        background-image: var(--dock-nub-fill-img);
-        background-size: 100% 100%;
+        background-color: #ffffff !important;
+        background-image: none;
+        -webkit-mask-image: var(--dock-nub-fill-img);
+        mask-image: var(--dock-nub-fill-img);
         width: calc(var(--dock-nub-width, 120px) + 8px);
         height: calc(var(--dock-nub-height, 28px) + 4px);
         box-shadow: none;

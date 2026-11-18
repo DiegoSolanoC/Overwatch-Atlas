@@ -415,67 +415,100 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     }
 
     /*
-     * Center rail: chrome over the pattern silhouette (same idea as side-panel trap handles).
-     * Clip matches host --dock-trap-inset + SVG viewBox padding on Y.
+     * Center rail: 2-layer / 5-section grid (concept chrome).
+     *   [prev page] [prev event] | page | [next event] [next page]
+     *   [     image on/off     ] | page | [        eras         ]
      */
     body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail.dock-globe-rail--center {
+        --dock-trap-rail-pad-x: max(
+            44px,
+            calc(var(--dock-trap-inset-len, 86px) * 0.92 + var(--dock-edge-border-px, 20px) * 0.25)
+        );
+        --dock-trap-btn-skew: 8deg;
+        --dock-trap-col-gap: 8px;
+        --dock-trap-row-gap: 14px;
+        /* Bottom row nudged outward so outer edges match skewed top pair. */
+        --dock-trap-bottom-outset: 7px;
+        /* Side cluster width: top nav pair + bottom Image/Eras share this. */
+        --dock-trap-side-w: 168px;
         position: relative !important;
         left: auto !important;
         right: auto !important;
         bottom: auto !important;
         top: auto !important;
         transform: translateY(
-                calc(var(--dock-center-rail-y, 0px) + var(--dock-trapezoid-rail-shift-y, -3px))
+                calc(
+                    var(--dock-center-rail-y, 0px)
+                    + var(--dock-trapezoid-rail-shift-y, -3px)
+                    + var(--dock-buttons-offset-y, 0px)
+                )
             )
             !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0;
         flex: 1 1 0;
-        flex-wrap: nowrap !important;
-        justify-content: stretch !important;
-        align-items: stretch !important;
-        gap: 0 !important;
-        z-index: 4 !important;
+        display: grid !important;
+        /* Half-cols + col-gap = --dock-trap-side-w (matches Image On / Eras). */
+        grid-template-columns:
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2)
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2)
+            minmax(100px, 118px)
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2)
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2);
+        grid-template-rows: minmax(48px, 1fr) minmax(48px, 1fr);
+        grid-template-areas:
+            'prev-page prev-event page next-event next-page'
+            'image     image      page eras       eras';
+        justify-content: center;
+        column-gap: var(--dock-trap-col-gap) !important;
+        row-gap: var(--dock-trap-row-gap) !important;
+        /* Above dock thumbs / timeline when Buttons Y pushes into the dock band. */
+        z-index: 6 !important;
         margin: 0 !important;
+        /* Keep pills inside the slanted trap edges (inset grows with taper). */
+        padding: 8px var(--dock-trap-rail-pad-x) 10px !important;
+        box-sizing: border-box !important;
         transition: none;
         pointer-events: none;
         align-self: stretch !important;
+        align-items: center !important;
+        justify-items: stretch !important;
         min-height: 0 !important;
-        overflow: hidden;
+        overflow: visible !important;
         background: transparent !important;
-        clip-path: none;
+        clip-path: none !important;
     }
 
     /*
-     * Segments: transparent chrome over pattern (side-panel trap handles).
-     * Hover = light wash only — no opaque blue slabs / center seams.
+     * Colored rounded pills inside the dock trap (concept chrome).
+     * Sized to content / capped — not full-bleed cells (avoids trap-edge clip).
      */
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > * {
-        --dock-segment-slant: clamp(8px, 1.2vw, 14px);
-        flex: 1 1 0 !important;
+        > *:not(.dock-trapezium-mid-strip):not(.page-input-container),
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        .dock-trapezium-mid-strip
+        > *:not(.page-input-container) {
+        flex: none !important;
         min-width: 0 !important;
-        margin: 0 0 0 calc(var(--dock-segment-slant) * -1) !important;
-        align-self: stretch !important;
+        margin: 0 !important;
+        align-self: center !important;
+        justify-self: stretch !important;
         box-sizing: border-box !important;
-        border-radius: 0 !important;
+        border-radius: 14px !important;
         border: none !important;
-        border-right: none !important;
-        box-shadow: none !important;
-        background: transparent !important;
-        clip-path: polygon(
-            0% 0%,
-            calc(100% - var(--dock-segment-slant)) 0%,
-            100% 100%,
-            var(--dock-segment-slant) 100%
-        );
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28) !important;
+        background: var(--btn-primary-bg, rgba(13, 71, 161, 0.9)) !important;
+        background-color: var(--btn-primary-bg, rgba(13, 71, 161, 0.9)) !important;
+        clip-path: none !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 4px !important;
+        gap: 6px !important;
         pointer-events: auto !important;
         z-index: 5;
         position: relative !important;
@@ -486,199 +519,238 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         bottom: auto !important;
         transform: none !important;
         width: auto !important;
+        max-width: 100% !important;
+        height: 54px !important;
+        min-height: 50px !important;
+        max-height: 60px !important;
+        padding: 0 16px !important;
+        font-size: 15px !important;
+        line-height: 1.15 !important;
+        transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn {
+        width: 100% !important;
+        min-width: 0 !important;
         max-width: none !important;
+        padding: 0 6px !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn {
+        grid-area: prev-page !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn {
+        grid-area: prev-event !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container {
+        grid-area: page !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: stretch !important;
+        justify-self: center !important;
+        width: 100% !important;
+        max-width: 112px !important;
+        min-width: 0 !important;
         height: auto !important;
         min-height: 0 !important;
-        padding: 0 8px !important;
-        font-size: 13px !important;
-        line-height: 1.15 !important;
-        transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease !important;
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > *:first-child {
-        margin-left: 0 !important;
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > *:nth-child(-n + 3) {
-        clip-path: polygon(
-            var(--dock-segment-slant) 0%,
-            100% 0%,
-            calc(100% - var(--dock-segment-slant)) 100%,
-            0% 100%
-        );
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > *:nth-child(4) {
-        clip-path: polygon(
-            calc(var(--dock-segment-slant) * 0.85) 0%,
-            calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
-            100% 100%,
-            0% 100%
-        );
-    }
-
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > *:hover {
-        background: color-mix(in srgb, var(--dock-trapezium-segment-hover-bg) 35%, transparent) !important;
+        max-height: none !important;
+        gap: 8px !important;
+        padding: 2px 0 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+        z-index: 5;
+        position: relative !important;
+        /* Bare against trap/dock fill — no colored label pill / no frosted blur. */
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        border: none !important;
+        border-radius: 0 !important;
         box-shadow: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 
-    /*
-     * Beat palette + legacy button fills (Image On / Eras already correct).
-     * Every control in the trap must stay transparent over the pattern.
-     */
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > *,
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > .page-btn,
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > .globe-control-btn,
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > .page-input-container,
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip,
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > *,
-    body.color-palette-blue:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > *,
-    body.color-palette-gray:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > *,
-    body.color-palette-crimson:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > *,
-    body.color-palette-nulled:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > *,
-    body.color-palette-gray:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevPageBtn,
-    body.color-palette-gray:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #nextPageBtn,
-    body.color-palette-gray:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevEventBtn,
-    body.color-palette-gray:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #nextEventBtn,
-    body.color-palette-crimson:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevPageBtn,
-    body.color-palette-crimson:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #nextPageBtn,
-    body.color-palette-crimson:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevEventBtn,
-    body.color-palette-crimson:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #nextEventBtn,
-    body.color-palette-nulled:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevPageBtn,
-    body.color-palette-nulled:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #nextPageBtn,
-    body.color-palette-nulled:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevEventBtn,
-    body.color-palette-nulled:has(#paginationDock)
+    body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
         > #nextEventBtn {
-        background: transparent !important;
-        background-color: transparent !important;
-        border-color: transparent !important;
-        box-shadow: none !important;
+        grid-area: next-event !important;
     }
 
-    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail--center > *:hover,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn {
+        grid-area: next-page !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #erasToggle {
+        justify-self: stretch !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        padding: 0 14px !important;
+        font-size: 16px !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle {
+        grid-area: image !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #erasToggle {
+        grid-area: eras !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .dock-trapezium-mid-strip {
+        display: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:not(.dock-trapezium-mid-strip):not(.page-input-container):hover,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
         .dock-trapezium-mid-strip
-        > *:hover,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > .page-input-container:hover {
-        background: color-mix(in srgb, var(--dock-trapezium-segment-hover-bg) 28%, transparent) !important;
-        background-color: color-mix(
-            in srgb,
-            var(--dock-trapezium-segment-hover-bg) 28%,
-            transparent
-        ) !important;
+        > *:not(.page-input-container):hover {
+        background: var(--btn-primary-bg-hover, rgba(13, 71, 161, 1)) !important;
+        background-color: var(--btn-primary-bg-hover, rgba(13, 71, 161, 1)) !important;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* Narrower prev/next *event* columns so prev/next *page* (and clip-path) have more room */
+    /* Concept slant: left cluster // trap left wall, right cluster mirrored. */
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #prevEventBtn.globe-control-btn,
+        > #prevPageBtn,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #nextEventBtn.globe-control-btn {
-        flex: 0.52 1 0 !important;
-        padding: 0 4px !important;
-    }
-
-    /* Wider columns + bias double-arrow icons toward strip center (away from outer clip). */
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevPageBtn.globe-control-btn {
-        flex: 1.32 1 0 !important;
-        justify-content: flex-end !important;
-        padding: 0 10px 0 clamp(14px, 14%, 28px) !important;
+        > #prevEventBtn {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) !important;
     }
 
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #nextPageBtn.globe-control-btn {
-        flex: 1.32 1 0 !important;
-        justify-content: flex-start !important;
-        padding: 0 clamp(10px, 10%, 22px) 0 6px !important;
+        > #nextPageBtn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg)) !important;
     }
 
-    /* Undo global center-rail skew for controls inside the trapezoid strip */
+    /* Bottom row: same skew + slight outward push to match skewed top outer edges. */
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .globe-control-btn,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #globalImageToggle.dock-globe-rail__btn,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #erasToggle.dock-globe-rail__btn {
-        transform: none !important;
-        width: 100% !important;
-        height: 100% !important;
+        > #globalImageToggle {
+        width: calc(100% + var(--dock-trap-bottom-outset, 7px)) !important;
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg)))
+            translateX(calc(-1 * var(--dock-trap-bottom-outset, 7px))) !important;
     }
 
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .globe-control-btn > *,
+        > #erasToggle {
+        width: calc(100% + var(--dock-trap-bottom-outset, 7px)) !important;
+        transform: skewX(var(--dock-trap-btn-skew, 8deg))
+            translateX(var(--dock-trap-bottom-outset, 7px)) !important;
+    }
+
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .globe-control-btn [id$='Icon'] {
-        transform: none !important;
+        > #prevPageBtn > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn [id$='Icon'],
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn [id$='Icon'] {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg)) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #erasToggle > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn [id$='Icon'],
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn [id$='Icon'] {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) !important;
     }
 
     body:has(#paginationDock)
@@ -689,37 +761,85 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
         > #nextPageBtn.globe-control-btn [id$='Icon'].icon-flip-h {
-        transform: scaleX(-1) !important;
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) scaleX(-1) !important;
     }
 
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .globe-control-btn:hover,
+        > #prevPageBtn:hover,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #globalImageToggle.dock-globe-rail__btn:hover,
-    body:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #erasToggle.dock-globe-rail__btn:hover {
-        transform: none !important;
+        > #prevEventBtn:hover {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) translateY(-2px) !important;
     }
 
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .globe-control-btn:active,
+        > #nextPageBtn:hover,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #globalImageToggle.dock-globe-rail__btn:active,
+        > #nextEventBtn:hover {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg)) translateY(-2px) !important;
+    }
+
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #erasToggle.dock-globe-rail__btn:active {
-        transform: none !important;
+        > #globalImageToggle:hover {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg)))
+            translateX(calc(-1 * var(--dock-trap-bottom-outset, 7px)))
+            translateY(-2px) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #erasToggle:hover {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg))
+            translateX(var(--dock-trap-bottom-outset, 7px))
+            translateY(-2px) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn:active,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn:active {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn:active,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn:active {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg)) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle:active {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg)))
+            translateX(calc(-1 * var(--dock-trap-bottom-outset, 7px))) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #erasToggle:active {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg))
+            translateX(var(--dock-trap-bottom-outset, 7px)) !important;
     }
 
     body:has(#paginationDock)
@@ -732,7 +852,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         > #prevEventBtn.globe-control-btn:disabled {
         opacity: 0.5 !important;
         cursor: not-allowed !important;
-        transform: none !important;
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) !important;
     }
 
     body:has(#paginationDock)
@@ -745,28 +865,52 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         > #nextPageBtn.globe-control-btn:disabled {
         opacity: 0.5 !important;
         cursor: not-allowed !important;
-        transform: none !important;
+        transform: skewX(var(--dock-trap-btn-skew, 8deg)) !important;
     }
 
-    /* Page field: same transparent chrome as Image On / Eras (no solid slab). */
+    /* Page field: no pill — text + box sit on the trap/dock pattern. */
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        .page-input-container {
-        clip-path: polygon(
-            calc(var(--dock-segment-slant) * 0.85) 0%,
-            calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
-            100% 100%,
-            0% 100%
-        ) !important;
-        min-width: 0 !important;
+        > .page-input-container {
+        clip-path: none !important;
         filter: none !important;
-        height: 100% !important;
-        padding: 4px 8px !important;
+        flex: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container:hover {
         background: transparent !important;
         background-color: transparent !important;
-        border-color: transparent !important;
         box-shadow: none !important;
+        transform: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-label {
+        color: rgba(255, 255, 255, 0.98) !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.1 !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-total {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 17px !important;
+        font-weight: 600 !important;
     }
 
     body:has(#paginationDock)
@@ -777,31 +921,82 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
+        .page-input-container
+        #pageInput,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
         .page-input {
+        width: 4.2rem !important;
+        min-width: 64px !important;
+        max-width: 88px !important;
+        height: 50px !important;
+        padding: 0 8px !important;
+        font-size: 26px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        /* Bare outline only — show trap/dock pattern through the field. */
         background: transparent !important;
         background-color: transparent !important;
-        border-color: rgba(255, 255, 255, 0.35) !important;
+        background-image: none !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        border: 2px solid rgba(255, 255, 255, 0.55) !important;
+        border-radius: 10px !important;
         color: #fff !important;
+        box-shadow: none !important;
+        caret-color: #fff !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        .page-input-container
+        .page-input:hover,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        .page-input-container
+        .page-input:focus,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        .page-input-container
+        .page-input:active,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        .page-input-container
+        #pageInput:focus {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        border-color: rgba(255, 255, 255, 0.9) !important;
+        outline: none !important;
         box-shadow: none !important;
     }
 
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .page-input-container .page-label,
+        .page-input-container
+        .page-input:-webkit-autofill,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .page-input-container .page-total {
-        color: rgba(255, 255, 255, 0.95) !important;
-    }
-
+        .page-input-container
+        .page-input:-webkit-autofill:hover,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > .page-input-container:hover {
-        transform: none !important;
-        filter: none !important;
+        .page-input-container
+        .page-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: #fff !important;
+        caret-color: #fff !important;
+        transition: background-color 99999s ease-out !important;
+        box-shadow: 0 0 0 1000px transparent inset !important;
+        background-color: transparent !important;
     }
 
     body:has(#paginationDock)
@@ -822,7 +1017,22 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #erasToggle.dock-globe-rail__btn img {
+        > #erasToggle.dock-globe-rail__btn img,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn
+        [id$='Icon'],
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn
+        .ui-pagination-arrow {
+        width: 42px !important;
+        height: 42px !important;
+        max-width: 42px !important;
+        max-height: 42px !important;
+        object-fit: contain !important;
         transform: none !important;
     }
 

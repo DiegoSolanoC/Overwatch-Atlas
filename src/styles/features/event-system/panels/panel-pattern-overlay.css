@@ -95,6 +95,10 @@
     --side-nub-taper: 14;
     --side-nub-radius: 0px;
     --side-nub-arrow-size: 28px;
+    --side-trap-btn-radius: 48px;
+    --side-trap-btn-width: 40px;
+    --side-trap-btn-height: 96px;
+    --side-trap-icon-size: 28px;
     --side-nub-fill-img: none;
     --side-nub-fill-img-mirror: none;
     --dock-nub-width: 120px;
@@ -106,12 +110,17 @@
 }
 
 @media (min-width: 769px) {
-    .event-slide.open {
+    /*
+     * Opaque trap silhouette whenever the handle is shown (open OR collapsed).
+     * Previously only .open got the fill — closed left trap looked hollow/transparent.
+     */
+    .event-slide.open,
+    body.event-system-loaded .event-slide {
         /*
          * Cap trap height to the panel so oversized tweaks cannot invert the clip
          * (negative free space) and stretch/break the pattern silhouette.
          */
-        --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 55%);
+        --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 62%);
         --event-info-trap-visual-h: calc(var(--event-info-trap-h-capped) + 8px);
         --event-info-side-gap-h: calc((100% - var(--event-info-trap-h-capped)) / 2);
         /* 0 = top, 50 = center, 100 = bottom (UI Tweaks vertical slide). */
@@ -136,7 +145,8 @@
         );
     }
 
-    .event-slide.open::before {
+    .event-slide.open::before,
+    body.event-system-loaded .event-slide::before {
         right: calc(-1 * var(--event-info-trap-protrude));
         /* Opaque base under the protrusion (panel body already has --bg-secondary). */
         opacity: 1;
@@ -157,7 +167,8 @@
         clip-path: var(--event-info-panel-trap-clip);
     }
 
-    body.color-palette-blue .event-slide.open::before {
+    body.color-palette-blue .event-slide.open::before,
+    body.color-palette-blue.event-system-loaded .event-slide::before {
         background-image:
             linear-gradient(
                 color-mix(in srgb, var(--bg-secondary) 38%, transparent),
@@ -166,7 +177,8 @@
             url('../../../../assets/images/Background%20Pattern/Pattern Blue.png');
     }
 
-    body.color-palette-gray .event-slide.open::before {
+    body.color-palette-gray .event-slide.open::before,
+    body.color-palette-gray.event-system-loaded .event-slide::before {
         background-image:
             linear-gradient(
                 color-mix(in srgb, var(--bg-secondary) 38%, transparent),
@@ -175,7 +187,8 @@
             url('../../../../assets/images/Background%20Pattern/Pattern Dark.png');
     }
 
-    body.color-palette-crimson .event-slide.open::before {
+    body.color-palette-crimson .event-slide.open::before,
+    body.color-palette-crimson.event-system-loaded .event-slide::before {
         background-image:
             linear-gradient(
                 color-mix(in srgb, var(--bg-secondary) 38%, transparent),
@@ -184,7 +197,8 @@
             url('../../../../assets/images/Background%20Pattern/Pattern Crimson.png');
     }
 
-    body.color-palette-nulled .event-slide.open::before {
+    body.color-palette-nulled .event-slide.open::before,
+    body.color-palette-nulled.event-system-loaded .event-slide::before {
         background-image:
             linear-gradient(
                 color-mix(in srgb, var(--bg-secondary) 38%, transparent),
@@ -193,7 +207,8 @@
             url('../../../../assets/images/Background%20Pattern/Pattern Nulled.png');
     }
 
-    .event-slide.open::after {
+    .event-slide.open::after,
+    body.event-system-loaded .event-slide::after {
         right: calc(-1 * var(--event-info-trap-protrude));
         clip-path: var(--event-info-panel-trap-clip);
         /* Keep the bottom U on the panel body edge, not the trap tip. */

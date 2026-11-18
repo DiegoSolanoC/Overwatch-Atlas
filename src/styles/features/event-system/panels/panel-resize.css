@@ -27,7 +27,7 @@
      */
     .filters-panel {
         /* Dual traps — tighter than the single info trap so they don't collide on short viewports. */
-        --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 34%);
+        --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 42%);
         --filters-trap-visual-h: calc(var(--event-info-trap-h-capped) + 8px);
         --filters-upper-trap-top: calc(
             (100% - var(--event-info-trap-h-capped)) * var(--filters-trap-pos, 32) / 100 - 2px
@@ -246,7 +246,7 @@
     justify-content: flex-start;
     --event-info-side-border-w: 54px;
     /* Same capped height as panel silhouette (avoids clip/pattern blowouts). */
-    --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 55%);
+    --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 62%);
     --event-info-side-gap-h: calc((100% - var(--event-info-trap-h-capped)) / 2);
     --event-info-trap-top: calc(
         (100% - var(--event-info-trap-h-capped)) * var(--event-info-trap-pos, 50) / 100 - 2px
@@ -370,16 +370,47 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Colored vertical pill for the trap icon (replaces transparent label look). */
+.event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-btn,
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-btn {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: var(--side-trap-btn-width, 40px);
+    max-width: 92%;
+    height: var(--side-trap-btn-height, 96px);
+    max-height: 90%;
+    padding: 10px 4px;
+    border-radius: var(--side-trap-btn-radius, 48px);
+    background: var(--btn-primary-bg, rgba(13, 71, 161, 0.9));
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    transform: translate(var(--trap-icon-optical-shift-x, 0px), var(--trap-icon-optical-shift-y, 0px));
+    pointer-events: none;
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.event-slide .panel-resize-handle--inner-right:hover .panel-resize-handle__trap-btn,
+.filters-panel .panel-resize-handle--inner-left:hover .panel-resize-handle__trap-btn {
+    background: var(--btn-primary-bg-hover, rgba(13, 71, 161, 1));
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
+}
+
 .event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-icon,
 .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-icon {
-    width: clamp(22px, 9.5vmin, 45px);
-    height: auto;
-    max-height: 62%;
+    width: var(--side-trap-icon-size, 28px);
+    height: var(--side-trap-icon-size, 28px);
+    max-width: none;
+    max-height: none;
     object-fit: contain;
     display: block;
     margin: 0;
     pointer-events: none;
-    transform: translate(var(--trap-icon-optical-shift-x, 0px), var(--trap-icon-optical-shift-y, 0px));
+    transform: none;
+    flex-shrink: 0;
 }
 
 .event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-label {
@@ -408,7 +439,7 @@
  */
 .filters-panel {
     --event-info-side-border-w: 54px;
-    --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 34%);
+    --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 42%);
     --filters-trap-visual-h: calc(var(--event-info-trap-h-capped) + 8px);
     --filters-middle-overlap: 4px;
     /* Shared size from :root; each trap has its own --*-trap-pos. */
@@ -564,11 +595,21 @@
     width: var(--side-nub-depth, 28px);
     height: var(--side-nub-length, 72px);
     border-radius: 0;
-    background-color: transparent;
-    background-image: var(--side-nub-fill-img);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 100%;
+    /*
+     * Solid white masked by the rounded trap SVG — keeps corner rounding from
+     * UI Tweaks (sharp CSS clip-path was cutting fillets off).
+     */
+    background-color: #ffffff !important;
+    background-image: none;
+    -webkit-mask-image: var(--side-nub-fill-img);
+    mask-image: var(--side-nub-fill-img);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    clip-path: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -577,8 +618,7 @@
     box-shadow: none;
     transition:
         width 0.2s ease,
-        height 0.2s ease,
-        background-size 0.2s ease;
+        height 0.2s ease;
     pointer-events: none;
     flex-shrink: 0;
     top: 50%;
@@ -588,7 +628,9 @@
 .event-slide .panel-resize-handle--inner-right .panel-resize-handle__nub {
     right: 0;
     left: auto;
-    background-image: var(--side-nub-fill-img);
+    background-color: #ffffff !important;
+    -webkit-mask-image: var(--side-nub-fill-img);
+    mask-image: var(--side-nub-fill-img);
     /*
      * Into the hub with base overlapping the tip stroke (blend, no gap).
      * +100% clears the tip; −0.5×stroke pulls back into the white border.
@@ -602,7 +644,9 @@
 .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__nub {
     left: 0;
     right: auto;
-    background-image: var(--side-nub-fill-img-mirror);
+    background-color: #ffffff !important;
+    -webkit-mask-image: var(--side-nub-fill-img-mirror);
+    mask-image: var(--side-nub-fill-img-mirror);
     transform: translate(
         calc(-100% + (var(--side-edge-border-px, 20px) * 0.5)),
         -50%
@@ -624,7 +668,7 @@
     object-fit: contain;
     pointer-events: none;
     user-select: none;
-    filter: brightness(0);
+    filter: brightness(0) !important;
     flex-shrink: 0;
 }
 
@@ -632,18 +676,17 @@
 .panel-resize-handle:focus-visible .panel-resize-handle__pill,
 .panel-resize-handle:hover .panel-resize-handle__nub,
 .panel-resize-handle:focus-visible .panel-resize-handle__nub {
-    background-color: transparent;
-    background-image: var(--side-nub-fill-img);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 100%;
+    background-color: #ffffff !important;
+    background-image: none;
     width: calc(var(--side-nub-depth, 28px) + 4px);
     height: calc(var(--side-nub-length, 72px) + 6px);
 }
 
 .filters-panel .panel-resize-handle--inner-left:hover .panel-resize-handle__nub,
 .filters-panel .panel-resize-handle--inner-left:focus-visible .panel-resize-handle__nub {
-    background-image: var(--side-nub-fill-img-mirror);
+    -webkit-mask-image: var(--side-nub-fill-img-mirror);
+    mask-image: var(--side-nub-fill-img-mirror);
+    background-image: none;
 }
 
 .panel-resize-handle:focus-visible .panel-resize-handle__pill {
@@ -652,17 +695,16 @@
 
 .panel--resizing .panel-resize-handle__pill,
 .panel--resizing .panel-resize-handle__nub {
-    background-color: transparent;
-    background-image: var(--side-nub-fill-img);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 100%;
+    background-color: #ffffff !important;
+    background-image: none;
     width: calc(var(--side-nub-depth, 28px) + 4px);
     height: calc(var(--side-nub-length, 72px) + 6px);
 }
 
 .filters-panel.panel--resizing .panel-resize-handle--inner-left .panel-resize-handle__nub {
-    background-image: var(--side-nub-fill-img-mirror);
+    -webkit-mask-image: var(--side-nub-fill-img-mirror);
+    mask-image: var(--side-nub-fill-img-mirror);
+    background-image: none;
 }
 
 /* Keep white nub across palette themes (theme files used to force Drag Border). */
@@ -678,17 +720,18 @@ body.color-palette-nulled .panel-resize-handle:focus-visible .panel-resize-handl
 body.color-palette-gray .panel--resizing .panel-resize-handle__pill,
 body.color-palette-crimson .panel--resizing .panel-resize-handle__pill,
 body.color-palette-nulled .panel--resizing .panel-resize-handle__pill {
-    background-color: transparent !important;
-    background-image: var(--side-nub-fill-img) !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    background-size: 100% 100% !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    -webkit-mask-image: var(--side-nub-fill-img) !important;
+    mask-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-gray .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__nub,
 body.color-palette-crimson .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__nub,
 body.color-palette-nulled .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__nub {
-    background-image: var(--side-nub-fill-img-mirror) !important;
+    -webkit-mask-image: var(--side-nub-fill-img-mirror) !important;
+    mask-image: var(--side-nub-fill-img-mirror) !important;
+    background-image: none !important;
 }
 
 @media (max-width: 768px) {
