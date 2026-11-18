@@ -11,6 +11,14 @@ import {
     sanitizeSidesState,
     saveSidesState,
 } from './HeaderSidesChrome.js';
+import {
+    SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+    applySidePanelsTrapChrome,
+    cloneSidePanelsTrapDefaults,
+    loadSidePanelsTrapState,
+    sanitizeSidePanelsTrapState,
+    saveSidePanelsTrapState,
+} from './SidePanelsTrapChrome.js';
 
 const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
 const PANEL_ID = 'uiTweaksPanel';
@@ -18,12 +26,13 @@ const TOGGLE_ID = 'uiTweaksToggle';
 const LEGACY_PANEL_ID = 'headerTitleBadgeTweakerPanel';
 const LEGACY_TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
 
-/** @type {'sides' | 'badge'} */
+/** @type {'sides' | 'badge' | 'panels'} */
 let activeUiTweaksSection = 'sides';
 
 const UI_TWEAK_TABS = Object.freeze([
     { id: 'sides', label: 'Header sides' },
     { id: 'badge', label: 'Center badge' },
+    { id: 'panels', label: 'Side panels' },
 ]);
 
 /** @typedef {object} BadgeTweakState */
@@ -120,21 +129,22 @@ function saveState(state) {
     }
 }
 
-function buildTweaksPayload(badge, sides) {
+function buildTweaksPayload(badge, sides, panels) {
     return {
         version: 1,
         exportedAt: new Date().toISOString(),
         badge: sanitizeState(badge),
         sides: sanitizeSidesState(sides),
+        panels: sanitizeSidePanelsTrapState(panels),
     };
 }
 
 /**
- * Merge a pasted/imported payload into live bags. Accepts `{ badge, sides }`
+ * Merge a pasted/imported payload into live bags. Accepts `{ badge, sides, panels }`
  * or a legacy flat badge-only object.
  * @returns {{ ok: true } | { ok: false, error: string }}
  */
-function applyTweaksPayload(raw, badge, sides) {
+function applyTweaksPayload(raw, badge, sides, panels) {
     try {
         const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
         if (!parsed || typeof parsed !== 'object') {
@@ -144,6 +154,8 @@ function applyTweaksPayload(raw, badge, sides) {
             parsed.badge && typeof parsed.badge === 'object' ? parsed.badge : parsed;
         const sidesSrc =
             parsed.sides && typeof parsed.sides === 'object' ? parsed.sides : null;
+        const panelsSrc =
+            parsed.panels && typeof parsed.panels === 'object' ? parsed.panels : null;
 
         const nextBadge = cloneDefaults();
         for (const key of Object.keys(HEADER_BADGE_TWEAK_DEFAULTS)) {
@@ -161,6 +173,16 @@ function applyTweaksPayload(raw, badge, sides) {
                 }
             }
             Object.assign(sides, sanitizeSidesState(nextSides));
+        }
+
+        if (panelsSrc && panels) {
+            const nextPanels = cloneSidePanelsTrapDefaults();
+            for (const key of Object.keys(SIDE_PANELS_TRAP_TWEAK_DEFAULTS)) {
+                if (panelsSrc[key] != null && Number.isFinite(Number(panelsSrc[key]))) {
+                    nextPanels[key] = Number(panelsSrc[key]);
+                }
+            }
+            Object.assign(panels, sanitizeSidePanelsTrapState(nextPanels));
         }
         return { ok: true };
     } catch (err) {
@@ -684,12 +706,28 @@ export function applyHeaderTitleBadgeTweaks(state) {
 
 /**
  * @param {HTMLElement} panel
- * @param {{ badge: object, sides: object }} bags
+ * @param {{ badge: object, sides: object, panels: object }} bags
  * @param {{ onPreview: () => void, onSave: () => void, isDirty: () => boolean }} hooks
  */
 function mountControls(panel, bags, hooks) {
     panel.replaceChildren();
-    const { badge, sides } = bags;
+    const { badge, sides, panels } = bags;
+
+    const resolveBag = (name) => {
+        if (name === 'sides') return sides;
+        if (name === 'panels') return panels;
+        return badge;
+    };
+    const resolveDefaults = (name) => {
+        if (name === 'sides') return HEADER_SIDES_TWEAK_DEFAULTS;
+        if (name === 'panels') return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
+        return HEADER_BADGE_TWEAK_DEFAULTS;
+    };
+    const resolveSanitize = (name) => {
+        if (name === 'sides') return sanitizeSidesState;
+        if (name === 'panels') return sanitizeSidePanelsTrapState;
+        return sanitizeState;
+    };
 
     const head = document.createElement('div');
     head.className = 'header-badge-tweaker__head';
@@ -707,8 +745,17 @@ function mountControls(panel, bags, hooks) {
     const hint = document.createElement('p');
     hint.className = 'header-badge-tweaker__hint';
     hint.textContent =
-        'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
+        activeUiTweaksSection === 'panels'
+            ? 'Side panels · Shared size · Per-trap slide · Dock sizes separately · Edges stay visible · Save to keep'
+            : 'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
     panel.appendChild(hint);
+
+    document.body.classList.toggle('ui-tweaks-side-panels', activeUiTweaksSection === 'panels');
+    document.body.classList.toggle('ui-tweaks-open', true);
+    document.body.classList.toggle(
+        'ui-tweaks-filters-music-independent',
+        activeUiTweaksSection === 'panels' && !bags.panels.filtersMusicMirror,
+    );
 
     const tabs = document.createElement('div');
     tabs.className = 'header-badge-tweaker__tabs';
@@ -745,8 +792,95 @@ function mountControls(panel, bags, hooks) {
     swatches.className = 'header-badge-tweaker__swatches';
     meta.appendChild(swatches);
 
-    /** @type {{ group: string, title: string, bag: 'badge' | 'sides', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number }[] }[]} */
+    /** @type {{ group: string, title: string, bag: 'badge' | 'sides' | 'panels', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number, bag?: string }[] }[]} */
     const allSections = [
+        {
+            group: 'Side panels',
+            title: 'Shared size',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'trapHeightPx', label: 'Trapezium height', min: 80, max: 320, step: 2 },
+                { key: 'trapProtrudePx', label: 'Side depth (outward)', min: 36, max: 120, step: 1 },
+                { key: 'trapTaperPct', label: 'Side taper (0=rect)', min: 0, max: 28, step: 0.5 },
+                { key: 'sideBorderWidth', label: 'White border thickness', min: 8, max: 36, step: 0.5 },
+                { key: 'sideBorderRadius', label: 'Corner rounding', min: 0, max: 24, step: 1 },
+            ],
+        },
+        {
+            group: 'Side panels',
+            title: 'Slide (per trap)',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'infoTrapPosPct', label: 'Info (right) · 0=top', min: 0, max: 100, step: 1 },
+                {
+                    key: 'filtersMusicMirror',
+                    label: 'Mirror filters ↔ music',
+                    min: 0,
+                    max: 1,
+                    step: 1,
+                },
+                {
+                    key: 'filtersTrapPosPct',
+                    label: 'Filters (upper) · 0=top',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+                {
+                    key: 'musicTrapPosPct',
+                    label: 'Music (lower) · 0=top',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Side panels',
+            title: 'Dock trapezium',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'dockTrapHeightPx', label: 'Dock trap height', min: 48, max: 160, step: 2 },
+                { key: 'dockTrapWidthPx', label: 'Dock trap width', min: 280, max: 1100, step: 10 },
+                { key: 'dockTrapTaperPct', label: 'Dock taper (0=rect)', min: 0, max: 28, step: 0.5 },
+                { key: 'dockBorderWidth', label: 'Dock border thickness', min: 8, max: 36, step: 0.5 },
+                { key: 'dockBorderRadius', label: 'Dock corner rounding', min: 0, max: 24, step: 1 },
+            ],
+        },
+        {
+            group: 'Side panels',
+            title: 'Side nub (inward tip)',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'sideNubDepthPx', label: 'Nub depth', min: 16, max: 80, step: 1 },
+                { key: 'sideNubLengthPx', label: 'Nub length', min: 36, max: 180, step: 2 },
+                { key: 'sideNubTaperPct', label: 'Nub taper (0=rect)', min: 0, max: 28, step: 0.5 },
+                { key: 'sideNubRadiusPx', label: 'Nub corner rounding', min: 0, max: 20, step: 1 },
+                { key: 'sideNubArrowPx', label: 'Arrow icon size', min: 10, max: 96, step: 1 },
+            ],
+        },
+        {
+            group: 'Side panels',
+            title: 'Dock nub (top tab)',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'dockNubWidthPx', label: 'Nub width', min: 48, max: 280, step: 2 },
+                { key: 'dockNubHeightPx', label: 'Nub height', min: 16, max: 96, step: 1 },
+                { key: 'dockNubTaperPct', label: 'Nub taper (0=rect)', min: 0, max: 28, step: 0.5 },
+                { key: 'dockNubRadiusPx', label: 'Nub corner rounding', min: 0, max: 20, step: 1 },
+                { key: 'dockNubArrowPx', label: 'Arrow icon size', min: 10, max: 96, step: 1 },
+            ],
+        },
         {
             group: 'Header sides',
             title: 'Gap & layout',
@@ -889,6 +1023,7 @@ function mountControls(panel, bags, hooks) {
     const refreshReadouts = () => {
         const badgeResult = applyHeaderTitleBadgeTweaks(badge);
         const sideResult = applyHeaderSidesChrome(sides);
+        const panelsResult = applySidePanelsTrapChrome(panels);
         if (!badgeResult || !sideResult) return;
         const { accent, fillTop, fillBottom, borderRgb } = badgeResult;
 
@@ -901,17 +1036,21 @@ function mountControls(panel, bags, hooks) {
                     ['Side grey', sideResult.grey],
                     ['Side rim', sideResult.rimRgb || accent],
                 ]
-                : [
-                    ['Accent', accent],
-                    ['Badge fill', fillTop],
-                    ['Fill bottom', fillBottom],
-                    ['Badge rim', borderRgb],
-                ];
+                : activeUiTweaksSection === 'panels'
+                    ? [['Accent', accent]]
+                    : [
+                        ['Accent', accent],
+                        ['Badge fill', fillTop],
+                        ['Fill bottom', fillBottom],
+                        ['Badge rim', borderRgb],
+                    ];
 
         paletteNote.textContent =
             activeUiTweaksSection === 'sides'
                 ? `Header sides  ·  ${sideResult.inner.join(', ')} → ${sideResult.outer.join(', ')}`
-                : `Center badge  ·  accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
+                : activeUiTweaksSection === 'panels'
+                    ? `Sides h ${panelsResult.heightPx} · depth ${panelsResult.protrudePx} · taper ${panelsResult.taperPct} · border ${panelsResult.sideBorder} · r ${panelsResult.sideRadius}  ·  Dock ${panelsResult.dockH}×${panelsResult.dockW} · r ${panelsResult.dockRadius}`
+                    : `Center badge  ·  accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
 
         swatches.replaceChildren();
         for (const [label, rgb] of swatchRows) {
@@ -933,12 +1072,17 @@ function mountControls(panel, bags, hooks) {
         panel.querySelectorAll('[data-tweak-key]').forEach((el) => {
             const key = el.getAttribute('data-tweak-key');
             const bagName = el.getAttribute('data-tweak-bag');
-            const bag = bagName === 'sides' ? sides : badge;
+            const bag = resolveBag(bagName);
             if (!key || !(key in bag)) return;
             const range = el.querySelector('input[type="range"]');
             const v = el.querySelector('.header-badge-tweaker__val');
             if (range) range.value = String(bag[key]);
-            if (v) v.textContent = String(bag[key]);
+            if (v) {
+                v.textContent =
+                    key === 'filtersMusicMirror'
+                        ? bag[key] ? 'On' : 'Off'
+                        : String(bag[key]);
+            }
         });
     };
 
@@ -953,11 +1097,9 @@ function mountControls(panel, bags, hooks) {
 
         for (const spec of section.items) {
             const itemBagName = spec.bag || section.bag;
-            const bag = itemBagName === 'sides' ? sides : badge;
-            const itemDefaults =
-                itemBagName === 'sides' ? HEADER_SIDES_TWEAK_DEFAULTS : HEADER_BADGE_TWEAK_DEFAULTS;
-            const itemSanitize =
-                itemBagName === 'sides' ? sanitizeSidesState : sanitizeState;
+            const bag = resolveBag(itemBagName);
+            const itemDefaults = resolveDefaults(itemBagName);
+            const itemSanitize = resolveSanitize(itemBagName);
 
             const row = document.createElement('div');
             row.className = 'header-badge-tweaker__row';
@@ -995,11 +1137,49 @@ function mountControls(panel, bags, hooks) {
 
             input.addEventListener('input', () => {
                 bag[spec.key] = Number(input.value);
+                if (itemBagName === 'panels') {
+                    if (spec.key === 'filtersMusicMirror' && bag.filtersMusicMirror) {
+                        bag.musicTrapPosPct = 100 - Number(bag.filtersTrapPosPct);
+                    }
+                    if (
+                        spec.key === 'filtersTrapPosPct'
+                        && bag.filtersMusicMirror
+                    ) {
+                        bag.musicTrapPosPct = 100 - Number(bag.filtersTrapPosPct);
+                    }
+                    if (
+                        spec.key === 'musicTrapPosPct'
+                        && bag.filtersMusicMirror
+                    ) {
+                        bag.filtersTrapPosPct = 100 - Number(bag.musicTrapPosPct);
+                    }
+                }
                 Object.assign(bag, itemSanitize(bag));
+                if (itemBagName === 'panels') {
+                    document.body.classList.toggle(
+                        'ui-tweaks-filters-music-independent',
+                        !bag.filtersMusicMirror,
+                    );
+                    const filtersLab = panel.querySelector(
+                        '[data-tweak-key="filtersTrapPosPct"] .header-badge-tweaker__label',
+                    );
+                    if (filtersLab) {
+                        filtersLab.textContent = bag.filtersMusicMirror
+                            ? 'Filters ↔ Music · upper (0=top)'
+                            : 'Filters (upper) · 0=top';
+                    }
+                }
                 syncRowValues();
                 hooks.onPreview();
                 refreshReadouts();
             });
+
+            if (spec.key === 'filtersTrapPosPct' && bags.panels.filtersMusicMirror) {
+                lab.textContent = 'Filters ↔ Music · upper (0=top)';
+            }
+            if (spec.key === 'filtersMusicMirror') {
+                val.textContent = Number(bag[spec.key]) ? 'On' : 'Off';
+            }
 
             row.appendChild(lab);
             row.appendChild(input);
@@ -1033,6 +1213,7 @@ function mountControls(panel, bags, hooks) {
     resetBtn.addEventListener('click', () => {
         Object.assign(badge, cloneDefaults());
         Object.assign(sides, cloneSidesDefaults());
+        Object.assign(panels, cloneSidePanelsTrapDefaults());
         hooks.onPreview();
         mountControls(panel, bags, hooks);
     });
@@ -1043,7 +1224,7 @@ function mountControls(panel, bags, hooks) {
     exportBtn.title = 'Download UI Tweaks as JSON';
     exportBtn.addEventListener('click', () => {
         try {
-            downloadTweaksJson(buildTweaksPayload(badge, sides));
+            downloadTweaksJson(buildTweaksPayload(badge, sides, panels));
             exportBtn.textContent = 'Exported';
             setTimeout(() => {
                 exportBtn.textContent = 'Export';
@@ -1071,7 +1252,7 @@ function mountControls(panel, bags, hooks) {
         if (!file) return;
         try {
             const text = await file.text();
-            const result = applyTweaksPayload(text, badge, sides);
+            const result = applyTweaksPayload(text, badge, sides, panels);
             if (!result.ok) {
                 importBtn.textContent = 'Bad file';
                 setTimeout(() => {
@@ -1101,7 +1282,7 @@ function mountControls(panel, bags, hooks) {
     copyBtn.addEventListener('click', async () => {
         try {
             await navigator.clipboard.writeText(
-                JSON.stringify(buildTweaksPayload(badge, sides), null, 2),
+                JSON.stringify(buildTweaksPayload(badge, sides, panels), null, 2),
             );
             copyBtn.textContent = 'Copied';
             setTimeout(() => {
@@ -1137,18 +1318,22 @@ export function setupHeaderTitleBadgeTweaker() {
         ensureBadgeSvgParts(badgeEl);
         const badge = loadState();
         const sides = loadSidesState();
+        const panels = loadSidePanelsTrapState();
         let savedBadge = sanitizeState({ ...badge });
         let savedSides = sanitizeSidesState({ ...sides });
+        let savedPanels = sanitizeSidePanelsTrapState({ ...panels });
         let dirty = false;
-        const bags = { badge, sides };
+        const bags = { badge, sides, panels };
 
         const preview = () => {
             try {
                 applyHeaderTitleBadgeTweaks(badge);
                 applyHeaderSidesChrome(sides);
+                applySidePanelsTrapChrome(panels);
                 dirty =
                     JSON.stringify(sanitizeState(badge)) !== JSON.stringify(savedBadge)
-                    || JSON.stringify(sanitizeSidesState(sides)) !== JSON.stringify(savedSides);
+                    || JSON.stringify(sanitizeSidesState(sides)) !== JSON.stringify(savedSides)
+                    || JSON.stringify(sanitizeSidePanelsTrapState(panels)) !== JSON.stringify(savedPanels);
             } catch (err) {
                 console.error('[UI Tweaks] preview failed:', err);
             }
@@ -1157,13 +1342,17 @@ export function setupHeaderTitleBadgeTweaker() {
             try {
                 Object.assign(badge, sanitizeState(badge));
                 Object.assign(sides, sanitizeSidesState(sides));
+                Object.assign(panels, sanitizeSidePanelsTrapState(panels));
                 saveState(badge);
                 saveSidesState(sides);
+                saveSidePanelsTrapState(panels);
                 savedBadge = sanitizeState({ ...badge });
                 savedSides = sanitizeSidesState({ ...sides });
+                savedPanels = sanitizeSidePanelsTrapState({ ...panels });
                 dirty = false;
                 applyHeaderTitleBadgeTweaks(badge);
                 applyHeaderSidesChrome(sides);
+                applySidePanelsTrapChrome(panels);
             } catch (err) {
                 console.error('[UI Tweaks] save failed:', err);
             }
@@ -1216,6 +1405,7 @@ export function setupHeaderTitleBadgeTweaker() {
             try {
                 applyHeaderTitleBadgeTweaks(badge);
                 applyHeaderSidesChrome(sides);
+                applySidePanelsTrapChrome(panels);
             } catch (err) {
                 console.error('[UI Tweaks] palette recolor failed:', err);
             }
@@ -1228,7 +1418,16 @@ export function setupHeaderTitleBadgeTweaker() {
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             toggle.classList.toggle('is-active', open);
             toggle.classList.toggle('header-hub-btn--active', open);
-            if (open) mountControls(panel, bags, hooks);
+            if (open) {
+                document.body.classList.add('ui-tweaks-open');
+                mountControls(panel, bags, hooks);
+            } else {
+                document.body.classList.remove(
+                    'ui-tweaks-side-panels',
+                    'ui-tweaks-open',
+                    'ui-tweaks-filters-music-independent',
+                );
+            }
         });
 
         const greySlot = document.getElementById('headerHubRightGreySlot');
@@ -1242,7 +1441,9 @@ export function setupHeaderTitleBadgeTweaker() {
         } else {
             document.body.appendChild(toggle);
         }
-        document.body.appendChild(panel);
+        /* Same host as Codex/Story main band — fills layout-container exactly. */
+        const mainHost = document.querySelector('.layout-container') || document.body;
+        mainHost.appendChild(panel);
     } catch (err) {
         console.error('[UI Tweaks] setup failed:', err);
     }

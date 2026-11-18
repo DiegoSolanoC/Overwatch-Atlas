@@ -1544,24 +1544,72 @@ footer.timeline-loaded .footer-atlas-news {
 }
 
 /* ——— UI Tweaks panel (toggle lives in header grey cap) ——— */
-.header-badge-tweaker-panel {
-    position: fixed;
-    top: var(--header-height, 72px);
-    left: 0;
-    right: 0;
-    bottom: 0;
+/*
+ * Hosted inside .layout-container (same main space as Codex/Story/etc.).
+ * absolute inset:0 → exact fill; size is NOT tied to trap depth/height tweaks.
+ */
+.layout-container > .header-badge-tweaker-panel {
+    position: absolute;
+    inset: 0;
     z-index: 2400;
     width: auto;
     max-height: none;
     overflow: auto;
-    padding: 24px 28px 48px;
-    padding-right: max(28px, 140px);
+    padding: 16px 20px 20px;
     color: #e8f4ff;
-    background: rgba(6, 12, 22, 0.97);
+    background: var(--bg-secondary, #0a1929);
     border: none;
-    border-top: 1px solid rgba(160, 200, 240, 0.35);
     border-radius: 0;
     box-shadow: none;
+}
+
+/* Fallback if layout-container is missing (body host). */
+body > .header-badge-tweaker-panel {
+    position: fixed;
+    top: var(--header-height, 72px);
+    left: 0;
+    right: 0;
+    bottom: calc(var(--footer-height, 65px) + var(--pagination-dock-height, 0px));
+    z-index: 2400;
+    overflow: auto;
+    padding: 16px 20px 20px;
+    color: #e8f4ff;
+    background: var(--bg-secondary, #0a1929);
+}
+
+/*
+ * Whenever Tweaks is open, side panels + dock (trap protrudes into main space)
+ * paint above the overlay so live edits stay visible.
+ */
+body.ui-tweaks-open .event-slide,
+body.ui-tweaks-open .filters-panel,
+body.ui-tweaks-open .music-panel,
+body.ui-tweaks-open .events-manage-panel,
+body.ui-tweaks-open #paginationDock,
+body.ui-tweaks-open .pagination-dock,
+body.ui-tweaks-open .pagination-dock-collapse-strip,
+body.ui-tweaks-open .pagination-dock-top-cap-row {
+    z-index: 2500 !important;
+}
+
+body.ui-tweaks-side-panels .header-badge-tweaker__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+}
+
+body.ui-tweaks-side-panels .header-badge-tweaker__row[data-tweak-key='musicTrapPosPct'] {
+    display: none;
+}
+
+body.ui-tweaks-side-panels.ui-tweaks-filters-music-independent
+    .header-badge-tweaker__row[data-tweak-key='musicTrapPosPct'] {
+    display: grid;
+}
+
+@media (max-width: 1200px) {
+    body.ui-tweaks-side-panels .header-badge-tweaker__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .header-badge-tweaker__head {

@@ -31,23 +31,26 @@ body.color-palette-crimson main {
 }
 
 body.color-palette-crimson .panel-resize-handle__pill {
-    background: rgba(var(--accent-crimson-primary-rgb), var(--opacity-medium)) !important;
+    background-color: transparent !important;
+    background-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-crimson .panel-resize-handle:hover .panel-resize-handle__pill,
 body.color-palette-crimson .panel-resize-handle:focus-visible .panel-resize-handle__pill {
-    background: rgba(var(--accent-crimson-primary-rgb), var(--opacity-heavy)) !important;
+    background-color: transparent !important;
+    background-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-crimson .panel--resizing .panel-resize-handle__pill {
-    background: rgba(var(--accent-crimson-primary-rgb), var(--opacity-heavy)) !important;
+    background-color: transparent !important;
+    background-image: var(--side-nub-fill-img) !important;
 }
 
 body.color-palette-crimson .pagination-dock-collapse-pill {
     background-color: transparent !important;
-    background-image: url('../../assets/images/Misc/UI/Controller%20Border.png') !important;
+    background-image: var(--dock-nub-fill-img) !important;
     background-repeat: no-repeat !important;
-    background-position: center bottom !important;
+    background-position: center center !important;
     background-size: 100% 100% !important;
     border: none !important;
     box-shadow: none !important;
@@ -55,7 +58,7 @@ body.color-palette-crimson .pagination-dock-collapse-pill {
 
 body.color-palette-crimson .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
 body.color-palette-crimson .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
-    background-image: url('../../assets/images/Misc/UI/Controller%20Border.png') !important;
+    background-image: var(--dock-nub-fill-img) !important;
     background-size: 100% 100% !important;
     box-shadow: none !important;
 }

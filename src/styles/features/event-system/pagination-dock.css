@@ -89,16 +89,16 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: calc(
-            100% + var(--dock-top-cap-lift, -5px)
-            - (var(--dock-border-img-h, 200px) - var(--dock-border-seam-h, 80px))
-        );
+        /* Hooked to dock top lip — trap height grows upward (flex-end), not into the dock. */
+        bottom: calc(100% + var(--dock-top-cap-lift, 0px));
         width: 100%;
         max-width: 100%;
+        /* Explicit height so border stroke viewBox maps 1:1 to the trap band. */
+        height: var(--dock-trap-height, 80px);
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: flex-start;
+        align-items: flex-end;
         justify-content: center;
         gap: 0;
         box-sizing: border-box;
@@ -107,106 +107,129 @@
         pointer-events: none;
     }
 
+    /* Flex spacers only — lip stroke is part of the cap-row continuous path. */
     body:has(#paginationDock) .pagination-dock-top-border-side {
+        display: block;
         flex: 1 1 0;
         min-width: 0;
-        height: var(--dock-border-img-h, 200px);
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        overflow: visible;
-        box-sizing: border-box;
+        height: 0;
+        align-self: flex-end;
+        background: transparent;
+        pointer-events: none;
+        overflow: hidden;
     }
 
     body:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-        object-position: center top;
-        flex-shrink: 0;
-        align-self: flex-start;
-        user-select: none;
-        -webkit-user-drag: none;
-        position: relative;
-        z-index: 0;
+        display: none;
     }
 
-    body:has(#paginationDock) .pagination-dock-top-border-side--right .pagination-dock-top-border-img {
-        transform: scaleX(-1);
-    }
-
+    /*
+     * Dock trap chrome only — pattern/tint come from .pagination-dock::before/::after
+     * (one continuous silhouette, same idea as side-panel traps).
+     */
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
+        --dock-trap-inset: calc(var(--dock-trap-taper, 12) * 1%);
         position: relative;
         left: auto;
         bottom: auto;
-        transform: translateY(var(--dock-trapezoid-offset-y, 12px));
+        transform: none;
         z-index: 2;
         flex: 0 0 auto;
+        align-self: flex-end;
         width: var(--dock-trapezoid-width, min(820px, 88vw));
-        height: var(--dock-border-seam-h, 80px);
+        height: var(--dock-trap-height, 80px);
         pointer-events: none;
         line-height: 0;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        /* Stretch so the center rail fills the trapezoid band (clip-path aligns with SVG). */
         justify-content: stretch;
         align-items: stretch;
         gap: 0;
         box-sizing: border-box;
         overflow: visible;
+        background: transparent;
+        clip-path: polygon(
+            var(--dock-trap-inset) 0%,
+            calc(100% - var(--dock-trap-inset)) 0%,
+            100% 100%,
+            0% 100%
+        );
     }
 
-    body:has(#paginationDock) .pagination-dock-top-trapezoid__svg {
-        display: block;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
+    body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid::before {
+        content: none;
     }
 
-    body:has(#paginationDock) .pagination-dock-top-trapezoid__svg .pagination-dock-top-trapezoid__fill {
-        fill: var(--dock-trapezium-segment-bg);
+    /* Host keeps clip for rail; stroke paints on an unclipped overlay (::after on cap-row). */
+    body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid::after {
+        content: none;
     }
 
-    /* White trapezium outline above the flex rail (sibling after #dockGlobeRailCenter). */
-    body:has(#paginationDock) .pagination-dock-top-trapezoid__border-svg {
-        display: block;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-        position: absolute;
-        inset: 0;
-        z-index: 6;
-        pointer-events: none;
+    /* Legacy ::after stroke layers retired — continuous inline SVG owns the edge. */
+    body:has(#paginationDock) .pagination-dock-top-cap-row::after {
+        content: none;
     }
 
     /*
-     * Pattern.png (same as globe/map overlay in GlobeInitHelpers).
-     * ::before = tiled texture; ::after = uTintColor-style tint (getPaletteAccentHex → --dock-pattern-tint-rgb).
+     * One continuous path (lips + trap) in cap-row space.
+     * Inline SVG + non-scaling-stroke → even thickness, no lip/trap gaps.
      */
-    body:has(#paginationDock) .pagination-dock::before {
+    body:has(#paginationDock) .pagination-dock-top-cap-row > .dock-trap-edge-stroke {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 8;
+        pointer-events: none;
+        overflow: visible;
+        display: block;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-trapezoid__svg,
+    body:has(#paginationDock) .pagination-dock-top-trapezoid__border-svg {
+        display: none;
+    }
+
+    /*
+     * One pattern layer for dock body + trap (side-panel silhouette language).
+     * ::before extends up by --dock-trap-height and clips to dock∪trap.
+     */
+    body:has(#paginationDock) .pagination-dock::before,
+    body:has(#paginationDock) .pagination-dock::after {
         content: '';
         position: absolute;
-        inset: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: calc(-1 * var(--dock-trap-height, 80px));
         z-index: 0;
         pointer-events: none;
+        /* Prefer stroke-derived silhouette (--dock-trap-silhouette-clip) so fill follows border. */
+        clip-path: var(
+            --dock-trap-silhouette-clip,
+            polygon(
+                0% var(--dock-trap-height, 80px),
+                calc(50% - var(--dock-trap-half-w, 360px)) var(--dock-trap-height, 80px),
+                calc(50% - var(--dock-trap-half-w, 360px) + var(--dock-trap-inset-len, 0px)) 0px,
+                calc(50% + var(--dock-trap-half-w, 360px) - var(--dock-trap-inset-len, 0px)) 0px,
+                calc(50% + var(--dock-trap-half-w, 360px)) var(--dock-trap-height, 80px),
+                100% var(--dock-trap-height, 80px),
+                100% 100%,
+                0% 100%
+            )
+        );
+    }
+
+    body:has(#paginationDock) .pagination-dock::before {
         background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
         background-repeat: repeat;
-        /*
-         * One length + `auto` preserves the PNG aspect ratio (no horizontal/vertical squash).
-         * Larger scale so the loop reads; repeat still tiles the dock.
-         */
         background-size: clamp(720px, 58vw, 1360px) auto;
         background-position: center center;
         opacity: 0.62;
     }
 
-    /* Palette-specific pattern images for dock */
     body.color-palette-blue:has(#paginationDock) .pagination-dock::before {
         background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
     }
@@ -224,11 +247,6 @@
     }
 
     body:has(#paginationDock) .pagination-dock::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
         background: rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
         mix-blend-mode: color;
     }
@@ -264,16 +282,11 @@
         --dock-border-height: 190px;
         --dock-collapse-bottom: 70px;
         --dock-center-rail-y: 0px;
-        /* Cap row vs dock top: positive = up, negative = down (border imgs + trapezium). */
-        --dock-top-cap-lift: -5px;
-        --dock-trapezoid-offset-y: 3px;
+        /* 0 = trap seated on dock top; negative pulled the trap down into thumbnails. */
+        --dock-top-cap-lift: 0px;
         /* Extra vertical shift for center rail inside trapezoid (negative = up). */
         --dock-trapezoid-rail-shift-y: -3px;
-        --dock-trapezoid-width: min(820px, 88vw);
-        /* Original graphic band height (dock seam). Trapezoid / clearance use this. */
-        --dock-border-seam-h: 80px;
-        /* Full Dock Border.png scaled height (500/200 × seam). Extra extends down into the dock. */
-        --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
+        /* Seam/img-h stay on :root — not rewritten by dock trap height tweaks. */
         --dock-collapse-pill-width: min(280px, 46vw);
         --dock-collapse-pill-top-radius: 22px;
         /* Shift collapse pill + border art slightly toward the dock seam */
@@ -350,7 +363,7 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     --dock-border-height: 190px;
     --dock-collapse-bottom: 70px;
     --dock-center-rail-y: 0px;
-    --dock-top-cap-lift: -5px;
+    --dock-top-cap-lift: 0px;
     --dock-trapezoid-offset-y: 3px;
     --dock-trapezoid-rail-shift-y: -2px;
     --dock-border-seam-h: 88px;
@@ -931,10 +944,8 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
         right: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
-        bottom: calc(
-            100% + var(--dock-top-cap-lift, -5px)
-            - (var(--dock-border-img-h, 200px) - var(--dock-border-seam-h, 80px))
-        ) !important;
+        bottom: calc(100% + var(--dock-top-cap-lift, 0px)) !important;
+        align-items: flex-end !important;
         z-index: 690 !important;
         pointer-events: none;
     }

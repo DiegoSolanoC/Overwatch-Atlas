@@ -122,7 +122,8 @@ function createHandle(cfg, options) {
     if (cfg.id === 'filtersPanel') btn.dataset.panelMode = mode;
 
     const pill = document.createElement('span');
-    pill.className = 'panel-resize-handle__pill';
+    /* White trap nub (no Drag Border image) — parented inside the trapezium label. */
+    pill.className = 'panel-resize-handle__pill panel-resize-handle__nub';
     pill.setAttribute('aria-hidden', 'true');
     const icon = document.createElement('img');
     icon.className = 'ui-pagination-arrow panel-resize-handle__arrow';
@@ -154,9 +155,12 @@ function createHandle(cfg, options) {
             syncFiltersPanelTrapIcon(trapImg);
         }
         trapLabel.appendChild(trapImg);
+        /* Nub lives on the trapezium so trap tweaks cannot disconnect it. */
+        trapLabel.appendChild(pill);
         btn.appendChild(trapLabel);
+    } else {
+        btn.appendChild(pill);
     }
-    btn.appendChild(pill);
     return btn;
 }
 

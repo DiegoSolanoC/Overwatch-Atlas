@@ -9,19 +9,19 @@
 @import url('foundation/animations.css?v=10');
 
 /* App shell */
-@import url('shell/layout.css?v=26');
+@import url('shell/layout.css?v=33');
 @import url('features/world/globe-map-launch-hub.css?v=4');
 
 /* World + Codex */
-@import url('features/world/globe.css?v=56');
+@import url('features/world/globe.css?v=62');
 @import url('features/codex/codex.css?v=4');
 @import url('features/world/map-2d-lite.css?v=21');
 @import url('features/event-system/preview-badge-icons.css?v=7');
 
 /* Color palettes */
-@import url('themes/gray-palette.css?v=16');
-@import url('themes/crimson-palette.css?v=16');
-@import url('themes/nulled-palette.css?v=16');
+@import url('themes/gray-palette.css?v=17');
+@import url('themes/crimson-palette.css?v=17');
+@import url('themes/nulled-palette.css?v=17');
 
 /* Mobile */
 @import url('mobile.css?v=36');
@@ -47,7 +47,7 @@
 @import url('features/event-system/event-buttons.css?v=15');
 @import url('features/event-system/event-image-overlay.css?v=24');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=128');
+@import url('features/event-system/event-pagination.css?v=155');
 @import url('features/event-system/news-ticker.css?v=10');
 
 /* Event system panels */
@@ -56,5 +56,5 @@
 @import url('features/music/panels/music.css?v=29');
 @import url('features/event-system/panels/events-manage.css?v=30');
 @import url('features/event-system/panels/story-events-merge.css?v=6');
-@import url('features/event-system/panels/panel-pattern-overlay.css?v=4');
-@import url('features/event-system/panels/panel-resize.css?v=27');
+@import url('features/event-system/panels/panel-pattern-overlay.css?v=23');
+@import url('features/event-system/panels/panel-resize.css?v=52');

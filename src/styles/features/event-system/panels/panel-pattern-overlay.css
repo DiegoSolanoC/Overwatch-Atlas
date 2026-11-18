@@ -58,6 +58,153 @@
         rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
 }
 
+/*
+ * Info panel desktop: the side trapezium is part of the panel silhouette — pattern/tint
+ * layers protrude and clip to the trap shape. The resize handle stays transparent chrome
+ * (icon + stroke only) so it is no longer a separate filled asset.
+ */
+/* Defaults — SidePanelsTrapChrome / UI Tweaks override these on :root. */
+:root {
+    --event-info-side-trapezium-h: 160px;
+    --event-info-trap-protrude: 64px;
+    --event-info-trap-pos: 50;
+    --filters-trap-pos: 32;
+    --music-trap-pos: 68;
+    --event-info-trap-taper: 12;
+    --event-info-trap-border-w: 20;
+    --side-edge-border-px: 20px;
+    --side-edge-radius-px: 0px;
+    --dock-edge-border-px: 20px;
+    --dock-edge-radius-px: 0px;
+    /* Defaults until SidePanelsTrapChrome applies (stroke URLs + seam sync). */
+    --dock-border-seam-h: 80px;
+    --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
+    --dock-trap-height: 80px;
+    --dock-trap-taper: 12;
+    --dock-trapezoid-offset-y: 0px;
+    --dock-trapezoid-width: min(820px, 88vw);
+    --dock-trap-half-w: min(44vw, 360px);
+    --dock-trap-inset-len: 86px;
+    /* Placeholders until SidePanelsTrapChrome writes px-aspect stroke URLs. */
+    --event-info-trap-stroke-img: none;
+    --event-info-trap-stroke-img-mirror: none;
+    --dock-trap-stroke-img: none;
+    --dock-top-edge-stroke-img: none;
+    --side-nub-depth: 28px;
+    --side-nub-length: 72px;
+    --side-nub-taper: 14;
+    --side-nub-radius: 0px;
+    --side-nub-arrow-size: 28px;
+    --side-nub-fill-img: none;
+    --side-nub-fill-img-mirror: none;
+    --dock-nub-width: 120px;
+    --dock-nub-height: 40px;
+    --dock-nub-taper: 14;
+    --dock-nub-radius: 0px;
+    --dock-nub-arrow-size: 28px;
+    --dock-nub-fill-img: none;
+}
+
+@media (min-width: 769px) {
+    .event-slide.open {
+        /*
+         * Cap trap height to the panel so oversized tweaks cannot invert the clip
+         * (negative free space) and stretch/break the pattern silhouette.
+         */
+        --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 55%);
+        --event-info-trap-visual-h: calc(var(--event-info-trap-h-capped) + 8px);
+        --event-info-side-gap-h: calc((100% - var(--event-info-trap-h-capped)) / 2);
+        /* 0 = top, 50 = center, 100 = bottom (UI Tweaks vertical slide). */
+        --event-info-trap-top: calc(
+            (100% - var(--event-info-trap-h-capped)) * var(--event-info-trap-pos) / 100 - 2px
+        );
+        --event-info-panel-trap-clip: polygon(
+            0% 0%,
+            calc(100% - var(--event-info-trap-protrude)) 0%,
+            calc(100% - var(--event-info-trap-protrude)) var(--event-info-trap-top),
+            100% calc(
+                var(--event-info-trap-top)
+                + var(--event-info-trap-visual-h) * var(--event-info-trap-taper) / 100
+            ),
+            100% calc(
+                var(--event-info-trap-top)
+                + var(--event-info-trap-visual-h) * (100 - var(--event-info-trap-taper)) / 100
+            ),
+            calc(100% - var(--event-info-trap-protrude)) calc(var(--event-info-trap-top) + var(--event-info-trap-visual-h)),
+            calc(100% - var(--event-info-trap-protrude)) 100%,
+            0% 100%
+        );
+    }
+
+    .event-slide.open::before {
+        right: calc(-1 * var(--event-info-trap-protrude));
+        /* Opaque base under the protrusion (panel body already has --bg-secondary). */
+        opacity: 1;
+        background-color: var(--bg-secondary);
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Blue.png');
+        background-repeat: repeat, repeat;
+        /* Fixed tile size — never stretch with protrude/height tweaks. */
+        background-size:
+            clamp(720px, 58vw, 1360px) auto,
+            clamp(720px, 58vw, 1360px) auto;
+        background-position: center center, center center;
+        background-attachment: scroll, scroll;
+        clip-path: var(--event-info-panel-trap-clip);
+    }
+
+    body.color-palette-blue .event-slide.open::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Blue.png');
+    }
+
+    body.color-palette-gray .event-slide.open::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Dark.png');
+    }
+
+    body.color-palette-crimson .event-slide.open::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Crimson.png');
+    }
+
+    body.color-palette-nulled .event-slide.open::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 38%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Nulled.png');
+    }
+
+    .event-slide.open::after {
+        right: calc(-1 * var(--event-info-trap-protrude));
+        clip-path: var(--event-info-panel-trap-clip);
+        /* Keep the bottom U on the panel body edge, not the trap tip. */
+        background:
+            linear-gradient(#000, #000) left bottom / 1px 50px no-repeat,
+            linear-gradient(#000, #000) calc(100% - var(--event-info-trap-protrude)) bottom / 1px 50px no-repeat,
+            linear-gradient(#000, #000) left bottom / calc(100% - var(--event-info-trap-protrude)) 1px no-repeat,
+            rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
+    }
+}
+
 .events-manage-content,
 .filters-panel-content,
 .music-panel-content,
@@ -69,9 +216,8 @@
 
 /*
  * Shared side panel note:
- * panel-resize.css uses .filters-panel::before for the middle seam border image (desktop),
- * so the original panel pattern pseudo on .filters-panel::before is no longer available there.
- * Re-apply the same pattern language on the active content wrappers.
+ * Desktop .filters-panel::before is the dual-trap panel silhouette (panel-resize.css).
+ * Content wrappers below still carry pattern for mobile / fallback when that silhouette is off.
  */
 .filters-panel .filters-panel-content,
 .filters-panel .music-panel-content {

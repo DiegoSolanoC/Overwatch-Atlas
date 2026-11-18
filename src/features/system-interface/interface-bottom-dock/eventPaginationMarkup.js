@@ -43,12 +43,13 @@ export function eventPaginationInnerHtml() {
 }
 
 export function dockCollapseStripHtml() {
+    /* Strip kept as a mount host; the handle is reparented onto the dock trapezium. */
     return `
         <div class="pagination-dock-collapse-bar" id="paginationDockCollapseBar">
             <button type="button" id="paginationDockCollapseBtn" class="pagination-dock-collapse-handle"
                 aria-expanded="true" aria-controls="eventNumberButtons"
                 title="Collapse thumbnail strip" aria-label="Collapse thumbnail strip">
-                <span class="pagination-dock-collapse-pill" aria-hidden="true">
+                <span class="pagination-dock-collapse-pill pagination-dock-collapse-nub" aria-hidden="true">
                     <img class="ui-pagination-arrow ui-pagination-arrow--dock-collapse" src="${ARROW_ICON_SRC}" alt="" width="22" height="22" decoding="async" />
                 </span>
             </button>

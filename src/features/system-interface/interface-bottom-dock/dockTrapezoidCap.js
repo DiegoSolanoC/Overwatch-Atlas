@@ -7,7 +7,7 @@
  *   - buildOrMigrateDockTrapezoidCap(dock): idempotent. Creates the cap row if
  *     missing, migrates any pre-existing legacy `.pagination-dock-top-border-wrap`
  *     and orphan trapezoid into the new structure, ensures the SVGs are present
- *     at the latest version (`data-dock-trap-v="10"` for fill, `"3"` for border),
+ *     at the latest version (`data-dock-trap-v="10"` for fill, `"4"` for border),
  *     and re-attaches `#dockGlobeRailCenter` inside the trapezoid.
  *
  * Pulls `ensureDockGlobeRailCenterRestored` from dockChromeLifecycle.js so the
@@ -15,6 +15,7 @@
  */
 
 import { ensureDockGlobeRailCenterRestored } from './dockChromeLifecycle.js';
+import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js';
 
 const DOCK_BORDER_SRC = 'src/assets/images/Misc/UI/Dock%20Border.png';
 
@@ -26,8 +27,9 @@ const TRAPEZOID_FILL_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmln
 <polygon class="pagination-dock-top-trapezoid__fill" points="2,3 98,3 112,100 -12,100" />
 </svg>`;
 
-const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="3" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
-<path d="M -12,100 L 2,3 L 98,3 L 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
+/* Stroke 2.5 — matches side-panel trap chrome weight (was 8, read as a thick white bar). */
+const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="4" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
+<path d="M -12,100 L 2,3 L 98,3 L 112,100" fill="none" stroke="#ffffff" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
 </svg>`;
 
 function buildBorderImg() {
@@ -105,9 +107,9 @@ function applyTrapezoidSvgsAndCenterRail(capRow) {
     }
 
     trap.querySelectorAll(
-        '.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"], .pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="2"]'
+        '.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"], .pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="2"], .pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="3"]'
     ).forEach((el) => el.remove());
-    if (!trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="3"]')) {
+    if (!trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="4"]')) {
         trap.insertAdjacentHTML('beforeend', TRAPEZOID_BORDER_SVG);
     }
 }
@@ -120,6 +122,20 @@ function applyTrapezoidSvgsAndCenterRail(capRow) {
  * @param {HTMLElement} dock
  * @param {HTMLElement} pagination
  */
+/**
+ * Sit the collapse nub on the cap-row top (same band as the dock trapezium).
+ * Not inside the clipped .pagination-dock-top-trapezoid — clip would shear the tab.
+ */
+function adoptCollapseHandleOntoTrapezoid(capRow) {
+    const btn = document.getElementById('paginationDockCollapseBtn');
+    if (!capRow || !btn) return;
+    const pill = btn.querySelector('.pagination-dock-collapse-pill');
+    pill?.classList.add('pagination-dock-collapse-nub');
+    if (btn.parentElement !== capRow) {
+        capRow.appendChild(btn);
+    }
+}
+
 export function buildOrMigrateDockTrapezoidCap(dock, pagination) {
     let capRow = dock.querySelector('.pagination-dock-top-cap-row');
     if (!capRow) capRow = buildCapRow();
@@ -133,4 +149,7 @@ export function buildOrMigrateDockTrapezoidCap(dock, pagination) {
     migrateLegacyBorderWrap(dock, capRow);
     migrateOrphanTrapezoid(dock, capRow);
     applyTrapezoidSvgsAndCenterRail(capRow);
+    adoptCollapseHandleOntoTrapezoid(capRow);
+    /* Tweaks may have applied before the dock SVG existed — re-sync taper polygon. */
+    refreshDockTrapSvgFromTweaks();
 }

@@ -181,24 +181,23 @@
         right: clamp(14px, 2.5vw, 26px);
     }
 
-    /* Strip bottom = dock top: pill sits on that seam, bottom edge flush with the dock */
+    /* Legacy strip host — handle is reparented onto .pagination-dock-top-trapezoid. */
     body:has(#paginationDock) .pagination-dock-collapse-bar {
-        position: absolute;
-        left: 50%;
-        bottom: var(--dock-collapse-bottom, 70px);
-        transform: translateX(-50%);
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        width: 100%;
-        max-width: min(100vw - 48px, 100%);
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        pointer-events: none;
+        display: none;
     }
 
-    body:has(#paginationDock) .pagination-dock-collapse-handle {
+    /*
+     * White trap nub on the dock trapezium TOP edge (Controller Border.png retired).
+     * Bottom of nub sits on the top of the white stroke (not straddling the lip).
+     */
+    body:has(#paginationDock) .pagination-dock-top-cap-row > .pagination-dock-collapse-handle,
+    body:has(#paginationDock) .pagination-dock-top-trapezoid > .pagination-dock-collapse-handle {
+        position: absolute !important;
+        left: 50% !important;
+        right: auto !important;
+        top: 0 !important;
+        bottom: auto !important;
+        z-index: 9;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -209,29 +208,38 @@
         cursor: pointer;
         touch-action: manipulation;
         pointer-events: auto;
+        /*
+         * -100% = nub bottom at cap-row top (path). +0.5×stroke pulls it down into
+         * the white border so the nub blends with the lip (no dark gap).
+         */
+        transform: translate(
+            -50%,
+            calc(-100% + (var(--dock-edge-border-px, 20px) * 0.5))
+        ) !important;
+        align-self: auto;
     }
 
-    body:has(#paginationDock) .pagination-dock-collapse-pill {
-        width: var(--dock-collapse-pill-width, min(280px, 46vw));
-        height: 32px;
-        border-radius: var(--dock-collapse-pill-top-radius, 22px) var(--dock-collapse-pill-top-radius, 22px) 0 0;
+    body:has(#paginationDock) .pagination-dock-collapse-pill,
+    body:has(#paginationDock) .pagination-dock-collapse-nub {
+        width: var(--dock-nub-width, 120px);
+        height: var(--dock-nub-height, 28px);
+        border-radius: 0;
         background-color: transparent;
-        background-image: url('../../../assets/images/Misc/UI/Controller%20Border.png');
+        background-image: var(--dock-nub-fill-img);
         background-repeat: no-repeat;
-        background-position: center bottom;
+        background-position: center center;
         background-size: 100% 100%;
         border: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        overflow: visible;
+        color: #000;
         box-shadow: none;
-        transform: translateY(var(--dock-collapse-pill-nudge-y, 6px));
+        transform: none;
         transition:
-            width 0.25s ease,
-            height 0.25s ease,
-            box-shadow 0.25s ease,
-            transform 0.25s ease;
+            width 0.2s ease,
+            height 0.2s ease;
         pointer-events: none;
         user-select: none;
     }
@@ -239,14 +247,16 @@
     /* Left-pointing asset: CW 90° → ↑ (collapse when expanded); CCW 90° → ↓ (expand when collapsed) */
     body:has(#paginationDock) .pagination-dock-collapse-pill .ui-pagination-arrow--dock-collapse {
         display: block;
-        width: 30px;
-        height: auto;
-        max-height: 30px;
+        width: var(--dock-nub-arrow-size, 20px);
+        height: var(--dock-nub-arrow-size, 20px);
+        max-width: none;
+        max-height: none; /* beat shared .ui-pagination-arrow max-height: 26px */
         object-fit: contain;
         pointer-events: none;
         transform: rotate(90deg);
         transition: transform 0.22s ease;
         filter: brightness(0);
+        flex-shrink: 0;
     }
 
     body.pagination-dock-collapsed:has(#paginationDock) .pagination-dock-collapse-pill .ui-pagination-arrow--dock-collapse {
@@ -255,10 +265,10 @@
 
     body:has(#paginationDock) .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
     body:has(#paginationDock) .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
-        background-image: url('../../../assets/images/Misc/UI/Controller%20Border.png');
+        background-image: var(--dock-nub-fill-img);
         background-size: 100% 100%;
-        width: var(--dock-collapse-pill-width, min(280px, 46vw));
-        height: 38px;
+        width: calc(var(--dock-nub-width, 120px) + 8px);
+        height: calc(var(--dock-nub-height, 28px) + 4px);
         box-shadow: none;
     }
 
