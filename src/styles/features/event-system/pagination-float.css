@@ -47,6 +47,10 @@
         padding-top: 36px;
         padding-bottom: 16px;
         gap: 18px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         overflow: visible;
         pointer-events: auto;
     }
@@ -144,15 +148,67 @@
         width: 100%;
         max-width: 100%;
         align-self: stretch;
-        /* Extra top pad so tick labels sit below the trap lip. */
-        padding: 14px 0 10px 0;
+        flex-direction: column;
+        align-items: stretch;
+        /*
+         * Top pad clears the inward lip (thickness + Y inset) so the slider and
+         * the white bar never share the same band — expanded or collapsed.
+         */
+        padding: calc(var(--dock-inward-line-clearance, 8px)) 0 10px 0;
         box-sizing: border-box;
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
         min-height: 56px;
-        transition: padding-bottom var(--pagination-dock-transition-duration, 0.42s)
-            var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+        gap: 10px;
+        transition:
+            padding-top var(--pagination-dock-transition-duration, 0.42s)
+                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
+            padding-bottom var(--pagination-dock-transition-duration, 0.42s)
+                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+    }
+
+    /*
+     * Inward lip — parallel to the outer dock stroke (lips + trap bump).
+     * Hosted on `.pagination-dock-top-cap-row`; SVG path from SidePanelsTrapChrome.
+     */
+    body:has(#paginationDock) .pagination-dock-top-cap-row > .pagination-dock-inward-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* JS sets height to match SVG viewBox pad — keep overflow so lip can paint into dock. */
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: transparent;
+        border: none;
+        pointer-events: none;
+        /*
+         * Cap-row stack: fill/silhouette under trapezoid(2) under stroke(8).
+         * Buttons live INSIDE the trapezoid stacking context — this host must stay
+         * below z=2 or it paints over Page/Eras regardless of rail-local z-index.
+         */
+        z-index: 1;
+        overflow: visible;
+        line-height: 0;
+    }
+
+    body:has(#paginationDock) .pagination-dock-inward-line__shape {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        /* Height set inline to viewBox H+pad so preserveAspectRatio=none does not stretch Y. */
+        height: 100%;
+        overflow: visible;
+        pointer-events: none;
+    }
+
+    body:has(#paginationDock) .pagination-dock-inward-line__path {
+        fill: #ffffff;
     }
 
     body:has(#paginationDock) .event-page-slider-row.event-page-slider-row--desktop-only {
@@ -322,6 +378,7 @@
     }
 
     body.pagination-dock-collapsed:has(#paginationDock) .event-page-slider-row {
+        padding-top: calc(var(--dock-inward-line-clearance-collapsed, 4px)) !important;
         padding-bottom: 2px !important;
     }
 
@@ -788,20 +845,26 @@ button.event-number-btn.locked,
         /* Match slot width as if all 10 were visible; center partial rows */
         justify-content: center;
         flex-wrap: nowrap;
+        /* Slot width → 3∶2 height via cqi (keeps proportions without aspect-ratio snap). */
+        container-type: inline-size;
+        container-name: dock-thumbs;
     }
 
     /* Skewed shell: slope toward the right; inner content counter-skewed so photo + text stay upright.
-     * Slightly shorter than Story/Theater 5/4 so the dock strip stays compact; crop anchors top. */
+     * Expanded height = slot width × 2/3 (3∶2). Collapsed = 48px. Both are lengths → smooth tween. */
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
         --thumb-skew: -11deg;
+        --thumb-slot-w: calc((100cqi - 9 * var(--thumb-row-gap)) / 10);
+        --thumb-h-expanded: calc(var(--thumb-slot-w) * 2 / 3);
+        --thumb-h-collapsed: 48px;
         flex: 0 0 calc((100% - 9 * var(--thumb-row-gap)) / 10);
         max-width: calc((100% - 9 * var(--thumb-row-gap)) / 10);
         min-width: 0;
         width: auto;
-        height: auto;
-        aspect-ratio: 3 / 2;
-        min-height: 0;
-        max-height: none;
+        aspect-ratio: auto;
+        height: var(--thumb-h-expanded);
+        min-height: var(--thumb-h-expanded);
+        max-height: var(--thumb-h-expanded);
         padding: 0;
         box-sizing: border-box;
         border-style: solid !important;
@@ -816,16 +879,18 @@ button.event-number-btn.locked,
         overflow: hidden;
         border-radius: 16px;
         transform: skewX(var(--thumb-skew));
+        /* Shrink/grow toward the slider (top), not into the footer. */
+        transform-origin: top center;
         box-shadow: 0 5px 18px rgba(0, 0, 0, 0.42);
         transition:
             transform var(--panel-transition, 0.25s ease),
             box-shadow var(--panel-transition, 0.25s ease),
             border-color var(--panel-transition, 0.25s ease),
+            height var(--pagination-dock-transition-duration, 0.42s)
+                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
             min-height var(--pagination-dock-transition-duration, 0.42s)
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
             max-height var(--pagination-dock-transition-duration, 0.42s)
-                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
-            height var(--pagination-dock-transition-duration, 0.42s)
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
             background var(--pagination-dock-transition-duration, 0.42s)
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
@@ -1274,16 +1339,17 @@ button.event-number-btn.locked,
     }
 
     body.pagination-dock-collapsed .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
-        aspect-ratio: auto !important;
-        min-height: 44px !important;
-        max-height: 52px !important;
-        height: 48px !important;
+        /* Same properties as expanded — only the px values change, so height tweens. */
+        height: var(--thumb-h-collapsed, 48px);
+        min-height: var(--thumb-h-collapsed, 48px);
+        max-height: var(--thumb-h-collapsed, 48px);
         background: #ffffff !important;
         border-width: var(--thumb-outline-y) 0 var(--thumb-outline-y) 0 !important;
         border-color: rgba(0, 0, 0, 0.14) !important;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28) !important;
         justify-content: center;
         align-items: center;
+        transform-origin: top center;
     }
 
     body.pagination-dock-collapsed .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__num {

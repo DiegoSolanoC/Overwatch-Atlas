@@ -48,22 +48,27 @@
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        /* Top-align so shorter thumbs cannot lift the slider into the trap lip. */
+        /* Top-align content under the trap lip (slider + thumbs stacked). */
         justify-content: flex-start;
         width: 100%;
-        height: var(--pagination-dock-height, 500px);
-        min-height: var(--pagination-dock-height, 500px);
-        max-height: var(--pagination-dock-height, 500px);
+        /*
+         * Animate height via two concrete rule values (expanded vs collapsed selectors).
+         * Reading a custom property that jumps on class toggle does NOT interpolate.
+         */
+        --pagination-dock-height: var(--pagination-dock-height-expanded, 400px);
+        height: var(--pagination-dock-height-expanded, 400px);
+        min-height: var(--pagination-dock-height-expanded, 400px);
+        max-height: var(--pagination-dock-height-expanded, 400px);
         /* Base tint; texture is on ::before so it always paints (see .pagination-dock > * fix below). */
         background-color: var(--bg-main, #0a1929);
         box-sizing: border-box;
         position: relative;
         /* Keep dock chrome (including top border image) above event slide/image layers (~500). */
         z-index: 620;
-        flex: 0 0 var(--pagination-dock-height, 500px);
+        flex: 0 0 var(--pagination-dock-height-expanded, 400px);
         /* Clicks pass through the dock chrome; only .event-pagination (and its controls) receive hits */
         pointer-events: none;
-        /* Allow collapse pill to protrude upward like panel edge draggers */
+        /* Cap-row sits outside (bottom: 100%) — must stay visible (overflow:hidden clips it). */
         overflow: visible;
         isolation: isolate;
         transition:
@@ -75,6 +80,18 @@
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
             flex-basis var(--pagination-dock-transition-duration, 0.42s)
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+    }
+
+    body:has(#paginationDock).pagination-dock-collapsed .pagination-dock {
+        --pagination-dock-collapsed-h: calc(
+            var(--pagination-dock-height-collapsed, 200px) +
+                max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+        );
+        --pagination-dock-height: var(--pagination-dock-collapsed-h);
+        height: var(--pagination-dock-collapsed-h);
+        min-height: var(--pagination-dock-collapsed-h);
+        max-height: var(--pagination-dock-collapsed-h);
+        flex-basis: var(--pagination-dock-collapsed-h);
     }
 
     /*
@@ -283,8 +300,15 @@
         mix-blend-mode: color;
     }
 
+    /*
+     * Keep body-level --pagination-dock-height in sync for globe/layout clearance.
+     * Dock chrome itself animates via the .pagination-dock height rules above.
+     */
     body:has(#paginationDock).pagination-dock-collapsed {
-        --pagination-dock-height: 200px !important;
+        --pagination-dock-height: calc(
+            var(--pagination-dock-height-collapsed, 200px) +
+                max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+        );
     }
     
     /* JS still inserts this node; texture is drawn on .pagination-dock::before instead. */

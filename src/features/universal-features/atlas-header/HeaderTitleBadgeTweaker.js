@@ -18,7 +18,7 @@ import {
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
     saveSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js';
+} from './SidePanelsTrapChrome.js?v=15';
 
 const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
 const PANEL_ID = 'uiTweaksPanel';
@@ -33,6 +33,7 @@ const UI_TWEAK_TABS = Object.freeze([
     { id: 'sides', label: 'Header sides' },
     { id: 'badge', label: 'Center badge' },
     { id: 'panels', label: 'Side panels' },
+    { id: 'dock', label: 'Dock' },
 ]);
 
 /** @typedef {object} BadgeTweakState */
@@ -715,17 +716,18 @@ function mountControls(panel, bags, hooks) {
 
     const resolveBag = (name) => {
         if (name === 'sides') return sides;
-        if (name === 'panels') return panels;
+        /* Dock chrome shares the side-panels trap bag (same persisted state). */
+        if (name === 'panels' || name === 'dock') return panels;
         return badge;
     };
     const resolveDefaults = (name) => {
         if (name === 'sides') return HEADER_SIDES_TWEAK_DEFAULTS;
-        if (name === 'panels') return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
+        if (name === 'panels' || name === 'dock') return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
         return HEADER_BADGE_TWEAK_DEFAULTS;
     };
     const resolveSanitize = (name) => {
         if (name === 'sides') return sanitizeSidesState;
-        if (name === 'panels') return sanitizeSidePanelsTrapState;
+        if (name === 'panels' || name === 'dock') return sanitizeSidePanelsTrapState;
         return sanitizeState;
     };
 
@@ -746,11 +748,14 @@ function mountControls(panel, bags, hooks) {
     hint.className = 'header-badge-tweaker__hint';
     hint.textContent =
         activeUiTweaksSection === 'panels'
-            ? 'Side panels · Shared size · Per-trap slide · Dock sizes separately · Edges stay visible · Save to keep'
-            : 'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
+            ? 'Side panels · Shared size · Per-trap slide · Edges stay visible · Save to keep'
+            : activeUiTweaksSection === 'dock'
+                ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Save to keep'
+                : 'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
     panel.appendChild(hint);
 
     document.body.classList.toggle('ui-tweaks-side-panels', activeUiTweaksSection === 'panels');
+    document.body.classList.toggle('ui-tweaks-dock', activeUiTweaksSection === 'dock');
     document.body.classList.toggle('ui-tweaks-open', true);
     document.body.classList.toggle(
         'ui-tweaks-filters-music-independent',
@@ -792,7 +797,7 @@ function mountControls(panel, bags, hooks) {
     swatches.className = 'header-badge-tweaker__swatches';
     meta.appendChild(swatches);
 
-    /** @type {{ group: string, title: string, bag: 'badge' | 'sides' | 'panels', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number, bag?: string }[] }[]} */
+    /** @type {{ group: string, title: string, bag: 'badge' | 'sides' | 'panels' | 'dock', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number, bag?: string }[] }[]} */
     const allSections = [
         {
             group: 'Side panels',
@@ -841,36 +846,6 @@ function mountControls(panel, bags, hooks) {
         },
         {
             group: 'Side panels',
-            title: 'Dock trapezium',
-            bag: 'panels',
-            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
-            sanitize: sanitizeSidePanelsTrapState,
-            items: [
-                { key: 'dockTrapHeightPx', label: 'Dock trap height', min: 48, max: 160, step: 2 },
-                { key: 'dockTrapWidthPx', label: 'Dock trap width', min: 280, max: 1100, step: 10 },
-                { key: 'dockTrapTaperPct', label: 'Dock taper (0=rect)', min: 0, max: 28, step: 0.5 },
-                { key: 'dockBorderWidth', label: 'Dock border thickness', min: 8, max: 36, step: 0.5 },
-                { key: 'dockBorderRadius', label: 'Dock corner rounding', min: 0, max: 24, step: 1 },
-            ],
-        },
-        {
-            group: 'Side panels',
-            title: 'Dock trap buttons',
-            bag: 'panels',
-            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
-            sanitize: sanitizeSidePanelsTrapState,
-            items: [
-                {
-                    key: 'dockButtonsOffsetYPx',
-                    label: 'Buttons Y (↓ into dock)',
-                    min: -48,
-                    max: 96,
-                    step: 1,
-                },
-            ],
-        },
-        {
-            group: 'Side panels',
             title: 'Side nub (inward tip)',
             bag: 'panels',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
@@ -897,9 +872,120 @@ function mountControls(panel, bags, hooks) {
             ],
         },
         {
-            group: 'Side panels',
+            group: 'Dock',
+            title: 'Dock trapezium',
+            bag: 'dock',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                { key: 'dockTrapHeightPx', label: 'Dock trap height', min: 48, max: 160, step: 2 },
+                { key: 'dockTrapWidthPx', label: 'Dock trap width', min: 280, max: 1100, step: 10 },
+                { key: 'dockTrapTaperPct', label: 'Dock taper (0=rect)', min: 0, max: 28, step: 0.5 },
+                { key: 'dockBorderWidth', label: 'Dock border thickness', min: 8, max: 36, step: 0.5 },
+                { key: 'dockBorderRadius', label: 'Dock corner rounding', min: 0, max: 24, step: 1 },
+            ],
+        },
+        {
+            group: 'Dock',
+            title: 'Dock trap buttons',
+            bag: 'dock',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'dockButtonsOffsetYPx',
+                    label: 'Buttons Y (↓ into dock)',
+                    min: -48,
+                    max: 96,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Dock',
+            title: 'Dock inward line',
+            bag: 'dock',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'dockInwardLineThicknessPx',
+                    label: 'Inward line thickness',
+                    min: 4,
+                    max: 28,
+                    step: 1,
+                },
+                {
+                    key: 'dockInwardLineOffsetYPx',
+                    label: 'Inward line Y (↓ toward thumbs)',
+                    min: -24,
+                    max: 56,
+                    step: 1,
+                },
+                {
+                    key: 'dockInwardCenterGapPx',
+                    label: 'Center cut gap (↓ = closer)',
+                    min: 24,
+                    max: 900,
+                    step: 2,
+                },
+                {
+                    key: 'dockInwardSliderClearancePx',
+                    label: 'Slider clearance (expanded)',
+                    min: 0,
+                    max: 80,
+                    step: 1,
+                },
+                {
+                    key: 'dockInwardSliderClearanceCollapsedPx',
+                    label: 'Slider clearance (collapsed)',
+                    min: 0,
+                    max: 80,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Dock',
+            title: 'End shrinkage',
+            bag: 'dock',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'dockInwardEndThicknessPx',
+                    label: 'End tip thickness',
+                    min: 1,
+                    max: 28,
+                    step: 1,
+                },
+                {
+                    key: 'dockInwardTipWidthPx',
+                    label: 'Tip width (each end)',
+                    min: 0,
+                    max: 480,
+                    step: 2,
+                },
+                {
+                    key: 'dockInwardSlopeWidthPx',
+                    label: 'Slope width',
+                    min: 4,
+                    max: 200,
+                    step: 1,
+                },
+                {
+                    key: 'dockInwardCornerRadiusPx',
+                    label: 'Corner rounding (ends + center cuts)',
+                    min: 0,
+                    max: 48,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Dock',
             title: 'Dock nub (top tab)',
-            bag: 'panels',
+            bag: 'dock',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
             sanitize: sanitizeSidePanelsTrapState,
             items: [
@@ -1065,7 +1151,7 @@ function mountControls(panel, bags, hooks) {
                     ['Side grey', sideResult.grey],
                     ['Side rim', sideResult.rimRgb || accent],
                 ]
-                : activeUiTweaksSection === 'panels'
+                : activeUiTweaksSection === 'panels' || activeUiTweaksSection === 'dock'
                     ? [['Accent', accent]]
                     : [
                         ['Accent', accent],
@@ -1077,9 +1163,11 @@ function mountControls(panel, bags, hooks) {
         paletteNote.textContent =
             activeUiTweaksSection === 'sides'
                 ? `Header sides  ·  ${sideResult.inner.join(', ')} → ${sideResult.outer.join(', ')}`
-                : activeUiTweaksSection === 'panels'
-                    ? `Sides h ${panelsResult.heightPx} · depth ${panelsResult.protrudePx} · taper ${panelsResult.taperPct} · border ${panelsResult.sideBorder} · r ${panelsResult.sideRadius}  ·  Dock ${panelsResult.dockH}×${panelsResult.dockW} · r ${panelsResult.dockRadius}`
-                    : `Center badge  ·  accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
+                : activeUiTweaksSection === 'dock'
+                    ? `Dock ${panelsResult.dockH}×${panelsResult.dockW} · taper ${panelsResult.dockTaper} · border ${panelsResult.dockBorder} · r ${panelsResult.dockRadius}`
+                    : activeUiTweaksSection === 'panels'
+                        ? `Sides h ${panelsResult.heightPx} · depth ${panelsResult.protrudePx} · taper ${panelsResult.taperPct} · border ${panelsResult.sideBorder} · r ${panelsResult.sideRadius}`
+                        : `Center badge  ·  accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
 
         swatches.replaceChildren();
         for (const [label, rgb] of swatchRows) {

@@ -47,6 +47,28 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     dockButtonsOffsetYPx: 0,
 
     /**
+     * Dock inward lip (thick white bar above the page slider).
+     * Thickness in CSS px; Offset Y = parallel gap past the outer stroke
+     * (positive = into the dock / toward thumbs; negative = toward the border).
+     * Center cut: two mirrored ribbons with a tunable open gap at dock center.
+     * End shrinkage: tip only at the screen-side ends (center butts stay full).
+     */
+    dockInwardLineThicknessPx: 12,
+    dockInwardLineOffsetYPx: 0,
+    /** Open gap at center between the two mirrored lips (CSS px). Smaller = closer. */
+    dockInwardCenterGapPx: 200,
+    /** Extra top pad under the lip so the page slider clears the white bar. */
+    dockInwardSliderClearancePx: 8,
+    /** Same clearance while the dock is collapsed (often tighter). */
+    dockInwardSliderClearanceCollapsedPx: 4,
+    /** Thin run at each screen-side end (two clear levels: full → tip). */
+    dockInwardEndThicknessPx: 4,
+    dockInwardTipWidthPx: 36,
+    dockInwardSlopeWidthPx: 48,
+    /** Fillet radius at tip ends and vertical center-cut corners (CSS px). */
+    dockInwardCornerRadiusPx: 8,
+
+    /**
      * White filled “nub” tabs (replace Drag/Controller Border images).
      * Side: on the inward tip of each side trap. Dock: on the top edge of the dock trap.
      */
@@ -101,6 +123,57 @@ export function sanitizeSidePanelsTrapState(s) {
     next.dockBorderWidth = clamp(Number(next.dockBorderWidth), 8, 36);
     next.dockBorderRadius = clamp(Number(next.dockBorderRadius), 0, 24);
     next.dockButtonsOffsetYPx = clamp(Math.round(Number(next.dockButtonsOffsetYPx)), -48, 96);
+    next.dockInwardLineThicknessPx = clamp(Math.round(Number(next.dockInwardLineThicknessPx)), 4, 28);
+    /*
+     * Parallel inset must stay inside the trap height — past ~0.45×trapH the
+     * slope offsets self-intersect and the SVG explodes into spikes.
+     */
+    {
+        const maxDown = Math.max(
+            8,
+            Math.floor(next.dockTrapHeightPx * 0.42 - next.dockInwardLineThicknessPx * 0.35),
+        );
+        next.dockInwardLineOffsetYPx = clamp(
+            Math.round(Number(next.dockInwardLineOffsetYPx)),
+            -24,
+            maxDown,
+        );
+    }
+    /* Migrate legacy button-tied clearance → absolute center gap if needed. */
+    if (
+        next.dockInwardCenterGapPx == null &&
+        next.dockInwardButtonClearancePx != null &&
+        Number.isFinite(Number(next.dockInwardButtonClearancePx))
+    ) {
+        next.dockInwardCenterGapPx = 200 + Number(next.dockInwardButtonClearancePx);
+    }
+    next.dockInwardCenterGapPx = clamp(Math.round(Number(next.dockInwardCenterGapPx)), 24, 900);
+    next.dockInwardSliderClearancePx = clamp(
+        Math.round(Number(next.dockInwardSliderClearancePx)),
+        0,
+        80,
+    );
+    next.dockInwardSliderClearanceCollapsedPx = clamp(
+        Math.round(
+            Number(
+                next.dockInwardSliderClearanceCollapsedPx ?? next.dockInwardSliderClearancePx,
+            ),
+        ),
+        0,
+        80,
+    );
+    delete next.dockInwardButtonClearancePx;
+    next.dockInwardEndThicknessPx = clamp(
+        Math.round(Number(next.dockInwardEndThicknessPx)),
+        1,
+        next.dockInwardLineThicknessPx,
+    );
+    next.dockInwardTipWidthPx = clamp(Math.round(Number(next.dockInwardTipWidthPx)), 0, 480);
+    next.dockInwardSlopeWidthPx = clamp(Math.round(Number(next.dockInwardSlopeWidthPx)), 4, 200);
+    next.dockInwardCornerRadiusPx = clamp(Math.round(Number(next.dockInwardCornerRadiusPx)), 0, 48);
+    /* Drop legacy mid-step keys if present in saved state. */
+    delete next.dockInwardMidThicknessPx;
+    delete next.dockInwardMidRunWidthPx;
 
     next.sideNubDepthPx = clamp(Math.round(Number(next.sideNubDepthPx)), 16, 80);
     next.sideNubLengthPx = clamp(Math.round(Number(next.sideNubLengthPx)), 36, 180);
@@ -272,6 +345,46 @@ function roundedPolylinePath(pts, radius) {
     const last = pts[n - 1];
     d += ` L ${last.x},${last.y}`;
     return d;
+}
+
+/**
+ * Same corner fillets as roundedPolylinePath, but returns sampled points.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} radius
+ * @param {number} [curveSteps]
+ */
+function sampleRoundedPolyline(pts, radius, curveSteps = 6) {
+    const n = pts.length;
+    if (n < 2) return pts.map((p) => ({ ...p }));
+    const rIn = Math.max(0, Number(radius) || 0);
+    if (rIn < 0.05 || n === 2) return pts.map((p) => ({ ...p }));
+
+    const out = [{ ...pts[0] }];
+    for (let i = 1; i < n - 1; i++) {
+        const prev = pts[i - 1];
+        const curr = pts[i];
+        const next = pts[i + 1];
+        const v1x = curr.x - prev.x;
+        const v1y = curr.y - prev.y;
+        const v2x = next.x - curr.x;
+        const v2y = next.y - curr.y;
+        const len1 = Math.hypot(v1x, v1y) || 1;
+        const len2 = Math.hypot(v2x, v2y) || 1;
+        const r = Math.min(rIn, len1 * 0.45, len2 * 0.45);
+        const p1 = { x: curr.x - (v1x / len1) * r, y: curr.y - (v1y / len1) * r };
+        const p2 = { x: curr.x + (v2x / len2) * r, y: curr.y + (v2y / len2) * r };
+        out.push(p1);
+        for (let k = 1; k <= curveSteps; k++) {
+            const t = k / curveSteps;
+            const u = 1 - t;
+            out.push({
+                x: u * u * p1.x + 2 * u * t * curr.x + t * t * p2.x,
+                y: u * u * p1.y + 2 * u * t * curr.y + t * t * p2.y,
+            });
+        }
+    }
+    out.push({ ...pts[n - 1] });
+    return out;
 }
 
 /**
@@ -543,6 +656,480 @@ export function installSidePanelsTrapChromeLifecycle() {
 }
 
 /**
+ * Left-hand unit normal for segment A→B — points into the dock∪trap fill when
+ * walking the outer lip→trap edge left→right.
+ * @param {{x:number,y:number}} a
+ * @param {{x:number,y:number}} b
+ */
+function segmentInteriorNormal(a, b) {
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const len = Math.hypot(dx, dy) || 1;
+    return { x: -dy / len, y: dx / len };
+}
+
+/**
+ * Offset an open polyline toward the dock fill by a constant `dist` px (miter join).
+ * Unit-averaged normals under-offset at corners and make the gap look uneven on slopes.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} dist
+ */
+function offsetPolyline(pts, dist) {
+    if (pts.length < 2 || !(dist > 0)) return pts.map((p) => ({ ...p }));
+    const n = pts.length;
+    const segN = [];
+    for (let i = 0; i < n - 1; i++) segN.push(segmentInteriorNormal(pts[i], pts[i + 1]));
+    const out = [];
+    for (let i = 0; i < n; i++) {
+        if (i === 0) {
+            out.push({
+                x: pts[i].x + segN[0].x * dist,
+                y: pts[i].y + segN[0].y * dist,
+            });
+            continue;
+        }
+        if (i === n - 1) {
+            out.push({
+                x: pts[i].x + segN[n - 2].x * dist,
+                y: pts[i].y + segN[n - 2].y * dist,
+            });
+            continue;
+        }
+        const n0 = segN[i - 1];
+        const n1 = segN[i];
+        const denom = 1 + n0.x * n1.x + n0.y * n1.y;
+        if (Math.abs(denom) < 1e-6) {
+            const nx = n0.x + n1.x;
+            const ny = n0.y + n1.y;
+            const len = Math.hypot(nx, ny) || 1;
+            out.push({
+                x: pts[i].x + (nx / len) * dist,
+                y: pts[i].y + (ny / len) * dist,
+            });
+        } else {
+            /* Miter: keeps offset distance constant on both adjacent segments. */
+            out.push({
+                x: pts[i].x + ((n0.x + n1.x) / denom) * dist,
+                y: pts[i].y + ((n0.y + n1.y) / denom) * dist,
+            });
+        }
+    }
+    return out;
+}
+
+/**
+ * Densify polyline so end-shrinkage half-width can vary smoothly along arc length.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} step
+ */
+function densifyPolyline(pts, step = 8) {
+    if (pts.length < 2) return pts.slice();
+    const out = [{ ...pts[0] }];
+    for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1];
+        const b = pts[i];
+        const len = Math.hypot(b.x - a.x, b.y - a.y);
+        const n = Math.max(1, Math.ceil(len / step));
+        for (let k = 1; k <= n; k++) {
+            const t = k / n;
+            out.push({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+        }
+    }
+    return out;
+}
+
+/**
+ * Thickness from a tip end: thin tip → one slope → full (stays full to the far end).
+ * Used for each mirrored half so the center cut is a sharp full-thickness butt.
+ * @param {number} distFromTip
+ * @param {number} tipW
+ * @param {number} slopeW
+ * @param {number} tipTh
+ * @param {number} fullTh
+ */
+function thicknessFromTip(distFromTip, tipW, slopeW, tipTh, fullTh) {
+    const tip = Math.max(0, tipW);
+    const slope = Math.max(1, slopeW);
+    const s = Math.max(0, distFromTip);
+    if (s <= tip) return tipTh;
+    if (s <= tip + slope) {
+        const t = (s - tip) / slope;
+        return tipTh + (fullTh - tipTh) * t;
+    }
+    return fullTh;
+}
+
+/**
+ * Keep polyline points with x <= maxX; interpolate a butt at the cut.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} maxX
+ */
+function clipPolylineMaxX(pts, maxX) {
+    if (pts.length < 2) return pts.map((p) => ({ ...p }));
+    const out = [];
+    for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if (p.x <= maxX + 1e-6) {
+            out.push({ ...p });
+            continue;
+        }
+        if (i > 0 && pts[i - 1].x <= maxX + 1e-6) {
+            const a = pts[i - 1];
+            const dx = p.x - a.x;
+            const t = Math.abs(dx) < 1e-6 ? 0 : (maxX - a.x) / dx;
+            out.push({ x: maxX, y: a.y + (p.y - a.y) * t });
+        }
+        break;
+    }
+    return out;
+}
+
+/**
+ * Keep polyline points with x >= minX; interpolate a butt at the cut.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} minX
+ */
+function clipPolylineMinX(pts, minX) {
+    if (pts.length < 2) return pts.map((p) => ({ ...p }));
+    const out = [];
+    let started = false;
+    for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if (p.x >= minX - 1e-6) {
+            if (!started && i > 0 && pts[i - 1].x < minX - 1e-6) {
+                const a = pts[i - 1];
+                const dx = p.x - a.x;
+                const t = Math.abs(dx) < 1e-6 ? 0 : (minX - a.x) / dx;
+                out.push({ x: minX, y: a.y + (p.y - a.y) * t });
+            }
+            out.push({ ...p });
+            started = true;
+        }
+    }
+    return out;
+}
+
+/**
+ * Cap-row X cuts for the mirrored inward lips — driven only by center-gap tweak.
+ * Smaller gap → lips reach further toward the trap middle.
+ * @param {ReturnType<typeof dockTrapGeometry>} geo
+ * @param {object} s
+ */
+function dockInwardCenterCuts(geo, s) {
+    const mid = geo.dockW / 2;
+    const maxGap = Math.max(24, geo.dockW * 0.85);
+    const gap = clamp(Number(s.dockInwardCenterGapPx) || 200, 24, maxGap);
+    const half = gap / 2;
+    return {
+        leftCut: mid - half,
+        rightCut: mid + half,
+    };
+}
+
+/**
+ * Interior-offset companion edge for a densified outer polyline.
+ * @param {{x:number,y:number}[]} outerEdge
+ * @param {(s:number,total:number)=>number} thicknessFn
+ * @returns {{outer:{x:number,y:number}[], inner:{x:number,y:number}[], total:number}}
+ */
+function pairedRibbonEdges(outerEdge, thicknessFn) {
+    const lengths = [0];
+    let total = 0;
+    for (let i = 1; i < outerEdge.length; i++) {
+        total += Math.hypot(
+            outerEdge[i].x - outerEdge[i - 1].x,
+            outerEdge[i].y - outerEdge[i - 1].y,
+        );
+        lengths.push(total);
+    }
+    const inner = [];
+    if (total < 1 || outerEdge.length < 2) {
+        return { outer: outerEdge.map((p) => ({ ...p })), inner, total: 0 };
+    }
+    for (let i = 0; i < outerEdge.length; i++) {
+        const th = thicknessFn(lengths[i], total);
+        if (i === 0) {
+            const n = segmentInteriorNormal(outerEdge[0], outerEdge[1]);
+            inner.push({ x: outerEdge[i].x + n.x * th, y: outerEdge[i].y + n.y * th });
+        } else if (i === outerEdge.length - 1) {
+            const n = segmentInteriorNormal(outerEdge[i - 1], outerEdge[i]);
+            inner.push({ x: outerEdge[i].x + n.x * th, y: outerEdge[i].y + n.y * th });
+        } else {
+            const n0 = segmentInteriorNormal(outerEdge[i - 1], outerEdge[i]);
+            const n1 = segmentInteriorNormal(outerEdge[i], outerEdge[i + 1]);
+            const denom = 1 + n0.x * n1.x + n0.y * n1.y;
+            if (Math.abs(denom) < 1e-6) {
+                const nx = n0.x + n1.x;
+                const ny = n0.y + n1.y;
+                const len = Math.hypot(nx, ny) || 1;
+                inner.push({
+                    x: outerEdge[i].x + (nx / len) * th,
+                    y: outerEdge[i].y + (ny / len) * th,
+                });
+            } else {
+                inner.push({
+                    x: outerEdge[i].x + ((n0.x + n1.x) / denom) * th,
+                    y: outerEdge[i].y + ((n0.y + n1.y) / denom) * th,
+                });
+            }
+        }
+    }
+    return { outer: outerEdge.map((p) => ({ ...p })), inner, total };
+}
+
+/**
+ * Fillet selected corners of a closed ring (quadratic samples).
+ * @param {{x:number,y:number}[]} pts
+ * @param {number[]} cornerIdx
+ * @param {number} radius
+ * @param {number} [curveSteps]
+ */
+function filletClosedCorners(pts, cornerIdx, radius, curveSteps = 5) {
+    const n = pts.length;
+    if (n < 3 || !(radius > 0.05) || !cornerIdx.length) {
+        return pts.map((p) => ({ ...p }));
+    }
+    const want = new Set(cornerIdx.map((i) => ((i % n) + n) % n));
+    const out = [];
+    for (let i = 0; i < n; i++) {
+        const prev = pts[(i - 1 + n) % n];
+        const curr = pts[i];
+        const next = pts[(i + 1) % n];
+        if (!want.has(i)) {
+            out.push({ ...curr });
+            continue;
+        }
+        const v1x = curr.x - prev.x;
+        const v1y = curr.y - prev.y;
+        const v2x = next.x - curr.x;
+        const v2y = next.y - curr.y;
+        const len1 = Math.hypot(v1x, v1y) || 1;
+        const len2 = Math.hypot(v2x, v2y) || 1;
+        const r = Math.min(radius, len1 * 0.45, len2 * 0.45);
+        if (r < 0.05) {
+            out.push({ ...curr });
+            continue;
+        }
+        const p1 = { x: curr.x - (v1x / len1) * r, y: curr.y - (v1y / len1) * r };
+        const p2 = { x: curr.x + (v2x / len2) * r, y: curr.y + (v2y / len2) * r };
+        out.push(p1);
+        for (let k = 1; k <= curveSteps; k++) {
+            const t = k / curveSteps;
+            const u = 1 - t;
+            out.push({
+                x: u * u * p1.x + 2 * u * t * curr.x + t * t * p2.x,
+                y: u * u * p1.y + 2 * u * t * curr.y + t * t * p2.y,
+            });
+        }
+    }
+    return out;
+}
+
+/**
+ * Mirrored half-ribbon ending in a vertical center cut (constant X), with optional
+ * corner rounding on the two cut corners.
+ * @param {{x:number,y:number}[]} outerFull
+ * @param {(s:number,total:number)=>number} thicknessFn
+ * @param {number} cutX
+ * @param {'left'|'right'} side
+ * @param {number} cornerRadius
+ * @param {number} [maxButtSpan] reject / repair absurd vertical faces from bad offsets
+ */
+function verticalCutRibbonPath(outerFull, thicknessFn, cutX, side, cornerRadius, maxButtSpan = 64) {
+    const paired = pairedRibbonEdges(outerFull, thicknessFn);
+    if (paired.total < 1 || paired.inner.length < 2) return '';
+
+    const outer =
+        side === 'left'
+            ? clipPolylineMaxX(paired.outer, cutX)
+            : clipPolylineMinX(paired.outer, cutX);
+    const inner =
+        side === 'left'
+            ? clipPolylineMaxX(paired.inner, cutX)
+            : clipPolylineMinX(paired.inner, cutX);
+    if (outer.length < 2 || inner.length < 2) return '';
+
+    /* Snap cut tips onto the vertical line so the butt never follows the slope normal. */
+    if (side === 'left') {
+        outer[outer.length - 1] = { x: cutX, y: outer[outer.length - 1].y };
+        inner[inner.length - 1] = { x: cutX, y: inner[inner.length - 1].y };
+    } else {
+        outer[0] = { x: cutX, y: outer[0].y };
+        inner[0] = { x: cutX, y: inner[0].y };
+    }
+
+    const oCut = side === 'left' ? outer[outer.length - 1] : outer[0];
+    const iCut = side === 'left' ? inner[inner.length - 1] : inner[0];
+    const butt = Math.abs(oCut.y - iCut.y);
+    if (!(butt > 0.5) || !Number.isFinite(butt)) return '';
+    if (butt > maxButtSpan) {
+        /* Offset blew up — keep a vertical face at a sane thickness. */
+        const dir = iCut.y >= oCut.y ? 1 : -1;
+        const repaired = { x: cutX, y: oCut.y + dir * Math.min(maxButtSpan, butt) };
+        if (side === 'left') inner[inner.length - 1] = repaired;
+        else inner[0] = repaired;
+    }
+
+    const ring = [...outer, ...inner.slice().reverse()];
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (let i = 0; i < ring.length; i++) {
+        const p = ring[i];
+        if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) return '';
+        if (p.x < minX) minX = p.x;
+        if (p.x > maxX) maxX = p.x;
+        if (p.y < minY) minY = p.y;
+        if (p.y > maxY) maxY = p.y;
+    }
+    /* Degenerate / spiked rings from self-intersecting parallel offsets. */
+    if (maxX - minX < 8 || maxY - minY < 1 || maxY - minY > maxButtSpan * 8) return '';
+
+    const cutCorners =
+        side === 'left'
+            ? [outer.length - 1, outer.length]
+            : [0, ring.length - 1];
+    const filleted = filletClosedCorners(ring, cutCorners, cornerRadius);
+    if (filleted.length < 3) return '';
+
+    let d = `M${filleted[0].x.toFixed(2)} ${filleted[0].y.toFixed(2)}`;
+    for (let i = 1; i < filleted.length; i++) {
+        d += `L${filleted[i].x.toFixed(2)} ${filleted[i].y.toFixed(2)}`;
+    }
+    return `${d}Z`;
+}
+
+/**
+ * Parallel inward lip that follows the dock outer stroke (lips + trap bump).
+ * Mounted on the cap-row beside `.dock-trap-edge-stroke`.
+ * @param {object} s
+ * @param {ReturnType<typeof dockTrapGeometry>} [geo]
+ */
+export function syncDockInwardLineShape(s, geo) {
+    const cap =
+        typeof document !== 'undefined'
+            ? document.querySelector('.pagination-dock-top-cap-row')
+            : null;
+    if (!cap) return;
+
+    /* Migrate off the old slider-row host if present. */
+    document.querySelectorAll('.event-page-slider-row > .pagination-dock-inward-line').forEach((el) => {
+        el.remove();
+    });
+
+    let host = cap.querySelector(':scope > .pagination-dock-inward-line');
+    if (!host) {
+        host = document.createElement('div');
+        host.className = 'pagination-dock-inward-line';
+        host.setAttribute('aria-hidden', 'true');
+        /* First child → under trapezoid/buttons even if z-index is ignored. */
+        cap.insertBefore(host, cap.firstChild);
+    } else if (host !== cap.firstElementChild) {
+        cap.insertBefore(host, cap.firstChild);
+    }
+
+    let svg = host.querySelector('svg.pagination-dock-inward-line__shape');
+    if (!svg) {
+        svg = document.createElementNS(SVG_NS, 'svg');
+        svg.classList.add('pagination-dock-inward-line__shape');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('preserveAspectRatio', 'none');
+        const path = document.createElementNS(SVG_NS, 'path');
+        path.classList.add('pagination-dock-inward-line__path');
+        svg.appendChild(path);
+        host.replaceChildren(svg);
+    }
+    const path = svg.querySelector('path');
+    if (!path) return;
+
+    const live = geo || dockTrapGeometry(s, cap);
+    const W = live.dockW;
+    const H = live.trapH;
+    const fullTh = Math.max(1, s.dockInwardLineThicknessPx);
+    /*
+     * Parallel gap past the outer stroke (signed Offset Y), hard-capped so the
+     * top-flat offset cannot dive past the lip and blow up the slope miters.
+     */
+    const maxInset = Math.max(2, H * 0.42);
+    const outerInset = clamp(
+        s.dockBorderWidth * 0.5 + s.dockInwardLineOffsetYPx,
+        0.5,
+        maxInset,
+    );
+    /* Extra pad below lip so inset into the dock body still paints. */
+    const pad = Math.max(
+        48,
+        fullTh * 2 + Math.max(0, s.dockInwardLineOffsetYPx) + s.dockBorderWidth,
+    );
+    const vbH = H + pad;
+
+    const outerPts = [
+        { x: 0, y: H },
+        { x: live.leftPx, y: H },
+        { x: live.leftPx + live.insetPx, y: 0 },
+        { x: live.rightPx - live.insetPx, y: 0 },
+        { x: live.rightPx, y: H },
+        { x: W, y: H },
+    ];
+    const rounded = sampleRoundedPolyline(outerPts, s.dockBorderRadius);
+    const outerEdge = densifyPolyline(offsetPolyline(rounded, outerInset), 6);
+    const tipTh = Math.max(0.5, Math.min(fullTh, s.dockInwardEndThicknessPx));
+    const tipW = s.dockInwardTipWidthPx;
+    const slopeW = s.dockInwardSlopeWidthPx;
+
+    /*
+     * Two mirrored ribbons; center butts are vertical (constant X) even on the
+     * trap slopes. Corner rounding fillets those cut corners.
+     */
+    const { leftCut, rightCut } = dockInwardCenterCuts(live, s);
+    const cornerR = s.dockInwardCornerRadiusPx;
+    const maxButt = Math.max(fullTh * 3, 36);
+    const leftD = verticalCutRibbonPath(
+        outerEdge,
+        (arc) => thicknessFromTip(arc, tipW, slopeW, tipTh, fullTh),
+        leftCut,
+        'left',
+        cornerR,
+        maxButt,
+    );
+    const rightD = verticalCutRibbonPath(
+        outerEdge,
+        (arc, total) => thicknessFromTip(total - arc, tipW, slopeW, tipTh, fullTh),
+        rightCut,
+        'right',
+        cornerR,
+        maxButt,
+    );
+    const d = `${leftD}${rightD}`;
+
+    /*
+     * Height must equal viewBox H+pad in CSS px. A mismatched CSS height
+     * (e.g. 100%+96) with preserveAspectRatio=none stretches Y and makes the
+     * gap look wider on flats than on the trap slopes.
+     */
+    svg.setAttribute('viewBox', `0 0 ${W} ${vbH}`);
+    svg.style.width = '100%';
+    svg.style.height = `${vbH}px`;
+    host.style.height = `${vbH}px`;
+    path.setAttribute('d', d);
+
+    /* Slider reserves — expanded vs collapsed, from Dock inward line sliders. */
+    const root = document.documentElement;
+    const clearancePx = `${Math.max(0, s.dockInwardSliderClearancePx)}px`;
+    const clearanceCollapsedPx = `${Math.max(0, s.dockInwardSliderClearanceCollapsedPx)}px`;
+    root.style.setProperty('--dock-inward-line-clearance', clearancePx);
+    root.style.setProperty('--dock-inward-line-clearance-collapsed', clearanceCollapsedPx);
+    if (document.body) {
+        document.body.style.setProperty('--dock-inward-line-clearance', clearancePx);
+        document.body.style.setProperty(
+            '--dock-inward-line-clearance-collapsed',
+            clearanceCollapsedPx,
+        );
+    }
+}
+
+/**
  * Shrink side traps on short/narrow viewports so dual right traps don't overlap
  * and left+right wings don't eat the hub.
  * Tweaks stay as authored max; painted size is min(tweak, viewport budget).
@@ -668,11 +1255,28 @@ export function applySidePanelsTrapChrome(state) {
     /* Set on :root + body — body dock rules redefine many vars and would shadow :root alone. */
     const buttonsOffsetY = `${s.dockButtonsOffsetYPx}px`;
     root.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
+    const inwardLineH = `${s.dockInwardLineThicknessPx}px`;
+    const inwardLineY = `${s.dockInwardLineOffsetYPx}px`;
+    const inwardClearance = `${Math.max(0, s.dockInwardSliderClearancePx)}px`;
+    const inwardClearanceCollapsed = `${Math.max(0, s.dockInwardSliderClearanceCollapsedPx)}px`;
+    const inwardVars = {
+        '--dock-inward-line-h': inwardLineH,
+        '--dock-inward-line-offset-y': inwardLineY,
+        '--dock-inward-line-clearance': inwardClearance,
+        '--dock-inward-line-clearance-collapsed': inwardClearanceCollapsed,
+    };
+    for (const [prop, value] of Object.entries(inwardVars)) {
+        root.style.setProperty(prop, value);
+    }
     if (document.body) {
         document.body.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
+        for (const [prop, value] of Object.entries(inwardVars)) {
+            document.body.style.setProperty(prop, value);
+        }
     }
     const dockGeo = syncDockEdgeStroke(s, dockTrapGeometry(s)) || dockTrapGeometry(s);
     applyDockFillFromBorder(root.style, s, dockGeo);
+    syncDockInwardLineShape(s, dockGeo);
 
     syncAllSideTrapStrokes(sidePaint);
     syncDockTrapSvgTaper(s.dockTrapTaperPct);
