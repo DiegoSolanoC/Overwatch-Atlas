@@ -4,7 +4,7 @@
    ======================================== */
 
 /* Foundation */
-@import url('foundation/variables.css?v=23');
+@import url('foundation/variables.css?v=24');
 @import url('foundation/base.css?v=10');
 @import url('foundation/animations.css?v=10');
 
@@ -36,7 +36,7 @@
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=84');
 @import url('features/gallery/gallery-mode.css?v=114');
-@import url('features/dialogue-theater/dialogue-theater-list.css?v=22');
+@import url('features/dialogue-theater/dialogue-theater-list.css?v=25');
 @import url('features/dialogue-theater/dialogue-theater-stage.css?v=22');
 @import url('features/dialogue-theater/dialogue-theater-edit-panel.css?v=22');
 
@@ -47,7 +47,7 @@
 @import url('features/event-system/event-buttons.css?v=15');
 @import url('features/event-system/event-image-overlay.css?v=24');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=164');
+@import url('features/event-system/event-pagination.css?v=167');
 @import url('features/event-system/news-ticker.css?v=12');
 
 /* Event system panels */

@@ -43,9 +43,10 @@
         margin: 0;
         padding-left: calc(env(safe-area-inset-left, 0px) + clamp(28px, 5vw, 88px));
         padding-right: calc(env(safe-area-inset-right, 0px) + clamp(28px, 5vw, 88px));
-        padding-top: 20px;
-        padding-bottom: 20px;
-        gap: 20px;
+        /* Clear the trap bottom stroke + any buttons-Y spill into the dock band. */
+        padding-top: 36px;
+        padding-bottom: 16px;
+        gap: 18px;
         overflow: visible;
         pointer-events: auto;
     }
@@ -143,7 +144,8 @@
         width: 100%;
         max-width: 100%;
         align-self: stretch;
-        padding: 8px 0 12px 0;
+        /* Extra top pad so tick labels sit below the trap lip. */
+        padding: 14px 0 10px 0;
         box-sizing: border-box;
         display: flex !important;
         visibility: visible !important;
@@ -788,7 +790,8 @@ button.event-number-btn.locked,
         flex-wrap: nowrap;
     }
 
-    /* Skewed shell: slope toward the right; inner content counter-skewed so photo + text stay upright */
+    /* Skewed shell: slope toward the right; inner content counter-skewed so photo + text stay upright.
+     * Slightly shorter than Story/Theater 5/4 so the dock strip stays compact; crop anchors top. */
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
         --thumb-skew: -11deg;
         flex: 0 0 calc((100% - 9 * var(--thumb-row-gap)) / 10);
@@ -796,14 +799,16 @@ button.event-number-btn.locked,
         min-width: 0;
         width: auto;
         height: auto;
-        min-height: calc(168px + 2 * var(--thumb-outline-y));
-        max-height: calc(204px + 2 * var(--thumb-outline-y));
+        aspect-ratio: 3 / 2;
+        min-height: 0;
+        max-height: none;
         padding: 0;
         box-sizing: border-box;
         border-style: solid !important;
         border-width: var(--thumb-outline-y) 0 var(--thumb-outline-y) 0 !important;
         border-color: rgba(255, 255, 255, 0.93) !important;
         background: transparent !important;
+        position: relative;
         flex-direction: column;
         align-items: stretch;
         justify-content: stretch;
@@ -829,11 +834,13 @@ button.event-number-btn.locked,
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__visual {
-        position: relative;
+        /* Match Story/Theater thumb-visual bleed + counter-skew (event-item.css). */
+        position: absolute;
+        inset: 0;
         display: block;
-        flex: 1 1 auto;
-        min-height: 168px;
-        max-height: 420px;
+        flex: none;
+        min-height: 0;
+        max-height: none;
         width: 124%;
         height: 100%;
         margin-left: -12%;
@@ -927,7 +934,8 @@ button.event-number-btn.locked,
         height: 100%;
         min-height: 100%;
         object-fit: cover;
-        object-position: center center;
+        /* Prefer the top of the art so heads/helmets stay in frame when height is shorter. */
+        object-position: center top;
         display: block;
         border: none;
     }
@@ -1266,6 +1274,7 @@ button.event-number-btn.locked,
     }
 
     body.pagination-dock-collapsed .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
+        aspect-ratio: auto !important;
         min-height: 44px !important;
         max-height: 52px !important;
         height: 48px !important;

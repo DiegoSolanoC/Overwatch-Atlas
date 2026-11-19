@@ -1117,35 +1117,41 @@ body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__theat
         );
 }
 
+/*
+ * Dock slots are wider than list 5/4 — mild inward vs list, not enough to overlap.
+ * Extra translateY keeps the pair as low in-frame as the Theater list cards.
+ */
 body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__theater-render {
     position: absolute;
     bottom: 0;
     z-index: 2;
     width: auto;
     height: auto;
-    max-height: 118%;
-    max-width: 78%;
+    max-height: 88%;
+    max-width: 74%;
     object-fit: contain;
     object-position: center bottom;
     pointer-events: none;
+    inset: auto;
+    opacity: 1;
 }
 
 body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__theater-render--left {
     left: 0;
-    transform: translateX(-10%) translateY(10%) scale(1.2);
+    transform: translateX(calc(-8% - 14px)) translateY(56px) scale(1.44);
     transform-origin: bottom left;
 }
 
 body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__theater-render--right {
     right: 0;
-    transform: translateX(10%) translateY(10%) scale(1.2);
+    transform: translateX(calc(6% + 14px)) translateY(56px) scale(1.44);
     transform-origin: bottom right;
 }
 
 body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__img-wrap--theater-solo .event-number-btn__theater-render--left {
     left: 50%;
     right: auto;
-    transform: translateX(-50%) translateY(10%) scale(1.25);
+    transform: translateX(-50%) translateY(56px) scale(1.44);
     transform-origin: bottom center;
 }
 
@@ -1153,4 +1159,7 @@ body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__img-w
     position: absolute;
     inset: 0;
     z-index: 0;
+    /* Same scene crop as list cards (beats story dock top-anchor in pagination-float). */
+    object-fit: cover !important;
+    object-position: center center !important;
 }

@@ -364,7 +364,8 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
 
 .main-menu-side-btn--see-latest .main-menu-image-container img {
     object-fit: cover;
-    object-position: center center;
+    /* Unique wide tile — keep its proportions; anchor crop to the top of the art. */
+    object-position: center top;
     min-width: 100%;
     min-height: 100%;
 }
@@ -668,6 +669,12 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
 .main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-image-container,
 .main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn .main-menu-image-container {
     bottom: var(--main-menu-desc-band-h);
+}
+
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-image-container img,
+.main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn .main-menu-image-container img {
+    object-fit: cover;
+    object-position: center top;
 }
 
 .main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest .main-menu-label,

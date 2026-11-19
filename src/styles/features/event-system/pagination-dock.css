@@ -48,7 +48,8 @@
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        justify-content: center;
+        /* Top-align so shorter thumbs cannot lift the slider into the trap lip. */
+        justify-content: flex-start;
         width: 100%;
         height: var(--pagination-dock-height, 500px);
         min-height: var(--pagination-dock-height, 500px);
