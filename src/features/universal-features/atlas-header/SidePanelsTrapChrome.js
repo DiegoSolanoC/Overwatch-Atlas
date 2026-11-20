@@ -1,7 +1,10 @@
 /**
  * Side-panel + dock trapezium chrome.
  * Sides share size; each side trap has its own vertical slide; dock sizes independently.
- * Live CSS vars on :root — Save writes localStorage.
+ * Live CSS vars on :root.
+ *
+ * Site look ships from `src/data/platform/atlas-ui-tweaks.json` (collaborator Export →
+ * replace that file to ship). Save in the tweaker only writes a local *draft*.
  *
  * Strokes are INLINE SVGs (not CSS background data-URLs). Background SVGs get
  * non-uniformly stretched so edges thin out and separate lip bars never join the trap.
@@ -10,25 +13,25 @@
  * px while filled inward lips scale — Chrome/Firefox proportions then diverge.
  */
 
-const STORAGE_KEY = 'atlas.sidePanelsTrap.tweak.v2';
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
+/** Baked from atlas-ui-tweaks.json standard, Nov 2026. */
 export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     /** Shared side-trap body height (excludes +8 visual pad). */
-    trapHeightPx: 160,
+    trapHeightPx: 306,
     /** Shared outward depth (CSS px). */
-    trapProtrudePx: 64,
+    trapProtrudePx: 69,
     /** Shared short-side inset % (0 = rectangle). */
-    trapTaperPct: 12,
+    trapTaperPct: 22.5,
     /** Shared white stroke weight (CSS px via non-scaling-stroke). */
-    sideBorderWidth: 20,
+    sideBorderWidth: 8,
     /** Corner rounding on side-panel trap borders (viewBox units, 0–100). */
-    sideBorderRadius: 0,
+    sideBorderRadius: 6,
 
     /** Independent vertical placement: 0 = top, 50 = center, 100 = bottom. */
-    infoTrapPosPct: 50,
-    filtersTrapPosPct: 32,
-    musicTrapPosPct: 68,
+    infoTrapPosPct: 87,
+    filtersTrapPosPct: 13,
+    musicTrapPosPct: 87,
     /**
      * When 1, filters/music stay mirrored about center (music = 100 − filters).
      * Individual offset is discarded; one slide drives a symmetrical spread.
@@ -36,17 +39,17 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     filtersMusicMirror: 1,
 
     /** Dock trap — independent from sides (no vertical slide). */
-    dockTrapHeightPx: 80,
-    dockTrapWidthPx: 720,
-    dockTrapTaperPct: 12,
-    dockBorderWidth: 20,
+    dockTrapHeightPx: 120,
+    dockTrapWidthPx: 760,
+    dockTrapTaperPct: 19,
+    dockBorderWidth: 8,
     /** Corner rounding on dock trap path (viewBox units). */
-    dockBorderRadius: 0,
+    dockBorderRadius: 9,
     /**
      * Whole dock-trap button unit Y (CSS px). Positive = down into the
      * merged trap/dock band; negative = up toward the nub.
      */
-    dockButtonsOffsetYPx: 0,
+    dockButtonsOffsetYPx: 13,
 
     /**
      * Dock inward lip (thick white bar above the page slider).
@@ -55,69 +58,69 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
      * Center cut: two mirrored ribbons with a tunable open gap at dock center.
      * End shrinkage: tip only at the screen-side ends (center butts stay full).
      */
-    dockInwardLineThicknessPx: 12,
-    dockInwardLineOffsetYPx: 0,
+    dockInwardLineThicknessPx: 22,
+    dockInwardLineOffsetYPx: 10,
     /** Open gap at center between the two mirrored lips (CSS px). Smaller = closer. */
-    dockInwardCenterGapPx: 200,
+    dockInwardCenterGapPx: 528,
     /** Extra top pad under the lip so the page slider clears the white bar. */
-    dockInwardSliderClearancePx: 8,
+    dockInwardSliderClearancePx: 20,
     /** Same clearance while the dock is collapsed (often tighter). */
-    dockInwardSliderClearanceCollapsedPx: 4,
+    dockInwardSliderClearanceCollapsedPx: 49,
     /** Thin run at each screen-side end (two clear levels: full → tip). */
     dockInwardEndThicknessPx: 4,
-    dockInwardTipWidthPx: 36,
-    dockInwardSlopeWidthPx: 48,
+    dockInwardTipWidthPx: 388,
+    dockInwardSlopeWidthPx: 27,
     /** Fillet radius at tip ends and vertical center-cut corners (CSS px). */
-    dockInwardCornerRadiusPx: 8,
+    dockInwardCornerRadiusPx: 10,
 
     /**
      * Side-panel inward lip (parallel to continuous edge). No end shrinkage —
      * constant thickness with tip cuts at trap buttons only.
      */
-    sideInwardLineThicknessPx: 12,
+    sideInwardLineThicknessPx: 18,
     /** Parallel gap past the outer stroke before the lip (into panel fill). */
-    sideInwardLineOffsetPx: 2,
+    sideInwardLineOffsetPx: 10,
     sideInwardCenterGapPx: 200,
     sideInwardCornerRadiusPx: 8,
     /**
      * Extra cut-gap % on side-panel traps while hovered only (not on open; dock
      * has no bonus). Idle stays at 1×; 40 → gap × 1.4 under the pointer.
      */
-    inwardCutFocusBonusPct: 40,
+    inwardCutFocusBonusPct: 38,
 
     /**
      * White filled “nub” tabs (replace Drag/Controller Border images).
      * Side: on the inward tip of each side trap. Dock: on the top edge of the dock trap.
      */
-    sideNubDepthPx: 28,
-    sideNubLengthPx: 72,
-    sideNubTaperPct: 14,
-    sideNubRadiusPx: 0,
-    sideNubArrowPx: 28,
+    sideNubDepthPx: 35,
+    sideNubLengthPx: 78,
+    sideNubTaperPct: 28,
+    sideNubRadiusPx: 13,
+    sideNubArrowPx: 43,
     /** Colored label pill behind the trap logo (side panels only). */
-    sideTrapBtnRadiusPx: 48,
-    sideTrapBtnWidthPx: 40,
-    sideTrapBtnHeightPx: 96,
+    sideTrapBtnRadiusPx: 12,
+    sideTrapBtnWidthPx: 52,
+    sideTrapBtnHeightPx: 168,
     /**
      * Horizontal pill shift toward the trap tip / hub (CSS px).
      * Positive = into the tip; uses the extra bay from the inward lip.
      */
-    sideTrapBtnOffsetXPx: 0,
-    sideTrapIconPx: 28,
-    dockNubWidthPx: 120,
+    sideTrapBtnOffsetXPx: -2,
+    sideTrapIconPx: 47,
+    dockNubWidthPx: 192,
     dockNubHeightPx: 40,
-    dockNubTaperPct: 14,
-    dockNubRadiusPx: 0,
-    dockNubArrowPx: 28,
+    dockNubTaperPct: 24.5,
+    dockNubRadiusPx: 8,
+    dockNubArrowPx: 52,
 
     /**
      * Atlas News red footer trapezium (floating badge).
-     * Keep height ≤ footer (~65px) so it does not cover dock thumbnails.
+     * Authoring size from UI Tweaks; keep under dock thumbs when possible.
      */
-    atlasNewsWidthPx: 90,
-    atlasNewsHeightPx: 56,
+    atlasNewsWidthPx: 146,
+    atlasNewsHeightPx: 88,
     /** Logo image size as % of the red badge box. */
-    atlasNewsIconPct: 86,
+    atlasNewsIconPct: 100,
 });
 
 function clamp(n, lo, hi) {
@@ -257,72 +260,20 @@ export function sanitizeSidePanelsTrapState(s) {
     next.dockNubTaperPct = clamp(Number(next.dockNubTaperPct), 0, 28);
     next.dockNubRadiusPx = clamp(Number(next.dockNubRadiusPx), 0, 40);
     next.dockNubArrowPx = clamp(Math.round(Number(next.dockNubArrowPx)), 10, 96);
-    next.atlasNewsWidthPx = clamp(Math.round(Number(next.atlasNewsWidthPx ?? 90)), 48, 180);
-    next.atlasNewsHeightPx = clamp(Math.round(Number(next.atlasNewsHeightPx ?? 56)), 36, 140);
-    next.atlasNewsIconPct = clamp(Math.round(Number(next.atlasNewsIconPct ?? 86)), 40, 100);
+    next.atlasNewsWidthPx = clamp(Math.round(Number(next.atlasNewsWidthPx ?? 146)), 48, 180);
+    next.atlasNewsHeightPx = clamp(Math.round(Number(next.atlasNewsHeightPx ?? 88)), 36, 140);
+    next.atlasNewsIconPct = clamp(Math.round(Number(next.atlasNewsIconPct ?? 100)), 40, 100);
     return next;
 }
 
+/** Sync fallback only — live look comes from the committed JSON standard (+ optional draft). */
 export function loadSidePanelsTrapState() {
-    try {
-        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('atlas.sidePanelsTrap.tweak.v1');
-        if (!raw) return cloneDefaults();
-        const parsed = JSON.parse(raw);
-        const next = cloneDefaults();
-        for (const key of Object.keys(SIDE_PANELS_TRAP_TWEAK_DEFAULTS)) {
-            if (parsed[key] != null && Number.isFinite(Number(parsed[key]))) {
-                next[key] = Number(parsed[key]);
-            }
-        }
-        /* v1 → v2: single pos became three; dock mirrored side size. */
-        if (parsed.trapPosPct != null && Number.isFinite(Number(parsed.trapPosPct))) {
-            const p = Number(parsed.trapPosPct);
-            if (parsed.infoTrapPosPct == null) next.infoTrapPosPct = p;
-            if (parsed.filtersTrapPosPct == null) next.filtersTrapPosPct = clamp(p - 18, 0, 100);
-            if (parsed.musicTrapPosPct == null) next.musicTrapPosPct = clamp(p + 18, 0, 100);
-        }
-        if (parsed.dockTrapHeightPx == null && parsed.trapHeightPx != null) {
-            next.dockTrapHeightPx = clamp(Math.round(Number(parsed.trapHeightPx) / 2), 48, 160);
-        }
-        if (parsed.dockTrapTaperPct == null && parsed.trapTaperPct != null) {
-            next.dockTrapTaperPct = Number(parsed.trapTaperPct);
-        }
-        if (parsed.dockTrapWidthPx == null && parsed.trapProtrudePx != null) {
-            next.dockTrapWidthPx = clamp(Math.round(280 + Number(parsed.trapProtrudePx) * 8), 280, 1100);
-        }
-        /* Split side inward from dock inward — seed from dock if side keys absent. */
-        if (parsed.sideInwardLineThicknessPx == null && parsed.dockInwardLineThicknessPx != null) {
-            next.sideInwardLineThicknessPx = Number(parsed.dockInwardLineThicknessPx);
-        }
-        if (parsed.sideInwardLineOffsetPx == null && parsed.dockInwardLineOffsetYPx != null) {
-            next.sideInwardLineOffsetPx = Math.max(0, Number(parsed.dockInwardLineOffsetYPx));
-        }
-        if (parsed.sideInwardCenterGapPx == null && parsed.dockInwardCenterGapPx != null) {
-            next.sideInwardCenterGapPx = Number(parsed.dockInwardCenterGapPx);
-        }
-        if (parsed.sideInwardCornerRadiusPx == null && parsed.dockInwardCornerRadiusPx != null) {
-            next.sideInwardCornerRadiusPx = Number(parsed.dockInwardCornerRadiusPx);
-        }
-        /* Old idle key → focus bonus (only when the new key was never saved). */
-        if (
-            parsed.inwardCutFocusBonusPct == null &&
-            parsed.inwardCutDeemphasizePct != null &&
-            Number.isFinite(Number(parsed.inwardCutDeemphasizePct))
-        ) {
-            next.inwardCutFocusBonusPct = Number(parsed.inwardCutDeemphasizePct);
-        }
-        return sanitizeSidePanelsTrapState(next);
-    } catch {
-        return cloneDefaults();
-    }
+    return sanitizeSidePanelsTrapState(cloneDefaults());
 }
 
-export function saveSidePanelsTrapState(state) {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitizeSidePanelsTrapState(state)));
-    } catch {
-        /* ignore */
-    }
+/** @deprecated Draft persistence is unified in UiTweaksStandard / HeaderTitleBadgeTweaker. */
+export function saveSidePanelsTrapState(_state) {
+    /* no-op: per-slice localStorage removed (not a per-visitor preference) */
 }
 
 /**
@@ -855,13 +806,13 @@ const drawbridge = {
 let drawbridgeRaf = 0;
 /**
  * Last sanitized trap state from `applySidePanelsTrapChrome` — includes unsaved
- * tweaker preview. Hover/collapse/resize must not fall back to localStorage alone
- * or live sliders (e.g. focus cut bonus %) snap back to the saved default.
+ * tweaker preview. Hover/collapse/resize must use this so live sliders
+ * (e.g. focus cut bonus %) do not snap back to the committed standard.
  * @type {object | null}
  */
 let liveTrapChromeState = null;
 
-/** Prefer live tweaker preview over localStorage so unsaved sliders are not clobbered. */
+/** Prefer live tweaker preview over the committed standard so unsaved sliders are not clobbered. */
 function paintTrapChromeState(explicit) {
     if (explicit) return sanitizeSidePanelsTrapState(explicit);
     return liveTrapChromeState || loadSidePanelsTrapState();

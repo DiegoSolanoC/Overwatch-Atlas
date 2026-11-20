@@ -329,6 +329,12 @@
           "country": "Wuxing University,",
           "reasoning": "These designs would be the base for Water College technology"
         }
+      ],
+      "commentary": [
+        {
+          "name": "100% Potable",
+          "theaterId": "857cbae6-07c5-40d3-af8f-8c82be1df13e"
+        }
       ]
     },
     {
@@ -899,7 +905,14 @@
         }
       ],
       "commentary": [
-        "Kilometer tall"
+        {
+          "name": "Dr. Bhatt",
+          "theaterId": "9ad0b438-eef9-4479-a277-509d82d6833f"
+        },
+        {
+          "name": "Kilometer tall",
+          "theaterId": "af793c28-abab-4e2d-a328-a49f4c804146"
+        }
       ]
     },
     {
@@ -6498,8 +6511,14 @@
       ],
       "commentary": [
         {
-          "name": "Junker Queen · Today, you're honorary wastelanders",
-          "label": "Wastelanders"
+          "name": "Junker Queen · Match Start — Today, you're honorary wastelanders",
+          "label": "Wastelanders",
+          "theaterId": "chatter-junker-queen",
+          "lineId": "326b9c94-512e-4ff1-8cfe-7f203965ed6b"
+        },
+        {
+          "name": "Enigmatic",
+          "theaterId": "3f6d61f7-966d-4cd8-84f4-4545dfcd523b"
         }
       ]
     },
@@ -7192,7 +7211,7 @@
       "name": "The Architech Academy",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
-      "description": "In the years that followed the Crisis, Vishkar would quickly rise into a global powerhouse. Having helped the Indian government during the war, hard light technology advanced greatly in the span of a few years, and with the world left in ruins, the company saw it as a great chance to spearhead the reparations. But in spite of their power, they had far too few hands. Most of the early architects had either left the company years ago or died during the Crisis. Hard light technology was quite complex, and it required years of training to master, but in looking for solutions to their shortage of staff, Vishkar would make the controversial decision to turn to the hundreds of orphans left by the crisis.\n\nWith the approval of a desperate government, Vishkar would open the Architect Academy, a school meant to pipeline kids across the nation into becoming the architects of the future. Staffed with the best professionals in the country and providing housing and education to any orphan they could find. To pay for their education, the students would merely be required to complete a five-year tour of duty for the company following their graduation day, which would in most cases set them off for success and open doors within the corporation. \n\n\nWhile initially met with outcry about the coercing of minors, the Academy was a success in the long run, which led to many wealthy families across the globe sending their children to the Academy, with fully paid tuition to avoid the post-graduation requirements. It is here where Satya Vaswani and Niran Pruksamanee first crossed paths, the son of a wealthy family and a girl plucked out of poverty, spending their student days as roommates and quickly gaining notoriety amongst their peers for their unique perspective and techniques.",
+      "description": "In the years that followed the Crisis, Vishkar would quickly rise into a global powerhouse. Having helped the Indian government during the war, hard light technology advanced greatly in the span of a few years, and with the world left in ruins, the company saw it as a great chance to spearhead the reparations. But in spite of their power, they had far too few hands. Most of the early architects had either left the company years ago or died during the Crisis. Hard light technology was quite complex, and it required years of training to master, but in looking for solutions to their shortage of staff, Vishkar would make the controversial decision to turn to the hundreds of orphans left by the crisis.\n\nWith the approval of a desperate government, Vishkar would open the Architect Academy, a school meant to pipeline kids across the nation into becoming the architects of the future. Staffed with the best professionals in the country and providing housing and education to any orphan they could find. To pay for their education, the students would merely be required to complete a five-year tour of duty for the company following their graduation day, which would in most cases set them off for success and open doors within the corporation. \n\nWhile initially met with outcry about the coercing of minors, the Academy was a success in the long run, which led to many wealthy families across the globe sending their children to the Academy, with fully paid tuition to avoid the post-graduation requirements. It is here where Satya Vaswani and Niran Pruksamanee first crossed paths, the son of a wealthy family and a girl plucked out of poverty, spending their student days as roommates and quickly gaining notoriety amongst their peers for their unique perspective and techniques.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -7238,9 +7257,22 @@
         "India approves the schooling project for hundreds of orphans"
       ],
       "commentary": [
-        "Days at the Academy",
-        "Best Roommate",
-        "Missing the Academy"
+        {
+          "name": "Days at the Academy",
+          "theaterId": "694febd3-479f-4f3e-85da-6ca185a7adaa"
+        },
+        {
+          "name": "Best Roommate",
+          "theaterId": "710fc7cc-7e25-4424-bed3-67bbd38c2525"
+        },
+        {
+          "name": "Missing the Academy",
+          "theaterId": "90399d02-2bc1-4d5a-9677-e7664dceacb5"
+        },
+        {
+          "name": "Saying Hello",
+          "theaterId": "5b959861-2f9b-4037-9978-923020ff5165"
+        }
       ]
     },
     {
@@ -8014,14 +8046,25 @@
       ],
       "commentary": [
         {
-          "name": "Doomfist · Lijiang Tower — Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.",
-          "label": "Vulneralbe"
+          "name": "Doomfist · Lijiang Tower — Lucheng understands an important fact, as long as we are shackled to a single planet, we are vulnerable",
+          "label": "Vulneralbe",
+          "theaterId": "chatter-doomfist",
+          "lineId": "b163605c-8fbb-4f2e-a295-a9e94e189acc"
         },
         {
           "name": "Mei · Lijiang Tower — Who would have thought that Jiayi would end up on Mars?",
-          "label": "Who would have thought"
+          "label": "Who would have thought",
+          "theaterId": "chatter-mei",
+          "lineId": "4895a646-16f7-4443-b1cd-574b617244f5"
         },
-        "Western Movies"
+        {
+          "name": "Western Movies",
+          "theaterId": "57e325a4-62d5-49c7-9f33-445de13f1917"
+        },
+        {
+          "name": "Mars Rocks",
+          "theaterId": "aba32b73-1ff0-48bb-9f92-c84298a5f365"
+        }
       ]
     },
     {
@@ -8181,6 +8224,16 @@
           "locationName": "",
           "country": "Jiayi,",
           "reasoning": "Juno's Mother"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Born in Space",
+          "theaterId": "7c64b4fc-e23f-4ffc-8b67-67da7ffbb0b3"
+        },
+        {
+          "name": "Freak from Space",
+          "theaterId": "699ab9b8-20fc-41ac-810b-a8c66dc7b9cd"
         }
       ]
     },
@@ -8620,6 +8673,10 @@
         {
           "name": "Genius Gift",
           "theaterId": "fbb2492d-ce0a-4196-be1b-df172d2054f4"
+        },
+        {
+          "name": "Ignorance",
+          "theaterId": "9d920b0a-fa68-4105-86df-13f37fe5779e"
         }
       ]
     },
@@ -8779,14 +8836,13 @@
       ],
       "commentary": [
         {
-          "name": "Mercy · Helping those in need is its own reward.",
+          "name": "Mercy",
           "label": "Its own Reward",
-          "theaterId": "chatter-mercy",
-          "lineId": "cc4e724d-f543-4618-a1a6-5ce4ed9a1ba7"
+          "theaterId": "chatter-mercy"
         },
         {
-          "name": "In your Armor",
-          "theaterId": "0d28d274-88ae-42d5-a42c-8c59f1f5ae1b"
+          "name": "Hard Bargain",
+          "theaterId": "5b16ee2f-5c53-4556-969b-97f10fa25b2a"
         }
       ]
     },
@@ -9198,7 +9254,22 @@
         "Accident on the International Space Station during Dr. De Kuiper's experiment"
       ],
       "commentary": [
-        "Delightfully distracting"
+        {
+          "name": "Delightfully distracting",
+          "theaterId": "9761f5ef-2bf9-42a3-a499-50fb7a7904ae"
+        },
+        {
+          "name": "Inquiry",
+          "theaterId": "99941021-8569-41e1-94de-ddd212d8d153"
+        },
+        {
+          "name": "Brilliant inquiries",
+          "theaterId": "aefde5e2-3148-455e-aced-d14a22bd157d"
+        },
+        {
+          "name": "Away with the Fairies",
+          "theaterId": "c7676566-76c2-4dac-b53d-924e676ce9f0"
+        }
       ]
     },
     {
@@ -9732,7 +9803,14 @@
         }
       ],
       "commentary": [
-        "Hammond?"
+        {
+          "name": "Hammond?",
+          "theaterId": "7b299de4-3f7e-43bf-a44a-d3ee34be2c3e"
+        },
+        {
+          "name": "Friend's Advice",
+          "theaterId": "1f62a5fc-0b18-4c39-9ec2-69123234c6d1"
+        }
       ]
     },
     {
@@ -10536,8 +10614,18 @@
         "The Resolute ship is lost during rescue mission in Antartica"
       ],
       "commentary": [
-        "Cryogenic research",
-        "Cryogenic Freezing"
+        {
+          "name": "Cryogenic research",
+          "theaterId": "027f0a55-69df-47af-b602-4cc687952f6c"
+        },
+        {
+          "name": "Cryogenic Freezing",
+          "theaterId": "7be3e66c-21c5-4b8d-91b5-060776e61d1c"
+        },
+        {
+          "name": "Remebering the Past",
+          "theaterId": "5c035815-a811-47de-ac6d-e0e10e84bcc4"
+        }
       ]
     },
     {
@@ -10779,16 +10867,16 @@
           "theaterId": "2c8f0577-ca61-4315-baf4-a2991b5504cf"
         },
         {
-          "name": "The Martinses",
-          "theaterId": "22f8cd3c-a79f-49cf-b2d9-5c83ad908a9f"
-        },
-        {
           "name": "Fetching Price",
           "theaterId": "d1d50a14-f3fb-463f-96c1-8127a3d87fe2"
         },
         {
           "name": "Your Parents",
           "theaterId": "40da4532-8f80-4099-ba9e-2771b67be8dd"
+        },
+        {
+          "name": "Price on my Head",
+          "theaterId": "08ed2e7c-7f1f-4484-85af-577e38dbe9ca"
         }
       ]
     },
@@ -10918,6 +11006,14 @@
         "Experts warn against sailing on waters near New Zealand following terrorist raids"
       ],
       "commentary": [
+        {
+          "name": "Good Mileage",
+          "theaterId": "e148c6da-91b4-4a50-b1d4-7dc437771d18"
+        },
+        {
+          "name": "Mercenary Rates",
+          "theaterId": "09b4e104-94c0-4ee8-a4d6-a75d93a71566"
+        },
         {
           "name": "Different Company",
           "theaterId": "e8db9842-989a-4957-a6ed-01faa080e02e"
@@ -11859,8 +11955,8 @@
       ],
       "commentary": [
         {
-          "name": "Cassidy",
-          "theaterId": "chatter-cassidy"
+          "name": "So Miserable",
+          "theaterId": "93d1a175-fb53-4dee-b58b-904a366379e0"
         },
         {
           "name": "Disgrace to Overwatch",
@@ -11995,6 +12091,10 @@
         {
           "name": "Never Competed",
           "theaterId": "f56fda67-3ec3-4969-839f-531c6094bb5b"
+        },
+        {
+          "name": "More Blood",
+          "theaterId": "ab49e07b-06b3-464a-bd9d-98732fb03bac"
         }
       ]
     },
@@ -13074,17 +13174,16 @@
           "lineId": "76d59e57-0eac-422a-8e74-cd8cd7352b42"
         },
         {
-          "name": "Mauga",
-          "label": "Loosen up",
-          "theaterId": "chatter-mauga"
-        },
-        {
           "name": "Rusty",
           "theaterId": "e23404eb-c452-4df8-a6ab-d2124c2125c7"
         },
         {
           "name": "Not Paying",
           "theaterId": "a5789df7-cbd4-4682-9dd0-ead4ec8cf661"
+        },
+        {
+          "name": "Did I do something",
+          "theaterId": "4ebedcc3-4af7-426f-b44b-9eaf7b35e93c"
         }
       ]
     },
@@ -13318,7 +13417,7 @@
       "name": "The Conspiracy",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "Olivia\n497464\n had grown extremely confident in her hacking skills over the years as a member of Los Muertos, and she was one to challenge herself. She continued hacking through highly secured firewalls of many companies and organizations across the globe. It had become an addiction for her. But one day, while she was diving through the seas of data in her computer, she stumbled on the web of a global conspiracy. An unknown force awaited her at the end of her search, and it stared right back at her.\n\nOlivia\n?6=^:%\n had encountered the first barrier she couldn't just break through. And with her identity compromised, she was forced to go into hiding, deleting all traces of her life never to be seen again.\nThat day Olivia Colomar\n}!#{=?:+@1$1,>\n had died, but not long after. Sombra was born.  She had upgraded herself with cybernetics and stolen teleportation technology, not unlike the chronal anchor Winston developed years ago, and essentially became a living computer with one goal in mind: To find the truth about the conspiracy she uncovered, and figure out the true mastermind pulling the strings that collected the whole world. To do so however, she needed wider connections than what los Muertos could offer. She joined Talon in order to expand her own network of resources and to follow the clues left behind by this conspiracy, pointing to a certain rogue agent with the same Eye symbol carved into his chest.",
+      "description": "Olivia had grown extremely confident in her hacking skills over the years as a member of Los Muertos, and she was one to challenge herself. She continued hacking through highly secured firewalls of many companies and organizations across the globe. It had become an addiction for her. But one day, while she was diving through the seas of data in her computer, she stumbled on the web of a global conspiracy. An unknown force awaited her at the end of her search, and it stared right back at her.\n\nOlivia had encountered the first barrier she couldn't just break through. And with her identity compromised, she was forced to go into hiding, deleting all traces of her life never to be seen again.\nThat day Olivia Colomar had died, but not long after. Sombra was born.  She had upgraded herself with cybernetics and stolen teleportation technology, not unlike the chronal anchor Winston developed years ago, and essentially became a living computer with one goal in mind: To find the truth about the conspiracy she uncovered, and figure out the true mastermind pulling the strings that collected the whole world. To do so however, she needed wider connections than what los Muertos could offer. She joined Talon in order to expand her own network of resources and to follow the clues left behind by this conspiracy, pointing to a certain rogue agent with the same Eye symbol carved into his chest.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -13342,6 +13441,11 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": "SOMBRA is revealed to the world"
+        },
+        {
+          "locationName": "",
           "country": "Los Muertos, Phreaks",
           "reasoning": "Sombra gets cybernetics following her blackout"
         },
@@ -13362,10 +13466,26 @@
         }
       ],
       "commentary": [
-        "Stole That Device",
-        "Feeling Sick",
-        "Share My Secrets",
-        "Change of Origins"
+        {
+          "name": "Stole That Device",
+          "theaterId": "9ba348d5-b19b-4f37-b903-036fe0113991"
+        },
+        {
+          "name": "Feeling Sick",
+          "theaterId": "ac76a789-36d5-4923-86b8-5566e2ac4a25"
+        },
+        {
+          "name": "Share My Secrets",
+          "theaterId": "ede9cfc4-e301-4530-bf6a-f6449431aaeb"
+        },
+        {
+          "name": "Change of Origins",
+          "theaterId": "4aee275e-401d-446d-88c3-669873b32546"
+        },
+        {
+          "name": "Carpal Tunnel",
+          "theaterId": "1aa78a3e-27d9-428b-ba1d-4996a6d1681d"
+        }
       ]
     },
     {
@@ -13470,6 +13590,12 @@
       "yearEnd": null,
       "headlines": [
         "Akande Ogundimu is set to be held at Watchpoint: Grímsvötn"
+      ],
+      "commentary": [
+        {
+          "name": "How can you live with yourself",
+          "theaterId": "7802ba47-7b6c-47f8-b3ae-7d25b8415bf7"
+        }
       ]
     },
     {
@@ -13647,6 +13773,10 @@
         {
           "name": "Enigma",
           "theaterId": "aefb0580-e76c-4bbb-bfb7-88e6ab782b06"
+        },
+        {
+          "name": "What happened",
+          "theaterId": "5a6bbd9b-4d96-48e8-bdc7-f4a9c25d3163"
         }
       ]
     },
@@ -13721,6 +13851,10 @@
         {
           "name": "Undo it all",
           "theaterId": "5ac2e55f-eff3-461c-b89b-59da9a8cadae"
+        },
+        {
+          "name": "Tempting",
+          "theaterId": "2d5b7852-8ed1-449c-bc49-ad107ba56fcb"
         }
       ]
     },
@@ -14015,6 +14149,10 @@
         {
           "name": "Fear the Reaper",
           "theaterId": "c4b51e51-3599-463d-9776-0caad93ac45b"
+        },
+        {
+          "name": "Testing my Patience",
+          "theaterId": "f6c5484c-4103-440f-81f2-861eccd6b328"
         }
       ]
     },
@@ -15238,6 +15376,20 @@
         {
           "text": "Field Report: Native Vanadium Cache",
           "url": "https://overwatch.blizzard.com/en-us/news/24160499/field-report-native-vanadium-cache/"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Non Negotiable",
+          "theaterId": "fb9af53a-a920-41c7-8ccf-ffd9d90afaa4"
+        },
+        {
+          "name": "Hack you later",
+          "theaterId": "f30196cb-7723-40fc-8c4c-0d6edc3fb36b"
+        },
+        {
+          "name": "Confidentiality",
+          "theaterId": "60848070-200e-49c6-aad2-16f8aaa90502"
         }
       ]
     },
@@ -16655,6 +16807,19 @@
           "country": "Jetpack Cat",
           "reasoning": "Fika is Born"
         }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "A part of Project Star Companion"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Perfect Test Subject",
+          "theaterId": "35a02941-2fb4-4094-bc4a-eceb5d56cffe"
+        }
       ]
     },
     {
@@ -17095,16 +17260,29 @@
         }
       ],
       "commentary": [
-        "Googly Eyes",
-        "Captain Opara",
-        "Remebering the Past"
+        {
+          "name": "Googly Eyes",
+          "theaterId": "62e1af00-6f0c-4653-9e83-7676e62e6755"
+        },
+        {
+          "name": "Captain Opara",
+          "theaterId": "221a5276-c0f7-4c8c-b294-adf34233441f"
+        },
+        {
+          "name": "Remebering the Past",
+          "theaterId": "5c035815-a811-47de-ac6d-e0e10e84bcc4"
+        },
+        {
+          "name": "Making a Difference",
+          "theaterId": "b82413dd-86a3-47c6-a709-14bcb7c5f759"
+        }
       ]
     },
     {
       "name": "Unfinished Business",
       "locationType": "earth",
       "cityDisplayName": "Port-de-Paix, Haiti",
-      "description": "Four years had passed since Baptiste left Talon during the raid at Monte Cristi. Thinking he might finally be off the hook, he began to visit his hometown more, helping Ros with the patients at her clinic since they were experiencing a shortage due to Sinclair Pharmaceuticals raising prices. Later at night he frequented a local bar enough that one day, he was intercepted by two Talon agents, Trung Le Nguyen and none other than Mauga himself. While they presented themselves as friendly, Baptiste knew better than to trust them. Turns out they needed his help for a job. Vernard Sinclair, head of the same pharmaceutical company giving the clinic trouble, owed money to Talon, and while this alone wouldn't be enough to turn Baptiste around, Mauga revealed that he knew about Ros and her clinic. With her life possibly on the line, Baptiste had no choice but to collaborate.\n\nThe following morning, Baptiste met the two after going over the briefing, now wearing his old combat armor with the Talon insignia burnt off. They had a scheduled meeting, allowing them to walk inside until the private security surrounded them in the library, at which point hell broke loose. Once the trio stormed their way into Sinclair's office, the man had a bargain to offer for his life. Sinclair was an ex Overwatch operative and days ago, he received a message from Winston himself. While in Overwatch, he would feed information to Talon, and was more than willing to give Intel on several agents if it saved his life. Nguyen had no interest in his deal however, as many ex-Overwatch operatives already worked in Talon, they could get that information elsewhere. \n\n\nBaptiste was disgusted by Sinclair, but if he ended his life there was no way back, he would have turned into the man he was running from all those years. So instead, he threw a flash bang and helped the man escape, in return asking him to give his products for free, unless he wanted Talon to know where he was. All the whole, Mauga chased Baptiste, still wanting to take him back to Talon, especially now that he had compromised the mission. Baptiste feigned surrender, before detonating a device that destroyed the pier, using his immortality field to dampen the blow on himself, and allowing him to escape on a boat in the commotion. He may have escaped Talon this time, but now he knew Overwatch agents were in danger. He had to warm those he knew, starting with Dr. Ziegler. And in order to do so, he needed some contact, even if it meant reaching out to Sombra.",
+      "description": "Four years had passed since Baptiste left Talon during the raid at Monte Cristi. Thinking he might finally be off the hook, he began to visit his hometown more, helping Ros with the patients at her clinic since they were experiencing a shortage due to Sinclair Pharmaceuticals raising prices. Later at night he frequented a local bar enough that one day, he was intercepted by two Talon agents, Trung Le Nguyen and none other than Mauga himself. While they presented themselves as friendly, Baptiste knew better than to trust them. Turns out they needed his help for a job. Vernard Sinclair, head of the same pharmaceutical company giving the clinic trouble, owed money to Talon, and while this alone wouldn't be enough to turn Baptiste around, Mauga revealed that he knew about Ros and her clinic. With her life possibly on the line, Baptiste had no choice but to collaborate.\n\nThe following morning, Baptiste met the two after going over the briefing, now wearing his old combat armor with the Talon insignia burnt off. They had a scheduled meeting, allowing them to walk inside until the private security surrounded them in the library, at which point hell broke loose. Once the trio stormed their way into Sinclair's office, the man had a bargain to offer for his life. Sinclair was an ex Overwatch operative and days ago, he received a message from Winston himself. While in Overwatch, he would feed information to Talon, and was more than willing to give Intel on several agents if it saved his life. Nguyen had no interest in his deal however, as many ex-Overwatch operatives already worked in Talon, they could get that information elsewhere. \n\nBaptiste was disgusted by Sinclair, but if he ended his life there was no way back, he would have turned into the man he was running from all those years. So instead, he threw a flash bang and helped the man escape, in return asking him to give his products for free, unless he wanted Talon to know where he was. All the whole, Mauga chased Baptiste, still wanting to take him back to Talon, especially now that he had compromised the mission. Baptiste feigned surrender, before detonating a device that destroyed the pier, using his immortality field to dampen the blow on himself, and allowing him to escape on a boat in the commotion. He may have escaped Talon this time, but now he knew Overwatch agents were in danger. He had to warm those he knew, starting with Dr. Ziegler. And in order to do so, he needed some contact, even if it meant reaching out to Sombra.",
       "image": "",
       "lat": 20.0410035,
       "lon": -72.785587,
@@ -17152,8 +17330,18 @@
         }
       ],
       "commentary": [
-        "Live Forever",
-        "Finding Anyone"
+        {
+          "name": "Live Forever",
+          "theaterId": "f572b88e-085f-46a6-9d46-dc7b731a802c"
+        },
+        {
+          "name": "Finding Anyone",
+          "theaterId": "a7f8b911-4769-4c25-b753-46ba0e89bc67"
+        },
+        {
+          "name": "Sum for arrest",
+          "theaterId": "46c7e70d-0f5e-4d28-89ae-b36c837cc96b"
+        }
       ]
     },
     {
@@ -17509,6 +17697,10 @@
         {
           "name": "Weather Forecast",
           "theaterId": "1af17249-5fe5-4d85-8a99-d106792f61b1"
+        },
+        {
+          "name": "Count on Mei",
+          "theaterId": "b93d5ed4-a914-4b7c-8924-f31b0eec8194"
         }
       ]
     },
@@ -17699,6 +17891,16 @@
         {
           "text": "Hero of Numbani",
           "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Efi at the Arcology",
+          "theaterId": "6a82956f-db89-46be-a44c-07bda2c7583b"
+        },
+        {
+          "name": "Talon's Resources",
+          "theaterId": "3df199cb-36a4-410b-959a-225c1e2e0345"
         }
       ]
     },
@@ -18336,6 +18538,10 @@
         {
           "name": "A real pity",
           "theaterId": "b7de6b6b-822a-46bc-9e1a-714c96b8e8d3"
+        },
+        {
+          "name": "Visiting Max",
+          "theaterId": "0639f3cf-4713-4d4d-95a5-8c7dc6be3fd2"
         }
       ]
     },
@@ -18419,6 +18625,12 @@
       "headlines": [
         "Augusto Vialli found death at the Rialto Bridge.",
         "Talon brawl during the Venician Masquerade results in dozens of deaths"
+      ],
+      "commentary": [
+        {
+          "name": "Being in Charge",
+          "theaterId": "89d0437e-d530-449c-835c-26228ce5cf64"
+        }
       ]
     },
     {
@@ -18749,6 +18961,12 @@
           "country": "Sanjay,",
           "reasoning": "Suggests Satya be the one to handle the issue"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Magical Healing",
+          "theaterId": "6fb1a4c9-db00-43e6-b819-2808d4baa240"
+        }
       ]
     },
     {
@@ -18813,6 +19031,12 @@
         {
           "text": "Hero of Numbani",
           "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Domineering Beast",
+          "theaterId": "3f461069-d276-4d23-88b4-e6d2017530a7"
         }
       ]
     },
@@ -19124,6 +19348,20 @@
           "country": "Efi,",
           "reasoning": "Shuts down Orisa after multiple mistakes"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Lacking Strenght",
+          "theaterId": "659ca455-3cde-4eaa-b626-8df4eb4be4d7"
+        },
+        {
+          "name": "Efi is inspiring",
+          "theaterId": "5f6a1d5d-434c-4361-8a42-19565a362a50"
+        },
+        {
+          "name": "Compliments",
+          "theaterId": "b1a25020-1a9f-4f00-9722-848139797f8e"
+        }
       ]
     },
     {
@@ -19315,6 +19553,12 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc802641f64a99128/6658ed88566a79a760a0ee04/OW_Venture_EN_FINAL.pdf",
             "https://www.youtube.com/watch?v=yQO9n6DwoE0"
           ]
+        }
+      ],
+      "commentary": [
+        {
+          "name": "On purpose",
+          "theaterId": "ad52b742-eb36-49f0-9c55-4100f483a8ff"
         }
       ]
     },
@@ -19521,6 +19765,10 @@
         {
           "name": "The Javelin",
           "theaterId": "159deef6-3647-413b-94d1-40adb13046e1"
+        },
+        {
+          "name": "Enjoying Prison",
+          "theaterId": "fa7efeb5-0a89-4587-b629-d9b347e7ad79"
         }
       ]
     },
@@ -19728,6 +19976,12 @@
           "country": "Efi,",
           "reasoning": "Upgrades Orisa to be more combat ready"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Cartoon Superhero",
+          "theaterId": "56963687-38de-44ca-9205-4bbc2a76fcde"
+        }
       ]
     },
     {
@@ -19910,6 +20164,12 @@
       "yearEnd": null,
       "headlines": [
         "Junker Criminals spotted back in the Outback after year long Crime spree"
+      ],
+      "commentary": [
+        {
+          "name": "Dreaming",
+          "theaterId": "1fcb5bfd-2f4f-4815-9369-32ef67f9f002"
+        }
       ]
     },
     {
@@ -19972,6 +20232,20 @@
         {
           "text": "Control",
           "url": "https://www.youtube.com/watch?v=zMZAkF7ZFwc"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Violent Storm",
+          "theaterId": "14cd55db-8c9b-40c4-bbe6-afe061c323e3"
+        },
+        {
+          "name": "A Reason to Smile",
+          "theaterId": "c66216bc-f4f6-4184-b9c7-484278b734e3"
+        },
+        {
+          "name": "Meditating",
+          "theaterId": "5d940c0d-bf43-4fd5-a0d1-835a8a6b479a"
         }
       ]
     },
@@ -20062,6 +20336,12 @@
       "yearEnd": null,
       "headlines": [
         "Public Execution televised on the Junker side of the Outback"
+      ],
+      "commentary": [
+        {
+          "name": "Rip your Tongue",
+          "theaterId": "8c978e98-fc45-418d-aa1b-e8fe6d53631a"
+        }
       ]
     },
     {
@@ -20122,6 +20402,10 @@
         {
           "name": "Vigilante Route",
           "theaterId": "c56a7a43-ad78-4861-8de2-b1639d40d34f"
+        },
+        {
+          "name": "How's Murphy",
+          "theaterId": "3889896e-8421-4939-baad-ba0edf281b7f"
         }
       ]
     },
@@ -20244,6 +20528,14 @@
         {
           "name": "So Tall",
           "theaterId": "f56dd5c5-36ae-4f01-84fd-68452cdea7a4"
+        },
+        {
+          "name": "Not Hanging up",
+          "theaterId": "0126939d-3d21-46d1-a1e6-c01028a1472f"
+        },
+        {
+          "name": "Back Together",
+          "theaterId": "1bf684d7-4eb6-43c6-ac3d-f32c89a57a62"
         }
       ]
     },
@@ -20696,6 +20988,10 @@
         {
           "name": "Music Festival",
           "theaterId": "6f6553e2-6b16-4d18-b554-01a2c75a37d0"
+        },
+        {
+          "name": "Bonuses",
+          "theaterId": "31b0e0e9-944c-4211-a60e-7339577965de"
         }
       ]
     },
@@ -20845,6 +21141,20 @@
           "text": "Unity",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltea0ccf340e7f7cef/665e02a177dc635847f2bc03/OW_Heroes_Orisa_EN_FINAL_REV.pdf"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Getting Strong",
+          "theaterId": "f839831f-becd-477c-944c-9190803a68da"
+        },
+        {
+          "name": "Did you fail",
+          "theaterId": "a8f5bc34-6e8d-7c2d-1b34-5c9e0f6a7b8c"
+        },
+        {
+          "name": "Without Efi",
+          "theaterId": "b9a6cd45-7f9e-8d3e-2c45-6d0a1b7c8d9e"
+        }
       ]
     },
     {
@@ -20909,6 +21219,14 @@
         {
           "name": "The Martinses",
           "theaterId": "22f8cd3c-a79f-49cf-b2d9-5c83ad908a9f"
+        },
+        {
+          "name": "Trying Harder",
+          "theaterId": "e0d87b1c-1815-40fb-a02f-9226df44f840"
+        },
+        {
+          "name": "Returning to Vishkar",
+          "theaterId": "e9dfe0c8-1c98-4728-a2b0-138c0c88b82c"
         }
       ]
     },
@@ -21187,6 +21505,16 @@
           "text": "A Great Day",
           "url": "https://www.youtube.com/watch?v=py_kGferDww"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Smile",
+          "theaterId": "3c5beb7f-c70d-4c47-a859-66c5aa41b38e"
+        },
+        {
+          "name": "Not the Pizza",
+          "theaterId": "e037fd9c-1656-45f8-9ae7-dc5430d73647"
+        }
       ]
     },
     {
@@ -21302,8 +21630,16 @@
       ],
       "commentary": [
         {
+          "name": "Small World",
+          "theaterId": "b24e77df-81d4-487d-b880-45ba9fc2b30a"
+        },
+        {
           "name": "Like my Brother",
           "theaterId": "7ab8a420-1538-443e-ab33-08fbe85b8e7a"
+        },
+        {
+          "name": "Water Cycle",
+          "theaterId": "6493a612-5a2c-4c3d-b7ce-a27d03e671e1"
         }
       ]
     },
@@ -21378,6 +21714,14 @@
         {
           "name": "Lack of Oxygen",
           "theaterId": "65ab6038-849a-46c0-b2e5-ed98bdaed641"
+        },
+        {
+          "name": "Acclimating",
+          "theaterId": "79d7389a-5f0d-4590-9b84-ce2310a2045f"
+        },
+        {
+          "name": "Parachutes",
+          "theaterId": "8524496b-a6fc-49eb-8519-be6c1f039b30"
         }
       ]
     },
@@ -21753,6 +22097,14 @@
         {
           "name": "Extra Hours",
           "theaterId": "a50bfeed-1674-44b8-85eb-57d53ab74df3"
+        },
+        {
+          "name": "Just as Cute",
+          "theaterId": "49fa7925-ff89-473a-a3be-0f044f7034cc"
+        },
+        {
+          "name": "At Gibraltar",
+          "theaterId": "8bdfb4c4-a253-4a10-96f6-c4b74ab163e5"
         }
       ]
     },
@@ -21811,6 +22163,28 @@
       "headlines": [
         "Shambali Order leader Tekhartha Zenyatta to visit Omnic refugees in the Atlantic Arcology",
         "Vishkar Architect helps rebuild parts of the Atlantic Arcology after Null Sector Attack"
+      ],
+      "commentary": [
+        {
+          "name": "Hosting Satya",
+          "theaterId": "ea2b18f6-4539-4b13-9955-241b32254cb6"
+        },
+        {
+          "name": "Next for you",
+          "theaterId": "b688a06e-9614-4fc4-ba82-e559972fb08c"
+        },
+        {
+          "name": "Volunteers",
+          "theaterId": "d83d4c8c-9eef-42a7-b42f-426f41a7f8cc"
+        },
+        {
+          "name": "Gotta have some Dirt",
+          "theaterId": "a39b3bc2-ad9b-41cb-8bfe-3419c167cce8"
+        },
+        {
+          "name": "Science on my side",
+          "theaterId": "9af21ce0-f8e1-443a-bdc0-b6f799ead626"
+        }
       ]
     },
     {
@@ -22068,6 +22442,10 @@
         {
           "name": "Drop the mask",
           "theaterId": "430b2c93-0136-4cf0-8e7a-36d831f8bfe5"
+        },
+        {
+          "name": "Exploitative Boss",
+          "theaterId": "18ee5513-26b4-4f43-b176-6161ca23ae15"
         }
       ]
     },
@@ -22216,8 +22594,8 @@
       ],
       "commentary": [
         {
-          "name": "There is a girl",
-          "theaterId": "fcebefae-07de-4a65-9905-cb6ddad65b8b"
+          "name": "Making your Day Worse",
+          "theaterId": "d9aa25df-a2a8-4f36-8ce2-5e6486813081"
         },
         {
           "name": "Baggage",
@@ -22234,6 +22612,10 @@
         {
           "name": "Holding Up",
           "theaterId": "c5623d75-b616-4017-8b7c-17f5ef1e7f3d"
+        },
+        {
+          "name": "There is a girl",
+          "theaterId": "fcebefae-07de-4a65-9905-cb6ddad65b8b"
         }
       ]
     },
@@ -22711,8 +23093,24 @@
       "headlines": [],
       "commentary": [
         {
+          "name": "Dr. Shing",
+          "theaterId": "8a079e15-c6b4-4b80-9ffd-e83333dcb693"
+        },
+        {
           "name": "Abandoning Projects",
           "theaterId": "ae4e6f68-2b4a-463f-b035-ecda928e538a"
+        },
+        {
+          "name": "Cat Language",
+          "theaterId": "36fb2c40-133e-428f-a882-ee4741cdbfc5"
+        },
+        {
+          "name": "Fun Mother",
+          "theaterId": "fe1dbdf3-a3f9-4605-b783-addfeb2f7327"
+        },
+        {
+          "name": "Lucheng's Files",
+          "theaterId": "e1cb0618-345b-4761-b028-c41f25cde388"
         }
       ]
     },
@@ -22937,6 +23335,10 @@
         {
           "name": "Stayed Retired",
           "theaterId": "5311a9f1-2737-4727-8a9f-e4e82d16acd9"
+        },
+        {
+          "name": "Just a phase",
+          "theaterId": "3b724bfc-a082-4bbb-82b6-9d749d986b21"
         }
       ]
     },
@@ -23007,6 +23409,14 @@
         {
           "name": "No Tyrant",
           "theaterId": "b53cd51d-9b27-4eb4-ab2b-ba7929cf77b5"
+        },
+        {
+          "name": "Boss Changes",
+          "theaterId": "88d90625-4f28-4192-8528-4e47c8e51e64"
+        },
+        {
+          "name": "Pulling the Trigger",
+          "theaterId": "e76d5550-0f65-4643-af31-93b494157200"
         }
       ]
     },
@@ -23119,6 +23529,10 @@
         {
           "name": "No Friends",
           "theaterId": "793c7852-c024-4a4d-93bd-6a7d69c49de8"
+        },
+        {
+          "name": "Not your Buddy",
+          "theaterId": "0abea25c-d787-4824-b2f2-fa801e63fcb5"
         }
       ]
     },
@@ -23377,6 +23791,10 @@
         {
           "name": "Killjoy",
           "theaterId": "beb118ad-4576-4b60-94e9-36f3d3079b71"
+        },
+        {
+          "name": "Stuck around",
+          "theaterId": "5f465e10-6a84-41a7-a878-2dc1a9957d07"
         }
       ]
     },
@@ -23623,6 +24041,14 @@
         {
           "name": "No Italian",
           "theaterId": "a3980af2-e387-4eda-b5db-0798785ee4ca"
+        },
+        {
+          "name": "We have each other",
+          "theaterId": "b3810422-43ac-4266-9662-d087dc2c92fd"
+        },
+        {
+          "name": "Overwatch Survived",
+          "theaterId": "ef3b25a3-b451-4845-9d06-a96c20002719"
         }
       ]
     },
@@ -23815,6 +24241,14 @@
         {
           "name": "More Cats",
           "theaterId": "521e9c58-3b80-4703-8186-2a5c0789e61f"
+        },
+        {
+          "name": "Teaching to beg",
+          "theaterId": "691e7d8c-de61-41ca-b688-fe3881e3450f"
+        },
+        {
+          "name": "Training Tips",
+          "theaterId": "815e2d1e-3334-4ac6-a1b4-0e4974564cf4"
         }
       ]
     },
@@ -24276,6 +24710,24 @@
           "country": "Meri,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Fresh Meat",
+          "theaterId": "21abef55-bd75-4bf5-8d33-0ed3610e62ca"
+        },
+        {
+          "name": "Call it even",
+          "theaterId": "0ebd5fa2-fa4e-4ca5-99c4-03eed4cce94c"
+        },
+        {
+          "name": "Wildfire",
+          "theaterId": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c"
+        },
+        {
+          "name": "Ruthless",
+          "theaterId": "313ce0d1-36ae-4b18-8f2f-a5fbd694ab7f"
+        }
       ]
     },
     {
@@ -24404,6 +24856,14 @@
         {
           "name": "Feeling Remorse",
           "theaterId": "3b781d57-8854-49a1-a2f7-c1608d3828be"
+        },
+        {
+          "name": "Withering Away",
+          "theaterId": "7fb98307-e122-4fc2-a30d-b802d5d43579"
+        },
+        {
+          "name": "Funding",
+          "theaterId": "7b263323-6614-425f-9268-8d8ecdf48f64"
         }
       ]
     },
@@ -24463,6 +24923,18 @@
         {
           "name": "Adopting a Dog",
           "theaterId": "c52f4a48-494a-4ad7-bbae-4e3ce564c51c"
+        },
+        {
+          "name": "Coming Prepared",
+          "theaterId": "c082fdd6-ca01-46ff-855c-965f778b2390"
+        },
+        {
+          "name": "Temperature",
+          "theaterId": "6c6d401b-5bdc-4a04-827b-f62f0cd72987"
+        },
+        {
+          "name": "Fight Smarter",
+          "theaterId": "22d3c2ed-52a3-4f57-83b7-b727bb679de3"
         }
       ]
     },
@@ -24540,6 +25012,14 @@
         {
           "name": "Failed Negotiation",
           "theaterId": "5dcb441e-dd7a-4ca8-ad79-e460856c759b"
+        },
+        {
+          "name": "Visiting the Martinses",
+          "theaterId": "4f138171-9f57-443a-b5f8-a185a80a5477"
+        },
+        {
+          "name": "Not a Diary",
+          "theaterId": "c12d4342-9d5a-463b-a9c9-aa446bcceabc"
         }
       ]
     },
@@ -24614,6 +25094,10 @@
         {
           "name": "Like the Glory Days",
           "theaterId": "c674759f-d87e-48d8-b10c-c2f242d2fd22"
+        },
+        {
+          "name": "Sharpen those claws",
+          "theaterId": "5cfcd52c-5d14-4b47-aace-d6d3208c91a4"
         }
       ]
     },
@@ -24928,6 +25412,10 @@
         {
           "name": "Mission Brief",
           "theaterId": "df77f106-248e-419f-91ed-13c2f01e0708"
+        },
+        {
+          "name": "Sneaking Treats",
+          "theaterId": "81b3ec2e-9ec7-46dd-bced-a354dff112f1"
         }
       ]
     },
@@ -25143,6 +25631,12 @@
           "country": "Efi,",
           "reasoning": "",
           "badgePriority": true
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Naming Turrets",
+          "theaterId": "d81eaf4b-deb2-409d-9a10-0bdb5b6123a2"
         }
       ]
     },
@@ -25419,7 +25913,13 @@
           "reasoning": ""
         }
       ],
-      "yearStart": 2080
+      "yearStart": 2080,
+      "commentary": [
+        {
+          "name": "Human Limits",
+          "theaterId": "b6e85a31-a3c9-413c-9c53-c5c4ac61a42d"
+        }
+      ]
     },
     {
       "name": "Crucible",
@@ -25690,6 +26190,12 @@
           "locationName": "",
           "country": "Overwatch, Ironclad Guild,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Swimming Lessons",
+          "theaterId": "31bcb7a2-7799-46e5-b588-0182ae82ef66"
         }
       ]
     },
@@ -25991,6 +26497,18 @@
         {
           "name": "Seen you Before",
           "theaterId": "17ac0198-dcc4-4b58-93d8-954a3de57620"
+        },
+        {
+          "name": "Playing on the Desk",
+          "theaterId": "12e1e91c-e86c-49b9-8258-90ffd817cbba"
+        },
+        {
+          "name": "Human arrogance",
+          "theaterId": "93e776d4-ddaf-48cd-9ea5-0c10d767c519"
+        },
+        {
+          "name": "Old Friend",
+          "theaterId": "2a04620b-ef77-4fcd-84a7-5db5a959eec7"
         }
       ]
     },
@@ -26138,6 +26656,10 @@
         {
           "name": "Hope from our people",
           "theaterId": "6105a672-670a-4f22-a700-b3ffed3a8404"
+        },
+        {
+          "name": "Contemptible farce",
+          "theaterId": "6371a584-2754-4b52-983e-37fc23155f97"
         }
       ]
     },

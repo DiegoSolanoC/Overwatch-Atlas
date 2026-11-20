@@ -1,6 +1,10 @@
 /**
- * UI Tweaks — stackable design panel (center badge + header sides).
- * Live preview while dragging; Save writes localStorage.
+ * UI Tweaks — collaborator design panel (badge / sides / panels / dock).
+ *
+ * Same model as Codex / Story JSON:
+ * - Site look = committed `src/data/platform/atlas-ui-tweaks.json`
+ * - Export / Import = hand off proposals between collaborators
+ * - Save = local draft only (cleared when the standard `version` bumps)
  */
 
 import {
@@ -9,7 +13,6 @@ import {
     cloneSidesDefaults,
     loadSidesState,
     sanitizeSidesState,
-    saveSidesState,
 } from './HeaderSidesChrome.js';
 import {
     SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
@@ -17,10 +20,16 @@ import {
     cloneSidePanelsTrapDefaults,
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
-    saveSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=27';
+} from './SidePanelsTrapChrome.js?v=29';
+import {
+    clearLegacyUiTweaksStorage,
+    clearUiTweaksDraft,
+    getCachedUiTweaksStandard,
+    loadUiTweaksStandard,
+    readUiTweaksDraft,
+    writeUiTweaksDraft,
+} from './UiTweaksStandard.js';
 
-const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
 const PANEL_ID = 'uiTweaksPanel';
 const TOGGLE_ID = 'uiTweaksToggle';
 const LEGACY_PANEL_ID = 'headerTitleBadgeTweakerPanel';
@@ -28,6 +37,9 @@ const LEGACY_TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
 
 /** @type {'sides' | 'badge' | 'panels'} */
 let activeUiTweaksSection = 'sides';
+
+/** Current committed standard version (from JSON); drafts must match. */
+let uiTweaksStandardVersion = 1;
 
 const UI_TWEAK_TABS = Object.freeze([
     { id: 'sides', label: 'Header sides' },
@@ -38,15 +50,16 @@ const UI_TWEAK_TABS = Object.freeze([
 
 /** @typedef {object} BadgeTweakState */
 
+/** Baked from atlas-ui-tweaks.json standard, Nov 2026. */
 export const HEADER_BADGE_TWEAK_DEFAULTS = Object.freeze({
-    widthPx: 340,
-    heightExtraPx: 34,
-    logoPercent: 82,
-    logoMaxPx: 86,
+    widthPx: 406,
+    heightExtraPx: 79,
+    logoPercent: 83,
+    logoMaxPx: 115,
 
     /** Uniform rim thickness in CSS px (same on sides + horizontal edge). */
     topStrokeWidth: 3.5,
-    bottomStrokeWidth: 4.5,
+    bottomStrokeWidth: 10.5,
     /** Gap length as % of each flank. */
     borderGap: 18,
     /** Gap center along flank: 0 = near top, 100 = near bottom. */
@@ -54,22 +67,22 @@ export const HEADER_BADGE_TWEAK_DEFAULTS = Object.freeze({
     /** 0 = softer inside curve, 100 = sharper wedge tip. */
     tipPointiness: 78,
     /** Shared by fill + rim outer edge so border corners round with the shape. */
-    cornerRadius: 3.5,
+    cornerRadius: 1.5,
 
     /** Hue shift from palette accent (−40…+40). + pushes blue toward cyan. */
-    borderHueShift: 16,
+    borderHueShift: -23,
     borderSaturation: 100,
     borderLightness: 56,
     borderGlow: 42,
     borderOpacity: 100,
 
-    fillDarkness: 58,
-    fillBrightness: 8,
+    fillDarkness: 55,
+    fillBrightness: 15,
 
-    topY: 8,
+    topY: 4,
     bottomY: 96,
-    topLength: 78,
-    bottomLength: 58,
+    topLength: 74.5,
+    bottomLength: 54,
     notchDrop: 12,
     notchOut: 2,
 });
@@ -78,61 +91,15 @@ function cloneDefaults() {
     return { ...HEADER_BADGE_TWEAK_DEFAULTS };
 }
 
+/** Sync fallback only — live look comes from the committed JSON standard (+ optional draft). */
 function loadState() {
-    try {
-        const raw =
-            localStorage.getItem(STORAGE_KEY)
-            || localStorage.getItem('atlas.headerTitleBadge.tweak.v6')
-            || localStorage.getItem('atlas.headerTitleBadge.tweak.v5')
-            || localStorage.getItem('atlas.headerTitleBadge.tweak.v4')
-            || localStorage.getItem('atlas.headerTitleBadge.tweak.v3')
-            || localStorage.getItem('atlas.headerTitleBadge.tweak.v2')
-            || localStorage.getItem('atlas.headerTitleBadge.tweak.v1');
-        if (!raw) return cloneDefaults();
-        const parsed = JSON.parse(raw);
-        const next = cloneDefaults();
-        for (const key of Object.keys(HEADER_BADGE_TWEAK_DEFAULTS)) {
-            if (parsed[key] != null && Number.isFinite(Number(parsed[key]))) {
-                next[key] = Number(parsed[key]);
-            }
-        }
-        // Prefer prior side widths when migrating from split edge/side controls.
-        if (parsed.topStrokeWidth == null && Number.isFinite(Number(parsed.topSideWidth))) {
-            next.topStrokeWidth = Number(parsed.topSideWidth);
-        }
-        if (parsed.bottomStrokeWidth == null && Number.isFinite(Number(parsed.bottomSideWidth))) {
-            next.bottomStrokeWidth = Number(parsed.bottomSideWidth);
-        }
-        if (parsed.topStrokeWidth == null && Number.isFinite(Number(parsed.strokeWidth))) {
-            next.topStrokeWidth = Number(parsed.strokeWidth);
-            next.bottomStrokeWidth = Number(parsed.strokeWidth) * 1.2;
-        }
-        if (parsed.notchOut == null) {
-            const l = Number(parsed.leftNotchOut);
-            const r = Number(parsed.rightNotchOut);
-            if (Number.isFinite(l) || Number.isFinite(r)) {
-                const a = Number.isFinite(l) ? l : 0;
-                const b = Number.isFinite(r) ? r : a;
-                next.notchOut = (a + b) / 2;
-            }
-        }
-        return sanitizeState(next);
-    } catch {
-        return cloneDefaults();
-    }
-}
-
-function saveState(state) {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitizeState(state)));
-    } catch {
-        /* ignore */
-    }
+    return sanitizeState(cloneDefaults());
 }
 
 function buildTweaksPayload(badge, sides, panels) {
     return {
-        version: 1,
+        kind: 'atlas-ui-tweaks',
+        version: uiTweaksStandardVersion,
         exportedAt: new Date().toISOString(),
         badge: sanitizeState(badge),
         sides: sanitizeSidesState(sides),
@@ -748,10 +715,10 @@ function mountControls(panel, bags, hooks) {
     hint.className = 'header-badge-tweaker__hint';
     hint.textContent =
         activeUiTweaksSection === 'panels'
-            ? 'Side panels · Shared size · Inward line · Per-trap slide · Save to keep'
+            ? 'Side panels · Shared size · Inward line · Per-trap slide · Export JSON to propose standard'
             : activeUiTweaksSection === 'dock'
-                ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Save to keep'
-                : 'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
+                ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Export JSON to propose standard'
+                : 'Collab chrome · Live preview · Save = local draft · Export JSON → incorporate into atlas-ui-tweaks.json';
     panel.appendChild(hint);
 
     document.body.classList.toggle('ui-tweaks-side-panels', activeUiTweaksSection === 'panels');
@@ -1212,7 +1179,7 @@ function mountControls(panel, bags, hooks) {
     panel.appendChild(grid);
 
     const refreshStatus = () => {
-        status.textContent = hooks.isDirty() ? 'Unsaved changes' : 'Saved';
+        status.textContent = hooks.isDirty() ? 'Unsaved draft changes' : 'Matches draft / standard';
         status.classList.toggle('is-dirty', hooks.isDirty());
     };
 
@@ -1395,31 +1362,37 @@ function mountControls(panel, bags, hooks) {
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
     saveBtn.className = 'header-badge-tweaker__save';
-    saveBtn.textContent = 'Save';
+    saveBtn.textContent = 'Save draft';
+    saveBtn.title = 'Keep a local editing draft. Does not change the site standard — Export JSON for that.';
     saveBtn.addEventListener('click', () => {
         hooks.onSave();
-        saveBtn.textContent = 'Saved';
+        saveBtn.textContent = 'Draft saved';
         refreshStatus();
         setTimeout(() => {
-            saveBtn.textContent = 'Save';
+            saveBtn.textContent = 'Save draft';
         }, 1000);
     });
 
     const resetBtn = document.createElement('button');
     resetBtn.type = 'button';
     resetBtn.textContent = 'Reset all';
+    resetBtn.title = 'Clear local draft and restore the committed site standard';
     resetBtn.addEventListener('click', () => {
-        Object.assign(badge, cloneDefaults());
-        Object.assign(sides, cloneSidesDefaults());
-        Object.assign(panels, cloneSidePanelsTrapDefaults());
-        hooks.onPreview();
+        if (typeof hooks.onReset === 'function') {
+            hooks.onReset();
+        } else {
+            Object.assign(badge, cloneDefaults());
+            Object.assign(sides, cloneSidesDefaults());
+            Object.assign(panels, cloneSidePanelsTrapDefaults());
+            hooks.onPreview();
+        }
         mountControls(panel, bags, hooks);
     });
 
     const exportBtn = document.createElement('button');
     exportBtn.type = 'button';
     exportBtn.textContent = 'Export';
-    exportBtn.title = 'Download UI Tweaks as JSON';
+    exportBtn.title = 'Download JSON for collaborators — replace src/data/platform/atlas-ui-tweaks.json to ship';
     exportBtn.addEventListener('click', () => {
         try {
             downloadTweaksJson(buildTweaksPayload(badge, sides, panels));
@@ -1438,7 +1411,7 @@ function mountControls(panel, bags, hooks) {
     const importBtn = document.createElement('button');
     importBtn.type = 'button';
     importBtn.textContent = 'Import';
-    importBtn.title = 'Load UI Tweaks from a JSON file';
+    importBtn.title = 'Load a collaborator JSON to preview (Save draft to keep while editing)';
 
     const importInput = document.createElement('input');
     importInput.type = 'file';
@@ -1523,6 +1496,13 @@ export function setupHeaderTitleBadgeTweaker() {
         let dirty = false;
         const bags = { badge, sides, panels };
 
+        const markClean = () => {
+            savedBadge = sanitizeState({ ...badge });
+            savedSides = sanitizeSidesState({ ...sides });
+            savedPanels = sanitizeSidePanelsTrapState({ ...panels });
+            dirty = false;
+        };
+
         const preview = () => {
             try {
                 applyHeaderTitleBadgeTweaks(badge);
@@ -1536,27 +1516,71 @@ export function setupHeaderTitleBadgeTweaker() {
                 console.error('[UI Tweaks] preview failed:', err);
             }
         };
+
+        const applyStandardBags = (payload) => {
+            if (!payload) return;
+            applyTweaksPayload(payload, badge, sides, panels);
+        };
+
         const persist = () => {
             try {
                 Object.assign(badge, sanitizeState(badge));
                 Object.assign(sides, sanitizeSidesState(sides));
                 Object.assign(panels, sanitizeSidePanelsTrapState(panels));
-                saveState(badge);
-                saveSidesState(sides);
-                saveSidePanelsTrapState(panels);
-                savedBadge = sanitizeState({ ...badge });
-                savedSides = sanitizeSidesState({ ...sides });
-                savedPanels = sanitizeSidePanelsTrapState({ ...panels });
-                dirty = false;
-                applyHeaderTitleBadgeTweaks(badge);
-                applyHeaderSidesChrome(sides);
-                applySidePanelsTrapChrome(panels);
+                writeUiTweaksDraft(buildTweaksPayload(badge, sides, panels));
+                markClean();
+                preview();
             } catch (err) {
-                console.error('[UI Tweaks] save failed:', err);
+                console.error('[UI Tweaks] save draft failed:', err);
             }
         };
 
+        const resetToStandard = () => {
+            try {
+                clearUiTweaksDraft();
+                Object.assign(badge, cloneDefaults());
+                Object.assign(sides, cloneSidesDefaults());
+                Object.assign(panels, cloneSidePanelsTrapDefaults());
+                const std = getCachedUiTweaksStandard();
+                if (std) applyStandardBags(std);
+                markClean();
+                preview();
+            } catch (err) {
+                console.error('[UI Tweaks] reset failed:', err);
+            }
+        };
+
+        const hooks = {
+            onPreview: preview,
+            onSave: persist,
+            onReset: resetToStandard,
+            isDirty: () => dirty,
+        };
+
         preview();
+
+        loadUiTweaksStandard()
+            .then((std) => {
+                clearLegacyUiTweaksStorage();
+                uiTweaksStandardVersion = Number(std.version) || 1;
+                applyStandardBags(std);
+                const draft = readUiTweaksDraft(uiTweaksStandardVersion);
+                if (draft) applyStandardBags(draft);
+                markClean();
+                preview();
+                const openPanel = document.getElementById(PANEL_ID);
+                if (openPanel && !openPanel.hidden) {
+                    mountControls(openPanel, bags, hooks);
+                }
+            })
+            .catch((err) => {
+                console.warn('[UI Tweaks] standard JSON unavailable; using baked defaults', err);
+                clearLegacyUiTweaksStorage();
+                const draft = readUiTweaksDraft(uiTweaksStandardVersion);
+                if (draft) applyStandardBags(draft);
+                markClean();
+                preview();
+            });
 
         const existingToggle = document.getElementById(TOGGLE_ID);
         if (existingToggle?.classList.contains('header-hub-btn--ui-tweaks')) return;
@@ -1570,7 +1594,7 @@ export function setupHeaderTitleBadgeTweaker() {
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-controls', PANEL_ID);
         toggle.setAttribute('aria-label', 'UI Tweaks');
-        toggle.title = 'UI Tweaks';
+        toggle.title = 'UI Tweaks — collaborator chrome (Export JSON to ship a new standard)';
 
         const iconWrap = document.createElement('span');
         iconWrap.id = 'uiTweaksIcon';
@@ -1589,12 +1613,6 @@ export function setupHeaderTitleBadgeTweaker() {
         panel.hidden = true;
         panel.setAttribute('role', 'dialog');
         panel.setAttribute('aria-label', 'UI Tweaks');
-
-        const hooks = {
-            onPreview: preview,
-            onSave: persist,
-            isDirty: () => dirty,
-        };
 
         mountControls(panel, bags, hooks);
 

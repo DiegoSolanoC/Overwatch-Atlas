@@ -1,30 +1,32 @@
 /**
  * Header side bars (left/right of center badge): dark sideways gradient +
  * solid grey outer caps + L-rim (inward slant + fading bottom), badge-style.
+ *
+ * Site look ships from `src/data/platform/atlas-ui-tweaks.json` (see UiTweaksStandard).
+ * These DEFAULTS are the sync fallback / bake of that standard.
  */
 
-const STORAGE_KEY = 'atlas.headerSides.tweak.v1';
-
+/** Baked from atlas-ui-tweaks.json standard, Nov 2026. */
 export const HEADER_SIDES_TWEAK_DEFAULTS = Object.freeze({
     /**
      * Distance from hub inner edge to badge *box*. The visible badge shape is
      * inset inside that box, so 0 still looks gappy — use negative to tuck
      * under the badge (badge paints above the hubs).
      */
-    sideGapPx: -28,
+    sideGapPx: -65,
     /**
      * Bottom of side stripes + black header paint, in badge viewBox Y (0–100).
      * Independent of badge Bottom Y — lower = shorter strip / paint vs badge.
      */
     sideStripBottomY: 96,
-    sideInnerDarkness: 72,
-    sideOuterDarkness: 92,
-    sideSaturation: 42,
-    sideGreyLevel: 18,
-    sideGreyWidthPct: 16,
+    sideInnerDarkness: 40,
+    sideOuterDarkness: 98,
+    sideSaturation: 56,
+    sideGreyLevel: 28,
+    sideGreyWidthPct: 19,
 
     /** Inward (toward badge) rim thickness in CSS px — 2× stroke, clipped. */
-    sideRimInwardWidth: 3.5,
+    sideRimInwardWidth: 5.75,
     /** Bottom rim thickness in CSS px — fades away from center. */
     sideRimBottomWidth: 4.5,
     /**
@@ -33,9 +35,9 @@ export const HEADER_SIDES_TWEAK_DEFAULTS = Object.freeze({
      * bottom-inner join — so the shape rounds without the border curling onto
      * the top edge.
      */
-    sideRimCornerRadius: 6,
+    sideRimCornerRadius: 14,
     /** How far along the bottom the fade reaches (0 = quick, 100 = full width). */
-    sideRimFadeReach: 85,
+    sideRimFadeReach: 86,
 
     sideRimHueShift: 16,
     sideRimSaturation: 100,
@@ -84,29 +86,14 @@ export function sanitizeSidesState(s) {
     return next;
 }
 
+/** Sync fallback only — live look comes from the committed JSON standard (+ optional draft). */
 export function loadSidesState() {
-    try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return cloneDefaults();
-        const parsed = JSON.parse(raw);
-        const next = cloneDefaults();
-        for (const key of Object.keys(HEADER_SIDES_TWEAK_DEFAULTS)) {
-            if (parsed[key] != null && Number.isFinite(Number(parsed[key]))) {
-                next[key] = Number(parsed[key]);
-            }
-        }
-        return sanitizeSidesState(next);
-    } catch {
-        return cloneDefaults();
-    }
+    return sanitizeSidesState(cloneDefaults());
 }
 
-export function saveSidesState(state) {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitizeSidesState(state)));
-    } catch {
-        /* ignore */
-    }
+/** @deprecated Draft persistence is unified in UiTweaksStandard / HeaderTitleBadgeTweaker. */
+export function saveSidesState(_state) {
+    /* no-op: per-slice localStorage removed (not a per-visitor preference) */
 }
 
 function readPaletteAccentRgb() {

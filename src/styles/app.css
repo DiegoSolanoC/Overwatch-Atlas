@@ -9,7 +9,7 @@
 @import url('foundation/animations.css?v=10');
 
 /* App shell */
-@import url('shell/layout.css?v=46');
+@import url('shell/layout.css?v=47');
 @import url('features/world/globe-map-launch-hub.css?v=4');
 
 /* World + Codex */

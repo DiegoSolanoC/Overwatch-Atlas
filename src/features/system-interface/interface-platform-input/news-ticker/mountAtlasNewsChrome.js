@@ -13,9 +13,9 @@
 
 const BADGE_SELECTOR = '.footer-atlas-news';
 
-const DEFAULT_WIDTH = '90px';
-const DEFAULT_HEIGHT = '56px';
-const DEFAULT_ICON_PCT = '86%';
+const DEFAULT_WIDTH = '146px';
+const DEFAULT_HEIGHT = '88px';
+const DEFAULT_ICON_PCT = '100%';
 
 function readAtlasNewsMetrics() {
     const root = document.documentElement;

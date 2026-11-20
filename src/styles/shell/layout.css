@@ -1499,8 +1499,8 @@ footer.timeline-loaded .footer-atlas-news,
     position: fixed !important;
     background: #C93439 !important;
     /* UI Tweaks → Dock → Atlas News red trapezium (defaults clear footer thumbs). */
-    width: var(--atlas-news-width, 90px) !important;
-    height: var(--atlas-news-height, 56px) !important;
+    width: var(--atlas-news-width, 146px) !important;
+    height: var(--atlas-news-height, 88px) !important;
     left: 0 !important;
     right: auto !important;
     bottom: 0 !important;
@@ -1526,8 +1526,8 @@ footer.timeline-loaded .footer-atlas-news,
 
 footer.timeline-loaded .footer-atlas-news img,
 .footer-atlas-news.footer-atlas-news--floating img {
-    width: var(--atlas-news-icon-pct, 86%) !important;
-    height: var(--atlas-news-icon-pct, 86%) !important;
+    width: var(--atlas-news-icon-pct, 100%) !important;
+    height: var(--atlas-news-icon-pct, 100%) !important;
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
