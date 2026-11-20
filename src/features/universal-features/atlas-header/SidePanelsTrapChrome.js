@@ -83,8 +83,9 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     sideInwardCenterGapPx: 200,
     sideInwardCornerRadiusPx: 8,
     /**
-     * Extra cut-gap % on side-panel traps while hovered only (not on open; dock
-     * has no bonus). Idle stays at 1×; 40 → gap × 1.4 under the pointer.
+     * Extra cut-gap % while hovering a *closed* side trap (peek). Closed /
+     * unfocused traps stay drawbridged; hover undoes the bridge up to this
+     * bonus; fully open settles to parallel at 1× (no bonus). Dock: always 1×.
      */
     inwardCutFocusBonusPct: 38,
 
@@ -735,11 +736,14 @@ let chromeTweening = false;
 let chromeLayoutRo = null;
 
 /*
- * Side inward cuts: idle = 1× (authored gap). Hover widens by
- * inwardCutFocusBonusPct. Dock cuts stay 1× always (no bonus).
- * Open: “drawbridge” — flatten trap slopes on the inward lip, then close the
- * cut gap; close reverses (gap first, then re-slope). Scales tween — SVG `d`
- * cannot CSS-transition.
+ * Side inward lips (inverted drawbridge):
+ * - Closed / unfocused: bridged (flatten + closed cut)
+ * - Hover (closed): undo bridge → parallel cut widened by inwardCutFocusBonusPct
+ * - Fully open: parallel cut at 1× (no bonus)
+ * Dock cuts stay 1× always. Scales tween — SVG `d` cannot CSS-transition.
+ *
+ * Phase names are historical: “opening-*” = animate toward bridge,
+ * “closing-*” = animate toward parallel.
  */
 const INWARD_CUT_IDLE_SCALE = 1;
 /** Exponential time-constant for hover cut eases. */
@@ -763,7 +767,7 @@ let cutEmphasisHoverBound = false;
 
 /**
  * @typedef {{
- *   wantOpen: boolean,
+ *   wantParallel: boolean,
  *   flatten: number,
  *   gapOpen: number,
  *   phase: 'idle'|'opening-flatten'|'opening-closeGap'|'closing-openGap'|'closing-unflatten',
@@ -773,34 +777,35 @@ let cutEmphasisHoverBound = false;
  * }} DrawbridgeState
  */
 
+/** Closed traps start bridged; open / hover drive toward parallel. */
 /** @type {Record<InwardCutKey, DrawbridgeState>} */
 const drawbridge = {
     info: {
-        wantOpen: false,
-        flatten: 0,
-        gapOpen: 1,
+        wantParallel: false,
+        flatten: 1,
+        gapOpen: 0,
         phase: 'idle',
         phaseStartedAt: 0,
-        fromFlatten: 0,
-        fromGapOpen: 1,
+        fromFlatten: 1,
+        fromGapOpen: 0,
     },
     filters: {
-        wantOpen: false,
-        flatten: 0,
-        gapOpen: 1,
+        wantParallel: false,
+        flatten: 1,
+        gapOpen: 0,
         phase: 'idle',
         phaseStartedAt: 0,
-        fromFlatten: 0,
-        fromGapOpen: 1,
+        fromFlatten: 1,
+        fromGapOpen: 0,
     },
     music: {
-        wantOpen: false,
-        flatten: 0,
-        gapOpen: 1,
+        wantParallel: false,
+        flatten: 1,
+        gapOpen: 0,
         phase: 'idle',
         phaseStartedAt: 0,
-        fromFlatten: 0,
-        fromGapOpen: 1,
+        fromFlatten: 1,
+        fromGapOpen: 0,
     },
 };
 let drawbridgeRaf = 0;
@@ -847,23 +852,24 @@ function resolveInwardCutTargetsFromDom() {
         liveTrapChromeState || loadSidePanelsTrapState(),
     );
     /*
-     * Keep hover cut bonus through flatten so click-to-open does not first
-     * shrink the gap, then drawbridge. Drop it only once the gap is closing
-     * (hover width is baked into gapOpen at that handoff).
+     * Bonus only while peeking a closed trap. Fully open = 1×.
+     * While animating toward bridge, force 1× — hover width is baked into
+     * gapOpen at the flatten→closeGap handoff.
      */
     for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
         const st = drawbridge[key];
-        const gapOwnedByBridge =
+        const panelOpen = drawbridgePanelOpenForKey(key);
+        const bridgingShut =
+            st.phase === 'opening-flatten' ||
             st.phase === 'opening-closeGap' ||
-            st.phase === 'closing-openGap' ||
-            (st.wantOpen && st.gapOpen < 0.98);
-        const hover = cutEmphasis[key].hovering && !gapOwnedByBridge;
-        cutEmphasis[key].target = desiredInwardCutScale(hover, hoverScale);
+            (!st.wantParallel && st.gapOpen < 0.98);
+        const hoverPeek = cutEmphasis[key].hovering && !panelOpen && !bridgingShut;
+        cutEmphasis[key].target = desiredInwardCutScale(hoverPeek, hoverScale);
     }
 }
 
 /** @param {InwardCutKey} key */
-function drawbridgeWantOpenForKey(key) {
+function drawbridgePanelOpenForKey(key) {
     if (key === 'info') {
         return !!document.querySelector('.event-slide.open');
     }
@@ -878,7 +884,16 @@ function drawbridgeWantOpenForKey(key) {
 }
 
 /**
- * Retarget drawbridge phases from DOM (open / mode). Does not paint.
+ * Parallel lip when the panel is open *or* the closed trap is hovered (peek).
+ * @param {InwardCutKey} key
+ */
+function drawbridgeWantParallelForKey(key) {
+    return drawbridgePanelOpenForKey(key) || cutEmphasis[key].hovering;
+}
+
+/**
+ * Retarget drawbridge phases from DOM (open / hover). Does not paint.
+ * Closed/unfocused → bridge; open or hover → parallel.
  * @param {number} [now]
  * @returns {boolean} true if any trap is mid-phase
  */
@@ -886,13 +901,14 @@ function resolveDrawbridgeFromDom(now = performance.now()) {
     let busy = false;
     for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
         const st = drawbridge[key];
-        const want = drawbridgeWantOpenForKey(key);
-        if (want !== st.wantOpen) {
-            st.wantOpen = want;
+        const wantParallel = drawbridgeWantParallelForKey(key);
+        if (wantParallel !== st.wantParallel) {
+            st.wantParallel = wantParallel;
             st.phaseStartedAt = now;
             st.fromFlatten = st.flatten;
             st.fromGapOpen = st.gapOpen;
-            st.phase = want ? 'opening-flatten' : 'closing-openGap';
+            /* Parallel: open gap then unflatten. Bridge: flatten then close gap. */
+            st.phase = wantParallel ? 'closing-openGap' : 'opening-flatten';
         }
         if (st.phase !== 'idle') busy = true;
     }
@@ -912,8 +928,8 @@ function easeOutCubic01(u) {
 }
 
 /**
- * Begin gap-close from the *visual* gap (hover bonus included) so the lip
- * does not snap inward before the drawbridge finishes.
+ * Begin gap-close toward bridge from the *visual* gap (hover peek included)
+ * so the lip does not snap inward after flatten.
  * @param {InwardCutKey} key
  * @param {DrawbridgeState} st
  * @param {number} now
@@ -1004,14 +1020,14 @@ function ensureDrawbridgeTween() {
     drawbridgeRaf = window.requestAnimationFrame(tick);
 }
 
-/** Snap drawbridge to DOM open state (cold apply / boot). */
+/** Snap drawbridge to DOM open state (cold apply / boot). Closed = bridged. */
 function snapDrawbridgeToDom() {
     for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
-        const want = drawbridgeWantOpenForKey(key);
+        const wantParallel = drawbridgeWantParallelForKey(key);
         const st = drawbridge[key];
-        st.wantOpen = want;
-        st.flatten = want ? 1 : 0;
-        st.gapOpen = want ? 0 : 1;
+        st.wantParallel = wantParallel;
+        st.flatten = wantParallel ? 0 : 1;
+        st.gapOpen = wantParallel ? 1 : 0;
         st.phase = 'idle';
         st.fromFlatten = st.flatten;
         st.fromGapOpen = st.gapOpen;
@@ -2133,8 +2149,8 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
         return {
             top: tr.top,
             height: tr.height,
-            flatten: st ? st.flatten : 0,
-            gapOpen: st ? st.gapOpen : 1,
+            flatten: st ? st.flatten : 1,
+            gapOpen: st ? st.gapOpen : 0,
             scale:
                 typeof cutScales?.[i] === 'number' && Number.isFinite(cutScales[i])
                     ? cutScales[i]

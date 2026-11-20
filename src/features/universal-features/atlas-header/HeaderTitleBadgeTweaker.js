@@ -20,7 +20,7 @@ import {
     cloneSidePanelsTrapDefaults,
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=29';
+} from './SidePanelsTrapChrome.js?v=30';
 import {
     clearLegacyUiTweaksStorage,
     clearUiTweaksDraft,
@@ -841,7 +841,7 @@ function mountControls(panel, bags, hooks) {
                 },
                 {
                     key: 'inwardCutFocusBonusPct',
-                    label: 'Hover cut bonus % (sides only)',
+                    label: 'Hover peek bonus % (undo bridge; open = 1×)',
                     min: 0,
                     max: 150,
                     step: 1,

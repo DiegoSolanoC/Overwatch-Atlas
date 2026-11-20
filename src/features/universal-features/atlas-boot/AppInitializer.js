@@ -24,7 +24,7 @@ import {
     setupHeaderHub,
     setupOfficialSiteLinkSound
 } from '../atlas-header/HeaderModeSynchronization.js';
-import { setupHeaderTitleBadgeTweaker } from '../atlas-header/HeaderTitleBadgeTweaker.js?v=20';
+import { setupHeaderTitleBadgeTweaker } from '../atlas-header/HeaderTitleBadgeTweaker.js?v=21';
 import { initMobilePortraitGate } from './mobilePortraitGate.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
 import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=110';
