@@ -18,7 +18,7 @@ import {
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
     saveSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=26';
+} from './SidePanelsTrapChrome.js?v=27';
 
 const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
 const PANEL_ID = 'uiTweaksPanel';
@@ -873,6 +873,13 @@ function mountControls(panel, bags, hooks) {
                     step: 2,
                 },
                 {
+                    key: 'inwardCutFocusBonusPct',
+                    label: 'Hover cut bonus % (sides only)',
+                    min: 0,
+                    max: 150,
+                    step: 1,
+                },
+                {
                     key: 'sideInwardCornerRadiusPx',
                     label: 'Cut corner rounding',
                     min: 0,
@@ -927,6 +934,36 @@ function mountControls(panel, bags, hooks) {
                 { key: 'dockTrapTaperPct', label: 'Dock taper (0=rect)', min: 0, max: 28, step: 0.5 },
                 { key: 'dockBorderWidth', label: 'Dock border thickness', min: 8, max: 36, step: 0.5 },
                 { key: 'dockBorderRadius', label: 'Dock corner rounding', min: 0, max: 24, step: 1 },
+            ],
+        },
+        {
+            group: 'Dock',
+            title: 'Atlas News red trapezium',
+            bag: 'dock',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'atlasNewsWidthPx',
+                    label: 'Red shape width',
+                    min: 48,
+                    max: 180,
+                    step: 2,
+                },
+                {
+                    key: 'atlasNewsHeightPx',
+                    label: 'Red shape height',
+                    min: 36,
+                    max: 140,
+                    step: 2,
+                },
+                {
+                    key: 'atlasNewsIconPct',
+                    label: 'Logo icon size (%)',
+                    min: 40,
+                    max: 100,
+                    step: 1,
+                },
             ],
         },
         {

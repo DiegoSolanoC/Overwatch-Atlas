@@ -73,7 +73,7 @@ body.color-palette-gray .story-events-merge-dialog__title {
     border: 1px solid rgba(255, 255, 255, 0.22);
     background: rgba(255, 255, 255, 0.06);
     color: rgba(255, 255, 255, 0.92);
-    font-size: 36px;
+    font-size: 0;
     line-height: 1;
     width: 52px;
     height: 52px;
@@ -81,6 +81,9 @@ body.color-palette-gray .story-events-merge-dialog__title {
     cursor: pointer;
     border-radius: 10px;
     flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .story-events-merge-dialog__close:hover {

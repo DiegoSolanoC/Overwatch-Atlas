@@ -37,6 +37,9 @@ import {
 const RIM_PULL_DEAD_PX = 28;
 const RIM_PULL_RAMP_PX = 90;
 
+const RESIZE_ARROW_ICON = 'src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png';
+const RESIZE_DRAG_ARROW_ICON = 'src/assets/images/Icons/Utility%20Icons/Drag%20Arrow.png';
+
 function openEventSlideFromHandle(panel) {
     if (!document.body.classList.contains('event-system-loaded')) {
         if (window.updateStatus) {
@@ -96,6 +99,28 @@ function openFiltersPanelFromHandle(panel, btn) {
     }
 }
 
+function closeEventSlideFromHandle(panel) {
+    if (window.standaloneEventSlide?.hideEventSlide) {
+        window.standaloneEventSlide.hideEventSlide();
+    } else {
+        panel.classList.remove('open');
+    }
+    if (window.SoundEffectsManager?.play) {
+        window.SoundEffectsManager.play('eventClick');
+    }
+}
+
+function closeFiltersPanelFromHandle(panel) {
+    if (window.FilterService && typeof window.FilterService.closePanel === 'function') {
+        window.FilterService.closePanel();
+    } else {
+        panel.classList.remove('open');
+    }
+    if (window.SoundEffectsManager?.play) {
+        window.SoundEffectsManager.play('filterButton');
+    }
+}
+
 function maybeSwitchFiltersMode(panel, btn, ev) {
     /* Shared panel is already open: clicking the other trapezium should switch modes. */
     const targetMode = btn.dataset.panelMode === 'music' ? 'music' : 'filters';
@@ -127,7 +152,7 @@ function createHandle(cfg, options) {
     pill.setAttribute('aria-hidden', 'true');
     const icon = document.createElement('img');
     icon.className = 'ui-pagination-arrow panel-resize-handle__arrow';
-    icon.src = 'src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png';
+    icon.src = RESIZE_ARROW_ICON;
     icon.alt = '';
     icon.decoding = 'async';
     icon.width = 22;
@@ -158,6 +183,13 @@ function createHandle(cfg, options) {
             syncFiltersPanelTrapIcon(trapImg);
         }
         trapBtn.appendChild(trapImg);
+        const closeImg = document.createElement('img');
+        closeImg.className = 'panel-resize-handle__trap-close';
+        closeImg.src = 'src/assets/images/Icons/Utility%20Icons/Close%20Icon.png';
+        closeImg.alt = '';
+        closeImg.decoding = 'async';
+        closeImg.setAttribute('aria-hidden', 'true');
+        trapBtn.appendChild(closeImg);
         trapLabel.appendChild(trapBtn);
         /* Nub lives on the trapezium so trap tweaks cannot disconnect it. */
         trapLabel.appendChild(pill);
@@ -170,6 +202,22 @@ function createHandle(cfg, options) {
 
 function attachHandleBehavior(panel, cfg, btn) {
     let dragState = null;
+    const arrowIcon = btn.querySelector('.panel-resize-handle__arrow');
+
+    function setArrowIdle() {
+        if (!arrowIcon) return;
+        arrowIcon.src = RESIZE_ARROW_ICON;
+        arrowIcon.classList.remove('panel-resize-handle__arrow--drag');
+        arrowIcon.classList.toggle('ui-pagination-arrow--flip-h', cfg.edge === 'inner-right');
+    }
+
+    function setArrowDragging() {
+        if (!arrowIcon) return;
+        arrowIcon.src = RESIZE_DRAG_ARROW_ICON;
+        arrowIcon.classList.add('panel-resize-handle__arrow--drag');
+        /* Drag Arrow is bidirectional — no edge flip. */
+        arrowIcon.classList.remove('ui-pagination-arrow--flip-h');
+    }
 
     btn.addEventListener('dblclick', function (e) {
         e.preventDefault();
@@ -186,7 +234,20 @@ function attachHandleBehavior(panel, cfg, btn) {
             }
             return;
         }
+        /* Open: active-mode trap closes; the other filters/music trap still switches. */
+        if (cfg.id === 'eventSlide') {
+            e.preventDefault();
+            closeEventSlideFromHandle(panel);
+            return;
+        }
         if (cfg.id === 'filtersPanel') {
+            const targetMode = btn.dataset.panelMode === 'music' ? 'music' : 'filters';
+            const currentMode = panel.dataset.panelMode === 'music' ? 'music' : 'filters';
+            if (targetMode === currentMode) {
+                e.preventDefault();
+                closeFiltersPanelFromHandle(panel);
+                return;
+            }
             maybeSwitchFiltersMode(panel, btn, e);
         }
     });
@@ -243,6 +304,7 @@ function attachHandleBehavior(panel, cfg, btn) {
         panel.classList.remove('panel--resizing');
         panel.classList.remove('panel-resize--at-limit');
         panel.style.removeProperty('--panel-resize-rim-strength');
+        setArrowIdle();
         window.removeEventListener('pointermove', onPointerMove);
         window.removeEventListener('pointerup', endDrag);
         window.removeEventListener('pointercancel', endDrag);
@@ -278,6 +340,7 @@ function attachHandleBehavior(panel, cfg, btn) {
         panel.classList.remove('panel-resize--at-limit');
         panel.style.removeProperty('--panel-resize-rim-strength');
         panel.classList.add('panel--resizing');
+        setArrowDragging();
         btn.setPointerCapture(ev.pointerId);
         window.addEventListener('pointermove', onPointerMove);
         window.addEventListener('pointerup', endDrag);

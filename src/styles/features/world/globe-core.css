@@ -577,12 +577,12 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         align-self: stretch !important;
         justify-self: center !important;
         width: 100% !important;
-        max-width: 112px !important;
+        max-width: 132px !important;
         min-width: 0 !important;
         height: auto !important;
         min-height: 0 !important;
         max-height: none !important;
-        gap: 8px !important;
+        gap: 6px !important;
         padding: 2px 0 !important;
         transform: none !important;
         pointer-events: auto !important;
@@ -897,7 +897,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         > .page-input-container
         .page-label {
         color: rgba(255, 255, 255, 0.98) !important;
-        font-size: 22px !important;
+        font-size: 26px !important;
         font-weight: 700 !important;
         letter-spacing: 0.02em !important;
         line-height: 1.1 !important;
@@ -909,7 +909,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         > .page-input-container
         .page-total {
         color: rgba(255, 255, 255, 0.9) !important;
-        font-size: 17px !important;
+        font-size: 20px !important;
         font-weight: 600 !important;
     }
 
@@ -927,12 +927,12 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
         .page-input {
-        width: 4.2rem !important;
-        min-width: 64px !important;
-        max-width: 88px !important;
-        height: 50px !important;
+        width: 5rem !important;
+        min-width: 72px !important;
+        max-width: 96px !important;
+        height: 56px !important;
         padding: 0 8px !important;
-        font-size: 26px !important;
+        font-size: 30px !important;
         font-weight: 700 !important;
         line-height: 1 !important;
         text-align: center !important;

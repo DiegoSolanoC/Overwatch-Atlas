@@ -79,6 +79,11 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     sideInwardLineOffsetPx: 2,
     sideInwardCenterGapPx: 200,
     sideInwardCornerRadiusPx: 8,
+    /**
+     * Extra cut-gap % on side-panel traps while hovered only (not on open; dock
+     * has no bonus). Idle stays at 1×; 40 → gap × 1.4 under the pointer.
+     */
+    inwardCutFocusBonusPct: 40,
 
     /**
      * White filled “nub” tabs (replace Drag/Controller Border images).
@@ -104,6 +109,15 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     dockNubTaperPct: 14,
     dockNubRadiusPx: 0,
     dockNubArrowPx: 28,
+
+    /**
+     * Atlas News red footer trapezium (floating badge).
+     * Keep height ≤ footer (~65px) so it does not cover dock thumbnails.
+     */
+    atlasNewsWidthPx: 90,
+    atlasNewsHeightPx: 56,
+    /** Logo image size as % of the red badge box. */
+    atlasNewsIconPct: 86,
 });
 
 function clamp(n, lo, hi) {
@@ -217,6 +231,16 @@ export function sanitizeSidePanelsTrapState(s) {
         0,
         48,
     );
+    /* Migrate old idle de-emphasize key → focus bonus (behavior flipped). */
+    if (next.inwardCutFocusBonusPct == null && next.inwardCutDeemphasizePct != null) {
+        next.inwardCutFocusBonusPct = next.inwardCutDeemphasizePct;
+    }
+    next.inwardCutFocusBonusPct = clamp(
+        Math.round(Number(next.inwardCutFocusBonusPct ?? 40)),
+        0,
+        150,
+    );
+    delete next.inwardCutDeemphasizePct;
 
     next.sideNubDepthPx = clamp(Math.round(Number(next.sideNubDepthPx)), 16, 80);
     next.sideNubLengthPx = clamp(Math.round(Number(next.sideNubLengthPx)), 36, 180);
@@ -233,6 +257,9 @@ export function sanitizeSidePanelsTrapState(s) {
     next.dockNubTaperPct = clamp(Number(next.dockNubTaperPct), 0, 28);
     next.dockNubRadiusPx = clamp(Number(next.dockNubRadiusPx), 0, 40);
     next.dockNubArrowPx = clamp(Math.round(Number(next.dockNubArrowPx)), 10, 96);
+    next.atlasNewsWidthPx = clamp(Math.round(Number(next.atlasNewsWidthPx ?? 90)), 48, 180);
+    next.atlasNewsHeightPx = clamp(Math.round(Number(next.atlasNewsHeightPx ?? 56)), 36, 140);
+    next.atlasNewsIconPct = clamp(Math.round(Number(next.atlasNewsIconPct ?? 86)), 40, 100);
     return next;
 }
 
@@ -275,6 +302,14 @@ export function loadSidePanelsTrapState() {
         }
         if (parsed.sideInwardCornerRadiusPx == null && parsed.dockInwardCornerRadiusPx != null) {
             next.sideInwardCornerRadiusPx = Number(parsed.dockInwardCornerRadiusPx);
+        }
+        /* Old idle key → focus bonus (only when the new key was never saved). */
+        if (
+            parsed.inwardCutFocusBonusPct == null &&
+            parsed.inwardCutDeemphasizePct != null &&
+            Number.isFinite(Number(parsed.inwardCutDeemphasizePct))
+        ) {
+            next.inwardCutFocusBonusPct = Number(parsed.inwardCutDeemphasizePct);
         }
         return sanitizeSidePanelsTrapState(next);
     } catch {
@@ -676,8 +711,10 @@ function syncSidePanelEdgeStroke(measureEl, protrudeDir, traps, s, paintParent) 
         traps,
         s.trapTaperPct,
     );
-    const outerPts =
-        protrudeDir === 'left' ? mirrorPtsX(localPts, handleW) : localPts;
+    const outerPts = dedupePolyPoints(
+        protrudeDir === 'left' ? mirrorPtsX(localPts, handleW) : localPts,
+        0.75,
+    );
     const seamX = protrudeDir === 'right' ? 0 : handleW;
     const tipX = protrudeDir === 'right' ? protrude : handleW - protrude;
     /* Retire fragmented per-trap strokes — one path owns the whole edge. */
@@ -738,10 +775,6 @@ export function syncDockTrapSvgTaper(taperPct) {
     });
 }
 
-export function refreshDockTrapSvgFromTweaks() {
-    applySidePanelsTrapChrome(loadSidePanelsTrapState());
-}
-
 let chromeResizeInstalled = false;
 let chromeResizeTimer = 0;
 let chromeTweenTimer = 0;
@@ -749,6 +782,409 @@ let chromeTweenRaf = 0;
 let chromeTweening = false;
 /** @type {ResizeObserver | null} */
 let chromeLayoutRo = null;
+
+/*
+ * Side inward cuts: idle = 1× (authored gap). Hover widens by
+ * inwardCutFocusBonusPct. Dock cuts stay 1× always (no bonus).
+ * Open: “drawbridge” — flatten trap slopes on the inward lip, then close the
+ * cut gap; close reverses (gap first, then re-slope). Scales tween — SVG `d`
+ * cannot CSS-transition.
+ */
+const INWARD_CUT_IDLE_SCALE = 1;
+/** Exponential time-constant for hover cut eases. */
+const INWARD_CUT_TWEEN_TAU_MS = 160;
+/** Drawbridge flatten phase duration. */
+const DRAWBRIDGE_FLATTEN_MS = 320;
+/** Drawbridge gap open/close phase duration. */
+const DRAWBRIDGE_GAP_MS = 260;
+
+/** @typedef {'info'|'filters'|'music'} InwardCutKey */
+
+/** @type {Record<InwardCutKey, { current: number, target: number, hovering: boolean }>} */
+const cutEmphasis = {
+    info: { current: INWARD_CUT_IDLE_SCALE, target: INWARD_CUT_IDLE_SCALE, hovering: false },
+    filters: { current: INWARD_CUT_IDLE_SCALE, target: INWARD_CUT_IDLE_SCALE, hovering: false },
+    music: { current: INWARD_CUT_IDLE_SCALE, target: INWARD_CUT_IDLE_SCALE, hovering: false },
+};
+let cutEmphasisRaf = 0;
+let cutEmphasisLastTs = 0;
+let cutEmphasisHoverBound = false;
+
+/**
+ * @typedef {{
+ *   wantOpen: boolean,
+ *   flatten: number,
+ *   gapOpen: number,
+ *   phase: 'idle'|'opening-flatten'|'opening-closeGap'|'closing-openGap'|'closing-unflatten',
+ *   phaseStartedAt: number,
+ *   fromFlatten: number,
+ *   fromGapOpen: number,
+ * }} DrawbridgeState
+ */
+
+/** @type {Record<InwardCutKey, DrawbridgeState>} */
+const drawbridge = {
+    info: {
+        wantOpen: false,
+        flatten: 0,
+        gapOpen: 1,
+        phase: 'idle',
+        phaseStartedAt: 0,
+        fromFlatten: 0,
+        fromGapOpen: 1,
+    },
+    filters: {
+        wantOpen: false,
+        flatten: 0,
+        gapOpen: 1,
+        phase: 'idle',
+        phaseStartedAt: 0,
+        fromFlatten: 0,
+        fromGapOpen: 1,
+    },
+    music: {
+        wantOpen: false,
+        flatten: 0,
+        gapOpen: 1,
+        phase: 'idle',
+        phaseStartedAt: 0,
+        fromFlatten: 0,
+        fromGapOpen: 1,
+    },
+};
+let drawbridgeRaf = 0;
+/**
+ * Last sanitized trap state from `applySidePanelsTrapChrome` — includes unsaved
+ * tweaker preview. Hover/collapse/resize must not fall back to localStorage alone
+ * or live sliders (e.g. focus cut bonus %) snap back to the saved default.
+ * @type {object | null}
+ */
+let liveTrapChromeState = null;
+
+/** Prefer live tweaker preview over localStorage so unsaved sliders are not clobbered. */
+function paintTrapChromeState(explicit) {
+    if (explicit) return sanitizeSidePanelsTrapState(explicit);
+    return liveTrapChromeState || loadSidePanelsTrapState();
+}
+
+export function refreshDockTrapSvgFromTweaks() {
+    applySidePanelsTrapChrome(paintTrapChromeState());
+}
+
+/** @param {object} [s] */
+function inwardCutFocusScaleFromState(s) {
+    const pct = clamp(
+        Math.round(
+            Number(
+                s?.inwardCutFocusBonusPct ??
+                    SIDE_PANELS_TRAP_TWEAK_DEFAULTS.inwardCutFocusBonusPct,
+            ),
+        ),
+        0,
+        150,
+    );
+    return 1 + pct / 100;
+}
+
+/** @param {boolean} focused @param {number} focusScale */
+function desiredInwardCutScale(focused, focusScale) {
+    return focused ? focusScale : INWARD_CUT_IDLE_SCALE;
+}
+
+function resolveInwardCutTargetsFromDom() {
+    const hoverScale = inwardCutFocusScaleFromState(
+        liveTrapChromeState || loadSidePanelsTrapState(),
+    );
+    /*
+     * Keep hover cut bonus through flatten so click-to-open does not first
+     * shrink the gap, then drawbridge. Drop it only once the gap is closing
+     * (hover width is baked into gapOpen at that handoff).
+     */
+    for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
+        const st = drawbridge[key];
+        const gapOwnedByBridge =
+            st.phase === 'opening-closeGap' ||
+            st.phase === 'closing-openGap' ||
+            (st.wantOpen && st.gapOpen < 0.98);
+        const hover = cutEmphasis[key].hovering && !gapOwnedByBridge;
+        cutEmphasis[key].target = desiredInwardCutScale(hover, hoverScale);
+    }
+}
+
+/** @param {InwardCutKey} key */
+function drawbridgeWantOpenForKey(key) {
+    if (key === 'info') {
+        return !!document.querySelector('.event-slide.open');
+    }
+    const rightPanel = document.querySelector('.filters-panel');
+    if (!rightPanel?.classList.contains('open')) return false;
+    const mode =
+        rightPanel.dataset?.panelMode === 'music' ||
+        rightPanel.classList.contains('filters-panel--music-mode')
+            ? 'music'
+            : 'filters';
+    return key === mode;
+}
+
+/**
+ * Retarget drawbridge phases from DOM (open / mode). Does not paint.
+ * @param {number} [now]
+ * @returns {boolean} true if any trap is mid-phase
+ */
+function resolveDrawbridgeFromDom(now = performance.now()) {
+    let busy = false;
+    for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
+        const st = drawbridge[key];
+        const want = drawbridgeWantOpenForKey(key);
+        if (want !== st.wantOpen) {
+            st.wantOpen = want;
+            st.phaseStartedAt = now;
+            st.fromFlatten = st.flatten;
+            st.fromGapOpen = st.gapOpen;
+            st.phase = want ? 'opening-flatten' : 'closing-openGap';
+        }
+        if (st.phase !== 'idle') busy = true;
+    }
+    return busy;
+}
+
+/** @param {number} u 0..1 */
+function smoothstep01(u) {
+    const t = clamp(u, 0, 1);
+    return t * t * (3 - 2 * t);
+}
+
+/** Ease-out for flatten (settles into straight). */
+function easeOutCubic01(u) {
+    const t = 1 - clamp(u, 0, 1);
+    return 1 - t * t * t;
+}
+
+/**
+ * Begin gap-close from the *visual* gap (hover bonus included) so the lip
+ * does not snap inward before the drawbridge finishes.
+ * @param {InwardCutKey} key
+ * @param {DrawbridgeState} st
+ * @param {number} now
+ */
+function beginOpeningCloseGap(key, st, now) {
+    st.flatten = 1;
+    st.phase = 'opening-closeGap';
+    st.phaseStartedAt = now;
+    st.fromFlatten = 1;
+    const hoverMul = Math.max(1, cutEmphasis[key].current);
+    st.fromGapOpen = Math.max(st.gapOpen, 0.001) * hoverMul;
+    st.gapOpen = st.fromGapOpen;
+    cutEmphasis[key].current = 1;
+    cutEmphasis[key].target = 1;
+}
+
+/**
+ * Advance drawbridge flatten / gapOpen through sequenced phases.
+ * @param {number} [now]
+ * @returns {boolean}
+ */
+function advanceDrawbridge(now = performance.now()) {
+    resolveDrawbridgeFromDom(now);
+    let busy = false;
+    for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
+        const st = drawbridge[key];
+        if (st.phase === 'idle') continue;
+        if (st.phase === 'opening-flatten') {
+            const u = easeOutCubic01((now - st.phaseStartedAt) / DRAWBRIDGE_FLATTEN_MS);
+            st.flatten = st.fromFlatten + (1 - st.fromFlatten) * u;
+            st.gapOpen = st.fromGapOpen;
+            /* Overlap: start closing the cut once mostly straight. */
+            if (u >= 0.88) {
+                beginOpeningCloseGap(key, st, now);
+            }
+        } else if (st.phase === 'opening-closeGap') {
+            const u = smoothstep01((now - st.phaseStartedAt) / DRAWBRIDGE_GAP_MS);
+            st.flatten = 1;
+            st.gapOpen = st.fromGapOpen + (0 - st.fromGapOpen) * u;
+            if (u >= 1) {
+                st.gapOpen = 0;
+                st.phase = 'idle';
+            }
+        } else if (st.phase === 'closing-openGap') {
+            const u = smoothstep01((now - st.phaseStartedAt) / DRAWBRIDGE_GAP_MS);
+            st.flatten = st.fromFlatten;
+            st.gapOpen = st.fromGapOpen + (1 - st.fromGapOpen) * u;
+            if (u >= 1) {
+                st.gapOpen = 1;
+                st.phase = 'closing-unflatten';
+                st.phaseStartedAt = now;
+                st.fromFlatten = st.flatten;
+                st.fromGapOpen = 1;
+            }
+        } else if (st.phase === 'closing-unflatten') {
+            const u = easeOutCubic01((now - st.phaseStartedAt) / DRAWBRIDGE_FLATTEN_MS);
+            st.gapOpen = 1;
+            st.flatten = st.fromFlatten + (0 - st.fromFlatten) * u;
+            if (u >= 1) {
+                st.flatten = 0;
+                st.phase = 'idle';
+            }
+        }
+        if (st.phase !== 'idle') busy = true;
+    }
+    return busy;
+}
+
+function ensureDrawbridgeTween() {
+    if (typeof window === 'undefined' || drawbridgeRaf || chromeTweening) return;
+    resolveDrawbridgeFromDom();
+    if (!Object.values(drawbridge).some((st) => st.phase !== 'idle')) return;
+    const tick = (/** @type {number} */ now) => {
+        if (chromeTweening) {
+            drawbridgeRaf = 0;
+            return;
+        }
+        const busy = advanceDrawbridge(now);
+        resolveInwardCutTargetsFromDom();
+        advanceInwardCutCurrents(now);
+        syncLiveEdgeChrome();
+        if (busy || inwardCutEmphasisBusy()) {
+            drawbridgeRaf = window.requestAnimationFrame(tick);
+        } else {
+            drawbridgeRaf = 0;
+        }
+    };
+    drawbridgeRaf = window.requestAnimationFrame(tick);
+}
+
+/** Snap drawbridge to DOM open state (cold apply / boot). */
+function snapDrawbridgeToDom() {
+    for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
+        const want = drawbridgeWantOpenForKey(key);
+        const st = drawbridge[key];
+        st.wantOpen = want;
+        st.flatten = want ? 1 : 0;
+        st.gapOpen = want ? 0 : 1;
+        st.phase = 'idle';
+        st.fromFlatten = st.flatten;
+        st.fromGapOpen = st.gapOpen;
+    }
+}
+
+/** @param {{ snap?: boolean }} [opts] */
+function refreshInwardCutEmphasis(opts = {}) {
+    /* Never snap drawbridge on ordinary applies — resize/RO would kill the open/close ease. */
+    resolveDrawbridgeFromDom();
+    ensureDrawbridgeTween();
+    resolveInwardCutTargetsFromDom();
+    if (opts.snap) {
+        for (const key of Object.keys(cutEmphasis)) {
+            const e = cutEmphasis[/** @type {InwardCutKey} */ (key)];
+            e.current = e.target;
+        }
+        return;
+    }
+    ensureInwardCutEmphasisTween();
+}
+
+/** @returns {boolean} true if any scale is still easing */
+function inwardCutEmphasisBusy() {
+    for (const key of Object.keys(cutEmphasis)) {
+        const e = cutEmphasis[/** @type {InwardCutKey} */ (key)];
+        if (Math.abs(e.current - e.target) > 0.0005) return true;
+    }
+    return false;
+}
+
+/** @param {number} [now] */
+function advanceInwardCutCurrents(now = performance.now()) {
+    const dt = Math.min(48, Math.max(0, now - (cutEmphasisLastTs || now)));
+    cutEmphasisLastTs = now;
+    const t = 1 - Math.exp(-dt / INWARD_CUT_TWEEN_TAU_MS);
+    for (const key of Object.keys(cutEmphasis)) {
+        const e = cutEmphasis[/** @type {InwardCutKey} */ (key)];
+        const diff = e.target - e.current;
+        if (Math.abs(diff) < 0.0005) e.current = e.target;
+        else e.current += diff * t;
+    }
+    return inwardCutEmphasisBusy();
+}
+
+function ensureInwardCutEmphasisTween() {
+    if (typeof window === 'undefined' || cutEmphasisRaf || chromeTweening) return;
+    if (!inwardCutEmphasisBusy()) return;
+    cutEmphasisLastTs = performance.now();
+    cutEmphasisRaf = window.requestAnimationFrame(tickInwardCutEmphasis);
+}
+
+/** @param {number} now */
+function tickInwardCutEmphasis(now) {
+    /* Dock height tween owns the paint loop; it advances cut scales itself. */
+    if (chromeTweening) {
+        cutEmphasisRaf = 0;
+        return;
+    }
+    const busy = advanceInwardCutCurrents(now);
+    syncLiveEdgeChrome();
+    if (busy) {
+        cutEmphasisRaf = window.requestAnimationFrame(tickInwardCutEmphasis);
+    } else {
+        cutEmphasisRaf = 0;
+    }
+}
+
+/**
+ * Right-rail launch classes are historically swapped vs `data-panel-mode`
+ * (filters-launch opens music, music-launch opens filters). Always key cuts
+ * off `data-panel-mode` so emphasis follows the real mode/icon.
+ * @param {Element | null | undefined} handle
+ * @returns {'filters'|'music'}
+ */
+function rightRailCutKeyFromHandle(handle) {
+    return handle?.dataset?.panelMode === 'music' ? 'music' : 'filters';
+}
+
+/**
+ * @param {EventTarget | null} el
+ * @returns {InwardCutKey | null}
+ */
+function inwardCutKeyFromHoverTarget(el) {
+    if (!(el instanceof Element)) return null;
+    if (el.closest?.('.event-slide .panel-resize-handle--inner-right')) {
+        return 'info';
+    }
+    const rightHandle = el.closest?.('.filters-panel .panel-resize-handle--inner-left');
+    if (rightHandle) {
+        return rightRailCutKeyFromHandle(rightHandle);
+    }
+    return null;
+}
+
+function bindInwardCutEmphasisHover() {
+    if (cutEmphasisHoverBound || typeof document === 'undefined') return;
+    cutEmphasisHoverBound = true;
+    document.addEventListener(
+        'pointerenter',
+        (ev) => {
+            const key = inwardCutKeyFromHoverTarget(ev.target);
+            if (!key || cutEmphasis[key].hovering) return;
+            cutEmphasis[key].hovering = true;
+            refreshInwardCutEmphasis();
+        },
+        true,
+    );
+    document.addEventListener(
+        'pointerleave',
+        (ev) => {
+            const key = inwardCutKeyFromHoverTarget(ev.target);
+            if (!key || !cutEmphasis[key].hovering) return;
+            /* Ignore leave→enter within the same trap / collapse control. */
+            const still = inwardCutKeyFromHoverTarget(
+                /** @type {PointerEvent} */ (ev).relatedTarget,
+            );
+            if (still === key) return;
+            cutEmphasis[key].hovering = false;
+            refreshInwardCutEmphasis();
+        },
+        true,
+    );
+}
 
 /**
  * Debounced chrome re-paint. During dock tween, live rAF owns edge updates —
@@ -760,7 +1196,8 @@ export function scheduleSidePanelsTrapChromeReflow(delayMs = 48) {
     window.clearTimeout(chromeResizeTimer);
     chromeResizeTimer = window.setTimeout(() => {
         if (chromeTweening) return;
-        applySidePanelsTrapChrome(loadSidePanelsTrapState());
+        /* Keep unsaved tweaker values (focus cut bonus, etc.) across resize/RO. */
+        applySidePanelsTrapChrome(paintTrapChromeState());
     }, Math.max(0, delayMs));
 }
 
@@ -770,7 +1207,7 @@ export function scheduleSidePanelsTrapChromeReflow(delayMs = 48) {
  * @param {object} [state]
  */
 function syncLiveEdgeChrome(state) {
-    const s = sanitizeSidePanelsTrapState(state || loadSidePanelsTrapState());
+    const s = paintTrapChromeState(state);
     const fit = sideTrapViewportFit(s);
     const sidePaint = {
         ...s,
@@ -793,10 +1230,20 @@ export function beginSideChromeDockTween() {
     window.clearTimeout(chromeResizeTimer);
     window.clearTimeout(chromeTweenTimer);
     window.cancelAnimationFrame(chromeTweenRaf);
+    window.cancelAnimationFrame(cutEmphasisRaf);
+    window.cancelAnimationFrame(drawbridgeRaf);
+    cutEmphasisRaf = 0;
+    drawbridgeRaf = 0;
     document.body?.classList.remove('side-chrome-dock-tweening');
+    cutEmphasisLastTs = performance.now();
 
     const tick = () => {
         if (!chromeTweening) return;
+        const now = performance.now();
+        /* Side hover / drawbridge may still be easing; dock cut stays 1×. */
+        advanceDrawbridge(now);
+        resolveInwardCutTargetsFromDom();
+        advanceInwardCutCurrents(now);
         syncLiveEdgeChrome();
         chromeTweenRaf = window.requestAnimationFrame(tick);
     };
@@ -807,7 +1254,9 @@ export function beginSideChromeDockTween() {
         window.cancelAnimationFrame(chromeTweenRaf);
         chromeTweenRaf = 0;
         chromeTweening = false;
-        applySidePanelsTrapChrome(loadSidePanelsTrapState());
+        applySidePanelsTrapChrome(paintTrapChromeState(), { snapCuts: false });
+        ensureInwardCutEmphasisTween();
+        ensureDrawbridgeTween();
     }, 480);
 }
 
@@ -836,6 +1285,8 @@ function observeSideChromeLayoutTargets() {
 export function installSidePanelsTrapChromeLifecycle() {
     if (chromeResizeInstalled || typeof window === 'undefined') return;
     chromeResizeInstalled = true;
+    bindInwardCutEmphasisHover();
+    snapDrawbridgeToDom();
     const reflow = () => scheduleSidePanelsTrapChromeReflow(80);
     window.addEventListener('resize', reflow, { passive: true });
     window.visualViewport?.addEventListener('resize', reflow, { passive: true });
@@ -851,10 +1302,23 @@ export function installSidePanelsTrapChromeLifecycle() {
             let needObserve = false;
             for (let i = 0; i < mutations.length; i++) {
                 const m = mutations[i];
-                if (m.type === 'attributes' && m.attributeName === 'class' && m.target === document.body) {
-                    /* Dock collapse class is handled by pagination-dock-collapse + tween. */
-                    if (chromeTweening) continue;
-                    scheduleSidePanelsTrapChromeReflow(80);
+                if (
+                    m.type === 'attributes' &&
+                    (m.attributeName === 'class' || m.attributeName === 'data-panel-mode')
+                ) {
+                    const t = m.target;
+                    if (!(t instanceof Element)) continue;
+                    const isBody = t === document.body;
+                    const isPanel =
+                        t.classList.contains('event-slide') || t.classList.contains('filters-panel');
+                    if (isPanel) {
+                        /* Open/close / filters↔music mode retargets cut emphasis per trap. */
+                        refreshInwardCutEmphasis();
+                    }
+                    if (isBody && m.attributeName === 'class') {
+                        /* Dock collapse class is handled by pagination-dock-collapse + tween. */
+                        if (!chromeTweening) scheduleSidePanelsTrapChromeReflow(80);
+                    }
                     continue;
                 }
                 const nodes = m.addedNodes;
@@ -894,7 +1358,7 @@ export function installSidePanelsTrapChromeLifecycle() {
             childList: true,
             subtree: true,
             attributes: true,
-            attributeFilter: ['class'],
+            attributeFilter: ['class', 'data-panel-mode'],
         });
     }
 }
@@ -913,50 +1377,81 @@ function segmentInteriorNormal(a, b) {
 }
 
 /**
+ * Drop near-duplicate vertices so zero-length segments cannot poison normals.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} [eps]
+ */
+function dedupePolyPoints(pts, eps = 0.6) {
+    if (pts.length < 2) return pts.map((p) => ({ ...p }));
+    /** @type {{x:number,y:number}[]} */
+    const out = [{ x: pts[0].x, y: pts[0].y }];
+    for (let i = 1; i < pts.length; i++) {
+        const p = pts[i];
+        const q = out[out.length - 1];
+        if (Math.hypot(p.x - q.x, p.y - q.y) >= eps) out.push({ x: p.x, y: p.y });
+    }
+    if (out.length === 1 && pts.length > 1) {
+        out.push({ x: pts[pts.length - 1].x, y: pts[pts.length - 1].y });
+    }
+    return out;
+}
+
+/**
  * Offset an open polyline by a constant `dist` px along left-hand normals (miter join).
  * Negative dist offsets the opposite way (needed when mirroring side geometry).
+ * Miter length is capped — drawbridge flatten makes acute corners whose uncapped
+ * miters spike into long white shards.
  * @param {{x:number,y:number}[]} pts
  * @param {number} dist
  */
 function offsetPolyline(pts, dist) {
-    if (pts.length < 2 || !(Math.abs(dist) > 0.01)) return pts.map((p) => ({ ...p }));
-    const n = pts.length;
+    const clean = dedupePolyPoints(pts);
+    if (clean.length < 2 || !(Math.abs(dist) > 0.01)) return clean.map((p) => ({ ...p }));
+    const n = clean.length;
     const segN = [];
-    for (let i = 0; i < n - 1; i++) segN.push(segmentInteriorNormal(pts[i], pts[i + 1]));
-    const out = [];
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < n - 1; i++) segN.push(segmentInteriorNormal(clean[i], clean[i + 1]));
+        const maxMiter = Math.abs(dist) * 2.4;
+        const out = [];
+        for (let i = 0; i < n; i++) {
         if (i === 0) {
             out.push({
-                x: pts[i].x + segN[0].x * dist,
-                y: pts[i].y + segN[0].y * dist,
+                x: clean[i].x + segN[0].x * dist,
+                y: clean[i].y + segN[0].y * dist,
             });
             continue;
         }
         if (i === n - 1) {
             out.push({
-                x: pts[i].x + segN[n - 2].x * dist,
-                y: pts[i].y + segN[n - 2].y * dist,
+                x: clean[i].x + segN[n - 2].x * dist,
+                y: clean[i].y + segN[n - 2].y * dist,
             });
             continue;
         }
         const n0 = segN[i - 1];
         const n1 = segN[i];
         const denom = 1 + n0.x * n1.x + n0.y * n1.y;
-        if (Math.abs(denom) < 1e-6) {
+        let ox;
+        let oy;
+        if (Math.abs(denom) < 0.14) {
+            /* Near-parallel / razor corner — bevel (average normals) instead of miter. */
             const nx = n0.x + n1.x;
             const ny = n0.y + n1.y;
             const len = Math.hypot(nx, ny) || 1;
-            out.push({
-                x: pts[i].x + (nx / len) * dist,
-                y: pts[i].y + (ny / len) * dist,
-            });
+            ox = (nx / len) * dist;
+            oy = (ny / len) * dist;
         } else {
-            /* Miter: keeps offset distance constant on both adjacent segments. */
-            out.push({
-                x: pts[i].x + ((n0.x + n1.x) / denom) * dist,
-                y: pts[i].y + ((n0.y + n1.y) / denom) * dist,
-            });
+            ox = ((n0.x + n1.x) / denom) * dist;
+            oy = ((n0.y + n1.y) / denom) * dist;
+            const mLen = Math.hypot(ox, oy);
+            if (mLen > maxMiter) {
+                ox = (ox / mLen) * maxMiter;
+                oy = (oy / mLen) * maxMiter;
+            }
         }
+        out.push({
+            x: clean[i].x + ox,
+            y: clean[i].y + oy,
+        });
     }
     return out;
 }
@@ -1126,15 +1621,18 @@ function clipPolylineMinY(pts, minY) {
 }
 
 /**
- * Cap-row X cuts for the mirrored inward lips — driven only by center-gap tweak.
+ * Cap-row X cuts for the mirrored inward lips — driven by center-gap tweak × emphasis.
  * Smaller gap → lips reach further toward the trap middle.
  * @param {ReturnType<typeof dockTrapGeometry>} geo
  * @param {object} s
+ * @param {number} [cutScale]
  */
-function dockInwardCenterCuts(geo, s) {
+function dockInwardCenterCuts(geo, s, cutScale = INWARD_CUT_IDLE_SCALE) {
     const mid = geo.dockW / 2;
-    const maxGap = Math.max(24, geo.dockW * 0.85);
-    const gap = clamp(Number(s.dockInwardCenterGapPx) || 200, 24, maxGap);
+    /* Allow focus bonus up to nearly full dock width — old 0.85× still fine for ≤150%. */
+    const maxGap = Math.max(24, geo.dockW * 0.95);
+    const base = clamp(Number(s.dockInwardCenterGapPx) || 200, 24, maxGap);
+    const gap = clamp(base * cutScale, 24, maxGap);
     const half = gap / 2;
     return {
         leftCut: mid - half,
@@ -1508,7 +2006,8 @@ export function syncDockInwardLineShape(s, geo) {
      * Two mirrored ribbons; center butts are vertical (constant X) even on the
      * trap slopes. Corner rounding fillets those cut corners.
      */
-    const { leftCut, rightCut } = dockInwardCenterCuts(live, s);
+    /* Dock cut is always authored gap — no hover/collapse bonus. */
+    const { leftCut, rightCut } = dockInwardCenterCuts(live, s, INWARD_CUT_IDLE_SCALE);
     const cornerR = s.dockInwardCornerRadiusPx;
     const maxButt = Math.max(fullTh * 3, 36);
     const leftD = verticalCutRibbonPath(
@@ -1562,29 +2061,71 @@ export function syncDockInwardLineShape(s, geo) {
  * @param {number} handleH
  * @param {number} seamX
  * @param {number} tipX
- * @param {{top:number,height:number}[]} traps
+ * @param {{top:number,height:number,flatten?:number}[]} traps
  * @param {number} taperPct
  */
 function sideInwardOuterPoints(_protrudeDir, handleH, seamX, tipX, traps, taperPct) {
     const t = clamp(Number(taperPct) || 0, 0, 40) / 100;
+    const tipSign = tipX >= seamX ? 1 : -1;
+    const fullDepth = Math.abs(tipX - seamX);
+    /** @type {{x:number,y:number}[]} */
     const pts = [{ x: seamX, y: 0 }];
-    const sorted = traps
-        .map((tr) => ({
-            top: tr.top,
-            bot: tr.top + tr.height,
-            inset: Math.max(4, tr.height * t),
-        }))
-        .sort((a, b) => a.top - b.top);
+    const sorted = [...traps].sort((a, b) => a.top - b.top);
 
     for (let i = 0; i < sorted.length; i++) {
         const tr = sorted[i];
-        pts.push({ x: seamX, y: tr.top });
-        pts.push({ x: tipX, y: tr.top + tr.inset });
-        pts.push({ x: tipX, y: tr.bot - tr.inset });
-        pts.push({ x: seamX, y: tr.bot });
+        const flat = clamp(Number(tr.flatten) || 0, 0, 1);
+        const top = tr.top;
+        const bot = tr.top + tr.height;
+        pts.push({ x: seamX, y: top });
+
+        /*
+         * Drawbridge flatten: keep a usable tip depth until nearly straight, then
+         * drop tip vertices entirely. Morphing tip→seam with tiny leftovers made
+         * razor corners whose offset miters spiked into shards mid-animation.
+         */
+        if (flat >= 0.84 || fullDepth < 1) {
+            pts.push({ x: seamX, y: bot });
+            continue;
+        }
+        const depth = Math.max(fullDepth * (1 - flat), 12 * (1 - flat));
+        const xTip = seamX + tipSign * depth;
+        let inset = Math.max(4, tr.height * t) * (1 - flat);
+        inset = Math.max(inset, 10 * (1 - flat));
+        const tipSpan = bot - top - 2 * inset;
+        if (tipSpan < 8) {
+            const midY = (top + bot) / 2;
+            pts.push({ x: xTip, y: midY });
+        } else {
+            pts.push({ x: xTip, y: top + inset });
+            pts.push({ x: xTip, y: bot - inset });
+        }
+        pts.push({ x: seamX, y: bot });
     }
     pts.push({ x: seamX, y: handleH });
-    return pts;
+    return dedupePolyPoints(pts, 0.75);
+}
+
+/**
+ * Punch [holeLo, holeHi] out of solid Y spans.
+ * @param {[number, number][]} spans
+ * @param {number} holeLo
+ * @param {number} holeHi
+ */
+function punchYSpans(spans, holeLo, holeHi) {
+    /** @type {[number, number][]} */
+    const out = [];
+    for (let i = 0; i < spans.length; i++) {
+        const a = spans[i][0];
+        const b = spans[i][1];
+        if (holeHi <= a || holeLo >= b) {
+            out.push([a, b]);
+            continue;
+        }
+        if (holeLo > a) out.push([a, holeLo]);
+        if (holeHi < b) out.push([holeHi, b]);
+    }
+    return out;
 }
 
 /**
@@ -1616,14 +2157,16 @@ function ensureSideInwardHost(handle) {
 /**
  * Parallel inward lip — authored in the same right-protruding local space as the
  * working info side, then X-mirrored for filters (dual traps included).
- * Constant thickness (no end shrinkage).
+ * Constant thickness (no end shrinkage). Drawbridge flatten/gap are inward-only
+ * (outer white stroke keeps the full trap silhouette).
  * @param {Element} paintParent host for the inward SVG (handle or panel edge host)
  * @param {'left'|'right'} protrudeDir
- * @param {{handleW:number,handleH:number,protrude:number,localPts:{x:number,y:number}[],traps:{top:number,height:number}[],edgeRadius?:number}} edge
+ * @param {{handleW:number,handleH:number,protrude:number,traps:{top:number,height:number,key?:InwardCutKey,scale?:number}[],edgeRadius?:number}} edge
  * @param {object} s
+ * @param {number[]} [cutScales] per-trap hover scale (default 1)
  */
-function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s) {
-    const { handleW, handleH, protrude, localPts, traps } = edge;
+function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
+    const { handleW, handleH, protrude, traps } = edge;
     const offsetPx = Number(s.sideInwardLineOffsetPx) || 0;
     const outerInset = Math.max(
         0.5,
@@ -1633,57 +2176,77 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s) {
         ),
     );
     const edgeRadius = edge.edgeRadius ?? Math.max(s.sideBorderRadius, s.dockBorderRadius);
-    /* Same walk + offset as the perfect info side (local seam=0 → tip=protrude). */
-    const rounded = sampleRoundedPolyline(localPts, edgeRadius);
+    const trapsForInward = traps.map((tr, i) => {
+        const key = tr.key;
+        const st = key ? drawbridge[key] : null;
+        return {
+            top: tr.top,
+            height: tr.height,
+            flatten: st ? st.flatten : 0,
+            gapOpen: st ? st.gapOpen : 1,
+            scale:
+                typeof cutScales?.[i] === 'number' && Number.isFinite(cutScales[i])
+                    ? cutScales[i]
+                    : typeof tr.scale === 'number'
+                      ? tr.scale
+                      : INWARD_CUT_IDLE_SCALE,
+        };
+    });
+    /* Inward lip gets its own polyline so drawbridge flatten does not move the outer stroke. */
+    const localPts = sideInwardOuterPoints(
+        'right',
+        handleH,
+        0,
+        protrude,
+        trapsForInward,
+        s.trapTaperPct,
+    );
+    const rounded = dedupePolyPoints(sampleRoundedPolyline(localPts, edgeRadius), 0.5);
     const localEdge = densifyPolyline(offsetPolyline(rounded, outerInset), 5);
     const fullTh = Math.max(1, s.sideInwardLineThicknessPx);
     const cornerR = Math.max(s.sideInwardCornerRadiusPx, edgeRadius);
     const maxButt = Math.max(fullTh * 3, 36);
-    const gap = clamp(Number(s.sideInwardCenterGapPx) || 200, 24, 900);
+    const baseGap = clamp(Number(s.sideInwardCenterGapPx) || 200, 24, 900);
     const th = () => fullTh;
+    const maxHalfFor = (/** @type {number} */ trapH, /** @type {number} */ scale) =>
+        trapH * Math.min(0.88, 0.42 * Math.max(1, scale));
+
+    /* Solid spans along Y; each open cut punches a hole. gapOpen→0 removes the hole. */
+    /** @type {[number, number][]} */
+    let spans = [[0, handleH]];
+    for (let i = 0; i < trapsForInward.length; i++) {
+        const tr = trapsForInward[i];
+        const gap = clamp(baseGap * tr.scale * tr.gapOpen, 0, 900);
+        if (gap < 3) continue;
+        const mid = tr.top + tr.height / 2;
+        const half = Math.min(gap / 2, maxHalfFor(tr.height, Math.max(1, tr.scale)));
+        if (half < 1.5) continue;
+        spans = punchYSpans(spans, mid - half, mid + half);
+    }
 
     /** @type {string[]} */
     const localParts = [];
-    if (traps.length === 1) {
-        const mid = traps[0].top + traps[0].height / 2;
-        const half = Math.min(gap / 2, traps[0].height * 0.42);
-        localParts.push(
-            horizontalCutRibbonPath(localEdge, th, mid - half, 'top', cornerR, maxButt),
-        );
-        localParts.push(
-            horizontalCutRibbonPath(localEdge, th, mid + half, 'bottom', cornerR, maxButt),
-        );
-    } else {
-        const cuts = traps.map((m) => {
-            const mid = m.top + m.height / 2;
-            const half = Math.min(gap / 2, m.height * 0.42);
-            return { top: mid - half, bot: mid + half };
-        });
-        localParts.push(
-            horizontalCutRibbonPath(localEdge, th, cuts[0].top, 'top', cornerR, maxButt),
-        );
-        for (let i = 0; i < cuts.length - 1; i++) {
+    for (let i = 0; i < spans.length; i++) {
+        const a = spans[i][0];
+        const b = spans[i][1];
+        if (b - a < 8) continue;
+        if (a <= 0.5 && b >= handleH - 0.5) {
             localParts.push(
-                horizontalBandRibbonPath(
-                    localEdge,
-                    th,
-                    cuts[i].bot,
-                    cuts[i + 1].top,
-                    cornerR,
-                    maxButt,
-                ),
+                horizontalBandRibbonPath(localEdge, th, 0, handleH, cornerR, maxButt),
+            );
+        } else if (a <= 0.5) {
+            localParts.push(
+                horizontalCutRibbonPath(localEdge, th, b, 'top', cornerR, maxButt),
+            );
+        } else if (b >= handleH - 0.5) {
+            localParts.push(
+                horizontalCutRibbonPath(localEdge, th, a, 'bottom', cornerR, maxButt),
+            );
+        } else {
+            localParts.push(
+                horizontalBandRibbonPath(localEdge, th, a, b, cornerR, maxButt),
             );
         }
-        localParts.push(
-            horizontalCutRibbonPath(
-                localEdge,
-                th,
-                cuts[cuts.length - 1].bot,
-                'bottom',
-                cornerR,
-                maxButt,
-            ),
-        );
     }
 
     const raw = localParts.filter(Boolean).join('');
@@ -1748,18 +2311,29 @@ export function syncAllSidePanelEdges(s) {
         '.event-slide .panel-resize-handle--inner-right',
     );
     if (infoHandle) {
-        const traps = measureSideTrapBands(infoHandle, [infoHandle]);
+        const traps = measureSideTrapBands(infoHandle, [infoHandle]).map((tr) => ({
+            ...tr,
+            key: /** @type {InwardCutKey} */ ('info'),
+            scale: cutEmphasis.info.current,
+        }));
         const edge = syncSidePanelEdgeStroke(infoHandle, 'right', traps, s);
-        if (edge) syncSideInwardFromEdge(infoHandle, 'right', edge, s);
+        if (edge) {
+            edge.traps = traps;
+            syncSideInwardFromEdge(infoHandle, 'right', edge, s, [cutEmphasis.info.current]);
+        }
     }
 
     const panel = document.querySelector('.filters-panel');
-    const filtersHandle = document.querySelector(
-        '.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch',
-    );
-    const musicHandle = document.querySelector(
-        '.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--music-launch',
-    );
+    const rightHandles = panel
+        ? Array.from(
+              panel.querySelectorAll('.panel-resize-handle--inner-left'),
+          )
+        : [];
+    /* Prefer filters-launch as measure host (full-height rail); fall back to first handle. */
+    const measureHandle =
+        rightHandles.find((h) =>
+            h.classList.contains('panel-resize-handle--filters-launch'),
+        ) || rightHandles[0];
     /* Strip handle-local leftovers only — keep `.panel-side-edge-host` alive for live updates. */
     document
         .querySelectorAll(
@@ -1769,14 +2343,40 @@ export function syncAllSidePanelEdges(s) {
         )
         .forEach((el) => el.remove());
 
-    if (!filtersHandle || !panel) return;
+    if (!measureHandle || !panel) return;
 
-    const trapHandles = musicHandle ? [filtersHandle, musicHandle] : [filtersHandle];
-    const traps = measureSideTrapBands(filtersHandle, trapHandles);
+    /*
+     * Scale + drawbridge key from data-panel-mode (launch class names are swapped).
+     * Bands sort by Y with key/scale glued to each handle.
+     */
+    /** @type {{top:number,height:number,scale:number,key:InwardCutKey}[]} */
+    const traps = [];
+    for (let i = 0; i < rightHandles.length; i++) {
+        const handle = rightHandles[i];
+        const label = handle.querySelector('.panel-resize-handle__trap-label');
+        if (!(label instanceof HTMLElement) || !(label.offsetHeight > 4)) continue;
+        const key = rightRailCutKeyFromHandle(handle);
+        traps.push({
+            top: label.offsetTop,
+            height: label.offsetHeight,
+            scale: cutEmphasis[key].current,
+            key,
+        });
+    }
+    traps.sort((a, b) => a.top - b.top);
     if (!traps.length) return;
-    const host = ensureFiltersEdgeHost(panel, filtersHandle);
-    const edge = syncSidePanelEdgeStroke(filtersHandle, 'left', traps, s, host);
-    if (edge) syncSideInwardFromEdge(host, 'left', edge, s);
+    const host = ensureFiltersEdgeHost(panel, measureHandle);
+    const edge = syncSidePanelEdgeStroke(measureHandle, 'left', traps, s, host);
+    if (edge) {
+        edge.traps = traps;
+        syncSideInwardFromEdge(
+            host,
+            'left',
+            edge,
+            s,
+            traps.map((t) => t.scale),
+        );
+    }
 }
 
 /** @deprecated Use syncAllSidePanelEdges */
@@ -1821,11 +2421,38 @@ function sideTrapViewportFit(s) {
 }
 
 /**
- * @param {object} state
+ * Keep the floating Atlas News badge in sync with tweak vars.
+ * mountAtlasNewsChrome also writes inline !important sizes — override those live.
+ * @param {object} s sanitized trap state
  */
-export function applySidePanelsTrapChrome(state) {
+function syncFloatingAtlasNewsBadge(s) {
+    const badge =
+        document.querySelector('.footer-atlas-news.footer-atlas-news--floating') ||
+        document.querySelector('footer.timeline-loaded .footer-atlas-news');
+    if (!badge) return;
+    badge.style.setProperty('width', `${s.atlasNewsWidthPx}px`, 'important');
+    badge.style.setProperty('height', `${s.atlasNewsHeightPx}px`, 'important');
+    const img = badge.querySelector('img');
+    if (img) {
+        img.style.setProperty('width', `${s.atlasNewsIconPct}%`, 'important');
+        img.style.setProperty('height', `${s.atlasNewsIconPct}%`, 'important');
+        img.style.setProperty('max-width', '100%', 'important');
+        img.style.setProperty('max-height', '100%', 'important');
+        img.style.setProperty('object-fit', 'contain', 'important');
+        img.style.setProperty('display', 'block', 'important');
+    }
+}
+
+/**
+ * @param {object} state
+ * @param {{ snapCuts?: boolean }} [opts] — default snap; dock-tween settle passes false
+ */
+export function applySidePanelsTrapChrome(state, opts = {}) {
     const s = sanitizeSidePanelsTrapState(state || cloneDefaults());
+    liveTrapChromeState = s;
     installSidePanelsTrapChromeLifecycle();
+    /* Cold applies snap cut scales; live dock settle must not or the ease pops. */
+    refreshInwardCutEmphasis({ snap: opts.snapCuts !== false });
     const root = document.documentElement;
     const fit = sideTrapViewportFit(s);
     /* Painted side chrome (viewport-fitted); strokes must use the same sizes. */
@@ -1913,6 +2540,18 @@ export function applySidePanelsTrapChrome(state) {
         '--dock-nub-fill-img',
         buildNubFillUrl('up', s.dockNubTaperPct, s.dockNubRadiusPx),
     );
+
+    /* Atlas News red trapezium — CSS vars + live inline sync (beats float mount). */
+    const atlasNewsVars = {
+        '--atlas-news-width': `${s.atlasNewsWidthPx}px`,
+        '--atlas-news-height': `${s.atlasNewsHeightPx}px`,
+        '--atlas-news-icon-pct': `${s.atlasNewsIconPct}%`,
+    };
+    for (const [prop, value] of Object.entries(atlasNewsVars)) {
+        root.style.setProperty(prop, value);
+        document.body?.style.setProperty(prop, value);
+    }
+    syncFloatingAtlasNewsBadge(s);
 
     /* Independent vertical slides */
     root.style.setProperty('--event-info-trap-pos', String(s.infoTrapPosPct));

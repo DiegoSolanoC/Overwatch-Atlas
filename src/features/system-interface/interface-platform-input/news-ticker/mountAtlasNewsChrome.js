@@ -6,36 +6,37 @@
  *   - reparent `.footer-atlas-news` onto `document.body`
  *   - force fixed geometry via inline !important styles (beats cascade fights)
  * When the class is removed, restore the node into the footer.
+ *
+ * Width / height / icon size come from UI Tweaks CSS vars
+ * (`--atlas-news-width`, `--atlas-news-height`, `--atlas-news-icon-pct`).
  */
 
 const BADGE_SELECTOR = '.footer-atlas-news';
 
-const FLOAT_CSS_TEXT = [
-    'display:flex',
-    'position:fixed',
-    'left:0',
-    'right:auto',
-    'bottom:0',
-    'top:auto',
-    'width:128px',
-    'height:112px',
-    'margin:0',
-    'padding:6px 8px 6px 6px',
-    'z-index:2500',
-    'background:#C93439',
-    'box-shadow:0 4px 12px rgba(0,0,0,0.3)',
-    'transform:none',
-    'overflow:visible',
-    'pointer-events:auto',
-    'clip-path:polygon(0% 0%, 100% 0%, 88% 100%, 0% 100%)',
-    'border-top-right-radius:6px',
-    'border-bottom-right-radius:6px',
-    'border-top-left-radius:0',
-    'border-bottom-left-radius:0',
-    'align-items:center',
-    'justify-content:center',
-    'box-sizing:border-box',
-].join(';');
+const DEFAULT_WIDTH = '90px';
+const DEFAULT_HEIGHT = '56px';
+const DEFAULT_ICON_PCT = '86%';
+
+function readAtlasNewsMetrics() {
+    const root = document.documentElement;
+    const fromInline = (prop) => root?.style?.getPropertyValue(prop)?.trim() || '';
+    const fromComputed = (prop) => {
+        try {
+            return getComputedStyle(root).getPropertyValue(prop).trim();
+        } catch {
+            return '';
+        }
+    };
+    return {
+        width: fromInline('--atlas-news-width') || fromComputed('--atlas-news-width') || DEFAULT_WIDTH,
+        height:
+            fromInline('--atlas-news-height') || fromComputed('--atlas-news-height') || DEFAULT_HEIGHT,
+        iconPct:
+            fromInline('--atlas-news-icon-pct') ||
+            fromComputed('--atlas-news-icon-pct') ||
+            DEFAULT_ICON_PCT,
+    };
+}
 
 function getBadge() {
     return document.querySelector(BADGE_SELECTOR);
@@ -46,24 +47,59 @@ function getFooter() {
 }
 
 function applyFloatInline(badge) {
+    const { width, height, iconPct } = readAtlasNewsMetrics();
+
     badge.classList.add('footer-atlas-news--floating');
-    badge.style.cssText = FLOAT_CSS_TEXT;
+    badge.style.cssText = [
+        'display:flex',
+        'position:fixed',
+        'left:0',
+        'right:auto',
+        'bottom:0',
+        'top:auto',
+        `width:${width}`,
+        `height:${height}`,
+        'margin:0',
+        'padding:4px 14px 4px 6px',
+        'z-index:2500',
+        'background:#C93439',
+        'box-shadow:0 4px 12px rgba(0,0,0,0.3)',
+        'transform:none',
+        'overflow:visible',
+        'pointer-events:auto',
+        'clip-path:polygon(0% 0%, 100% 0%, 88% 100%, 0% 100%)',
+        'border-top-right-radius:6px',
+        'border-bottom-right-radius:6px',
+        'border-top-left-radius:0',
+        'border-bottom-left-radius:0',
+        'align-items:center',
+        'justify-content:center',
+        'box-sizing:border-box',
+    ].join(';');
+
     // Reinforce critical props that themes may fight with !important.
+    // z-index stays in CSS: 2500 idle, 1500 under .loading-overlay.active.
     badge.style.setProperty('position', 'fixed', 'important');
-    badge.style.setProperty('z-index', '2500', 'important');
-    badge.style.setProperty('width', '128px', 'important');
-    badge.style.setProperty('height', '112px', 'important');
+    badge.style.removeProperty('z-index');
+    badge.style.setProperty('width', width, 'important');
+    badge.style.setProperty('height', height, 'important');
     badge.style.setProperty('bottom', '0', 'important');
     badge.style.setProperty('left', '0', 'important');
     badge.style.setProperty('overflow', 'visible', 'important');
-    badge.style.setProperty('clip-path', 'polygon(0% 0%, 100% 0%, 88% 100%, 0% 100%)', 'important');
+    badge.style.setProperty(
+        'clip-path',
+        'polygon(0% 0%, 100% 0%, 88% 100%, 0% 100%)',
+        'important',
+    );
     badge.style.setProperty('background', '#C93439', 'important');
-    badge.style.setProperty('padding', '6px 8px 6px 6px', 'important');
+    badge.style.setProperty('padding', '4px 14px 4px 6px', 'important');
 
     const img = badge.querySelector('img');
     if (img) {
-        img.style.setProperty('width', '100%', 'important');
-        img.style.setProperty('height', '100%', 'important');
+        img.style.setProperty('width', iconPct, 'important');
+        img.style.setProperty('height', iconPct, 'important');
+        img.style.setProperty('max-width', '100%', 'important');
+        img.style.setProperty('max-height', '100%', 'important');
         img.style.setProperty('object-fit', 'contain', 'important');
         img.style.setProperty('display', 'block', 'important');
     }

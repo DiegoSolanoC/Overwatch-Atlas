@@ -18,7 +18,11 @@
  * wrapper methods that just forward to these.
  */
 
-import { showLoadingOverlay, hideLoadingOverlay, setRunOperation } from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
+import {
+    showLoadingOverlayAndWait,
+    hideLoadingOverlay,
+    setRunOperation,
+} from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import { resetLoadProgress } from '../../universal-features/atlas-mode-runtime/loadProgressTracker.js';
 import { setCurrentMode, clearCurrentMode } from '../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
@@ -68,6 +72,11 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
         window.standaloneEventSlide.hideEventSlide();
     }
 
+    /* Opaque mask before any mode teardown so dock buttons don't flash away bare. */
+    setRunOperation(true);
+    await showLoadingOverlayAndWait();
+    resetLoadProgress();
+
     await killOtherModes({
         targetMode: 'world',
         loadedComponents,
@@ -81,7 +90,6 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
         runBtn.disabled = true;
     }
 
-    resetLoadProgress();
     hideMenuContainer();
     teardownGlobeMapChooserHub();
 

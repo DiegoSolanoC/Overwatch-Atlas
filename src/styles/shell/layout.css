@@ -91,7 +91,7 @@ header {
     --header-hub-stack-w: clamp(56px, 7.5vw, 88px);
     padding: 0; /* allow hub sections to be seamless full-height blocks */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    /* Above side panels (~540) and dock (~620) so hub + badge stay over the stage/loading band; below footer headlines (~700) and modals (1000+) */
+    /* Above side panels (~540) and dock (~620). Loading overlay sits at 3000 and covers header. Below footer headlines (~700) and modals (1000+) while idle. */
     z-index: 650;
     height: var(--header-chrome-paint-h);
     min-height: var(--header-chrome-paint-h);
@@ -1498,16 +1498,17 @@ footer.timeline-loaded .footer-atlas-news,
     display: flex !important;
     position: fixed !important;
     background: #C93439 !important;
-    /* Clear of dock page pill; still room for full wreath. */
-    width: 128px !important;
-    height: 112px !important;
+    /* UI Tweaks → Dock → Atlas News red trapezium (defaults clear footer thumbs). */
+    width: var(--atlas-news-width, 90px) !important;
+    height: var(--atlas-news-height, 56px) !important;
     left: 0 !important;
     right: auto !important;
     bottom: 0 !important;
     top: auto !important;
     /* Independent layer above footer (800), ticker (705), dock (620). */
     z-index: 2500 !important;
-    padding: 6px 8px 6px 6px !important;
+    /* Extra right pad offsets trapezoid slant so logo reads centered. */
+    padding: 4px 14px 4px 6px !important;
     margin: 0 !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     transform: none !important;
@@ -1525,32 +1526,12 @@ footer.timeline-loaded .footer-atlas-news,
 
 footer.timeline-loaded .footer-atlas-news img,
 .footer-atlas-news.footer-atlas-news--floating img {
-    width: 100% !important;
-    height: 100% !important;
+    width: var(--atlas-news-icon-pct, 86%) !important;
+    height: var(--atlas-news-icon-pct, 86%) !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
     object-fit: contain !important;
     display: block !important;
-}
-
-@media (max-width: 768px) {
-    footer.timeline-loaded .footer-atlas-news,
-    .footer-atlas-news.footer-atlas-news--floating {
-        width: 112px !important;
-        height: 98px !important;
-        padding: 5px 7px 5px 5px !important;
-        border-top-right-radius: 5px !important;
-        border-bottom-right-radius: 5px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    footer.timeline-loaded .footer-atlas-news,
-    .footer-atlas-news.footer-atlas-news--floating {
-        width: 98px !important;
-        height: 86px !important;
-        padding: 4px 6px 4px 4px !important;
-        border-top-right-radius: 4px !important;
-        border-bottom-right-radius: 4px !important;
-    }
 }
 
 /* ——— UI Tweaks panel (toggle lives in header grey cap) ——— */

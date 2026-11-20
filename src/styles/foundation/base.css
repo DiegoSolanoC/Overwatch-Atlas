@@ -67,3 +67,34 @@ html {
     scrollbar-width: var(--scrollbar-firefox-width);
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
+
+/* Shared close mark (Close Icon.png — white X on black plate). */
+.ui-close-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    /* Drop the black plate on dark panel chrome. */
+    mix-blend-mode: screen;
+}
+
+.filters-panel-close .ui-close-icon,
+.music-panel-close .ui-close-icon,
+.events-manage-close .ui-close-icon,
+.event-slide-close .ui-close-icon,
+.story-events-merge-dialog__close .ui-close-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.codex-stage-controls__target-chip-remove .ui-close-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.event-source-media-play__close.ui-close-icon {
+    width: 20px;
+    height: 20px;
+}

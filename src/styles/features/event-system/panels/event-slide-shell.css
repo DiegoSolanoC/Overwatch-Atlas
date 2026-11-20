@@ -270,7 +270,7 @@
 }
 
 .event-slide-close {
-    font-size: 48px;
+    font-size: 0;
     cursor: pointer;
     color: #fff;
     line-height: 1;

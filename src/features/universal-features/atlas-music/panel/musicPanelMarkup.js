@@ -14,7 +14,7 @@ export function createMusicPanel() {
     panel.id = 'musicPanel';
     panel.className = 'music-panel';
     panel.innerHTML = `
-        <div class="music-panel-close" id="musicPanelClose">&times;</div>
+        <div class="music-panel-close" id="musicPanelClose" role="button" tabindex="0" aria-label="Close"><img class="ui-close-icon" src="src/assets/images/Icons/Utility%20Icons/Close%20Icon.png" alt="" width="28" height="28" decoding="async" aria-hidden="true" /></div>
         <div class="music-panel-content">
             <div class="music-actions">
                 <h2 class="music-title">Music Options</h2>

@@ -8,6 +8,9 @@
  */
 
 import { createLoadProgressTracker } from './loadProgressTracker.js';
+import { yieldForLoadingOverlayPaint } from './loadingOverlayState.js';
+
+export { yieldForLoadingOverlayPaint };
 
 const SHELL_PREP_STAGE = Object.freeze({
     id: 'shellPrep',
@@ -25,15 +28,6 @@ const SETTLE_STAGE = Object.freeze({
  */
 export function buildLinearModeStages(mountStage) {
     return Object.freeze([SHELL_PREP_STAGE, mountStage, SETTLE_STAGE]);
-}
-
-/** Yield so the overlay can paint before long synchronous mount work. */
-export function yieldForLoadingOverlayPaint() {
-    return new Promise((resolve) => {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(resolve);
-        });
-    });
 }
 
 /**

@@ -172,13 +172,13 @@ body:has(#paginationDock)
 
 .dock-globe-rail--center > .page-input-container .page-label,
 .dock-globe-rail--center > .page-input-container .page-total {
-    font-size: 13px !important;
+    font-size: 16px !important;
 }
 
 .dock-globe-rail--center > .page-input-container .page-input {
-    width: 42px !important;
-    height: 28px !important;
-    font-size: 13px !important;
+    width: 48px !important;
+    height: 34px !important;
+    font-size: 16px !important;
 }
 
 /* Left side buttons in dock rail: negative skew */

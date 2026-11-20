@@ -28,7 +28,11 @@
  * overlay is locked."
  */
 
-import { showLoadingOverlay, hideLoadingOverlay } from '../../atlas-mode-runtime/loadingOverlayState.js';
+import {
+    showLoadingOverlayAndWait,
+    hideLoadingOverlay,
+    getRunOperation,
+} from '../../atlas-mode-runtime/loadingOverlayState.js';
 import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
 
 /**
@@ -38,8 +42,11 @@ import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
  */
 export function createLoadingLockHandler(asyncFn, setIsRunOperation) {
     return async function () {
+        /* Ignore mid-load re-entry — concurrent mode switches race kill/enter and freeze. */
+        if (getRunOperation()) return;
+
         setIsRunOperation(true);
-        showLoadingOverlay();
+        await showLoadingOverlayAndWait();
         try {
             await asyncFn();
         } catch (error) {

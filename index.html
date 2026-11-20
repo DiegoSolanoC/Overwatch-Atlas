@@ -129,8 +129,8 @@
         } catch (e) {}
     })();
     </script>
-    <link rel="stylesheet" href="src/styles/app.css?v=179">
-    <link rel="stylesheet" href="src/styles/entry.css?v=26">
+    <link rel="stylesheet" href="src/styles/app.css?v=183">
+    <link rel="stylesheet" href="src/styles/entry.css?v=31">
 </head>
 <body class="app-timeline-default">
     <div
@@ -232,7 +232,7 @@
             <button class="event-slide-action-btn event-slide-save-btn" id="eventSlideSaveBtn" title="Save description" type="button" style="display: none;">Save</button>
             <div class="event-slide-close-cluster" id="eventSlideCloseCluster">
                 <div class="event-slide-close-cluster__controls">
-                    <div class="event-slide-close" id="eventSlideClose" role="button" tabindex="0" aria-label="Close">&times;</div>
+                    <div class="event-slide-close" id="eventSlideClose" role="button" tabindex="0" aria-label="Close"><img class="ui-close-icon" src="src/assets/images/Icons/Utility%20Icons/Close%20Icon.png" alt="" width="28" height="28" decoding="async" aria-hidden="true" /></div>
                     <button type="button" class="event-slide-back-btn" id="eventSlideBack" aria-label="Back to previous entry" title="Back" style="display: none;">
                         <img class="event-slide-back-btn__icon" src="src/assets/images/Icons/Utility%20Icons/Back%20Arrow.png" alt="" width="36" height="36" decoding="async" />
                     </button>
@@ -433,7 +433,7 @@
         <!-- Event list UI for Data Archive only (hidden pool; overlay slide removed). -->
         <div id="eventsManagePanelDetachedHost" class="events-manage-panel-detached-host" hidden>
         <div class="events-manage-panel" id="eventsManagePanel">
-            <div class="events-manage-close" id="eventsManageClose">&times;</div>
+            <div class="events-manage-close" id="eventsManageClose" role="button" tabindex="0" aria-label="Close"><img class="ui-close-icon" src="src/assets/images/Icons/Utility%20Icons/Close%20Icon.png" alt="" width="28" height="28" decoding="async" aria-hidden="true" /></div>
             <div class="events-manage-content">
                 <div class="events-manage-header">
                     <div class="events-manage-title-section">
@@ -522,7 +522,7 @@
     <script src="src/features/world/worldview-controls-ui/runtime/WorldviewStationFollow.js?v=9"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=106"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=108"></script>
     
     <!-- Load services -->
     <script type="module" src="src/features/universal-features/atlas-sound-effects/SoundEffectsService.js?v=10"></script>
@@ -581,12 +581,12 @@
     <!-- Filters panel: single ES module entry; pulls in state, images, manifest, buttons, tabs, wiring. -->
     <script type="module" src="src/features/system-interface/interface-filter-menu/FiltersPanel.js?v=18"></script>
     <script type="module" src="src/features/system-interface/interface-platform-input/shortcuts/installAppKeyboardShortcuts.js?v=12"></script>
-    <script type="module" src="src/features/system-interface/interface-platform-input/panel-resize/installPanelResize.js?v=15"></script>
+    <script type="module" src="src/features/system-interface/interface-platform-input/panel-resize/installPanelResize.js?v=16"></script>
     
     <!-- Load main script -->
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=174"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=189"></script>
 </body>
 </html>

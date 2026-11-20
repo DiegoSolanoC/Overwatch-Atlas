@@ -16,7 +16,7 @@ export function createFiltersPanel() {
     panel.id = 'filtersPanel';
     panel.className = 'filters-panel';
     panel.innerHTML = `
-        <div class="filters-panel-close" id="filtersPanelClose">&times;</div>
+        <div class="filters-panel-close" id="filtersPanelClose" role="button" tabindex="0" aria-label="Close"><img class="ui-close-icon" src="src/assets/images/Icons/Utility%20Icons/Close%20Icon.png" alt="" width="28" height="28" decoding="async" aria-hidden="true" /></div>
         <div class="filters-panel-content">
             <div class="filters-actions">
                 <h2 class="filters-title">Filters</h2>

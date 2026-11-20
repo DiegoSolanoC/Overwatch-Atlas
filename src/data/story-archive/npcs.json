@@ -3362,20 +3362,15 @@
       "npcCategory": "Civilians"
     },
     {
+      "name": "Kace",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Fugitives"
+    },
+    {
       "name": "Sven",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Fugitives",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Ironclad Guild",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ],
       "connectionCanvas": {
         "v": 1,
         "nodes": [
@@ -3434,12 +3429,7 @@
         },
         "worldW": 13073,
         "worldH": 10480
-      }
-    },
-    {
-      "name": "Kace",
-      "description": "",
-      "relevantLocations": [],
+      },
       "npcCategory": "Fugitives"
     }
   ]

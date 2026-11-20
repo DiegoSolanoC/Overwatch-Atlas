@@ -29,21 +29,43 @@ export function getRunOperation() {
 }
 
 /**
+ * Two animation frames so the overlay is painted opaque before teardown work.
+ * @returns {Promise<void>}
+ */
+export function yieldForLoadingOverlayPaint() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(resolve);
+    });
+  });
+}
+
+/**
  * Show loading overlay
  * Works for both test.html and the timeline app (index.html)
  */
 export function showLoadingOverlay() {
   const loadingOverlay = document.getElementById("loadingOverlay");
   if (loadingOverlay) {
-    // Force immediate visibility (no transition delay)
+    /* Snap opaque — CSS transition would race chrome teardown. */
+    loadingOverlay.style.transition = "none";
     loadingOverlay.style.opacity = "1";
     loadingOverlay.style.visibility = "visible";
     loadingOverlay.classList.add("active");
-    /* Sync layout so the overlay is committed before the next long synchronous task runs. */
+    /* Sync layout so the overlay is committed before the next long task. */
     void loadingOverlay.getBoundingClientRect();
   } else {
     console.warn("[Loading Overlay] Overlay element not found!");
   }
+}
+
+/**
+ * Show overlay and wait until it has painted (call before killOtherModes).
+ * @returns {Promise<void>}
+ */
+export async function showLoadingOverlayAndWait() {
+  showLoadingOverlay();
+  await yieldForLoadingOverlayPaint();
 }
 
 /**
@@ -58,6 +80,8 @@ export function hideLoadingOverlay(opts = {}) {
 
   const loadingOverlay = document.getElementById("loadingOverlay");
   if (loadingOverlay) {
+    /* Restore transition so fade-out still eases. */
+    loadingOverlay.style.transition = "";
     loadingOverlay.classList.remove("active");
     loadingOverlay.style.opacity = "";
     loadingOverlay.style.visibility = "";

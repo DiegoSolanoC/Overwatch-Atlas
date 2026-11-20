@@ -19,7 +19,7 @@
  * file was the monolithic loader; today it does not load anything itself.
  */
 
-import { ModeOrchestrator } from '../atlas-mode-runtime/ModeOrchestrator.js?v=105';
+import { ModeOrchestrator } from '../atlas-mode-runtime/ModeOrchestrator.js?v=107';
 
 // Side-effect imports: each module attaches handlers / globals on import.
 import '../../system-interface/interface-platform-input/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases
@@ -33,7 +33,7 @@ import { loadGlobeBase, unloadGlobeBase } from './loaders/GlobeBaseLoaders.js';
 import { loadToggles, unloadToggles } from './loaders/TogglesLoaders.js';
 import { loadControls, unloadControls } from './loaders/ControlsLoaders.js';
 import { loadEvents, unloadEvents } from './loaders/EventsLoaders.js?v=100';
-import { loadHeaderModeButtons } from '../atlas-header/HeaderModeButtons.js';
+import { loadHeaderModeButtons } from '../atlas-header/HeaderModeButtons.js?v=2';
 import { appModeSwitch } from '../atlas-mode-runtime/mode-lifecycle/ModeSwitcher.js';
 
 // === Shared component state ============================================

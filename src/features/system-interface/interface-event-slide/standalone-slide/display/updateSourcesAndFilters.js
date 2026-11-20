@@ -23,7 +23,7 @@ import { isPdfSourceUrl, pdfSourceKey } from '../sources/pdfSourceUtils.js';
 
 import { getSourcePrimaryUrl, getSourceUrls } from '../sources/sourceUrlUtils.js';
 
-import { renderSourceMediaPlayButtonFace } from '../sources/sourceMediaPlayButton.js';
+import { renderSourceMediaPlayButtonFace } from '../sources/sourceMediaPlayButton.js?v=2';
 
 import {
 

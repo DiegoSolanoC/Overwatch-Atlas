@@ -607,7 +607,7 @@ export function openStoryEventsMergeModal(plan) {
                 <header class="story-events-merge-dialog__header">
                     <div class="story-events-merge-dialog__header-top">
                         <h2 class="story-events-merge-dialog__title" id="storyEventsMergeTitle">Merge story events</h2>
-                        <button type="button" class="story-events-merge-dialog__close" id="storyEventsMergeClose" aria-label="Close merge dialog">&times;</button>
+                        <button type="button" class="story-events-merge-dialog__close" id="storyEventsMergeClose" aria-label="Close merge dialog"><img class="ui-close-icon" src="src/assets/images/Icons/Utility%20Icons/Close%20Icon.png" alt="" width="28" height="28" decoding="async" aria-hidden="true" /></button>
                     </div>
                     <div class="story-events-merge-dialog__stats">
                         <span class="story-events-merge-stat"><strong>${plan.identicalCount}</strong> identical</span>

@@ -1,5 +1,6 @@
 /** Story mode header icon — used for in-panel PDF sources. */
 export const STORY_MODE_ICON_PATH = 'src/assets/images/Icons/Mode%20Icons/Story.png';
+const CLOSE_ICON_PATH = 'src/assets/images/Icons/Utility%20Icons/Close%20Icon.png';
 
 /**
  * @param {HTMLButtonElement} btn
@@ -11,7 +12,16 @@ export function renderSourceMediaPlayButtonFace(btn, mediaKind, isActive) {
     btn.classList.toggle('event-source-media-play--pdf', mediaKind === 'pdf' && !isActive);
 
     if (isActive) {
-        btn.textContent = '×';
+        const closeImg = document.createElement('img');
+        closeImg.className = 'ui-close-icon event-source-media-play__close';
+        closeImg.src = CLOSE_ICON_PATH;
+        closeImg.alt = '';
+        closeImg.width = 20;
+        closeImg.height = 20;
+        closeImg.decoding = 'async';
+        closeImg.draggable = false;
+        closeImg.setAttribute('aria-hidden', 'true');
+        btn.appendChild(closeImg);
         return;
     }
 

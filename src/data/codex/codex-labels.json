@@ -1015,11 +1015,11 @@
     {
       "id": "cn-1776199020498-imn45tfj",
       "kind": "npc",
-      "npcName": "Sven",
       "x": 12532.55800165405,
       "y": 9890.243476109865,
       "scale": 1.5,
-      "bgColor": null
+      "bgColor": null,
+      "npcName": "Sven"
     },
     {
       "id": "cn-1776199033515-s6jmpjno",

@@ -49,7 +49,15 @@ function renderDraftChips(host) {
         removeBtn.type = 'button';
         removeBtn.className = 'codex-stage-controls__target-chip-remove';
         removeBtn.setAttribute('aria-label', `Remove ${name}`);
-        removeBtn.textContent = '×';
+        const closeImg = document.createElement('img');
+        closeImg.className = 'ui-close-icon';
+        closeImg.src = 'src/assets/images/Icons/Utility%20Icons/Close%20Icon.png';
+        closeImg.alt = '';
+        closeImg.width = 14;
+        closeImg.height = 14;
+        closeImg.decoding = 'async';
+        closeImg.setAttribute('aria-hidden', 'true');
+        removeBtn.appendChild(closeImg);
         removeBtn.addEventListener('click', (ev) => {
             ev.preventDefault();
             ev.stopPropagation();

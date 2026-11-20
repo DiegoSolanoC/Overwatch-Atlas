@@ -21,7 +21,7 @@ import {
     destroyYouTubeEmbedPlayer,
     mountYouTubeEmbedPlayer,
 } from './eventYouTubePlayer.js';
-import { renderSourceMediaPlayButtonFace } from '../sources/sourceMediaPlayButton.js';
+import { renderSourceMediaPlayButtonFace } from '../sources/sourceMediaPlayButton.js?v=2';
 
 const YOUTUBE_HOST_ID = 'eventYouTubeEmbed';
 const PDF_HOST_ID = 'eventPdfEmbed';

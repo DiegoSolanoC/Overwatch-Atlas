@@ -22,7 +22,7 @@
 
 import { ATLAS_MODE, MODE_LABEL } from './atlasModes.js';
 import { updateStatus } from './statusFeed.js';
-import { runStagedLinearModeLoad } from './linearModeStagedEntry.js';
+import { runStagedLinearModeLoad } from './linearModeStagedEntry.js?v=2';
 import { restoreMainMenu as restoreMainMenuImpl } from '../atlas-main-menu/restoreMainMenu.js';
 import { runMenuComponents as runMenuComponentsImpl } from '../atlas-main-menu/runMenuComponents.js';
 import {
@@ -34,8 +34,8 @@ import {
     runUniversalFeatures as runUniversalFeaturesImpl,
     killUniversalFeatures as killUniversalFeaturesImpl
 } from './universalFeaturesLifecycle.js';
-import { enterMode, exitMode } from './modeLifecycleCeremony.js';
-import { runGlobeMode, killGlobeMode } from '../../world/worldview-mode-entry/WorldviewModeLifecycle.js';
+import { enterMode, exitMode } from './modeLifecycleCeremony.js?v=2';
+import { runGlobeMode, killGlobeMode } from '../../world/worldview-mode-entry/WorldviewModeLifecycle.js?v=2';
 import {
     mountGalleryMode,
     unmountGalleryMode,

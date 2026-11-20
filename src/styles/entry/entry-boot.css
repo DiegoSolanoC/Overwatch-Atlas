@@ -59,7 +59,7 @@ body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
     bottom: 0;
 }
 
-/* Loading Overlay */
+/* Loading Overlay — above all shell chrome (header 650, dock 620, Atlas News 2500). */
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -67,7 +67,7 @@ body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
     width: 100%;
     height: 100%;
     background: #000000; /* Fully black (100% opacity) */
-    z-index: 2000;
+    z-index: 3000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -88,24 +88,42 @@ body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
  * Boot mask
  * ---------------------------------------------------------------------- */
 /* Until the Event System Load Out has finished mounting, hide every
- * direct body child except the loading overlay. Without this, deferred
- * mounts (pagination dock, filter panel chrome, dock rails, side-panel
- * resize handles, etc.) and CSS transitions (height / flex-basis on the
- * dock, panel-resize trapezoids) visibly cascade in during the overlay's
- * 500ms fade, producing a "menu first, then dock, then panels" pop-in
- * sequence. With the mask in place every layout/paint that happens
- * during boot stays invisible behind the still-opaque overlay; once
- * `body.app-booted` is set (immediately before `hideLoadingOverlayElement`
- * runs in `AppInitializer.js`) every child becomes visible at once and
- * the overlay then fades to reveal the final composed UI. */
-body:not(.app-booted) > *:not(.loading-overlay):not(.mobile-portrait-gate):not(header) {
+ * direct body child (including header / dock / panels). Without this,
+ * deferred mounts and CSS transitions visibly cascade in during the
+ * overlay's fade — chrome pops in one-by-one.
+ *
+ * Dock/slider rules use `visibility: visible !important` on descendants,
+ * which would punch through a parent-only mask — so we also force-hide
+ * descendants, then re-show the loading overlay tree.
+ * Once `body.app-booted` is set (immediately before the overlay fades in
+ * AppInitializer) every child becomes visible at once for an atomic reveal.
+ * Portrait gate stays exempt so rotate-device can still show on first paint. */
+body:not(.app-booted) > *:not(.mobile-portrait-gate),
+body:not(.app-booted) > *:not(.mobile-portrait-gate) * {
     visibility: hidden !important;
 }
 
-/* Keep header + center badge painted above the boot/loading band (match dock/side chrome). */
-body:not(.app-booted) > header {
+body:not(.app-booted) .loading-overlay,
+body:not(.app-booted) .loading-overlay * {
     visibility: visible !important;
-    z-index: 2100;
+}
+
+/*
+ * Post-boot mode loads: keep shell chrome under the mask (overlay is z=3000).
+ * pointer-events none is belt-and-suspenders — overlay already captures clicks.
+ */
+body.app-booted:has(.loading-overlay.active) > header,
+body.app-booted:has(.loading-overlay.active) > footer,
+body.app-booted:has(.loading-overlay.active) .header-utility-rail,
+body:has(.loading-overlay.active) .footer-atlas-news,
+body:has(.loading-overlay.active) .footer-atlas-news--floating {
+    pointer-events: none !important;
+}
+
+/* Atlas News floats at z=2500 idle — park it under the mask while loading. */
+body:has(.loading-overlay.active) .footer-atlas-news,
+body:has(.loading-overlay.active) .footer-atlas-news--floating {
+    z-index: 1500 !important;
 }
 
 .loading-status-overlay {

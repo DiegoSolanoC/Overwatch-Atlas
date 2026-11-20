@@ -3,9 +3,10 @@
  */
 
 import {
-  showLoadingOverlay,
+  showLoadingOverlayAndWait,
   hideLoadingOverlay,
   setRunOperation,
+  getRunOperation,
 } from "../atlas-mode-runtime/loadingOverlayState.js";
 import { updateStatus } from "../atlas-mode-runtime/statusFeed.js";
 import {
@@ -79,13 +80,15 @@ export function attachHomeButtonHandler(homeButton) {
     e.stopPropagation();
     e.preventDefault();
 
+    /* Mid-load Home races the in-flight enterMode and can leave the UI frozen. */
+    if (getRunOperation()) return;
+
     playModeSwitchSound(false);
 
     const currentMode = getCurrentModeOrMenu();
 
-    setRunOperation(false);
     setRunOperation(true);
-    showLoadingOverlay();
+    await showLoadingOverlayAndWait();
     updateStatus("Returning to Home...", "info");
 
     closeFloatingOverlays();

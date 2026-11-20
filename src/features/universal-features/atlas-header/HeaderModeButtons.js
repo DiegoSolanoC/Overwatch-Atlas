@@ -40,10 +40,13 @@ function attachWorldviewBootstrap() {
 }
 
 function attachCodexBootstrap() {
+    const launch = createLoadingLockHandler(
+        () => window.runCodexComponents(false),
+        setRunOperation,
+    );
     attachModeBootstrap('headerWorldCodexBtn', 'codex', () => {
-        if (typeof window.runCodexComponents === 'function') {
-            void window.runCodexComponents(false);
-        }
+        if (typeof window.runCodexComponents !== 'function') return;
+        void launch();
     });
 }
 

@@ -48,7 +48,7 @@ import {
   setupDockEraMenu,
   teardownDockEraMenu,
 } from "../interface-bottom-dock/dockEraMenu.js";
-import { installAtlasNewsChrome } from "../interface-platform-input/news-ticker/mountAtlasNewsChrome.js?v=5";
+import { installAtlasNewsChrome } from "../interface-platform-input/news-ticker/mountAtlasNewsChrome.js?v=7";
 import { refreshDockTimelinePagination } from "../interface-bottom-dock/refreshDockTimelinePagination.js";
 
 installEventSlidePlainPasteGuard();
