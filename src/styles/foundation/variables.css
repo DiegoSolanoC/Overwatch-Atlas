@@ -182,10 +182,17 @@
     /* Panel Dimensions - Desktop */
     --panel-event-width: 1248px; /* Default + resize minimum (panel-resize/) */
     --panel-event-width-max: 1584px; /* Resize maximum; capped by viewport in JS */
-    --panel-event-width-collapsed: 1px; /* Collapsed width showing handle */
+    /*
+     * Closed strip wide enough that the inward lip stays fully on-screen
+     * (not just the outer stroke). SidePanelsTrapChrome overwrites the px value.
+     */
+    --panel-side-closed-peek-px: 28px;
+    /* Seam-side content padding so the inward lip does not cover text/UI. */
+    --panel-side-content-inset-px: 36px;
+    --panel-event-width-collapsed: var(--panel-side-closed-peek-px);
     --panel-filters-width: 1248px; /* Default + resize minimum (right edge; expands left — panel-resize/) */
     --panel-filters-width-max: 1584px; /* Resize maximum; capped by viewport in JS */
-    --panel-filters-width-collapsed: 1px; /* Collapsed width showing handle */
+    --panel-filters-width-collapsed: var(--panel-side-closed-peek-px);
     --panel-music-width: 800px;
     --panel-events-manage-width: 1040px;
     /* Event info + Filters: thick bottom accent (shared) */

@@ -4,7 +4,7 @@
    ======================================== */
 
 /* Foundation */
-@import url('foundation/variables.css?v=24');
+@import url('foundation/variables.css?v=26');
 @import url('foundation/base.css?v=10');
 @import url('foundation/animations.css?v=10');
 
@@ -47,14 +47,14 @@
 @import url('features/event-system/event-buttons.css?v=15');
 @import url('features/event-system/event-image-overlay.css?v=24');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=174');
+@import url('features/event-system/event-pagination.css?v=175');
 @import url('features/event-system/news-ticker.css?v=12');
 
 /* Event system panels */
-@import url('features/event-system/panels/event-slide.css?v=46');
-@import url('features/event-system/panels/filters.css?v=17');
+@import url('features/event-system/panels/event-slide.css?v=48');
+@import url('features/event-system/panels/filters.css?v=18');
 @import url('features/music/panels/music.css?v=29');
 @import url('features/event-system/panels/events-manage.css?v=30');
 @import url('features/event-system/panels/story-events-merge.css?v=6');
 @import url('features/event-system/panels/panel-pattern-overlay.css?v=27');
-@import url('features/event-system/panels/panel-resize.css?v=58');
+@import url('features/event-system/panels/panel-resize.css?v=63');

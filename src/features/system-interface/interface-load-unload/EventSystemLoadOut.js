@@ -20,7 +20,7 @@
 
 import { updateStatus } from "../../universal-features/atlas-mode-runtime/statusFeed.js";
 import { lookAndAddElement } from "../../universal-features/atlas-shared-ui/dom/lookAndAddElement.js";
-import { createEventPagination } from "../interface-bottom-dock/EventPaginationDom.js?v=5";
+import { createEventPagination } from "../interface-bottom-dock/EventPaginationDom.js?v=7";
 import { createFiltersPanel } from "../interface-filter-menu/filtersPanelMarkup.js";
 import { createHeaderHubButton } from "../../universal-features/atlas-header/HeaderHubButton.js";
 import { EventMarkerManager } from "../interface-globe-markers/EventMarkerManager.js";

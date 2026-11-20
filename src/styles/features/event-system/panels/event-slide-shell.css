@@ -33,7 +33,7 @@
         min-width var(--panel-transition),
         max-width var(--panel-transition),
         box-shadow var(--panel-transition);
-    pointer-events: none; /* collapsed 1px strip: only the resize handle receives hits */
+    pointer-events: none; /* collapsed peek strip: only the resize handle receives hits */
 }
 
 .event-slide.open,
@@ -83,11 +83,11 @@
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-/* Close (×) + Back cluster — top-right */
+/* Close (×) + Back cluster — top-right (clear of inward lip on the seam) */
 .event-slide-close-cluster {
     position: absolute;
     top: 10px;
-    right: 15px;
+    right: max(15px, calc(var(--panel-side-content-inset-px, 36px) - 8px));
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -838,7 +838,8 @@ body.color-palette-gray .event-slide-inline-editor__section {
 }
 
 .event-slide-content {
-    padding: 20px 20px 20px 20px;
+    /* Extra padding-right clears the hub-side inward lip + air gap. */
+    padding: 20px max(20px, var(--panel-side-content-inset-px, 36px)) 20px 20px;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;

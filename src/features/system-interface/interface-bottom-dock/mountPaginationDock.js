@@ -15,7 +15,7 @@
 import {
     applyPaginationDockViewportMode,
     initPaginationDockCollapse,
-} from './paginationDockCollapse.js';
+} from './paginationDockCollapse.js?v=3';
 import { dockCollapseStripHtml } from './eventPaginationMarkup.js';
 import { buildOrMigrateDockTrapezoidCap } from './dockTrapezoidCap.js';
 

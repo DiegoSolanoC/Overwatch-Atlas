@@ -49,11 +49,19 @@ export function isPaginationMobileCompactViewport() {
     return w <= 768 || h <= 599;
 }
 
-/** Notify listeners that only hook window.resize; globe uses ResizeObserver on #globe-container for live sync */
+/**
+ * Globe/layout resize at start + end of the dock height tween.
+ * Side chrome listens once to `pagination-dock-collapse` and paints after settle
+ * (mid-tween rebuilds were choppy).
+ */
 function scheduleResize() {
+    window.dispatchEvent(new CustomEvent('pagination-dock-collapse'));
     requestAnimationFrame(() => {
         window.dispatchEvent(new Event('resize'));
     });
+    window.setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 480);
 }
 
 function setCollapseButtonLabels(btn, collapsed) {

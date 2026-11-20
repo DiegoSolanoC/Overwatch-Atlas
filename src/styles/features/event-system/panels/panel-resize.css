@@ -304,40 +304,20 @@
 /*
  * Trapezium chrome only — fill/pattern come from .event-slide.open::before/::after
  * (panel silhouette includes the trap). Handle stays a transparent hit-target + stroke.
- * Stroke is an inline SVG (.panel-trap-edge-stroke) from SidePanelsTrapChrome.
+ * Outer edge is one continuous SVG (.panel-side-edge-stroke) — no CSS seam bars.
  */
 .event-slide .panel-resize-handle--inner-right::after {
     content: none;
 }
 
-/*
- * Seam continuation via handle background (CSS-only — works without JS hosts,
- * visible whenever the protruding handle is shown, open or closed).
- * Overlaps trap ends by half stroke so thickness/join match.
- */
 .event-slide .panel-resize-handle--inner-right {
-    background-image:
-        linear-gradient(#fff, #fff),
-        linear-gradient(#fff, #fff),
-        url('../../../../assets/images/Misc/UI/Panel%20Border.png');
-    background-repeat: no-repeat, no-repeat, no-repeat;
+    /* Legacy PNG border art stays opacity-gated; white seams retired (SVG owns the edge). */
+    background-image: url('../../../../assets/images/Misc/UI/Panel%20Border.png');
+    background-repeat: no-repeat;
     background-size:
-        var(--side-edge-border-px, 20px)
-            calc(max(0px, var(--event-info-trap-top)) + (var(--side-edge-border-px, 20px) * 0.5)),
-        var(--side-edge-border-px, 20px)
-            calc(
-                max(
-                    0px,
-                    calc(100% - var(--event-info-trap-top) - var(--event-info-trap-h-capped) - 8px)
-                )
-                + (var(--side-edge-border-px, 20px) * 0.5)
-            ),
         calc(var(--event-info-side-border-w) * var(--event-info-side-border-art-opacity, 0))
             calc(max(0px, var(--event-info-side-gap-h)) * var(--event-info-side-border-art-opacity, 0));
-    background-position:
-        left top,
-        left bottom,
-        left top;
+    background-position: left top;
 }
 
 /* Trapezium text (dock-style fill behind at z-index -1; label sits on top, clipped to same polygon). */
@@ -388,9 +368,20 @@
     background: var(--btn-primary-bg, rgba(13, 71, 161, 0.9));
     border: none;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-    transform: translate(var(--trap-icon-optical-shift-x, 0px), var(--trap-icon-optical-shift-y, 0px));
+    /* Offset X: positive toward trap tip / hub (mirrored per side below). */
+    transform: translate(
+        calc(var(--trap-icon-optical-shift-x, 0px) + var(--side-trap-btn-offset-x, 0px)),
+        var(--trap-icon-optical-shift-y, 0px)
+    );
     pointer-events: none;
     transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-btn {
+    transform: translate(
+        calc(var(--trap-icon-optical-shift-x, 0px) - var(--side-trap-btn-offset-x, 0px)),
+        var(--trap-icon-optical-shift-y, 0px)
+    );
 }
 
 .event-slide .panel-resize-handle--inner-right:hover .panel-resize-handle__trap-btn,
@@ -398,6 +389,7 @@
     background: var(--btn-primary-bg-hover, rgba(13, 71, 161, 1));
     box-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
 }
+
 
 .event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-icon,
 .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-icon {
@@ -509,28 +501,71 @@
 }
 
 /*
- * Inline trap stroke — same box as trap label/clip; vector-effect keeps edges even.
- * Open seam side meets the CSS seam bars on the handle / filters-launch::before.
+ * Continuous side edge (seams + every trap) — full handle box, dock-style single path.
+ * Legacy .panel-trap-edge-stroke kept hidden if any remnant remains.
  */
-.event-slide .panel-resize-handle--inner-right > .panel-trap-edge-stroke,
-.filters-panel .panel-resize-handle--inner-left > .panel-trap-edge-stroke {
+.event-slide .panel-resize-handle--inner-right > .panel-side-edge-stroke,
+.filters-panel .panel-resize-handle--inner-left > .panel-side-edge-stroke,
+.filters-panel > .panel-side-edge-host > .panel-side-edge-stroke {
     position: absolute;
-    top: var(--event-info-trap-top);
-    width: var(--event-info-trap-protrude, 64px);
-    height: calc(var(--event-info-trap-h-capped) + 8px);
+    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 1;
     overflow: visible;
     display: block;
 }
 
-.event-slide .panel-resize-handle--inner-right > .panel-trap-edge-stroke {
+/* Dual-trap shared chrome — above both launch handles, clicks pass through. */
+.filters-panel > .panel-side-edge-host {
+    position: absolute;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 206;
+}
+
+.event-slide .panel-resize-handle--inner-right > .panel-trap-edge-stroke,
+.filters-panel .panel-resize-handle--inner-left > .panel-trap-edge-stroke {
+    display: none !important;
+}
+
+/*
+ * Side inward lip — parallel to trap+seam outline (SidePanelsTrapChrome).
+ * Under trap buttons/nub; shares dock inward-line tweak knobs.
+ */
+.event-slide .panel-resize-handle--inner-right > .panel-side-inward-line,
+.filters-panel .panel-resize-handle--inner-left > .panel-side-inward-line,
+.filters-panel > .panel-side-edge-host > .panel-side-inward-line {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+    line-height: 0;
+}
+
+.event-slide .panel-resize-handle--inner-right > .panel-side-inward-line {
+    /* left set inline (−pad into panel); default flush with trap seam */
     left: 0;
 }
 
-.filters-panel .panel-resize-handle--inner-left > .panel-trap-edge-stroke {
-    right: 0;
-    left: auto;
+.filters-panel .panel-resize-handle--inner-left > .panel-side-inward-line,
+.filters-panel > .panel-side-edge-host > .panel-side-inward-line {
+    left: 0;
+}
+
+.panel-side-inward-line__shape {
+    display: block;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.panel-side-inward-line__path {
+    fill: #ffffff;
 }
 
 .filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch {
@@ -544,37 +579,10 @@
 }
 
 /*
- * Right seam continuation — one full-height gradient (not layered bg + position).
- * Trap tops contain 100%; in background-position that % means (area - image),
- * which parked the mid bar halfway through the upper trap. Gradient stops use
- * the element height — same basis as trap `top`.
+ * Seam bars retired — continuous .panel-side-edge-stroke owns the full vertical edge.
  */
 .filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: var(--side-edge-border-px, 20px);
-    z-index: 0;
-    pointer-events: none;
-    background-color: transparent;
-    background-image: linear-gradient(
-        to bottom,
-        #fff 0,
-        #fff calc(var(--seam-upper-top) + var(--seam-join)),
-        transparent calc(var(--seam-upper-top) + var(--seam-join)),
-        transparent calc(var(--seam-upper-bot) - var(--seam-join)),
-        #fff calc(var(--seam-upper-bot) - var(--seam-join)),
-        #fff calc(var(--seam-lower-top) + var(--seam-join)),
-        transparent calc(var(--seam-lower-top) + var(--seam-join)),
-        transparent calc(var(--seam-lower-bot) - var(--seam-join)),
-        #fff calc(var(--seam-lower-bot) - var(--seam-join)),
-        #fff 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center top;
+    content: none;
 }
 
 .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-label {

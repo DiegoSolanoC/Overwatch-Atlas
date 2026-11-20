@@ -5,7 +5,9 @@
  *
  * Strokes are INLINE SVGs (not CSS background data-URLs). Background SVGs get
  * non-uniformly stretched so edges thin out and separate lip bars never join the trap.
- * Inline + vector-effect=non-scaling-stroke keeps thickness even; one dock path = no gaps.
+ * viewBox matches client px so stroke-width stays even. Do NOT use non-scaling-stroke:
+ * body { transform: scale(--desktop-scale) } makes Firefox keep those strokes in device
+ * px while filled inward lips scale — Chrome/Firefox proportions then diverge.
  */
 
 const STORAGE_KEY = 'atlas.sidePanelsTrap.tweak.v2';
@@ -69,6 +71,16 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     dockInwardCornerRadiusPx: 8,
 
     /**
+     * Side-panel inward lip (parallel to continuous edge). No end shrinkage —
+     * constant thickness with tip cuts at trap buttons only.
+     */
+    sideInwardLineThicknessPx: 12,
+    /** Parallel gap past the outer stroke before the lip (into panel fill). */
+    sideInwardLineOffsetPx: 2,
+    sideInwardCenterGapPx: 200,
+    sideInwardCornerRadiusPx: 8,
+
+    /**
      * White filled “nub” tabs (replace Drag/Controller Border images).
      * Side: on the inward tip of each side trap. Dock: on the top edge of the dock trap.
      */
@@ -81,6 +93,11 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     sideTrapBtnRadiusPx: 48,
     sideTrapBtnWidthPx: 40,
     sideTrapBtnHeightPx: 96,
+    /**
+     * Horizontal pill shift toward the trap tip / hub (CSS px).
+     * Positive = into the tip; uses the extra bay from the inward lip.
+     */
+    sideTrapBtnOffsetXPx: 0,
     sideTrapIconPx: 28,
     dockNubWidthPx: 120,
     dockNubHeightPx: 40,
@@ -175,6 +192,32 @@ export function sanitizeSidePanelsTrapState(s) {
     delete next.dockInwardMidThicknessPx;
     delete next.dockInwardMidRunWidthPx;
 
+    /* Side inward — migrate from shared dock keys if first load after split. */
+    if (next.sideInwardLineThicknessPx == null && next.dockInwardLineThicknessPx != null) {
+        next.sideInwardLineThicknessPx = next.dockInwardLineThicknessPx;
+    }
+    if (next.sideInwardLineOffsetPx == null && next.dockInwardLineOffsetYPx != null) {
+        next.sideInwardLineOffsetPx = Math.max(0, next.dockInwardLineOffsetYPx);
+    }
+    if (next.sideInwardCenterGapPx == null && next.dockInwardCenterGapPx != null) {
+        next.sideInwardCenterGapPx = next.dockInwardCenterGapPx;
+    }
+    if (next.sideInwardCornerRadiusPx == null && next.dockInwardCornerRadiusPx != null) {
+        next.sideInwardCornerRadiusPx = next.dockInwardCornerRadiusPx;
+    }
+    next.sideInwardLineThicknessPx = clamp(
+        Math.round(Number(next.sideInwardLineThicknessPx)),
+        4,
+        28,
+    );
+    next.sideInwardLineOffsetPx = clamp(Math.round(Number(next.sideInwardLineOffsetPx)), -24, 56);
+    next.sideInwardCenterGapPx = clamp(Math.round(Number(next.sideInwardCenterGapPx)), 24, 900);
+    next.sideInwardCornerRadiusPx = clamp(
+        Math.round(Number(next.sideInwardCornerRadiusPx)),
+        0,
+        48,
+    );
+
     next.sideNubDepthPx = clamp(Math.round(Number(next.sideNubDepthPx)), 16, 80);
     next.sideNubLengthPx = clamp(Math.round(Number(next.sideNubLengthPx)), 36, 180);
     next.sideNubTaperPct = clamp(Number(next.sideNubTaperPct), 0, 28);
@@ -183,6 +226,7 @@ export function sanitizeSidePanelsTrapState(s) {
     next.sideTrapBtnRadiusPx = clamp(Math.round(Number(next.sideTrapBtnRadiusPx)), 0, 48);
     next.sideTrapBtnWidthPx = clamp(Math.round(Number(next.sideTrapBtnWidthPx)), 24, 96);
     next.sideTrapBtnHeightPx = clamp(Math.round(Number(next.sideTrapBtnHeightPx)), 48, 200);
+    next.sideTrapBtnOffsetXPx = clamp(Math.round(Number(next.sideTrapBtnOffsetXPx)), -32, 48);
     next.sideTrapIconPx = clamp(Math.round(Number(next.sideTrapIconPx)), 12, 96);
     next.dockNubWidthPx = clamp(Math.round(Number(next.dockNubWidthPx)), 48, 280);
     next.dockNubHeightPx = clamp(Math.round(Number(next.dockNubHeightPx)), 16, 96);
@@ -218,6 +262,19 @@ export function loadSidePanelsTrapState() {
         }
         if (parsed.dockTrapWidthPx == null && parsed.trapProtrudePx != null) {
             next.dockTrapWidthPx = clamp(Math.round(280 + Number(parsed.trapProtrudePx) * 8), 280, 1100);
+        }
+        /* Split side inward from dock inward — seed from dock if side keys absent. */
+        if (parsed.sideInwardLineThicknessPx == null && parsed.dockInwardLineThicknessPx != null) {
+            next.sideInwardLineThicknessPx = Number(parsed.dockInwardLineThicknessPx);
+        }
+        if (parsed.sideInwardLineOffsetPx == null && parsed.dockInwardLineOffsetYPx != null) {
+            next.sideInwardLineOffsetPx = Math.max(0, Number(parsed.dockInwardLineOffsetYPx));
+        }
+        if (parsed.sideInwardCenterGapPx == null && parsed.dockInwardCenterGapPx != null) {
+            next.sideInwardCenterGapPx = Number(parsed.dockInwardCenterGapPx);
+        }
+        if (parsed.sideInwardCornerRadiusPx == null && parsed.dockInwardCornerRadiusPx != null) {
+            next.sideInwardCornerRadiusPx = Number(parsed.dockInwardCornerRadiusPx);
         }
         return sanitizeSidePanelsTrapState(next);
     } catch {
@@ -405,7 +462,8 @@ function ensureStrokeSvg(parent, className) {
     path.setAttribute('stroke', '#ffffff');
     path.setAttribute('stroke-linejoin', 'round');
     path.setAttribute('stroke-linecap', 'butt');
-    path.setAttribute('vector-effect', 'non-scaling-stroke');
+    /* Scale with body --desktop-scale (parity with filled inward lips across browsers). */
+    path.removeAttribute('vector-effect');
     svg.appendChild(path);
     parent.appendChild(svg);
     return svg;
@@ -419,12 +477,15 @@ function ensureStrokeSvg(parent, className) {
  * @param {number} vbH
  */
 function writeStrokePath(svg, d, strokeWidth, vbW, vbH) {
-    svg.setAttribute('viewBox', `0 0 ${vbW} ${vbH}`);
+    /* Integer viewBox avoids Firefox subpixel stretch vs CSS box. */
+    const w = Math.max(1, Math.round(vbW));
+    const h = Math.max(1, Math.round(vbH));
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     const path = svg.querySelector('path');
     if (!(path instanceof SVGPathElement)) return;
     path.setAttribute('d', d);
     path.setAttribute('stroke-width', String(clamp(Number(strokeWidth) || 20, 4, 48)));
-    path.setAttribute('vector-effect', 'non-scaling-stroke');
+    path.removeAttribute('vector-effect');
 }
 
 /**
@@ -478,14 +539,18 @@ function syncDockEdgeStroke(s, geo) {
     const svg = ensureStrokeSvg(cap, 'dock-trap-edge-stroke');
     /* Re-measure after SVG is in the tree so viewBox matches the painted box. */
     const live = dockTrapGeometry(s, cap);
-    const W = live.dockW;
-    const H = live.trapH;
+    const W = Math.max(1, Math.round(live.dockW));
+    const H = Math.max(1, Math.round(live.trapH));
+    const sx = W / Math.max(1, live.dockW);
+    const leftPx = live.leftPx * sx;
+    const rightPx = live.rightPx * sx;
+    const insetPx = live.insetPx * sx;
     const pts = [
         { x: 0, y: H },
-        { x: live.leftPx, y: H },
-        { x: live.leftPx + live.insetPx, y: 0 },
-        { x: live.rightPx - live.insetPx, y: 0 },
-        { x: live.rightPx, y: H },
+        { x: leftPx, y: H },
+        { x: leftPx + insetPx, y: 0 },
+        { x: rightPx - insetPx, y: 0 },
+        { x: rightPx, y: H },
         { x: W, y: H },
     ];
     writeStrokePath(
@@ -495,7 +560,7 @@ function syncDockEdgeStroke(s, geo) {
         W,
         H,
     );
-    return live;
+    return { ...live, dockW: W, trapH: H, leftPx, rightPx, insetPx, halfPx: (rightPx - leftPx) / 2 };
 }
 
 /**
@@ -555,30 +620,102 @@ function sideTrapPoints(side, taperPct) {
 }
 
 /**
- * Inline trap stroke on a resize handle — same box as clip/label, even thickness.
- * @param {Element | null} handle
- * @param {'left' | 'right'} side
- * @param {object} s
+ * Trap band(s) in handle-local layout px (offset*, not getBoundingClientRect —
+ * body scale would desync viewBox path from clientWidth/Height).
+ * Dual traps: sibling handles share the same panel top, so each label.offsetTop
+ * is already in the host's Y space.
+ * @param {Element} _hostHandle
+ * @param {Element[]} trapHandles
+ * @returns {{top:number,height:number}[]}
  */
-function syncSideTrapStroke(handle, side, s) {
-    if (!handle) return;
-    const svg = ensureStrokeSvg(handle, 'panel-trap-edge-stroke');
+function measureSideTrapBands(_hostHandle, trapHandles) {
+    /** @type {{top:number,height:number}[]} */
+    const out = [];
+    for (let i = 0; i < trapHandles.length; i++) {
+        const h = trapHandles[i];
+        const label = h.querySelector('.panel-resize-handle__trap-label');
+        if (!(label instanceof HTMLElement) || !(label.offsetHeight > 4)) continue;
+        out.push({
+            top: label.offsetTop,
+            height: label.offsetHeight,
+        });
+    }
+    return out.sort((a, b) => a.top - b.top);
+}
+
+/**
+ * One continuous side-edge stroke (seams + every trap) — same idea as dock-trap-edge-stroke.
+ * Always authored as right-protruding (info), then mirrored for filters so dual
+ * traps share the proven single-trap math.
+ * @param {Element} measureEl handle used for clientWidth/Height + trap labels
+ * @param {'left'|'right'} protrudeDir
+ * @param {{top:number,height:number}[]} traps
+ * @param {object} s
+ * @param {Element} [paintParent] SVG host (defaults to measureEl; filters uses panel edge host)
+ */
+function syncSidePanelEdgeStroke(measureEl, protrudeDir, traps, s, paintParent) {
+    if (!measureEl || !traps.length) return null;
+    const parent = paintParent || measureEl;
+    const handleW = measureEl.clientWidth;
+    const handleH = measureEl.clientHeight;
+    if (!(handleW > 4) || !(handleH > 8)) return null;
+
+    const label = measureEl.querySelector('.panel-resize-handle__trap-label');
+    const labelW = label instanceof HTMLElement ? label.offsetWidth : 0;
+    const protrude = Math.min(
+        handleW,
+        Math.max(24, labelW > 8 ? labelW : Number(s.trapProtrudePx) || 64),
+    );
+    /* Local authoring space: seam at x=0, tip at x=protrude (matches working info side). */
+    const edgeRadius = Math.max(s.sideBorderRadius, s.dockBorderRadius);
+    const localPts = sideInwardOuterPoints(
+        'right',
+        handleH,
+        0,
+        protrude,
+        traps,
+        s.trapTaperPct,
+    );
+    const outerPts =
+        protrudeDir === 'left' ? mirrorPtsX(localPts, handleW) : localPts;
+    const seamX = protrudeDir === 'right' ? 0 : handleW;
+    const tipX = protrudeDir === 'right' ? protrude : handleW - protrude;
+    /* Retire fragmented per-trap strokes — one path owns the whole edge. */
+    parent.querySelectorAll(':scope > svg.panel-trap-edge-stroke').forEach((el) => {
+        el.remove();
+    });
+    const svg = ensureStrokeSvg(parent, 'panel-side-edge-stroke');
     writeStrokePath(
         svg,
-        roundedPolylinePath(sideTrapPoints(side, s.trapTaperPct), s.sideBorderRadius),
+        roundedPolylinePath(outerPts, edgeRadius),
         s.sideBorderWidth,
-        100,
-        100,
+        handleW,
+        handleH,
     );
+    svg.style.position = 'absolute';
+    svg.style.inset = '0';
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+    svg.style.pointerEvents = 'none';
+    svg.style.zIndex = '1';
+    svg.style.overflow = 'visible';
+    return {
+        handleW,
+        handleH,
+        protrude,
+        seamX,
+        tipX,
+        localPts,
+        outerPts,
+        traps,
+        edgeRadius,
+        protrudeDir,
+    };
 }
 
 function syncAllSideTrapStrokes(s) {
-    document
-        .querySelectorAll('.event-slide .panel-resize-handle--inner-right')
-        .forEach((el) => syncSideTrapStroke(el, 'right', s));
-    document
-        .querySelectorAll('.filters-panel .panel-resize-handle--inner-left')
-        .forEach((el) => syncSideTrapStroke(el, 'left', s));
+    /* Continuous edge + inward line are applied together in syncAllSidePanelEdges. */
+    syncAllSidePanelEdges(s);
 }
 
 /** Drop obsolete hosts from earlier border attempts. */
@@ -607,25 +744,120 @@ export function refreshDockTrapSvgFromTweaks() {
 
 let chromeResizeInstalled = false;
 let chromeResizeTimer = 0;
+let chromeTweenTimer = 0;
+let chromeTweenRaf = 0;
+let chromeTweening = false;
+/** @type {ResizeObserver | null} */
+let chromeLayoutRo = null;
+
+/**
+ * Debounced chrome re-paint. During dock tween, live rAF owns edge updates —
+ * skip the debounced full apply so it does not fight the frame loop.
+ * @param {number} [delayMs]
+ */
+export function scheduleSidePanelsTrapChromeReflow(delayMs = 48) {
+    if (typeof window === 'undefined' || chromeTweening) return;
+    window.clearTimeout(chromeResizeTimer);
+    chromeResizeTimer = window.setTimeout(() => {
+        if (chromeTweening) return;
+        applySidePanelsTrapChrome(loadSidePanelsTrapState());
+    }, Math.max(0, delayMs));
+}
+
+/**
+ * In-place border + inward paths only (no CSS-var / nub rebuild). Safe every frame
+ * while panel/dock height tweens — matches CSS silhouette motion.
+ * @param {object} [state]
+ */
+function syncLiveEdgeChrome(state) {
+    const s = sanitizeSidePanelsTrapState(state || loadSidePanelsTrapState());
+    const fit = sideTrapViewportFit(s);
+    const sidePaint = {
+        ...s,
+        trapHeightPx: fit.heightPx,
+        trapProtrudePx: fit.protrudePx,
+        sideBorderWidth: fit.borderWidth,
+    };
+    const dockGeo = syncDockEdgeStroke(s, dockTrapGeometry(s)) || dockTrapGeometry(s);
+    syncDockInwardLineShape(s, dockGeo);
+    syncAllSidePanelEdges(sidePaint);
+}
+
+/**
+ * Drive edge SVG paths every animation frame through the dock height tween so
+ * borders/inward lips track the CSS silhouette (trap/nub already tween via CSS).
+ */
+export function beginSideChromeDockTween() {
+    if (typeof window === 'undefined') return;
+    chromeTweening = true;
+    window.clearTimeout(chromeResizeTimer);
+    window.clearTimeout(chromeTweenTimer);
+    window.cancelAnimationFrame(chromeTweenRaf);
+    document.body?.classList.remove('side-chrome-dock-tweening');
+
+    const tick = () => {
+        if (!chromeTweening) return;
+        syncLiveEdgeChrome();
+        chromeTweenRaf = window.requestAnimationFrame(tick);
+    };
+    chromeTweenRaf = window.requestAnimationFrame(tick);
+
+    /* Match --pagination-dock-transition-duration (~0.42s) + small settle. */
+    chromeTweenTimer = window.setTimeout(() => {
+        window.cancelAnimationFrame(chromeTweenRaf);
+        chromeTweenRaf = 0;
+        chromeTweening = false;
+        applySidePanelsTrapChrome(loadSidePanelsTrapState());
+    }, 480);
+}
+
+function observeSideChromeLayoutTargets() {
+    if (typeof ResizeObserver === 'undefined') return;
+    if (!chromeLayoutRo) {
+        chromeLayoutRo = new ResizeObserver(() => {
+            if (chromeTweening) return;
+            scheduleSidePanelsTrapChromeReflow(64);
+        });
+    }
+    document
+        .querySelectorAll(
+            '.event-slide, .filters-panel, #paginationDock, .pagination-dock, .pagination-dock-top-cap-row',
+        )
+        .forEach((el) => {
+            try {
+                chromeLayoutRo.observe(el);
+            } catch (_) {
+                /* ignore */
+            }
+        });
+}
 
 /** Re-sync inline stroke geometry on zoom / viewport / late-mounted chrome (idempotent). */
 export function installSidePanelsTrapChromeLifecycle() {
     if (chromeResizeInstalled || typeof window === 'undefined') return;
     chromeResizeInstalled = true;
-    const reflow = () => {
-        window.clearTimeout(chromeResizeTimer);
-        chromeResizeTimer = window.setTimeout(() => {
-            applySidePanelsTrapChrome(loadSidePanelsTrapState());
-        }, 80);
-    };
+    const reflow = () => scheduleSidePanelsTrapChromeReflow(80);
     window.addEventListener('resize', reflow, { passive: true });
     window.visualViewport?.addEventListener('resize', reflow, { passive: true });
     window.addEventListener('orientationchange', reflow, { passive: true });
+    /* One hide→settle→paint cycle per dock collapse/expand (not mid-tween rebuilds). */
+    window.addEventListener('pagination-dock-collapse', () => {
+        beginSideChromeDockTween();
+    });
+    observeSideChromeLayoutTargets();
     /* Handles / dock cap often mount after the first apply. */
     if (typeof MutationObserver !== 'undefined' && document.body) {
         const mo = new MutationObserver((mutations) => {
+            let needObserve = false;
             for (let i = 0; i < mutations.length; i++) {
-                const nodes = mutations[i].addedNodes;
+                const m = mutations[i];
+                if (m.type === 'attributes' && m.attributeName === 'class' && m.target === document.body) {
+                    /* Dock collapse class is handled by pagination-dock-collapse + tween. */
+                    if (chromeTweening) continue;
+                    scheduleSidePanelsTrapChromeReflow(80);
+                    continue;
+                }
+                const nodes = m.addedNodes;
                 for (let j = 0; j < nodes.length; j++) {
                     const n = nodes[j];
                     if (!(n instanceof Element)) continue;
@@ -633,25 +865,37 @@ export function installSidePanelsTrapChromeLifecycle() {
                     if (
                         n instanceof SVGElement ||
                         n.classList?.contains('panel-trap-edge-stroke') ||
-                        n.classList?.contains('dock-trap-edge-stroke')
+                        n.classList?.contains('panel-side-edge-stroke') ||
+                        n.classList?.contains('panel-side-edge-host') ||
+                        n.classList?.contains('dock-trap-edge-stroke') ||
+                        n.classList?.contains('panel-side-inward-line') ||
+                        n.classList?.contains('pagination-dock-inward-line')
                     ) {
                         continue;
                     }
                     if (
                         n.matches?.(
-                            '.panel-resize-handle, .pagination-dock-top-cap-row, .pagination-dock',
+                            '.panel-resize-handle, .pagination-dock-top-cap-row, .pagination-dock, .event-slide, .filters-panel',
                         ) ||
                         n.querySelector?.(
-                            '.panel-resize-handle, .pagination-dock-top-cap-row',
+                            '.panel-resize-handle, .pagination-dock-top-cap-row, .pagination-dock, .event-slide, .filters-panel',
                         )
                     ) {
-                        reflow();
-                        return;
+                        needObserve = true;
+                        scheduleSidePanelsTrapChromeReflow(80);
+                        break;
                     }
                 }
+                if (needObserve) break;
             }
+            if (needObserve) observeSideChromeLayoutTargets();
         });
-        mo.observe(document.body, { childList: true, subtree: true });
+        mo.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class'],
+        });
     }
 }
 
@@ -669,13 +913,13 @@ function segmentInteriorNormal(a, b) {
 }
 
 /**
- * Offset an open polyline toward the dock fill by a constant `dist` px (miter join).
- * Unit-averaged normals under-offset at corners and make the gap look uneven on slopes.
+ * Offset an open polyline by a constant `dist` px along left-hand normals (miter join).
+ * Negative dist offsets the opposite way (needed when mirroring side geometry).
  * @param {{x:number,y:number}[]} pts
  * @param {number} dist
  */
 function offsetPolyline(pts, dist) {
-    if (pts.length < 2 || !(dist > 0)) return pts.map((p) => ({ ...p }));
+    if (pts.length < 2 || !(Math.abs(dist) > 0.01)) return pts.map((p) => ({ ...p }));
     const n = pts.length;
     const segN = [];
     for (let i = 0; i < n - 1; i++) segN.push(segmentInteriorNormal(pts[i], pts[i + 1]));
@@ -715,6 +959,28 @@ function offsetPolyline(pts, dist) {
         }
     }
     return out;
+}
+
+/**
+ * Mirror polyline X about the handle's right edge: x' = width - x.
+ * Used so left-protruding (filters) reuses the proven right-protruding math.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} width
+ */
+function mirrorPtsX(pts, width) {
+    return pts.map((p) => ({ x: width - p.x, y: p.y }));
+}
+
+/**
+ * Mirror M/L path coordinates (ribbon builders only emit M/L/Z).
+ * @param {string} d
+ * @param {number} width
+ */
+function mirrorPathDX(d, width) {
+    if (!d) return '';
+    return d.replace(/([ML])(-?\d+\.?\d*) (-?\d+\.?\d*)/g, (_, cmd, x, y) => {
+        return `${cmd}${(width - parseFloat(x)).toFixed(2)} ${y}`;
+    });
 }
 
 /**
@@ -801,6 +1067,56 @@ function clipPolylineMinX(pts, minX) {
                 const dx = p.x - a.x;
                 const t = Math.abs(dx) < 1e-6 ? 0 : (minX - a.x) / dx;
                 out.push({ x: minX, y: a.y + (p.y - a.y) * t });
+            }
+            out.push({ ...p });
+            started = true;
+        }
+    }
+    return out;
+}
+
+/**
+ * Keep polyline points with y <= maxY; interpolate a butt at the cut.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} maxY
+ */
+function clipPolylineMaxY(pts, maxY) {
+    if (pts.length < 2) return pts.map((p) => ({ ...p }));
+    const out = [];
+    for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if (p.y <= maxY + 1e-6) {
+            out.push({ ...p });
+            continue;
+        }
+        if (i > 0 && pts[i - 1].y <= maxY + 1e-6) {
+            const a = pts[i - 1];
+            const dy = p.y - a.y;
+            const t = Math.abs(dy) < 1e-6 ? 0 : (maxY - a.y) / dy;
+            out.push({ x: a.x + (p.x - a.x) * t, y: maxY });
+        }
+        break;
+    }
+    return out;
+}
+
+/**
+ * Keep polyline points with y >= minY; interpolate a butt at the cut.
+ * @param {{x:number,y:number}[]} pts
+ * @param {number} minY
+ */
+function clipPolylineMinY(pts, minY) {
+    if (pts.length < 2) return pts.map((p) => ({ ...p }));
+    const out = [];
+    let started = false;
+    for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if (p.y >= minY - 1e-6) {
+            if (!started && i > 0 && pts[i - 1].y < minY - 1e-6) {
+                const a = pts[i - 1];
+                const dy = p.y - a.y;
+                const t = Math.abs(dy) < 1e-6 ? 0 : (minY - a.y) / dy;
+                out.push({ x: a.x + (p.x - a.x) * t, y: minY });
             }
             out.push({ ...p });
             started = true;
@@ -1001,6 +1317,110 @@ function verticalCutRibbonPath(outerFull, thicknessFn, cutX, side, cornerRadius,
 }
 
 /**
+ * Half-ribbon ending in a horizontal cut (constant Y) — side-panel tip butts.
+ * `side` 'top' = keep y <= cutY; 'bottom' = keep y >= cutY.
+ * @param {{x:number,y:number}[]} outerFull
+ * @param {(s:number,total:number)=>number} thicknessFn
+ * @param {number} cutY
+ * @param {'top'|'bottom'} side
+ * @param {number} cornerRadius
+ * @param {number} [maxButtSpan]
+ */
+function horizontalCutRibbonPath(outerFull, thicknessFn, cutY, side, cornerRadius, maxButtSpan = 64) {
+    const paired = pairedRibbonEdges(outerFull, thicknessFn);
+    if (paired.total < 1 || paired.inner.length < 2) return '';
+
+    const outer =
+        side === 'top'
+            ? clipPolylineMaxY(paired.outer, cutY)
+            : clipPolylineMinY(paired.outer, cutY);
+    const inner =
+        side === 'top'
+            ? clipPolylineMaxY(paired.inner, cutY)
+            : clipPolylineMinY(paired.inner, cutY);
+    if (outer.length < 2 || inner.length < 2) return '';
+
+    if (side === 'top') {
+        outer[outer.length - 1] = { x: outer[outer.length - 1].x, y: cutY };
+        inner[inner.length - 1] = { x: inner[inner.length - 1].x, y: cutY };
+    } else {
+        outer[0] = { x: outer[0].x, y: cutY };
+        inner[0] = { x: inner[0].x, y: cutY };
+    }
+
+    const oCut = side === 'top' ? outer[outer.length - 1] : outer[0];
+    const iCut = side === 'top' ? inner[inner.length - 1] : inner[0];
+    const butt = Math.abs(oCut.x - iCut.x);
+    if (!(butt > 0.5) || !Number.isFinite(butt)) return '';
+    if (butt > maxButtSpan) {
+        const dir = iCut.x >= oCut.x ? 1 : -1;
+        const repaired = { x: oCut.x + dir * Math.min(maxButtSpan, butt), y: cutY };
+        if (side === 'top') inner[inner.length - 1] = repaired;
+        else inner[0] = repaired;
+    }
+
+    const ring = [...outer, ...inner.slice().reverse()];
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (let i = 0; i < ring.length; i++) {
+        const p = ring[i];
+        if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) return '';
+        if (p.x < minX) minX = p.x;
+        if (p.x > maxX) maxX = p.x;
+        if (p.y < minY) minY = p.y;
+        if (p.y > maxY) maxY = p.y;
+    }
+    if (maxY - minY < 8 || maxX - minX < 1 || maxX - minX > maxButtSpan * 8) return '';
+
+    const cutCorners =
+        side === 'top' ? [outer.length - 1, outer.length] : [0, ring.length - 1];
+    const filleted = filletClosedCorners(ring, cutCorners, cornerRadius);
+    if (filleted.length < 3) return '';
+
+    let d = `M${filleted[0].x.toFixed(2)} ${filleted[0].y.toFixed(2)}`;
+    for (let i = 1; i < filleted.length; i++) {
+        d += `L${filleted[i].x.toFixed(2)} ${filleted[i].y.toFixed(2)}`;
+    }
+    return `${d}Z`;
+}
+
+/**
+ * Mid ribbon with horizontal butts at both Y cuts (between dual side traps).
+ * @param {{x:number,y:number}[]} outerFull
+ * @param {(s:number,total:number)=>number} thicknessFn
+ * @param {number} y0
+ * @param {number} y1
+ * @param {number} cornerRadius
+ * @param {number} [maxButtSpan]
+ */
+function horizontalBandRibbonPath(outerFull, thicknessFn, y0, y1, cornerRadius, maxButtSpan = 64) {
+    const lo = Math.min(y0, y1);
+    const hi = Math.max(y0, y1);
+    if (hi - lo < 8) return '';
+    const paired = pairedRibbonEdges(outerFull, thicknessFn);
+    if (paired.total < 1) return '';
+    const outer = clipPolylineMaxY(clipPolylineMinY(paired.outer, lo), hi);
+    const inner = clipPolylineMaxY(clipPolylineMinY(paired.inner, lo), hi);
+    if (outer.length < 2 || inner.length < 2) return '';
+    outer[0] = { x: outer[0].x, y: lo };
+    outer[outer.length - 1] = { x: outer[outer.length - 1].x, y: hi };
+    inner[0] = { x: inner[0].x, y: lo };
+    inner[inner.length - 1] = { x: inner[inner.length - 1].x, y: hi };
+
+    const ring = [...outer, ...inner.slice().reverse()];
+    const cutCorners = [0, outer.length - 1, outer.length, ring.length - 1];
+    const filleted = filletClosedCorners(ring, cutCorners, cornerRadius);
+    if (filleted.length < 3) return '';
+    let d = `M${filleted[0].x.toFixed(2)} ${filleted[0].y.toFixed(2)}`;
+    for (let i = 1; i < filleted.length; i++) {
+        d += `L${filleted[i].x.toFixed(2)} ${filleted[i].y.toFixed(2)}`;
+    }
+    return `${d}Z`;
+}
+
+/**
  * Parallel inward lip that follows the dock outer stroke (lips + trap bump).
  * Mounted on the cap-row beside `.dock-trap-edge-stroke`.
  * @param {object} s
@@ -1043,9 +1463,15 @@ export function syncDockInwardLineShape(s, geo) {
     const path = svg.querySelector('path');
     if (!path) return;
 
-    const live = geo || dockTrapGeometry(s, cap);
-    const W = live.dockW;
-    const H = live.trapH;
+    const raw = geo || dockTrapGeometry(s, cap);
+    /* Integer box — same basis as outer stroke; avoids Firefox Y-stretch on slopes. */
+    const W = Math.max(1, Math.round(raw.dockW));
+    const H = Math.max(1, Math.round(raw.trapH));
+    const sx = W / Math.max(1, raw.dockW);
+    const leftPx = raw.leftPx * sx;
+    const rightPx = raw.rightPx * sx;
+    const insetPx = raw.insetPx * sx;
+    const live = { ...raw, dockW: W, trapH: H, leftPx, rightPx, insetPx };
     const fullTh = Math.max(1, s.dockInwardLineThicknessPx);
     /*
      * Parallel gap past the outer stroke (signed Offset Y), hard-capped so the
@@ -1066,10 +1492,10 @@ export function syncDockInwardLineShape(s, geo) {
 
     const outerPts = [
         { x: 0, y: H },
-        { x: live.leftPx, y: H },
-        { x: live.leftPx + live.insetPx, y: 0 },
-        { x: live.rightPx - live.insetPx, y: 0 },
-        { x: live.rightPx, y: H },
+        { x: leftPx, y: H },
+        { x: leftPx + insetPx, y: 0 },
+        { x: rightPx - insetPx, y: 0 },
+        { x: rightPx, y: H },
         { x: W, y: H },
     ];
     const rounded = sampleRoundedPolyline(outerPts, s.dockBorderRadius);
@@ -1127,6 +1553,235 @@ export function syncDockInwardLineShape(s, geo) {
             clearanceCollapsedPx,
         );
     }
+}
+
+/**
+ * Build outer edge points for seams + trap bumps (handle-local px).
+ * Walk top→bottom so left-hand normals point into the panel fill.
+ * @param {'left'|'right'} _protrudeDir
+ * @param {number} handleH
+ * @param {number} seamX
+ * @param {number} tipX
+ * @param {{top:number,height:number}[]} traps
+ * @param {number} taperPct
+ */
+function sideInwardOuterPoints(_protrudeDir, handleH, seamX, tipX, traps, taperPct) {
+    const t = clamp(Number(taperPct) || 0, 0, 40) / 100;
+    const pts = [{ x: seamX, y: 0 }];
+    const sorted = traps
+        .map((tr) => ({
+            top: tr.top,
+            bot: tr.top + tr.height,
+            inset: Math.max(4, tr.height * t),
+        }))
+        .sort((a, b) => a.top - b.top);
+
+    for (let i = 0; i < sorted.length; i++) {
+        const tr = sorted[i];
+        pts.push({ x: seamX, y: tr.top });
+        pts.push({ x: tipX, y: tr.top + tr.inset });
+        pts.push({ x: tipX, y: tr.bot - tr.inset });
+        pts.push({ x: seamX, y: tr.bot });
+    }
+    pts.push({ x: seamX, y: handleH });
+    return pts;
+}
+
+/**
+ * Ensure full-handle inward-line SVG host.
+ * @param {Element} handle
+ */
+function ensureSideInwardHost(handle) {
+    let host = handle.querySelector(':scope > .panel-side-inward-line');
+    if (!host) {
+        host = document.createElement('div');
+        host.className = 'panel-side-inward-line';
+        host.setAttribute('aria-hidden', 'true');
+        handle.insertBefore(host, handle.firstChild);
+    }
+    let svg = host.querySelector('svg.panel-side-inward-line__shape');
+    if (!svg) {
+        svg = document.createElementNS(SVG_NS, 'svg');
+        svg.classList.add('panel-side-inward-line__shape');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('preserveAspectRatio', 'none');
+        const path = document.createElementNS(SVG_NS, 'path');
+        path.classList.add('panel-side-inward-line__path');
+        svg.appendChild(path);
+        host.replaceChildren(svg);
+    }
+    return { host, svg, path: svg.querySelector('path') };
+}
+
+/**
+ * Parallel inward lip — authored in the same right-protruding local space as the
+ * working info side, then X-mirrored for filters (dual traps included).
+ * Constant thickness (no end shrinkage).
+ * @param {Element} paintParent host for the inward SVG (handle or panel edge host)
+ * @param {'left'|'right'} protrudeDir
+ * @param {{handleW:number,handleH:number,protrude:number,localPts:{x:number,y:number}[],traps:{top:number,height:number}[],edgeRadius?:number}} edge
+ * @param {object} s
+ */
+function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s) {
+    const { handleW, handleH, protrude, localPts, traps } = edge;
+    const offsetPx = Number(s.sideInwardLineOffsetPx) || 0;
+    const outerInset = Math.max(
+        0.5,
+        Math.min(
+            protrude * 0.42,
+            s.sideBorderWidth * 0.5 + Math.max(0, offsetPx),
+        ),
+    );
+    const edgeRadius = edge.edgeRadius ?? Math.max(s.sideBorderRadius, s.dockBorderRadius);
+    /* Same walk + offset as the perfect info side (local seam=0 → tip=protrude). */
+    const rounded = sampleRoundedPolyline(localPts, edgeRadius);
+    const localEdge = densifyPolyline(offsetPolyline(rounded, outerInset), 5);
+    const fullTh = Math.max(1, s.sideInwardLineThicknessPx);
+    const cornerR = Math.max(s.sideInwardCornerRadiusPx, edgeRadius);
+    const maxButt = Math.max(fullTh * 3, 36);
+    const gap = clamp(Number(s.sideInwardCenterGapPx) || 200, 24, 900);
+    const th = () => fullTh;
+
+    /** @type {string[]} */
+    const localParts = [];
+    if (traps.length === 1) {
+        const mid = traps[0].top + traps[0].height / 2;
+        const half = Math.min(gap / 2, traps[0].height * 0.42);
+        localParts.push(
+            horizontalCutRibbonPath(localEdge, th, mid - half, 'top', cornerR, maxButt),
+        );
+        localParts.push(
+            horizontalCutRibbonPath(localEdge, th, mid + half, 'bottom', cornerR, maxButt),
+        );
+    } else {
+        const cuts = traps.map((m) => {
+            const mid = m.top + m.height / 2;
+            const half = Math.min(gap / 2, m.height * 0.42);
+            return { top: mid - half, bot: mid + half };
+        });
+        localParts.push(
+            horizontalCutRibbonPath(localEdge, th, cuts[0].top, 'top', cornerR, maxButt),
+        );
+        for (let i = 0; i < cuts.length - 1; i++) {
+            localParts.push(
+                horizontalBandRibbonPath(
+                    localEdge,
+                    th,
+                    cuts[i].bot,
+                    cuts[i + 1].top,
+                    cornerR,
+                    maxButt,
+                ),
+            );
+        }
+        localParts.push(
+            horizontalCutRibbonPath(
+                localEdge,
+                th,
+                cuts[cuts.length - 1].bot,
+                'bottom',
+                cornerR,
+                maxButt,
+            ),
+        );
+    }
+
+    const raw = localParts.filter(Boolean).join('');
+    /* Mirror into handle space so the lip sits inside the filters panel fill. */
+    const d = protrudeDir === 'left' ? mirrorPathDX(raw, handleW) : raw;
+
+    const { host, svg, path } = ensureSideInwardHost(paintParent);
+    if (!path) return;
+    const pad = Math.max(24, fullTh * 2 + Math.abs(offsetPx) + s.sideBorderWidth);
+    const vbW = handleW + pad;
+    if (protrudeDir === 'right') {
+        svg.setAttribute('viewBox', `${-pad} 0 ${vbW} ${handleH}`);
+        host.style.left = `${-pad}px`;
+        host.style.right = 'auto';
+    } else {
+        svg.setAttribute('viewBox', `0 0 ${vbW} ${handleH}`);
+        host.style.left = '0';
+        host.style.right = 'auto';
+    }
+    svg.style.width = `${vbW}px`;
+    svg.style.height = `${handleH}px`;
+    host.style.width = `${vbW}px`;
+    host.style.height = `${handleH}px`;
+    path.setAttribute('d', d);
+}
+
+/**
+ * Persistent filters edge host — sized to the launch handle; never torn down
+ * on live dock-tween updates (in-place path writes only).
+ * @param {Element} panel
+ * @param {Element} filtersHandle
+ */
+function ensureFiltersEdgeHost(panel, filtersHandle) {
+    let host = panel.querySelector(':scope > .panel-side-edge-host');
+    if (!host) {
+        host = document.createElement('div');
+        host.className = 'panel-side-edge-host';
+        host.setAttribute('aria-hidden', 'true');
+        panel.appendChild(host);
+    }
+    const w = filtersHandle.clientWidth;
+    const h = filtersHandle.clientHeight;
+    host.style.position = 'absolute';
+    host.style.top = '0';
+    host.style.left = '0';
+    host.style.width = `${w}px`;
+    host.style.height = `${h}px`;
+    host.style.transform = 'translateX(-100%)';
+    host.style.zIndex = '206';
+    host.style.pointerEvents = 'none';
+    host.style.overflow = 'visible';
+    return host;
+}
+
+/**
+ * Continuous outer edge + parallel inward lip for info + filters panels (dock language).
+ * Filters dual traps: paint onto a persistent panel host (in-place updates for dock tween).
+ * @param {object} s
+ */
+export function syncAllSidePanelEdges(s) {
+    const infoHandle = document.querySelector(
+        '.event-slide .panel-resize-handle--inner-right',
+    );
+    if (infoHandle) {
+        const traps = measureSideTrapBands(infoHandle, [infoHandle]);
+        const edge = syncSidePanelEdgeStroke(infoHandle, 'right', traps, s);
+        if (edge) syncSideInwardFromEdge(infoHandle, 'right', edge, s);
+    }
+
+    const panel = document.querySelector('.filters-panel');
+    const filtersHandle = document.querySelector(
+        '.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch',
+    );
+    const musicHandle = document.querySelector(
+        '.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--music-launch',
+    );
+    /* Strip handle-local leftovers only — keep `.panel-side-edge-host` alive for live updates. */
+    document
+        .querySelectorAll(
+            '.filters-panel .panel-resize-handle--inner-left > .panel-trap-edge-stroke, ' +
+                '.filters-panel .panel-resize-handle--inner-left > .panel-side-edge-stroke, ' +
+                '.filters-panel .panel-resize-handle--inner-left > .panel-side-inward-line',
+        )
+        .forEach((el) => el.remove());
+
+    if (!filtersHandle || !panel) return;
+
+    const trapHandles = musicHandle ? [filtersHandle, musicHandle] : [filtersHandle];
+    const traps = measureSideTrapBands(filtersHandle, trapHandles);
+    if (!traps.length) return;
+    const host = ensureFiltersEdgeHost(panel, filtersHandle);
+    const edge = syncSidePanelEdgeStroke(filtersHandle, 'left', traps, s, host);
+    if (edge) syncSideInwardFromEdge(host, 'left', edge, s);
+}
+
+/** @deprecated Use syncAllSidePanelEdges */
+export function syncAllSideInwardLines(s) {
+    syncAllSidePanelEdges(s);
 }
 
 /**
@@ -1205,6 +1860,28 @@ export function applySidePanelsTrapChrome(state) {
     root.style.setProperty('--event-info-trap-border-w', String(fit.borderWidth));
     root.style.setProperty('--side-edge-border-px', `${fit.borderWidth}px`);
     root.style.setProperty('--side-edge-radius-px', `${s.sideBorderRadius}px`);
+    root.style.setProperty('--side-inward-line-thickness-px', `${s.sideInwardLineThicknessPx}px`);
+    root.style.setProperty('--side-inward-line-offset-px', `${s.sideInwardLineOffsetPx}px`);
+    /*
+     * Closed peek + open content inset share the same lip footprint:
+     * half outer stroke + inward offset + inward thickness + air gap.
+     * Content padding on the seam side must clear the full white lip.
+     */
+    {
+        const lipStack =
+            fit.borderWidth * 0.5 +
+            Math.max(0, s.sideInwardLineOffsetPx) +
+            s.sideInwardLineThicknessPx;
+        /* Reel in ~5% of the closed strip so the inward lip sits tight to the outer border. */
+        const closedPeek = Math.max(14, Math.round(lipStack * 0.95));
+        const contentInset = Math.max(28, Math.ceil(lipStack + 14));
+        root.style.setProperty('--panel-side-closed-peek-px', `${closedPeek}px`);
+        root.style.setProperty('--panel-side-content-inset-px', `${contentInset}px`);
+        if (document.body) {
+            document.body.style.setProperty('--panel-side-closed-peek-px', `${closedPeek}px`);
+            document.body.style.setProperty('--panel-side-content-inset-px', `${contentInset}px`);
+        }
+    }
 
     /* White nub tabs — size/radius from tweaks; fill SVGs include rounding. */
     const sideNubDepth = Math.min(s.sideNubDepthPx, Math.max(16, fit.protrudePx * 0.55));
@@ -1217,6 +1894,7 @@ export function applySidePanelsTrapChrome(state) {
     root.style.setProperty('--side-trap-btn-radius', `${s.sideTrapBtnRadiusPx}px`);
     root.style.setProperty('--side-trap-btn-width', `${s.sideTrapBtnWidthPx}px`);
     root.style.setProperty('--side-trap-btn-height', `${s.sideTrapBtnHeightPx}px`);
+    root.style.setProperty('--side-trap-btn-offset-x', `${s.sideTrapBtnOffsetXPx}px`);
     root.style.setProperty('--side-trap-icon-size', `${s.sideTrapIconPx}px`);
     root.style.setProperty(
         '--side-nub-fill-img',

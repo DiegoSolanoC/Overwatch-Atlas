@@ -130,8 +130,34 @@ body:has(#paginationDock)
     filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    /* textfield — not none — so Firefox actually drops number spinners */
+    -moz-appearance: textfield !important;
+    -webkit-appearance: textfield !important;
+    appearance: textfield !important;
+}
+
+.dock-page-input--bare::-webkit-inner-spin-button,
+.dock-page-input--bare::-webkit-outer-spin-button,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    .page-input::-webkit-inner-spin-button,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    .page-input::-webkit-outer-spin-button,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    #pageInput::-webkit-inner-spin-button,
+body:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    #pageInput::-webkit-outer-spin-button {
     -webkit-appearance: none !important;
     appearance: none !important;
+    margin: 0 !important;
+    display: none !important;
 }
 
 .dock-globe-rail--center > .page-input-container > * {

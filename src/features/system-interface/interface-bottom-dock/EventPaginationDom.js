@@ -18,8 +18,8 @@
  */
 
 import { eventPaginationInnerHtml } from './eventPaginationMarkup.js';
-import { mountPaginationDock } from './mountPaginationDock.js';
-import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=15';
+import { mountPaginationDock } from './mountPaginationDock.js?v=3';
+import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=26';
 
 const ORPHAN_NAV_BUTTON_IDS = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn'];
 

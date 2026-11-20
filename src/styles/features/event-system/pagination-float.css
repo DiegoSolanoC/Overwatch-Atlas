@@ -201,8 +201,10 @@
         top: 0;
         display: block;
         width: 100%;
-        /* Height set inline to viewBox H+pad so preserveAspectRatio=none does not stretch Y. */
-        height: 100%;
+        /*
+         * Height is set inline to viewBox H+pad. Do not use height:100% here —
+         * Firefox was stretching the lip vs the outer stroke on trap slopes.
+         */
         overflow: visible;
         pointer-events: none;
     }
@@ -706,7 +708,9 @@ body:not(:has(#paginationDock)) .event-page-slider-row--desktop-only {
     text-align: center;
     padding: 0 5px;
     transition: all var(--panel-transition);
-    -moz-appearance: textfield; /* Firefox - remove spinner */
+    /* Firefox + Chromium: hide number spinners (appearance:none alone keeps FF arrows). */
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .page-input:focus {
@@ -719,6 +723,7 @@ body:not(:has(#paginationDock)) .event-page-slider-row--desktop-only {
 .page-input::-webkit-inner-spin-button,
 .page-input::-webkit-outer-spin-button {
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
 }
 

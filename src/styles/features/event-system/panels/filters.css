@@ -69,7 +69,7 @@
 .filters-panel.panel--closing.filters-panel--music-mode .music-panel-content {
     display: flex;
     height: 100%;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 20px max(20px, var(--panel-side-content-inset-px, 36px));
 }
 
 /* Close is outside .filters-panel-content — when collapsed it would still paint (often over the
@@ -159,7 +159,8 @@ body.color-palette-gray .filters-panel-close:hover {
 }
 
 .filters-panel-content {
-    padding: 20px 20px 20px 20px;
+    /* Extra padding-left clears the hub-side inward lip + air gap. */
+    padding: 20px 20px 20px max(20px, var(--panel-side-content-inset-px, 36px));
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -179,7 +180,7 @@ body.color-palette-gray .filters-panel-close:hover {
     display: flex !important;
     flex-direction: column;
     height: 100%;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 20px max(20px, var(--panel-side-content-inset-px, 36px));
 }
 
 .filters-title {

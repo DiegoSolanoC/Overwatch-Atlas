@@ -18,7 +18,7 @@ import {
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
     saveSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=15';
+} from './SidePanelsTrapChrome.js?v=26';
 
 const STORAGE_KEY = 'atlas.headerTitleBadge.tweak.v7';
 const PANEL_ID = 'uiTweaksPanel';
@@ -748,7 +748,7 @@ function mountControls(panel, bags, hooks) {
     hint.className = 'header-badge-tweaker__hint';
     hint.textContent =
         activeUiTweaksSection === 'panels'
-            ? 'Side panels · Shared size · Per-trap slide · Edges stay visible · Save to keep'
+            ? 'Side panels · Shared size · Inward line · Per-trap slide · Save to keep'
             : activeUiTweaksSection === 'dock'
                 ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Save to keep'
                 : 'Pick a section · Drag for live preview · Save to keep · Hub buttons hidden while side chrome is shaped';
@@ -846,6 +846,43 @@ function mountControls(panel, bags, hooks) {
         },
         {
             group: 'Side panels',
+            title: 'Inward line',
+            bag: 'panels',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'sideInwardLineThicknessPx',
+                    label: 'Inward line thickness',
+                    min: 4,
+                    max: 28,
+                    step: 1,
+                },
+                {
+                    key: 'sideInwardLineOffsetPx',
+                    label: 'Inward offset (into fill)',
+                    min: -24,
+                    max: 56,
+                    step: 1,
+                },
+                {
+                    key: 'sideInwardCenterGapPx',
+                    label: 'Cut gap at trap buttons (↓ = closer)',
+                    min: 24,
+                    max: 900,
+                    step: 2,
+                },
+                {
+                    key: 'sideInwardCornerRadiusPx',
+                    label: 'Cut corner rounding',
+                    min: 0,
+                    max: 48,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Side panels',
             title: 'Side nub (inward tip)',
             bag: 'panels',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
@@ -868,6 +905,13 @@ function mountControls(panel, bags, hooks) {
                 { key: 'sideTrapBtnRadiusPx', label: 'Label corner rounding', min: 0, max: 48, step: 1 },
                 { key: 'sideTrapBtnWidthPx', label: 'Label horizontal size', min: 24, max: 96, step: 1 },
                 { key: 'sideTrapBtnHeightPx', label: 'Label vertical size', min: 48, max: 200, step: 2 },
+                {
+                    key: 'sideTrapBtnOffsetXPx',
+                    label: 'Pill X (→ tip / hub)',
+                    min: -32,
+                    max: 48,
+                    step: 1,
+                },
                 { key: 'sideTrapIconPx', label: 'Logo icon size', min: 12, max: 96, step: 1 },
             ],
         },
@@ -903,7 +947,7 @@ function mountControls(panel, bags, hooks) {
         },
         {
             group: 'Dock',
-            title: 'Dock inward line',
+            title: 'Inward line',
             bag: 'dock',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
             sanitize: sanitizeSidePanelsTrapState,
@@ -917,14 +961,14 @@ function mountControls(panel, bags, hooks) {
                 },
                 {
                     key: 'dockInwardLineOffsetYPx',
-                    label: 'Inward line Y (↓ toward thumbs)',
+                    label: 'Inward offset (into fill)',
                     min: -24,
                     max: 56,
                     step: 1,
                 },
                 {
                     key: 'dockInwardCenterGapPx',
-                    label: 'Center cut gap (↓ = closer)',
+                    label: 'Cut gap at trap buttons (↓ = closer)',
                     min: 24,
                     max: 900,
                     step: 2,

@@ -889,6 +889,22 @@ body:has(#paginationDock) .page-controls-row--mobile-only .page-input {
     font-weight: 700;
     text-align: center;
     line-height: 1;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .page-controls-row--mobile-only
+    .page-input::-webkit-inner-spin-button,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .page-controls-row--mobile-only
+    .page-input::-webkit-outer-spin-button,
+body:has(#paginationDock) .page-controls-row--mobile-only .page-input::-webkit-inner-spin-button,
+body:has(#paginationDock) .page-controls-row--mobile-only .page-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    display: none;
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only .page-input:focus,
