@@ -5,6 +5,8 @@
 /*
  * Desktop: overlay onto main#content (absolute within .layout-container) — Filters + Music
  * share this rail. Opening no longer flex-shrinks the stage. Mobile stays fixed slide-in below.
+ * With #paginationDock, panel `bottom` tracks live dock height so open content
+ * can flex-fill when the dock collapses.
  */
 .filters-panel {
     position: absolute;
@@ -15,7 +17,10 @@
     min-width: var(--panel-filters-width-collapsed);
     max-width: var(--panel-filters-width-collapsed);
     flex: none;
-    background: var(--bg-secondary); /* Dark blue for default blue palette */
+    /* Fill lives on ::before (trap clip) so body + trapezium share one alpha. */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: none;
     transition:
         width var(--panel-transition),
@@ -127,8 +132,8 @@
 
 .filters-panel-close {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 18px;
+    right: 28px;
     font-size: 0;
     cursor: pointer;
     color: #fff;
@@ -150,7 +155,7 @@
 
 /* Gray palette: dark gray background for filters panel */
 body.color-palette-gray .filters-panel {
-    background: var(--bg-secondary) !important;
+    background: transparent !important;
 }
 
 /* Gray palette: orange hover for filters close */
@@ -188,31 +193,42 @@ body.color-palette-gray .filters-panel-close:hover {
     color: var(--accent-primary);
     margin: 0;
     font-size: 2.2rem;
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
-/* Toolbar: [tabs | centered search | Clear/Confirm] — equal grow space on both sides of search */
+/*
+ * Two sides (Music top-controls style):
+ * left  = search + category tabs
+ * right = Clear / Confirm
+ */
 .filters-toolbar {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    column-gap: 12px;
-    row-gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 12px;
     width: 100%;
+    box-sizing: border-box;
+}
+
+.filters-toolbar-main {
+    flex: 1.35 1 280px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .filters-search-wrap {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    justify-self: center;
-    width: min(100%, 360px);
+    width: 100%;
     min-width: 0;
 }
 
 .filters-search-label {
     font-family: var(--font-control-bold, var(--font-default));
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
@@ -221,17 +237,58 @@ body.color-palette-gray .filters-panel-close:hover {
 
 .filters-search-input {
     width: 100%;
-    height: 38px;
-    padding: 0 12px;
-    border-radius: 8px;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.32);
     background: rgba(0, 0, 0, 0.35);
     color: #fff;
     font-family: var(--font-default);
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.2;
     box-sizing: border-box;
     transition: border-color var(--panel-transition), box-shadow var(--panel-transition), background var(--panel-transition);
+}
+
+/* Selection totals — sit above Clear/Confirm in the right toolbar column */
+.filters-selection-counts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    /* Match search label + gap so the strip lines up with the search input. */
+    margin-top: calc(15px * 1.2 + 6px);
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.filters-selection-count {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    opacity: 0.55;
+    transition: opacity var(--panel-transition);
+}
+
+.filters-selection-count.is-active {
+    opacity: 1;
+}
+
+.filters-selection-count__icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex: 0 0 auto;
+    pointer-events: none;
+    user-select: none;
+    filter: brightness(0) invert(1);
 }
 
 .filters-search-input::placeholder {
@@ -248,47 +305,62 @@ body.color-palette-gray .filters-panel-close:hover {
 .filters-tabs {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    flex: 0 0 auto;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
     min-width: 0;
-    justify-self: start;
+    padding: 2px 6px 4px;
+    box-sizing: border-box;
 }
 
-.filter-count,
-.filter-tab .filter-count,
-.filter-tab.active .filter-count,
-body.color-palette-gray .filter-tab .filter-count,
-body.color-palette-gray .filter-tab.active .filter-count {
+.filters-selection-count .filter-count,
+.filter-count {
     color: #4caf50 !important; /* Always green on both palettes */
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
     flex-shrink: 0;
     letter-spacing: 0.4px;
+    font-variant-numeric: tabular-nums;
+    min-width: 0.9em;
 }
 
-/* Category tabs: same chrome as Clear/Confirm, scaled to similar footprint (icon + stacked label) */
+/* Category tabs — Music transport style: white plate, black icon/text, slanted */
 .filter-tab {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    color: white;
-    padding: 10px 14px 10px;
+    --filter-tab-skew: -10deg;
+    appearance: none;
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    padding: 12px 10px;
     cursor: pointer;
-    transition: all var(--panel-transition);
+    transition:
+        background var(--panel-transition),
+        transform var(--panel-transition),
+        filter var(--panel-transition),
+        color var(--panel-transition);
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 84px;
+    flex: 1 1 0;
+    text-align: center;
+    font-family: inherit;
+    transform: skewX(var(--filter-tab-skew));
+}
+
+.filter-tab-face {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    min-width: 120px;
-    max-width: 120px;
-    flex: 0 0 auto;
-    text-align: center;
-    font-family: inherit;
+    width: 100%;
+    transform: skewX(10deg);
 }
 
 .filter-tab-graphic {
@@ -300,13 +372,14 @@ body.color-palette-gray .filter-tab.active .filter-count {
 }
 
 .filter-tab-icon {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     flex-shrink: 0;
     pointer-events: none;
     user-select: none;
     display: block;
+    filter: brightness(0);
 }
 
 .filter-tab-footer {
@@ -320,29 +393,37 @@ body.color-palette-gray .filter-tab.active .filter-count {
 
 .filter-tab-label {
     font-family: var(--font-control-bold, var(--font-default));
-    font-size: 14px;
+    font-size: clamp(13px, 1.35vw, 16px);
     font-weight: 700;
     line-height: 1.15;
-    letter-spacing: 0.85px;
+    letter-spacing: 0.45px;
     text-transform: uppercase;
-    color: #fff;
+    color: inherit;
 }
 
 .filter-tab:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    transform: skewX(var(--filter-tab-skew)) translateY(-2px);
+    filter: brightness(1.04);
 }
 
 .filter-tab:active {
-    transform: translateY(0);
+    transform: skewX(var(--filter-tab-skew)) translateY(0);
 }
 
 .filter-tab.active {
-    background: rgba(var(--accent-primary-rgb), 0.35);
-    border-color: var(--accent-primary);
-    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.25);
+    background: rgb(var(--accent-primary-rgb));
+    color: #fff;
+    filter: none;
+}
+
+.filter-tab.active .filter-tab-icon {
+    filter: brightness(0) invert(1);
+}
+
+.filter-tab.active:hover {
+    background: rgb(var(--accent-primary-rgb));
+    filter: brightness(1.08);
 }
 
 .filter-tab.active .filter-tab-label {
@@ -407,14 +488,17 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
 
 /* Gallery Select File–style chip boards (heroes / factions / NPCs / countries) */
 .filters-grid.filters-grid--chip-board {
-    --filters-chip-rim: clamp(5px, 0.48vw, 8px);
-    --filters-chip-max-h: clamp(72px, 5.8vw, 96px);
+    --filters-chip-rim: calc(clamp(5px, 0.48vw, 8px) * var(--filters-chip-size-scale, 1));
+    --filters-chip-max-h: calc(clamp(72px, 5.8vw, 96px) * var(--filters-chip-size-scale, 1));
     --filters-chip-max-w: calc(var(--filters-chip-max-h) - 2 * var(--filters-chip-rim));
-    --filters-chip-label-band: clamp(17px, 1.35vw, 22px);
-    --filters-chip-label-rim: clamp(3px, 0.32vw, 5px);
-    --filters-chip-board-heading-h: calc(clamp(1.2rem, 2.2vw, 1.75rem) * 0.95 + 10px);
-    --filters-chip-board-row-gap: clamp(6px, 0.85vh, 12px);
-    --filters-chip-group-gap: clamp(14px, 1.2vw, 24px);
+    --filters-chip-label-band: calc(clamp(17px, 1.35vw, 22px) * var(--filters-chip-size-scale, 1));
+    --filters-chip-label-rim: calc(clamp(3px, 0.32vw, 5px) * var(--filters-chip-size-scale, 1));
+    --filters-chip-board-heading-h: calc(
+        (clamp(1.2rem, 2.2vw, 1.75rem) * 0.95 + 10px) * var(--filters-chip-size-scale, 1)
+    );
+    --filters-chip-label-font: calc(13px * var(--filters-chip-size-scale, 1));
+    --filters-chip-board-row-gap: calc(clamp(6px, 0.85vh, 12px) * var(--filters-chip-size-scale, 1));
+    --filters-chip-group-gap: calc(clamp(14px, 1.2vw, 24px) * var(--filters-chip-size-scale, 1));
     --hero-bio-chip-rim: var(--filters-chip-rim);
     --hero-bio-chip-max-h: var(--filters-chip-max-h);
     --hero-bio-chip-max-w: var(--filters-chip-max-w);
@@ -541,6 +625,7 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
 }
 
 .filters-chip-board__subrole-group {
+    /* Gallery-style: hug chip content so Initiator/Bruiser (etc.) share a subrow. */
     flex: 0 0 auto;
     width: max-content;
     max-width: 100%;
@@ -566,9 +651,12 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
 
 .filters-chip-board__chips-row--wrap {
     flex-wrap: wrap;
+}
+
+/* Role / country bands stay full-width; subgroups stay max-content so they pack side-by-side. */
+.filters-chip-board--flat .filters-chip-board__role-band {
     width: 100%;
     max-width: 100%;
-    justify-content: center;
 }
 
 .filters-chip-board--flat .filters-chip-board__country-band {
@@ -582,6 +670,8 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
 
 .filters-chip-board--flat .filters-chip-board__country-band .filters-chip-board__chips-row--wrap {
     justify-content: center;
+    width: 100%;
+    max-width: 100%;
     gap: clamp(6px, 0.55vw, 10px);
     row-gap: clamp(10px, 1.2vh, 16px);
     padding: 0 4px;
@@ -791,7 +881,7 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
     margin: 0;
     padding: 0;
     font-family: var(--font-control-bold, 'Config', sans-serif);
-    font-size: 13px;
+    font-size: var(--filters-chip-label-font, calc(13px * var(--filters-chip-size-scale, 1)));
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -1007,47 +1097,121 @@ body.color-palette-gray .filter-btn.selected .filter-label {
     align-items: stretch;
     gap: 10px;
     margin-bottom: 12px;
-    padding: 12px 70px 12px 15px; /* Add right padding to avoid X button overlap */
+    padding: 12px 56px 14px 14px; /* right inset clears close X */
     border-bottom: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px 8px 0 0;
+    background: rgba(0, 0, 0, 0.62);
+    border-radius: 8px;
     flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.filters-mode-disclaimer {
+    margin: 4px 0 0;
+    padding: 0 4px;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: var(--font-default);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+}
+
+.filters-mode-disclaimer__mode {
+    color: rgb(var(--accent-primary-rgb));
+    font-family: var(--font-control-bold, var(--font-default));
+    font-weight: 700;
+    font-size: 1.08em;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.filters-mode-disclaimer__body {
+    color: inherit;
+}
+
+.filters-panel--music-mode .filters-mode-disclaimer {
+    display: none;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .filters-mode-disclaimer {
+        font-size: 16px;
+    }
+}
+
+/* Bottom strip — same role/scale as event-slide text-size controls */
+.filters-chip-size-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    gap: 12px;
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-top: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+    background: rgba(0, 0, 0, 0.42);
+    border-radius: 0 0 8px 8px;
+}
+
+.filters-chip-size-bar .filters-chip-size-scale {
+    margin-right: 0;
 }
 
 body.color-palette-gray .filters-actions {
     border-bottom: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
 }
 
-.filters-actions-buttons {
+.filters-actions-side {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 0 0 auto;
-    justify-self: end;
+    flex-direction: column;
+    gap: 10px;
+    flex: 0.55 1 160px;
+    max-width: 280px;
+    min-width: 0;
+    padding: 2px 6px 4px;
+    box-sizing: border-box;
+    align-self: stretch;
+    /* Counts sit in the empty band above Clear/Confirm (aligned with search). */
+    justify-content: space-between;
 }
 
-/* Narrow panel: stack toolbar rows instead of crushing the search field */
+.filters-actions-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Confirm retired — Clear owns the full action slot. */
+.filters-actions-buttons #clearFiltersBtn {
+    flex: 1 1 auto;
+    max-width: none;
+}
+
+#confirmFiltersBtn {
+    display: none !important;
+}
+
+
+/* Narrow panel: stack the two sides */
 @media (max-width: 1100px) {
     .filters-toolbar {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
-    .filters-tabs,
-    .filters-search-wrap,
-    .filters-actions-buttons {
-        justify-self: stretch;
-        width: 100%;
-    }
-
-    .filters-search-wrap {
+    .filters-toolbar-main,
+    .filters-actions-side {
+        flex: 1 1 auto;
         width: 100%;
         max-width: none;
     }
 
     .filters-actions-buttons {
-        justify-content: flex-start;
+        justify-content: stretch;
     }
 }
 
@@ -1091,46 +1255,31 @@ body.color-palette-gray .filters-actions {
         margin-bottom: 6px;
     }
 
-    /* Six equal cells: tabs 1–4, Clear/Confirm 5–6 — shared height & footprint */
     .filters-toolbar {
-        display: grid !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        grid-template-rows: auto auto;
-        align-items: stretch;
-        column-gap: 4px;
-        row-gap: 8px;
+        flex-direction: column !important;
+        gap: 8px;
+    }
+
+    .filters-toolbar-main,
+    .filters-actions-side {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        align-self: stretch;
     }
 
     .filters-tabs {
-        grid-column: 1 / span 4;
-        grid-row: 1;
-        display: grid;
+        display: grid !important;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 4px;
-        width: auto;
-        min-width: 0;
-        justify-self: stretch;
-        align-self: stretch;
+        padding: 0;
     }
 
     .filters-actions-buttons {
-        grid-column: 5 / span 2;
-        grid-row: 1;
-        display: grid;
+        display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 4px;
-        width: auto;
-        min-width: 0;
-        justify-self: stretch;
-        align-self: stretch;
-    }
-
-    .filters-search-wrap {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        width: 100%;
-        max-width: none;
-        justify-self: stretch;
+        padding: 0;
     }
 
     .filter-tab,
@@ -1138,30 +1287,40 @@ body.color-palette-gray .filters-actions {
         min-width: 0 !important;
         max-width: none !important;
         width: 100% !important;
-        height: 100%;
-        min-height: 76px;
-        padding: 8px 2px 6px !important;
-        gap: 4px !important;
+        min-height: 68px;
+        padding: 8px 4px !important;
         box-sizing: border-box;
     }
 
     .filter-tab-icon,
     .filters-action-btn__icon {
-        width: 34px !important;
-        height: 34px !important;
+        width: 40px !important;
+        height: 40px !important;
     }
 
     .filter-tab-label,
     .filters-action-btn__label {
-        font-size: 11px !important;
+        font-size: 12px !important;
         letter-spacing: 0.4px !important;
         line-height: 1.1;
     }
 
-    .filter-tab .filter-count,
-    .filters-confirm-btn .filter-count,
+    .filters-selection-count .filter-count,
     .filter-count {
-        font-size: 13px !important;
+        font-size: 20px !important;
+    }
+
+    .filters-selection-count__icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .filters-selection-counts {
+        gap: 10px;
+    }
+
+    .filters-selection-count {
+        gap: 6px;
     }
 
     .filters-search-input {
@@ -1180,14 +1339,14 @@ body.color-palette-gray .filters-actions {
     }
 
     .filters-grid.filters-grid--chip-board {
-        --filters-chip-rim: clamp(4px, 1.1vw, 7px);
-        --filters-chip-max-h: clamp(96px, 26vw, 124px);
+        --filters-chip-rim: calc(clamp(4px, 1.1vw, 7px) * var(--filters-chip-size-scale, 1));
+        --filters-chip-max-h: calc(clamp(96px, 26vw, 124px) * var(--filters-chip-size-scale, 1));
         --filters-chip-max-w: calc(var(--filters-chip-max-h) - 2 * var(--filters-chip-rim));
-        --filters-chip-label-band: clamp(16px, 4.2vw, 20px);
-        --filters-chip-label-rim: clamp(2px, 0.8vw, 4px);
-        --filters-chip-board-heading-h: calc(1.15rem * 0.95 + 8px);
-        --filters-chip-board-row-gap: 10px;
-        --filters-chip-group-gap: 12px;
+        --filters-chip-label-band: calc(clamp(16px, 4.2vw, 20px) * var(--filters-chip-size-scale, 1));
+        --filters-chip-label-rim: calc(clamp(2px, 0.8vw, 4px) * var(--filters-chip-size-scale, 1));
+        --filters-chip-board-heading-h: calc((1.15rem * 0.95 + 8px) * var(--filters-chip-size-scale, 1));
+        --filters-chip-board-row-gap: calc(10px * var(--filters-chip-size-scale, 1));
+        --filters-chip-group-gap: calc(12px * var(--filters-chip-size-scale, 1));
         --hero-bio-chip-rim: var(--filters-chip-rim);
         --hero-bio-chip-max-h: var(--filters-chip-max-h);
         --hero-bio-chip-max-w: var(--filters-chip-max-w);
@@ -1201,71 +1360,86 @@ body.color-palette-gray .filters-actions {
 }
 
 .filters-action-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    color: white;
-    padding: 14px 28px; /* Bigger padding */
+    /* Same slant direction as category tabs (−10deg). */
+    --filter-action-skew: -10deg;
+    appearance: none;
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+    color: #000;
     font-family: var(--font-control-bold, var(--font-default));
-    font-size: 16px; /* Larger font */
     font-weight: 700;
     cursor: pointer;
-    transition: all var(--panel-transition);
-    min-width: 120px; /* Minimum width for consistency */
+    transition:
+        background var(--panel-transition),
+        transform var(--panel-transition),
+        filter var(--panel-transition),
+        color var(--panel-transition);
+    min-width: 0;
+    flex: 1 1 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-flex;
+    letter-spacing: 0.45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    min-height: 72px;
+    max-height: 88px;
+    box-sizing: border-box;
+    transform: skewX(var(--filter-action-skew));
+}
+
+.filters-action-btn__face {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 10px 12px 8px;
-    min-height: 86px;
+    width: 100%;
+    transform: skewX(10deg);
 }
 
 .filters-action-btn__icon {
-    width: 30px;
-    height: 30px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     pointer-events: none;
     flex: 0 0 auto;
+    filter: brightness(0);
 }
 
 .filters-action-btn__label {
-    line-height: 1;
-    font-size: 12px;
-    letter-spacing: 0.8px;
+    line-height: 1.15;
+    font-size: clamp(13px, 1.35vw, 16px);
+    letter-spacing: 0.45px;
     text-transform: uppercase;
     white-space: nowrap;
-}
-
-/* Match-count under Confirm — same green badge language as category tabs */
-.filters-confirm-btn .filter-count {
-    display: none;
-    margin: 0;
-    line-height: 1.2;
+    color: inherit;
 }
 
 .filters-action-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    transform: skewX(var(--filter-action-skew)) translateY(-2px);
+    filter: brightness(1.04);
 }
 
 .filters-action-btn:active {
-    transform: translateY(0);
+    transform: skewX(var(--filter-action-skew)) translateY(0);
 }
 
+/* Confirm stays accent as the primary CTA */
 .filters-confirm-btn {
-    background: rgba(33, 150, 243, 0.4); /* Blue for default blue palette */
-    border-color: #2196F3;
+    background: rgb(var(--accent-primary-rgb));
+    color: #fff;
+}
+
+.filters-confirm-btn .filters-action-btn__icon {
+    filter: brightness(0) invert(1);
 }
 
 .filters-confirm-btn:hover {
-    background: rgba(33, 150, 243, 0.6);
-    border-color: #42a5f5;
-    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+    background: rgb(var(--accent-primary-rgb));
+    filter: brightness(1.08);
 }
 
 /* Gray palette: orange confirm button */

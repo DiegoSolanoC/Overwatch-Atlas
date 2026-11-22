@@ -114,22 +114,28 @@ async function runCodexPostOpenPaint() {
 
     applyCodexModeDockToggles({ redraw: false });
 
-    // Kick full edge paint in the background so overlay can finish after nodes.
-    // Status/progress callbacks no-op once enterCodexMode clears the overlay hooks.
-    void redrawCodexEdgesDuringLoad({
-        force: true,
-        onProgress: (info) => {
-            if (!stillActive()) return;
-            reportConnectionLoadProgress(info);
-        },
-        onStatusLine: (line) => {
-            if (!stillActive()) return;
-            const lineSetter = getCodexLoadingOverlayLineSetter();
-            if (lineSetter) lineSetter(line);
-        },
-    }).catch((err) => {
-        console.warn('[Codex] background edge paint failed:', err);
-    });
+    /*
+     * Await cord paint before "ready" — kicking it in the background left an empty
+     * board then a slow trickle of segments (chunk yields + fade-in). View mode is
+     * cheaper now (no SVG node mask), so waiting is acceptable and usable sooner.
+     */
+    try {
+        await redrawCodexEdgesDuringLoad({
+            force: true,
+            onProgress: (info) => {
+                if (!stillActive()) return;
+                reportConnectionLoadProgress(info);
+            },
+            onStatusLine: (line) => {
+                if (!stillActive()) return;
+                const lineSetter = getCodexLoadingOverlayLineSetter();
+                if (lineSetter) lineSetter(line);
+            },
+        });
+    } catch (err) {
+        console.warn('[Codex] edge paint failed:', err);
+    }
+    if (!stillActive()) return;
 
     if (codexFiltersActive()) {
         api.applyCodexFilterState?.();
@@ -320,8 +326,18 @@ export function initCodexCanvas(rootElement) {
         cordSegmentWithinOctilinearToleranceDegrees,
         getTargetedSelectionActive: () => s.codexTargetedSelectionActive,
         getTargetedSelectionVisibleIds: () => s.codexTargetedSelectionVisibleIds,
-        getTargetedSelectionVisibleEdgeKeys: () => s.codexTargetedSelectionVisibleEdgeKeys
+        getTargetedSelectionVisibleEdgeKeys: () => s.codexTargetedSelectionVisibleEdgeKeys,
+        setCodexViewEdgePickPolys: api.setCodexViewEdgePickPolys,
+        clearCodexViewEdgePickPolys: api.clearCodexViewEdgePickPolys,
     });
+
+    if (s.root) {
+        s.root.addEventListener('pointermove', api.onCodexViewEdgePickPointerMove, {
+            passive: true,
+        });
+        s.root.addEventListener('pointerleave', api.onCodexViewEdgePickPointerLeave, true);
+        s.root.addEventListener('pointerdown', api.onCodexViewEdgePickPointerDown, true);
+    }
 
     if (s.hitLayerEl) {
         s.hitLayerEl.addEventListener('pointerdown', api.onHitLayerBackgroundPanPointerDown, true);
@@ -453,6 +469,12 @@ export function destroyCodexCanvas() {
         s.codexEdgesSvgEl.removeEventListener('pointerover', api.onCodexEdgeSvgPointerOver, true);
         s.codexEdgesSvgEl.removeEventListener('pointerout', api.onCodexEdgeSvgPointerOut, true);
     }
+    if (s.root) {
+        s.root.removeEventListener('pointermove', api.onCodexViewEdgePickPointerMove);
+        s.root.removeEventListener('pointerleave', api.onCodexViewEdgePickPointerLeave, true);
+        s.root.removeEventListener('pointerdown', api.onCodexViewEdgePickPointerDown, true);
+    }
+    api.clearCodexViewEdgePickPolys?.();
     s.codexEdgeHoverChainKeySet = null;
     s.codexEdgesSvgEl = null;
     api.removePicker();

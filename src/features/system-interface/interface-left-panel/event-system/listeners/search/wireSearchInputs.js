@@ -263,16 +263,8 @@ export function wireClearAndSelection(ctx) {
             selectionSyncer.syncFiltersInputFromSelection();
         });
 
-        // Keep the manager search synced when the user toggles filter chips in the Filters panel.
-        document.addEventListener('click', (e) => {
-            if (!useSelectionCheckbox.checked) return;
-            const t = e.target;
-            const isFilterBtn = !!(t && (t.classList?.contains('filter-btn') || t.closest?.('.filter-btn')));
-            const isConfirm = !!(t && (t.id === 'confirmFiltersBtn' || t.closest?.('#confirmFiltersBtn')));
-            const isClear = !!(t && (t.id === 'clearFiltersBtn' || t.closest?.('#clearFiltersBtn')));
-            if (!isFilterBtn && !isConfirm && !isClear) return;
-            setTimeout(() => selectionSyncer.syncFiltersInputFromSelection(), 0);
-        });
+        // Chip / Clear live-apply already mirrors selection into Event Manager search
+        // via applyStandaloneFiltersLive — no extra document click sync needed.
     }
 }
 

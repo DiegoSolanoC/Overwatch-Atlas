@@ -34,6 +34,12 @@ export function createPanelExclusivityObserver() {
         } finally {
             enforcing = false;
         }
+        /*
+         * Closing uses panel--closing + width/drawbridge tweens. A globe layout
+         * sync on that same tick steals frames from the bridge animation —
+         * FiltersPanel.finishClose already requests layout after settle.
+         */
+        if (filtersPanel?.classList.contains('panel--closing')) return;
         window.globeController?.requestStageLayoutSync?.();
     }
 

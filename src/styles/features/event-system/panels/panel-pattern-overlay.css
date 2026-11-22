@@ -42,7 +42,7 @@
     mix-blend-mode: color;
 }
 
-/* Event info + filters: same tint, plus thin black U at bottom (50px tall, 1px stroke). */
+/* Event info + filters: thin black U at bottom (50px tall, 1px stroke). */
 .event-slide::after,
 .filters-panel::after {
     content: '';
@@ -50,12 +50,16 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    mix-blend-mode: color;
+    mix-blend-mode: normal;
     background:
         linear-gradient(#000, #000) left bottom / 1px 50px no-repeat,
         linear-gradient(#000, #000) right bottom / 1px 50px no-repeat,
-        linear-gradient(#000, #000) left bottom / 100% 1px no-repeat,
-        rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
+        linear-gradient(#000, #000) left bottom / 100% 1px no-repeat;
+}
+
+/* Info matches filters: U-stroke only — no color-blend (avoids “reversed” stage). */
+.event-slide::after {
+    mix-blend-mode: normal;
 }
 
 /*
@@ -63,6 +67,16 @@
  * layers protrude and clip to the trap shape. The resize handle stays transparent chrome
  * (icon + stroke only) so it is no longer a separate filled asset.
  */
+/*
+ * Unitless 0–100 nudge added to each side-trap pos while the dock is collapsed.
+ * Registered so it can ease with --pagination-dock-transition-* (mimic panel grow).
+ */
+@property --side-trap-collapse-shift {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
 /* Defaults — SidePanelsTrapChrome / UI Tweaks override these on :root. */
 :root {
     --event-info-side-trapezium-h: 160px;
@@ -70,6 +84,8 @@
     --event-info-trap-pos: 50;
     --filters-trap-pos: 32;
     --music-trap-pos: 68;
+    /* 0 expanded; 10 when body.pagination-dock-collapsed (see pagination-dock.css). */
+    --side-trap-collapse-shift: 0;
     --event-info-trap-taper: 12;
     --event-info-trap-border-w: 20;
     --side-edge-border-px: 20px;
@@ -123,9 +139,11 @@
         --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 62%);
         --event-info-trap-visual-h: calc(var(--event-info-trap-h-capped) + 8px);
         --event-info-side-gap-h: calc((100% - var(--event-info-trap-h-capped)) / 2);
-        /* 0 = top, 50 = center, 100 = bottom (UI Tweaks vertical slide). */
+        /* 0 = top, 50 = center, 100 = bottom (UI Tweaks + dock-collapse shift). */
         --event-info-trap-top: calc(
-            (100% - var(--event-info-trap-h-capped)) * var(--event-info-trap-pos) / 100 - 2px
+            (100% - var(--event-info-trap-h-capped))
+                * min(100, max(0, calc(var(--event-info-trap-pos) + var(--side-trap-collapse-shift, 0))))
+                / 100 - 2px
         );
         --event-info-panel-trap-clip: polygon(
             0% 0%,
@@ -148,8 +166,11 @@
     .event-slide.open::before,
     body.event-system-loaded .event-slide::before {
         right: calc(-1 * var(--event-info-trap-protrude));
-        /* Opaque base under the protrusion (panel body already has --bg-secondary). */
-        opacity: 1;
+        /*
+         * Same shared silhouette as filters: one plate for body + trapezium.
+         * Panel element background stays transparent so fills don't double-stack.
+         */
+        opacity: var(--side-panel-silhouette-opacity, 0.95);
         background-color: var(--bg-secondary);
         background-image:
             linear-gradient(
@@ -165,6 +186,7 @@
         background-position: center center, center center;
         background-attachment: scroll, scroll;
         clip-path: var(--event-info-panel-trap-clip);
+        mix-blend-mode: normal;
     }
 
     body.color-palette-blue .event-slide.open::before,

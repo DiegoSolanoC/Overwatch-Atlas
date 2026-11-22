@@ -30,8 +30,9 @@ export const GALLERY_OCT_RELEASE_SNAP_EPS = 0.35;
 export function galleryNodeCenterFromEl(el) {
     const x = parseFloat(el.style.left) || 0;
     const y = parseFloat(el.style.top) || 0;
-    const w = el.offsetWidth || 0;
-    const h = el.offsetHeight || 0;
+    // Inline width/height are set by applyNodeScale — reading offsetWidth forces layout.
+    const w = parseFloat(el.style.width) || el.offsetWidth || 0;
+    const h = parseFloat(el.style.height) || el.offsetHeight || 0;
     return { x: x + w / 2, y: y + h / 2 };
 }
 
@@ -43,8 +44,8 @@ export function galleryNodeCenterFromEl(el) {
  * @param {number} worldH
  */
 export function galleryApplyWorldCenterToNodeTopLeft(el, cx, cy, worldW, worldH) {
-    const w = el.offsetWidth || 1;
-    const h = el.offsetHeight || 1;
+    const w = parseFloat(el.style.width) || el.offsetWidth || 1;
+    const h = parseFloat(el.style.height) || el.offsetHeight || 1;
     const x = Math.max(0, Math.min(worldW - w, cx - w / 2));
     const y = Math.max(0, Math.min(worldH - h, cy - h / 2));
     el.style.left = `${x}px`;

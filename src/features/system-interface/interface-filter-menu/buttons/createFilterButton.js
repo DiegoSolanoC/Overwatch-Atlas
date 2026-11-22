@@ -13,6 +13,7 @@ import {
     applyGalleryExclusiveFilterPick,
     isAtlasGalleryOpen,
 } from '../../../gallery/gallery-mode/galleryFiltersBridge.js';
+import { applyStandaloneFiltersLive } from '../../interface-load-unload/applyStandaloneFiltersLive.js';
 
 function createFilterImageForButton(filterKey, displayName, type, folder, imageService) {
     const pathItem = type === 'factions'
@@ -49,6 +50,8 @@ function attachFilterChipClickHandler(
             });
             soundManager?.play?.(isSelected ? 'filterOff' : 'filterPick');
             updateFilterCounts();
+            /* Exclusive pick already curated Intel; still sync EM search inputs. */
+            applyStandaloneFiltersLive();
             return;
         }
 
@@ -64,6 +67,7 @@ function attachFilterChipClickHandler(
             soundManager?.play?.('filterPick');
         }
         updateFilterCounts();
+        applyStandaloneFiltersLive();
     });
 }
 

@@ -1,8 +1,8 @@
 /**
  * mountPaginationDock — places the #eventPagination element inside the
- * persistent #paginationDock below the layout container, installs the dock
- * collapse strip + dock pattern overlay, and delegates the trapezoid cap
- * to dockTrapezoidCap.js.
+ * persistent #paginationDock (absolute overlay above the footer; not a flex
+ * sibling that resizes the stage), installs the dock collapse strip + dock
+ * pattern overlay, and delegates the trapezoid cap to dockTrapezoidCap.js.
  *
  *   - mountPaginationDock(pagination): idempotent. Creates #paginationDock and
  *     #paginationDockCollapseStrip if missing, parents the pagination element,
@@ -15,7 +15,7 @@
 import {
     applyPaginationDockViewportMode,
     initPaginationDockCollapse,
-} from './paginationDockCollapse.js?v=3';
+} from './paginationDockCollapse.js?v=4';
 import { dockCollapseStripHtml } from './eventPaginationMarkup.js';
 import { buildOrMigrateDockTrapezoidCap } from './dockTrapezoidCap.js';
 

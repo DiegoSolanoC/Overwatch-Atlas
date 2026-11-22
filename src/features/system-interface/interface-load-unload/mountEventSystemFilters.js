@@ -1,74 +1,28 @@
 /**
- * Wire the standalone filter Confirm / Clear buttons.
+ * Wire the standalone filter Clear button (Confirm retired — chips apply live).
  *
- * In standalone (non-globe) mode, the filter buttons live in the right panel
- * but operate on `window.standaloneActiveFilters` rather than the globe scene
- * model. We swap each button by cloning to drop any stale listeners and bind
- * fresh handlers that:
- *   - confirm: copy `FilterService.stateManager.selectedFilters` into
- *     `standaloneActiveFilters`, refresh pagination thumbs, refresh markers,
- *     refresh codex highlight + relevancy rows, close the panel.
- *   - clear: empty the standalone set, ask FilterService to reset, refresh.
- *
+ * Operates on `window.standaloneActiveFilters` via `applyStandaloneFiltersLive`.
  * `window._menuHelpersFilterHandlersInstalled` is set so FilterService skips
- * re-binding its own globe-mode handlers on top.
+ * re-binding legacy globe-mode handlers on top.
  */
 
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
-import { updateStandalonePaginationForFilters } from './pagination/standalonePaginationFilterSync.js';
-import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
-import { syncDialogueTheaterListIfActive } from '../../dialogue-theater/dialogue-theater-list/DialogueTheaterListView.js';
 import { clearGalleryFilterSelectionIfOpen } from '../../gallery/gallery-mode/galleryFiltersBridge.js';
+import { applyStandaloneFiltersLive } from './applyStandaloneFiltersLive.js';
 
 /**
- * Replace `#confirmFiltersBtn` and `#clearFiltersBtn` with cloned copies wired
- * for standalone-mode behavior. Idempotent: subsequent calls will re-clone the
- * current buttons and rebind handlers from scratch.
+ * Replace `#clearFiltersBtn` with a cloned copy wired for live clear.
+ * Idempotent: subsequent calls re-clone and rebind from scratch.
  */
 export function wireStandaloneFilterButtons() {
     window._menuHelpersFilterHandlersInstalled = true;
 
+    /* Confirm is retired — hide any leftover markup from cached shells. */
     const confirmFiltersBtn = document.getElementById('confirmFiltersBtn');
     if (confirmFiltersBtn) {
-        const newConfirmBtn = confirmFiltersBtn.cloneNode(true);
-        confirmFiltersBtn.parentNode.replaceChild(newConfirmBtn, confirmFiltersBtn);
-        newConfirmBtn.addEventListener('click', () => {
-            if (window.FilterService?.stateManager?.selectedFilters) {
-                window.standaloneActiveFilters = new Set(window.FilterService.stateManager.selectedFilters);
-            }
-            if (window.SoundEffectsManager) {
-                window.SoundEffectsManager.play('filterConfirm');
-            }
-            updateStandalonePaginationForFilters();
-            window.syncEventManagerSearchFromFilterSelection?.();
-            syncStoryTimelineIfActive();
-            syncDialogueTheaterListIfActive();
-            if (window.globeEventMarkerManager) {
-                window.globeEventMarkerManager.applyFilters();
-            } else if (window.globeController?.eventMarkerManager) {
-                window.globeController.eventMarkerManager.applyFilters();
-            }
-            if (typeof window.applyCodexFilterState === 'function') {
-                window.applyCodexFilterState();
-            }
-            if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
-                window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
-            }
-            /* Confirm always dismisses the shared filters/music panel. */
-            if (typeof window.FilterService?.closePanel === 'function') {
-                window.FilterService.closePanel();
-            } else {
-                const filtersPanel = document.getElementById('filtersPanel');
-                if (filtersPanel) filtersPanel.classList.remove('open');
-                const filtersToggle = document.getElementById('filtersToggle');
-                if (filtersToggle) filtersToggle.classList.remove('active');
-                document.getElementById('musicToggle')?.classList.remove('active');
-            }
-            if (typeof window.syncFiltersPanelTrapIcon === 'function') {
-                window.syncFiltersPanelTrapIcon();
-            }
-            updateStatus('Filters applied', 'success');
-        });
+        confirmFiltersBtn.hidden = true;
+        confirmFiltersBtn.setAttribute('aria-hidden', 'true');
+        confirmFiltersBtn.style.display = 'none';
     }
 
     const clearFiltersBtn = document.getElementById('clearFiltersBtn');
@@ -90,19 +44,7 @@ export function wireStandaloneFilterButtons() {
             if (window.FilterService?.updateFilterCounts) {
                 window.FilterService.updateFilterCounts();
             }
-            updateStandalonePaginationForFilters();
-            window.syncEventManagerSearchFromFilterSelection?.();
-            syncStoryTimelineIfActive();
-            syncDialogueTheaterListIfActive();
-            if (window.globeEventMarkerManager) {
-                window.globeEventMarkerManager.applyFilters();
-            }
-            if (typeof window.applyCodexFilterState === 'function') {
-                window.applyCodexFilterState();
-            }
-            if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
-                window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
-            }
+            applyStandaloneFiltersLive({ immediate: true });
             updateStatus('Filters cleared', 'success');
         });
     }

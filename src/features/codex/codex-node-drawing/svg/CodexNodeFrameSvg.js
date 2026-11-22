@@ -73,8 +73,9 @@ export function getNodeFrameWorldRect(el) {
     const baseLeft = parseFloat(el.style.left) || 0;
     const baseTop = parseFloat(el.style.top) || 0;
     const { tx, ty } = parseTranslatePxFromTransform(el.style.transform);
-    const w = el.offsetWidth;
-    const h = el.offsetHeight;
+    // Prefer inline size (always set by Codex/Gallery applyNodeScale) to avoid forced reflow.
+    const w = parseFloat(el.style.width) || el.offsetWidth;
+    const h = parseFloat(el.style.height) || el.offsetHeight;
     const base = {
         left: baseLeft + tx,
         top: baseTop + ty,

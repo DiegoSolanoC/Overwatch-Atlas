@@ -1,11 +1,9 @@
 /**
- * Pending filter selection: the user can tick and untick chips in the panel
- * before pressing **Confirm**, so we keep two sets — the live `selectedFilters`
- * mutated as chips are clicked, and the "confirmed" set on `window.standaloneActiveFilters`
- * which is what the rest of the app (markers, pagination, Codex) reads.
+ * Live filter selection: chips update `selectedFilters` immediately and are
+ * mirrored into `window.standaloneActiveFilters` (what markers, pagination,
+ * Codex, Story, Theater read). Confirm is retired.
  *
- * `resetToConfirmed()` discards in-progress selections (called when the user
- * closes the panel without confirming or hits the close button).
+ * `resetToConfirmed()` reloads from `standaloneActiveFilters` (e.g. panel close).
  *
  * Counting per category is non-trivial: a chip key like `"Shambali Order"`
  * might be a faction filename, a hero id, or an arbitrary token left over from
@@ -30,7 +28,7 @@ class FilterStateManager {
         return new Set();
     }
 
-    /** Discard in-progress changes and snap back to the confirmed selection. */
+    /** Reload panel selection from the live standalone set. */
     resetToConfirmed() {
         const confirmedFilters = this.getConfirmedFilters();
         this.selectedFilters.clear();
@@ -91,9 +89,9 @@ class FilterStateManager {
         return { heroCount, factionCount, npcCount, countryCount };
     }
 
-    /** Promote in-progress selection to confirmed state. */
+    /** Mirror panel selection into the live standalone set. */
     applyToScene() {
-        if (typeof window !== 'undefined' && window.standaloneActiveFilters) {
+        if (typeof window !== 'undefined') {
             window.standaloneActiveFilters = new Set(this.selectedFilters);
         }
     }

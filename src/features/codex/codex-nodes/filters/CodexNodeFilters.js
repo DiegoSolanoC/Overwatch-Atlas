@@ -81,7 +81,10 @@ function applyCodexNodeFilterClassesToEl(nodeEl) {
     nodeEl.classList.add('codex-node--filtered-out');
 }
 
-function applyCodexFilterStateNow() {
+/** @type {number} */
+let filterCordDeferRaf = 0;
+
+function applyCodexFilterNodeClassesNow() {
     if (!s.root) return;
 
     if (!codexFiltersActive()) {
@@ -96,11 +99,22 @@ function applyCodexFilterStateNow() {
     s.root.querySelectorAll('.codex-node').forEach((nodeEl) => {
         applyCodexNodeFilterClassesToEl(nodeEl);
     });
+}
+
+function applyCodexFilterCordsNow() {
+    if (!s.root) return;
 
     if (!codexFiltersActive()) {
-        s.root.classList.remove('codex--filter-linking-active');
-        const skipRedundantOpenRedraw = s.codexMode === 'view' && s.codexViewModeInitialRenderDone;
-        if (!skipRedundantOpenRedraw) {
+        s.root.classList.remove('codex--filter-linking-active', 'codex--filters-active');
+        /*
+         * Clearing filters must fully restore violet cords. View-mode batches +
+         * deferred secondary elbow sync previously left grey strokes stuck.
+         */
+        const synced = syncCodexFilterCordDom({
+            syncElbowsNow: true,
+            forceSecondary: true,
+        });
+        if (!synced) {
             redrawCodexEdges({ force: true });
         }
         return;
@@ -111,14 +125,32 @@ function applyCodexFilterStateNow() {
     }
 }
 
+function applyCodexFilterStateNow() {
+    applyCodexFilterNodeClassesNow();
+    applyCodexFilterCordsNow();
+}
+
 function applyCodexFilterState() {
     if (!s.root) return;
     if (filterStateApplyRaf) {
         cancelAnimationFrame(filterStateApplyRaf);
     }
+    if (filterCordDeferRaf) {
+        cancelAnimationFrame(filterCordDeferRaf);
+        filterCordDeferRaf = 0;
+    }
+    /* Paint nodes first; restore cords immediately on clear, else defer one frame. */
     filterStateApplyRaf = requestAnimationFrame(() => {
         filterStateApplyRaf = 0;
-        applyCodexFilterStateNow();
+        applyCodexFilterNodeClassesNow();
+        if (!codexFiltersActive()) {
+            applyCodexFilterCordsNow();
+            return;
+        }
+        filterCordDeferRaf = requestAnimationFrame(() => {
+            filterCordDeferRaf = 0;
+            applyCodexFilterCordsNow();
+        });
     });
 }
 

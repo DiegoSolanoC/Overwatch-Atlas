@@ -308,14 +308,14 @@ body.color-palette-gray .filters-actions {
 }
 
 body.color-palette-gray .filters-confirm-btn {
-    background: rgba(255, 102, 0, 0.4);
-    border-color: #ff6600;
+    background: rgb(var(--accent-primary-rgb));
+    border: none;
+    color: #fff;
 }
 
 body.color-palette-gray .filters-confirm-btn:hover {
-    background: rgba(255, 102, 0, 0.6);
-    border-color: #ff8833;
-    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+    background: rgb(var(--accent-primary-rgb));
+    filter: brightness(1.08);
 }
 
 /* Panels - Music */

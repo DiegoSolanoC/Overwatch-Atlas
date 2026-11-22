@@ -384,6 +384,16 @@ body.color-palette-nulled .map-2d-lite__world::after {
 .map-2d-lite__marker--locked {
     cursor: not-allowed;
     transform: translate(-50%, -50%) scale(0.75);
+    filter: brightness(0.72) grayscale(0.35);
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.map-2d-lite__marker--locked:hover,
+.map-2d-lite__marker--locked.map-2d-lite__marker--synthetic-hover {
+    transform: translate(-50%, -50%) scale(0.75);
+    filter: brightness(0.72) grayscale(0.35);
+    box-shadow: none;
 }
 
 /* Moon / Mars: size & position from JS (projected WebGL plane); hosts are interactive for markers */

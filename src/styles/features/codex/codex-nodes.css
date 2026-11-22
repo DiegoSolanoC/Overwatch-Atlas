@@ -144,6 +144,13 @@
 
 .codex--view-mode .codex-node {
     cursor: default !important;
+    /* Full static board — do not promote every node as a compositor layer. */
+    will-change: auto;
+}
+
+.codex--view-mode .codex-node:hover,
+.codex--view-mode .codex-node:active {
+    will-change: transform;
 }
 
 /* View: solid fills hide cords under nodes; dev: semi-transparent for editing */
@@ -254,20 +261,35 @@
         var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
 }
 
-/* Lift above footer + pagination dock when present (mirrors .codex-toolbar). */
+/*
+ * Lift above footer + dock. Concrete expanded/collapsed bottoms (not inherited
+ * --pagination-dock-height) so body can freeze that var in Codex without leaving
+ * this panel stranded above the expanded band after collapse.
+ */
 body:has(#paginationDock) .codex-visual-panel {
     bottom: calc(
-        var(--footer-height, 65px)
-        + var(--pagination-dock-height, 240px)
-        + 16px
+        var(--footer-height, 65px) + var(--pagination-dock-height-expanded, 400px) + 16px
     );
     max-height: min(
         72vh,
         calc(
-            100%
-            - var(--footer-height, 65px)
-            - var(--pagination-dock-height, 240px)
-            - 32px
+            100% - var(--footer-height, 65px) - var(--pagination-dock-height-expanded, 400px) -
+                32px
+        )
+    );
+}
+
+body.pagination-dock-collapsed:has(#paginationDock) .codex-visual-panel {
+    bottom: calc(
+        var(--footer-height, 65px) +
+            var(--pagination-dock-height-collapsed, 200px) +
+            max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px) + 16px
+    );
+    max-height: min(
+        72vh,
+        calc(
+            100% - var(--footer-height, 65px) - var(--pagination-dock-height-collapsed, 200px) -
+                32px
         )
     );
 }
@@ -388,7 +410,13 @@ body:has(#paginationDock) .codex-visual-panel {
     border: none;
     --codex-node-hover-scale: 1.15;
     transition: transform 0.2s ease-out, filter 0.2s ease-out;
+    /* Dev/edit: nodes drag. View mode sets will-change:auto (see .codex--view-mode). */
     will-change: transform;
+}
+
+/* During pan the world layer is promoted — drop per-node hints. */
+.codex-world--panning .codex-node {
+    will-change: auto;
 }
 
 /* One-shot enter fade — never kept on permanently (pan CSS must not toggle animation). */
@@ -410,16 +438,7 @@ body:has(#paginationDock) .codex-visual-panel {
     transform: scale(var(--codex-node-hover-scale)) rotate(var(--codex-hex-rotation, 0deg));
 }
 
-.codex-node--filtered-out:hover {
-    /* Filtered-out nodes don't get hover effects */
-    transform: rotate(var(--codex-hex-rotation, 0deg));
-    filter: brightness(0.5) grayscale(0.8);
-    z-index: 10;
-}
-
-.codex-node--filtered-out.codex-node--simplified:hover {
-    transform: rotate(var(--codex-hex-rotation, 0deg));
-}
+/* Filtered-out hover rules live with the filter block below (opaque plate). */
 
 @keyframes codex-node-fade-in {
     from {
@@ -820,39 +839,76 @@ body:has(#paginationDock) .codex-visual-panel {
     pointer-events: none !important;
 }
 
-/* Filtered-out nodes: dark, half-transparent, unselectable */
+/*
+ * Filtered-out: dim portrait/frame only. Keep the hex bg plate fully opaque so
+ * cords stay behind the silhouette (view mode no longer uses an SVG node mask).
+ */
+.codex-node .codex-node__bg,
+.codex-node .codex-node__img,
+.codex-node .codex-node__frame,
+.codex-node .codex-node__junction {
+    transition:
+        opacity 0.14s ease,
+        filter 0.14s ease;
+}
+
 .codex-node--filtered-out {
-    opacity: 0.4;
-    filter: brightness(0.5) grayscale(0.8);
+    opacity: 1;
     pointer-events: none;
     cursor: not-allowed !important;
 }
 
-.codex-node--filtered-out .codex-node__inner,
-.codex-node--filtered-out.codex-node--simplified {
+.codex-node--filtered-out .codex-node__bg {
+    opacity: 1 !important;
+    filter: brightness(0.22) saturate(0.35);
+}
+
+.codex-node--filtered-out .codex-node__img,
+.codex-node--filtered-out .codex-node__frame,
+.codex-node--filtered-out .codex-node__junction {
+    opacity: 0.4;
     filter: brightness(0.5) grayscale(0.8);
+}
+
+.codex-node--filtered-out:hover {
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    z-index: 10;
+    filter: none;
+}
+
+.codex-node--filtered-out:hover .codex-node__img,
+.codex-node--filtered-out:hover .codex-node__frame,
+.codex-node--filtered-out:hover .codex-node__junction {
+    opacity: 0.4;
+    filter: brightness(0.5) grayscale(0.8);
+}
+
+.codex-node--filtered-out:hover .codex-node__inner,
+.codex-node--filtered-out.codex-node--simplified:hover {
+    filter: none;
 }
 
 /* Connected to filter selection via active cords — lightly dimmed, still selectable */
 .codex-node--filter-connected {
-    opacity: 0.82;
-    filter: brightness(0.88) grayscale(0.28);
+    opacity: 1;
     pointer-events: auto;
     cursor: pointer;
 }
 
-.codex-node--filter-connected .codex-node__inner,
-.codex-node--filter-connected.codex-node--simplified {
+.codex-node--filter-connected .codex-node__bg {
+    opacity: 1 !important;
+    filter: brightness(0.78) saturate(0.7);
+}
+
+.codex-node--filter-connected .codex-node__img,
+.codex-node--filter-connected .codex-node__frame {
+    opacity: 0.82;
     filter: brightness(0.88) grayscale(0.28);
 }
 
-.codex-node--filter-connected:hover {
+.codex-node--filter-connected:hover .codex-node__img,
+.codex-node--filter-connected:hover .codex-node__frame {
     opacity: 0.9;
-    filter: brightness(0.94) grayscale(0.18);
-}
-
-.codex-node--filter-connected:hover .codex-node__inner,
-.codex-node--filter-connected.codex-node--simplified:hover {
     filter: brightness(0.94) grayscale(0.18);
 }
 

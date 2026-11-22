@@ -20,7 +20,7 @@ import {
     cloneSidePanelsTrapDefaults,
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=30';
+} from './SidePanelsTrapChrome.js?v=33';
 import {
     clearLegacyUiTweaksStorage,
     clearUiTweaksDraft,
@@ -1616,8 +1616,26 @@ export function setupHeaderTitleBadgeTweaker() {
 
         mountControls(panel, bags, hooks);
 
-        // Palette class changes only — recolor; do not remount (avoids loops).
-        const mo = new MutationObserver(() => {
+        /*
+         * Palette class changes only — recolor; do not remount.
+         * Must ignore dock / chrome tween body classes: a full applySidePanelsTrapChrome
+         * here was 180–300ms of forced reflow on every collapse keydown + settle.
+         */
+        const mo = new MutationObserver((mutations) => {
+            let paletteChanged = false;
+            for (let i = 0; i < mutations.length; i++) {
+                const m = mutations[i];
+                if (m.type !== 'attributes' || m.attributeName !== 'class') continue;
+                const now = document.body.className || '';
+                const was = typeof m.oldValue === 'string' ? m.oldValue : '';
+                const paletteNow = now.match(/color-palette-\w+/g)?.sort().join(' ') || '';
+                const paletteWas = was.match(/color-palette-\w+/g)?.sort().join(' ') || '';
+                if (paletteNow !== paletteWas) {
+                    paletteChanged = true;
+                    break;
+                }
+            }
+            if (!paletteChanged) return;
             try {
                 applyHeaderTitleBadgeTweaks(badge);
                 applyHeaderSidesChrome(sides);
@@ -1626,7 +1644,11 @@ export function setupHeaderTitleBadgeTweaker() {
                 console.error('[UI Tweaks] palette recolor failed:', err);
             }
         });
-        mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        mo.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class'],
+            attributeOldValue: true,
+        });
 
         toggle.addEventListener('click', () => {
             const open = panel.hidden;

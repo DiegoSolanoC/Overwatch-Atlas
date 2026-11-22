@@ -70,13 +70,27 @@ export class MusicFileService {
         });
     }
 
-    createMusicButtons(musicGrid, currentSong, onSongClick, matchesSongPath) {
+    /**
+     * @param {HTMLElement} musicGrid
+     * @param {string|null} currentSong
+     * @param {(path: string) => void} onSongClick
+     * @param {(btnPath: string, songPath: string) => boolean} matchesSongPath
+     * @param {{
+     *   files?: Array<{ filename: string, name: string }>,
+     *   categoryHooks?: object|null,
+     *   emptyMessage?: string,
+     * }} [options]
+     */
+    createMusicButtons(musicGrid, currentSong, onSongClick, matchesSongPath, options = {}) {
+        const files = Array.isArray(options.files) ? options.files : this.musicFiles;
         renderMusicGridButtons(
-            this.musicFiles,
+            files,
             musicGrid,
             currentSong,
             onSongClick,
-            matchesSongPath
+            matchesSongPath,
+            options.categoryHooks || null,
+            options.emptyMessage,
         );
     }
 

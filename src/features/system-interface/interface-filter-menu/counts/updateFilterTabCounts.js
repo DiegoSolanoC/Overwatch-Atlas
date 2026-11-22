@@ -1,47 +1,35 @@
 /**
- * Update the four `<span class="filter-count">` badges next to each tab. The
- * count display switches between `inline` (legacy spots) and `block` (when
- * the count badge lives inside `.filter-tab`) so the badge sits neatly under
- * the icon rather than after it.
- *
- * Also updates `#confirmFiltersMatchCount` under Confirm with how many
- * timeline events match the pending selection (hidden when nothing is selected).
+ * Update the selection-count strip beside the Filters search box
+ * (`#heroesCount` / `#factionsCount` / `#npcsCount` / `#countriesCount`).
+ * Each green number is how many chips of that category are currently selected.
  */
 
-import {
-    countEventsMatchingFilters,
-    getTimelineEventsForFilterMatchCount,
-} from './countEventsMatchingFilters.js';
-
-function updateCountBadge(element, count) {
+/**
+ * @param {HTMLElement | null} element
+ * @param {number} count
+ */
+function updateSelectionCount(element, count) {
     if (!element) return;
-    if (count > 0) {
-        element.textContent = String(count);
-        const inFilterTab = element.closest && element.closest('.filter-tab');
-        const inConfirmBtn = element.closest && element.closest('.filters-confirm-btn');
-        element.style.display = inFilterTab || inConfirmBtn ? 'block' : 'inline';
-    } else {
-        element.style.display = 'none';
+    const n = Number.isFinite(count) && count > 0 ? count : 0;
+    element.textContent = String(n);
+    element.style.display = '';
+    const item = element.closest?.('.filters-selection-count');
+    if (item) {
+        item.classList.toggle('is-active', n > 0);
+        item.setAttribute('aria-label', `${n} selected`);
     }
 }
 
 /**
- * @param {{ selectedFilters?: Set<string>, getCounts?: () => {
+ * @param {{ getCounts?: () => {
  *   heroCount: number, factionCount: number, npcCount?: number, countryCount?: number
  * } }|null|undefined} stateManager
  */
 export function updateFilterTabCounts(stateManager) {
     if (!stateManager || typeof stateManager.getCounts !== 'function') return;
     const { heroCount, factionCount, npcCount = 0, countryCount = 0 } = stateManager.getCounts();
-    updateCountBadge(document.getElementById('heroesCount'), heroCount);
-    updateCountBadge(document.getElementById('factionsCount'), factionCount);
-    updateCountBadge(document.getElementById('npcsCount'), npcCount);
-    updateCountBadge(document.getElementById('countriesCount'), countryCount);
-
-    const selected = stateManager.selectedFilters;
-    const matchCount =
-        selected instanceof Set && selected.size > 0
-            ? countEventsMatchingFilters(getTimelineEventsForFilterMatchCount(), selected)
-            : 0;
-    updateCountBadge(document.getElementById('confirmFiltersMatchCount'), matchCount);
+    updateSelectionCount(document.getElementById('heroesCount'), heroCount);
+    updateSelectionCount(document.getElementById('factionsCount'), factionCount);
+    updateSelectionCount(document.getElementById('npcsCount'), npcCount);
+    updateSelectionCount(document.getElementById('countriesCount'), countryCount);
 }

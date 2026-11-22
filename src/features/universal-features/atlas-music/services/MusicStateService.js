@@ -70,16 +70,36 @@ export class MusicStateService {
     }
 
     /**
-     * Build music state object from current playback state
+     * Build music state object from current playback state.
+     * @param {number} [targetVolume] Preferred user volume (slider / MusicVolumeService target).
+     *   Do not pass `backgroundMusic.volume` — fades set that to 0.
+     * @param {number} [lastAudibleVolume] Last non-zero level for unmute restore.
      */
-    buildState(backgroundMusic, currentSong, isShuffling, currentSongIndex, shuffleQueue, isLooping) {
+    buildState(
+        backgroundMusic,
+        currentSong,
+        isShuffling,
+        currentSongIndex,
+        shuffleQueue,
+        isLooping,
+        targetVolume,
+        lastAudibleVolume,
+    ) {
         if (!backgroundMusic) return null;
-        
+
+        const volume = (typeof targetVolume === 'number' && !Number.isNaN(targetVolume))
+            ? Math.max(0, Math.min(1, targetVolume))
+            : backgroundMusic.volume;
+        const lastAudible = (typeof lastAudibleVolume === 'number' && lastAudibleVolume > 0)
+            ? Math.min(1, lastAudibleVolume)
+            : (volume > 0 ? volume : 0.1);
+
         return {
             currentSong: currentSong,
             currentTime: backgroundMusic.currentTime,
             paused: backgroundMusic.paused,
-            volume: backgroundMusic.volume,
+            volume,
+            lastAudibleVolume: lastAudible,
             muted: backgroundMusic.muted,
             isShuffling: isShuffling,
             currentSongIndex: currentSongIndex,

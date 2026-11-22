@@ -15,11 +15,16 @@
 
 .codex-edge-segment {
     pointer-events: none;
-    /* Smooth fade-in when edges appear */
+    /* Smooth fade-in when edges appear (edit/dev). View mode skips — see below. */
     animation: codex-edge-fade-in 200ms ease-out;
 }
 
 .codex-edge-segment--timeline-dormant {
+    animation: none;
+}
+
+/* View mode: cords must be usable immediately after load — no staggered fade. */
+.codex--view-mode .codex-edge-segment {
     animation: none;
 }
 
@@ -72,6 +77,23 @@
 }
 
 .codex-edge-segment--filter-dormant {
+    pointer-events: none;
+}
+
+/* View-mode appearance batches (one path per color) */
+.codex-edge-batches {
+    pointer-events: none;
+}
+
+.codex-edge-batch {
+    pointer-events: none;
+}
+
+.codex-edge-batch--violet-dim {
+    opacity: 0.48;
+}
+
+.codex-edge-hover-overlay {
     pointer-events: none;
 }
 

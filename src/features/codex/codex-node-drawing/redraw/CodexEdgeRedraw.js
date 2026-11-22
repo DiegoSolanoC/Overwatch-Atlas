@@ -24,17 +24,13 @@ import {
     unregisterCodexEdgeDragSyncRuntime,
 } from './CodexEdgeDragSync.js';
 import {
-    appendCodexEdgeNodeMaskAlphaFromFrame,
     appendCodexEdgeNodeMaskForElement,
     createCodexEdgeNodeMaskShell,
     nodeFrameIntersectsRect,
 } from '../svg/CodexNodeFrameSvg.js';
-import {
-    CODEX_NODE_ALPHA_PATH,
-    codexNodeFrameFromLayoutRecord,
-} from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
-import { codexFrameVariantForId } from '../../codex-nodes/placement/CodexNodeVisualHash.js';
+import { CODEX_NODE_ALPHA_PATH } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { syncCodexCordPacketStateDuringLoad } from '../packets/CodexCordPacketAnimation.js';
+import { paintCodexViewEdgeBatches } from '../../codex-edge-cords/canvas/CodexViewEdgeBatches.js';
 
 /** Warm Alpha Node1/2/3.png so first cord mask paint isn't empty/square until decode. */
 function preloadCodexNodeAlphaMaskImages() {
@@ -61,10 +57,13 @@ let edgeRedrawScheduleTimer = 0;
 let edgeDragSyncRaf = 0;
 
 const CODEX_LOAD_REDRAW_CHUNK = 96;
+/** View mode: larger chunks — no mask build, so we can paint cords faster. */
+const CODEX_LOAD_REDRAW_CHUNK_VIEW = 220;
 const CODEX_LOAD_REDRAW_PROGRESS_EVERY = 64;
 const CODEX_LOAD_MASK_CHUNK = 128;
 const CODEX_LOAD_DOM_CULL_CHUNK = 32;
 const CODEX_LOAD_YIELD_WORK_BUDGET = 160;
+const CODEX_LOAD_YIELD_WORK_BUDGET_VIEW = 480;
 
 const CONNECTION_LOAD_PHASE_SPAN = {
     plan: 0.32,
@@ -86,9 +85,17 @@ function yieldCodexLoadRedraw() {
     });
 }
 
+function codexLoadRedrawChunkSize() {
+    return _rt?.getMode?.() === 'view' ? CODEX_LOAD_REDRAW_CHUNK_VIEW : CODEX_LOAD_REDRAW_CHUNK;
+}
+
+function codexLoadYieldBudget() {
+    return _rt?.getMode?.() === 'view' ? CODEX_LOAD_YIELD_WORK_BUDGET_VIEW : CODEX_LOAD_YIELD_WORK_BUDGET;
+}
+
 async function yieldCodexLoadRedrawIfBudget(workUnits, state) {
     state.units += workUnits;
-    if (state.units >= CODEX_LOAD_YIELD_WORK_BUDGET) {
+    if (state.units >= codexLoadYieldBudget()) {
         state.units = 0;
         await yieldCodexLoadRedraw();
     }
@@ -183,8 +190,9 @@ function reportLoadPhaseFraction(opts, phase, done, total) {
  * @param {object} visualPrefs
  * @param {{ fromId: string, toId: string }} edge
  * @param {{ x: number, y: number }[]} pts
+ * @param {'dev'|'view'} [mode]
  */
-function appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts) {
+function appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts, mode = 'dev') {
     const { fromId, toId } = edge;
     const appearance = _rt.edgeCordAppearance(edge);
     const filterDormant = _rt.edgeCordIsFilterDormant?.(edge) === true;
@@ -215,6 +223,7 @@ function appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts) {
             : appearance === 'green'
                 ? 'codex-edge-segment codex-edge-segment--filter-linked'
                 : 'codex-edge-segment';
+    const includePad = mode !== 'view';
     for (let seg = 0; seg < pts.length - 1; seg++) {
         const p0 = pts[seg];
         const p1 = pts[seg + 1];
@@ -228,7 +237,8 @@ function appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts) {
             filterUrl,
             lineClass,
             edgeFromId: fromId,
-            edgeToId: toId
+            edgeToId: toId,
+            includePad,
         });
     }
 }
@@ -305,6 +315,12 @@ function finalizeCodexEdgePaint(ctx, progressOpts) {
     svg.appendChild(hitPickRoot);
     svg.appendChild(degLabelsG);
 
+    if (mode === 'view') {
+        _rt.setCodexViewEdgePickPolys?.(edgePolys);
+    } else {
+        _rt.clearCodexViewEdgePickPolys?.();
+    }
+
     if (dragIds.size === 0) {
         _rt.syncCodexNodeCoordLabels(nodeList);
     }
@@ -343,25 +359,23 @@ function finalizeCodexEdgePaint(ctx, progressOpts) {
     }
 }
 
-function scheduleDeferredCodexJunctionDecor(contentRoot, ns, edges) {
+/**
+ * Paint junction elbows during load (awaited) so they appear with cords — not after
+ * a long idleCallback delay that left bends missing for seconds.
+ * @param {SVGGElement} contentRoot
+ * @param {string} ns
+ * @param {{ fromId: string, toId: string }[]} edges
+ */
+async function paintCodexJunctionDecorDuringLoad(contentRoot, ns, edges) {
     if (!contentRoot || !edges?.length || !_rt) return;
-    // Paint once (chunked, plain fills, layout coords). Elbows live in world space under
-    // .codex-world CSS transform — pan/zoom must NOT wipe/repaint them.
-    const run = () => {
-        if (!contentRoot.isConnected || !_rt) return;
-        if (contentRoot.querySelector('g[data-codex-elbow-junction]')) return;
-        const chunked = _rt.appendCodexJunctionElbowParallelogramsChunked;
-        if (typeof chunked === 'function') {
-            void chunked(contentRoot, ns, null, edges);
-            return;
-        }
-        _rt.appendCodexJunctionElbowParallelograms(contentRoot, ns, null, edges);
-    };
-    if (typeof requestIdleCallback === 'function') {
-        requestIdleCallback(run, { timeout: 2500 });
-    } else {
-        setTimeout(run, 500);
+    if (!contentRoot.isConnected) return;
+    if (contentRoot.querySelector('g[data-codex-elbow-junction]')) return;
+    const chunked = _rt.appendCodexJunctionElbowParallelogramsChunked;
+    if (typeof chunked === 'function') {
+        await chunked(contentRoot, ns, null, edges);
+        return;
     }
+    _rt.appendCodexJunctionElbowParallelograms(contentRoot, ns, null, edges);
 }
 
 function scheduleDeferredCodexPostLoadDomCull(ctx) {
@@ -464,13 +478,12 @@ async function finalizeCodexEdgePaintDuringLoad(ctx, progressOpts) {
 
     svg.appendChild(hitPickRoot);
     svg.appendChild(degLabelsG);
-    await yieldCodexLoadRedraw();
-
-    if (dragIds.size === 0 && edgePolys.length > 0) {
-        const pktG = document.createElementNS(ns, 'g');
-        pktG.classList.add('codex-edge-packets');
-        contentRoot.appendChild(pktG);
+    if (mode === 'view') {
+        _rt.setCodexViewEdgePickPolys?.(edgePolys);
+    } else {
+        _rt.clearCodexViewEdgePickPolys?.();
     }
+    await yieldCodexLoadRedraw();
 
     if (dragIds.size > 0) {
         _rt.setDragUseLightSync?.(true);
@@ -478,11 +491,28 @@ async function finalizeCodexEdgePaintDuringLoad(ctx, progressOpts) {
         _rt.setDragUseLightSync?.(false);
     }
 
+    if (dragIds.size === 0 && edges?.length) {
+        if (progressOpts) {
+            emitRedrawLoadProgress(progressOpts, 'finish', 0, 1);
+            reportLoadPhaseFraction(progressOpts, 'finish', 0, 1);
+        }
+        await paintCodexJunctionDecorDuringLoad(contentRoot, ns, edges);
+    }
+
+    /* batches → elbows → hover overlay → packets */
+    const overlay = contentRoot.querySelector(':scope > path.codex-edge-hover-overlay');
+    if (overlay) contentRoot.appendChild(overlay);
+
+    if (dragIds.size === 0 && edgePolys.length > 0) {
+        const pktG = document.createElementNS(ns, 'g');
+        pktG.classList.add('codex-edge-packets');
+        contentRoot.appendChild(pktG);
+    }
+
     if (mode === 'view' && !viewInitialDone) {
         _rt.setViewModeInitialRenderDone(true);
     }
 
-    scheduleDeferredCodexJunctionDecor(contentRoot, ns, edges);
     scheduleDeferredCodexPostLoadDomCull(ctx);
 
     emitRedrawLoadProgress(progressOpts, 'finish', 1, 1);
@@ -610,62 +640,42 @@ async function prepareCodexEdgePaintContextDuringLoad(opts) {
         viewH: vh,
     });
 
-    const mask = createCodexEdgeNodeMaskShell(ns, vw, vh, CODEX_EDGES_NODE_ALPHA_MASK_ID);
-    const useFastLayoutMask = mode === 'view' && _rt.getCodexAllNodes?.()?.length > 0;
-    const maskRecords = useFastLayoutMask
-        ? _rt.getCodexAllNodes().filter((node) => node.kind !== 'junction')
-        : null;
-    const maskTotal = useFastLayoutMask
-        ? maskRecords.length
-        : Array.from(nodeList).filter((el) => {
-            if (el.dataset.codexKind === 'junction') return false;
-            if (maskWorldRect && !nodeFrameIntersectsRect(el, maskWorldRect)) return false;
-            return true;
-        }).length;
-
-    emitRedrawLoadProgress(progressOpts, 'prep', 0, maskTotal || 1);
-    reportLoadPhaseFraction(progressOpts, 'prep', 0, maskTotal || 1);
-    await yieldCodexLoadRedraw();
-
-    const maskYield = { units: 0 };
-    if (useFastLayoutMask && maskRecords) {
-        // Use hex alpha PNGs (not black rects) so cords aren't squared off under nodes on first paint.
-        // Only Alpha Node1/2/3.png — browser-cached after the first decode.
-        for (let start = 0; start < maskTotal; start += CODEX_LOAD_MASK_CHUNK) {
-            const end = Math.min(start + CODEX_LOAD_MASK_CHUNK, maskTotal);
-            for (let i = start; i < end; i++) {
-                const node = maskRecords[i];
-                const frame = codexNodeFrameFromLayoutRecord(node);
-                if (!frame) continue;
-                const variant = node?.id ? codexFrameVariantForId(node.id) : 1;
-                appendCodexEdgeNodeMaskAlphaFromFrame(mask, ns, frame, variant);
-            }
-            emitRedrawLoadProgress(progressOpts, 'prep', end, maskTotal || 1);
-            reportLoadPhaseFraction(progressOpts, 'prep', end, maskTotal || 1);
-            if (end < maskTotal) {
-                await yieldCodexLoadRedrawIfBudget(end - start, maskYield);
-            }
-        }
-    } else {
+    /*
+     * View mode: opaque node DOM (z above edges) already hides cords under portraits.
+     * Building one SVG <image> mask per node was a major load + paint cost for no gain.
+     */
+    const skipNodeMask = mode === 'view';
+    let maskTotal = 1;
+    if (!skipNodeMask) {
+        const mask = createCodexEdgeNodeMaskShell(ns, vw, vh, CODEX_EDGES_NODE_ALPHA_MASK_ID);
         const maskNodes = Array.from(nodeList).filter((el) => {
             if (el.dataset.codexKind === 'junction') return false;
             if (maskWorldRect && !nodeFrameIntersectsRect(el, maskWorldRect)) return false;
             return true;
         });
+        maskTotal = maskNodes.length || 1;
+        emitRedrawLoadProgress(progressOpts, 'prep', 0, maskTotal);
+        reportLoadPhaseFraction(progressOpts, 'prep', 0, maskTotal);
+        await yieldCodexLoadRedraw();
+
+        const maskYield = { units: 0 };
         for (let start = 0; start < maskNodes.length; start += CODEX_LOAD_MASK_CHUNK) {
             const end = Math.min(start + CODEX_LOAD_MASK_CHUNK, maskNodes.length);
             for (let i = start; i < end; i++) {
                 appendCodexEdgeNodeMaskForElement(mask, ns, maskNodes[i], maskWorldRect);
             }
-            emitRedrawLoadProgress(progressOpts, 'prep', end, maskTotal || 1);
-            reportLoadPhaseFraction(progressOpts, 'prep', end, maskTotal || 1);
+            emitRedrawLoadProgress(progressOpts, 'prep', end, maskTotal);
+            reportLoadPhaseFraction(progressOpts, 'prep', end, maskTotal);
             if (end < maskNodes.length) {
                 await yieldCodexLoadRedrawIfBudget(end - start, maskYield);
             }
         }
+        defs.appendChild(mask);
+    } else {
+        emitRedrawLoadProgress(progressOpts, 'prep', 1, 1);
+        reportLoadPhaseFraction(progressOpts, 'prep', 1, 1);
+        await yieldCodexLoadRedraw();
     }
-
-    defs.appendChild(mask);
     svg.appendChild(defs);
 
     const hitPickRoot = document.createElementNS(ns, 'g');
@@ -673,7 +683,9 @@ async function prepareCodexEdgePaintContextDuringLoad(opts) {
 
     const contentRoot = document.createElementNS(ns, 'g');
     contentRoot.classList.add('codex-edges-masked');
-    contentRoot.setAttribute('mask', `url(#${CODEX_EDGES_NODE_ALPHA_MASK_ID})`);
+    if (!skipNodeMask) {
+        contentRoot.setAttribute('mask', `url(#${CODEX_EDGES_NODE_ALPHA_MASK_ID})`);
+    }
     svg.appendChild(contentRoot);
 
     const degLabelsG = document.createElementNS(ns, 'g');
@@ -729,17 +741,35 @@ async function completeCodexEdgePaintDuringLoad(ctx, opts) {
     reportLoadPhaseFraction(progressOpts, 'draw', 0, total);
     await yieldCodexLoadRedraw();
 
-    for (let start = 0; start < total; start += CODEX_LOAD_REDRAW_CHUNK) {
-        const end = Math.min(start + CODEX_LOAD_REDRAW_CHUNK, total);
-        for (let i = start; i < end; i++) {
-            const { edge, pts } = edgePolys[i];
-            appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts);
-            appendEdgeHitPoly(hitPickRoot, ns, mode, edge, pts);
-        }
-        emitRedrawLoadProgress(progressOpts, 'draw', end, total);
-        reportLoadPhaseFraction(progressOpts, 'draw', end, total);
-        if (end < total) {
-            await yieldCodexLoadRedrawIfBudget(end - start, yieldBudget);
+    if (mode === 'view') {
+        /*
+         * One path per appearance bucket — orders of magnitude fewer SVG nodes
+         * than per-segment filtered groups. Spatial pick + hover overlay cover hit/hover.
+         */
+        paintCodexViewEdgeBatches(
+            contentRoot,
+            ns,
+            visualPrefs,
+            edgePolys,
+            (edge) => _rt.edgeCordAppearance(edge),
+        );
+        emitRedrawLoadProgress(progressOpts, 'draw', total, total);
+        reportLoadPhaseFraction(progressOpts, 'draw', total, total);
+        await yieldCodexLoadRedraw();
+    } else {
+        const drawChunk = codexLoadRedrawChunkSize();
+        for (let start = 0; start < total; start += drawChunk) {
+            const end = Math.min(start + drawChunk, total);
+            for (let i = start; i < end; i++) {
+                const { edge, pts } = edgePolys[i];
+                appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts, mode);
+                appendEdgeHitPoly(hitPickRoot, ns, mode, edge, pts);
+            }
+            emitRedrawLoadProgress(progressOpts, 'draw', end, total);
+            reportLoadPhaseFraction(progressOpts, 'draw', end, total);
+            if (end < total) {
+                await yieldCodexLoadRedrawIfBudget(end - start, yieldBudget);
+            }
         }
     }
 
@@ -1107,7 +1137,10 @@ export function redrawCodexEdges(opts = {}) {
         viewW: vw,
         viewH: vh,
     });
-    _rt.appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect);
+    const skipNodeMask = mode === 'view';
+    if (!skipNodeMask) {
+        _rt.appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect);
+    }
     svg.appendChild(defs);
 
     const hitPickRoot = document.createElementNS(ns, 'g');
@@ -1115,7 +1148,9 @@ export function redrawCodexEdges(opts = {}) {
 
     const contentRoot = document.createElementNS(ns, 'g');
     contentRoot.classList.add('codex-edges-masked');
-    contentRoot.setAttribute('mask', `url(#${CODEX_EDGES_NODE_ALPHA_MASK_ID})`);
+    if (!skipNodeMask) {
+        contentRoot.setAttribute('mask', `url(#${CODEX_EDGES_NODE_ALPHA_MASK_ID})`);
+    }
     svg.appendChild(contentRoot);
 
     _rt.appendCodexJunctionElbowParallelograms(
@@ -1147,21 +1182,31 @@ export function redrawCodexEdges(opts = {}) {
         };
     }
 
-    edgePolys.forEach(({ edge, pts }, polyIdx) => {
-        appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts);
-        const done = polyIdx + 1;
-        if (done % CODEX_LOAD_REDRAW_PROGRESS_EVERY === 0 || done === edgePolys.length) {
-            emitRedrawLoadProgress(opts, 'draw', done, edgePolys.length);
-        }
-    });
-
-    edgePolys.forEach(({ edge, pts }, polyIdx) => {
-        appendEdgeHitPoly(hitPickRoot, ns, mode, edge, pts);
-        const done = polyIdx + 1;
-        if (done % CODEX_LOAD_REDRAW_PROGRESS_EVERY === 0 || done === edgePolys.length) {
-            emitRedrawLoadProgress(opts, 'hits', done, edgePolys.length);
-        }
-    });
+    if (mode === 'view') {
+        paintCodexViewEdgeBatches(
+            contentRoot,
+            ns,
+            visualPrefs,
+            edgePolys,
+            (edge) => _rt.edgeCordAppearance(edge),
+        );
+        emitRedrawLoadProgress(opts, 'draw', edgePolys.length, edgePolys.length);
+    } else {
+        edgePolys.forEach(({ edge, pts }, polyIdx) => {
+            appendEdgeCordPoly(contentRoot, ns, visualPrefs, edge, pts, mode);
+            const done = polyIdx + 1;
+            if (done % CODEX_LOAD_REDRAW_PROGRESS_EVERY === 0 || done === edgePolys.length) {
+                emitRedrawLoadProgress(opts, 'draw', done, edgePolys.length);
+            }
+        });
+        edgePolys.forEach(({ edge, pts }, polyIdx) => {
+            appendEdgeHitPoly(hitPickRoot, ns, mode, edge, pts);
+            const done = polyIdx + 1;
+            if (done % CODEX_LOAD_REDRAW_PROGRESS_EVERY === 0 || done === edgePolys.length) {
+                emitRedrawLoadProgress(opts, 'hits', done, edgePolys.length);
+            }
+        });
+    }
 
     if (dragIds.size === 0 && mode !== 'view') {
         edgePolys.forEach(({ pts }) => {
@@ -1243,14 +1288,18 @@ export async function redrawCodexEdgesDuringLoad(opts = {}) {
         };
         const planYield = { units: 0 };
 
-        // Decode the three hex alpha masks while we plan polylines (parallel with chunked work).
-        const alphaWarm = preloadCodexNodeAlphaMaskImages();
+        // Edit/dev still needs hex alpha mask decode; view mode skips the SVG mask entirely.
+        const alphaWarm =
+            _rt.getMode() === 'view'
+                ? Promise.resolve()
+                : preloadCodexNodeAlphaMaskImages();
 
         emitRedrawLoadProgress(progressOpts, 'plan', 0, edges.length);
         reportLoadPhaseFraction(progressOpts, 'plan', 0, edges.length);
 
-        for (let start = 0; start < edges.length; start += CODEX_LOAD_REDRAW_CHUNK) {
-            const end = Math.min(start + CODEX_LOAD_REDRAW_CHUNK, edges.length);
+        const planChunk = codexLoadRedrawChunkSize();
+        for (let start = 0; start < edges.length; start += planChunk) {
+            const end = Math.min(start + planChunk, edges.length);
             for (let i = start; i < end; i++) {
                 const pts = buildPolylineForEdgeDuringLoad(edges[i]);
                 if (pts && pts.length >= 2) edgePolysFull.push({ edge: edges[i], pts });

@@ -395,16 +395,7 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
             }
         }
         
-        // Update sources and filters (await so faction relevancy logos resolve before reveal)
-        await slide.updateSourcesAndFilters(displayEvent);
-        
-        // Wire up prev/next buttons
-        slide.wireNavButtons(eventData);
-        
-        // Wire edit/save buttons
-        slide.wireEditButtons(eventData, displayEvent, editBtn, saveBtn, eventSlideTitle, eventSlideText);
-        
-        // Show the panel
+        // Show the panel shell immediately — don't wait on sources/filters network work.
         // Mutual exclusion: opening Event Info closes Filters.
         const filtersPanel = document.getElementById('filtersPanel');
         const filtersToggle = document.getElementById('filtersToggle');
@@ -413,6 +404,15 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
             filtersToggle?.classList.remove('active');
         }
         eventSlide.classList.add('open');
+
+        // Update sources and filters (await so faction relevancy logos resolve into the open panel)
+        await slide.updateSourcesAndFilters(displayEvent);
+        
+        // Wire up prev/next buttons
+        slide.wireNavButtons(eventData);
+        
+        // Wire edit/save buttons
+        slide.wireEditButtons(eventData, displayEvent, editBtn, saveBtn, eventSlideTitle, eventSlideText);
         
         // Wire close button
         if (eventSlideClose) {

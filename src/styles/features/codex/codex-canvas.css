@@ -14,6 +14,15 @@
     /* Pattern on the stage, not on .codex-world: when zoomed out the scaled board is smaller than
        the viewport — letterboxing must still show the texture (see panel-pattern-overlay.css). */
     isolation: isolate;
+    /*
+     * Overlay siblings (side panels / dock) change size on collapse. Containment
+     * keeps that from dirtying Codex board layout. Freeze dock CSS vars here so
+     * body collapse does not inherit-invalidate every node under the root.
+     */
+    contain: layout style;
+    --pagination-dock-height: var(--pagination-dock-height-expanded, 400px);
+    --pagination-dock-stage-clearance: var(--pagination-dock-height-expanded, 400px);
+    --side-trap-collapse-shift: 0;
 }
 
 
@@ -38,6 +47,12 @@
 }
 
 .codex-world--panning .codex-edge-packets {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Hide packet layer during dock ease (RAF also suspended). Do not alter thumb timing. */
+body.side-chrome-dock-tweening .codex-edge-packets {
     visibility: hidden;
     pointer-events: none;
 }

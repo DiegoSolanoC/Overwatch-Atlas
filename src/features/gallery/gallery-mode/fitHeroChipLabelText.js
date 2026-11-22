@@ -1,9 +1,24 @@
 /**
- * Keep chip label text at a fixed size; widen the white name band when the
+ * Keep chip label text readable; widen the white name band when the
  * name is longer than the chip (centered under the portrait).
+ * Font tracks `--filters-chip-size-scale` so Filters chip-size controls
+ * enlarge names with the portraits.
  */
 
 export const CHIP_LABEL_FONT_PX = 13;
+
+function resolveChipLabelFontPx() {
+    try {
+        const raw = getComputedStyle(document.documentElement)
+            .getPropertyValue('--filters-chip-size-scale')
+            .trim();
+        const scale = Number.parseFloat(raw);
+        const mul = Number.isFinite(scale) && scale > 0 ? scale : 1;
+        return Math.max(10, Math.round(CHIP_LABEL_FONT_PX * mul));
+    } catch {
+        return CHIP_LABEL_FONT_PX;
+    }
+}
 
 /**
  * @param {HTMLElement} labelTextEl
@@ -14,6 +29,7 @@ export function fitHeroChipLabelText(labelTextEl) {
 
     const chip = band.closest('.gallery-hero-filters__chip, .filter-btn');
     const chipWidth = chip?.clientWidth || band.parentElement?.clientWidth || 0;
+    const fontPx = resolveChipLabelFontPx();
 
     labelTextEl.style.display = 'block';
     labelTextEl.style.whiteSpace = 'nowrap';
@@ -23,7 +39,7 @@ export function fitHeroChipLabelText(labelTextEl) {
     labelTextEl.style.wordBreak = 'normal';
     labelTextEl.style.width = 'auto';
     labelTextEl.style.maxWidth = 'none';
-    labelTextEl.style.fontSize = `${CHIP_LABEL_FONT_PX}px`;
+    labelTextEl.style.fontSize = `${fontPx}px`;
 
     band.style.width = '';
     band.style.minWidth = '';

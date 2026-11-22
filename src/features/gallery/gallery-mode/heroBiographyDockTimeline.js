@@ -198,13 +198,36 @@ export function eventMatchesHeroBiographyFilter(event, heroFilterKey) {
 }
 
 /**
+ * @returns {string[]} `country:<flag>` keys currently selected in Filters.
+ */
+function getSelectedCountryFilterKeys() {
+    const keys = [];
+    const src =
+        (typeof window !== 'undefined' && window.FilterService?.stateManager?.selectedFilters)
+        || (typeof window !== 'undefined' ? window.standaloneActiveFilters : null);
+    if (!src) return keys;
+    for (const key of src) {
+        const s = String(key || '');
+        if (s.startsWith('country:')) keys.push(s);
+    }
+    return keys;
+}
+
+/**
  * @param {object[]} baseEvents — full story dock timeline from EventManager.
  * @returns {object[]}
  */
 export function resolveDockTimelineEventsForDisplay(baseEvents) {
     const list = Array.isArray(baseEvents) ? baseEvents : [];
     let filtered = list;
-    if (isHeroBiographyDockFilterActive() && activeFilterKey && activeCategory !== 'locations') {
+
+    /* Entity single-select curates the dock (heroes / factions / NPCs). */
+    const entityCurated =
+        isHeroBiographyDockFilterActive()
+        && activeFilterKey
+        && activeCategory !== 'locations'
+        && activeCategory !== 'countries';
+    if (entityCurated) {
         filtered = list.filter((event) =>
             eventMatchesBioBiographyFilter(
                 event,
@@ -214,6 +237,23 @@ export function resolveDockTimelineEventsForDisplay(baseEvents) {
             ),
         );
     }
+
+    /*
+     * Country chips stay multi-select in Intel and further filter a curated dock
+     * (AND with the entity). Country-only picks use normal lock-out via
+     * shouldDockEventBeLocked / standaloneActiveFilters instead.
+     */
+    if (entityCurated && isHeroBiographyModeActive()) {
+        const countryKeys = getSelectedCountryFilterKeys();
+        if (countryKeys.length) {
+            filtered = filtered.filter((event) =>
+                countryKeys.some((ck) =>
+                    eventMatchesBioBiographyFilter(event, 'countries', ck),
+                ),
+            );
+        }
+    }
+
     return applyDockEraTimelineFilter(filtered);
 }
 

@@ -26,7 +26,7 @@ import {
     installFiltersTrapIconWindowApi,
     syncFiltersPanelTrapIconFromWindow
 } from './filtersPanelTrapIcon.js';
-import { ensureHandle, ensureWatchPanelClose } from './panelResizeHandle.js?v=2';
+import { ensureHandle, ensureWatchPanelClose } from './panelResizeHandle.js?v=3';
 
 function tryAttachAll() {
     if (isMobile()) return;

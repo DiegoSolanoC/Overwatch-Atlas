@@ -1,13 +1,13 @@
 /**
  * Wire the **toggle** (#filtersToggle) and **close** (#filtersPanelClose)
  * buttons of the filters panel. These two are owned by `FiltersPanel` itself
- * (load-out's `mountEventSystemFilters.js` owns Clear / Confirm).
+ * (load-out's `mountEventSystemFilters.js` owns Clear; Confirm is retired).
  *
  * Click logic:
  *   - Toggle while panel is open in **music mode** -> swap back to filters
  *     mode without closing the panel.
  *   - Toggle otherwise -> open or close the panel (`togglePanel()`).
- *   - Close button -> reset pending selection to confirmed state and close.
+ *   - Close button -> resync selection from the live set and close.
  *
  * SFX (`filterButton`) and flash feedback are fired here.
  */

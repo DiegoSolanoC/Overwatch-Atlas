@@ -48,8 +48,11 @@ export function refreshDockTimelinePagination() {
         window.newsTickerService.updateTicker(events.slice(start, start + perPage));
     }
 
-    // Theater mode hides the globe — skip marker/timeline sync while mounted.
-    if (!theaterMounted) {
+    // Theater / Intel hide the globe — skip marker + Story timeline sync while those
+    // modes own the dock. Rebuilding globe markers on every Intel entity pick was a
+    // major hitch before the UI could respond.
+    const intelOpen = !!document.getElementById('atlasGalleryHost');
+    if (!theaterMounted && !intelOpen) {
         window.globeEventMarkerManager?.refreshEventMarkers?.(true);
         window.globeController?.map2dLite?.syncMarkers?.({ mode: 'pageTurn' });
 

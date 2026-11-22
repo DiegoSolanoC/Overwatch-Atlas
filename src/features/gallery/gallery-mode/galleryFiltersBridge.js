@@ -1,7 +1,7 @@
 /**
- * Bridge: Filters panel ↔ Gallery mode.
- * While `#atlasGalleryHost` is open, filter chips are single-select and drive
- * gallery stage + curated dock timeline (countries → timeline only).
+ * Bridge: Filters panel ↔ Gallery (Intel) mode.
+ * Heroes / factions / NPCs stay single-select and drive biography + curated dock.
+ * Countries are multi-select and further filter that curated dock (normal filter-out).
  */
 
 import {
@@ -13,8 +13,48 @@ import {
     resolveBioManifestChipIdentity,
 } from './loadBioFilterManifest.js';
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
+import { refreshHeroBiographyDockPagination } from './heroBiographyDockTimeline.js';
 
 const HOST_ID = 'atlasGalleryHost';
+
+/** @type {number | ReturnType<typeof requestIdleCallback> | null} */
+let filterCountRefreshHandle = null;
+/** @type {'idle' | 'timeout' | null} */
+let filterCountRefreshKind = null;
+
+/**
+ * Defer Confirm match-count walk so Intel entity picks stay interactive.
+ * Chip selected state is already correct; only the badge needs a pass.
+ */
+function scheduleGalleryFilterCountRefresh() {
+    if (filterCountRefreshHandle != null) {
+        if (filterCountRefreshKind === 'idle' && typeof cancelIdleCallback === 'function') {
+            cancelIdleCallback(filterCountRefreshHandle);
+        } else {
+            clearTimeout(filterCountRefreshHandle);
+        }
+        filterCountRefreshHandle = null;
+        filterCountRefreshKind = null;
+    }
+
+    const run = () => {
+        filterCountRefreshHandle = null;
+        filterCountRefreshKind = null;
+        try {
+            window.FilterService?.updateFilterCounts?.();
+        } catch (_) {
+            /* Filters panel may be tearing down */
+        }
+    };
+
+    if (typeof requestIdleCallback === 'function') {
+        filterCountRefreshKind = 'idle';
+        filterCountRefreshHandle = requestIdleCallback(run, { timeout: 800 });
+    } else {
+        filterCountRefreshKind = 'timeout';
+        filterCountRefreshHandle = window.setTimeout(run, 120);
+    }
+}
 
 export function isAtlasGalleryOpen() {
     return !!document.getElementById(HOST_ID);
@@ -39,6 +79,33 @@ function syncStandaloneFromPending(stateManager) {
     }
 }
 
+function isCountryFilterKey(key) {
+    return String(key || '').startsWith('country:');
+}
+
+/**
+ * Drop entity chips from selection + visuals; keep any `country:*` picks.
+ * @param {object} stateManager
+ * @param {HTMLElement | null} grid
+ */
+function clearNonCountrySelections(stateManager, grid) {
+    const keep = [];
+    for (const key of stateManager.selectedFilters || []) {
+        if (isCountryFilterKey(key)) keep.push(key);
+    }
+    stateManager.selectedFilters.clear();
+    keep.forEach((key) => stateManager.add(key));
+
+    if (grid) {
+        grid.querySelectorAll('.filter-btn.selected').forEach((btn) => {
+            const key = btn.dataset.filterKey || '';
+            if (isCountryFilterKey(key)) return;
+            btn.classList.remove('selected');
+            btn.setAttribute('aria-pressed', 'false');
+        });
+    }
+}
+
 /**
  * @param {string} filterKey
  * @param {string} displayName
@@ -47,22 +114,39 @@ function syncStandaloneFromPending(stateManager) {
 export function applyExclusiveGallerySelection(filterKey, displayName, type) {
     const fs = window.FilterService;
     const stateManager = fs?.stateManager;
-    const grid = document.getElementById('filtersGrid');
+    if (!stateManager) return;
 
-    if (stateManager?.selectedFilters) {
-        stateManager.selectedFilters.clear();
-        if (typeof stateManager.add === 'function') {
-            stateManager.add(filterKey);
+    const grid = document.getElementById('filtersGrid');
+    const t = String(type || '').toLowerCase();
+
+    if (t === 'countries') {
+        if (stateManager.has(filterKey)) {
+            stateManager.remove(filterKey);
         } else {
-            stateManager.selectedFilters.add(filterKey);
+            stateManager.add(filterKey);
         }
+        if (grid) {
+            const btn = grid.querySelector(`.filter-btn[data-filter-key="${CSS.escape(filterKey)}"]`);
+            if (btn) {
+                const on = stateManager.has(filterKey);
+                btn.classList.toggle('selected', on);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+        }
+        syncStandaloneFromPending(stateManager);
+        refreshHeroBiographyDockPagination();
+        scheduleGalleryFilterCountRefresh();
+        return;
+    }
+
+    clearNonCountrySelections(stateManager, grid);
+    if (typeof stateManager.add === 'function') {
+        stateManager.add(filterKey);
+    } else {
+        stateManager.selectedFilters.add(filterKey);
     }
 
     if (grid) {
-        grid.querySelectorAll('.filter-btn.selected').forEach((btn) => {
-            btn.classList.remove('selected');
-            btn.setAttribute('aria-pressed', 'false');
-        });
         const btn = grid.querySelector(`.filter-btn[data-filter-key="${CSS.escape(filterKey)}"]`);
         if (btn) {
             btn.classList.add('selected');
@@ -70,26 +154,19 @@ export function applyExclusiveGallerySelection(filterKey, displayName, type) {
         }
     }
 
-    const t = String(type || '').toLowerCase();
-    if (
-        t === 'heroes'
-        || t === 'factions'
-        || t === 'npcs'
-        || t === 'locations'
-        || t === 'countries'
-    ) {
+    if (t === 'heroes' || t === 'factions' || t === 'npcs' || t === 'locations') {
         selectBioBiographyEntityFromFilter(t, filterKey, displayName);
     } else {
         clearBioBiographyEntityFromFilter();
+        refreshHeroBiographyDockPagination();
     }
 
     syncStandaloneFromPending(stateManager);
-    fs?.updateButtonStates?.();
-    fs?.updateFilterCounts?.();
+    scheduleGalleryFilterCountRefresh();
 }
 
 /**
- * Enforce one selected filter key and apply it to gallery + dock.
+ * Intel chip pick: entity types stay exclusive; countries toggle independently.
  *
  * @param {object} opts
  * @param {HTMLElement} opts.filterBtn
@@ -110,6 +187,23 @@ export function applyGalleryExclusiveFilterPick({
     if (!isAtlasGalleryOpen() || !stateManager) return false;
 
     const grid = filterBtn?.closest?.('.filters-grid') || document.getElementById('filtersGrid');
+    const t = String(type || '').toLowerCase();
+
+    if (t === 'countries') {
+        if (wasSelected) {
+            stateManager.remove(filterKey);
+            filterBtn.classList.remove('selected');
+            filterBtn.setAttribute('aria-pressed', 'false');
+        } else {
+            stateManager.add(filterKey);
+            filterBtn.classList.add('selected');
+            filterBtn.setAttribute('aria-pressed', 'true');
+        }
+        syncStandaloneFromPending(stateManager);
+        refreshHeroBiographyDockPagination();
+        scheduleGalleryFilterCountRefresh();
+        return true;
+    }
 
     if (wasSelected) {
         stateManager.remove(filterKey);
@@ -117,39 +211,25 @@ export function applyGalleryExclusiveFilterPick({
         filterBtn.setAttribute('aria-pressed', 'false');
         clearBioBiographyEntityFromFilter();
         syncStandaloneFromPending(stateManager);
-        window.FilterService?.updateButtonStates?.();
-        window.FilterService?.updateFilterCounts?.();
+        refreshHeroBiographyDockPagination();
+        scheduleGalleryFilterCountRefresh();
         return true;
     }
 
-    stateManager.selectedFilters.clear();
-    if (grid) {
-        grid.querySelectorAll('.filter-btn.selected').forEach((btn) => {
-            btn.classList.remove('selected');
-            btn.setAttribute('aria-pressed', 'false');
-        });
-    }
-
+    clearNonCountrySelections(stateManager, grid);
     stateManager.add(filterKey);
     filterBtn.classList.add('selected');
     filterBtn.setAttribute('aria-pressed', 'true');
 
-    const t = String(type || '').toLowerCase();
-    if (
-        t === 'heroes'
-        || t === 'factions'
-        || t === 'npcs'
-        || t === 'locations'
-        || t === 'countries'
-    ) {
+    if (t === 'heroes' || t === 'factions' || t === 'npcs' || t === 'locations') {
         selectBioBiographyEntityFromFilter(t, filterKey, displayName);
     } else {
         clearBioBiographyEntityFromFilter();
+        refreshHeroBiographyDockPagination();
     }
 
     syncStandaloneFromPending(stateManager);
-    window.FilterService?.updateButtonStates?.();
-    window.FilterService?.updateFilterCounts?.();
+    scheduleGalleryFilterCountRefresh();
     return true;
 }
 

@@ -200,6 +200,38 @@ export const mixin = {
         }
     },
 
+    stopHoverRadiateLoop() {
+        if (this._hoverSoundInterval) {
+            clearInterval(this._hoverSoundInterval);
+            this._hoverSoundInterval = null;
+        }
+    },
+
+    clearSyntheticMarkerHover() {
+        this.stopHoverRadiateLoop();
+        const hosts = [
+            this.markersEl,
+            this._moonMarkersEl,
+            this._marsMarkersEl,
+            this._orbitMarkersEl,
+        ].filter(Boolean);
+        for (let h = 0; h < hosts.length; h += 1) {
+            const lit = hosts[h].querySelectorAll('.map-2d-lite__marker--synthetic-hover');
+            for (let i = 0; i < lit.length; i += 1) {
+                lit[i].classList.remove('map-2d-lite__marker--synthetic-hover');
+            }
+        }
+        this._syntheticHoverBtn = null;
+    },
+
+    setSyntheticHoverFromStub(stub) {
+        this.clearSyntheticMarkerHover();
+        const btn = stub?.__map2dLiteBtn;
+        if (!btn || stub?.userData?.isLocked) return;
+        btn.classList.add('map-2d-lite__marker--synthetic-hover');
+        this._syntheticHoverBtn = btn;
+    },
+
     _animateDomMarkerToLocked(btn, stub) {
         return new Promise((resolve) => {
             if (!btn || !stub?.userData) {
@@ -207,19 +239,26 @@ export const mixin = {
                 return;
             }
             stub.userData.isLocked = true;
+            btn.classList.remove('map-2d-lite__marker--synthetic-hover');
+            if (this._syntheticHoverBtn === btn) this._syntheticHoverBtn = null;
             const disk = btn.querySelector('.map-2d-lite__marker-disk');
             const wave = btn.querySelector('.map-2d-lite__marker-wave');
             disk?.classList.remove('map-2d-lite__marker-disk--pulse');
             btn.classList.remove('map-2d-lite__marker--awakening');
             btn.style.removeProperty('--map2d-wave-max-scale');
 
-            btn.style.transition = `transform ${MAP2D_LOCK_TRANSITION_MS}ms cubic-bezier(0.32, 0, 0.67, 1)`;
+            /* Disable base CSS transform transition so the lock morph is the only tween. */
+            const ease = 'cubic-bezier(0.33, 0.1, 0.25, 1)';
+            btn.style.transition = `transform ${MAP2D_LOCK_TRANSITION_MS}ms ${ease}, filter ${MAP2D_LOCK_TRANSITION_MS}ms ease, box-shadow ${MAP2D_LOCK_TRANSITION_MS}ms ease`;
+            btn.style.filter = 'brightness(0.72) grayscale(0.35)';
+            btn.style.boxShadow = 'none';
+            btn.style.transform = 'translate(-50%, -50%) scale(0.75)';
             if (disk) {
-                disk.style.transition = `background-color ${MAP2D_LOCK_TRANSITION_MS}ms cubic-bezier(0.32, 0, 0.67, 1)`;
+                disk.style.transition = `background-color ${MAP2D_LOCK_TRANSITION_MS}ms ${ease}`;
                 disk.style.backgroundColor = hexToCss(EVENT_MARKER_LOCKED_HEX);
             }
             if (wave) {
-                wave.style.transition = `opacity ${Math.min(200, MAP2D_LOCK_TRANSITION_MS)}ms ease-out`;
+                wave.style.transition = `opacity ${Math.min(100, MAP2D_LOCK_TRANSITION_MS)}ms ease-out`;
                 wave.style.opacity = '0';
             }
             btn.classList.add('map-2d-lite__marker--locked');
@@ -230,10 +269,14 @@ export const mixin = {
 
             window.setTimeout(() => {
                 btn.style.transition = '';
+                btn.style.filter = '';
+                btn.style.boxShadow = '';
+                /* Keep final scale via locked class; drop inline so CSS owns it. */
+                btn.style.removeProperty('transform');
                 if (disk) disk.style.transition = '';
                 if (wave?.parentNode) wave.remove();
                 resolve();
-            }, MAP2D_LOCK_TRANSITION_MS + 40);
+            }, MAP2D_LOCK_TRANSITION_MS + 20);
         });
     },
 
@@ -256,9 +299,12 @@ export const mixin = {
             const isMain = true;
             const fillHex = getMarkerColor(isMain);
 
-            btn.style.transition = `transform ${MAP2D_LOCK_TRANSITION_MS}ms cubic-bezier(0.33, 1, 0.68, 1)`;
+            const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+            btn.style.transition = `transform ${MAP2D_LOCK_TRANSITION_MS}ms ${ease}, filter ${MAP2D_LOCK_TRANSITION_MS}ms ease`;
+            btn.style.filter = 'none';
+            btn.style.transform = 'translate(-50%, -50%) scale(1)';
             if (disk) {
-                disk.style.transition = `background-color ${MAP2D_LOCK_TRANSITION_MS}ms cubic-bezier(0.33, 1, 0.68, 1)`;
+                disk.style.transition = `background-color ${MAP2D_LOCK_TRANSITION_MS}ms ${ease}`;
                 disk.style.backgroundColor = hexToCss(fillHex);
             }
             btn.classList.remove('map-2d-lite__marker--locked');
@@ -297,6 +343,8 @@ export const mixin = {
 
             window.setTimeout(() => {
                 btn.style.transition = '';
+                btn.style.filter = '';
+                btn.style.removeProperty('transform');
                 if (disk) disk.style.transition = '';
                 disk?.classList.add('map-2d-lite__marker-disk--pulse');
                 resolve();

@@ -36,15 +36,29 @@ export function restoreMusicState(service) {
 
         service.isLooping = !service.shuffleService.isShuffling && !!musicState.isLooping;
 
-        if (musicState.volume !== undefined) {
-            service.volumeService.setTargetVolume(musicState.volume);
-            service.backgroundMusic.volume = musicState.volume;
-            const vs = document.getElementById('volumeSlider');
-            const vv = document.getElementById('volumeValue');
-            if (vs) vs.value = Math.round(musicState.volume * 100);
-            if (vv) vv.textContent = Math.round(musicState.volume * 100) + '%';
+        // Prefer saved target / last-audible. Ignore stale 0s left by fade-outs
+        // that used to persist `backgroundMusic.volume` while the track faded.
+        const savedVolume = typeof musicState.volume === 'number' ? musicState.volume : undefined;
+        const savedLast = typeof musicState.lastAudibleVolume === 'number'
+            ? musicState.lastAudibleVolume
+            : undefined;
+        if (savedLast > 0) {
+            service.volumeService.lastAudibleVolume = Math.min(1, savedLast);
         }
+        const restoredVolume = (savedVolume > 0)
+            ? savedVolume
+            : (service.volumeService.lastAudibleVolume > 0
+                ? service.volumeService.lastAudibleVolume
+                : 0.1);
+        service.volumeService.setTargetVolume(restoredVolume);
+        const vs = document.getElementById('volumeSlider');
+        const vv = document.getElementById('volumeValue');
+        if (vs) vs.value = String(Math.round(restoredVolume * 100));
+        if (vv) vv.textContent = `${Math.round(restoredVolume * 100)}%`;
 
+        // Keep element volume at the user level even while muted — silence comes
+        // from the muted flag. That way unmute never has to dig out of a 0.
+        service.backgroundMusic.volume = restoredVolume;
         if (musicState.muted !== undefined) {
             service.backgroundMusic.muted = musicState.muted;
             service.iconService.updateMuteIcon(musicState.muted);

@@ -12,6 +12,7 @@ import {
 } from '../musicPaletteThemes.js';
 import { MusicStateService } from '../services/MusicStateService.js';
 import { restoreMusicState } from './musicRestoreFromStorage.js';
+import { mountMusicCategoryChrome } from '../panel/musicCategoryChrome.js';
 
 const getLogAssetLoad = () =>
     (typeof window !== 'undefined' && typeof window.logAssetLoad === 'function')
@@ -32,6 +33,7 @@ export function runMusicBootSequence(service, playMusic) {
         }
 
         service.musicFiles = musicFiles;
+        service.fileService.musicFiles = musicFiles;
         service.playbackService.setMusicFiles(musicFiles);
 
         const prioritySong = (typeof window !== 'undefined' && window.prioritySong) || null;
@@ -42,16 +44,8 @@ export function runMusicBootSequence(service, playMusic) {
 
         const restored = restoreMusicState(service);
 
-        service.fileService.createMusicButtons(
-            service.musicGrid,
-            service.currentSong,
-            (songPath) => {
-                playMusic(songPath);
-                service.updateNowPlaying();
-                service.saveMusicState();
-            },
-            (btnPath, songPath) => service.playbackService.matchesSongPath(btnPath, songPath)
-        );
+        mountMusicCategoryChrome(service);
+        service.createMusicButtons();
 
         const deferPreloadAll = () => {
             service.fileService.preloadAllMusic((path) =>

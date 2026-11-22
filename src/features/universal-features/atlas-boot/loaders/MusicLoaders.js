@@ -38,7 +38,7 @@ function ensureMusicToggle() {
     return createHeaderHubButton({
         id: 'musicToggle',
         className: 'header-utility-btn header-utility-btn--music',
-        title: 'Music Options (M)',
+        title: 'Music Menu (M)',
         label: 'Music',
         iconPath: 'src/assets/images/Icons/Music%20Icons/Music%20Icon.png',
         iconAlt: 'Music',

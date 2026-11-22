@@ -131,7 +131,9 @@ export function appendCordFilteredLineGroup(parent, ns, {
     lineClass,
     padStrokeWidth = CODEX_EDGE_FILTER_PAD_PX,
     edgeFromId,
-    edgeToId
+    edgeToId,
+    /** View mode uses full-world filter regions — pad lines only bloat the DOM. */
+    includePad = true,
 }) {
     const g = document.createElementNS(ns, 'g');
     g.setAttribute('filter', filterUrl);
@@ -140,18 +142,21 @@ export function appendCordFilteredLineGroup(parent, ns, {
         g.setAttribute('data-codex-edge-from', String(edgeFromId));
         g.setAttribute('data-codex-edge-to', String(edgeToId));
     }
-    const pad = document.createElementNS(ns, 'line');
-    pad.classList.add('codex-edge-filter-pad');
-    pad.setAttribute('x1', String(x1));
-    pad.setAttribute('y1', String(y1));
-    pad.setAttribute('x2', String(x2));
-    pad.setAttribute('y2', String(y2));
-    pad.setAttribute('stroke', '#ffffff');
-    // Near-zero (not 0): some engines omit opacity-0 strokes from filter bboxes → clipped H/V cords.
-    pad.setAttribute('stroke-opacity', '0.001');
-    pad.setAttribute('stroke-width', String(padStrokeWidth));
-    pad.setAttribute('stroke-linecap', 'round');
-    pad.setAttribute('aria-hidden', 'true');
+    if (includePad !== false) {
+        const pad = document.createElementNS(ns, 'line');
+        pad.classList.add('codex-edge-filter-pad');
+        pad.setAttribute('x1', String(x1));
+        pad.setAttribute('y1', String(y1));
+        pad.setAttribute('x2', String(x2));
+        pad.setAttribute('y2', String(y2));
+        pad.setAttribute('stroke', '#ffffff');
+        // Near-zero (not 0): some engines omit opacity-0 strokes from filter bboxes → clipped H/V cords.
+        pad.setAttribute('stroke-opacity', '0.001');
+        pad.setAttribute('stroke-width', String(padStrokeWidth));
+        pad.setAttribute('stroke-linecap', 'round');
+        pad.setAttribute('aria-hidden', 'true');
+        g.appendChild(pad);
+    }
     const vis = document.createElementNS(ns, 'line');
     addSvgElementClasses(vis, lineClass);
     vis.setAttribute('x1', String(x1));
@@ -162,7 +167,6 @@ export function appendCordFilteredLineGroup(parent, ns, {
     vis.setAttribute('stroke-width', String(strokeWidth));
     vis.setAttribute('stroke-linecap', 'round');
     vis.setAttribute('stroke-opacity', strokeOpacity);
-    g.appendChild(pad);
     g.appendChild(vis);
     parent.appendChild(g);
 }

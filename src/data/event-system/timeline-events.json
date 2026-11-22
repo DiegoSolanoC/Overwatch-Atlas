@@ -38,6 +38,12 @@
           "country": "Tatenda,",
           "reasoning": "Tamuka's brother and only remaining family"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Super Old",
+          "theaterId": "be5db894-ad0f-4a45-b83d-06d05481495d"
+        }
       ]
     },
     {
@@ -2153,7 +2159,13 @@
           "reasoning": "Works on several units like the Bastions and Titans on  the STT Laboratories"
         }
       ],
-      "yearEnd": null
+      "yearEnd": null,
+      "commentary": [
+        {
+          "name": "Rain bullets",
+          "theaterId": "f20b1dff-7200-4f38-b48a-c52d0fe89f33"
+        }
+      ]
     },
     {
       "name": "Genesis",
@@ -2995,7 +3007,14 @@
         }
       ],
       "commentary": [
-        "Enhancement Program"
+        {
+          "name": "Enhancement Program",
+          "theaterId": "e26d3182-9172-4951-82e1-d7dc430828f5"
+        },
+        {
+          "name": "Don't call me anything",
+          "theaterId": "eaeb7c77-dc51-4988-b302-b583e72a5a92"
+        }
       ]
     },
     {
@@ -3191,6 +3210,67 @@
       ]
     },
     {
+      "name": "The Lagos Attack",
+      "locationType": "earth",
+      "cityDisplayName": "Lagos, Nigeria",
+      "description": "Before the full on war began, Anubis first tested his plan on a smaller scale. On the first day of the crisis, Anubis launched a coordinated attack on Lagos, coming from the Nigerian Omnium. As the attack pushed further in, domestic Omnic units began to attack civilians, and since most of the services and communications were handled by machines, the flow of information to the outside world was nearly non-existent.\n\nThe international community turned its eyes on Nigeria with fear and confusion, only to be caught by surprise the same way soon after. Many believed this to be an isolated attack and thus humanity was completely unprepared for what came next. Within eighteen hours of the initial attack, Anubis began to seize control of domestic robots across the planet, and deployed massive waves of warbots towards major population centers. Chaos reigned everywhere, and many nations began pointing fingers at each other, with at least five confirmed nuclear powers preparing counterattacks, the world was minutes away from nuclear obliteration before intelligence operatives realized the attacks were happening globally and not orchestrated by a single nation.\n\nAs the Omnics gained ground across rural and suburban areas, many of the world's wealthiest elites began to retreat into prebuilt doomsday bunkers, which feed conspiracy theorists and distrust among the people. The bunkers themselves were largely ineffective. However, as a majority of them would sooner or later be destroyed by Anubis' forces, few of these structures remained strong by the end of the Crisis.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Overwatch Genesis, Part Two: Innocence",
+          "url": "https://www.youtube.com/watch?v=wC0vBOpFLFQ"
+        }
+      ],
+      "headlines": [
+        "Unexpected Omnic attack in Lagos, hundreds dead",
+        "Nigeria goes silent following spontaneous Omnic rebellion",
+        "Multiple countries report Omnic Invasion, war imminent"
+      ],
+      "lat": 6.4550575,
+      "lon": 3.3941795,
+      "yearStart": 2051,
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lagos, Nigeria",
+          "country": "Nigeria",
+          "reasoning": "Ground Zero of the Omnic Crisis, the attack was followed by a global war years later"
+        },
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Anubis hid itself on Cairo by unleashing constant skirmishes in the area, keeping the military busy",
+          "lat": 30.0444,
+          "lon": 31.2357
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis Directives,",
+          "reasoning": "This attack marks the beginning of the Omnic Crisis"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Unleashes a global war against humanity"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "War Devastation",
+          "theaterId": "54417ebd-1166-4b13-b8c9-4d6a129e21fb"
+        }
+      ]
+    },
+    {
       "name": "Ramattra is Made",
       "locationType": "earth",
       "cityDisplayName": "Secret Omnium, Antartica?",
@@ -3280,61 +3360,6 @@
         {
           "text": "Overwatch Website, D.mon",
           "url": "https://overwatch.blizzard.com/en-us/heroes/dmon/"
-        }
-      ]
-    },
-    {
-      "name": "The Lagos Attack",
-      "locationType": "earth",
-      "cityDisplayName": "Lagos, Nigeria",
-      "description": "Before the full on war began, Anubis first tested his plan on a smaller scale. On the first day of the crisis, Anubis launched a coordinated attack on Lagos, coming from the Nigerian Omnium. As the attack pushed further in, domestic Omnic units began to attack civilians, and since most of the services and communications were handled by machines, the flow of information to the outside world was nearly non-existent.\n\nThe international community turned its eyes on Nigeria with fear and confusion, only to be caught by surprise the same way soon after. Many believed this to be an isolated attack and thus humanity was completely unprepared for what came next. Within eighteen hours of the initial attack, Anubis began to seize control of domestic robots across the planet, and deployed massive waves of warbots towards major population centers. Chaos reigned everywhere, and many nations began pointing fingers at each other, with at least five confirmed nuclear powers preparing counterattacks, the world was minutes away from nuclear obliteration before intelligence operatives realized the attacks were happening globally and not orchestrated by a single nation.\n\nAs the Omnics gained ground across rural and suburban areas, many of the world's wealthiest elites began to retreat into prebuilt doomsday bunkers, which feed conspiracy theorists and distrust among the people. The bunkers themselves were largely ineffective. However, as a majority of them would sooner or later be destroyed by Anubis' forces, few of these structures remained strong by the end of the Crisis.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        },
-        {
-          "text": "Overwatch Genesis, Part Two: Innocence",
-          "url": "https://www.youtube.com/watch?v=wC0vBOpFLFQ"
-        }
-      ],
-      "headlines": [
-        "Unexpected Omnic attack in Lagos, hundreds dead",
-        "Nigeria goes silent following spontaneous Omnic rebellion",
-        "Multiple countries report Omnic Invasion, war imminent"
-      ],
-      "lat": 6.4550575,
-      "lon": 3.3941795,
-      "yearStart": 2051,
-      "eraName": "The Omnic Crisis",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Lagos, Nigeria",
-          "country": "Nigeria",
-          "reasoning": "Ground Zero of the Omnic Crisis, the attack was followed by a global war years later"
-        },
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "Anubis hid itself on Cairo by unleashing constant skirmishes in the area, keeping the military busy",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anubis Directives,",
-          "reasoning": "This attack marks the beginning of the Omnic Crisis"
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anubis,",
-          "reasoning": "Unleashes a global war against humanity"
         }
       ]
     },
@@ -3757,7 +3782,7 @@
     },
     {
       "name": "Refugees",
-      "description": "As the Crisis raged on across the US, families from all over the states were displaced by the war. Large cities were evacuated to make room for the military, which was spread tin across the many urban centers of the country. Without nowhere else to go and in need of food and shelter, thousands of people would go on to become refugees in the many Megafarms. \n\n\nThis would eventually benefit the owners, as by the end of the crisis they would be left without their Omnic workforce. So, in turn, many would strike a deal with the refugees, offering continuous food and rooms in exchange for cheap labor. This, however, will soon turn into exploitation, and many farms will later be investigated for their abuse.",
+      "description": "As the Crisis raged on across the US, families from all over the states were displaced by the war. Large cities were evacuated to make room for the military, which was spread tin across the many urban centers of the country. Without nowhere else to go and in need of food and shelter, thousands of people would go on to become refugees in the many Megafarms. \n\nThis would eventually benefit the owners, as by the end of the crisis they would be left without their Omnic workforce. So, in turn, many would strike a deal with the refugees, offering continuous food and rooms in exchange for cheap labor. This, however, will soon turn into exploitation, and many farms will later be investigated for their abuse.",
       "locationType": "earth",
       "lat": 30.6663312,
       "lon": -98.6970374,
@@ -3802,6 +3827,12 @@
           "country": "Anubis,",
           "reasoning": "War splits fronts across America",
           "badgePriority": true
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Younger Self",
+          "theaterId": "d9d20b3f-cada-4719-9e42-4b4daf5d46a1"
         }
       ]
     },
@@ -3863,6 +3894,10 @@
         {
           "name": "Of my Word",
           "theaterId": "2c9071a5-d7d0-47d2-aff2-0de040885be8"
+        },
+        {
+          "name": "Golden Hair",
+          "theaterId": "af514d72-67f6-4b09-bbdf-793b47d4671d"
         }
       ]
     },
@@ -4495,7 +4530,7 @@
       "name": "Honor and Glory",
       "locationType": "earth",
       "cityDisplayName": "Eichenwalde Castle, Germany",
-      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. \n\n\nThe Crusaders would be surprised by the arrival of OR-14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
+      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. \n\nThe Crusaders would be surprised by the arrival of OR-14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
       "image": "",
       "sources": [
         {
@@ -4556,21 +4591,31 @@
         },
         {
           "name": "Sojourn · Eichenwalde — Poor Reinhardt. What he must have seen here...",
-          "label": "Poor Reinhardt"
+          "label": "Poor Reinhardt",
+          "theaterId": "chatter-sojourn",
+          "lineId": "bb907555-eed7-4fdb-9e0b-1408a34559fc"
         },
         {
           "name": "Genji · Eichenwalde — At times, I can almost hear the voices of those who lost their lives here.",
-          "label": "The voices"
+          "label": "The voices",
+          "theaterId": "chatter-genji",
+          "lineId": "a20ce539-3b56-4f1f-845a-7f6112fe70ff"
         },
         {
           "name": "Reinhardt · Eichenwalde — We fought a terrible battle here. Many Crusaders lost their lives.",
-          "label": "Lost LIves"
+          "label": "Lost LIves",
+          "theaterId": "chatter-reinhardt",
+          "lineId": "9d41ed21-2bee-461f-a327-a1fd83e9c395"
+        },
+        {
+          "name": "Forever changed",
+          "theaterId": "66d77b56-dfa0-418d-92a8-5bc47668914c"
         }
       ]
     },
     {
       "name": "The Original Strike Team",
-      "description": "After months of planning, Overwatch moved into place. The supporting staff was arranged with several of the most outstanding names of the last couple of decades, from Matthew Frank, to Namuaca and Lomakema, Esat and Borda, and of course, the Martins. Alongside the help of military experts like General David Ames from the US, and Litang Abhicandra from Indonesia. It took several months of  screening and a lot of discarded proposals, but the supporting teams across all fields were ready to start working.\n\nAs far as the Strike team, Adawe's first choice was Doomfist himself. Adhabu Ngumi had been identified as the savior of Nigeria, and partly inspired the proposal in the first place, but he declined, choosing to protect his home first and foremost, like many others did. In the end, the strike team was formed by five individuals. \n\n\nThe two most successful soldiers from America's SEP program, Gabriel Reyes and Jack Morrison. The elite Egyptian Sniper Ana Amari, in spite of controversy around her inclusion among UN staff members. The German Crusader Reinhardt Wilhelm, taking his mentor's place, and the Ironclad engineer Torbjörn Lindholm, who showed up at the last minute and demanded to be a part of the team. Once the team was selected and trained, it was a matter of time before deployment began, and the tide finally began to turn.",
+      "description": "After months of planning, Overwatch moved into place. The supporting staff was arranged with several of the most outstanding names of the last couple of decades, from Matthew Frank, to Namuaca and Lomakema, Esat and Borda, and of course, the Martins. Alongside the help of military experts like General David Ames from the US, and Litang Abhicandra from Indonesia. It took several months of  screening and a lot of discarded proposals, but the supporting teams across all fields were ready to start working.\n\nAs far as the Strike team, Adawe's first choice was Doomfist himself. Adhabu Ngumi had been identified as the savior of Nigeria, and partly inspired the proposal in the first place, but he declined, choosing to protect his home first and foremost, like many others did. In the end, the strike team was formed by five individuals. \n\nThe two most successful soldiers from America's SEP program, Gabriel Reyes and Jack Morrison. The elite Egyptian Sniper Ana Amari, in spite of controversy around her inclusion among UN staff members. The German Crusader Reinhardt Wilhelm, taking his mentor's place, and the Ironclad engineer Torbjörn Lindholm, who showed up at the last minute and demanded to be a part of the team. Once the team was selected and trained, it was a matter of time before deployment began, and the tide finally began to turn.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -4636,12 +4681,16 @@
         {
           "name": "Like the Glory Days",
           "theaterId": "c674759f-d87e-48d8-b10c-c2f242d2fd22"
+        },
+        {
+          "name": "The Poster",
+          "theaterId": "63bc1894-ed2d-4495-a741-e465e5a71811"
         }
       ]
     },
     {
       "name": "Early Missions",
-      "description": "After training, the strike team was dispatched for its first series of missions. It was decided they would not take place in their home countries to avoid claims of bias. Instead, there was an effort to begin deployment in areas where they were needed the most. The first couple of missions on Darkhan and Shenzhen are classified, but details about the Kyoto mission are known. \n\n\nThe team was deployed without prior announcement, to prevent Anubis from getting word of their approach. After clearing the airspace, the team landed and quickly took ground back from the warbots. The image of Gabriel Reyes helping a child into the arms of her mother made headlines across the globe, and thus Overwatch became the champions of humanity.",
+      "description": "After training, the strike team was dispatched for its first series of missions. It was decided they would not take place in their home countries to avoid claims of bias. Instead, there was an effort to begin deployment in areas where they were needed the most. The first couple of missions on Darkhan and Shenzhen are classified, but details about the Kyoto mission are known. \n\nThe team was deployed without prior announcement, to prevent Anubis from getting word of their approach. After clearing the airspace, the team landed and quickly took ground back from the warbots. The image of Gabriel Reyes helping a child into the arms of her mother made headlines across the globe, and thus Overwatch became the champions of humanity.",
       "locationType": "earth",
       "cityDisplayName": "Kyoto, Japan",
       "lat": 35.6768601,
@@ -4694,6 +4743,12 @@
           "country": "Adawe",
           "reasoning": "Acting Commander of the Overwatch Initiative"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Contibuting",
+          "theaterId": "a47fdc53-8e52-4a81-84bf-f28a037391b4"
+        }
       ]
     },
     {
@@ -4735,7 +4790,7 @@
       "name": "The Road of Bones",
       "locationType": "earth",
       "cityDisplayName": "Oymyakon, Russia",
-      "description": "The Kolyma Highway near the town of Oymkakon, known as the Road of Bones, was one of the most important places for Russia to defend during the Crisis, as the only viable access point to the Sea of Okhotsk, putting the isolated population in danger of becoming unreachable. When the RDF planned to deploy a Svyatogor to the town, Ksenia Popova, a local from Oymkakon took her chance to come back and defend her hometown.\n\nThe town was mostly spared from the Crisis, due to the non-existing Omnic presence and the isolation of the place, but one fateful day Anubis ordered a full-on attack, commanded by Ravager units. As the evacuation effort turned dire, Ksenia was given authorization to do anything it took to stop the robotic advance, and after finding herself outnumbered and outgunned, she decided to charge into a small nuclear plant, sacrificing her own life to ensure the blast from the explosion destroyed all Omnics in the area. \n\n\nThe explosion created the Oymyakon exclusion zone, a radiated field unsuitable for both lifeforms and machines, as the radiation would fry their circuit without sufficient shielding. Ksenia's sacrifice saved hundreds and prevented Anubis from ever being able to reach Okhotsk again, but at the same time, it displaced the survivors away from their home, and to this day the government won't let them come back.",
+      "description": "The Kolyma Highway near the town of Oymkakon, known as the Road of Bones, was one of the most important places for Russia to defend during the Crisis, as the only viable access point to the Sea of Okhotsk, putting the isolated population in danger of becoming unreachable. When the RDF planned to deploy a Svyatogor to the town, Ksenia Popova, a local from Oymkakon took her chance to come back and defend her hometown.\n\nThe town was mostly spared from the Crisis, due to the non-existing Omnic presence and the isolation of the place, but one fateful day Anubis ordered a full-on attack, commanded by Ravager units. As the evacuation effort turned dire, Ksenia was given authorization to do anything it took to stop the robotic advance, and after finding herself outnumbered and outgunned, she decided to charge into a small nuclear plant, sacrificing her own life to ensure the blast from the explosion destroyed all Omnics in the area. \n\nThe explosion created the Oymyakon exclusion zone, a radiated field unsuitable for both lifeforms and machines, as the radiation would fry their circuit without sufficient shielding. Ksenia's sacrifice saved hundreds and prevented Anubis from ever being able to reach Okhotsk again, but at the same time, it displaced the survivors away from their home, and to this day the government won't let them come back.",
       "image": "",
       "lat": 63.4629473,
       "lon": 142.7869693,
@@ -4771,6 +4826,12 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Unleashes hell i nthe road of Bones"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Svyatogors",
+          "theaterId": "7a0e092b-bb9a-4b78-b1d1-b8e64e93c304"
         }
       ]
     },
@@ -5060,6 +5121,12 @@
           "country": "Venture,",
           "reasoning": "Sloan Cameron is Born"
         }
+      ],
+      "commentary": [
+        {
+          "name": "What part of Canada",
+          "theaterId": "e7d01f4a-83e8-4d09-830a-fd012b37fa1b"
+        }
       ]
     },
     {
@@ -5205,6 +5272,20 @@
           "locationName": "",
           "country": "Tatenda,",
           "reasoning": "Revived by Tamuka's technology without knowing the cost"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Skincare Line",
+          "theaterId": "fdd5bddf-6b82-474c-b189-b55ff109bd78"
+        },
+        {
+          "name": "Renewed Life",
+          "theaterId": "5a348ea8-14fa-47ba-9821-629ef85665f0"
+        },
+        {
+          "name": "Sacrifice",
+          "theaterId": "d1f62435-37e8-44a3-b548-23e327d71741"
         }
       ]
     },
@@ -5996,7 +6077,7 @@
       "name": "Operation White Dome",
       "locationType": "earth",
       "cityDisplayName": "Istanbul, Turkey",
-      "description": "Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resources to match curated teams for different missions, but this ultimately put extra pressure on the Strike team, as they would be ambushed and take heavy fire.\n\n\nThe team was able to overcome the hostile combatant without casualties, but the battle resulted in Lindholm being critically injured, lsoing both an arm and an eye. Wilhelm sustained lesser injuries while trying to stabilize Torbjörn, without his intervention, its likely that Lindholm would have been killed. The mission was a success, and Reinhardt was commended for his bravery at Ana's request, yet this incident highlighted that the Strike team was in need of more recruits, and with the blessing of the UN, Morrison began expansion across the entire organization.",
+      "description": "Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resources to match curated teams for different missions, but this ultimately put extra pressure on the Strike team, as they would be ambushed and take heavy fire.\n\nThe team was able to overcome the hostile combatant without casualties, but the battle resulted in Lindholm being critically injured, lsoing both an arm and an eye. Wilhelm sustained lesser injuries while trying to stabilize Torbjörn, without his intervention, its likely that Lindholm would have been killed. The mission was a success, and Reinhardt was commended for his bravery at Ana's request, yet this incident highlighted that the Strike team was in need of more recruits, and with the blessing of the UN, Morrison began expansion across the entire organization.",
       "image": "",
       "lat": 41.006381,
       "lon": 28.9758715,
@@ -6040,7 +6121,14 @@
       ],
       "yearEnd": null,
       "commentary": [
-        "Missing an Eye"
+        {
+          "name": "Missing an Eye",
+          "theaterId": "b9b3f96e-72e2-4fa3-ab4d-1961c7600d78"
+        },
+        {
+          "name": "Inefficient",
+          "theaterId": "f765a2cf-6192-4b61-bc1d-01d97f18d2e9"
+        }
       ]
     },
     {
@@ -6150,15 +6238,29 @@
         }
       ],
       "commentary": [
-        "Pig Boy",
-        "Junkers giving you trouble",
+        {
+          "name": "Pig Boy",
+          "theaterId": "91a4404b-3cfa-45ee-88c4-fc99058a1eeb"
+        },
+        {
+          "name": "Junkers giving you trouble",
+          "theaterId": "ed578d95-6c3d-4a36-bb59-c39066351f83"
+        },
         {
           "name": "Winston · Hm, better keep an eye on the Omnium radiation levels.",
-          "label": "Omnium Radiation"
+          "label": "Omnium Radiation",
+          "theaterId": "chatter-winston",
+          "lineId": "428a95e8-f919-4909-894e-121b4029a0c5"
         },
         {
           "name": "Hanzo · Junkertown or New Junk City — A less honorable place is difficult to imagine.",
-          "label": "Difficult to Imagine"
+          "label": "Difficult to Imagine",
+          "theaterId": "chatter-hanzo",
+          "lineId": "1bc42d14-37bc-41ae-b1f9-f0829eb070cb"
+        },
+        {
+          "name": "Quieter Times",
+          "theaterId": "2eb6c544-b6af-4c97-9982-575f934817ec"
         }
       ]
     },
@@ -6623,6 +6725,12 @@
           "country": "Hazard",
           "reasoning": "Findlay Docherty is Born"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Soldier Parents",
+          "theaterId": "9f828c2d-9bb6-4626-a692-d1f28431fe2e"
+        }
       ]
     },
     {
@@ -6684,14 +6792,17 @@
           "theaterId": "0fef6883-85a7-4812-b4b3-4701a42e9f82"
         },
         {
-          "name": "Cassidy · Things were a lot simpler when I was robbing banks with the Deadlock Gang",
+          "name": "Cassidy",
           "label": "Robbing Banks",
-          "theaterId": "chatter-cassidy",
-          "lineId": "77762c4f-c660-4d40-9298-2d89b84cf07a"
+          "theaterId": "chatter-cassidy"
         },
         {
           "name": "Dynamite Brains",
           "theaterId": "3628a3bb-9498-4c4d-8a48-008b51f914cd"
+        },
+        {
+          "name": "Ambitious One",
+          "theaterId": "1046f236-1402-4c58-be20-1e3e55676d51"
         }
       ]
     },
@@ -6860,6 +6971,16 @@
           "locationName": "",
           "country": "Mondatta",
           "reasoning": "Spiritual leader both monks follow"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Counting Stars",
+          "theaterId": "08cc5835-354f-4be9-857b-e22143f016b2"
+        },
+        {
+          "name": "New Sadness",
+          "theaterId": "00184b37-4d5c-4b41-ae45-fd5a4a0ff994"
         }
       ]
     },
@@ -7697,10 +7818,17 @@
       ],
       "yearStart": 2053,
       "commentary": [
-        "Your daugther",
+        {
+          "name": "Your daugther",
+          "theaterId": "d9baa6cc-1e3a-44de-ba9c-62c227c2c083"
+        },
         {
           "name": "Ana · A mother's work is never done...",
           "label": "Mothers work"
+        },
+        {
+          "name": "New Hobby",
+          "theaterId": "d6eb09d7-e7d2-4f0e-87f3-7740103a1b1f"
         }
       ]
     },
@@ -7747,6 +7875,12 @@
           "locationName": "",
           "country": "Kendra",
           "reasoning": "Evades her captors at every turn"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Young for Her age",
+          "theaterId": "59e11180-41b1-4832-8c54-25afb5aba949"
         }
       ]
     },
@@ -8612,14 +8746,27 @@
         }
       ],
       "commentary": [
-        "Happy to Kill",
+        {
+          "name": "Happy to Kill",
+          "theaterId": "54205221-2944-442e-b312-ad0be27ab60c"
+        },
         {
           "name": "Shion · Who should I kill first?",
           "label": "Who to Kill"
         },
         {
           "name": "Shion · Hanamura or Hanaoka — So peaceful here. I should change that.",
-          "label": "So Peaceful"
+          "label": "So Peaceful",
+          "theaterId": "chatter-shion",
+          "lineId": "37de954b-259a-4dd0-b153-68aa3fe7c17d"
+        },
+        {
+          "name": "Power with Humans",
+          "theaterId": "003fa7e9-e073-41a2-ac3d-657e438c1082"
+        },
+        {
+          "name": "Gory Details",
+          "theaterId": "47d7ee00-1c31-45f0-a307-07cfdbacb74f"
         }
       ]
     },
@@ -8916,14 +9063,28 @@
       "commentary": [
         {
           "name": "Genji · Hanamura — Attack — I passed many an hour of my misspent youth here.",
-          "label": "Misspent youth"
+          "label": "Misspent youth",
+          "theaterId": "chatter-genji",
+          "lineId": "da54863f-ceb7-47fc-a487-c66dab9ef73d"
         },
         {
           "name": "Genji · Neon Junction — I still recall running from home to visit the arcades here... (sigh) If only they'd let me stay.",
-          "label": "Visiting Arcades"
+          "label": "Visiting Arcades",
+          "theaterId": "chatter-genji",
+          "lineId": "02b16dc3-511e-4e50-b12d-a6377c1f96f4"
         },
-        "Going to the Arcade",
-        "Sparrow"
+        {
+          "name": "Going to the Arcade",
+          "theaterId": "deb51b35-84ba-4301-bf16-2744046f46af"
+        },
+        {
+          "name": "Sparrow",
+          "theaterId": "c53f3d80-0607-421b-a5e5-f91166eca7ea"
+        },
+        {
+          "name": "Ninja Attacks",
+          "theaterId": "a55d52d2-8952-4e9a-9fac-f50af12bbdba"
+        }
       ]
     },
     {
@@ -9048,7 +9209,7 @@
     },
     {
       "name": "When you Wish",
-      "description": "Upon returning from Australia, Vivian would be surprised when she was dispatched to a smaller, though not less vital mission. She had been requested by a charity organization dedicated to creating memories for children in critical condition. Jada Levine, a twelve-year-old girl with a more aggressive case of the disease Vivian once had faced, was now moved to palliative care, and qualified for the organization's program. Her wish? You spend a day with Vivian Chase, the savior of Canada and her personal hero.\n\nVivian accepted, and two weeks later made the trip to Toronto, where the little kid was infatuated with Overwatch, and with Sojourn especially. The exact details of the meeting remain confidential and undocumented, except for Jada's own social media, filled with pictures of herself and her hero, during the last day of her life. Those pictures made the matter public, and Vivian came under fire for not bringing Mercy, the new team member hailed as a miracle worker, alongside her.  \n\n\nBut Angela herself answered to this criticism, after getting permission from the parents to comment on her condition. The child was in a far too critical state, her condition too advanced, making surgeons unable to use cybernetics as an option to save her life. Nanobiotics as well had been taken to their extreme during the treatment. Even miracles have their limits. There was nothing Angela could have done, other than pull focus towards herself. Following this occasion, Chase became a far more vocal advocate for research into treatments for her disease, all the way through the end of her days in Overwatch.",
+      "description": "Upon returning from Australia, Vivian would be surprised when she was dispatched to a smaller, though not less vital mission. She had been requested by a charity organization dedicated to creating memories for children in critical condition. Jada Levine, a twelve-year-old girl with a more aggressive case of the disease Vivian once had faced, was now moved to palliative care, and qualified for the organization's program. Her wish? You spend a day with Vivian Chase, the savior of Canada and her personal hero.\n\nVivian accepted, and two weeks later made the trip to Toronto, where the little kid was infatuated with Overwatch, and with Sojourn especially. The exact details of the meeting remain confidential and undocumented, except for Jada's own social media, filled with pictures of herself and her hero, during the last day of her life. Those pictures made the matter public, and Vivian came under fire for not bringing Mercy, the new team member hailed as a miracle worker, alongside her.  \n\nBut Angela herself answered to this criticism, after getting permission from the parents to comment on her condition. The child was in a far too critical state, her condition too advanced, making surgeons unable to use cybernetics as an option to save her life. Nanobiotics as well had been taken to their extreme during the treatment. Even miracles have their limits. There was nothing Angela could have done, other than pull focus towards herself. Following this occasion, Chase became a far more vocal advocate for research into treatments for her disease, all the way through the end of her days in Overwatch.",
       "locationType": "earth",
       "lat": 43.6532,
       "lon": -79.3832,
@@ -9083,6 +9244,12 @@
           "locationName": "",
           "country": "Mercy,",
           "reasoning": "Answers to public criticism for her lack of involvement"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Good with Cards",
+          "theaterId": "aeb81498-dea9-44fe-b4b0-1e872e75cc2a"
         }
       ]
     },
@@ -9741,6 +9908,10 @@
         {
           "name": "Optimism",
           "theaterId": "39c2ef45-f0c0-499f-acf8-16af405f45d7"
+        },
+        {
+          "name": "Mina Liao",
+          "theaterId": "c0858209-ad62-4d61-9cde-a56337d91c6d"
         }
       ]
     },
@@ -9810,6 +9981,10 @@
         {
           "name": "Friend's Advice",
           "theaterId": "1f62a5fc-0b18-4c39-9ec2-69123234c6d1"
+        },
+        {
+          "name": "Flyng Experience",
+          "theaterId": "229f1845-f327-4204-8d66-dd430f2f3e43"
         }
       ]
     },
@@ -9882,7 +10057,18 @@
         "Tokyo crime rates increase twice as fast this last month"
       ],
       "commentary": [
-        "Cursed Boy"
+        {
+          "name": "Cursed Boy",
+          "theaterId": "34fe0783-0d09-407e-839e-417af86103c0"
+        },
+        {
+          "name": "Lucky Amulet",
+          "theaterId": "e09f263a-5b3c-4213-a74d-4fccb6264353"
+        },
+        {
+          "name": "Lost Amulet",
+          "theaterId": "36d4499a-35bb-4bf8-9e4d-de3b391347f3"
+        }
       ]
     },
     {
@@ -9968,6 +10154,14 @@
         {
           "name": "In your Shadow",
           "theaterId": "92fa904d-a45c-4ea2-993f-83965f7a03ce"
+        },
+        {
+          "name": "Built an Empire",
+          "theaterId": "bd7e0d4a-e99b-4954-8fa8-200f8f5dd16f"
+        },
+        {
+          "name": "Fearing Death",
+          "theaterId": "c6554f6c-671a-4760-a644-bafdd166ecc1"
         }
       ]
     },
@@ -10157,6 +10351,10 @@
         {
           "name": "Without metal",
           "theaterId": "bce1aca5-dcc3-4d93-8eb3-b62070dda88b"
+        },
+        {
+          "name": "Staying late",
+          "theaterId": "1f89314c-40af-40a5-8c76-7fcaabd2bf1f"
         }
       ]
     },
@@ -10234,6 +10432,10 @@
         {
           "name": "Waned over time",
           "theaterId": "a8bbc15c-0710-4c5d-9688-b74f3f6dd0a6"
+        },
+        {
+          "name": "Body Counts",
+          "theaterId": "9b9936f8-9bc5-41a1-987e-21829b09ad4d"
         }
       ]
     },
@@ -10494,6 +10696,14 @@
         {
           "name": "No Honor",
           "theaterId": "ed7553b2-aa3d-408f-9a1c-22e4b184a8b2"
+        },
+        {
+          "name": "Ugly Castle",
+          "theaterId": "8fb55be4-63d7-4f36-b814-805e40a48409"
+        },
+        {
+          "name": "What would father think",
+          "theaterId": "060e66f4-3f16-47bc-853e-4a6096614aef"
         }
       ]
     },
@@ -10560,6 +10770,10 @@
         {
           "name": "Rabbit Experiments",
           "theaterId": "5ffe3734-a50e-4ccc-b35b-ba6fe6ba53ac"
+        },
+        {
+          "name": "Narrow Opinion",
+          "theaterId": "52efb924-2d64-4ac0-9fdb-5c5e5e2c9fdc"
         }
       ]
     },
@@ -10742,6 +10956,14 @@
         {
           "name": "Revenge from the Doctor",
           "theaterId": "a84cbea8-b50e-4770-8272-54667fd7cb0b"
+        },
+        {
+          "name": "Molecular Makeup",
+          "theaterId": "c7f455fb-5e11-4f75-8891-3f6e3e96c478"
+        },
+        {
+          "name": "Best Mistake",
+          "theaterId": "0cf460a8-8ee6-40e2-8b90-83826224b89c"
         }
       ]
     },
@@ -10949,7 +11171,13 @@
       "commentary": [
         {
           "name": "Kiriko · Neon Junction — Toshiro Yamagami... I will definitely rescue you.",
-          "label": "Rescue you"
+          "label": "Rescue you",
+          "theaterId": "chatter-kiriko",
+          "lineId": "6882a768-5d3e-4e67-b2ee-3edda8d490c8"
+        },
+        {
+          "name": "You will Pay",
+          "theaterId": "08acb7e7-46c5-4f88-9e6c-6d953608352d"
         }
       ]
     },
@@ -11131,10 +11359,27 @@
       ],
       "commentary": [
         {
-          "name": "Venture · Eichenwalde, Runasapi, or Temple of Anubis — Ilios and Throne of Anubis are mistakenly not included and await a fix. — The world lost a lot of history during the Omnic Crisis. But I know we'll recover everything we can!",
-          "label": "Lost History"
+          "name": "Venture · Eichenwalde, Runasapi, or Temple of Anubis — Ilios and Throne of Anubis are mistakenly not included and await a fix. — The world lost a lot of history during the Crisis. But I know we'll recover everything we can",
+          "label": "Lost History",
+          "theaterId": "chatter-venture",
+          "lineId": "2268c532-3767-4647-9675-18bd978d771e"
         },
-        "Nicknames"
+        {
+          "name": "Nicknames",
+          "theaterId": "fb1eb607-aa29-4609-bf9e-e810d8da430a"
+        },
+        {
+          "name": "Module Overload",
+          "theaterId": "664f3224-fe49-4031-9bef-532d8b2d61b7"
+        },
+        {
+          "name": "Digging up Old problems",
+          "theaterId": "393cc56a-bc22-4e7f-8d67-a5df20658610"
+        },
+        {
+          "name": "Worry about you",
+          "theaterId": "8a0d9807-afb3-483b-9a8d-65af54752b9f"
+        }
       ]
     },
     {
@@ -11260,7 +11505,18 @@
         }
       ],
       "commentary": [
-        "Hard to Talk"
+        {
+          "name": "Hard to Talk",
+          "theaterId": "9c315d3c-d604-4049-97e8-4775b2c90a06"
+        },
+        {
+          "name": "Never Compare",
+          "theaterId": "4bd8815d-bf9e-4f82-8e68-2259a3014a3d"
+        },
+        {
+          "name": "Dismal Blades",
+          "theaterId": "fae5ace1-83c2-4006-8586-c0c27ca11e59"
+        }
       ]
     },
     {
@@ -11335,10 +11591,6 @@
         {
           "name": "How Did You Escape",
           "theaterId": "4d12707d-1e9d-4c4c-aaf7-d4a361e4ef2f"
-        },
-        {
-          "name": "Accident",
-          "theaterId": "0cf936cb-0445-4634-9cfd-06adc5cf5881"
         }
       ]
     },
@@ -11418,6 +11670,14 @@
         {
           "name": "Monkeys with Glasses",
           "theaterId": "8bfa30bb-cc1f-4784-8509-db719db50fd6"
+        },
+        {
+          "name": "No one Believes",
+          "theaterId": "251baeae-d2d4-4d12-ae00-f3d22494a6ed"
+        },
+        {
+          "name": "Filling her head",
+          "theaterId": "22986103-720d-4ee3-b87e-c21f99044dff"
         }
       ]
     },
@@ -11632,6 +11892,10 @@
         {
           "name": "Hamster in the Mech",
           "theaterId": "d21b0a38-c64b-4016-adf2-254206fe3667"
+        },
+        {
+          "name": "Why a Ball?",
+          "theaterId": "72fb2886-0ef8-43b1-b578-18aed65ea3ca"
         }
       ]
     },
@@ -11728,6 +11992,10 @@
         {
           "name": "Fond of you",
           "theaterId": "a55b2cc0-069b-41e2-9544-b927985d6c6a"
+        },
+        {
+          "name": "Progress by Chaos",
+          "theaterId": "53527426-d988-4b47-a73e-3eca7574261f"
         }
       ]
     },
@@ -11886,6 +12154,10 @@
         {
           "name": "Sorry for your Father",
           "theaterId": "acb67145-f117-4953-b454-f142ac8d62f4"
+        },
+        {
+          "name": "All my tricks",
+          "theaterId": "cec84c0c-8fd3-44c1-8185-77be0290b87b"
         }
       ]
     },
@@ -12516,6 +12788,14 @@
         {
           "name": "The old Gabriel",
           "theaterId": "0a3354b4-3701-4547-84ae-22718b604b5c"
+        },
+        {
+          "name": "More Talkative",
+          "theaterId": "ed1594ec-4411-4e50-ae07-6f8cb108e8b7"
+        },
+        {
+          "name": "Changing the Past",
+          "theaterId": "d4edd85d-1384-4dec-805c-36a90bdb1acc"
         }
       ]
     },
@@ -12576,8 +12856,18 @@
         "Talon kidnaps ballerina Prima donna"
       ],
       "commentary": [
-        "Gérard's Grave",
-        "A fool"
+        {
+          "name": "Gérard's Grave",
+          "theaterId": "aac2369a-7cbc-40e2-9f7a-e8b0498b6868"
+        },
+        {
+          "name": "A fool",
+          "theaterId": "a64d016b-d70b-4a09-b150-29e14378408a"
+        },
+        {
+          "name": "At Luna's",
+          "theaterId": "add8bcfd-3544-41e2-8480-f2380f87aa8e"
+        }
       ]
     },
     {
@@ -13243,6 +13533,10 @@
         {
           "name": "A Hero to us",
           "theaterId": "19a136f3-02cb-4dd7-a5a8-f4510c8f304e"
+        },
+        {
+          "name": "Next Funeral",
+          "theaterId": "b804c52f-749f-441a-bb5b-8adf3748a74f"
         }
       ]
     },
@@ -13539,8 +13833,18 @@
         "Doomfist is finally defeated in Singapore"
       ],
       "commentary": [
-        "Stopped you once",
-        "Beaten by a Monkey"
+        {
+          "name": "Stopped you once",
+          "theaterId": "a47d1bbf-4e9d-4bde-bced-3b185ddbe4ee"
+        },
+        {
+          "name": "Beaten by a Monkey",
+          "theaterId": "b03a6a09-b749-43c4-9f12-c23afb13b8f5"
+        },
+        {
+          "name": "Resilient",
+          "theaterId": "6c5874ad-aee2-4d15-9fab-eb70e92e3188"
+        }
       ]
     },
     {
@@ -13777,6 +14081,14 @@
         {
           "name": "What happened",
           "theaterId": "5a6bbd9b-4d96-48e8-bdc7-f4a9c25d3163"
+        },
+        {
+          "name": "An argument",
+          "theaterId": "b0a3f4b7-1992-461d-9e0f-6839d1d48bfe"
+        },
+        {
+          "name": "Enhanced Soldiers",
+          "theaterId": "79cc87e3-d778-421d-a586-385c55cd5a52"
         }
       ]
     },
@@ -13925,6 +14237,22 @@
         {
           "name": "Man in the Mirror",
           "theaterId": "c80b8dd9-0b74-412d-a7b2-f8437e6ecec6"
+        },
+        {
+          "name": "Poker Face",
+          "theaterId": "7b0ea17c-481c-4905-b1aa-51cc5eafa88b"
+        },
+        {
+          "name": "Different man",
+          "theaterId": "e2448f1d-f098-4928-a178-ddd5eef7de04"
+        },
+        {
+          "name": "Duality of Existence",
+          "theaterId": "d20ffb8a-c873-4ac7-a92e-5b2166d45509"
+        },
+        {
+          "name": "At Peace",
+          "theaterId": "6aec7549-f7e9-4ac0-8331-784a44e14d41"
         }
       ]
     },
@@ -14070,11 +14398,23 @@
       ],
       "commentary": [
         {
-          "name": "Pharah · Oasis — City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because the wolfbats escaped... again.",
-          "label": "Wolfbats"
+          "name": "Pharah · Oasis — City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because the wolfbats",
+          "label": "Wolfbats",
+          "theaterId": "chatter-pharah",
+          "lineId": "469a73bb-3865-4a8d-896c-d322315676ca"
         },
-        "Joining Helix",
-        "Helix mercenaries"
+        {
+          "name": "Joining Helix",
+          "theaterId": "b9c03d27-dfb8-4246-8ee5-d0159652345c"
+        },
+        {
+          "name": "Helix mercenaries",
+          "theaterId": "59c58915-b2d3-494a-9c39-f3134fbd84f6"
+        },
+        {
+          "name": "Mark VI Suit",
+          "theaterId": "8c80c599-875e-4b52-8935-6c5e8c45396d"
+        }
       ]
     },
     {
@@ -14208,11 +14548,30 @@
         }
       ],
       "commentary": [
-        "Sigma's Brain",
-        "Stressors",
-        "Snap out of it",
-        "Are you happy with that?",
-        "Non invasive Tests"
+        {
+          "name": "Sigma's Brain",
+          "theaterId": "79f5f3ca-a799-4c2b-8861-54eadd3480b8"
+        },
+        {
+          "name": "Stressors",
+          "theaterId": "a5e2f77a-de55-46d6-9d06-6bbda3e8b56f"
+        },
+        {
+          "name": "Snap out of it",
+          "theaterId": "95843e91-f69c-4049-a03d-58418e213787"
+        },
+        {
+          "name": "Are you happy with that?",
+          "theaterId": "26733b06-e2c2-40a5-bfa1-cd053df6187e"
+        },
+        {
+          "name": "Non invasive Tests",
+          "theaterId": "84f0d763-571a-437a-a9f9-6dc0b1428733"
+        },
+        {
+          "name": "Wandering off",
+          "theaterId": "228dba82-1c83-4adb-8007-85fbba76a754"
+        }
       ]
     },
     {
@@ -14416,11 +14775,30 @@
         }
       ],
       "commentary": [
-        "Next Funeral",
-        "Masked Vigilante",
-        "Always Worry",
-        "You were Dead",
-        "You'll get bored"
+        {
+          "name": "Cursed artifacts",
+          "theaterId": "f0acc3f2-e576-439b-b61b-50f95ba78a43"
+        },
+        {
+          "name": "Masked Vigilante",
+          "theaterId": "b8fd9ed4-6f00-499d-ad23-6aae672df9c5"
+        },
+        {
+          "name": "Always Worry",
+          "theaterId": "d322c0ab-5d11-40de-b68e-9470f8ac2ac3"
+        },
+        {
+          "name": "You were Dead",
+          "theaterId": "2f00dd04-7678-40b7-b5d5-41ebfac6861e"
+        },
+        {
+          "name": "You'll get bored",
+          "theaterId": "16a30e85-74f8-4725-b0c5-e006e82b5de8"
+        },
+        {
+          "name": "Biotic Misuse",
+          "theaterId": "230112c2-d8d6-44b9-ac3e-a0ca5fc4bfc4"
+        }
       ]
     },
     {
@@ -14696,7 +15074,14 @@
         "Vishkar to rebuild Rio's city center and favelas in the new Paraiso Project"
       ],
       "commentary": [
-        "Deprioritized"
+        {
+          "name": "Deprioritized",
+          "theaterId": "ef59089f-2bf7-4a2e-9cad-05d7a6416f01"
+        },
+        {
+          "name": "Vigilantes",
+          "theaterId": "4414331a-f4a0-41a1-963d-bd4ddc8363b0"
+        }
       ]
     },
     {
@@ -14766,7 +15151,7 @@
     },
     {
       "name": "Strongest Woman Alive",
-      "description": "Growing up in the depths of Siberia, Aleksandra Zaryanova lost her father in the crisis, and was left to take care of her sisters. Swearing to become stronger to protect her family and help her community rebuild, she began training her body, and quickly developed a passion for weightlifting.\n\nAs she grew older, she was identified by the national athletics program as a potential star, and taken into extensive body-building programs to represent the country as a professional athlete. Going simply by Zarya, she became known as the strongest woman alive, with a lifting record of 512kgs, shattering the highest Olympic score in her category.\n\n\nZarya would go on to participate in many world tournaments, including the Olympic Summer Games in New York, where she won gold in spite of having a cold and a thorn trapezius. Having become an international star, the name of Zaryanova was proudly admired all across Russia, and her family's expenses were well taken care of by the fame of their big sister, the strongest woman in the world.",
+      "description": "Growing up in the depths of Siberia, Aleksandra Zaryanova lost her father in the crisis, and was left to take care of her sisters. Swearing to become stronger to protect her family and help her community rebuild, she began training her body, and quickly developed a passion for weightlifting.\n\nAs she grew older, she was identified by the national athletics program as a potential star, and taken into extensive body-building programs to represent the country as a professional athlete. Going simply by Zarya, she became known as the strongest woman alive, with a lifting record of 512kgs, shattering the highest Olympic score in her category.\n\nZarya would go on to participate in many world tournaments, including the Olympic Summer Games in New York, where she won gold in spite of having a cold and a thorn trapezius. Having become an international star, the name of Zaryanova was proudly admired all across Russia, and her family's expenses were well taken care of by the fame of their big sister, the strongest woman in the world.",
       "locationType": "earth",
       "lat": 0,
       "lon": 0,
@@ -14800,12 +15185,16 @@
       ],
       "commentary": [
         {
-          "name": "Lifting",
-          "theaterId": "2c059852-c9ad-4ce7-a8a6-3d81e27c74e8"
+          "name": "Life Before Overwatch",
+          "theaterId": "20502e70-653a-482f-8b0e-2ad4c80489f2"
         },
         {
           "name": "Huge fan",
           "theaterId": "ed39fb5c-2b90-4278-a65f-6d6f527f82c6"
+        },
+        {
+          "name": "Lifting",
+          "theaterId": "2c059852-c9ad-4ce7-a8a6-3d81e27c74e8"
         }
       ]
     },
@@ -15103,9 +15492,18 @@
       "commentary": [
         {
           "name": "Zarya · Volskaya Industries — Katya is a hero to my people. We must protect what she has built.",
-          "label": "A Hero"
+          "label": "A Hero",
+          "theaterId": "chatter-zarya",
+          "lineId": "dbce2f2d-ec90-4856-99c7-1874a7f36484"
         },
-        "Volskaya's Mechs"
+        {
+          "name": "Volskaya's Mechs",
+          "theaterId": "47f2ef1a-fbe8-4ee6-b5ad-6df7534daffd"
+        },
+        {
+          "name": "Discipline",
+          "theaterId": "f41c79c7-a0ef-4da7-be74-2ce5ac4077a8"
+        }
       ]
     },
     {
@@ -15169,6 +15567,14 @@
         {
           "name": "Anubis's Jailers",
           "theaterId": "746de51e-ab04-4d69-967a-6426e8d6315f"
+        },
+        {
+          "name": "His own life",
+          "theaterId": "753fb99e-b592-42f6-8471-80b18c2a7a1d"
+        },
+        {
+          "name": "Anubis Chamber",
+          "theaterId": "a2d7c63c-9b59-45be-906f-8cd2883abc33"
         }
       ]
     },
@@ -15390,6 +15796,10 @@
         {
           "name": "Confidentiality",
           "theaterId": "60848070-200e-49c6-aad2-16f8aaa90502"
+        },
+        {
+          "name": "Bioarchaeology",
+          "theaterId": "6d0658aa-a1e8-422c-9e78-6f0e57444758"
         }
       ]
     },
@@ -15446,7 +15856,7 @@
       "name": "Legend of the Junker Queen",
       "locationType": "earth",
       "cityDisplayName": "Outback Wasteland, Australia",
-      "description": "Odessa was infamous in the Outback even before becoming the Junker Queen, with many legends telling of her journey to the Burninglands region, where she single-handedly destroyed all 5 of the metal demons, giant Omnic abominations formed into reassembled parts, that cursed anyone dating enough to wonder into their territory. While the veracity of these legends and the period they took place in are still not set in stone, one aspect of the story is indisputably true: the Queen's distaste for Omnics.\n\nHaving grown up as a waste lander, Odessa ran into many Feral Omnics over the years, and it shaped in her the idea of taking all you can in order to survive. Now as queen, her thirst for conquest was all the strongest, and having the means to expand her domain, she began to train Junkers from an early age to fight the many dangers of the Outback, including the Omnic Menace, as she called it. \n\n\nFor years, Odessa, Meri and even Hammond would join the Scavenger caravans during their many raids into the wasteland with the goal of finding and exterminating any remaining Feral Omnics in the area, diminishing their numbers to near extinction, which only antagonized the few survivors even further. Still, this was not enough to satiate the Queen, who was now waiting to find the next target in her quest to rule the whole world. In the eyes of the Queen, the throne was where she said it was, and her kingdom started and ended wherever she felt like it, so while the Junkers are bound to the Outback right now, if the chance presented itself, they could begin to claim the rest of the world as their own.",
+      "description": "Odessa was infamous in the Outback even before becoming the Junker Queen, with many legends telling of her journey to the Burninglands region, where she single-handedly destroyed all 5 of the metal demons, giant Omnic abominations formed into reassembled parts, that cursed anyone dating enough to wonder into their territory. While the veracity of these legends and the period they took place in are still not set in stone, one aspect of the story is indisputably true: the Queen's distaste for Omnics.\n\nHaving grown up as a waste lander, Odessa ran into many Feral Omnics over the years, and it shaped in her the idea of taking all you can in order to survive. Now as queen, her thirst for conquest was all the strongest, and having the means to expand her domain, she began to train Junkers from an early age to fight the many dangers of the Outback, including the Omnic Menace, as she called it. \n\nFor years, Odessa, Meri and even Hammond would join the Scavenger caravans during their many raids into the wasteland with the goal of finding and exterminating any remaining Feral Omnics in the area, diminishing their numbers to near extinction, which only antagonized the few survivors even further. Still, this was not enough to satiate the Queen, who was now waiting to find the next target in her quest to rule the whole world. In the eyes of the Queen, the throne was where she said it was, and her kingdom started and ended wherever she felt like it, so while the Junkers are bound to the Outback right now, if the chance presented itself, they could begin to claim the rest of the world as their own.",
       "image": "",
       "lat": -20.7274568,
       "lon": 139.49896,
@@ -15508,6 +15918,10 @@
         {
           "name": "In a Dream",
           "theaterId": "806c9495-6205-4c7e-9b2d-245f5255de6c"
+        },
+        {
+          "name": "Gimmicky",
+          "theaterId": "7eff5b2a-8883-4baa-b472-930161d39788"
         }
       ]
     },
@@ -15687,9 +16101,22 @@
         }
       ],
       "commentary": [
-        "Where have you been",
-        "Coming with Us",
-        "Eager to see you"
+        {
+          "name": "Where have you been",
+          "theaterId": "d8153b5b-a9ea-4707-bf2f-32a532da4b29"
+        },
+        {
+          "name": "Coming with Us",
+          "theaterId": "33131daf-ebda-4c8b-acdd-df78fe84108d"
+        },
+        {
+          "name": "Eager to see you",
+          "theaterId": "0b0693c2-87b3-43af-8537-d1437b4c8cd6"
+        },
+        {
+          "name": "Pick Something Up",
+          "theaterId": "5bfe9dfd-98fb-4753-8577-8b6257254b78"
+        }
       ]
     },
     {
@@ -15988,6 +16415,14 @@
         {
           "name": "Just your Type",
           "theaterId": "059de850-0399-4dba-82d2-af077b5239e8"
+        },
+        {
+          "name": "Like mother like daughter",
+          "theaterId": "331c30ee-2f48-4483-91a3-32c9154652a0"
+        },
+        {
+          "name": "What you wish for",
+          "theaterId": "d37b192c-e418-4815-b196-2e5df7f5af7f"
         }
       ]
     },
@@ -16348,13 +16783,28 @@
         }
       ],
       "commentary": [
-        "Resistance",
+        {
+          "name": "Resistance",
+          "theaterId": "d6bba819-4f2a-41ed-80d0-8466c4df2f98"
+        },
         {
           "name": "Domina · Paraíso — eliminating Lúcio — They'll idolize anyone these days...",
-          "label": "Idols"
+          "label": "Idols",
+          "theaterId": "chatter-domina",
+          "lineId": "336fa36c-7c35-405f-b918-8622b6ccd42e"
         },
-        "People should be free",
-        "What you stole"
+        {
+          "name": "People should be free",
+          "theaterId": "b702ed02-e032-4dc9-9d2a-52e0a394578e"
+        },
+        {
+          "name": "What you stole",
+          "theaterId": "d014514b-3169-4ede-91fe-475970110165"
+        },
+        {
+          "name": "My Dad Invented it",
+          "theaterId": "4c4efb0f-0fdc-47c8-ac6e-c337fe3ece4f"
+        }
       ]
     },
     {
@@ -16774,6 +17224,10 @@
         {
           "name": "Not Pity",
           "theaterId": "4331ce97-b5da-48e3-aeb1-79eaa2760579"
+        },
+        {
+          "name": "Playing Hero",
+          "theaterId": "f7090d20-a341-4345-81ce-5f16809049d6"
         }
       ]
     },
@@ -16887,15 +17341,27 @@
         }
       ],
       "commentary": [
-        "Unlocking",
+        {
+          "name": "Unlocking",
+          "theaterId": "01a318cf-e669-49e4-a74d-02fde0dc112e"
+        },
         {
           "name": "Sombra · Hah, let's get started. Got a lot of systems that need hacking.",
           "label": "Hacking Systems"
         },
-        "Sharing",
+        {
+          "name": "Sharing",
+          "theaterId": "97559ffa-83f4-43d8-825d-9ad5e1ab40cd"
+        },
         {
           "name": "Sombra · Dorado — LumériCo. (chuckles)",
-          "label": "Lumérico"
+          "label": "Lumérico",
+          "theaterId": "chatter-sombra",
+          "lineId": "b4221fca-f0b9-46fd-8ca4-ae0a7a8886b6"
+        },
+        {
+          "name": "Not telling you",
+          "theaterId": "5835ff8d-59e3-49d2-b3a0-dd70d541b489"
         }
       ]
     },
@@ -16974,11 +17440,25 @@
         "Mondatta Assassinated in Kings Row, Overwatch agent spotted on the scene"
       ],
       "commentary": [
-        "Blaming yourself",
-        "All Responsible",
+        {
+          "name": "Blaming yourself",
+          "theaterId": "26795ed1-ea2a-44da-8995-0e6141d9d20a"
+        },
+        {
+          "name": "All Responsible",
+          "theaterId": "25497607-7640-4f52-85a1-1f00ccd9d15c"
+        },
         {
           "name": "Widowmaker · After the trigger pull lies a blissful eternity-- until the shot connects.",
           "label": "The Trigger"
+        },
+        {
+          "name": "Omnic Suffering",
+          "theaterId": "7190f778-6023-48a8-bb0a-508b5f2035c7"
+        },
+        {
+          "name": "Killing is an art",
+          "theaterId": "79628f32-21f1-4f6b-8921-ef91fe791b08"
         }
       ]
     },
@@ -17132,6 +17612,18 @@
           "label": "Good Ridance",
           "theaterId": "chatter-reaper",
           "lineId": "3501b97d-ea36-4560-8e2a-38581e457977"
+        },
+        {
+          "name": "You want a medal?",
+          "theaterId": "3345e37e-f4ee-490f-91b7-0c495c8f58b6"
+        },
+        {
+          "name": "Do My Job",
+          "theaterId": "ca8e8f5c-f353-4983-86ba-ea74ccac9635"
+        },
+        {
+          "name": "Illegal Activities",
+          "theaterId": "ac7bd131-4534-4ab4-8acb-3ab1a9b03499"
         }
       ]
     },
@@ -17542,8 +18034,8 @@
           "lineId": "84a214d7-01e9-48aa-8f0b-6f5927d66ea7"
         },
         {
-          "name": "Volskaya's Mechs",
-          "theaterId": "47f2ef1a-fbe8-4ee6-b5ad-6df7534daffd"
+          "name": "Gossiping",
+          "theaterId": "72a84e44-342d-42f3-96cc-9ca403401f4f"
         }
       ]
     },
@@ -17701,6 +18193,10 @@
         {
           "name": "Count on Mei",
           "theaterId": "b93d5ed4-a914-4b7c-8924-f31b0eec8194"
+        },
+        {
+          "name": "Mount Washington",
+          "theaterId": "aecb800c-06ed-4f88-a2e9-706d681cee07"
         }
       ]
     },
@@ -17783,12 +18279,20 @@
           "lineId": "0fcb0c3f-7f3f-4d45-bb30-03c3b953247a"
         },
         {
-          "name": "Hotpot",
-          "theaterId": "43b04788-5957-4e1d-91e6-8751ee81e13e"
+          "name": "Come for the Holidays",
+          "theaterId": "c0077c81-3b99-4f95-ae26-fee35a56595d"
         },
         {
           "name": "Catching Up",
           "theaterId": "48203378-1ce7-4f33-a0a0-76041c051924"
+        },
+        {
+          "name": "Presents",
+          "theaterId": "c003233c-09ec-408a-8b16-944894272031"
+        },
+        {
+          "name": "Hotpot",
+          "theaterId": "43b04788-5957-4e1d-91e6-8751ee81e13e"
         }
       ]
     },
@@ -17901,6 +18405,10 @@
         {
           "name": "Talon's Resources",
           "theaterId": "3df199cb-36a4-410b-959a-225c1e2e0345"
+        },
+        {
+          "name": "Dime a Dozen",
+          "theaterId": "f626ceb5-6ffc-4245-95ed-397a7933784b"
         }
       ]
     },
@@ -18194,6 +18702,14 @@
         {
           "name": "Going Soft",
           "theaterId": "7e06494f-fd0b-415f-88c4-9687865ee188"
+        },
+        {
+          "name": "Contact your Wife",
+          "theaterId": "98cfe614-2e8f-4343-91d3-c18180d2a275"
+        },
+        {
+          "name": "Marital Problems",
+          "theaterId": "4d579435-50e2-4698-94af-33906ab804db"
         }
       ]
     },
@@ -18242,8 +18758,14 @@
         }
       ],
       "commentary": [
-        "Owe to the Iris",
-        "Lonely Road",
+        {
+          "name": "Owe to the Iris",
+          "theaterId": "89302b9e-de19-4cab-b9fb-aee4a544f2dc"
+        },
+        {
+          "name": "Lonely Road",
+          "theaterId": "91dd015d-be4c-4a17-ae3b-f2535b1eb70f"
+        },
         {
           "name": "Zenyatta · Do not fear, for growth is always painful.",
           "label": "Growth is Painful"
@@ -18251,6 +18773,14 @@
         {
           "name": "Zenyatta · In times of conflict, one must seek balance.",
           "label": "Seek Balace"
+        },
+        {
+          "name": "Pacifism",
+          "theaterId": "17269bf3-94a0-4485-b6a6-76d9b107d528"
+        },
+        {
+          "name": "Developing Orbs",
+          "theaterId": "c6f2764e-5df5-411c-a6a8-2b834780ddbf"
         }
       ]
     },
@@ -18468,6 +18998,12 @@
       "yearEnd": null,
       "headlines": [
         "Crisis Era Siege Automaton Unit reported in Northern Sweden"
+      ],
+      "commentary": [
+        {
+          "name": "Torbjörn harboring Efi",
+          "theaterId": "8ee00c2a-45dc-4a69-89b7-97602b108f00"
+        }
       ]
     },
     {
@@ -18536,12 +19072,20 @@
       ],
       "commentary": [
         {
-          "name": "A real pity",
-          "theaterId": "b7de6b6b-822a-46bc-9e1a-714c96b8e8d3"
+          "name": "Cover Me",
+          "theaterId": "93f3b692-4ac0-4c03-a165-efea76a819c1"
         },
         {
           "name": "Visiting Max",
           "theaterId": "0639f3cf-4713-4d4d-95a5-8c7dc6be3fd2"
+        },
+        {
+          "name": "A real pity",
+          "theaterId": "b7de6b6b-822a-46bc-9e1a-714c96b8e8d3"
+        },
+        {
+          "name": "Is everything philosophy",
+          "theaterId": "489aa3f0-5f9a-4092-bc49-d60e5cf6ca3d"
         }
       ]
     },
@@ -18630,6 +19174,10 @@
         {
           "name": "Being in Charge",
           "theaterId": "89d0437e-d530-449c-835c-26228ce5cf64"
+        },
+        {
+          "name": "Truce",
+          "theaterId": "122e98ad-1a21-4cea-ba8d-0810e45864f6"
         }
       ]
     },
@@ -18696,6 +19244,12 @@
         {
           "text": "Venture's Adventures",
           "url": "https://www.youtube.com/watch?v=jZgG4CvcZso"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "In ruins",
+          "theaterId": "741156f7-86c3-43c6-935c-b62a495699c3"
         }
       ]
     },
@@ -18837,6 +19391,12 @@
           "country": "Kuroura,",
           "reasoning": "Elders sent help to Kanezaka as a way to deal with the Yokai"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Always Care",
+          "theaterId": "061d172e-ab72-419d-bffa-dec22d8b8d2a"
+        }
       ]
     },
     {
@@ -18964,6 +19524,14 @@
       ],
       "commentary": [
         {
+          "name": "Changing for the Better",
+          "theaterId": "2e752e2b-f68a-4820-8c0e-e63465bb303a"
+        },
+        {
+          "name": "Repaying you",
+          "theaterId": "74b68682-c4bc-49e0-9f28-8f8d05ba8e67"
+        },
+        {
           "name": "Magical Healing",
           "theaterId": "6fb1a4c9-db00-43e6-b819-2808d4baa240"
         }
@@ -19037,6 +19605,22 @@
         {
           "name": "Domineering Beast",
           "theaterId": "3f461069-d276-4d23-88b4-e6d2017530a7"
+        },
+        {
+          "name": "Odd Compliment",
+          "theaterId": "c3ddb63c-c3cc-471a-b9c5-c38828e54164"
+        },
+        {
+          "name": "State of the Art",
+          "theaterId": "a5ff29e4-49eb-4124-b4ff-35ecd28109e4"
+        },
+        {
+          "name": "Terrifying Thought",
+          "theaterId": "ee14a2b4-0a93-4945-84fc-4afd3240b449"
+        },
+        {
+          "name": "Stinkin' Cute",
+          "theaterId": "36f7329a-16b9-4fb4-bf2c-9447d60773ff"
         }
       ]
     },
@@ -19148,6 +19732,16 @@
           "text": "Searching",
           "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Hero to All Russians",
+          "theaterId": "6ba3f20f-e00c-42bf-b04a-cf049c81a441"
+        },
+        {
+          "name": "Deserve each other",
+          "theaterId": "4451c75a-ddd4-425e-ad19-b3b6fe2d1390"
+        }
       ]
     },
     {
@@ -19211,8 +19805,12 @@
           "theaterId": "1526016c-07ca-4e76-bd8e-1514e7b1251f"
         },
         {
-          "name": "Rubbed off",
-          "theaterId": "82f0c7ff-6859-4d33-8ffe-c3385c07fe4a"
+          "name": "Killing Machine",
+          "theaterId": "ed3be022-7bd8-4076-b6a4-aefeccb1e1c2"
+        },
+        {
+          "name": "Taken In an Omnic",
+          "theaterId": "fc070cd3-f251-4bad-89bd-64054489405a"
         }
       ]
     },
@@ -19366,7 +19964,7 @@
     },
     {
       "name": "Dirty Secrets",
-      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
+      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar\n;>5]{|1&(+3^{2\n, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
       "locationType": "earth",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -19425,6 +20023,12 @@
           "locationName": "",
           "country": "Portero,",
           "reasoning": "Refuses to help Zarya and Lynx"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Hide and Seek",
+          "theaterId": "f67cdefd-0965-4075-a3a7-e855e1c5dd71"
         }
       ]
     },
@@ -19559,6 +20163,22 @@
         {
           "name": "On purpose",
           "theaterId": "ad52b742-eb36-49f0-9c55-4100f483a8ff"
+        },
+        {
+          "name": "Not Artifacts",
+          "theaterId": "07d82330-4b1e-4a2e-ba0e-9c001a7e2b3b"
+        },
+        {
+          "name": "Ancient Ruins",
+          "theaterId": "5aa2617b-8f74-41d6-bb9b-6e560bfb7bc4"
+        },
+        {
+          "name": "Relics in my pocket",
+          "theaterId": "b1d288b2-9eee-4676-9cdc-518811aafe5e"
+        },
+        {
+          "name": "Cut of the treasures",
+          "theaterId": "149ca989-ec16-4285-b1b9-31129e280c1a"
         }
       ]
     },
@@ -19627,6 +20247,40 @@
           "country": "Chikasa,",
           "reasoning": "Another new addition to the Yokai alongside Mizuki"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Misfortune",
+          "theaterId": "c0b1d6b5-5df2-420a-9cee-79589cf3708e"
+        },
+        {
+          "name": "Cursed Boy",
+          "theaterId": "34fe0783-0d09-407e-839e-417af86103c0"
+        },
+        {
+          "name": "Hashimoto calls",
+          "theaterId": "ae2f7b27-c254-4621-a086-d66d846a9d00"
+        },
+        {
+          "name": "Fox girl intel",
+          "theaterId": "0cbae766-504f-46da-bc60-724df0ea9df4"
+        },
+        {
+          "name": "Know a liar",
+          "theaterId": "beaf3c7f-3d28-4dcc-b0bf-3cb2003576c4"
+        },
+        {
+          "name": "Softie",
+          "theaterId": "dac49ba8-ceb2-4dc4-b146-736998faedf2"
+        },
+        {
+          "name": "Last Night",
+          "theaterId": "029de619-fd30-445c-8fe0-0aeeefdf6145"
+        },
+        {
+          "name": "New Hat",
+          "theaterId": "ade1c029-6d3e-4bd5-ab5b-e9f7a34ca0c7"
+        }
       ]
     },
     {
@@ -19689,6 +20343,18 @@
         {
           "name": "Costly Augments",
           "theaterId": "1d3feeed-8e3d-41af-9ea6-b3291383414c"
+        },
+        {
+          "name": "Lighten Up",
+          "theaterId": "ac531688-844a-4a00-865e-838d9eb4f92b"
+        },
+        {
+          "name": "Tame Emotions",
+          "theaterId": "a9e9f764-1af5-4148-92f4-464e420a10f9"
+        },
+        {
+          "name": "Sounds like a nightmare",
+          "theaterId": "8a73fbeb-4692-4bd4-bda7-75dc507726c1"
         }
       ]
     },
@@ -20121,6 +20787,10 @@
         {
           "name": "Orca Joyride",
           "theaterId": "a1606b5c-aa86-4eaf-907d-de041c69afc1"
+        },
+        {
+          "name": "Telling Sam",
+          "theaterId": "34698b51-4bcd-4540-8a4c-876151a6f485"
         }
       ]
     },
@@ -20169,6 +20839,14 @@
         {
           "name": "Dreaming",
           "theaterId": "1fcb5bfd-2f4f-4815-9369-32ef67f9f002"
+        },
+        {
+          "name": "Don't Blow It",
+          "theaterId": "423daf29-d24e-430f-b6e3-4864bb45e6a7"
+        },
+        {
+          "name": "Homely Home",
+          "theaterId": "02b00f09-3905-422c-bf07-69c646dbdc15"
         }
       ]
     },
@@ -20406,6 +21084,10 @@
         {
           "name": "How's Murphy",
           "theaterId": "3889896e-8421-4939-baad-ba0edf281b7f"
+        },
+        {
+          "name": "Love Life",
+          "theaterId": "c29794bc-2ade-4a25-a286-89eec13e3e29"
         }
       ]
     },
@@ -20536,6 +21218,22 @@
         {
           "name": "Back Together",
           "theaterId": "1bf684d7-4eb6-43c6-ac3d-f32c89a57a62"
+        },
+        {
+          "name": "Answer the recall",
+          "theaterId": "28e399f1-aa14-49df-a6a0-ce0dfe278da6"
+        },
+        {
+          "name": "Not aging",
+          "theaterId": "efea32df-4975-4738-af52-73232326e656"
+        },
+        {
+          "name": "Cryostasis",
+          "theaterId": "e1e91551-cada-47f0-a37e-6bd454e2ff26"
+        },
+        {
+          "name": "Aren't you warm",
+          "theaterId": "1b2441cd-0843-40cc-bfdc-87f27532f587"
         }
       ]
     },
@@ -20590,6 +21288,16 @@
       ],
       "headlines": [
         "Overwatch agent Vivian \"Sojourn\" Chase collaborating with law enforcement on a join resistance against Null Sector"
+      ],
+      "commentary": [
+        {
+          "name": "Champion our Cause",
+          "theaterId": "9553354e-fb3f-4c39-aeb4-79c7ec46b62b"
+        },
+        {
+          "name": "Applying to Vishkar",
+          "theaterId": "c910d0a1-8101-45f0-a563-76e0123dd202"
+        }
       ]
     },
     {
@@ -20835,6 +21543,12 @@
           "text": "Thoughless Gods",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt42f4baf211e3c801/665e404aa310e4e5a2a48c1d/OW_Heroes_Hammond_EN_FINAL_Rev.pdf"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Subject Study",
+          "theaterId": "b0620d14-866e-419f-a64e-15ddf4602c2c"
+        }
       ]
     },
     {
@@ -20895,8 +21609,8 @@
       ],
       "commentary": [
         {
-          "name": "My Father's Opinion",
-          "theaterId": "bf40e6a7-3797-451e-91b9-9da1408ead57"
+          "name": "Rate the Prison",
+          "theaterId": "d7315292-aa94-46b1-8fc6-b648dd585df4"
         },
         {
           "name": "Old Wounds",
@@ -20913,6 +21627,18 @@
         {
           "name": "Absolute Victory",
           "theaterId": "aaa15cc8-af81-4cb3-b4dc-b5fa35b3618a"
+        },
+        {
+          "name": "My Father's Opinion",
+          "theaterId": "bf40e6a7-3797-451e-91b9-9da1408ead57"
+        },
+        {
+          "name": "Have Faith",
+          "theaterId": "f0598691-8c43-43dc-a3a6-77562a832b74"
+        },
+        {
+          "name": "Heard from your father",
+          "theaterId": "8855e925-fade-4da4-8e44-f0181570aa20"
         }
       ]
     },
@@ -20992,6 +21718,10 @@
         {
           "name": "Bonuses",
           "theaterId": "31b0e0e9-944c-4211-a60e-7339577965de"
+        },
+        {
+          "name": "The Classics",
+          "theaterId": "d5fb6ca4-44d4-4cad-a4e6-65b91f6f4fa9"
         }
       ]
     },
@@ -21061,12 +21791,12 @@
       ],
       "commentary": [
         {
-          "name": "In the West",
-          "theaterId": "94c0d066-c429-4d24-afe5-7de3aaac8d58"
+          "name": "Coming Clean",
+          "theaterId": "50d59b82-97ed-4d9a-9a5c-d217ddaecd7e"
         },
         {
-          "name": "Full of Surprises",
-          "theaterId": "3739fc23-6692-4c0d-a87a-70a1fd9638b5"
+          "name": "Swiss Chocolates",
+          "theaterId": "00aba855-c8f3-4047-b1a3-365724b6d1f1"
         },
         {
           "name": "Unworthy of  your Talents",
@@ -21083,6 +21813,18 @@
         {
           "name": "Try Dying again",
           "theaterId": "7e5b6509-7a57-4b30-9692-7a0becacb33b"
+        },
+        {
+          "name": "In the West",
+          "theaterId": "94c0d066-c429-4d24-afe5-7de3aaac8d58"
+        },
+        {
+          "name": "Better Circumstances",
+          "theaterId": "3b6435c4-838c-4c13-8865-6d770ce3dadc"
+        },
+        {
+          "name": "Full of Surprises",
+          "theaterId": "3739fc23-6692-4c0d-a87a-70a1fd9638b5"
         }
       ]
     },
@@ -21154,6 +21896,10 @@
         {
           "name": "Without Efi",
           "theaterId": "b9a6cd45-7f9e-8d3e-2c45-6d0a1b7c8d9e"
+        },
+        {
+          "name": "Junies",
+          "theaterId": "2da40d4d-e8e2-4511-8cc0-7f54a88e9004"
         }
       ]
     },
@@ -21213,8 +21959,8 @@
       ],
       "commentary": [
         {
-          "name": "Making a Living",
-          "theaterId": "7b60a51f-85e3-40aa-bea5-84e476154c61"
+          "name": "Your Welcome",
+          "theaterId": "88ed06c7-79d2-46a9-a1d3-80399f6609e8"
         },
         {
           "name": "The Martinses",
@@ -21301,8 +22047,8 @@
       ],
       "commentary": [
         {
-          "name": "Hockey and Basketball",
-          "theaterId": "90c30a53-40f1-491f-9966-3ed04b0bec40"
+          "name": "No Honor",
+          "theaterId": "2b0fe54a-1f46-4dc3-8d01-34b4203886f5"
         },
         {
           "name": "Getting Paid",
@@ -21323,6 +22069,10 @@
         {
           "name": "Not much Sleep",
           "theaterId": "f44b15d6-1993-4d22-96ae-1a0cbabf1130"
+        },
+        {
+          "name": "Fighting Spirit",
+          "theaterId": "26330091-4369-41ea-8716-f2235e103f0b"
         }
       ]
     },
@@ -21386,6 +22136,10 @@
         {
           "name": "Past your Prime",
           "theaterId": "82b86f4e-388c-41a4-88c3-cf137a8d0306"
+        },
+        {
+          "name": "Bigger threats",
+          "theaterId": "cb06fe8b-65a1-489e-b583-749f5bb4f732"
         }
       ]
     },
@@ -21514,6 +22268,10 @@
         {
           "name": "Not the Pizza",
           "theaterId": "e037fd9c-1656-45f8-9ae7-dc5430d73647"
+        },
+        {
+          "name": "Eager to see you",
+          "theaterId": "0b0693c2-87b3-43af-8537-d1437b4c8cd6"
         }
       ]
     },
@@ -21566,8 +22324,20 @@
       ],
       "commentary": [
         {
+          "name": "Playing Games",
+          "theaterId": "1293bba8-e95c-430e-84e8-8fe9e002a888"
+        },
+        {
+          "name": "Solve this Myself",
+          "theaterId": "b69fd50a-01bc-4769-9bc2-bee84b0dd016"
+        },
+        {
           "name": "Wanted Man",
           "theaterId": "762b81dd-17b5-457d-aa38-d58be65291ca"
+        },
+        {
+          "name": "Someone else entirely",
+          "theaterId": "d80e9fd6-e803-434e-9cdc-e6357012be88"
         }
       ]
     },
@@ -21640,6 +22410,10 @@
         {
           "name": "Water Cycle",
           "theaterId": "6493a612-5a2c-4c3d-b7ce-a27d03e671e1"
+        },
+        {
+          "name": "Staff Tricks",
+          "theaterId": "c5797c2d-9edc-4a11-844c-6eefa920a094"
         }
       ]
     },
@@ -21722,6 +22496,10 @@
         {
           "name": "Parachutes",
           "theaterId": "8524496b-a6fc-49eb-8519-be6c1f039b30"
+        },
+        {
+          "name": "Landing Site",
+          "theaterId": "19d078e2-3fcb-4104-8917-eca20bd2483b"
         }
       ]
     },
@@ -21935,8 +22713,8 @@
       ],
       "commentary": [
         {
-          "name": "None of  your Business",
-          "theaterId": "3e29f7a7-1dd3-4ff6-9f00-59144934a9e0"
+          "name": "Machete Betty",
+          "theaterId": "254ef6a8-65de-40c2-a443-476c76463d0b"
         },
         {
           "name": "People Change",
@@ -21945,6 +22723,10 @@
         {
           "name": "Chasing Honor",
           "theaterId": "d94ef6aa-e9d0-4e24-a2d7-b19a5c5ee6dc"
+        },
+        {
+          "name": "None of  your Business",
+          "theaterId": "3e29f7a7-1dd3-4ff6-9f00-59144934a9e0"
         }
       ]
     },
@@ -22003,6 +22785,10 @@
         {
           "name": "Letting go",
           "theaterId": "78dd7b12-14f5-43c5-b8fb-d54395109310"
+        },
+        {
+          "name": "Your grades",
+          "theaterId": "c0ea51d0-bc2c-4177-86c9-849d438bfcbf"
         }
       ]
     },
@@ -22105,6 +22891,10 @@
         {
           "name": "At Gibraltar",
           "theaterId": "8bdfb4c4-a253-4a10-96f6-c4b74ab163e5"
+        },
+        {
+          "name": "Hoping for Overwatch",
+          "theaterId": "da253c5c-59dd-43de-865f-a854392934d4"
         }
       ]
     },
@@ -22244,6 +23034,12 @@
           "country": "Touch Up,",
           "reasoning": "Hacks into Oasis' data bases"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Agents of Helix",
+          "theaterId": "065b039a-0696-4319-b833-e3e9c3d69f39"
+        }
       ]
     },
     {
@@ -22316,8 +23112,12 @@
           "theaterId": "10267a28-6a26-430d-ae0f-e414ab01e3e5"
         },
         {
-          "name": "Why Withdraw",
-          "theaterId": "8dc62b9d-f769-4760-8e5d-755251a37733"
+          "name": "How much Ram",
+          "theaterId": "585c5472-062e-4bba-9d77-afb02ea6d7ae"
+        },
+        {
+          "name": "Never Miss",
+          "theaterId": "05855f78-f5ea-4ef9-ab61-aca449218b43"
         },
         {
           "name": "Disappointing",
@@ -22388,6 +23188,12 @@
           "text": "Hazardous Tactics",
           "url": "https://www.youtube.com/watch?v=sR8N3cXWxqM"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Agents of Helix",
+          "theaterId": "065b039a-0696-4319-b833-e3e9c3d69f39"
+        }
       ]
     },
     {
@@ -22446,6 +23252,10 @@
         {
           "name": "Exploitative Boss",
           "theaterId": "18ee5513-26b4-4f43-b176-6161ca23ae15"
+        },
+        {
+          "name": "Your Employers",
+          "theaterId": "f5b1e71e-4821-4bf3-977c-f3da30425f62"
         }
       ]
     },
@@ -22531,6 +23341,22 @@
         {
           "name": "Chicken Nuggets",
           "theaterId": "5cf1e9e9-2dcf-4d90-b15a-5156c277fa80"
+        },
+        {
+          "name": "Sitting out",
+          "theaterId": "6cc84ccd-40aa-4c67-91cf-4252c50bb731"
+        },
+        {
+          "name": "Better Friends",
+          "theaterId": "976c604e-9835-43bd-bced-00a8093dd48f"
+        },
+        {
+          "name": "Still friends",
+          "theaterId": "2747dbb2-4836-441d-a459-feac3e9e0a48"
+        },
+        {
+          "name": "Hit the Slopes",
+          "theaterId": "37cff327-ee3a-4112-b60c-bcffe73d1365"
         }
       ]
     },
@@ -22616,6 +23442,14 @@
         {
           "name": "There is a girl",
           "theaterId": "fcebefae-07de-4a65-9905-cb6ddad65b8b"
+        },
+        {
+          "name": "Beyond Battle",
+          "theaterId": "fda42737-4451-46dd-a459-0debc2d57a49"
+        },
+        {
+          "name": "Data Corruption",
+          "theaterId": "43cd2a5f-9177-47b8-b9dc-7386f07ab56b"
         }
       ]
     },
@@ -22735,8 +23569,16 @@
       ],
       "commentary": [
         {
+          "name": "Front Row Seat",
+          "theaterId": "386d9d6f-8cae-4bf0-ba58-360fae15744c"
+        },
+        {
           "name": "Negotiator",
           "theaterId": "d6443879-36cf-4337-8483-558a835cac1a"
+        },
+        {
+          "name": "Not so Agreeable",
+          "theaterId": "a78e2257-ac18-40ce-a3f1-ae952daf3004"
         }
       ]
     },
@@ -22786,6 +23628,16 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt24704c33b162846e/68fa55d1b5da2d436d224db7/OW_Micro-Sojourn_SinglePage_EN.pdf",
             "https://www.youtube.com/watch?v=LwvFQhBSotk"
           ]
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Why Withdraw",
+          "theaterId": "8dc62b9d-f769-4760-8e5d-755251a37733"
+        },
+        {
+          "name": "Natural Leader",
+          "theaterId": "b2903d8f-c24f-44b5-84a1-eab7e7c2eed8"
         }
       ]
     },
@@ -22898,6 +23750,16 @@
           "country": "B.O.B,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        {
+          "name": "Dreaming Big",
+          "theaterId": "f597bd2b-9963-4fd5-b208-a61dbe331b83"
+        },
+        {
+          "name": "Across the West",
+          "theaterId": "915233c4-0f33-4642-8757-46d657205131"
+        }
       ]
     },
     {
@@ -22954,7 +23816,17 @@
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [],
+      "commentary": [
+        {
+          "name": "Invitation",
+          "theaterId": "7967e161-cdc6-4289-872d-3b7a6a2822f0"
+        },
+        {
+          "name": "Dry Humor",
+          "theaterId": "07bb56b6-b665-42ce-8e1e-c311239ee8b3"
+        }
+      ]
     },
     {
       "name": "New Heights",
@@ -22999,6 +23871,12 @@
             "https://www.youtube.com/watch?v=O7JRRBhgelo",
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf"
           ]
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Sharpshooters",
+          "theaterId": "5ae539d1-57a8-496b-b8c5-d54ca6830cf3"
         }
       ]
     },
@@ -23275,6 +24153,18 @@
         {
           "name": "Best Pilot",
           "theaterId": "5cb37a6d-02c6-4e5b-a26a-6f6d8580d31b"
+        },
+        {
+          "name": "Closed restaurant",
+          "theaterId": "b2f9a2b7-39ad-47ee-95a8-fd11b16bbd0d"
+        },
+        {
+          "name": "You miss me",
+          "theaterId": "f04e62d2-f390-430a-8a12-04decfec24d8"
+        },
+        {
+          "name": "You didn't leave",
+          "theaterId": "96929005-143a-46ab-beea-86655a60fb1f"
         }
       ]
     },
@@ -23339,6 +24229,14 @@
         {
           "name": "Just a phase",
           "theaterId": "3b724bfc-a082-4bbb-82b6-9d749d986b21"
+        },
+        {
+          "name": "Cat like you",
+          "theaterId": "37ec35e2-039e-4dd2-8275-9e600bf6e789"
+        },
+        {
+          "name": "Inspirational View",
+          "theaterId": "970b421e-e228-4e7f-acf2-fb014ae6d45e"
         }
       ]
     },
@@ -23417,6 +24315,22 @@
         {
           "name": "Pulling the Trigger",
           "theaterId": "e76d5550-0f65-4643-af31-93b494157200"
+        },
+        {
+          "name": "Stand Aside",
+          "theaterId": "2c741fe3-823c-4b78-912f-0587e267e977"
+        },
+        {
+          "name": "Funeral Arrangements",
+          "theaterId": "0f10492d-b4cb-40c0-a5ae-34a4836d30ff"
+        },
+        {
+          "name": "Retribution",
+          "theaterId": "26e1dc3f-f647-4c6d-87aa-22beba17ff64"
+        },
+        {
+          "name": "Need your Praise",
+          "theaterId": "112a44b5-97ac-4103-be69-e6908df0a295"
         }
       ]
     },
@@ -23463,6 +24377,16 @@
           "locationName": "",
           "country": "Talon Empire,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "You Survived",
+          "theaterId": "e38c53ab-6bf8-46b4-b71d-c0c010052335"
+        },
+        {
+          "name": "Obsolute",
+          "theaterId": "b74f8d63-4e0d-4040-a24f-9b0306499d96"
         }
       ]
     },
@@ -23533,6 +24457,22 @@
         {
           "name": "Not your Buddy",
           "theaterId": "0abea25c-d787-4824-b2f2-fa801e63fcb5"
+        },
+        {
+          "name": "Cowardice",
+          "theaterId": "a78f7051-a93d-4fca-8824-6e15b2781a1f"
+        },
+        {
+          "name": "Entertaining",
+          "theaterId": "930d4c6b-3f70-42f0-af4e-3e4999fec397"
+        },
+        {
+          "name": "Burning the World Down",
+          "theaterId": "2fc69c14-62d0-46b4-be21-82978d4f3386"
+        },
+        {
+          "name": "Serve Another's Vengeance",
+          "theaterId": "6f6970d8-8157-4284-8626-2520249cbe8d"
         }
       ]
     },
@@ -23795,6 +24735,10 @@
         {
           "name": "Stuck around",
           "theaterId": "5f465e10-6a84-41a7-a878-2dc1a9957d07"
+        },
+        {
+          "name": "Real Monster",
+          "theaterId": "9e2df146-d789-4ce7-8683-567d7ae4b2a6"
         }
       ]
     },
@@ -23931,6 +24875,14 @@
         {
           "name": "Fighting Talon",
           "theaterId": "4d638a55-7eac-405a-9bfa-21be049bde08"
+        },
+        {
+          "name": "Always Dreamed",
+          "theaterId": "7825c558-e231-4ebc-b089-d5fc35fecc78"
+        },
+        {
+          "name": "Condolences",
+          "theaterId": "60ede0f3-5e90-48d4-baf5-deecac8731f2"
         }
       ]
     },
@@ -24049,6 +25001,10 @@
         {
           "name": "Overwatch Survived",
           "theaterId": "ef3b25a3-b451-4845-9d06-a96c20002719"
+        },
+        {
+          "name": "Recruitment tokens",
+          "theaterId": "0028e7b4-bbd2-4432-9b01-75db1f4930af"
         }
       ]
     },
@@ -24159,6 +25115,14 @@
         {
           "name": "Back Home",
           "theaterId": "eee0676c-7269-4942-afb7-6b1b3e30d225"
+        },
+        {
+          "name": "Back so Soon",
+          "theaterId": "b08597d0-74d3-4971-81ff-78b765463bd6"
+        },
+        {
+          "name": "Thanks to your Parents",
+          "theaterId": "e667f75e-0c25-4d92-9df2-740011cef090"
         }
       ]
     },
@@ -24249,6 +25213,18 @@
         {
           "name": "Training Tips",
           "theaterId": "815e2d1e-3334-4ac6-a1b4-0e4974564cf4"
+        },
+        {
+          "name": "Thinking on your feet",
+          "theaterId": "7bfc197b-f878-4ccb-9094-1cefb8ce2505"
+        },
+        {
+          "name": "Psst psst",
+          "theaterId": "01e6538b-21f2-4559-b125-767d5d3be0d8"
+        },
+        {
+          "name": "Catting me",
+          "theaterId": "c849f0bd-bb7d-4e81-9a96-270ca76d8fc9"
         }
       ]
     },
@@ -24335,6 +25311,10 @@
         {
           "name": "War machine",
           "theaterId": "55bf7b99-72c2-45b0-92ff-4893ec7f53ec"
+        },
+        {
+          "name": "Naughton Vault",
+          "theaterId": "dec7d21d-1616-4f71-9ded-b3aa03cf4f36"
         }
       ]
     },
@@ -24421,6 +25401,14 @@
         {
           "name": "Concerns",
           "theaterId": "466873a9-1e6f-474a-8688-3555c0804541"
+        },
+        {
+          "name": "Welcome Party",
+          "theaterId": "9be88fbc-b3cf-4928-b185-00758c8612d7"
+        },
+        {
+          "name": "Watch your Back",
+          "theaterId": "080390f0-6bf1-4ad7-90ec-f1ffb92a73f5"
         }
       ]
     },
@@ -24489,6 +25477,18 @@
         {
           "name": "What Happened",
           "theaterId": "8641f23c-4009-4a6b-b743-40ccbc765fc8"
+        },
+        {
+          "name": "Old Teammates",
+          "theaterId": "7f8889f2-10da-4390-8848-e14bdfbda5d8"
+        },
+        {
+          "name": "Glad you joined",
+          "theaterId": "017ab4df-b0aa-459a-b70c-bf0754ca684b"
+        },
+        {
+          "name": "Jack Morrison",
+          "theaterId": "2a00772c-279f-40e8-9154-9e818bdac2ba"
         }
       ]
     },
@@ -24563,6 +25563,16 @@
           "locationName": "",
           "country": "Efi,",
           "reasoning": "Help set up the dinner"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "High spirits",
+          "theaterId": "78d3aad8-b2ed-4f54-a410-5bd6309b24ff"
+        },
+        {
+          "name": "Never lose sight",
+          "theaterId": "ac40d69e-8099-4f71-b5c4-3c3a53e6fe8f"
         }
       ]
     },
@@ -24648,6 +25658,22 @@
         {
           "name": "Open her eyes",
           "theaterId": "be33a366-7c14-4507-866b-8d5af76d52f3"
+        },
+        {
+          "name": "Getting Homesick",
+          "theaterId": "c9a58edf-26fb-4257-817b-349d7fb66e72"
+        },
+        {
+          "name": "Are you leaving",
+          "theaterId": "487c49ea-7ef4-400a-b745-4b6fbdf69f75"
+        },
+        {
+          "name": "Running from Responsability",
+          "theaterId": "41de1d63-e6f7-4a60-a00b-e446d94e44b7"
+        },
+        {
+          "name": "Switching Sides",
+          "theaterId": "d1c2c606-e011-4f9b-86d4-c9d1751bdee8"
         }
       ]
     },
@@ -24727,6 +25753,22 @@
         {
           "name": "Ruthless",
           "theaterId": "313ce0d1-36ae-4b18-8f2f-a5fbd694ab7f"
+        },
+        {
+          "name": "Takeover",
+          "theaterId": "b3f294ec-0104-40ce-9731-e80d672b3620"
+        },
+        {
+          "name": "Not a Pawn",
+          "theaterId": "7bf6589a-3410-4552-9508-c009f37bd2fe"
+        },
+        {
+          "name": "Vacation",
+          "theaterId": "315283dd-1348-4272-b4fc-0b95cfbb601e"
+        },
+        {
+          "name": "Kingdom of wreckage",
+          "theaterId": "81fe664a-af5e-4aa0-8da5-2e0f015bf18b"
         }
       ]
     },
@@ -24797,6 +25839,28 @@
           "country": "Hashimoto Clan, Talon Empire,",
           "reasoning": "Work together to hunt down any resistence in Tokyo"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Helping Escape",
+          "theaterId": "e1c8cb51-e0dc-45e5-a82e-6c22de8e3402"
+        },
+        {
+          "name": "Picky with Flesh",
+          "theaterId": "b469a138-4dd1-4600-854f-ea4be26a7faa"
+        },
+        {
+          "name": "Dishonor",
+          "theaterId": "984685c0-9a3f-435b-9558-6e104a680f20"
+        },
+        {
+          "name": "Second Nature",
+          "theaterId": "64dd4480-3170-4ae0-916d-0c10501500bc"
+        },
+        {
+          "name": "Suspicious",
+          "theaterId": "ce641f75-e265-4242-af3e-044baa39f74d"
+        }
       ]
     },
     {
@@ -24854,16 +25918,28 @@
       ],
       "commentary": [
         {
+          "name": "Staying informed",
+          "theaterId": "30f8a334-8d7c-42af-9863-f67b12d17d2f"
+        },
+        {
+          "name": "Process can't Rush",
+          "theaterId": "4c180eb8-47ba-4589-b9be-eedf059530fa"
+        },
+        {
+          "name": "Funding",
+          "theaterId": "7b263323-6614-425f-9268-8d8ecdf48f64"
+        },
+        {
+          "name": "Enemy in Common",
+          "theaterId": "96e379cc-dbd4-4b53-a459-5b49aa295c1b"
+        },
+        {
           "name": "Feeling Remorse",
           "theaterId": "3b781d57-8854-49a1-a2f7-c1608d3828be"
         },
         {
           "name": "Withering Away",
           "theaterId": "7fb98307-e122-4fc2-a30d-b802d5d43579"
-        },
-        {
-          "name": "Funding",
-          "theaterId": "7b263323-6614-425f-9268-8d8ecdf48f64"
         }
       ]
     },
@@ -24935,6 +26011,18 @@
         {
           "name": "Fight Smarter",
           "theaterId": "22d3c2ed-52a3-4f57-83b7-b727bb679de3"
+        },
+        {
+          "name": "Bad news for Hanzo",
+          "theaterId": "4bee4bc0-e6a3-4b53-9b6f-db87a8eaf7c0"
+        },
+        {
+          "name": "Ride into Battle",
+          "theaterId": "79abf400-76fd-43cf-bfbe-ecb682a575fc"
+        },
+        {
+          "name": "Hourly Patrols",
+          "theaterId": "cda197a3-2f2c-4c69-a5c1-4da553414074"
         }
       ]
     },
@@ -25020,6 +26108,26 @@
         {
           "name": "Not a Diary",
           "theaterId": "c12d4342-9d5a-463b-a9c9-aa446bcceabc"
+        },
+        {
+          "name": "Deflection",
+          "theaterId": "bd32515b-0fa3-490b-9d66-82dc55307b71"
+        },
+        {
+          "name": "Non Binary",
+          "theaterId": "523fa6b0-f829-45fe-8b52-48db520edfc4"
+        },
+        {
+          "name": "Buried in Knowledge",
+          "theaterId": "04025320-77e0-45e4-b4f6-0e46f899e42b"
+        },
+        {
+          "name": "Smash pottery",
+          "theaterId": "1184c851-85b2-4c07-bf40-8f2b244073de"
+        },
+        {
+          "name": "Never yours",
+          "theaterId": "0a072867-01cc-4a6a-9b8e-b641dfb52b37"
         }
       ]
     },
@@ -25098,6 +26206,22 @@
         {
           "name": "Sharpen those claws",
           "theaterId": "5cfcd52c-5d14-4b47-aace-d6d3208c91a4"
+        },
+        {
+          "name": "Working with Overwatch",
+          "theaterId": "9864f02c-2dc7-4dd2-a897-276e44ca9b76"
+        },
+        {
+          "name": "Focus on Saving the World",
+          "theaterId": "0532130e-8937-44ba-b0ba-33cb0586bf6a"
+        },
+        {
+          "name": "Walking Sim",
+          "theaterId": "09ef81c2-f62f-4776-bc48-55132386bd0f"
+        },
+        {
+          "name": "Used to the Unexpected",
+          "theaterId": "ccbba309-0ac0-4fe1-b435-77d37848b03b"
         }
       ]
     },
@@ -25169,7 +26293,33 @@
           "reasoning": ""
         }
       ],
-      "previewBadgeMainCharacter": "Sojourn, Shion"
+      "previewBadgeMainCharacter": "Sojourn, Shion",
+      "commentary": [
+        {
+          "name": "Train Ride",
+          "theaterId": "764636eb-25e4-4da9-bd7f-d018f1e6bb5b"
+        },
+        {
+          "name": "Many Paths",
+          "theaterId": "4df78e4c-a443-4070-b094-f2b2404f0138"
+        },
+        {
+          "name": "Let it out",
+          "theaterId": "4278786e-9ca1-40f0-b666-32306f3a3fa0"
+        },
+        {
+          "name": "Two hearts",
+          "theaterId": "f744aba8-7ba8-47c0-8c63-e23fe8c52eaf"
+        },
+        {
+          "name": "Lasting impression",
+          "theaterId": "c81e6630-b017-4b98-ab0b-9ed25164d0f8"
+        },
+        {
+          "name": "Fox sightseeing",
+          "theaterId": "e456ad3d-1e15-4bb3-b51a-f93327a6d729"
+        }
+      ]
     },
     {
       "name": "Rookie Mission",
@@ -25233,6 +26383,18 @@
         {
           "name": "Keeping Up Okay",
           "theaterId": "2332f66e-9bde-4884-8ae8-6db8603dbd60"
+        },
+        {
+          "name": "Rubbed off",
+          "theaterId": "82f0c7ff-6859-4d33-8ffe-c3385c07fe4a"
+        },
+        {
+          "name": "Not meant for this",
+          "theaterId": "3b430832-5c02-434d-aefe-1aa3992bcb6c"
+        },
+        {
+          "name": "Hiring Interns",
+          "theaterId": "4c9b126b-6882-4d92-ad4e-5664572bb9f3"
         }
       ]
     },
@@ -25325,7 +26487,37 @@
       ],
       "previewBadgeMainCharacter": "Mizuki, Shion",
       "previewBadgeSecondaryCharacters": "Hanzo, Kiriko, Sakura, Nobuto, Ryota, Chikasa",
-      "previewBadgeFaction": "Yokai Gang, Hashimoto Clan, Overwatch, Talon Empire"
+      "previewBadgeFaction": "Yokai Gang, Hashimoto Clan, Overwatch, Talon Empire",
+      "commentary": [
+        {
+          "name": "Turn your Back",
+          "theaterId": "2e202d68-adc7-40e0-92f6-c489bee4bb6d"
+        },
+        {
+          "name": "It isn't True",
+          "theaterId": "bee870b7-c1cf-439f-bffc-56d93a415ed0"
+        },
+        {
+          "name": "Choosing a side",
+          "theaterId": "a7b4558a-909b-404c-890b-8c317feedc08"
+        },
+        {
+          "name": "Restless",
+          "theaterId": "fe2ddd85-6d3b-43d4-907f-27431644600f"
+        },
+        {
+          "name": "We are a family",
+          "theaterId": "825da6ee-29e8-4581-8444-9514a55e871f"
+        },
+        {
+          "name": "Fight for eachother",
+          "theaterId": "5b99537e-ebc3-405b-aa28-3a283ba6cd9b"
+        },
+        {
+          "name": "What of my actions",
+          "theaterId": "b0cc66a6-2607-41f2-a619-c6b056c650e3"
+        }
+      ]
     },
     {
       "name": "Ambush",
@@ -25366,6 +26558,32 @@
           "locationName": "",
           "country": "Talon Empire,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Misjudge my Competence",
+          "theaterId": "9887a224-d2b4-46de-9063-4be66fbfb18d"
+        },
+        {
+          "name": "Great Potential",
+          "theaterId": "14c7e57d-e00b-4349-b13a-9b8205153375"
+        },
+        {
+          "name": "Bot Leader",
+          "theaterId": "17c20635-e694-418d-9a8b-8868771c234f"
+        },
+        {
+          "name": "Mindless Rage",
+          "theaterId": "58e3c832-81d4-42ad-b5ae-b2491467f552"
+        },
+        {
+          "name": "Control his fear",
+          "theaterId": "17fb68db-8924-4823-9b28-9b8748c6a656"
+        },
+        {
+          "name": "Forsaken me",
+          "theaterId": "a872920d-fd2d-41c0-89d1-7ebfb8612b36"
         }
       ]
     },
@@ -25500,6 +26718,70 @@
         {
           "name": "Unforgiving Nature",
           "theaterId": "004d6e70-d3b5-40f6-b414-dd50f0954ebd"
+        },
+        {
+          "name": "Aimless Chaos",
+          "theaterId": "a7c8280c-6eff-486e-b310-b8511f24c7b3"
+        },
+        {
+          "name": "Asa is Happier",
+          "theaterId": "39e6fbfb-27cd-438f-8822-1b8d5a16729d"
+        },
+        {
+          "name": "Thinking of Mother",
+          "theaterId": "97581bae-3088-425d-a4cf-27ffb07f8109"
+        },
+        {
+          "name": "Old Sword",
+          "theaterId": "5ad76ac8-59f4-4d3e-b4af-61b8771b078a"
+        },
+        {
+          "name": "Clouded Judgment",
+          "theaterId": "42741776-0f6f-4493-8ce9-dd058ac4b39b"
+        },
+        {
+          "name": "Sakura's Intel",
+          "theaterId": "eff4706c-7726-41b1-8c71-c9dea24d6c4e"
+        },
+        {
+          "name": "Forgiveness heals",
+          "theaterId": "e1bdfbfc-6365-4b10-bc3d-b0d01846e381"
+        },
+        {
+          "name": "More than Mistakes",
+          "theaterId": "1ca433de-585e-46c8-b56b-72c42c3e1836"
+        },
+        {
+          "name": "Toshiro's forge",
+          "theaterId": "ba0e0b31-3f87-439c-8dbe-e9548b3e2b96"
+        },
+        {
+          "name": "Sold us out",
+          "theaterId": "3ae78be6-a4c0-40ca-bc95-7e482e90f9a2"
+        },
+        {
+          "name": "Keeping the hat",
+          "theaterId": "c75fb16a-721f-4daf-b364-514c2b94c4ef"
+        },
+        {
+          "name": "Chikasa forgives",
+          "theaterId": "01a1c67d-8461-4dbd-aa08-b781e545ec35"
+        },
+        {
+          "name": "Earn her forgiveness",
+          "theaterId": "c8eaf588-01e7-4c16-a9bd-ac7208254b8f"
+        },
+        {
+          "name": "Pocket ninja",
+          "theaterId": "db0094c0-b914-4f89-9373-62cf7014bc0b"
+        },
+        {
+          "name": "Hacked to pieces",
+          "theaterId": "c0736c83-8453-445c-b5e7-74add98c854d"
+        },
+        {
+          "name": "Teammate and Friend",
+          "theaterId": "bac6e9c5-dd27-4a66-9a6a-61dfae735e49"
         }
       ]
     },
@@ -25578,6 +26860,18 @@
         {
           "name": "Prize Hunter",
           "theaterId": "3c892232-3b34-45dc-858b-2c262445756e"
+        },
+        {
+          "name": "Finding Answers",
+          "theaterId": "e18b5fea-475a-4e5e-a58e-127d053b1c95"
+        },
+        {
+          "name": "Declare your loyalty",
+          "theaterId": "02a3d02d-ee69-4f2b-9e46-ebc062383765"
+        },
+        {
+          "name": "Behind bars",
+          "theaterId": "53256104-0f13-4580-b48d-51d9ac2ef896"
         }
       ]
     },
@@ -25637,6 +26931,127 @@
         {
           "name": "Naming Turrets",
           "theaterId": "d81eaf4b-deb2-409d-9a10-0bdb5b6123a2"
+        }
+      ]
+    },
+    {
+      "name": "Homecoming",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki, Baptiste, Sojourn, Cassidy, Mercy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.va,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Zarya, Wuyang, Anran, Mei, Juno,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Torbjörn, Echo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer, Brigitte, Bastion, Jetpack Cat,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reinhardt, Ana, Sierra, Lúcio, Pharah,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Black cat",
+          "theaterId": "78c57d6f-b792-4ee6-a376-c3c4aab40ffe"
+        },
+        {
+          "name": "Learned Together",
+          "theaterId": "b1b0ba52-3d5d-44ef-a801-00ced206579a"
+        },
+        {
+          "name": "Largest Hat",
+          "theaterId": "c4f63b5d-e046-4a01-a0ea-0ebe60c60ba8"
+        },
+        {
+          "name": "Trying on your hat",
+          "theaterId": "7cdc884e-a45b-4452-aea4-37467b7893f4"
+        },
+        {
+          "name": "Missing Genji",
+          "theaterId": "b8b68e16-4441-4451-bdd7-1c535dee8be5"
+        },
+        {
+          "name": "No loyalties",
+          "theaterId": "9663c2b3-93e8-4a27-94ac-061391bd4f40"
+        },
+        {
+          "name": "Not let him fall",
+          "theaterId": "6e96da43-6af1-4c98-997d-8d4981ec1893"
+        },
+        {
+          "name": "Feeling regret",
+          "theaterId": "63799453-ce78-41ca-8ae8-c05f0aaa9c12"
+        },
+        {
+          "name": "Tea leaf",
+          "theaterId": "267276cd-4189-4b13-abc0-6d4e07af9b33"
+        },
+        {
+          "name": "The circus",
+          "theaterId": "19d2a96e-97b6-456b-b655-8099162bdee9"
+        },
+        {
+          "name": "Strong case",
+          "theaterId": "a29bc0b6-711a-45af-8077-37e71c17f519"
+        },
+        {
+          "name": "Busan fireworks",
+          "theaterId": "815db5b9-cf43-4488-b00e-babef29a9304"
+        },
+        {
+          "name": "Without you",
+          "theaterId": "f7a5fa79-3e09-45d9-8b25-b7965755f120"
         }
       ]
     },
@@ -25729,6 +27144,26 @@
         {
           "name": "Mech Slayer",
           "theaterId": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63"
+        },
+        {
+          "name": "More than Prey",
+          "theaterId": "2ab227ab-8f79-4663-bf76-d3d71454c3ea"
+        },
+        {
+          "name": "Don't talk much",
+          "theaterId": "0ef20362-3ae2-4835-b949-265a6eaf980e"
+        },
+        {
+          "name": "Stop the Attack",
+          "theaterId": "bfb65ace-6fe2-40d4-b2c7-34df412051ea"
+        },
+        {
+          "name": "Welcome Resistance",
+          "theaterId": "6a3e99bd-19b7-4292-81b9-c89ebc8f1e09"
+        },
+        {
+          "name": "Hope from our people",
+          "theaterId": "6105a672-670a-4f22-a700-b3ffed3a8404"
         }
       ]
     },
@@ -25797,8 +27232,16 @@
           "theaterId": "ef94e7f5-51ca-4410-8eea-b0eee1781afc"
         },
         {
-          "name": "Bowling Ball",
-          "theaterId": "b0a1afe0-c8cd-4ab5-a71d-aab94088b06b"
+          "name": "Accident",
+          "theaterId": "0cf936cb-0445-4634-9cfd-06adc5cf5881"
+        },
+        {
+          "name": "Knew the champ",
+          "theaterId": "3f5f3817-2f64-442d-ad58-13b4c22f145f"
+        },
+        {
+          "name": "Tone down Violence",
+          "theaterId": "2c69d7d8-a78b-4d32-909b-b5f4b3bba7db"
         }
       ]
     },
@@ -25848,8 +27291,8 @@
       ],
       "commentary": [
         {
-          "name": "Not Trapped",
-          "theaterId": "4f4af237-113f-43b2-8828-c9a35046f567"
+          "name": "Worsened Conditions",
+          "theaterId": "25ccdbbe-f706-415d-b243-cccbcee5eb2a"
         },
         {
           "name": "More Fortunate",
@@ -25858,6 +27301,18 @@
         {
           "name": "Threat to myself and others",
           "theaterId": "95b9f80c-8176-4b6b-9a1b-bfe100a755af"
+        },
+        {
+          "name": "You are the Variable",
+          "theaterId": "7c0610e2-1011-4883-973c-0a775a2dc2d4"
+        },
+        {
+          "name": "Lab Rat",
+          "theaterId": "a6e50044-5bba-4cd4-abaa-c564529dcb3b"
+        },
+        {
+          "name": "The harness",
+          "theaterId": "b68a3f0d-0660-49f0-819c-f31aad7ace16"
         }
       ]
     },
@@ -25918,6 +27373,10 @@
         {
           "name": "Human Limits",
           "theaterId": "b6e85a31-a3c9-413c-9c53-c5c4ac61a42d"
+        },
+        {
+          "name": "Monument to my leadership",
+          "theaterId": "0db66127-b06f-464b-84bf-ecd86553a4f7"
         }
       ]
     },
@@ -25960,6 +27419,32 @@
           "locationName": "",
           "country": "Widowmaker, Reaper, Sombra,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Sinking Ship",
+          "theaterId": "1568c57c-26ac-4849-b1de-25bb620252e0"
+        },
+        {
+          "name": "Who is we",
+          "theaterId": "031cfe11-76fc-48aa-ad9e-e515b41e08f8"
+        },
+        {
+          "name": "Taking Action",
+          "theaterId": "21be394d-c54e-4e4c-996e-6537c1fc9c28"
+        },
+        {
+          "name": "Make it Count",
+          "theaterId": "c3674b40-e701-4202-af50-a8be82d20589"
+        },
+        {
+          "name": "No Plan",
+          "theaterId": "c568b8bf-dda2-497a-bfdf-58422eaf328b"
+        },
+        {
+          "name": "Since Ilios",
+          "theaterId": "29ba32ce-9fb0-4fdb-9cd0-236a9bb2cac7"
         }
       ]
     },
@@ -26027,73 +27512,26 @@
         {
           "name": "Junker Planet",
           "theaterId": "924c541c-0c38-4463-b14a-db9bb2bd36d8"
-        }
-      ]
-    },
-    {
-      "name": "Homecoming",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 57.7072326,
-      "lon": 11.9670171,
-      "image": "",
-      "cityDisplayName": "Gothenburg, Sweden",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Gothenburg, Sweden",
-          "country": "Sweden",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki, Baptiste, Sojourn, Cassidy, Mercy,",
-          "reasoning": ""
         },
         {
-          "locationName": "",
-          "country": "D.va,",
-          "reasoning": ""
+          "name": "Detonate Your Face",
+          "theaterId": "071350bb-9921-46d8-beee-1e12ac4fc04f"
         },
         {
-          "locationName": "",
-          "country": "Zarya, Wuyang, Anran, Mei, Juno,",
-          "reasoning": ""
+          "name": "Ship Thrusters",
+          "theaterId": "fe98b8cb-044f-4d94-a443-7168deb7e0f7"
         },
         {
-          "locationName": "",
-          "country": "Winston, Torbjörn, Echo,",
-          "reasoning": ""
+          "name": "Queen of the World",
+          "theaterId": "c4b4e665-dfb8-4b9e-971f-f22df98b5831"
         },
         {
-          "locationName": "",
-          "country": "Tracer, Brigitte, Bastion, Jetpack Cat,",
-          "reasoning": ""
+          "name": "Wanted men",
+          "theaterId": "c6c43f05-ceba-45fb-ac4f-d2a77ac0043f"
         },
         {
-          "locationName": "",
-          "country": "Reinhardt, Ana, Sierra, Lúcio, Pharah,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Ironclad Guild,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": ""
+          "name": "Word of Caution",
+          "theaterId": "8df9ac11-fef1-49c3-8421-41780d0912bf"
         }
       ]
     },
@@ -26140,6 +27578,26 @@
         {
           "name": "Can't Hack your brain",
           "theaterId": "2ea32a44-9a72-49c4-8e3e-a3aeb4291636"
+        },
+        {
+          "name": "No one Alive",
+          "theaterId": "5f64a6fe-3e1f-40bc-a6b7-760473d5a7aa"
+        },
+        {
+          "name": "Alternative Treatment",
+          "theaterId": "b61e5f56-03cf-4af5-8cab-a9f3c87d591f"
+        },
+        {
+          "name": "Birds of a Feather",
+          "theaterId": "92fd43e9-19d6-4a14-885f-b2a0e633c80c"
+        },
+        {
+          "name": "There to Execute",
+          "theaterId": "2371a694-462b-47f2-a7a1-c7ad98de7477"
+        },
+        {
+          "name": "The World will adapt",
+          "theaterId": "1dbf921b-e618-476b-8383-1cd6ad9dedee"
         }
       ]
     },
@@ -26196,6 +27654,22 @@
         {
           "name": "Swimming Lessons",
           "theaterId": "31bcb7a2-7799-46e5-b588-0182ae82ef66"
+        },
+        {
+          "name": "Come a long way",
+          "theaterId": "7f0fae87-8352-4922-9a05-e99c68580777"
+        },
+        {
+          "name": "Toe to Toe",
+          "theaterId": "7a66d57f-ed74-4283-802c-a606ad3c4dd9"
+        },
+        {
+          "name": "Bittersweet",
+          "theaterId": "63c563cc-ca03-447d-97e0-163911d5af7d"
+        },
+        {
+          "name": "Turtle Tools",
+          "theaterId": "a3e3dedd-3cac-4983-8a99-57fddb9e2825"
         }
       ]
     },
@@ -26271,8 +27745,24 @@
           "theaterId": "7960f197-d6d7-425c-a8f2-d8c501ac4b0c"
         },
         {
-          "name": "In the Sky",
-          "theaterId": "f35aee40-517b-4625-b850-2a6dbc12bca7"
+          "name": "Accomodations",
+          "theaterId": "9dbb2441-782a-435f-816a-c267a57b437d"
+        },
+        {
+          "name": "Workout Routine",
+          "theaterId": "86a1fdd8-7fe6-43ae-8f78-fe8e1dc121a4"
+        },
+        {
+          "name": "Good Luck Charm",
+          "theaterId": "51c44bc1-15b7-465a-89ad-855a9daa1323"
+        },
+        {
+          "name": "Shutdown Order",
+          "theaterId": "6ea05417-2c0f-4423-831f-ee66713697c0"
+        },
+        {
+          "name": "Asking Around",
+          "theaterId": "f172c15b-ad9d-40a2-8640-d2f461def162"
         }
       ]
     },
@@ -26312,6 +27802,11 @@
           "locationName": "",
           "country": "Emre, Freja,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira, Sigma,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -26336,6 +27831,16 @@
           "locationName": "",
           "country": "Maximillien,",
           "reasoning": ""
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Never Forgotten",
+          "theaterId": "9694ae8c-a8e5-4a33-b034-bd98984d4db4"
+        },
+        {
+          "name": "Can not Hold Together",
+          "theaterId": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0"
         }
       ]
     },
@@ -26392,6 +27897,18 @@
         {
           "name": "Wisdom of Age",
           "theaterId": "4597467e-3d17-41fc-ade0-94065bcf2cb3"
+        },
+        {
+          "name": "Rebuilt Gauntlet",
+          "theaterId": "f913fe2f-9c7f-4bad-8b84-69b5680d4750"
+        },
+        {
+          "name": "Deprived of Purpose",
+          "theaterId": "7fb9cb03-0bed-405b-b5ac-6eae95c4dcb6"
+        },
+        {
+          "name": "Blasfemous Contradiction",
+          "theaterId": "4c002443-c0a2-489f-bdff-c51f826e6676"
         }
       ]
     },
@@ -26509,6 +28026,14 @@
         {
           "name": "Old Friend",
           "theaterId": "2a04620b-ef77-4fcd-84a7-5db5a959eec7"
+        },
+        {
+          "name": "Suspicious mammal",
+          "theaterId": "3209c572-d80e-4f5c-be83-affcc901aa9a"
+        },
+        {
+          "name": "Scared of Water",
+          "theaterId": "bb677341-a686-4e37-b5f8-ea51515febe4"
         }
       ]
     },
@@ -26940,6 +28465,18 @@
         {
           "name": "Peace breeds Complacency",
           "theaterId": "67774c4c-2c02-4231-949e-d647f2ab4377"
+        },
+        {
+          "name": "Aesthetics",
+          "theaterId": "01d7a03e-a86e-41f2-bece-dc70745aed23"
+        },
+        {
+          "name": "Grotesque Arm",
+          "theaterId": "b4646412-f60e-4cbe-b136-1bb92f036fd7"
+        },
+        {
+          "name": "Equal Partnership",
+          "theaterId": "5ba5766d-c7f3-4afc-96f6-869232937690"
         }
       ]
     },

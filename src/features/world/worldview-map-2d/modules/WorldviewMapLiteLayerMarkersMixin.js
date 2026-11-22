@@ -3,6 +3,7 @@
  */
 import { getMarkerColor, EVENT_MARKER_LOCKED_HEX } from '../../../system-interface/interface-globe-markers/styling/markerColors.js';
 import { getMap2dLiteMarkerDiameterPx } from '../../../system-interface/interface-globe-markers/styling/markerSizes.js';
+import { shouldEventBeLocked } from '../../../system-interface/interface-globe-markers/filtering/shouldEventBeLocked.js';
 import {
     CELESTIAL_DOM_PANEL_VISUAL_SCALE,
     DOM_LITE_MARKER_TRANSITION_MS,
@@ -142,6 +143,67 @@ export const mixin = {
             this._lastCelOrbitW = orw;
             this._lastCelMapScale = mapScale;
             this._celMarkersDirty = false;
+        }
+    },
+
+    /**
+     * In-place lock/unlock for live filter chips — avoids full marker rebuild hitch.
+     */
+    syncFilterLockStates() {
+        if (!this.markersEl || !this.isVisible()) return;
+        const hosts = [
+            this.markersEl,
+            this._moonMarkersEl,
+            this._marsMarkersEl,
+            this._orbitMarkersEl,
+        ].filter(Boolean);
+
+        const filters = window.standaloneActiveFilters || new Set();
+        /** @type {{ btn: HTMLElement, stub: object, lock: boolean }[]} */
+        const changes = [];
+
+        for (let h = 0; h < hosts.length; h += 1) {
+            const buttons = hosts[h].querySelectorAll('.map-2d-lite__marker');
+            for (let i = 0; i < buttons.length; i += 1) {
+                const btn = buttons[i];
+                const stub = btn.__map2dLiteStub;
+                const identity = btn.__map2dLiteIdentity;
+                const fullEvent = identity?.event;
+                if (!stub?.userData || !fullEvent) continue;
+
+                const shouldLock = filters.size > 0
+                    && shouldEventBeLocked(fullEvent, filters);
+                const isLocked = !!stub.userData.isLocked;
+                const domLocked = btn.classList.contains('map-2d-lite__marker--locked') || btn.disabled;
+                /* Re-apply when stub/DOM drifted (hover/badge can leave a lit unlocked look). */
+                if (shouldLock === isLocked && shouldLock === domLocked) continue;
+                changes.push({ btn, stub, lock: shouldLock });
+            }
+        }
+
+        /* Always clear hover/badge UI — even when lock set is unchanged. */
+        this.clearSyntheticMarkerHover?.();
+        this.stopHoverRadiateLoop?.();
+        const ms = window.globeController?.interactionController?.markerService;
+        ms?.dismissPinnedMarkerCallout?.();
+        ms?.setDomLiteMarkerHover?.(null);
+        ms?.highlightNumberButtonForMarker?.(null);
+        ms?._syncEventsHoverPreviewFromMarker?.(null);
+        try {
+            window.SummaryInfoBadge?.hide?.();
+        } catch (_) {
+            /* badge module optional */
+        }
+
+        if (!changes.length) return;
+
+        for (let i = 0; i < changes.length; i += 1) {
+            const { btn, stub, lock } = changes[i];
+            if (lock) {
+                void this._animateDomMarkerToLocked?.(btn, stub);
+            } else {
+                void this._animateDomMarkerToUnlocked?.(btn, stub);
+            }
         }
     },
 

@@ -11,6 +11,8 @@
  * replace `FilterService.heroes` / `.npcs` stay visible on the next tab click.
  */
 
+import { syncFiltersModeDisclaimer } from '../filtersModeDisclaimer.js';
+
 function deactivateAllTabs(tabs) {
     tabs.forEach((tab) => {
         if (!tab) return;
@@ -39,6 +41,7 @@ function makeTabHandler(tab, otherTabs, getItems, type, folder, createFilterButt
         const items = typeof getItems === 'function' ? getItems() : [];
         createFilterButtons(Array.isArray(items) ? items : [], type, folder);
         updateFilterCounts();
+        syncFiltersModeDisclaimer(null, undefined, type);
     };
 }
 

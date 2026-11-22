@@ -11,11 +11,47 @@ import { animateMarkerLock, animateMarkerUnlock } from './animations/markerLockU
 import { createSingleEventMarker } from './creation/createSingleEventMarker.js';
 import { createMultiEventMarkers } from './creation/createMultiEventMarkers.js';
 import { OverlapCyclingController } from './overlapCycling.js';
+import { getCurrentDockPageEventSlice } from '../interface-bottom-dock/currentDockPageEvents.js';
 
-function delayThenSyncPagination(manager, options) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, 50);
-    }).then(() => manager._syncPaginationUiAfterFilters(options));
+function clearWorldMarkerHoverUi() {
+    try {
+        const ic = typeof window !== 'undefined' ? window.globeController?.interactionController : null;
+        const ms = ic?.markerService;
+        const map2d = window.globeController?.map2dLite;
+        map2d?.clearSyntheticMarkerHover?.();
+        map2d?.stopHoverRadiateLoop?.();
+        ms?.dismissPinnedMarkerCallout?.();
+        ms?.setDomLiteMarkerHover?.(null);
+        ms?._syncEventsHoverPreviewFromMarker?.(null);
+        ms?.highlightNumberButtonForMarker?.(null);
+        ic?.pulseService?.setHoveredMarker?.(null);
+        ic?.hideMarkerHoverCallout?.();
+        window.SummaryInfoBadge?.hide?.();
+    } catch (_) {
+        /* interaction stack may be unavailable */
+    }
+}
+
+function syncMap2dLiteMarkersForFilters(options = {}) {
+    try {
+        const gc = typeof window !== 'undefined' ? window.globeController : null;
+        const map2d = gc?.map2dLite;
+        if (!map2d) return;
+        const sceneModel = gc?.sceneModel;
+        if (sceneModel?.getMapViewEnabled && !sceneModel.getMapViewEnabled()) return;
+        /* Prefer in-place lock morph; full rebuild only when markers were just (re)created. */
+        if (options.domLiteFromRefresh && typeof map2d.syncMarkers === 'function') {
+            map2d.syncMarkers({ mode: 'instant' });
+            return;
+        }
+        if (typeof map2d.syncFilterLockStates === 'function') {
+            map2d.syncFilterLockStates();
+            return;
+        }
+        map2d.syncMarkers?.({ mode: 'instant' });
+    } catch (_) {
+        /* map layer may be tearing down */
+    }
 }
 
 export class EventMarkerManager {
@@ -35,12 +71,7 @@ export class EventMarkerManager {
         const moonPlane = this.sceneModel.getMoonPlane ? this.sceneModel.getMoonPlane() : this.sceneModel.moonPlane;
         const marsPlane = this.sceneModel.getMarsPlane ? this.sceneModel.getMarsPlane() : this.sceneModel.marsPlane;
 
-        const eventsPerPage = 10;
-        const allEvents = window.eventManager?.events || [];
-        const currentPage = window.standaloneEventSlide?.currentPage || 1;
-        const startIndex = (currentPage - 1) * eventsPerPage;
-        const endIndex = startIndex + eventsPerPage;
-        const events = allEvents.slice(startIndex, endIndex);
+        const { events } = getCurrentDockPageEventSlice();
 
         const markers = this.sceneModel.getMarkers();
         const allEventMarkers = markers.filter(m => m?.userData?.event);
@@ -265,38 +296,48 @@ export class EventMarkerManager {
 
     applyFilters(options = {}) {
         const activeFilters = window.standaloneActiveFilters || new Set();
-
         const globe = this.sceneModel.getGlobe();
+        const mapView = !!this.sceneModel.getMapViewEnabled?.();
+
+        clearWorldMarkerHoverUi();
+
+        /*
+         * Map view: only touch DOM markers. Updating hidden Three.js markers caused
+         * a noticeable pause before the visible lock morph started.
+         */
+        if (mapView) {
+            syncMap2dLiteMarkersForFilters(options);
+            /* Defer dock rebuild so the lock morph paints before pagination work. */
+            if (typeof requestAnimationFrame === 'function') {
+                requestAnimationFrame(() => this._syncPaginationUiAfterFilters(options));
+            } else {
+                this._syncPaginationUiAfterFilters(options);
+            }
+            return Promise.resolve();
+        }
 
         if (!globe) {
-            if (this.sceneModel.getMapViewEnabled?.()) {
-                if (activeFilters.size === 0) {
-                    this.unlockAllEvents();
-                }
-                return delayThenSyncPagination(this, options);
-            }
             return Promise.resolve();
         }
 
         if (activeFilters.size === 0) {
             this.unlockAllEvents();
-            return delayThenSyncPagination(this, options);
+        } else {
+            const processMarker = (child) => {
+                if (child.userData && child.userData.isEventMarker) {
+                    const event = child.userData.event;
+                    if (!shouldEventBeLocked(event, activeFilters)) {
+                        this.unlockEvent(child);
+                    } else {
+                        this.lockEvent(child);
+                    }
+                }
+            };
+            traverseEventMarkers(this.sceneModel, processMarker);
         }
 
-        const processMarker = (child) => {
-            if (child.userData && child.userData.isEventMarker) {
-                const event = child.userData.event;
-                if (!shouldEventBeLocked(event, activeFilters)) {
-                    this.unlockEvent(child);
-                } else {
-                    this.lockEvent(child);
-                }
-            }
-        };
-
-        traverseEventMarkers(this.sceneModel, processMarker);
-
-        return delayThenSyncPagination(this, options);
+        this._syncPaginationUiAfterFilters(options);
+        return Promise.resolve();
     }
 
     _syncPaginationUiAfterFilters(options = {}) {

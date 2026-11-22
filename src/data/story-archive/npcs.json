@@ -3430,7 +3430,17 @@
         "worldW": 13073,
         "worldH": 10480
       },
-      "npcCategory": "Fugitives"
+      "npcCategory": "Fugitives",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     }
   ]
 }

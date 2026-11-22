@@ -3,6 +3,8 @@
  * Persists in localStorage on desktop; mobile (narrow or short edge) stays collapsed and locked.
  */
 
+import { initDockCollapsePerfProbe } from './dockCollapsePerfProbe.js';
+
 export const PAGINATION_DOCK_COLLAPSED_STORAGE_KEY = 'timeline-pagination-dock-collapsed';
 
 /** Native pixel size of `src/assets/images/Misc/UI/Dock%20Border.png` (reference only; border band height is CSS-driven). */
@@ -50,18 +52,12 @@ export function isPaginationMobileCompactViewport() {
 }
 
 /**
- * Globe/layout resize at start + end of the dock height tween.
- * Side chrome listens once to `pagination-dock-collapse` and paints after settle
- * (mid-tween rebuilds were choppy).
+ * Dock is an overlay — collapse only changes dock chrome height, not stage flex.
+ * Side chrome still live-paints dock edges via `pagination-dock-collapse`.
+ * No synthetic `resize`: that was reflowing World/Codex/globe for no layout gain.
  */
 function scheduleResize() {
     window.dispatchEvent(new CustomEvent('pagination-dock-collapse'));
-    requestAnimationFrame(() => {
-        window.dispatchEvent(new Event('resize'));
-    });
-    window.setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-    }, 480);
 }
 
 function setCollapseButtonLabels(btn, collapsed) {
@@ -138,6 +134,8 @@ export function initPaginationDockCollapse() {
     const btn = document.getElementById('paginationDockCollapseBtn');
     if (!btn || btn.dataset.paginationDockCollapseInit === '1') return;
     btn.dataset.paginationDockCollapseInit = '1';
+
+    initDockCollapsePerfProbe();
 
     btn.addEventListener('click', () => {
         togglePaginationDockCollapse();

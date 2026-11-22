@@ -1,5 +1,5 @@
 /* Entry / boot / main menu (split from entry.css) */
-@import url('./entry-boot.css?v=8');
+@import url('./entry-boot.css?v=10');
 @import url('../mobile/portrait-gate.css?v=2');
-@import url('./entry-main-menu.css?v=49');
+@import url('./entry-main-menu.css?v=51');
 @import url('./entry-zoom.css?v=6');

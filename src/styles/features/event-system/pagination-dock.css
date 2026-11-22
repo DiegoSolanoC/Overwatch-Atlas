@@ -11,16 +11,17 @@
 }
 
 /*
- * Zero-height row between .layout-container and #paginationDock — holds the collapse control
- * entirely above the dock (same idea as panel edge draggers, but horizontal).
+ * Legacy zero-height host (collapse nub lives on the cap-row now). Kept out of
+ * document flow so it cannot affect stage flex layout.
  */
 .pagination-dock-collapse-strip {
     display: none;
-    flex: 0 0 0;
-    min-height: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: var(--footer-height, 65px);
     height: 0;
     width: 100%;
-    position: relative;
     /* Keep collapse handle above event slide/image layers (~500). */
     z-index: 670;
     overflow: visible;
@@ -44,6 +45,12 @@
         z-index: 1;
     }
 
+    /*
+     * Overlay dock (same idea as side panels): sits above the footer and paints
+     * over the stage. Collapse/expand only changes dock height — it must NOT be a
+     * flex sibling that resizes .layout-container (that was stuttering side chrome
+     * in World / Codex / every mode).
+     */
     body:has(#paginationDock) .pagination-dock {
         display: flex;
         flex-direction: column;
@@ -62,10 +69,12 @@
         /* Base tint; texture is on ::before so it always paints (see .pagination-dock > * fix below). */
         background-color: var(--bg-main, #0a1929);
         box-sizing: border-box;
-        position: relative;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: var(--footer-height, 65px);
         /* Keep dock chrome (including top border image) above event slide/image layers (~500). */
         z-index: 620;
-        flex: 0 0 var(--pagination-dock-height-expanded, 400px);
         /* Clicks pass through the dock chrome; only .event-pagination (and its controls) receive hits */
         pointer-events: none;
         /* Cap-row sits outside (bottom: 100%) — must stay visible (overflow:hidden clips it). */
@@ -77,8 +86,6 @@
             min-height var(--pagination-dock-transition-duration, 0.42s)
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
             max-height var(--pagination-dock-transition-duration, 0.42s)
-                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
-            flex-basis var(--pagination-dock-transition-duration, 0.42s)
                 var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
     }
 
@@ -91,7 +98,71 @@
         height: var(--pagination-dock-collapsed-h);
         min-height: var(--pagination-dock-collapsed-h);
         max-height: var(--pagination-dock-collapsed-h);
-        flex-basis: var(--pagination-dock-collapsed-h);
+    }
+
+    /*
+     * Side panels seat on the *live* dock top (expanded ↔ collapsed). Concrete
+     * `bottom` values so height eases with the dock — content flexes to fill.
+     * Trapeziums also nudge +10 pos% on collapse (mimic extra grow).
+     */
+    body:has(#paginationDock) {
+        --pagination-dock-stage-clearance: var(--pagination-dock-height-expanded, 400px);
+        --side-trap-collapse-shift: 0;
+        transition: --side-trap-collapse-shift
+            var(--pagination-dock-transition-duration, 0.42s)
+            var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+    }
+
+    body:has(#paginationDock).pagination-dock-collapsed {
+        --pagination-dock-stage-clearance: calc(
+            var(--pagination-dock-height-collapsed, 200px) +
+                max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+        );
+        --side-trap-collapse-shift: 10;
+    }
+
+    body:has(#paginationDock) .filters-panel,
+    body:has(#paginationDock) .event-slide {
+        bottom: var(--pagination-dock-height-expanded, 400px);
+        overflow: visible;
+        /* Keep width open/close transitions; add bottom ease with the dock. */
+        transition:
+            width var(--panel-transition),
+            min-width var(--panel-transition),
+            max-width var(--panel-transition),
+            box-shadow var(--panel-transition),
+            bottom var(--pagination-dock-transition-duration, 0.42s)
+                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+    }
+
+    body:has(#paginationDock).pagination-dock-collapsed .filters-panel,
+    body:has(#paginationDock).pagination-dock-collapsed .event-slide {
+        bottom: calc(
+            var(--pagination-dock-height-collapsed, 200px) +
+                max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+        );
+    }
+
+    /*
+     * Patterned / canvas hosts fill under the dock overlay (collapse stays patterned).
+     */
+    body:has(#paginationDock) #globe-container,
+    body:has(#paginationDock) .test-container,
+    body:has(#paginationDock) .story-viewer-container,
+    body:has(#paginationDock) .dialogue-theater-list-host,
+    body:has(#paginationDock) #atlasGalleryHost {
+        bottom: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    /*
+     * Menu is position:relative — pad tiles clear of the dock while ::before pattern
+     * still paints through the full host (including under the dock).
+     */
+    body:has(#paginationDock) .main-menu-buttons {
+        padding-bottom: calc(var(--pagination-dock-stage-clearance) * 0.9);
+        box-sizing: border-box;
     }
 
     /*
@@ -301,14 +372,26 @@
     }
 
     /*
-     * Keep body-level --pagination-dock-height in sync for globe/layout clearance.
-     * Dock chrome itself animates via the .pagination-dock height rules above.
+     * Body-level --pagination-dock-height tracks collapse for globe/floating chrome.
+     * Codex overrides this (see below) — inheriting a changing custom property into
+     * #codex-view-root invalidates the whole board and is the main Codex dock hitch.
      */
     body:has(#paginationDock).pagination-dock-collapsed {
         --pagination-dock-height: calc(
             var(--pagination-dock-height-collapsed, 200px) +
                 max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
         );
+    }
+
+    /*
+     * Codex: freeze body --pagination-dock-height at the expanded value so the
+     * stage tree is not style-invalidated every collapse. Dock box + side panels
+     * still ease via their own concrete height/bottom rules. Floating Codex chrome
+     * uses explicit expanded/collapsed bottoms in codex-nodes.css.
+     */
+    body.codex-mode-active:has(#paginationDock),
+    body.codex-mode-active:has(#paginationDock).pagination-dock-collapsed {
+        --pagination-dock-height: var(--pagination-dock-height-expanded, 400px);
     }
     
     /* JS still inserts this node; texture is drawn on .pagination-dock::before instead. */
@@ -369,24 +452,16 @@
         overflow: hidden !important;
     }
     
-    /* Layout-container fills remaining space */
+    /*
+     * Stage fills header→footer. Dock overlays the bottom band and no longer
+     * steals flex-basis, so collapse cannot resize side panels / globe / codex.
+     */
     body:has(#paginationDock) .layout-container {
         flex: 1 1 auto !important;
         min-height: 0 !important;
         overflow: hidden !important;
     }
 
-    /*
-     * Mobile: viewport.css pins layout-container to dvh − header − footer and ignores the dock
-     * flex child — release height so flex can shrink main above dock + footer.
-     */
-    @media (max-width: 768px) {
-        body:has(#paginationDock) .layout-container {
-            height: auto !important;
-            max-height: none !important;
-        }
-    }
-    
     /* Main content area fills layout-container */
     body:has(#paginationDock) .layout-container main,
     body:has(#paginationDock) .layout-container #content {
@@ -396,12 +471,9 @@
         overflow: hidden !important;
     }
     
-    /* Override entry/globe timeline bottom inset once dock exists (sibling layout, not overlapping strip) */
+    /* Globe width still fills; bottom inset comes from --pagination-dock-stage-clearance. */
     body:has(#paginationDock) #globe-container {
         width: 100% !important;
-        height: 100% !important;
-        max-height: 100% !important;
-        bottom: 0 !important;
     }
     
     /* Footer stays fixed height */

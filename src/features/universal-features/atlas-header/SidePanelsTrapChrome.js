@@ -264,6 +264,8 @@ export function sanitizeSidePanelsTrapState(s) {
     next.atlasNewsWidthPx = clamp(Math.round(Number(next.atlasNewsWidthPx ?? 146)), 48, 180);
     next.atlasNewsHeightPx = clamp(Math.round(Number(next.atlasNewsHeightPx ?? 88)), 36, 140);
     next.atlasNewsIconPct = clamp(Math.round(Number(next.atlasNewsIconPct ?? 100)), 40, 100);
+    delete next.stageMenuOffsetYPx;
+    delete next.globeOffsetYPx;
     return next;
 }
 
@@ -631,6 +633,63 @@ function measureSideTrapBands(_hostHandle, trapHandles) {
 }
 
 /**
+ * Extra paint below the handle into the dock. Panels now track live dock height
+ * (`bottom` eases with collapse), so strokes match the box — only a light tuck
+ * under the dock top border remains (avoids the old “line floats past the fill”).
+ * @returns {number}
+ */
+function sidePanelDockOverhangPx() {
+    if (chromeTweenOverhangPx != null) return chromeTweenOverhangPx;
+    if (typeof document === 'undefined' || !document.getElementById('paginationDock')) {
+        return 0;
+    }
+    const cs = getComputedStyle(document.body);
+    const seam = parseFloat(cs.getPropertyValue('--dock-border-seam-h').trim());
+    if (Number.isFinite(seam) && seam > 0) return Math.round(Math.min(20, seam * 0.2));
+    return 8;
+}
+
+/** Expanded / collapsed dock height in CSS px (matches pagination-dock.css seating). */
+function readDockSeatHeightsPx() {
+    const cs =
+        typeof document !== 'undefined' ? getComputedStyle(document.body) : null;
+    const expanded = parseFloat(cs?.getPropertyValue('--pagination-dock-height-expanded') || '') || 400;
+    const collapsedBase =
+        parseFloat(cs?.getPropertyValue('--pagination-dock-height-collapsed') || '') || 200;
+    const clearance =
+        parseFloat(cs?.getPropertyValue('--dock-inward-line-clearance-collapsed') || '') || 4;
+    const collapsed = collapsedBase + Math.max(0, clearance - 14);
+    return { expanded, collapsed };
+}
+
+/**
+ * Trap band top/height matching panel-resize.css percentage formulas (no layout read).
+ * @param {number} panelH
+ * @param {number} trapHeightPx
+ * @param {number} posPct
+ * @param {number} shift
+ * @param {number} capFrac 0.62 info / 0.42 filters
+ */
+function formulaTrapBand(panelH, trapHeightPx, posPct, shift, capFrac) {
+    const h = Math.max(1, panelH);
+    const capped = Math.min(trapHeightPx, h * capFrac);
+    const pos = Math.min(100, Math.max(0, posPct + shift));
+    const top = ((h - capped) * pos) / 100 - 2;
+    return { top, height: capped + 8 };
+}
+
+/** Live collapse amount 0..1 from transitioning --side-trap-collapse-shift. */
+function readTrapCollapseT() {
+    if (typeof document === 'undefined') return 0;
+    const raw = getComputedStyle(document.body).getPropertyValue('--side-trap-collapse-shift');
+    const shift = parseFloat(raw);
+    if (!Number.isFinite(shift)) {
+        return document.body.classList.contains('pagination-dock-collapsed') ? 1 : 0;
+    }
+    return Math.min(1, Math.max(0, shift / 10));
+}
+
+/**
  * One continuous side-edge stroke (seams + every trap) — same idea as dock-trap-edge-stroke.
  * Always authored as right-protruding (info), then mirrored for filters so dual
  * traps share the proven single-trap math.
@@ -639,63 +698,104 @@ function measureSideTrapBands(_hostHandle, trapHandles) {
  * @param {{top:number,height:number}[]} traps
  * @param {object} s
  * @param {Element} [paintParent] SVG host (defaults to measureEl; filters uses panel edge host)
+ * @param {number} [paintHeight] path height (may exceed handle to overhang under dock)
  */
-function syncSidePanelEdgeStroke(measureEl, protrudeDir, traps, s, paintParent) {
+/**
+ * @param {Element} measureEl
+ * @param {'left'|'right'} protrudeDir
+ * @param {{top:number,height:number}[]} traps
+ * @param {object} s
+ * @param {Element} [paintParent]
+ * @param {number} [paintHeight]
+ * @param {{ handleW?: number, handleH?: number, protrude?: number }} [layout]
+ */
+function syncSidePanelEdgeStroke(
+    measureEl,
+    protrudeDir,
+    traps,
+    s,
+    paintParent,
+    paintHeight,
+    layout = {},
+) {
     if (!measureEl || !traps.length) return null;
     const parent = paintParent || measureEl;
-    const handleW = measureEl.clientWidth;
-    const handleH = measureEl.clientHeight;
+    const handleW = Math.max(
+        1,
+        Math.round(Number(layout.handleW) || measureEl.clientWidth || 0),
+    );
+    const boxH = Math.round(Number(layout.handleH) || measureEl.clientHeight || 0);
+    const handleH = Math.max(boxH, Math.round(Number(paintHeight) || boxH));
     if (!(handleW > 4) || !(handleH > 8)) return null;
 
-    const label = measureEl.querySelector('.panel-resize-handle__trap-label');
-    const labelW = label instanceof HTMLElement ? label.offsetWidth : 0;
-    const protrude = Math.min(
-        handleW,
-        Math.max(24, labelW > 8 ? labelW : Number(s.trapProtrudePx) || 64),
-    );
+    let protrude;
+    if (Number.isFinite(Number(layout.protrude)) && Number(layout.protrude) > 0) {
+        protrude = Math.min(handleW, Math.max(24, Number(layout.protrude)));
+    } else {
+        const label = measureEl.querySelector('.panel-resize-handle__trap-label');
+        const labelW = label instanceof HTMLElement ? label.offsetWidth : 0;
+        protrude = Math.min(
+            handleW,
+            Math.max(24, labelW > 8 ? labelW : Number(s.trapProtrudePx) || 64),
+        );
+    }
     /* Local authoring space: seam at x=0, tip at x=protrude (matches working info side). */
     const edgeRadius = Math.max(s.sideBorderRadius, s.dockBorderRadius);
-    const localPts = sideInwardOuterPoints(
-        'right',
-        handleH,
-        0,
-        protrude,
-        traps,
-        s.trapTaperPct,
-    );
-    const outerPts = dedupePolyPoints(
-        protrudeDir === 'left' ? mirrorPtsX(localPts, handleW) : localPts,
-        0.75,
-    );
     const seamX = protrudeDir === 'right' ? 0 : handleW;
     const tipX = protrudeDir === 'right' ? protrude : handleW - protrude;
-    /* Retire fragmented per-trap strokes — one path owns the whole edge. */
-    parent.querySelectorAll(':scope > svg.panel-trap-edge-stroke').forEach((el) => {
-        el.remove();
-    });
+    /*
+     * Outer white stroke ignores drawbridge flatten — skip path rewrite when the
+     * handle box / trap bands are unchanged (typical during confirm close).
+     */
+    const outerKey =
+        `${handleW}|${handleH}|${protrude}|${edgeRadius}|${s.sideBorderWidth}|${s.trapTaperPct}|${protrudeDir}|` +
+        traps.map((t) => `${Math.round(t.top)},${Math.round(t.height)}`).join(';');
+    /* Retire fragmented per-trap strokes once — one path owns the whole edge. */
+    if (!parent.dataset.sideEdgeLegacyCleared) {
+        parent.querySelectorAll(':scope > svg.panel-trap-edge-stroke').forEach((el) => {
+            el.remove();
+        });
+        parent.dataset.sideEdgeLegacyCleared = '1';
+    }
     const svg = ensureStrokeSvg(parent, 'panel-side-edge-stroke');
-    writeStrokePath(
-        svg,
-        roundedPolylinePath(outerPts, edgeRadius),
-        s.sideBorderWidth,
-        handleW,
-        handleH,
-    );
-    svg.style.position = 'absolute';
-    svg.style.inset = '0';
-    svg.style.width = '100%';
-    svg.style.height = '100%';
-    svg.style.pointerEvents = 'none';
-    svg.style.zIndex = '1';
-    svg.style.overflow = 'visible';
+    if (parent.dataset.sideOuterKey !== outerKey) {
+        const localPts = sideInwardOuterPoints(
+            'right',
+            handleH,
+            0,
+            protrude,
+            traps,
+            s.trapTaperPct,
+        );
+        const outerPts = dedupePolyPoints(
+            protrudeDir === 'left' ? mirrorPtsX(localPts, handleW) : localPts,
+            0.75,
+        );
+        writeStrokePath(
+            svg,
+            roundedPolylinePath(outerPts, edgeRadius),
+            s.sideBorderWidth,
+            handleW,
+            handleH,
+        );
+        parent.dataset.sideOuterKey = outerKey;
+        svg.style.position = 'absolute';
+        svg.style.left = '0';
+        svg.style.top = '0';
+        svg.style.right = 'auto';
+        svg.style.bottom = 'auto';
+        svg.style.width = '100%';
+        svg.style.height = `${handleH}px`;
+        svg.style.pointerEvents = 'none';
+        svg.style.zIndex = '1';
+        svg.style.overflow = 'visible';
+    }
     return {
         handleW,
         handleH,
         protrude,
         seamX,
         tipX,
-        localPts,
-        outerPts,
         traps,
         edgeRadius,
         protrudeDir,
@@ -731,9 +831,76 @@ let chromeResizeInstalled = false;
 let chromeResizeTimer = 0;
 let chromeTweenTimer = 0;
 let chromeTweenRaf = 0;
+/** Dock height CSS tween owns a live rAF paint loop for side edge SVGs. */
 let chromeTweening = false;
+/**
+ * Cached overhang while dock-tweening — avoid getComputedStyle(body) every frame.
+ * @type {number | null}
+ */
+let chromeTweenOverhangPx = null;
+/**
+ * Mid dock-tween layout snapshot — formula paint (no clientHeight/offsetTop per frame).
+ * @type {null | {
+ *   collapsing: boolean,
+ *   expandedDock: number,
+ *   collapsedDock: number,
+ *   dockH0: number,
+ *   infoH0: number,
+ *   filtersH0: number,
+ *   infoW: number,
+ *   filtersW: number,
+ *   protrude: number,
+ *   trapH: number,
+ *   infoPos: number,
+ *   filtersPos: number,
+ *   musicPos: number,
+ * }}
+ */
+let chromeTweenLayout = null;
+/** Suppress RO full-applies while a side panel width CSS-tweens (open/close). */
+let panelWidthTweenGuardUntil = 0;
+/**
+ * After dock collapse settle, RO fires on panel height change. A full
+ * applySidePanelsTrapChrome (nubs + every CSS var) was ~50–120ms forced reflow
+ * on Codex. Prefer light edge sync until this timestamp.
+ */
+let chromePreferLightReflowUntil = 0;
+/** One-shot: strip legacy handle-local side strokes (avoid per-frame DOM deletes). */
+let sideHandleLegacyStrokesCleaned = false;
+/** One-shot: strip legacy dock inward host under the slider row. */
+let dockInwardLegacyCleaned = false;
 /** @type {ResizeObserver | null} */
 let chromeLayoutRo = null;
+
+/** @param {InwardCutKey} key */
+function sideChromeKeyBusy(key) {
+    const st = drawbridge[key];
+    if (st && st.phase !== 'idle') return true;
+    const e = cutEmphasis[key];
+    if (e && Math.abs(e.current - e.target) > 0.0005) return true;
+    return !!(e && e.hovering);
+}
+
+function anySideChromeBusy() {
+    return (
+        sideChromeKeyBusy('info') ||
+        sideChromeKeyBusy('filters') ||
+        sideChromeKeyBusy('music')
+    );
+}
+
+/**
+ * True while we must not run a full chrome rebuild (dock live rAF, or panel
+ * width CSS open/close guard / panel--closing).
+ */
+function chromeLivePaintActive() {
+    if (chromeTweening) return true;
+    if (performance.now() < panelWidthTweenGuardUntil) return true;
+    if (typeof document === 'undefined') return false;
+    return !!document.querySelector(
+        '.filters-panel.panel--closing, .event-slide.panel--closing',
+    );
+}
 
 /*
  * Side inward lips (inverted drawbridge):
@@ -748,10 +915,10 @@ let chromeLayoutRo = null;
 const INWARD_CUT_IDLE_SCALE = 1;
 /** Exponential time-constant for hover cut eases. */
 const INWARD_CUT_TWEEN_TAU_MS = 160;
-/** Drawbridge flatten phase duration. */
-const DRAWBRIDGE_FLATTEN_MS = 320;
+/** Drawbridge flatten phase duration (kept short so open/close feels snappy). */
+const DRAWBRIDGE_FLATTEN_MS = 170;
 /** Drawbridge gap open/close phase duration. */
-const DRAWBRIDGE_GAP_MS = 260;
+const DRAWBRIDGE_GAP_MS = 130;
 
 /** @typedef {'info'|'filters'|'music'} InwardCutKey */
 
@@ -1010,7 +1177,9 @@ function ensureDrawbridgeTween() {
         const busy = advanceDrawbridge(now);
         resolveInwardCutTargetsFromDom();
         advanceInwardCutCurrents(now);
-        syncLiveEdgeChrome();
+        /* Drawbridge only reshapes side inward lips — skip dock rebuilds. */
+        if (!busy) settleDrawbridgeIfIdle();
+        syncLiveEdgeChrome(undefined, { dock: false, sides: true });
         if (busy || inwardCutEmphasisBusy()) {
             drawbridgeRaf = window.requestAnimationFrame(tick);
         } else {
@@ -1029,6 +1198,27 @@ function snapDrawbridgeToDom() {
         st.flatten = wantParallel ? 0 : 1;
         st.gapOpen = wantParallel ? 1 : 0;
         st.phase = 'idle';
+        st.fromFlatten = st.flatten;
+        st.fromGapOpen = st.gapOpen;
+    }
+}
+
+/**
+ * If phases already finished, clamp residual flatten/gap so a closed trap cannot
+ * leave a hairline punch (gapOpen stuck at ~0.01 still opens a visible break).
+ */
+function settleDrawbridgeIfIdle() {
+    resolveDrawbridgeFromDom();
+    for (const key of /** @type {InwardCutKey[]} */ (['info', 'filters', 'music'])) {
+        const st = drawbridge[key];
+        if (st.phase !== 'idle') continue;
+        if (st.wantParallel) {
+            st.flatten = 0;
+            st.gapOpen = 1;
+        } else {
+            st.flatten = 1;
+            st.gapOpen = 0;
+        }
         st.fromFlatten = st.flatten;
         st.fromGapOpen = st.gapOpen;
     }
@@ -1082,13 +1272,13 @@ function ensureInwardCutEmphasisTween() {
 
 /** @param {number} now */
 function tickInwardCutEmphasis(now) {
-    /* Dock height tween owns the paint loop; it advances cut scales itself. */
+    /* Dock/panel layout tween owns the paint loop; it advances cut scales itself. */
     if (chromeTweening) {
         cutEmphasisRaf = 0;
         return;
     }
     const busy = advanceInwardCutCurrents(now);
-    syncLiveEdgeChrome();
+    syncLiveEdgeChrome(undefined, { dock: false, sides: true });
     if (busy) {
         cutEmphasisRaf = window.requestAnimationFrame(tickInwardCutEmphasis);
     } else {
@@ -1154,85 +1344,224 @@ function bindInwardCutEmphasisHover() {
 }
 
 /**
- * Debounced chrome re-paint. During dock tween, live rAF owns edge updates —
- * skip the debounced full apply so it does not fight the frame loop.
+ * Debounced chrome re-paint. During dock live tween / panel width close, skip
+ * full applies so they do not fight the frame loop.
  * @param {number} [delayMs]
+ * @param {{ light?: boolean }} [opts] — light = edges only (no nub / CSS-var storm)
  */
-export function scheduleSidePanelsTrapChromeReflow(delayMs = 48) {
-    if (typeof window === 'undefined' || chromeTweening) return;
+export function scheduleSidePanelsTrapChromeReflow(delayMs = 48, opts = {}) {
+    if (typeof window === 'undefined' || chromeLivePaintActive() || anySideChromeBusy()) {
+        return;
+    }
+    const preferLight =
+        opts.light === true || performance.now() < chromePreferLightReflowUntil;
     window.clearTimeout(chromeResizeTimer);
     chromeResizeTimer = window.setTimeout(() => {
-        if (chromeTweening) return;
-        /* Keep unsaved tweaker values (focus cut bonus, etc.) across resize/RO. */
+        if (chromeLivePaintActive() || anySideChromeBusy()) return;
+        if (preferLight || performance.now() < chromePreferLightReflowUntil) {
+            syncLiveEdgeChrome(undefined, { dock: true, sides: true });
+            return;
+        }
         applySidePanelsTrapChrome(paintTrapChromeState());
     }, Math.max(0, delayMs));
 }
 
 /**
- * In-place border + inward paths only (no CSS-var / nub rebuild). Safe every frame
- * while panel/dock height tweens — matches CSS silhouette motion.
+ * In-place border + inward paths only (no nub data-URL rebuild).
  * @param {object} [state]
+ * @param {{ dock?: boolean, sides?: boolean }} [parts]
  */
-function syncLiveEdgeChrome(state) {
+function syncLiveEdgeChrome(state, parts = {}) {
+    const wantDock = parts.dock !== false;
+    const wantSides = parts.sides !== false;
     const s = paintTrapChromeState(state);
-    const fit = sideTrapViewportFit(s);
-    const sidePaint = {
-        ...s,
-        trapHeightPx: fit.heightPx,
-        trapProtrudePx: fit.protrudePx,
-        sideBorderWidth: fit.borderWidth,
-    };
-    const dockGeo = syncDockEdgeStroke(s, dockTrapGeometry(s)) || dockTrapGeometry(s);
-    syncDockInwardLineShape(s, dockGeo);
-    syncAllSidePanelEdges(sidePaint);
+    if (wantDock) {
+        const dockGeo = syncDockEdgeStroke(s, dockTrapGeometry(s)) || dockTrapGeometry(s);
+        syncDockInwardLineShape(s, dockGeo);
+    }
+    if (wantSides) {
+        /*
+         * Mid dock-tween: keep trap *size* CSS vars settled (no sideTrapViewportFit —
+         * that rewrites :root sizes and reflows). Still rebuild side SVG paths from
+         * live label bands so borders track the CSS silhouette + panel `bottom` ease.
+         */
+        if (chromeTweening) {
+            syncAllSidePanelEdges(s, { selective: false });
+        } else {
+            const fit = sideTrapViewportFit(s);
+            const root = document.documentElement;
+            if (root) {
+                root.style.setProperty('--event-info-side-trapezium-h', `${fit.heightPx}px`);
+                root.style.setProperty('--event-info-trap-protrude', `${fit.protrudePx}px`);
+                root.style.setProperty('--event-info-trap-border-w', String(fit.borderWidth));
+                root.style.setProperty('--side-edge-border-px', `${fit.borderWidth}px`);
+            }
+            syncAllSidePanelEdges(
+                {
+                    ...s,
+                    trapHeightPx: fit.heightPx,
+                    trapProtrudePx: fit.protrudePx,
+                    sideBorderWidth: fit.borderWidth,
+                },
+                {
+                    /* Drawbridge-only paints skip idle sides. */
+                    selective: !wantDock,
+                },
+            );
+        }
+    }
 }
 
 /**
- * Drive edge SVG paths every animation frame through the dock height tween so
- * borders/inward lips track the CSS silhouette (trap/nub already tween via CSS).
+ * Dock height collapse/expand (~0.42s CSS) — overlay chrome is one timed unit:
+ * dock height + panel `bottom` + --side-trap-collapse-shift are CSS; side edge
+ * SVGs must be rewritten each frame from live trap bands (stretching a stale
+ * path desyncs borders from the silhouette). Dock cap stroke is parented to the
+ * dock and moves with it — only settle-paint the dock path.
+ *
+ * Codex: body --pagination-dock-height is frozen on the board (pagination-dock /
+ * codex-canvas) so this layout read stays on the overlay panels, not the node tree.
+ * Probe: localStorage.dockPerf=1.
+ * @param {number} [durationMs]
  */
-export function beginSideChromeDockTween() {
+export function beginSideChromeDockTween(durationMs = 420) {
     if (typeof window === 'undefined') return;
+    const ms = Math.max(120, Number(durationMs) || 420);
     chromeTweening = true;
+    chromeTweenOverhangPx = sidePanelDockOverhangPx();
     window.clearTimeout(chromeResizeTimer);
     window.clearTimeout(chromeTweenTimer);
     window.cancelAnimationFrame(chromeTweenRaf);
     window.cancelAnimationFrame(cutEmphasisRaf);
     window.cancelAnimationFrame(drawbridgeRaf);
+    chromeTweenRaf = 0;
     cutEmphasisRaf = 0;
     drawbridgeRaf = 0;
-    document.body?.classList.remove('side-chrome-dock-tweening');
-    cutEmphasisLastTs = performance.now();
+
+    const s = paintTrapChromeState();
+    const seats = readDockSeatHeightsPx();
+    const collapsing = !!document.body?.classList.contains('pagination-dock-collapsed');
+    const infoHandle = document.querySelector(
+        '.event-slide .panel-resize-handle--inner-right',
+    );
+    const filtersHandle =
+        document.querySelector(
+            '.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch',
+        ) || document.querySelector('.filters-panel .panel-resize-handle--inner-left');
+    const dockEl =
+        document.getElementById('paginationDock') ||
+        document.querySelector('.pagination-dock');
+    /* One layout sample at tween start — mid frames use formulas only. */
+    const infoH0 = infoHandle instanceof HTMLElement ? infoHandle.clientHeight : 0;
+    const filtersH0 =
+        filtersHandle instanceof HTMLElement ? filtersHandle.clientHeight : infoH0;
+    const infoW = infoHandle instanceof HTMLElement ? infoHandle.clientWidth : 80;
+    const filtersW =
+        filtersHandle instanceof HTMLElement ? filtersHandle.clientWidth : infoW;
+    const dockH0 =
+        dockEl instanceof HTMLElement && dockEl.clientHeight > 0
+            ? dockEl.clientHeight
+            : collapsing
+              ? seats.expanded
+              : seats.collapsed;
+    chromeTweenLayout = {
+        collapsing,
+        expandedDock: seats.expanded,
+        collapsedDock: seats.collapsed,
+        dockH0,
+        infoH0: Math.max(8, infoH0),
+        filtersH0: Math.max(8, filtersH0),
+        infoW: Math.max(24, infoW),
+        filtersW: Math.max(24, filtersW),
+        protrude: Math.max(24, Number(s.trapProtrudePx) || 64),
+        trapH: Math.max(64, Number(s.trapHeightPx) || 306),
+        infoPos: Number(s.infoTrapPosPct) || 50,
+        filtersPos: Number(s.filtersTrapPosPct) || 32,
+        musicPos: Number(s.musicTrapPosPct) || 68,
+    };
+
+    document.body?.classList.add('side-chrome-dock-tweening');
+    try {
+        window.__codexSetCordAnimDockSuspended?.(true);
+    } catch (_) {
+        /* Codex not mounted */
+    }
+    try {
+        window.DockCollapsePerf?.mark?.('side-chrome-dock-tween:start');
+    } catch (_) {
+        /* probe optional */
+    }
+
+    /* First paint immediately so frame 0 is not a stretched stale path. */
+    syncLiveEdgeChrome(undefined, { dock: false, sides: true });
 
     const tick = () => {
         if (!chromeTweening) return;
-        const now = performance.now();
-        /* Side hover / drawbridge may still be easing; dock cut stays 1×. */
-        advanceDrawbridge(now);
-        resolveInwardCutTargetsFromDom();
-        advanceInwardCutCurrents(now);
-        syncLiveEdgeChrome();
+        /* Sides only — dock stroke rides the cap row; rewriting it each frame is waste. */
+        syncLiveEdgeChrome(undefined, { dock: false, sides: true });
         chromeTweenRaf = window.requestAnimationFrame(tick);
     };
     chromeTweenRaf = window.requestAnimationFrame(tick);
 
-    /* Match --pagination-dock-transition-duration (~0.42s) + small settle. */
     chromeTweenTimer = window.setTimeout(() => {
         window.cancelAnimationFrame(chromeTweenRaf);
         chromeTweenRaf = 0;
+        /* Leave tween mode before settle so sideTrapViewportFit runs for final sizes. */
         chromeTweening = false;
-        applySidePanelsTrapChrome(paintTrapChromeState(), { snapCuts: false });
+        chromeTweenOverhangPx = null;
+        chromeTweenLayout = null;
+        document.body?.classList.remove('side-chrome-dock-tweening');
+        /*
+         * Cancel RO-scheduled full applies from panel height change; settle paint
+         * already fits + syncs edges. Keep RO on a light path briefly after.
+         */
+        window.clearTimeout(chromeResizeTimer);
+        chromePreferLightReflowUntil = performance.now() + 700;
+        settleDrawbridgeIfIdle();
+        syncLiveEdgeChrome(undefined, { dock: true, sides: true });
+        try {
+            window.DockCollapsePerf?.mark?.('side-chrome-dock-tween:settle');
+        } catch (_) {
+            /* probe optional */
+        }
         ensureInwardCutEmphasisTween();
         ensureDrawbridgeTween();
-    }, 480);
+        try {
+            window.__codexSetCordAnimDockSuspended?.(false);
+        } catch (_) {
+            /* Codex not mounted */
+        }
+    }, ms);
+}
+
+/**
+ * Panel open/close — do NOT run a heavy layout rAF loop (that lagged Confirm close).
+ * Guard RO full-applies for the width CSS duration and let drawbridge own inward paint.
+ */
+export function beginSideChromePanelTween() {
+    if (typeof window === 'undefined') return;
+    panelWidthTweenGuardUntil = performance.now() + 380;
+    window.clearTimeout(chromeResizeTimer);
+    refreshInwardCutEmphasis();
+    /* One immediate side paint so the first close frame is not a stale bridged lip. */
+    syncLiveEdgeChrome(undefined, { dock: false, sides: true });
+}
+
+/** True while a dock chrome layout tween owns the paint loop. */
+export function isSideChromeLayoutTweening() {
+    return chromeTweening;
 }
 
 function observeSideChromeLayoutTargets() {
     if (typeof ResizeObserver === 'undefined') return;
     if (!chromeLayoutRo) {
         chromeLayoutRo = new ResizeObserver(() => {
-            if (chromeTweening) return;
-            scheduleSidePanelsTrapChromeReflow(64);
+            if (chromeLivePaintActive() || anySideChromeBusy()) return;
+            /*
+             * Panel/dock box changes (collapse, open) only need path sync.
+             * Full apply is reserved for window resize / tweaks (viewport fit + nubs).
+             */
+            scheduleSidePanelsTrapChromeReflow(64, { light: true });
         });
     }
     document
@@ -1281,10 +1610,50 @@ export function installSidePanelsTrapChromeLifecycle() {
                     if (isPanel) {
                         /* Open/close / filters↔music mode retargets cut emphasis per trap. */
                         refreshInwardCutEmphasis();
+                        /*
+                         * FiltersPanel already starts the panel tween on open/close.
+                         * Only kick one for event-slide (or other class toggles) when
+                         * a layout tween is not already owning the paint loop —
+                         * restarting mid-bridge dropped frames.
+                         */
+                        if (
+                            m.attributeName === 'class' &&
+                            !chromeTweening &&
+                            t.classList.contains('event-slide')
+                        ) {
+                            const cl = t.classList;
+                            const nowTween = cl.contains('open');
+                            const wasTween =
+                                typeof m.oldValue === 'string' && /\bopen\b/.test(m.oldValue);
+                            if (nowTween || wasTween) {
+                                beginSideChromePanelTween();
+                            }
+                        }
                     }
                     if (isBody && m.attributeName === 'class') {
-                        /* Dock collapse class is handled by pagination-dock-collapse + tween. */
-                        if (!chromeTweening) scheduleSidePanelsTrapChromeReflow(80);
+                        /*
+                         * Dock collapse is owned by pagination-dock-collapse + tween.
+                         * Ignore dock / tween body classes — full apply here forced
+                         * 80–300ms reflows on keydown + settle (Codex longtasks).
+                         */
+                        if (chromeTweening) continue;
+                        if (document.body.classList.contains('side-chrome-dock-tweening')) {
+                            continue;
+                        }
+                        const was = typeof m.oldValue === 'string' ? m.oldValue : '';
+                        if (/\bside-chrome-dock-tweening\b/.test(was)) continue;
+                        const now = document.body.className || '';
+                        const dockOnly =
+                            was.replace(/\bpagination-dock-collapsed\b/g, '').trim() ===
+                            now.replace(/\bpagination-dock-collapsed\b/g, '').trim();
+                        if (
+                            dockOnly &&
+                            /\bpagination-dock-collapsed\b/.test(was) !==
+                                /\bpagination-dock-collapsed\b/.test(now)
+                        ) {
+                            continue;
+                        }
+                        scheduleSidePanelsTrapChromeReflow(80);
                     }
                     continue;
                 }
@@ -1325,6 +1694,7 @@ export function installSidePanelsTrapChromeLifecycle() {
             childList: true,
             subtree: true,
             attributes: true,
+            attributeOldValue: true,
             attributeFilter: ['class', 'data-panel-mode'],
         });
     }
@@ -1863,7 +2233,8 @@ function horizontalCutRibbonPath(outerFull, thicknessFn, cutY, side, cornerRadiu
 function horizontalBandRibbonPath(outerFull, thicknessFn, y0, y1, cornerRadius, maxButtSpan = 64) {
     const lo = Math.min(y0, y1);
     const hi = Math.max(y0, y1);
-    if (hi - lo < 8) return '';
+    /* Allow short dual-trap connectors; dropping sub-8px bands left visible breaks. */
+    if (hi - lo < 3) return '';
     const paired = pairedRibbonEdges(outerFull, thicknessFn);
     if (paired.total < 1) return '';
     const outer = clipPolylineMaxY(clipPolylineMinY(paired.outer, lo), hi);
@@ -1898,10 +2269,13 @@ export function syncDockInwardLineShape(s, geo) {
             : null;
     if (!cap) return;
 
-    /* Migrate off the old slider-row host if present. */
-    document.querySelectorAll('.event-page-slider-row > .pagination-dock-inward-line').forEach((el) => {
-        el.remove();
-    });
+    /* Migrate off the old slider-row host once (not every live paint frame). */
+    if (!dockInwardLegacyCleaned) {
+        document
+            .querySelectorAll('.event-page-slider-row > .pagination-dock-inward-line')
+            .forEach((el) => el.remove());
+        dockInwardLegacyCleaned = true;
+    }
 
     let host = cap.querySelector(':scope > .pagination-dock-inward-line');
     if (!host) {
@@ -1963,8 +2337,10 @@ export function syncDockInwardLineShape(s, geo) {
         { x: rightPx, y: H },
         { x: W, y: H },
     ];
-    const rounded = sampleRoundedPolyline(outerPts, s.dockBorderRadius);
-    const outerEdge = densifyPolyline(offsetPolyline(rounded, outerInset), 6);
+    const curveSteps = chromeTweening ? 3 : 6;
+    const densifyStep = chromeTweening ? 12 : 6;
+    const rounded = sampleRoundedPolyline(outerPts, s.dockBorderRadius, curveSteps);
+    const outerEdge = densifyPolyline(offsetPolyline(rounded, outerInset), densifyStep);
     const tipTh = Math.max(0.5, Math.min(fullTh, s.dockInwardEndThicknessPx));
     const tipW = s.dockInwardTipWidthPx;
     const slopeW = s.dockInwardSlopeWidthPx;
@@ -2159,7 +2535,12 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
                       : INWARD_CUT_IDLE_SCALE,
         };
     });
+    /*
+     * Densify is the expensive bit. Shape depends on flatten (not gapOpen) —
+     * cache across closeGap/openGap frames once flatten has settled.
+     */
     /* Inward lip gets its own polyline so drawbridge flatten does not move the outer stroke. */
+    const liveBusy = chromeTweening || anySideChromeBusy();
     const localPts = sideInwardOuterPoints(
         'right',
         handleH,
@@ -2168,8 +2549,14 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
         trapsForInward,
         s.trapTaperPct,
     );
-    const rounded = dedupePolyPoints(sampleRoundedPolyline(localPts, edgeRadius), 0.5);
-    const localEdge = densifyPolyline(offsetPolyline(rounded, outerInset), 5);
+    /* Dock tween: coarsest densify — still tracks Y, without starving the CSS ease. */
+    const curveSteps = chromeTweening ? 2 : liveBusy ? 3 : 6;
+    const densifyStep = chromeTweening ? 20 : liveBusy ? 12 : 5;
+    const rounded = dedupePolyPoints(
+        sampleRoundedPolyline(localPts, edgeRadius, curveSteps),
+        0.5,
+    );
+    const localEdge = densifyPolyline(offsetPolyline(rounded, outerInset), densifyStep);
     const fullTh = Math.max(1, s.sideInwardLineThicknessPx);
     const cornerR = Math.max(s.sideInwardCornerRadiusPx, edgeRadius);
     const maxButt = Math.max(fullTh * 3, 36);
@@ -2183,11 +2570,13 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
     let spans = [[0, handleH]];
     for (let i = 0; i < trapsForInward.length; i++) {
         const tr = trapsForInward[i];
-        const gap = clamp(baseGap * tr.scale * tr.gapOpen, 0, 900);
-        if (gap < 3) continue;
+        /* Treat near-closed as closed — residual 0.01–0.05 left hairline breaks. */
+        const gapOpen = tr.gapOpen < 0.04 ? 0 : tr.gapOpen;
+        const gap = clamp(baseGap * tr.scale * gapOpen, 0, 900);
+        if (gap < 4) continue;
         const mid = tr.top + tr.height / 2;
         const half = Math.min(gap / 2, maxHalfFor(tr.height, Math.max(1, tr.scale)));
-        if (half < 1.5) continue;
+        if (half < 2) continue;
         spans = punchYSpans(spans, mid - half, mid + half);
     }
 
@@ -2196,7 +2585,8 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
     for (let i = 0; i < spans.length; i++) {
         const a = spans[i][0];
         const b = spans[i][1];
-        if (b - a < 8) continue;
+        /* Keep short connectors between dual-trap cuts — dropping them left visible gaps. */
+        if (b - a < 3) continue;
         if (a <= 0.5 && b >= handleH - 0.5) {
             localParts.push(
                 horizontalBandRibbonPath(localEdge, th, 0, handleH, cornerR, maxButt),
@@ -2224,6 +2614,16 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
     if (!path) return;
     const pad = Math.max(24, fullTh * 2 + Math.abs(offsetPx) + s.sideBorderWidth);
     const vbW = handleW + pad;
+    const inwardKey =
+        `${handleW}|${handleH}|${protrude}|${outerInset}|${fullTh}|${cornerR}|${protrudeDir}|` +
+        trapsForInward
+            .map(
+                (t) =>
+                    `${Math.round(t.top)},${Math.round(t.height)},${t.flatten.toFixed(3)},${t.gapOpen.toFixed(3)},${Number(t.scale).toFixed(3)}`,
+            )
+            .join(';');
+    if (host.dataset.sideInwardKey === inwardKey && path.getAttribute('d')) return;
+    host.dataset.sideInwardKey = inwardKey;
     if (protrudeDir === 'right') {
         svg.setAttribute('viewBox', `${-pad} 0 ${vbW} ${handleH}`);
         host.style.left = `${-pad}px`;
@@ -2246,25 +2646,38 @@ function syncSideInwardFromEdge(paintParent, protrudeDir, edge, s, cutScales) {
  * @param {Element} panel
  * @param {Element} filtersHandle
  */
-function ensureFiltersEdgeHost(panel, filtersHandle) {
+/**
+ * @param {Element} panel
+ * @param {Element} filtersHandle
+ * @param {number} [paintHeight] may exceed handle to overhang under the dock
+ * @param {{ handleW?: number, handleH?: number }} [layout]
+ */
+function ensureFiltersEdgeHost(panel, filtersHandle, paintHeight, layout = {}) {
     let host = panel.querySelector(':scope > .panel-side-edge-host');
     if (!host) {
         host = document.createElement('div');
         host.className = 'panel-side-edge-host';
         host.setAttribute('aria-hidden', 'true');
         panel.appendChild(host);
+        host.style.position = 'absolute';
+        host.style.top = '0';
+        host.style.left = '0';
+        host.style.transform = 'translateX(-100%)';
+        host.style.zIndex = '206';
+        host.style.pointerEvents = 'none';
+        host.style.overflow = 'visible';
     }
-    const w = filtersHandle.clientWidth;
-    const h = filtersHandle.clientHeight;
-    host.style.position = 'absolute';
-    host.style.top = '0';
-    host.style.left = '0';
-    host.style.width = `${w}px`;
-    host.style.height = `${h}px`;
-    host.style.transform = 'translateX(-100%)';
-    host.style.zIndex = '206';
-    host.style.pointerEvents = 'none';
-    host.style.overflow = 'visible';
+    const w = Math.max(1, Math.round(Number(layout.handleW) || filtersHandle.clientWidth || 0));
+    const h = Math.max(
+        Math.round(Number(layout.handleH) || filtersHandle.clientHeight || 0),
+        Math.round(Number(paintHeight) || filtersHandle.clientHeight),
+    );
+    const boxKey = `${w}x${h}`;
+    if (host.dataset.boxKey !== boxKey) {
+        host.style.width = `${w}px`;
+        host.style.height = `${h}px`;
+        host.dataset.boxKey = boxKey;
+    }
     return host;
 }
 
@@ -2272,18 +2685,77 @@ function ensureFiltersEdgeHost(panel, filtersHandle) {
  * Continuous outer edge + parallel inward lip for info + filters panels (dock language).
  * Filters dual traps: paint onto a persistent panel host (in-place updates for dock tween).
  * @param {object} s
+ * @param {{ selective?: boolean }} [opts] — when selective, skip idle sides (drawbridge path)
  */
-export function syncAllSidePanelEdges(s) {
+export function syncAllSidePanelEdges(s, opts = {}) {
+    const selective = !!opts.selective;
+    const overhang = sidePanelDockOverhangPx();
+    const tween = chromeTweening ? chromeTweenLayout : null;
+    let tweenInfoH = 0;
+    let tweenFiltersH = 0;
+    let tweenShift = 0;
+    if (tween) {
+        const collapseT = readTrapCollapseT();
+        const dockH =
+            tween.expandedDock + (tween.collapsedDock - tween.expandedDock) * collapseT;
+        tweenInfoH = Math.max(8, Math.round(tween.infoH0 + (tween.dockH0 - dockH)));
+        tweenFiltersH = Math.max(8, Math.round(tween.filtersH0 + (tween.dockH0 - dockH)));
+        tweenShift = collapseT * 10;
+    }
+
     const infoHandle = document.querySelector(
         '.event-slide .panel-resize-handle--inner-right',
     );
-    if (infoHandle) {
-        const traps = measureSideTrapBands(infoHandle, [infoHandle]).map((tr) => ({
-            ...tr,
-            key: /** @type {InwardCutKey} */ ('info'),
-            scale: cutEmphasis.info.current,
-        }));
-        const edge = syncSidePanelEdgeStroke(infoHandle, 'right', traps, s);
+    const paintInfo =
+        !!infoHandle &&
+        (!selective ||
+            sideChromeKeyBusy('info') ||
+            !!document.querySelector('.event-slide.open'));
+    if (paintInfo && infoHandle) {
+        if (infoHandle instanceof HTMLElement) {
+            infoHandle.style.overflow = 'visible';
+        }
+        /** @type {{top:number,height:number,key:InwardCutKey,scale:number}[]} */
+        let traps;
+        /** @type {{ handleW?: number, handleH?: number, protrude?: number }} */
+        let layout = {};
+        if (tween) {
+            const band = formulaTrapBand(
+                tweenInfoH,
+                tween.trapH,
+                tween.infoPos,
+                tweenShift,
+                0.62,
+            );
+            traps = [
+                {
+                    ...band,
+                    key: /** @type {InwardCutKey} */ ('info'),
+                    scale: cutEmphasis.info.current,
+                },
+            ];
+            layout = {
+                handleW: tween.infoW,
+                handleH: tweenInfoH,
+                protrude: tween.protrude,
+            };
+        } else {
+            traps = measureSideTrapBands(infoHandle, [infoHandle]).map((tr) => ({
+                ...tr,
+                key: /** @type {InwardCutKey} */ ('info'),
+                scale: cutEmphasis.info.current,
+            }));
+        }
+        const paintH = (tween ? tweenInfoH : infoHandle.clientHeight) + overhang;
+        const edge = syncSidePanelEdgeStroke(
+            infoHandle,
+            'right',
+            traps,
+            s,
+            undefined,
+            paintH,
+            layout,
+        );
         if (edge) {
             edge.traps = traps;
             syncSideInwardFromEdge(infoHandle, 'right', edge, s, [cutEmphasis.info.current]);
@@ -2301,16 +2773,26 @@ export function syncAllSidePanelEdges(s) {
         rightHandles.find((h) =>
             h.classList.contains('panel-resize-handle--filters-launch'),
         ) || rightHandles[0];
-    /* Strip handle-local leftovers only — keep `.panel-side-edge-host` alive for live updates. */
-    document
-        .querySelectorAll(
+    /* Strip handle-local leftovers once — keep `.panel-side-edge-host` for live updates. */
+    if (!sideHandleLegacyStrokesCleaned) {
+        const leftovers = document.querySelectorAll(
             '.filters-panel .panel-resize-handle--inner-left > .panel-trap-edge-stroke, ' +
                 '.filters-panel .panel-resize-handle--inner-left > .panel-side-edge-stroke, ' +
                 '.filters-panel .panel-resize-handle--inner-left > .panel-side-inward-line',
-        )
-        .forEach((el) => el.remove());
+        );
+        leftovers.forEach((el) => el.remove());
+        sideHandleLegacyStrokesCleaned = true;
+    }
 
     if (!measureHandle || !panel) return;
+
+    const paintFilters =
+        !selective ||
+        sideChromeKeyBusy('filters') ||
+        sideChromeKeyBusy('music') ||
+        panel.classList.contains('open') ||
+        panel.classList.contains('panel--closing');
+    if (!paintFilters) return;
 
     /*
      * Scale + drawbridge key from data-panel-mode (launch class names are swapped).
@@ -2318,22 +2800,61 @@ export function syncAllSidePanelEdges(s) {
      */
     /** @type {{top:number,height:number,scale:number,key:InwardCutKey}[]} */
     const traps = [];
-    for (let i = 0; i < rightHandles.length; i++) {
-        const handle = rightHandles[i];
-        const label = handle.querySelector('.panel-resize-handle__trap-label');
-        if (!(label instanceof HTMLElement) || !(label.offsetHeight > 4)) continue;
-        const key = rightRailCutKeyFromHandle(handle);
-        traps.push({
-            top: label.offsetTop,
-            height: label.offsetHeight,
-            scale: cutEmphasis[key].current,
-            key,
-        });
+    /** @type {{ handleW?: number, handleH?: number, protrude?: number }} */
+    let filtersLayout = {};
+    if (tween) {
+        const keys = rightHandles.length
+            ? rightHandles.map((handle) => rightRailCutKeyFromHandle(handle))
+            : /** @type {InwardCutKey[]} */ (['filters', 'music']);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const pos = key === 'music' ? tween.musicPos : tween.filtersPos;
+            const band = formulaTrapBand(
+                tweenFiltersH,
+                tween.trapH,
+                pos,
+                tweenShift,
+                0.42,
+            );
+            traps.push({
+                ...band,
+                scale: cutEmphasis[key].current,
+                key,
+            });
+        }
+        traps.sort((a, b) => a.top - b.top);
+        filtersLayout = {
+            handleW: tween.filtersW,
+            handleH: tweenFiltersH,
+            protrude: tween.protrude,
+        };
+    } else {
+        for (let i = 0; i < rightHandles.length; i++) {
+            const handle = rightHandles[i];
+            const label = handle.querySelector('.panel-resize-handle__trap-label');
+            if (!(label instanceof HTMLElement) || !(label.offsetHeight > 4)) continue;
+            const key = rightRailCutKeyFromHandle(handle);
+            traps.push({
+                top: label.offsetTop,
+                height: label.offsetHeight,
+                scale: cutEmphasis[key].current,
+                key,
+            });
+        }
+        traps.sort((a, b) => a.top - b.top);
     }
-    traps.sort((a, b) => a.top - b.top);
     if (!traps.length) return;
-    const host = ensureFiltersEdgeHost(panel, measureHandle);
-    const edge = syncSidePanelEdgeStroke(measureHandle, 'left', traps, s, host);
+    const paintH = (tween ? tweenFiltersH : measureHandle.clientHeight) + overhang;
+    const host = ensureFiltersEdgeHost(panel, measureHandle, paintH, filtersLayout);
+    const edge = syncSidePanelEdgeStroke(
+        measureHandle,
+        'left',
+        traps,
+        s,
+        host,
+        paintH,
+        filtersLayout,
+    );
     if (edge) {
         edge.traps = traps;
         syncSideInwardFromEdge(
@@ -2539,6 +3060,8 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
     /* Set on :root + body — body dock rules redefine many vars and would shadow :root alone. */
     const buttonsOffsetY = `${s.dockButtonsOffsetYPx}px`;
     root.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
+    root.style.removeProperty('--stage-menu-offset-y');
+    root.style.removeProperty('--globe-offset-y');
     const inwardLineH = `${s.dockInwardLineThicknessPx}px`;
     const inwardLineY = `${s.dockInwardLineOffsetYPx}px`;
     const inwardClearance = `${Math.max(0, s.dockInwardSliderClearancePx)}px`;
@@ -2554,6 +3077,8 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
     }
     if (document.body) {
         document.body.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
+        document.body.style.removeProperty('--stage-menu-offset-y');
+        document.body.style.removeProperty('--globe-offset-y');
         for (const [prop, value] of Object.entries(inwardVars)) {
             document.body.style.setProperty(prop, value);
         }

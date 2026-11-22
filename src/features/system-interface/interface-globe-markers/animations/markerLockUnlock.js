@@ -32,7 +32,7 @@ export function animateMarkerLock(marker) {
 
     marker.userData.isAnimating = true;
 
-    const duration = 300;
+    const duration = 160;
     const startTime = performance.now();
 
     const animate = () => {
@@ -98,7 +98,7 @@ export function animateMarkerUnlock(marker) {
 
     marker.userData.isAnimating = true;
 
-    const duration = 300;
+    const duration = 160;
     const startTime = performance.now();
 
     const animate = () => {

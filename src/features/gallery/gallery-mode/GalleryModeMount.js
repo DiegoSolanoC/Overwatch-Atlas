@@ -12,6 +12,7 @@ import {
     openFiltersPanelForGallery,
     pickRandomGalleryHeroOnOpen,
 } from './galleryFiltersBridge.js';
+import { initIntelEntitySwapPerfProbe } from './intelEntitySwapPerfProbe.js';
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -35,6 +36,7 @@ function hideMenuAndGlobe() {
 
 /** @param {object} [_options] Reserved for future mount options. */
 export async function mountGalleryMode(_options = {}) {
+    initIntelEntitySwapPerfProbe();
     unmountGalleryMode();
     hideMenuAndGlobe();
 

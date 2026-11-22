@@ -71,6 +71,7 @@ export function buildFiltersChipSubgroup(subgroupKey, labelText, chipWraps) {
     group.style.setProperty('--hero-count', String(chipWraps.length));
 
     const chipsRow = document.createElement('div');
+    /* nowrap by default so each subgroup stays one chip strip (wrap only when needed elsewhere). */
     chipsRow.className = 'filters-chip-board__chips-row';
     chipsRow.style.setProperty('--chip-count', String(chipWraps.length));
     chipsRow.setAttribute('role', 'list');

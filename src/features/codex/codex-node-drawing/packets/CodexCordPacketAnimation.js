@@ -7,6 +7,7 @@ import {
     CODEX_PACKET_COUNT_MAX,
     CODEX_PACKET_COUNT_MIN,
     resolveCodexPacketEdgePlan,
+    CODEX_PACKET_GLOBAL_BUDGET,
     CODEX_PACKET_LOD_LIGHT_BUDGET,
     CODEX_PACKET_LOD_LIGHT_ZOOM,
     CODEX_PACKET_LOD_PAUSE_ZOOM,
@@ -31,6 +32,10 @@ let _rt = null;
 /** @type {number} */
 let cordAnimRafId = 0;
 let cordAnimLastTs = 0;
+/** Dock collapse/expand — hard-stop RAF (class skip alone still left a hot rAF scheduled). */
+let cordAnimDockSuspended = false;
+/** Cached `.codex-edge-packets` group — avoid querySelector every paint tick. */
+let cachedPacketSvgGroup = null;
 
 /**
  * Per directed edge: polyline metrics + light-packet sim state.
@@ -61,6 +66,7 @@ export function registerCodexCordPacketRuntime(rt) {
 export function unregisterCodexCordPacketRuntime() {
     codexStopCordAnimRafOnly();
     cordPacketState.clear();
+    cachedPacketSvgGroup = null;
     _rt = null;
 }
 
@@ -548,8 +554,14 @@ function paintCodexPacketLegsIntoPool(pktG, ns, poly, tTail, tHead, lineIndex, {
 function resolveCodexPacketLod() {
     const zoom = typeof s.codexViewZoom === 'number' ? s.codexViewZoom : 1;
     const isView = s.codexMode === 'view';
+    const hardCap = Math.max(12, CODEX_PACKET_GLOBAL_BUDGET);
+    /*
+     * Never use Infinity — uncapped packet paints were ~90ms/frame with forced
+     * reflow (offsetWidth path refresh + huge SVG attr churn), which made dock
+     * collapse unusable in Codex vs other modes.
+     */
     if (!isView) {
-        return { pause: false, light: false, budget: Infinity, skipFrames: 0 };
+        return { pause: false, light: true, budget: hardCap, skipFrames: 1 };
     }
     if (zoom <= CODEX_PACKET_LOD_PAUSE_ZOOM) {
         return { pause: true, light: true, budget: 0, skipFrames: 0 };
@@ -558,12 +570,30 @@ function resolveCodexPacketLod() {
         return {
             pause: false,
             light: true,
-            budget: CODEX_PACKET_LOD_LIGHT_BUDGET,
-            skipFrames: 1,
+            budget: Math.min(hardCap, CODEX_PACKET_LOD_LIGHT_BUDGET),
+            skipFrames: 2,
         };
     }
-    // Zoomed in enough for full pulse motion; still plain strokes (no SVG filters).
-    return { pause: false, light: false, budget: Infinity, skipFrames: 0 };
+    return { pause: false, light: false, budget: hardCap, skipFrames: 1 };
+}
+
+/**
+ * Fully stop/resume cord packet RAF around dock collapse (no per-frame class check).
+ * Keep the recycled line pool — clearing it forced a full rebuild after every settle.
+ * CSS already hides `.codex-edge-packets` during `side-chrome-dock-tweening`.
+ * @param {boolean} suspended
+ */
+export function setCodexCordAnimDockSuspended(suspended) {
+    cordAnimDockSuspended = !!suspended;
+    if (cordAnimDockSuspended) {
+        codexStopCordAnimRafOnly();
+        return;
+    }
+    ensureCodexCordAnimationLoop();
+}
+
+if (typeof window !== 'undefined') {
+    window.__codexSetCordAnimDockSuspended = setCodexCordAnimDockSuspended;
 }
 
 export function codexStopCordAnimRafOnly() {
@@ -575,8 +605,15 @@ export function codexStopCordAnimRafOnly() {
     cordAnimFrameSkip = 0;
 }
 
+function getCodexPacketSvgGroup() {
+    if (cachedPacketSvgGroup?.isConnected) return cachedPacketSvgGroup;
+    cachedPacketSvgGroup =
+        _rt?.getRoot()?.querySelector('.codex-edges-layer .codex-edge-packets') || null;
+    return cachedPacketSvgGroup;
+}
+
 function clearCodexPacketSvgLayer() {
-    const pktG = _rt?.getRoot()?.querySelector('.codex-edges-layer .codex-edge-packets');
+    const pktG = getCodexPacketSvgGroup();
     pktG?.replaceChildren();
 }
 
@@ -603,7 +640,7 @@ export function syncCodexPacketAnimForViewZoom() {
 }
 
 function codexCordAnimationTick(ts) {
-    if (!_rt || !s.codexPacketAnimEnabled) {
+    if (cordAnimDockSuspended || !_rt || !s.codexPacketAnimEnabled) {
         codexStopCordAnimRafOnly();
         return;
     }
@@ -634,13 +671,14 @@ function codexCordAnimationTick(ts) {
     }
 
     const root = _rt.getRoot();
-    if (!root || !document.body.contains(root)) {
+    /* Avoid document.body.contains(root) — it forces style/layout every frame. */
+    if (!root || !root.isConnected) {
         codexStopCordAnimRafOnly();
         cordPacketState.clear();
+        cachedPacketSvgGroup = null;
         return;
     }
-    const svg = root.querySelector('.codex-edges-layer');
-    const pktG = svg?.querySelector('.codex-edge-packets');
+    const pktG = getCodexPacketSvgGroup();
     if (!pktG || cordPacketState.size === 0) return;
 
     const dt = cordAnimLastTs ? Math.min(0.055, (ts - cordAnimLastTs) / 1000) : 1 / 60;
@@ -653,13 +691,11 @@ function codexCordAnimationTick(ts) {
 
     cordPacketState.forEach((st) => {
         if (paintedPackets >= lod.budget) return;
-        const edge = { fromId: st.fromId, toId: st.toId };
-        if (
-            typeof _rt.edgeCordPacketsEnabled === 'function'
-            && !_rt.edgeCordPacketsEnabled(edge)
-        ) {
-            return;
-        }
+        /*
+         * Membership in cordPacketState already means the edge was packet-eligible
+         * at last sync — re-running edgeCordPacketsEnabled here forced bio/timeline
+         * walks every frame.
+         */
         st.packets.forEach((p) => {
             if (paintedPackets >= lod.budget) return;
             if (!p.pts || p.pts.length < 2 || p.totalLen < 1e-3) return;
@@ -667,12 +703,10 @@ function codexCordAnimationTick(ts) {
             p.headT += p.speed * dt;
             if (p.headT > 1) {
                 p.headT %= 1;
-                if (!codexPacketPathUsesSimpleSegmentOnly()) {
-                    p.tailNodeIds = _rt.samplePacketTailNodeIds(st.fromId, st.toId);
-                } else {
-                    p.tailNodeIds = [];
-                }
-                syncPacketPathToEdge(p, st.fromId, st.toId);
+                /*
+                 * Keep cached polyline — syncPacketPathToEdge → offsetWidth/Height
+                 * forced ~50ms reflow per wrap and tanked dock interactivity.
+                 */
                 p.speed = CODEX_PACKET_SPEED_MIN
                     + Math.random() * (CODEX_PACKET_SPEED_MAX - CODEX_PACKET_SPEED_MIN);
                 p.lengthT = 0.014 + Math.pow(Math.random(), 1.75) * 0.072;
@@ -731,7 +765,7 @@ function codexCordAnimationTick(ts) {
 }
 
 export function ensureCodexCordAnimationLoop() {
-    if (!s.codexPacketAnimEnabled) {
+    if (cordAnimDockSuspended || !s.codexPacketAnimEnabled) {
         codexStopCordAnimRafOnly();
         return;
     }

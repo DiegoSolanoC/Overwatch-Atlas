@@ -49,6 +49,7 @@ import {
     bindGalleryConnectionCanvasHover,
 } from './galleryConnectionCanvasHover.js';
 import { GALLERY_CONN_SCALE_MAX } from './galleryConnectionCanvasVisual.js';
+import { intelPerfBegin, intelPerfEnd, intelPerfMark } from './intelEntitySwapPerfProbe.js';
 
 const GALLERY_CORD_GLOW_FILTER_ID = 'gallery-conn-cord-violet-glow';
 const GALLERY_PACKET_GLOW_FILTER_ID = 'gallery-conn-packet-pink-soft';
@@ -622,6 +623,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
      * @param {{ skipPackets?: boolean }} [opts]
      */
     function redrawCanvasVisual(opts = {}) {
+        intelPerfBegin('galleryCanvas.redrawVisual');
         ensureGallerySvgFilters();
         rebuildGalleryEdgeNodeMask();
         hoverController?.clearHover();
@@ -672,6 +674,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             packetAnimator.syncPacketState(model.edges);
         }
         restoreSelectedCordHighlight();
+        intelPerfEnd('galleryCanvas.redrawVisual');
     }
 
     /**
@@ -1306,18 +1309,25 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         async load(entry, category, displayName, filterKey, savedCanvas, opts = {}) {
             const nextKey = this.entryKey(entry, category, filterKey);
             const prewarm = opts.prewarm === true;
+            intelPerfBegin('galleryCanvas.load');
             if (nextKey && nextKey === loadedEntryKey && nodeEls.size > 0) {
                 // Same board already mounted — List↔Canvas toggle should not rebuild.
+                intelPerfMark('galleryCanvas.load:cache-hit');
                 if (prewarm) this.pauseView();
                 else this.resumeView();
+                intelPerfEnd('galleryCanvas.load');
                 return;
             }
 
             packetsArmed = !prewarm;
+            intelPerfBegin('galleryCanvas.codexStyle');
             codexNodes = await loadCodexNodesForGalleryStyle();
+            intelPerfEnd('galleryCanvas.codexStyle');
             let codexGraph = null;
             try {
+                intelPerfBegin('galleryCanvas.codexPayload');
                 const payload = await ensureCodexConnectionPayload();
+                intelPerfEnd('galleryCanvas.codexPayload');
                 if (payload?.nodes?.length) {
                     codexGraph = {
                         nodes: payload.nodes,
@@ -1328,6 +1338,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             } catch (err) {
                 console.warn('[gallery] Codex graph for neighbor cords failed:', err);
             }
+            intelPerfBegin('galleryCanvas.buildModel');
             model = buildGalleryConnectionCanvasModel(
                 entry,
                 category,
@@ -1336,6 +1347,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
                 savedCanvas,
                 codexGraph,
             );
+            intelPerfEnd('galleryCanvas.buildModel');
             if (!model.display) {
                 model.display = { ...GALLERY_CONN_DEFAULT_DISPLAY };
             }
@@ -1344,6 +1356,9 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             syncBreaksDisplay();
             clearDirty();
             setSelection([]);
+            intelPerfMark(
+                `galleryCanvas.renderNodes:n=${(model.nodes || []).length}:e=${(model.edges || []).length}`,
+            );
             await renderNodes({
                 deferPackets: !prewarm,
                 startPackets: !prewarm,
@@ -1352,6 +1367,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             requestAnimationFrame(() => {
                 restoreOrFitView(model.view);
             });
+            intelPerfEnd('galleryCanvas.load');
         },
 
         /**

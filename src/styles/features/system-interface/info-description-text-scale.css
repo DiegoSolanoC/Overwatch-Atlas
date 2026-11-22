@@ -1,9 +1,9 @@
-/* Shared description text-size preference (info panel + gallery intel) */
+/* Shared size controls: info Text size + filters chip size */
 
 .info-description-text-scale {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     flex-shrink: 0;
 }
 
@@ -13,24 +13,24 @@
 
 .info-description-text-scale__label {
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.72);
     white-space: nowrap;
 }
 
 .info-description-text-scale__btn {
-    min-width: 36px;
-    height: 34px;
-    padding: 0 8px;
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.28);
-    color: rgba(255, 255, 255, 0.92);
+    min-width: 48px;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.42);
+    color: rgba(255, 255, 255, 0.96);
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: 0.95rem;
+    font-size: 1.12rem;
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
@@ -38,13 +38,13 @@
 }
 
 .info-description-text-scale__btn--reset {
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 1.02rem;
+    font-weight: 650;
 }
 
 .info-description-text-scale__btn:hover:not(:disabled) {
-    border-color: rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .info-description-text-scale__btn:active:not(:disabled) {
@@ -61,15 +61,16 @@
     outline-offset: 2px;
 }
 
+/* Compact kept for tight toolbars only — default controls are the larger set above */
 .info-description-text-scale--compact .info-description-text-scale__label {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
 }
 
 .info-description-text-scale--compact .info-description-text-scale__btn {
-    min-width: 32px;
-    height: 30px;
-    padding: 0 6px;
-    font-size: 0.86rem;
+    min-width: 40px;
+    height: 38px;
+    padding: 0 8px;
+    font-size: 1rem;
 }
 
 .event-slide-mid-controls .info-description-text-scale {
@@ -78,4 +79,9 @@
 
 .gallery-mode__archive-description-toolbar .info-description-text-scale {
     margin-right: auto;
+}
+
+.filters-chip-size-bar .info-description-text-scale,
+.event-slide-mid-controls .info-description-text-scale {
+    gap: 8px;
 }

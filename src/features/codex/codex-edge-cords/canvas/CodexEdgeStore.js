@@ -4,6 +4,20 @@ import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_EDGES_NODE_ALPHA_MASK_ID } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
 import { codexUnorderedPairKey, edgeDirectedKey } from '../topology/CodexGraphPrimitives.js';
+import {
+    clearCodexViewEdgePickIndex,
+    pickCodexViewEdgeAtWorld,
+    rebuildCodexViewEdgePickIndex,
+} from './CodexViewEdgePick.js';
+import {
+    clearCodexViewEdgeBatches,
+    clearCodexViewEdgeHoverOverlay,
+    isCodexViewEdgeBatchesActive,
+    rebuildCodexViewEdgeBatchesFromCache,
+    setCodexViewEdgeBatchPolysCache,
+    setCodexViewEdgeHoverOverlayFromBatchCache,
+    setCodexViewEdgeHoverOverlayFromChain,
+} from './CodexViewEdgeBatches.js';
 import { hasCodexConnectionBetween as topologyHasUndirectedLink } from '../topology/CodexGraphTopology.js';
 import { playSoundEffect } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import {
@@ -438,6 +452,8 @@ function appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect = null) {
 let edgeNodeMaskSyncRaf = 0;
 
 function syncCodexEdgeNodeMaskDom() {
+    /* View mode has no SVG portrait mask — opaque node DOM covers cords. */
+    if (s.codexMode === 'view') return false;
     const root = s.root;
     if (!root) return false;
     const svg = root.querySelector('.codex-edges-layer');
@@ -453,6 +469,112 @@ function syncCodexEdgeNodeMaskDom() {
     const vh = worldEl ? CODEX_WORLD_H : Math.max(1, root.clientHeight);
     appendCodexEdgeNodeMask(defs, ns, vw, vh, null);
     return true;
+}
+
+/** @type {{ edge: object, pts: { x: number, y: number }[] }[]} */
+let lastViewEdgePickPolys = [];
+
+/**
+ * @param {{ edge: object, pts: { x: number, y: number }[] }[]} edgePolys
+ */
+function setCodexViewEdgePickPolys(edgePolys) {
+    lastViewEdgePickPolys = Array.isArray(edgePolys) ? edgePolys : [];
+    setCodexViewEdgeBatchPolysCache(lastViewEdgePickPolys);
+    rebuildCodexViewEdgePickIndex(lastViewEdgePickPolys, {
+        isFilterDormant: (edge) => edgeCordIsFilterDormant(edge),
+    });
+}
+
+function clearCodexViewEdgePickPolys() {
+    lastViewEdgePickPolys = [];
+    clearCodexViewEdgePickIndex();
+    clearCodexViewEdgeBatches();
+}
+
+/** Re-apply dormant filter after filter/timeline DOM sync (geometry unchanged). */
+function refreshCodexViewEdgePickDormant() {
+    if (s.codexMode !== 'view') return;
+    if (!lastViewEdgePickPolys.length) return;
+    rebuildCodexViewEdgePickIndex(lastViewEdgePickPolys, {
+        isFilterDormant: (edge) => edgeCordIsFilterDormant(edge),
+    });
+}
+
+/** @type {number} */
+let viewEdgePickMoveRaf = 0;
+/** @type {{ x: number, y: number }|null} */
+let viewEdgePickPendingClient = null;
+
+function flushCodexViewEdgePickHover() {
+    viewEdgePickMoveRaf = 0;
+    const pt = viewEdgePickPendingClient;
+    viewEdgePickPendingClient = null;
+    if (!pt || s.codexMode !== 'view') return;
+    if (s.backgroundPanPointerId != null) return;
+    const w = api.clientToWorldCodex?.(pt.x, pt.y);
+    if (!w) return;
+    const hit = pickCodexViewEdgeAtWorld(w.x, w.y);
+    if (!hit) {
+        if (s.codexEdgeHoverChainKeySet) clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    const chain = collectCodexDirectedChainEdgeKeys(hit.fromId, hit.toId);
+    if (s.codexEdgeHoverChainKeySet && codexEdgeHoverChainSetsEqual(s.codexEdgeHoverChainKeySet, chain)) {
+        return;
+    }
+    applyCodexEdgeHoverChainKeySet(chain);
+}
+
+/**
+ * View-mode spatial hover (no .codex-edge-hit DOM). Listen on root — SVG is pointer-events:none.
+ * @param {PointerEvent} e
+ */
+function onCodexViewEdgePickPointerMove(e) {
+    if (s.codexMode !== 'view') return;
+    if (s.backgroundPanPointerId != null) return;
+    const t = /** @type {Element|null} */ (e.target);
+    if (t?.closest?.('.codex-node, .codex-toolbar, .codex-visual-panel, .codex-picker, .codex-stage-controls')) {
+        if (s.codexEdgeHoverChainKeySet) clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    viewEdgePickPendingClient = { x: e.clientX, y: e.clientY };
+    if (viewEdgePickMoveRaf) return;
+    viewEdgePickMoveRaf = requestAnimationFrame(flushCodexViewEdgePickHover);
+}
+
+/**
+ * @param {PointerEvent} e
+ */
+function onCodexViewEdgePickPointerLeave(e) {
+    if (s.codexMode !== 'view') return;
+    const rel = /** @type {Node|null} */ (e.relatedTarget);
+    if (rel instanceof Node && s.root?.contains(rel)) return;
+    viewEdgePickPendingClient = null;
+    if (viewEdgePickMoveRaf) {
+        cancelAnimationFrame(viewEdgePickMoveRaf);
+        viewEdgePickMoveRaf = 0;
+    }
+    clearAllCodexEdgeHoverVisual();
+}
+
+/**
+ * View-mode edge click via spatial pick (capture on root before background pan).
+ * @param {PointerEvent} e
+ */
+function onCodexViewEdgePickPointerDown(e) {
+    if (s.codexMode !== 'view' || e.button !== 0) return;
+    const t = /** @type {Element|null} */ (e.target);
+    if (t?.closest?.('.codex-node, .codex-toolbar, .codex-visual-panel, .codex-picker, .codex-stage-controls')) {
+        return;
+    }
+    const w = api.clientToWorldCodex?.(e.clientX, e.clientY);
+    if (!w) return;
+    const hit = pickCodexViewEdgeAtWorld(w.x, w.y);
+    if (!hit) return;
+    e.preventDefault();
+    e.stopPropagation();
+    api.cancelBackgroundPanPointerPending?.();
+    openStoryArchiveFromCodexEdgeHit(hit.fromId, hit.toId);
 }
 
 function scheduleCodexEdgeNodeMaskSync() {
@@ -483,6 +605,7 @@ function buildCodexElbowPaintContext(edgesOverride = null, extra = {}) {
 }
 
 function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = null, edgesOverride = null) {
+    invalidateCodexElbowHoverIndex();
     appendCodexJunctionElbowParallelogramsCore(parentG, ns, worldCullRect, buildCodexElbowPaintContext(edgesOverride));
 }
 
@@ -491,6 +614,7 @@ function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = nul
  * @returns {Promise<number>}
  */
 function appendCodexJunctionElbowParallelogramsChunked(parentG, ns, worldCullRect = null, edgesOverride = null) {
+    invalidateCodexElbowHoverIndex();
     return appendCodexJunctionElbowParallelogramsChunkedCore(
         parentG,
         ns,
@@ -603,52 +727,105 @@ function codexEdgeHoverChainSetsEqual(a, b) {
     return true;
 }
 
+/** @type {Set<Element>} */
+let hoveredSegmentGroups = new Set();
+/** @type {Set<Element>} */
+let hoveredElbowGroups = new Set();
+/** @type {WeakMap<Element, Map<string, Element>>|null} */
+let elbowHoverIndexByRoot = null;
+
 function setCodexEdgeHoverVisual(fromId, toId, active) {
     if (!s.root || !fromId || !toId) return;
+    /* View batches use the hover overlay path — no per-segment groups. */
+    if (isCodexViewEdgeBatchesActive()) return;
     const svg = s.root.querySelector('.codex-edges-layer');
     if (!svg) return;
     const sel = `g.codex-edge-segment-group[data-codex-edge-from="${codexEscapeEdgeIdForSelector(fromId)}"][data-codex-edge-to="${codexEscapeEdgeIdForSelector(toId)}"]`;
     try {
         svg.querySelectorAll(sel).forEach((g) => {
             g.classList.toggle('codex-edge-segment-group--hover', active);
+            if (active) hoveredSegmentGroups.add(g);
+            else hoveredSegmentGroups.delete(g);
         });
     } catch (_) {
         /* ignore */
     }
 }
 
-/** @param {Set<string>|null} chain */
-function syncCodexElbowHoverVisual(chain) {
-    if (!s.root) return;
-    const contentRoot = s.root.querySelector('.codex-edges-layer .codex-edges-masked');
-    if (!contentRoot) return;
-
-    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((g) => {
-        g.classList.remove('codex-edge-elbow-group--hover');
-    });
-
-    if (!chain?.size) return;
-
+/**
+ * @param {Element} contentRoot
+ * @returns {Map<string, Element>}
+ */
+function getElbowHoverIndex(contentRoot) {
+    if (!elbowHoverIndexByRoot) elbowHoverIndexByRoot = new WeakMap();
+    let map = elbowHoverIndexByRoot.get(contentRoot);
+    if (map) return map;
+    map = new Map();
     contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((g) => {
         const inFrom = g.getAttribute('data-codex-elbow-in-from');
         const jId = g.getAttribute('data-codex-elbow-junction');
         const outTo = g.getAttribute('data-codex-elbow-out-to');
         if (!inFrom || !jId || !outTo) return;
-        if (chain.has(edgeDirectedKey(inFrom, jId)) && chain.has(edgeDirectedKey(jId, outTo))) {
-            g.classList.add('codex-edge-elbow-group--hover');
-        }
+        map.set(`${inFrom}\x1e${jId}\x1e${outTo}`, g);
     });
+    elbowHoverIndexByRoot.set(contentRoot, map);
+    return map;
+}
+
+function invalidateCodexElbowHoverIndex() {
+    elbowHoverIndexByRoot = null;
+}
+
+/** @param {Set<string>|null} chain */
+function syncCodexElbowHoverVisual(chain) {
+    for (const g of hoveredElbowGroups) {
+        g.classList.remove('codex-edge-elbow-group--hover');
+    }
+    hoveredElbowGroups.clear();
+    if (!chain?.size || !s.root) return;
+    const contentRoot = s.root.querySelector('.codex-edges-layer .codex-edges-masked');
+    if (!contentRoot) return;
+    const index = getElbowHoverIndex(contentRoot);
+    /** @type {Map<string, string[]>} */
+    const outs = new Map();
+    for (const key of chain) {
+        const sep = key.indexOf('\x1e');
+        if (sep < 0) continue;
+        const a = key.slice(0, sep);
+        const b = key.slice(sep + 1);
+        let list = outs.get(a);
+        if (!list) {
+            list = [];
+            outs.set(a, list);
+        }
+        list.push(b);
+    }
+    for (const [fromId, mids] of outs) {
+        for (let i = 0; i < mids.length; i += 1) {
+            const jId = mids[i];
+            const nexts = outs.get(jId);
+            if (!nexts?.length) continue;
+            for (let j = 0; j < nexts.length; j += 1) {
+                const g = index.get(`${fromId}\x1e${jId}\x1e${nexts[j]}`);
+                if (!g) continue;
+                g.classList.add('codex-edge-elbow-group--hover');
+                hoveredElbowGroups.add(g);
+            }
+        }
+    }
 }
 
 function clearAllCodexEdgeHoverVisual() {
     s.codexEdgeHoverChainKeySet = null;
-    if (!s.root) return;
-    const svg = s.root.querySelector('.codex-edges-layer');
-    if (!svg) return;
-    svg.querySelectorAll('g.codex-edge-segment-group--hover').forEach((g) => {
+    clearCodexViewEdgeHoverOverlay();
+    for (const g of hoveredSegmentGroups) {
         g.classList.remove('codex-edge-segment-group--hover');
-    });
-    syncCodexElbowHoverVisual(null);
+    }
+    hoveredSegmentGroups.clear();
+    for (const g of hoveredElbowGroups) {
+        g.classList.remove('codex-edge-elbow-group--hover');
+    }
+    hoveredElbowGroups.clear();
 }
 
 /**
@@ -676,15 +853,23 @@ function collectCodexPathRouteDirectedEdgeKeys(pathNodeIds) {
 function applyCodexEdgeHoverChainKeySet(chain) {
     clearAllCodexEdgeHoverVisual();
     s.codexEdgeHoverChainKeySet = chain;
-    chain.forEach((key) => {
-        const sep = key.indexOf('\x1e');
-        if (sep < 0) return;
-        const a = key.slice(0, sep);
-        const b = key.slice(sep + 1);
-        const edge = findEdge(a, b) || findEdge(b, a);
-        if (edge && edgeCordIsFilterDormant(edge)) return;
-        setCodexEdgeHoverVisual(a, b, true);
-    });
+    if (isCodexViewEdgeBatchesActive()) {
+        setCodexViewEdgeHoverOverlayFromChain(chain);
+        const overlay = s.root?.querySelector('path.codex-edge-hover-overlay');
+        if (overlay instanceof SVGPathElement && chain.size && !overlay.getAttribute('d')) {
+            setCodexViewEdgeHoverOverlayFromBatchCache(chain);
+        }
+    } else {
+        chain.forEach((key) => {
+            const sep = key.indexOf('\x1e');
+            if (sep < 0) return;
+            const a = key.slice(0, sep);
+            const b = key.slice(sep + 1);
+            const edge = findEdge(a, b) || findEdge(b, a);
+            if (edge && edgeCordIsFilterDormant(edge)) return;
+            setCodexEdgeHoverVisual(a, b, true);
+        });
+    }
     syncCodexElbowHoverVisual(chain);
 }
 
@@ -886,7 +1071,8 @@ function codexEdgeHitIsFilterDormant(hitEl) {
 }
 
 function onCodexEdgeSvgPointerOver(e) {
-    if (s.codexMode !== 'view') return;
+    /* View mode uses spatial pick on root (no hit-line DOM). */
+    if (s.codexMode === 'view') return;
     const t = /** @type {Element} */ (e.target);
     if (!t?.classList?.contains('codex-edge-hit')) return;
     if (codexEdgeHitIsFilterDormant(t)) return;
@@ -901,7 +1087,7 @@ function onCodexEdgeSvgPointerOver(e) {
 }
 
 function onCodexEdgeSvgPointerOut(e) {
-    if (s.codexMode !== 'view') return;
+    if (s.codexMode === 'view') return;
     const t = /** @type {Element} */ (e.target);
     if (!t?.classList?.contains('codex-edge-hit')) return;
     const rel = e.relatedTarget;
@@ -921,6 +1107,8 @@ function onCodexEdgeSvgPointerOut(e) {
 
 function codexSvgPointerDownCapture(e) {
     if (!s.root || !s.codexEdgesSvgEl) return;
+    /* View edge clicks are handled by onCodexViewEdgePickPointerDown on root. */
+    if (s.codexMode === 'view') return;
     api.cancelBackgroundPanPointerPending();
     const t = /** @type {SVGElement} */ (e.target);
     if (!t || !t.classList) return;
@@ -928,15 +1116,6 @@ function codexSvgPointerDownCapture(e) {
 
     if (e.button === 0 && t.classList.contains('codex-edge-hit')) {
         if (codexEdgeHitIsFilterDormant(t)) return;
-        if (s.codexMode === 'view') {
-            e.preventDefault();
-            e.stopPropagation();
-            openStoryArchiveFromCodexEdgeHit(
-                t.dataset.codexEdgeFrom || '',
-                t.dataset.codexEdgeTo || ''
-            );
-            return;
-        }
         e.preventDefault();
         e.stopPropagation();
         api.cancelPointerPending();
@@ -1021,6 +1200,12 @@ api.onCodexNodeFilterRoutePointerLeave = onCodexNodeFilterRoutePointerLeave;
 api.onCodexEdgeSvgPointerOver = onCodexEdgeSvgPointerOver;
 api.onCodexEdgeSvgPointerOut = onCodexEdgeSvgPointerOut;
 api.codexSvgPointerDownCapture = codexSvgPointerDownCapture;
+api.onCodexViewEdgePickPointerMove = onCodexViewEdgePickPointerMove;
+api.onCodexViewEdgePickPointerLeave = onCodexViewEdgePickPointerLeave;
+api.onCodexViewEdgePickPointerDown = onCodexViewEdgePickPointerDown;
+api.setCodexViewEdgePickPolys = setCodexViewEdgePickPolys;
+api.clearCodexViewEdgePickPolys = clearCodexViewEdgePickPolys;
+api.refreshCodexViewEdgePickDormant = refreshCodexViewEdgePickDormant;
 api.codexEscapeEdgeIdForSelector = codexEscapeEdgeIdForSelector;
 api.openStoryArchiveFromCodexEdgeHit = openStoryArchiveFromCodexEdgeHit;
 

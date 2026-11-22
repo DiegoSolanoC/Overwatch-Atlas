@@ -43,6 +43,11 @@ import {
     createGalleryArchiveIoButtonGroup,
     destroyGalleryArchiveIoControls,
 } from './heroBiographyArchiveIoBar.js';
+import {
+    intelPerfBegin,
+    intelPerfEnd,
+    intelPerfMark,
+} from './intelEntitySwapPerfProbe.js';
 
 /** @type {HTMLElement | null} */
 let intelPanelEl = null;
@@ -353,16 +358,22 @@ async function refreshConnectionsCanvas(presetViewEntry, opts = {}) {
     if (!connectionsCanvasMountEl) return;
     if (!opts.prewarm && connectionsViewMode !== 'canvas') return;
 
+    intelPerfBegin(opts.prewarm ? 'canvasPrewarmLoad' : 'canvasActiveLoad');
     const viewEntry = presetViewEntry ?? await resolveViewEntryForConnections(currentEntry);
     currentViewEntry = viewEntry;
 
     const controller = ensureConnectionsCanvasController();
-    if (!controller) return;
+    if (!controller) {
+        intelPerfEnd(opts.prewarm ? 'canvasPrewarmLoad' : 'canvasActiveLoad');
+        return;
+    }
 
     if (
         opts.prewarm
         && controller.isLoadedFor?.(viewEntry, currentCategory, currentFilterKey || '')
     ) {
+        intelPerfMark('canvasLoad:skipped-already-loaded');
+        intelPerfEnd(opts.prewarm ? 'canvasPrewarmLoad' : 'canvasActiveLoad');
         return;
     }
 
@@ -376,17 +387,61 @@ async function refreshConnectionsCanvas(presetViewEntry, opts = {}) {
     );
     void refreshGalleryConnectionPortraitLooks();
     if (!opts.prewarm) applyConnectionsEmptyState(viewEntry);
+    intelPerfEnd(opts.prewarm ? 'canvasPrewarmLoad' : 'canvasActiveLoad');
+}
+
+/** @type {number} */
+let canvasPrewarmGeneration = 0;
+/** @type {number | ReturnType<typeof requestIdleCallback> | null} */
+let canvasPrewarmHandle = null;
+/** @type {'idle' | 'timeout' | null} */
+let canvasPrewarmKind = null;
+
+function cancelScheduledCanvasPrewarm() {
+    if (canvasPrewarmHandle == null) return;
+    if (canvasPrewarmKind === 'idle' && typeof cancelIdleCallback === 'function') {
+        cancelIdleCallback(canvasPrewarmHandle);
+    } else {
+        clearTimeout(canvasPrewarmHandle);
+    }
+    canvasPrewarmHandle = null;
+    canvasPrewarmKind = null;
 }
 
 /**
  * Build the board while List is still showing so the first Canvas click is instant.
+ * Deferred to idle so rapid Intel entity swaps don't rebuild every personal canvas
+ * on the critical path (that was thrashing layout via offsetWidth per node/edge).
  * @param {object | null} viewEntry
  */
 function prewarmConnectionsCanvas(viewEntry) {
     if (!connectionsCanvasMountEl || !viewEntry) return;
     if (connectionsViewMode === 'canvas') return;
     applyConnectionsPaneVisibility('list');
-    void refreshConnectionsCanvas(viewEntry, { prewarm: true });
+
+    cancelScheduledCanvasPrewarm();
+    const gen = ++canvasPrewarmGeneration;
+    const filterKeyAtSchedule = currentFilterKey || '';
+    const categoryAtSchedule = currentCategory;
+    const run = () => {
+        canvasPrewarmHandle = null;
+        canvasPrewarmKind = null;
+        if (gen !== canvasPrewarmGeneration) return;
+        if (connectionsViewMode === 'canvas') return;
+        if (currentFilterKey !== filterKeyAtSchedule || currentCategory !== categoryAtSchedule) {
+            return;
+        }
+        intelPerfMark('connectionsCanvas:prewarm-run');
+        void refreshConnectionsCanvas(viewEntry, { prewarm: true });
+    };
+
+    if (typeof requestIdleCallback === 'function') {
+        canvasPrewarmKind = 'idle';
+        canvasPrewarmHandle = requestIdleCallback(run, { timeout: 900 });
+    } else {
+        canvasPrewarmKind = 'timeout';
+        canvasPrewarmHandle = window.setTimeout(run, 180);
+    }
 }
 
 /**
@@ -435,16 +490,24 @@ function updateConnectionsEmptyCopy(category) {
  */
 async function renderConnectionsBody(entry, category) {
     if (!connectionsBodyEl) return;
+    intelPerfBegin('renderConnectionsBody');
     const cat = normalizeBioBiographyCategory(category);
+    intelPerfBegin('resolveViewEntry');
     const viewEntry = await resolveViewEntryForConnections(entry);
+    intelPerfEnd('resolveViewEntry');
     currentViewEntry = viewEntry;
+    intelPerfBegin('connectionsListHtml');
     renderHeroBiographyConnectionsView(connectionsBodyEl, viewEntry, category);
+    intelPerfEnd('connectionsListHtml');
     if (connectionsViewMode === 'canvas') {
+        intelPerfMark('connectionsCanvas:load-now');
         void refreshConnectionsCanvas(viewEntry);
     } else {
+        intelPerfMark('connectionsCanvas:prewarm-scheduled');
         prewarmConnectionsCanvas(viewEntry);
     }
     applyConnectionsEmptyState(viewEntry);
+    intelPerfEnd('renderConnectionsBody');
 }
 
 function renderBirthdayMeta(display) {
@@ -1222,7 +1285,12 @@ export function initHeroBiographyArchiveDescription(hostEl) {
  */
 export async function setBioBiographyArchiveDescription(category, filterKey, displayName = '') {
     const gen = ++loadGeneration;
-    if (!intelPanelEl || !viewBodyEl || !intelEmptyEl) return;
+    cancelScheduledCanvasPrewarm();
+    intelPerfBegin('setArchiveDescription');
+    if (!intelPanelEl || !viewBodyEl || !intelEmptyEl) {
+        intelPerfEnd('setArchiveDescription');
+        return;
+    }
 
     if (isIntelEditing || isConnectionsEditing) exitAllEditModes();
 
@@ -1256,6 +1324,7 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
         if (connectionsToolbarEl) connectionsToolbarEl.hidden = true;
         setIntelPanelVisible(cat === 'locations');
         setConnectionsPanelVisible(false);
+        intelPerfEnd('setArchiveDescription');
         return;
     }
 
@@ -1286,8 +1355,14 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
     let birthdayDisplay = null;
     let entry = null;
     try {
+        intelPerfBegin('loadBioArchiveEvents');
         const events = await loadBioArchiveEvents(cat);
-        if (gen !== loadGeneration) return;
+        intelPerfEnd('loadBioArchiveEvents');
+        if (gen !== loadGeneration) {
+            intelPerfMark('setArchiveDescription:stale-after-events');
+            intelPerfEnd('setArchiveDescription');
+            return;
+        }
         entry = findBioArchiveEntryByFilterKey(cat, key, events);
         currentEntry = entry;
         description = getHeroArchiveBioDescription(entry);
@@ -1296,7 +1371,11 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
         console.warn('[gallery] Could not load archive description:', err);
     }
 
-    if (gen !== loadGeneration) return;
+    if (gen !== loadGeneration) {
+        intelPerfMark('setArchiveDescription:stale-before-paint');
+        intelPerfEnd('setArchiveDescription');
+        return;
+    }
 
     renderCategoryMeta(entry);
     renderBirthdayMeta(birthdayDisplay);
@@ -1330,6 +1409,7 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
         connectionsResetAllBtn.hidden = !canReset;
         connectionsResetAllBtn.disabled = !canReset;
     }
+    intelPerfEnd('setArchiveDescription');
 }
 
 /**
@@ -1342,6 +1422,7 @@ export async function setHeroBiographyArchiveDescriptionHero(heroFilterKey, hero
 
 export function destroyHeroBiographyArchiveDescription() {
     loadGeneration += 1;
+    cancelScheduledCanvasPrewarm();
     exitAllEditModes();
     currentCategory = 'heroes';
     currentFilterKey = null;

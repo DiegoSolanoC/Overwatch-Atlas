@@ -30,10 +30,20 @@
         --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 42%);
         --filters-trap-visual-h: calc(var(--event-info-trap-h-capped) + 8px);
         --filters-upper-trap-top: calc(
-            (100% - var(--event-info-trap-h-capped)) * var(--filters-trap-pos, 32) / 100 - 2px
+            (100% - var(--event-info-trap-h-capped))
+                * min(
+                    100,
+                    max(0, calc(var(--filters-trap-pos, 32) + var(--side-trap-collapse-shift, 0)))
+                )
+                / 100 - 2px
         );
         --filters-lower-trap-top: calc(
-            (100% - var(--event-info-trap-h-capped)) * var(--music-trap-pos, 68) / 100 - 2px
+            (100% - var(--event-info-trap-h-capped))
+                * min(
+                    100,
+                    max(0, calc(var(--music-trap-pos, 68) + var(--side-trap-collapse-shift, 0)))
+                )
+                / 100 - 2px
         );
         --filters-panel-trap-clip: polygon(
             var(--event-info-trap-protrude) 0%,
@@ -64,6 +74,12 @@
         --filters-middle-border-art-opacity: 0;
     }
 
+    /*
+     * ONE silhouette plate for body + trapezium (same clip + same opacity).
+     * Panel element stays transparent so we never double-stack a second fill on
+     * the rectangle only (that was the hard trap/body division).
+     * Pattern restored; whole plate fades together via --filters-panel-silhouette-opacity.
+     */
     .filters-panel::before {
         content: '';
         position: absolute;
@@ -73,7 +89,7 @@
         left: calc(-1 * var(--event-info-trap-protrude));
         z-index: 0;
         pointer-events: none;
-        opacity: 1;
+        opacity: var(--side-panel-silhouette-opacity, 0.95);
         background-color: var(--bg-secondary);
         background-image:
             linear-gradient(
@@ -120,11 +136,22 @@
     .filters-panel::after {
         left: calc(-1 * var(--event-info-trap-protrude));
         clip-path: var(--filters-panel-trap-clip);
-        background:
-            linear-gradient(#000, #000) calc(var(--event-info-trap-protrude)) bottom / 1px 50px no-repeat,
-            linear-gradient(#000, #000) right bottom / 1px 50px no-repeat,
-            linear-gradient(#000, #000) var(--event-info-trap-protrude) bottom / calc(100% - var(--event-info-trap-protrude)) 1px no-repeat,
-            rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
+        mix-blend-mode: normal !important;
+        opacity: 1;
+        background-color: transparent;
+        background-image:
+            linear-gradient(#000, #000),
+            linear-gradient(#000, #000),
+            linear-gradient(#000, #000);
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        background-size:
+            1px 50px,
+            1px 50px,
+            calc(100% - var(--event-info-trap-protrude)) 1px;
+        background-position:
+            calc(var(--event-info-trap-protrude)) bottom,
+            right bottom,
+            var(--event-info-trap-protrude) bottom;
     }
 
     /*
@@ -249,7 +276,12 @@
     --event-info-trap-h-capped: min(var(--event-info-side-trapezium-h), 62%);
     --event-info-side-gap-h: calc((100% - var(--event-info-trap-h-capped)) / 2);
     --event-info-trap-top: calc(
-        (100% - var(--event-info-trap-h-capped)) * var(--event-info-trap-pos, 50) / 100 - 2px
+        (100% - var(--event-info-trap-h-capped))
+            * min(
+                100,
+                max(0, calc(var(--event-info-trap-pos, 50) + var(--side-trap-collapse-shift, 0)))
+            )
+            / 100 - 2px
     );
     --event-info-trap-clip: polygon(
         0% 0%,
@@ -545,10 +577,20 @@
     /* Shared size from :root; each trap has its own --*-trap-pos. */
     --event-info-side-gap-h: calc((100% - var(--event-info-trap-h-capped)) / 2);
     --filters-trap-top: calc(
-        (100% - var(--event-info-trap-h-capped)) * var(--filters-trap-pos, 32) / 100 - 2px
+        (100% - var(--event-info-trap-h-capped))
+            * min(
+                100,
+                max(0, calc(var(--filters-trap-pos, 32) + var(--side-trap-collapse-shift, 0)))
+            )
+            / 100 - 2px
     );
     --music-trap-top: calc(
-        (100% - var(--event-info-trap-h-capped)) * var(--music-trap-pos, 68) / 100 - 2px
+        (100% - var(--event-info-trap-h-capped))
+            * min(
+                100,
+                max(0, calc(var(--music-trap-pos, 68) + var(--side-trap-collapse-shift, 0)))
+            )
+            / 100 - 2px
     );
     --event-info-trap-clip-mirror: polygon(
         100% 0%,
@@ -624,6 +666,12 @@
     overflow: visible;
     display: block;
 }
+
+/*
+ * Dock ease: side edge SVGs are rewritten each rAF from live trap bands
+ * (SidePanelsTrapChrome.beginSideChromeDockTween). Do NOT stretch stale paths
+ * with height:100% — that desyncs trap notches from the CSS silhouette.
+ */
 
 /* Dual-trap shared chrome — above both launch handles, clicks pass through. */
 .filters-panel > .panel-side-edge-host {

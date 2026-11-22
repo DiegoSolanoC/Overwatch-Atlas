@@ -12,8 +12,8 @@
  *   - `stateManager`                         — pending selection state
  *   - `updateButtonStates()`                 — chip selection visuals
  *
- * Confirm / Clear button handlers are owned by
- * `load-out/mountEventSystemFilters.js` — this class only wires the toggle
+ * Clear button handlers are owned by `load-out/mountEventSystemFilters.js`
+ * (Confirm retired — chips apply live). This class only wires the toggle
  * and close buttons (everything else is rebound by mount after we run).
  *
  * The legacy `FilterPanelHelpers` / `FilterButtonSetupHelpers` indirection
@@ -31,6 +31,10 @@ import {
 } from "./manifest/storyArchiveFilterOrder.js";
 import { wireFilterTabs } from "./tabs/wireFilterTabs.js";
 import { updateFilterTabCounts } from "./counts/updateFilterTabCounts.js";
+import {
+  syncFiltersModeDisclaimer,
+  wireFiltersModeDisclaimerLiveUpdates,
+} from "./filtersModeDisclaimer.js";
 import {
   buildCountryFilterUsageMap,
   getCountryEventMatchCount,
@@ -54,6 +58,7 @@ import {
   getPanelModeFor,
   setPanelModeFor,
 } from "./panel/sharedPanelMode.js";
+import { beginSideChromePanelTween } from "../../universal-features/atlas-header/SidePanelsTrapChrome.js";
 
 class FilterService {
   constructor(
@@ -97,6 +102,22 @@ class FilterService {
     this.panelMode = "filters";
     this._exclusivity = createPanelExclusivityObserver();
     this._onAtlasBioArchivesRefreshedForFilters = null;
+    /** @type {{ timer: ReturnType<typeof setTimeout>, onEnd: (e: TransitionEvent) => void } | null} */
+    this._closeAnim = null;
+  }
+
+  /** Cancel an in-flight width-close so a quick reopen is not stomped by finishClose. */
+  cancelPendingCloseAnimation() {
+    const panel = this.filtersPanel;
+    const pending = this._closeAnim;
+    this._closeAnim = null;
+    if (pending) {
+      clearTimeout(pending.timer);
+      if (panel && pending.onEnd) {
+        panel.removeEventListener("transitionend", pending.onEnd);
+      }
+    }
+    panel?.classList.remove("panel--closing");
   }
 
   /**
@@ -135,6 +156,8 @@ class FilterService {
     this._wireButtons();
     this._wireSearchBox();
     this._wireBioArchiveRefreshListener();
+    wireFiltersModeDisclaimerLiveUpdates();
+    syncFiltersModeDisclaimer();
   }
 
   reset() {
@@ -182,6 +205,7 @@ class FilterService {
 
   openPanelWithMode(mode) {
     const nextMode = mode === "music" ? "music" : "filters";
+    this.cancelPendingCloseAnimation();
     if (nextMode === "music") {
       adoptLegacyMusicContentIntoSharedPanel(this.filtersPanel);
       this.setPanelMode("music");
@@ -198,6 +222,7 @@ class FilterService {
     if (this.filtersPanel?.classList.contains("open")) {
       document.getElementById("filtersToggle")?.classList.add("active");
       document.getElementById("musicToggle")?.classList.remove("active");
+      syncFiltersModeDisclaimer();
       return;
     }
     this.openPanel();
@@ -554,6 +579,12 @@ class FilterService {
 
   openPanel() {
     closeEventInfoPanelIfOpen();
+    this.cancelPendingCloseAnimation();
+
+    /* Open the shell first so width/chrome respond on the same click tick. */
+    this.filtersPanel.classList.add("open");
+    this.filtersButton?.classList.add("active");
+    beginSideChromePanelTween();
 
     /* Reset the pending selection to the confirmed snapshot every time we open. */
     if (this.isStandaloneMode() && window.standaloneActiveFilters) {
@@ -577,7 +608,7 @@ class FilterService {
       countries: this.countries,
     };
     const t = this.currentFilterType;
-    this.createFilterButtons(
+    void this.createFilterButtons(
       tabItems[t] || this.npcs,
       t,
       tabFolder[t] || tabFolder.npcs,
@@ -585,31 +616,44 @@ class FilterService {
 
     this.updateButtonStates();
     this.updateFilterCounts();
-    this.filtersPanel.classList.add("open");
-    this.filtersButton?.classList.add("active");
+    syncFiltersModeDisclaimer();
   }
 
   closePanel() {
     const panel = this.filtersPanel;
     if (!panel?.classList.contains("open")) {
-      this.filtersButton?.classList.remove("active");
-      document.getElementById("musicToggle")?.classList.remove("active");
-      this.setPanelMode("filters");
+      /* Already closing or closed — don't treat as a fresh close or reset mode mid-animation. */
+      if (!panel?.classList.contains("panel--closing")) {
+        this.filtersButton?.classList.remove("active");
+        document.getElementById("musicToggle")?.classList.remove("active");
+        this.setPanelMode("filters");
+      }
       return;
     }
 
+    this.cancelPendingCloseAnimation();
     panel.classList.add("panel--closing");
     panel.classList.remove("open");
     this.filtersButton?.classList.remove("active");
     document.getElementById("musicToggle")?.classList.remove("active");
-    window.globeController?.requestStageLayoutSync?.();
+    beginSideChromePanelTween();
 
     const finishClose = () => {
+      if (this._closeAnim?.onEnd !== onTransitionEnd) return;
+      this._closeAnim = null;
+      /* Reopened during the close animation — leave mode/content alone. */
+      if (panel.classList.contains("open")) {
+        panel.classList.remove("panel--closing");
+        return;
+      }
       if (!panel.classList.contains("panel--closing")) return;
       panel.classList.remove("panel--closing");
       this.setPanelMode("filters");
       restoreEventImageOverlayAfterSidePanel();
-      window.globeController?.requestStageLayoutSync?.();
+      /* After bridge + width settle — never during the close tween. */
+      window.setTimeout(() => {
+        window.globeController?.requestStageLayoutSync?.();
+      }, 80);
     };
 
     const onTransitionEnd = (event) => {
@@ -623,15 +667,16 @@ class FilterService {
         return;
       }
       panel.removeEventListener("transitionend", onTransitionEnd);
-      clearTimeout(fallbackTimer);
+      if (this._closeAnim) clearTimeout(this._closeAnim.timer);
       finishClose();
     };
 
-    panel.addEventListener("transitionend", onTransitionEnd);
     const fallbackTimer = setTimeout(() => {
       panel.removeEventListener("transitionend", onTransitionEnd);
       finishClose();
     }, 400);
+    this._closeAnim = { timer: fallbackTimer, onEnd: onTransitionEnd };
+    panel.addEventListener("transitionend", onTransitionEnd);
   }
 
   togglePanel() {

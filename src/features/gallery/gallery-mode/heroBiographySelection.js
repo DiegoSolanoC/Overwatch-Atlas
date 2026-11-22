@@ -27,6 +27,12 @@ import {
     refreshHeroBiographyDockPagination,
     setBioBiographyDockFilter,
 } from './heroBiographyDockTimeline.js';
+import {
+    intelPerfArmSwap,
+    intelPerfBegin,
+    intelPerfEnd,
+    intelPerfMark,
+} from './intelEntitySwapPerfProbe.js';
 import { resetHeroBiographyDockLookHoverState } from './heroBiographyDockLookHover.js';
 import { wireHeroBiographyPortraitCopy } from './heroBiographyPortraitCopy.js';
 import {
@@ -576,6 +582,8 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
  */
 async function applyBioSelection(category, filterKey, displayName) {
     const cat = normalizeBioBiographyCategory(category);
+    intelPerfArmSwap(`${cat}:${displayName || filterKey}`);
+    intelPerfBegin('applyBioSelection');
     resetHeroBiographyDockLookHoverState();
     cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
@@ -601,7 +609,9 @@ async function applyBioSelection(category, filterKey, displayName) {
         /** @type {string[]} */
         let looks = [defaultLookForCategory(cat)];
         try {
+            intelPerfBegin('loadLooks');
             looks = await loadLooksForArchiveEntity(cat, filterKey);
+            intelPerfEnd('loadLooks');
             populateLookSelect(looks);
             const preferred = defaultLookForCategory(cat);
             currentLook = looks.includes(preferred) ? preferred : looks[0];
@@ -632,9 +642,14 @@ async function applyBioSelection(category, filterKey, displayName) {
         void setHeroBiographyPhraseButtonHero(null);
     }
 
+    intelPerfBegin('dockFilter+pagination');
     setBioBiographyDockFilter(cat, filterKey, displayName);
-    void setBioBiographyArchiveDescription(cat, filterKey, displayName);
     refreshHeroBiographyDockPagination();
+    intelPerfEnd('dockFilter+pagination');
+
+    intelPerfMark('archiveDescription:kick');
+    void setBioBiographyArchiveDescription(cat, filterKey, displayName);
+    intelPerfEnd('applyBioSelection');
 }
 
 function clearHeroSelectionUi() {

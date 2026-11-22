@@ -269,14 +269,14 @@ body.color-palette-crimson .filters-actions {
 }
 
 body.color-palette-crimson .filters-confirm-btn {
-    background: rgba(239, 83, 80, 0.4);
-    border-color: #ef5350;
+    background: rgb(var(--accent-primary-rgb));
+    border: none;
+    color: #fff;
 }
 
 body.color-palette-crimson .filters-confirm-btn:hover {
-    background: rgba(239, 83, 80, 0.6);
-    border-color: #ff8a80;
-    box-shadow: 0 4px 12px rgba(239, 83, 80, 0.4);
+    background: rgb(var(--accent-primary-rgb));
+    filter: brightness(1.08);
 }
 
 /* Panels - Music */

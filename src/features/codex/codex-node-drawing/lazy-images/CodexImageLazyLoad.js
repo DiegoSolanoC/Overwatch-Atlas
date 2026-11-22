@@ -107,6 +107,19 @@ export function disconnectCodexImageObserver() {
  */
 export function hydrateCodexPortraitImagesInViewport(root) {
     if (!root) return;
+    /*
+     * View mode usually hydrates everything up front. Prefer the pending set so
+     * pan-release does not querySelectorAll + getBoundingClientRect over the board.
+     */
+    /** @type {Iterable<Element>} */
+    let candidates;
+    if (pendingHydrateImgs.size > 0) {
+        candidates = pendingHydrateImgs;
+    } else {
+        const first = root.querySelector('img[data-src]');
+        if (!first) return;
+        candidates = root.querySelectorAll('img[data-src]');
+    }
     const vv = window.visualViewport;
     const margin = 160;
     const top = (vv?.offsetTop ?? 0) - margin;
@@ -114,17 +127,17 @@ export function hydrateCodexPortraitImagesInViewport(root) {
     const right = left + (vv?.width ?? window.innerWidth) + margin * 2;
     const bottom = top + (vv?.height ?? window.innerHeight) + margin * 2;
 
-    root.querySelectorAll('img[data-src]').forEach((img) => {
-        if (!(img instanceof HTMLImageElement) || img.src) return;
+    for (const img of candidates) {
+        if (!(img instanceof HTMLImageElement) || img.src || !img.dataset.src) continue;
         const r = img.getBoundingClientRect();
-        if (r.bottom < top || r.top > bottom || r.right < left || r.left > right) return;
+        if (r.bottom < top || r.top > bottom || r.right < left || r.left > right) continue;
         assignCodexImageSrc(img, img.dataset.src);
         img.removeAttribute('data-src');
         if (codexImageObserver) codexImageObserver.unobserve(img);
         pendingHydrateImgs.delete(img);
         armCodexPortraitLoadClear(img);
         if (img.complete && img.naturalWidth > 0) clearCodexPortraitLoadingState(img);
-    });
+    }
 }
 
 /**

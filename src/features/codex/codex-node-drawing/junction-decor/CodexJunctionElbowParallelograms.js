@@ -312,14 +312,12 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
 }
 
 const ELBOW_PAINT_CHUNK = 48;
+/** View/open load: larger batches + rAF yields (idleCallback was stretching elbow paint). */
+const ELBOW_PAINT_CHUNK_FAST = 160;
 
 function yieldElbowPaint() {
     return new Promise((resolve) => {
-        if (typeof requestIdleCallback === 'function') {
-            requestIdleCallback(() => resolve(), { timeout: 48 });
-        } else {
-            requestAnimationFrame(() => resolve());
-        }
+        requestAnimationFrame(() => resolve());
     });
 }
 
@@ -335,9 +333,10 @@ export async function appendCodexJunctionElbowParallelogramsChunked(parentG, ns,
         skipTitles: true,
     });
     if (!specs.length) return 0;
-    for (let start = 0; start < specs.length; start += ELBOW_PAINT_CHUNK) {
+    const chunk = ctx.fastPaint === false ? ELBOW_PAINT_CHUNK : ELBOW_PAINT_CHUNK_FAST;
+    for (let start = 0; start < specs.length; start += chunk) {
         if (!parentG.isConnected) return start;
-        const end = Math.min(start + ELBOW_PAINT_CHUNK, specs.length);
+        const end = Math.min(start + chunk, specs.length);
         for (let i = start; i < end; i += 1) {
             paintCodexElbowSpec(parentG, ns, specs[i], { skipTitles: true });
         }

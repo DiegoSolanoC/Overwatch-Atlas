@@ -1,11 +1,17 @@
 /**
- * MusicVolumeService - Handles volume control, mute, and fade in/out
+ * MusicVolumeService - Handles volume control, mute, and fade in/out.
+ *
+ * `currentTargetVolume` is the user-facing level (slider). Fade-outs briefly
+ * drive `HTMLAudioElement.volume` to 0 without changing the target — callers
+ * must persist the target, not the live element volume.
  */
 
 export class MusicVolumeService {
     constructor(backgroundMusic) {
         this.backgroundMusic = backgroundMusic;
         this.currentTargetVolume = 0.1; // Default 10%
+        /** Last non-zero slider level — used when unmuting from a zeroed slider. */
+        this.lastAudibleVolume = 0.1;
         this.fadeInInterval = null;
         this.fadeOutInterval = null;
         this.fadeDuration = 2000; // 2 seconds
@@ -18,6 +24,9 @@ export class MusicVolumeService {
      */
     setTargetVolume(volume) {
         this.currentTargetVolume = Math.max(0, Math.min(1, volume));
+        if (this.currentTargetVolume > 0) {
+            this.lastAudibleVolume = this.currentTargetVolume;
+        }
     }
 
     /**
@@ -28,11 +37,21 @@ export class MusicVolumeService {
     }
 
     /**
+     * Prefer the current target; fall back to last audible / default.
+     * @returns {number}
+     */
+    getAudibleVolume() {
+        if (this.currentTargetVolume > 0) return this.currentTargetVolume;
+        if (this.lastAudibleVolume > 0) return this.lastAudibleVolume;
+        return 0.1;
+    }
+
+    /**
      * Set volume immediately (no fade)
      */
     setVolume(volume) {
         if (!this.backgroundMusic) return;
-        this.currentTargetVolume = Math.max(0, Math.min(1, volume));
+        this.setTargetVolume(volume);
         if (!this.backgroundMusic.muted && !this.fadeInInterval && !this.fadeOutInterval) {
             this.backgroundMusic.volume = this.currentTargetVolume;
         }

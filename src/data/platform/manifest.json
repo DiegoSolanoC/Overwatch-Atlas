@@ -313,6 +313,10 @@
       "name": "A New Era"
     },
     {
+      "filename": "A-7000 Wargod.mp3",
+      "name": "A-7000 Wargod"
+    },
+    {
       "filename": "Aatlis.mp3",
       "name": "Aatlis"
     },
@@ -325,12 +329,32 @@
       "name": "Amaterasu"
     },
     {
+      "filename": "Ancient Caller.mp3",
+      "name": "Ancient Caller"
+    },
+    {
+      "filename": "Anima Strike.mp3",
+      "name": "Anima Strike"
+    },
+    {
       "filename": "Anniversary Suite.mp3",
       "name": "Anniversary Suite"
     },
     {
       "filename": "Answering the Call.mp3",
       "name": "Answering the Call"
+    },
+    {
+      "filename": "Anubis.mp3",
+      "name": "Anubis"
+    },
+    {
+      "filename": "Ascendant Phoenix.mp3",
+      "name": "Ascendant Phoenix"
+    },
+    {
+      "filename": "Avatar the Last Airbender.mp3",
+      "name": "Avatar the Last Airbender"
     },
     {
       "filename": "Ayutthaya.mp3",
@@ -345,12 +369,28 @@
       "name": "Busan"
     },
     {
+      "filename": "Cairo Date.mp3",
+      "name": "Cairo Date"
+    },
+    {
       "filename": "Call of the Hunt.mp3",
       "name": "Call of the Hunt"
     },
     {
+      "filename": "Celestial Guardian.mp3",
+      "name": "Celestial Guardian"
+    },
+    {
       "filename": "Château Guillard.mp3",
       "name": "Château Guillard"
+    },
+    {
+      "filename": "Cheer Rally.mp3",
+      "name": "Cheer Rally"
+    },
+    {
+      "filename": "City Ruins - Rays of Light (Nier Automata).mp3",
+      "name": "City Ruins - Rays of Light (Nier Automata)"
     },
     {
       "filename": "Colosseo.mp3",
@@ -361,8 +401,24 @@
       "name": "Conquest"
     },
     {
+      "filename": "Cowboy Bebop.mp3",
+      "name": "Cowboy Bebop"
+    },
+    {
+      "filename": "Cyber Demon.mp3",
+      "name": "Cyber Demon"
+    },
+    {
+      "filename": "Cyber Fuel.mp3",
+      "name": "Cyber Fuel"
+    },
+    {
       "filename": "Desperado.mp3",
       "name": "Desperado"
+    },
+    {
+      "filename": "Doctrine.mp3",
+      "name": "Doctrine"
     },
     {
       "filename": "Dokiwatch.mp3",
@@ -371,6 +427,10 @@
     {
       "filename": "Dorado.mp3",
       "name": "Dorado"
+    },
+    {
+      "filename": "Dragon Shaoxia.mp3",
+      "name": "Dragon Shaoxia"
     },
     {
       "filename": "Eichenwalde.mp3",
@@ -385,12 +445,48 @@
       "name": "Gothenburg"
     },
     {
+      "filename": "Graveyard Games.mp3",
+      "name": "Graveyard Games"
+    },
+    {
+      "filename": "Gundam Wing.mp3",
+      "name": "Gundam Wing"
+    },
+    {
+      "filename": "Hacked.mp3",
+      "name": "Hacked"
+    },
+    {
+      "filename": "Halloween Terror.mp3",
+      "name": "Halloween Terror"
+    },
+    {
       "filename": "Hanamura.mp3",
       "name": "Hanamura"
     },
     {
+      "filename": "Hashimoto.mp3",
+      "name": "Hashimoto"
+    },
+    {
+      "filename": "Hatred's Reckoning (Diablo).mp3",
+      "name": "Hatred's Reckoning (Diablo)"
+    },
+    {
       "filename": "Havana.mp3",
       "name": "Havana"
+    },
+    {
+      "filename": "Hazard.mp3",
+      "name": "Hazard"
+    },
+    {
+      "filename": "Hearts of Hope.mp3",
+      "name": "Hearts of Hope"
+    },
+    {
+      "filename": "Hello Kitty and Friends.mp3",
+      "name": "Hello Kitty and Friends"
     },
     {
       "filename": "Hold Your Ground.mp3",
@@ -417,12 +513,28 @@
       "name": "Illari's Theme"
     },
     {
+      "filename": "Into the Tiger's Den.mp3",
+      "name": "Into the Tiger's Den"
+    },
+    {
+      "filename": "Invasion.mp3",
+      "name": "Invasion"
+    },
+    {
       "filename": "Juno's Theme.mp3",
       "name": "Juno's Theme"
     },
     {
+      "filename": "Just For You.mp3",
+      "name": "Just For You"
+    },
+    {
       "filename": "King’s Row.mp3",
       "name": "King’s Row"
+    },
+    {
+      "filename": "Koi of Duality.mp3",
+      "name": "Koi of Duality"
     },
     {
       "filename": "Lifeweaver's Theme.mp3",
@@ -441,6 +553,22 @@
       "name": "Lunar Year"
     },
     {
+      "filename": "Magma Titan.mp3",
+      "name": "Magma Titan"
+    },
+    {
+      "filename": "Make My Night (Le Sserafim).mp3",
+      "name": "Make My Night (Le Sserafim)"
+    },
+    {
+      "filename": "Manhattan Date.mp3",
+      "name": "Manhattan Date"
+    },
+    {
+      "filename": "Mastery.mp3",
+      "name": "Mastery"
+    },
+    {
       "filename": "Mauga's Theme.mp3",
       "name": "Mauga's Theme"
     },
@@ -453,8 +581,36 @@
       "name": "Midtown"
     },
     {
+      "filename": "Mirrorwatch.mp3",
+      "name": "Mirrorwatch"
+    },
+    {
+      "filename": "Monte Carlo Date.mp3",
+      "name": "Monte Carlo Date"
+    },
+    {
+      "filename": "My Hero Academia.mp3",
+      "name": "My Hero Academia"
+    },
+    {
+      "filename": "My MEKA Mania.mp3",
+      "name": "My MEKA Mania"
+    },
+    {
+      "filename": "Naraka - Bladepoint.mp3",
+      "name": "Naraka - Bladepoint"
+    },
+    {
+      "filename": "Necrotic Knight.mp3",
+      "name": "Necrotic Knight"
+    },
+    {
       "filename": "Nepal.mp3",
       "name": "Nepal"
+    },
+    {
+      "filename": "Nepal Date.mp3",
+      "name": "Nepal Date"
     },
     {
       "filename": "Null Sector.mp3",
@@ -469,6 +625,18 @@
       "name": "Oasis"
     },
     {
+      "filename": "Onryo.mp3",
+      "name": "Onryo"
+    },
+    {
+      "filename": "Orion (Yoasobi).mp3",
+      "name": "Orion (Yoasobi)"
+    },
+    {
+      "filename": "OWCS.mp3",
+      "name": "OWCS"
+    },
+    {
       "filename": "Paraiso.mp3",
       "name": "Paraiso"
     },
@@ -477,8 +645,28 @@
       "name": "Paris"
     },
     {
+      "filename": "Persona 5.mp3",
+      "name": "Persona 5"
+    },
+    {
+      "filename": "Pixiu.mp3",
+      "name": "Pixiu"
+    },
+    {
+      "filename": "Prestige Track.mp3",
+      "name": "Prestige Track"
+    },
+    {
       "filename": "Questwatch.mp3",
       "name": "Questwatch"
+    },
+    {
+      "filename": "Ra.mp3",
+      "name": "Ra"
+    },
+    {
+      "filename": "ReawakeR (Solo Leveling).mp3",
+      "name": "ReawakeR (Solo Leveling)"
     },
     {
       "filename": "Rialto.mp3",
@@ -493,12 +681,44 @@
       "name": "Runasapi"
     },
     {
+      "filename": "Shion.mp3",
+      "name": "Shion"
+    },
+    {
+      "filename": "Shooting Star.mp3",
+      "name": "Shooting Star"
+    },
+    {
+      "filename": "Sierra.mp3",
+      "name": "Sierra"
+    },
+    {
+      "filename": "So Cynical (Le Sserafim).mp3",
+      "name": "So Cynical (Le Sserafim)"
+    },
+    {
+      "filename": "Song of the Sirens (Stellar Blade).mp3",
+      "name": "Song of the Sirens (Stellar Blade)"
+    },
+    {
+      "filename": "Spellbinder.mp3",
+      "name": "Spellbinder"
+    },
+    {
       "filename": "Starwatch.mp3",
       "name": "Starwatch"
     },
     {
+      "filename": "Street Fighter Menu.mp3",
+      "name": "Street Fighter Menu"
+    },
+    {
       "filename": "Summer Games.mp3",
       "name": "Summer Games"
+    },
+    {
+      "filename": "Summit.mp3",
+      "name": "Summit"
     },
     {
       "filename": "Summit Breach.mp3",
@@ -509,6 +729,14 @@
       "name": "Suravasa Market"
     },
     {
+      "filename": "Tachy (Stellar Blade).mp3",
+      "name": "Tachy (Stellar Blade)"
+    },
+    {
+      "filename": "Taking Reign.mp3",
+      "name": "Taking Reign"
+    },
+    {
       "filename": "Temple of Anubis.mp3",
       "name": "Temple of Anubis"
     },
@@ -517,12 +745,36 @@
       "name": "The Wastelander"
     },
     {
+      "filename": "Thor.mp3",
+      "name": "Thor"
+    },
+    {
+      "filename": "Transformers.mp3",
+      "name": "Transformers"
+    },
+    {
+      "filename": "Trials of Sanctuary.mp3",
+      "name": "Trials of Sanctuary"
+    },
+    {
+      "filename": "Ultrawatch.mp3",
+      "name": "Ultrawatch"
+    },
+    {
       "filename": "Vendetta.mp3",
       "name": "Vendetta"
     },
     {
+      "filename": "Venture.mp3",
+      "name": "Venture"
+    },
+    {
       "filename": "Volskaya Industries.mp3",
       "name": "Volskaya Industries"
+    },
+    {
+      "filename": "Voltet Overdrive.mp3",
+      "name": "Voltet Overdrive"
     },
     {
       "filename": "Watchpoint Gibraltar.mp3",
@@ -537,12 +789,36 @@
       "name": "Winston's Desk"
     },
     {
+      "filename": "Winter Fair.mp3",
+      "name": "Winter Fair"
+    },
+    {
       "filename": "Winter Wonderland.mp3",
       "name": "Winter Wonderland"
     },
     {
+      "filename": "World Forger.mp3",
+      "name": "World Forger"
+    },
+    {
+      "filename": "World of Warcraft.mp3",
+      "name": "World of Warcraft"
+    },
+    {
+      "filename": "World Tour (Street Fighter).mp3",
+      "name": "World Tour (Street Fighter)"
+    },
+    {
       "filename": "Wrecking Ball's Theme.mp3",
       "name": "Wrecking Ball's Theme"
+    },
+    {
+      "filename": "Wuyang.mp3",
+      "name": "Wuyang"
+    },
+    {
+      "filename": "Zeus.mp3",
+      "name": "Zeus"
     }
   ],
   "heroBios": {

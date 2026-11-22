@@ -70,7 +70,8 @@ export function awakeningWaveMaxScale(u, v, baseW, baseH, markerDiameterPx) {
 export const DOM_LITE_RADIATE_INTERVAL_NORMAL_MS = 1500;
 export const DOM_LITE_RADIATE_INTERVAL_AWAKENING_MS = 2900;
 export const DOM_LITE_MARKER_TRANSITION_MS = 300;
-export const MAP2D_LOCK_TRANSITION_MS = 300;
+/** Lock/unlock color morph for live filter chips (short, CSS-driven). */
+export const MAP2D_LOCK_TRANSITION_MS = 160;
 export const CELESTIAL_PLANE_WORLD = 0.4;
 export const CELESTIAL_DOM_PANEL_VISUAL_SCALE = 1.12;
 export const MAP2D_CELESTIAL_PANEL_MAX_ZOOM_MULT = 3;

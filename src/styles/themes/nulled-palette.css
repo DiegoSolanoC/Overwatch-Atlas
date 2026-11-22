@@ -279,14 +279,14 @@ body.color-palette-nulled .filters-actions {
 }
 
 body.color-palette-nulled .filters-confirm-btn {
-    background: rgba(179, 136, 255, 0.35);
-    border-color: #b388ff;
+    background: rgb(var(--accent-primary-rgb));
+    border: none;
+    color: #fff;
 }
 
 body.color-palette-nulled .filters-confirm-btn:hover {
-    background: rgba(179, 136, 255, 0.55);
-    border-color: #d4bfff;
-    box-shadow: 0 4px 12px rgba(179, 136, 255, 0.35);
+    background: rgb(var(--accent-primary-rgb));
+    filter: brightness(1.08);
 }
 
 body.color-palette-nulled .music-panel {

@@ -19,6 +19,7 @@ import { MusicVolumeService } from '../services/MusicVolumeService.js';
 import { MusicProgressService } from '../services/MusicProgressService.js';
 import { MusicPlaybackService } from '../services/MusicPlaybackService.js';
 import { MusicFileService } from '../services/MusicFileService.js';
+import { MusicCategoryService } from '../services/MusicCategoryService.js';
 import { MusicPanelService } from '../panel/MusicPanelService.js';
 import { MusicIconService } from '../services/MusicIconService.js';
 import { MusicControlService } from '../services/MusicControlService.js';
@@ -50,6 +51,7 @@ export function constructMusicChildServices(service) {
     service.progressService = new MusicProgressService(service.backgroundMusic);
     service.playbackService = new MusicPlaybackService(service.backgroundMusic);
     service.fileService = new MusicFileService();
+    service.categoryService = new MusicCategoryService();
     service.panelService = new MusicPanelService(service.musicButton, service.musicPanel, service.musicPanelClose);
     service.iconService = new MusicIconService();
     service.controlService = new MusicControlService(

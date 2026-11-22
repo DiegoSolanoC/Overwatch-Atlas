@@ -53,10 +53,12 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container {
 }
 
 /*
- * Pagination dock sits below .layout-container; flex layout clears the dock — no extra bottom inset.
+ * Dock is an overlay — globe fills to the footer so collapse reveals the stage
+ * pattern/canvas under the shortened dock (not a blank band).
  */
 body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
     bottom: 0;
+    height: auto;
 }
 
 /* Loading Overlay — above all shell chrome (header 650, dock 620, Atlas News 2500). */

@@ -7,6 +7,7 @@ import { getMoonTexturePath, getMarsTexturePath, getOrbitTexturePath } from '../
 import { readPaletteKey, texturePathForPalette } from './WorldviewMapLitePrimitives.js';
 import { mixin as mapLiteMarkersMixin } from './modules/WorldviewMapLiteLayerMarkersMixin.js';
 import { mixin as mapLiteInputMixin } from './modules/WorldviewMapLiteLayerInputMixin.js';
+import { getCurrentDockPageEventSlice } from '../../system-interface/interface-bottom-dock/currentDockPageEvents.js';
 
 export class WorldviewMapLiteLayer {
     /**
@@ -61,6 +62,8 @@ export class WorldviewMapLiteLayer {
         this._boundMove = (e) => this._onPointerMove(e);
         /** Store sound interval for continuous radiate sound on marker hover */
         this._hoverSoundInterval = null;
+        /** @type {HTMLElement|null} Dock/thumb synthetic hover button */
+        this._syntheticHoverBtn = null;
     }
 
     ensureDom() {
@@ -142,16 +145,10 @@ export class WorldviewMapLiteLayer {
      * @returns {Array} Events for the current page
      */
     _getCurrentPageEvents() {
-        // Try Event System data first
-        if (window.eventManager?.events && window.standaloneEventSlide?.currentPage) {
-            const allEvents = window.eventManager.events;
-            const currentPage = window.standaloneEventSlide.currentPage;
-            const eventsPerPage = 10;
-            const startIndex = (currentPage - 1) * eventsPerPage;
-            const endIndex = startIndex + eventsPerPage;
-            return allEvents.slice(startIndex, endIndex);
+        // Same dock timeline page as pagination thumbs / filter lock strip.
+        if (typeof window !== 'undefined' && window.eventManager) {
+            return getCurrentDockPageEventSlice().events;
         }
-        // Fall back to Globe's dataModel
         return this.dataModel?.getEventsForCurrentPage?.() || [];
     }
 

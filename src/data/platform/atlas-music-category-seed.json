@@ -1,0 +1,243 @@
+{
+  "version": 3,
+  "categories": [
+    {
+      "id": "mc_seed_collabs",
+      "name": "Collabs"
+    },
+    {
+      "id": "mc_seed_heroes",
+      "name": "Heroes"
+    },
+    {
+      "id": "mc_seed_mythics",
+      "name": "Mythics"
+    },
+    {
+      "id": "mc_seed_overwatch",
+      "name": "Overwatch"
+    },
+    {
+      "id": "mc_seed_seasonal",
+      "name": "Seasonal"
+    }
+  ],
+  "assignments": {
+    "Necrotic Knight.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Dragon Shaoxia.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Koi of Duality.mp3": [
+      "mc_seed_mythics"
+    ],
+    "World Forger.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Ascendant Phoenix.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Ancient Caller.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Ra.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Voltet Overdrive.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Celestial Guardian.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Magma Titan.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Cyber Fuel.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Anubis.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Spellbinder.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Pixiu.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Thor.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Onryo.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Zeus.mp3": [
+      "mc_seed_mythics"
+    ],
+    "A-7000 Wargod.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Cyber Demon.mp3": [
+      "mc_seed_mythics"
+    ],
+    "Taking Reign.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "My MEKA Mania.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Prestige Track.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Shooting Star.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Into the Tiger's Den.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Mastery.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Anima Strike.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Hashimoto.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Summit.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Invasion.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Hacked.mp3": [
+      "mc_seed_overwatch"
+    ],
+    "Tachy (Stellar Blade).mp3": [
+      "mc_seed_collabs"
+    ],
+    "Song of the Sirens (Stellar Blade).mp3": [
+      "mc_seed_collabs"
+    ],
+    "ReawakeR (Solo Leveling).mp3": [
+      "mc_seed_collabs"
+    ],
+    "Make My Night (Le Sserafim).mp3": [
+      "mc_seed_collabs"
+    ],
+    "Orion (Yoasobi).mp3": [
+      "mc_seed_collabs"
+    ],
+    "Hatred's Reckoning (Diablo).mp3": [
+      "mc_seed_collabs"
+    ],
+    "City Ruins - Rays of Light (Nier Automata).mp3": [
+      "mc_seed_collabs"
+    ],
+    "World of Warcraft.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Naraka - Bladepoint.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Hello Kitty and Friends.mp3": [
+      "mc_seed_collabs"
+    ],
+    "World Tour (Street Fighter).mp3": [
+      "mc_seed_collabs"
+    ],
+    "Street Fighter Menu.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Persona 5.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Gundam Wing.mp3": [
+      "mc_seed_collabs"
+    ],
+    "So Cynical (Le Sserafim).mp3": [
+      "mc_seed_collabs"
+    ],
+    "Cowboy Bebop.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Avatar the Last Airbender.mp3": [
+      "mc_seed_collabs"
+    ],
+    "My Hero Academia.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Transformers.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Trials of Sanctuary.mp3": [
+      "mc_seed_collabs"
+    ],
+    "Dokiwatch.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Halloween Terror.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Graveyard Games.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Cheer Rally.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Just For You.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Cairo Date.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Nepal Date.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Monte Carlo Date.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Manhattan Date.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "OWCS.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Ultrawatch.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Mirrorwatch.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Winter Fair.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Hearts of Hope.mp3": [
+      "mc_seed_seasonal"
+    ],
+    "Doctrine.mp3": [
+      "mc_seed_heroes"
+    ],
+    "Shion.mp3": [
+      "mc_seed_heroes"
+    ],
+    "Sierra.mp3": [
+      "mc_seed_heroes"
+    ],
+    "Wuyang.mp3": [
+      "mc_seed_heroes"
+    ],
+    "Hazard.mp3": [
+      "mc_seed_heroes"
+    ],
+    "Venture.mp3": [
+      "mc_seed_heroes"
+    ]
+  },
+  "migrations": {
+    "renameFilenames": {
+      "Dokiwatch.mp3": "Hearts of Hope.mp3",
+      "Voltjet Overdrive.mp3": "Voltet Overdrive.mp3"
+    }
+  }
+}

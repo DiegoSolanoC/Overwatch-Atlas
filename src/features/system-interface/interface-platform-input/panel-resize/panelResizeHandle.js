@@ -200,8 +200,37 @@ function createHandle(cfg, options) {
     return btn;
 }
 
+/** Px before a press becomes a resize drag (keeps taps as open/close). */
+const DRAG_THRESHOLD_PX = 5;
+
+function activateTrapFromHandle(panel, cfg, btn) {
+    if (!panel.classList.contains('open')) {
+        if (cfg.id === 'eventSlide') {
+            openEventSlideFromHandle(panel);
+        } else if (cfg.id === 'filtersPanel') {
+            openFiltersPanelFromHandle(panel, btn);
+        }
+        return;
+    }
+    if (cfg.id === 'eventSlide') {
+        closeEventSlideFromHandle(panel);
+        return;
+    }
+    if (cfg.id === 'filtersPanel') {
+        const targetMode = btn.dataset.panelMode === 'music' ? 'music' : 'filters';
+        const currentMode = panel.dataset.panelMode === 'music' ? 'music' : 'filters';
+        if (targetMode === currentMode) {
+            closeFiltersPanelFromHandle(panel);
+            return;
+        }
+        maybeSwitchFiltersMode(panel, btn, { preventDefault() {} });
+    }
+}
+
 function attachHandleBehavior(panel, cfg, btn) {
     let dragState = null;
+    /** Suppress the ghost `click` after we already toggled on pointerup. */
+    let ignoreNextClick = false;
     const arrowIcon = btn.querySelector('.panel-resize-handle__arrow');
 
     function setArrowIdle() {
@@ -219,41 +248,46 @@ function attachHandleBehavior(panel, cfg, btn) {
         arrowIcon.classList.remove('ui-pagination-arrow--flip-h');
     }
 
+    function beginResizeDrag(ev) {
+        if (!dragState || dragState.dragging) return;
+        dragState.dragging = true;
+        stopGearTicks();
+        panel.classList.remove('panel-resize--at-limit');
+        panel.style.removeProperty('--panel-resize-rim-strength');
+        panel.classList.add('panel--resizing');
+        setArrowDragging();
+        try {
+            btn.setPointerCapture(ev.pointerId);
+        } catch (_) {
+            /* ignore */
+        }
+    }
+
     btn.addEventListener('dblclick', function (e) {
         e.preventDefault();
         clearUserWidth(cfg);
     });
 
     btn.addEventListener('click', function (e) {
-        if (!panel.classList.contains('open')) {
+        if (ignoreNextClick) {
+            ignoreNextClick = false;
             e.preventDefault();
-            if (cfg.id === 'eventSlide') {
-                openEventSlideFromHandle(panel);
-            } else if (cfg.id === 'filtersPanel') {
-                openFiltersPanelFromHandle(panel, btn);
-            }
+            e.stopPropagation();
             return;
         }
-        /* Open: active-mode trap closes; the other filters/music trap still switches. */
-        if (cfg.id === 'eventSlide') {
-            e.preventDefault();
-            closeEventSlideFromHandle(panel);
-            return;
-        }
-        if (cfg.id === 'filtersPanel') {
-            const targetMode = btn.dataset.panelMode === 'music' ? 'music' : 'filters';
-            const currentMode = panel.dataset.panelMode === 'music' ? 'music' : 'filters';
-            if (targetMode === currentMode) {
-                e.preventDefault();
-                closeFiltersPanelFromHandle(panel);
-                return;
-            }
-            maybeSwitchFiltersMode(panel, btn, e);
-        }
+        /* Fallback for environments that never got a pointerup activate. */
+        e.preventDefault();
+        activateTrapFromHandle(panel, cfg, btn);
     });
 
     function onPointerMove(ev) {
         if (!dragState || isMobile()) return;
+        const dxFromStart = ev.clientX - dragState.startX;
+        if (!dragState.dragging) {
+            if (Math.abs(dxFromStart) < DRAG_THRESHOLD_PX) return;
+            beginResizeDrag(ev);
+        }
+
         const pxMove = Math.abs(ev.clientX - dragState.lastPointerX);
         const dx = ev.clientX - dragState.startX;
         const raw = cfg.edge === 'inner-right'
@@ -297,9 +331,10 @@ function attachHandleBehavior(panel, cfg, btn) {
         }
     }
 
-    function endDrag() {
+    function endDrag(ev) {
         if (!dragState) return;
         const ds = dragState;
+        const wasTap = !ds.dragging;
         stopGearTicks();
         panel.classList.remove('panel--resizing');
         panel.classList.remove('panel-resize--at-limit');
@@ -309,11 +344,19 @@ function attachHandleBehavior(panel, cfg, btn) {
         window.removeEventListener('pointerup', endDrag);
         window.removeEventListener('pointercancel', endDrag);
         try {
-            btn.releasePointerCapture(ds.pointerId);
+            if (ds.dragging) btn.releasePointerCapture(ds.pointerId);
         } catch (e) {
             /* ignore */
         }
         dragState = null;
+
+        if (wasTap && ev?.type === 'pointerup') {
+            /* Activate here — don't wait on `click`, which pointer capture / preventDefault often drops. */
+            ignoreNextClick = true;
+            activateTrapFromHandle(panel, cfg, btn);
+            return;
+        }
+
         const cur = document.documentElement.style.getPropertyValue(cfg.cssVar).trim();
         const n = parseInt(cur, 10);
         if (Number.isFinite(n)) {
@@ -324,7 +367,7 @@ function attachHandleBehavior(panel, cfg, btn) {
 
     btn.addEventListener('pointerdown', function (ev) {
         if (ev.button !== 0 || isMobile()) return;
-        ev.preventDefault();
+        /* Do NOT preventDefault here — that suppresses click and makes traps feel dead. */
         const w = currentWidthPx(cfg);
         dragState = {
             startX: ev.clientX,
@@ -334,14 +377,9 @@ function attachHandleBehavior(panel, cfg, btn) {
             gearAccum: 0,
             limitPullAccum: 0,
             totalAbsDx: 0,
-            lastRawWidth: w
+            lastRawWidth: w,
+            dragging: false
         };
-        stopGearTicks();
-        panel.classList.remove('panel-resize--at-limit');
-        panel.style.removeProperty('--panel-resize-rim-strength');
-        panel.classList.add('panel--resizing');
-        setArrowDragging();
-        btn.setPointerCapture(ev.pointerId);
         window.addEventListener('pointermove', onPointerMove);
         window.addEventListener('pointerup', endDrag);
         window.addEventListener('pointercancel', endDrag);

@@ -5,7 +5,8 @@
 /*
  * Desktop: overlay onto main#content (absolute within .layout-container) so opening
  * INFO does not flex-shrink/stretch the stage. Mobile keeps fixed slide-up (event-slide-mobile.css).
- * Pagination dock stays a vertical flex sibling and still shortens the layout band.
+ * Pagination dock is an absolute overlay. Panel `bottom` tracks live dock height
+ * so open content can flex-fill when the dock collapses.
  */
 .event-slide {
     position: absolute;
@@ -17,7 +18,8 @@
     max-width: var(--panel-event-width-collapsed);
     flex: none;
     min-height: 0;
-    background: var(--bg-secondary); /* Dark blue for default blue palette */
+    /* Fill lives on ::before (trap clip) — same glass plate as filters. */
+    background: transparent;
     box-shadow: none;
     /* Above main#content stage (.event-image-overlay is z-index 500) so resize chrome can sit on the seam */
     z-index: 540;

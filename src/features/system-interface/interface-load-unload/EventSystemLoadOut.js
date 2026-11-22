@@ -43,6 +43,7 @@ import {
 import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js";
 import { wireEventSlideSectionJumps } from "../interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js";
 import { mountEventSlideInfoDescriptionTextScaleControls } from "../interface-shared/accessibility/infoDescriptionTextScale.js";
+import { mountFiltersChipSizeScaleControls } from "../interface-shared/accessibility/filtersChipSizeScale.js";
 import { clearDockEraFilter } from "../interface-bottom-dock/dockEraTimelineFilter.js";
 import {
   setupDockEraMenu,
@@ -277,6 +278,7 @@ export async function loadEventSystem(testBtn) {
     setupDockEraMenu();
     refreshDockTimelinePagination();
     mountEventSlideInfoDescriptionTextScaleControls();
+    mountFiltersChipSizeScaleControls();
 
     // Final paint flush so the loading overlay only drops after the
     // browser has actually committed everything we just mounted.

@@ -8,7 +8,7 @@
  *   1. Escape / Q -> stacked dismiss (still works while focus is inside our
  *      panels for Escape).
  *   2. If typing in a regular text field, bail out — let the field have the key.
- *   3. Single-letter toggles (E eras, H hero roster / H·I image, X, F filters, G, V, T, C, M, R, Z).
+ *   3. Single-letter toggles (E eras, H hero roster / H image, I info, X, F filters, G, V, T, C, M, R, Z).
  *   4. Enter -> zoom reset (unless a button/link has focus).
  *   5. Tab -> cycle event slide variants.
  *   6. Arrow keys / WASD -> scroll panel, else zoom, else page-scroll.
@@ -144,14 +144,46 @@ function handleLetterToggle(lower, e) {
                 return true;
             }
         }
-    }
-    if (lower === 'h' || lower === 'i') {
         if (isEventSlideOpen()) {
             const imageToggleId =
                 window.innerWidth <= 768 && document.getElementById('globalImageToggle')
                     ? 'globalImageToggle'
                     : 'eventImageToggle';
             if (clickIfEnabled(imageToggleId)) consumeEvent(e);
+        }
+        return true;
+    }
+    if (lower === 'i') {
+        /* Toggle info panel: close if open, else open first unlocked thumb on the current dock page. */
+        if (isEventSlideOpen()) {
+            if (typeof window.standaloneEventSlide?.hideEventSlide === 'function') {
+                window.standaloneEventSlide.hideEventSlide();
+            } else {
+                document.getElementById('eventSlide')?.classList.remove('open');
+            }
+            consumeEvent(e);
+            return true;
+        }
+        const firstThumb = document.querySelector(
+            '#eventNumberButtons .event-number-btn:not([disabled]):not(.locked)',
+        );
+        if (firstThumb instanceof HTMLElement) {
+            firstThumb.click();
+            consumeEvent(e);
+            return true;
+        }
+        const pag = window.standaloneDockPagination;
+        const slide = window.standaloneEventSlide;
+        if (pag && typeof slide?.showEvent === 'function') {
+            const page = Number(pag.getCurrentPage?.()) || 1;
+            const perPage = Number(pag.eventsPerPage) || 10;
+            const events = typeof pag.getDockEvents === 'function' ? pag.getDockEvents() : [];
+            const start = (page - 1) * perPage;
+            if (events[start]) {
+                slide.showEvent(start);
+                window.SoundEffectsManager?.play?.('eventClick');
+                consumeEvent(e);
+            }
         }
         return true;
     }
@@ -185,7 +217,24 @@ function handleLetterToggle(lower, e) {
     if (lower === 'v') { if (clickIfEnabled('hyperloopToggle')) consumeEvent(e); return true; }
     if (lower === 't') { if (clickIfEnabled('weatherEffectsToggle')) consumeEvent(e); return true; }
     if (lower === 'c') { if (clickIfEnabled('colorPaletteToggle')) consumeEvent(e); return true; }
-    if (lower === 'm') { if (clickIfEnabled('musicToggle')) consumeEvent(e); return true; }
+    if (lower === 'm') {
+        /* Same direct FilterService path as F — do not synthetic-click #musicToggle
+         * (that path sets a ~900ms gesture lock and drops rapid M presses). */
+        const fs = window.FilterService;
+        const panel = document.getElementById('filtersPanel');
+        if (fs && panel) {
+            const mode = typeof fs.getPanelMode === 'function' ? fs.getPanelMode() : 'filters';
+            const musicOpen = panel.classList.contains('open') && mode === 'music';
+            if (musicOpen && typeof fs.closePanel === 'function') {
+                fs.closePanel();
+            } else if (typeof fs.openPanelWithMode === 'function') {
+                fs.openPanelWithMode('music');
+            }
+            window.SoundEffectsManager?.play?.('music');
+            consumeEvent(e);
+        }
+        return true;
+    }
     if (lower === 'r') { if (clickIfEnabled('autoRotateToggle')) consumeEvent(e); return true; }
     if (lower === 'z') {
         const pdc = window.PaginationDockCollapse;

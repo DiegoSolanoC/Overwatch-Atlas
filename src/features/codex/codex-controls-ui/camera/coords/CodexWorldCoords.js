@@ -75,8 +75,22 @@ function getNodeCenterWorldPx(el) {
     if (!el) return { x: 0, y: 0 };
     const baseLeft = parseFloat(el.style.left) || 0;
     const baseTop = parseFloat(el.style.top) || 0;
-    const w = el.offsetWidth;
-    const h = el.offsetHeight;
+    /*
+     * Prefer inline/layout size — offsetWidth/Height force reflow and were the
+     * dominant cost when cord packets refreshed paths every wrap (~50ms+/frame).
+     */
+    let w = parseFloat(el.style.width);
+    let h = parseFloat(el.style.height);
+    if (!(w > 0) || !(h > 0)) {
+        const rawW = el.getAttribute('data-codex-w');
+        const rawH = el.getAttribute('data-codex-h');
+        w = parseFloat(rawW);
+        h = parseFloat(rawH);
+    }
+    if (!(w > 0) || !(h > 0)) {
+        w = el.offsetWidth;
+        h = el.offsetHeight;
+    }
     const { tx, ty } = parseTranslatePxFromTransform(el.style.transform);
     return {
         x: baseLeft + w / 2 + tx,

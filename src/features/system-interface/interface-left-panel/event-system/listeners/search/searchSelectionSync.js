@@ -83,7 +83,9 @@ function selectionKeysToFilterText(keys, filterIndex) {
  * input-popover hide callbacks + the `applySearch` step the parent installs).
  *
  * Returned shape:
- *   - `syncFiltersInputFromSelection()` — pulls + writes both inputs, then re-runs search.
+ *   - `syncFiltersInputFromSelection(opts?)` — pulls + writes both inputs, then re-runs search.
+ *     Pass `{ skipApplySearch: true }` to only mirror the inputs (Intel/gallery already
+ *     curates the dock itself — rebuilding the Event Manager list blocks the UI).
  *     Re-entrancy is guarded by `ctx.state.isSyncingSelection` so reentrant `input` events
  *     (we set the value here, which fires `input`) don't spin.
  *   - `unlockFiltersInput()` — strips the read-only + opacity cues so the user can type.
@@ -97,7 +99,10 @@ export function createSelectionSyncer(ctx) {
         state,
     } = ctx;
 
-    const syncFiltersInputFromSelection = () => {
+    /**
+     * @param {{ skipApplySearch?: boolean }} [opts]
+     */
+    const syncFiltersInputFromSelection = (opts = {}) => {
         if (!useSelectionCheckbox || !useSelectionCheckbox.checked) return;
         if (state.isSyncingSelection) return;
         state.isSyncingSelection = true;
@@ -122,7 +127,9 @@ export function createSelectionSyncer(ctx) {
                 countryInput.classList.remove('no-filter-match');
                 ctx.hideCountrySuggestions();
             }
-            ctx.applySearch();
+            if (!opts.skipApplySearch) {
+                ctx.applySearch();
+            }
         } finally {
             state.isSyncingSelection = false;
         }
