@@ -84,8 +84,9 @@
     --event-info-trap-pos: 50;
     --filters-trap-pos: 32;
     --music-trap-pos: 68;
-    /* 0 expanded; 10 when body.pagination-dock-collapsed (see pagination-dock.css). */
+    /* 0 expanded; amount when collapsed (see pagination-dock.css + UI Tweaks). */
     --side-trap-collapse-shift: 0;
+    --side-trap-collapse-shift-amount: 10;
     --event-info-trap-taper: 12;
     --event-info-trap-border-w: 20;
     --side-edge-border-px: 20px;

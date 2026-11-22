@@ -97,13 +97,21 @@ body:has(#atlasGalleryHost),
     --gallery-side-panel-inset-top: calc(
         var(--header-height, 88px) + clamp(12rem, 22vh, 16.5rem)
     );
-    --gallery-side-panel-inset-bottom: calc(var(--footer-height, 65px) + 360px + 128px);
     /*
-     * Stable stage floor — always the expanded dock height (360px), never the live
+     * Fixed panels are positioned against the scaled body (transform containing
+     * block), so bottom = footer + dock top — same seam as the overlay dock.
+     * Track live --pagination-dock-stage-clearance (no phantom 360/128 trap pad).
+     */
+    --gallery-side-panel-inset-bottom: calc(
+        var(--footer-height, 65px) +
+            var(--pagination-dock-stage-clearance, var(--pagination-dock-height-expanded, 400px))
+    );
+    /*
+     * Stable stage floor — always the expanded dock height, never the live
      * --pagination-dock-height (which shrinks on collapse and would move portraits).
      */
     --gallery-stage-inset-bottom: calc(
-        var(--footer-height, 65px) + var(--pagination-dock-height-expanded, 360px)
+        var(--footer-height, 65px) + var(--pagination-dock-height-expanded, 400px)
     );
 }
 
@@ -1083,7 +1091,10 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
         --gallery-side-panel-inset-top: calc(
             var(--header-height, 88px) + clamp(11rem, 21vh, 15.5rem)
         );
-        --gallery-side-panel-inset-bottom: calc(var(--footer-height, 65px) + 360px + 112px);
+        --gallery-side-panel-inset-bottom: calc(
+            var(--footer-height, 65px) +
+                var(--pagination-dock-stage-clearance, var(--pagination-dock-height-expanded, 400px))
+        );
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {

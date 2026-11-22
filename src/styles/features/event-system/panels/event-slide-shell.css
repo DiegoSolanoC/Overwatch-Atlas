@@ -422,12 +422,39 @@
  * Inline editing: relevant locations + bio connections live in .event-slide-top (above the
  * description scrollport). Default .event-slide-content { overflow: hidden } clips tall forms.
  * Use one scroll on the content column; description no longer uses a nested scroll while editing.
+ *
+ * View mode scrolls .event-slide-scrollable *inside* the lip padding, so its scrollbar clears
+ * the inward line. Edit mode scrolls this column instead — keep lip clearance as margin-right
+ * so the scrollbar sits left of the inward line rather than painting over it.
  */
 .event-slide.event-slide--inline-editing .event-slide-content {
     overflow-y: auto !important;
     overflow-x: hidden !important;
     min-height: 0;
     -webkit-overflow-scrolling: touch;
+    padding-right: 12px;
+    margin-right: max(20px, var(--panel-side-content-inset-px, 36px));
+    scrollbar-width: var(--scrollbar-firefox-width);
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.event-slide.event-slide--inline-editing .event-slide-content::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+.event-slide.event-slide--inline-editing .event-slide-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--scrollbar-radius);
+}
+
+.event-slide.event-slide--inline-editing .event-slide-content::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: var(--scrollbar-radius);
+    border: 2px solid var(--scrollbar-track);
+}
+
+.event-slide.event-slide--inline-editing .event-slide-content::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
 }
 
 .event-slide.event-slide--inline-editing .event-slide-scrollable {
@@ -435,6 +462,8 @@
     min-height: 0;
     overflow-y: visible !important;
     overflow-x: hidden;
+    /* Parent already owns the scroll + lip inset; drop nested scrollbar pad. */
+    padding-right: 0;
 }
 
 .event-slide-inline-editor {

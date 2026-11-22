@@ -1450,14 +1450,40 @@ body.color-palette-gray .story-archive-category-hub__tile:hover {
     }
 }
 
-/* Pagination dock cap (~80px border art + trapezium) intrudes above the dock; lift list. */
-body:has(#paginationDock) .story-viewer-container.active,
-body:has(#paginationDock) .dialogue-theater-list-host.active {
-    --story-archive-dock-clearance: clamp(92px, 12vmin, 148px);
+/*
+ * Dock is an overlay (hosts stay bottom:0 for pattern). Inset the embedded panel
+ * with the same expanded/collapsed bottoms as side panels so padding eases with
+ * the dock instead of jumping via --pagination-dock-stage-clearance.
+ */
+body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded,
+body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-panel-embedded {
+    padding-bottom: calc(var(--pagination-dock-height-expanded, 400px) + 12px);
+    box-sizing: border-box;
+    transition: padding-bottom
+        var(--pagination-dock-transition-duration, 0.42s)
+        var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
 }
 
-body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded .events-manage-content {
-    padding-bottom: calc(24px + var(--story-archive-dock-clearance));
+body:has(#paginationDock).pagination-dock-collapsed
+    .story-viewer-container.active
+    .story-viewer-panel-embedded,
+body:has(#paginationDock).pagination-dock-collapsed
+    .dialogue-theater-list-host.active
+    .dialogue-theater-panel-embedded {
+    padding-bottom: calc(
+        var(--pagination-dock-height-collapsed, 200px) +
+            max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px) +
+            12px
+    );
+}
+
+body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded
+    :is(#eventsList, #dialogueTheaterList).events-list,
+body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-panel-embedded
+    #dialogueTheaterList.events-list {
+    padding-bottom: 16px;
+    scroll-padding-bottom: 16px;
+    margin-bottom: 0;
 }
 
 /* Pattern overlay - matches events-manage-panel, filters-panel, music-panel */

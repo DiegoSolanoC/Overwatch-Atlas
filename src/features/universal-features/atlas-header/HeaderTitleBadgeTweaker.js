@@ -644,10 +644,21 @@ export function applyHeaderTitleBadgeTweaks(state) {
     if (rimGroup) rimGroup.setAttribute('clip-path', 'url(#headerTitleBadgeClip)');
 
     const root = document.body;
-    root.style.setProperty('--header-badge-outer-w', `${clean.widthPx}px`);
-    root.style.setProperty('--header-chrome-align-extra', `${clean.heightExtraPx}px`);
+    /*
+     * Browser zoom shrinks CSS viewport px. Cap badge/slant against live width so
+     * hub parallelograms still fit (fixed 406px + large slant tears STORY/INTEL).
+     */
+    const vw = typeof window !== 'undefined' ? window.innerWidth || 1400 : 1400;
+    const badgeW = Math.max(160, Math.min(clean.widthPx, Math.round(vw * 0.26)));
+    const logoMax = Math.max(40, Math.min(clean.logoMaxPx, Math.round(badgeW * 0.3)));
+    const heightExtra = Math.max(
+        24,
+        Math.min(clean.heightExtraPx, Math.round((typeof window !== 'undefined' ? window.innerHeight || 900 : 900) * 0.09)),
+    );
+    root.style.setProperty('--header-badge-outer-w', `${badgeW}px`);
+    root.style.setProperty('--header-chrome-align-extra', `${heightExtra}px`);
     root.style.setProperty('--header-badge-logo-percent', `${clean.logoPercent}%`);
-    root.style.setProperty('--header-badge-logo-max', `${clean.logoMaxPx}px`);
+    root.style.setProperty('--header-badge-logo-max', `${logoMax}px`);
 
     const notchY = pts[2][1];
     const bottomY = pts[3][1];
@@ -657,9 +668,17 @@ export function applyHeaderTitleBadgeTweaks(state) {
     root.style.setProperty('--header-hub-hex-y-top', String(notchY));
     root.style.setProperty('--header-hub-hex-edge-dx', String(dx));
     root.style.setProperty('--header-hub-hex-edge-dy', String(dy));
+    const slantRaw = (badgeW * dx) / 100;
+    const leftHub = document.getElementById('headerHub');
+    const hubBtnCount = Math.max(
+        1,
+        leftHub?.querySelectorAll?.('.header-hub-btn')?.length || 5,
+    );
+    const hubW = leftHub?.clientWidth || Math.max(120, (vw - badgeW) / 2);
+    const slantCap = (hubW / hubBtnCount) * 0.42;
     root.style.setProperty(
         '--header-hub-btn-slant',
-        `calc(var(--header-badge-outer-w) * ${dx} / 100)`,
+        `${Math.max(10, Math.min(slantRaw, slantCap, 40))}px`,
     );
 
     return {
@@ -808,6 +827,13 @@ function mountControls(panel, bags, hooks) {
                     min: 0,
                     max: 100,
                     step: 1,
+                },
+                {
+                    key: 'sideTrapCollapseShiftPct',
+                    label: 'Collapse slide % (dock collapsed)',
+                    min: 0,
+                    max: 40,
+                    step: 0.5,
                 },
             ],
         },
@@ -1516,6 +1542,23 @@ export function setupHeaderTitleBadgeTweaker() {
                 console.error('[UI Tweaks] preview failed:', err);
             }
         };
+
+        /* Browser zoom changes CSS viewport — reflow fluid badge/hub/dock chrome. */
+        if (document.documentElement.dataset.uiTweaksZoomLayout !== '1') {
+            document.documentElement.dataset.uiTweaksZoomLayout = '1';
+            let zoomLayoutRaf = 0;
+            const onZoomLayout = () => {
+                if (zoomLayoutRaf) cancelAnimationFrame(zoomLayoutRaf);
+                zoomLayoutRaf = requestAnimationFrame(() => {
+                    zoomLayoutRaf = 0;
+                    preview();
+                });
+            };
+            window.addEventListener('resize', onZoomLayout);
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', onZoomLayout);
+            }
+        }
 
         const applyStandardBags = (payload) => {
             if (!payload) return;

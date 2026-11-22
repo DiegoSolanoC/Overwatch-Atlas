@@ -6,7 +6,7 @@
 const HTML_CLASS = 'mobile-landscape-blocked';
 const GATE_ID = 'mobilePortraitGate';
 
-/** @returns {boolean} True when a touch-class device is landscape with phone-sized short edge. */
+/** @returns {boolean} True when a phone-class device is landscape with phone-sized short edge. */
 export function isMobileLandscapeBlocked() {
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -15,12 +15,28 @@ export function isMobileLandscapeBlocked() {
     const shortEdge = Math.min(w, h);
     if (shortEdge > 768) return false;
 
-    const touchDevice =
-        (typeof navigator.maxTouchPoints === 'number' && navigator.maxTouchPoints > 0) ||
-        (typeof window.matchMedia === 'function' &&
-            window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+    /*
+     * Short laptop/desktop windows (100% zoom, browser chrome) often have
+     * min(w,h) ≤ 768 while landscape. Touchscreens also set maxTouchPoints > 0.
+     * Never gate devices that still have a mouse/trackpad (hover + fine pointer).
+     */
+    if (
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    ) {
+        return false;
+    }
 
-    return touchDevice;
+    const phoneLike =
+        (typeof window.matchMedia === 'function' &&
+            (window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+                window.matchMedia('(pointer: coarse)').matches)) ||
+        (typeof navigator.maxTouchPoints === 'number' &&
+            navigator.maxTouchPoints > 0 &&
+            typeof window.matchMedia === 'function' &&
+            !window.matchMedia('(pointer: fine)').matches);
+
+    return phoneLike;
 }
 
 function syncMobilePortraitGateDom() {

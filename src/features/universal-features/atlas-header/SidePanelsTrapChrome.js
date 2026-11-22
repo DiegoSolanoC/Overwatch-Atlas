@@ -37,6 +37,11 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
      * Individual offset is discarded; one slide drives a symmetrical spread.
      */
     filtersMusicMirror: 1,
+    /**
+     * Extra % added to each side-trap pos while the dock is collapsed
+     * (`--side-trap-collapse-shift` eases 0 → this amount).
+     */
+    sideTrapCollapseShiftPct: 10,
 
     /** Dock trap — independent from sides (no vertical slide). */
     dockTrapHeightPx: 120,
@@ -151,6 +156,7 @@ export function sanitizeSidePanelsTrapState(s) {
     if (next.filtersMusicMirror) {
         next.musicTrapPosPct = clamp(100 - next.filtersTrapPosPct, 0, 100);
     }
+    next.sideTrapCollapseShiftPct = clamp(Number(next.sideTrapCollapseShiftPct ?? 10), 0, 40);
 
     next.dockTrapHeightPx = clamp(Math.round(Number(next.dockTrapHeightPx)), 48, 160);
     next.dockTrapWidthPx = clamp(Math.round(Number(next.dockTrapWidthPx)), 280, 1100);
@@ -489,12 +495,14 @@ function dockTrapGeometry(s, capEl) {
         capEl ||
         (typeof document !== 'undefined' ? document.querySelector('.pagination-dock-top-cap-row') : null);
     const vw = typeof window !== 'undefined' ? window.innerWidth : 1400;
+    const vh = typeof window !== 'undefined' ? window.innerHeight || 900 : 900;
     /*
      * clientWidth/Height = the SVG's 100% box. getBoundingClientRect can disagree
      * under zoom/transform and stretched the stroke away from the fill.
      */
     const dockW = Math.max(1, cap?.clientWidth || dock?.clientWidth || vw);
-    const trapH = Math.max(1, cap?.clientHeight || s.dockTrapHeightPx);
+    const fluidTrapH = Math.max(56, Math.min(s.dockTrapHeightPx, Math.round(vh * 0.12)));
+    const trapH = Math.max(1, cap?.clientHeight || fluidTrapH);
     const trapW = Math.min(dockW * 0.88, s.dockTrapWidthPx, Math.max(160, dockW - 48));
     const halfPx = trapW / 2;
     const insetPx = (trapW * s.dockTrapTaperPct) / 100;
@@ -681,12 +689,14 @@ function formulaTrapBand(panelH, trapHeightPx, posPct, shift, capFrac) {
 /** Live collapse amount 0..1 from transitioning --side-trap-collapse-shift. */
 function readTrapCollapseT() {
     if (typeof document === 'undefined') return 0;
-    const raw = getComputedStyle(document.body).getPropertyValue('--side-trap-collapse-shift');
-    const shift = parseFloat(raw);
+    const cs = getComputedStyle(document.body);
+    const shift = parseFloat(cs.getPropertyValue('--side-trap-collapse-shift'));
+    const amount = parseFloat(cs.getPropertyValue('--side-trap-collapse-shift-amount'));
+    const denom = Number.isFinite(amount) && amount > 0 ? amount : 10;
     if (!Number.isFinite(shift)) {
         return document.body.classList.contains('pagination-dock-collapsed') ? 1 : 0;
     }
-    return Math.min(1, Math.max(0, shift / 10));
+    return Math.min(1, Math.max(0, shift / denom));
 }
 
 /**
@@ -2342,8 +2352,9 @@ export function syncDockInwardLineShape(s, geo) {
     const rounded = sampleRoundedPolyline(outerPts, s.dockBorderRadius, curveSteps);
     const outerEdge = densifyPolyline(offsetPolyline(rounded, outerInset), densifyStep);
     const tipTh = Math.max(0.5, Math.min(fullTh, s.dockInwardEndThicknessPx));
-    const tipW = s.dockInwardTipWidthPx;
-    const slopeW = s.dockInwardSlopeWidthPx;
+    /* Tip/slope authored for wide traps — clamp so zoom-narrow docks don't tear the lip. */
+    const tipW = Math.min(s.dockInwardTipWidthPx, Math.max(24, live.trapW * 0.42));
+    const slopeW = Math.min(s.dockInwardSlopeWidthPx, Math.max(4, live.trapW * 0.12));
 
     /*
      * Two mirrored ribbons; center butts are vertical (constant X) even on the
@@ -2700,7 +2711,10 @@ export function syncAllSidePanelEdges(s, opts = {}) {
             tween.expandedDock + (tween.collapsedDock - tween.expandedDock) * collapseT;
         tweenInfoH = Math.max(8, Math.round(tween.infoH0 + (tween.dockH0 - dockH)));
         tweenFiltersH = Math.max(8, Math.round(tween.filtersH0 + (tween.dockH0 - dockH)));
-        tweenShift = collapseT * 10;
+        /* Must match CSS --side-trap-collapse-shift-amount (not a hardcoded 10). */
+        const shiftAmount = Number(s?.sideTrapCollapseShiftPct);
+        const amount = Number.isFinite(shiftAmount) ? shiftAmount : 10;
+        tweenShift = collapseT * amount;
     }
 
     const infoHandle = document.querySelector(
@@ -3045,6 +3059,9 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
     root.style.setProperty('--event-info-trap-pos', String(s.infoTrapPosPct));
     root.style.setProperty('--filters-trap-pos', String(s.filtersTrapPosPct));
     root.style.setProperty('--music-trap-pos', String(s.musicTrapPosPct));
+    const collapseShiftAmount = String(s.sideTrapCollapseShiftPct);
+    root.style.setProperty('--side-trap-collapse-shift-amount', collapseShiftAmount);
+    document.body?.style.setProperty('--side-trap-collapse-shift-amount', collapseShiftAmount);
 
     /* Clear legacy CSS-background stroke URLs (inline SVGs replace them). */
     root.style.setProperty('--event-info-trap-stroke-img', 'none');
@@ -3056,7 +3073,16 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
      * Dock: paint border first (cap-row client box), then force fill to that silhouette.
      * Do NOT rewrite --dock-border-seam-h / img-h (those seat the cap row).
      */
-    root.style.setProperty('--dock-trap-height', `${s.dockTrapHeightPx}px`);
+    /*
+     * Cap trap height against live viewport so zoom-in does not leave 120px controls
+     * inside a band that is visually shorter than the fixed authoring size.
+     */
+    const vh = typeof window !== 'undefined' ? window.innerHeight || 900 : 900;
+    const fluidDockTrapH = Math.max(
+        56,
+        Math.min(s.dockTrapHeightPx, Math.round(vh * 0.12)),
+    );
+    root.style.setProperty('--dock-trap-height', `${fluidDockTrapH}px`);
     /* Set on :root + body — body dock rules redefine many vars and would shadow :root alone. */
     const buttonsOffsetY = `${s.dockButtonsOffsetYPx}px`;
     root.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);

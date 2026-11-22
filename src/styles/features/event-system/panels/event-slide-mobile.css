@@ -229,9 +229,12 @@
         padding-right: 14px !important;
     }
 
-    /* Portrait + inline edit: allow scrolling long location/connection forms (overrides hidden above). */
+    /* Portrait + inline edit: allow scrolling long location/connection forms (overrides hidden above).
+       No hub inward lip on mobile — drop the desktop margin that clears that stroke. */
     .event-slide.event-slide--inline-editing .event-slide-content {
         overflow-y: auto !important;
+        margin-right: 0 !important;
+        padding-right: 14px !important;
     }
 
     .event-slide-top {

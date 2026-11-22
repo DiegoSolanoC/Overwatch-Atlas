@@ -10,9 +10,13 @@
             var h = window.innerHeight;
             if (w <= h) return false;
             if (Math.min(w, h) > 768) return false;
+            /* Desktop/laptop with mouse — never block (short windows used to false-positive). */
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) return false;
             return (
-                (navigator.maxTouchPoints || 0) > 0 ||
-                window.matchMedia('(hover: none) and (pointer: coarse)').matches
+                window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+                window.matchMedia('(pointer: coarse)').matches ||
+                ((navigator.maxTouchPoints || 0) > 0 &&
+                    !window.matchMedia('(pointer: fine)').matches)
             );
         }
         function syncMobilePortraitGateClass() {

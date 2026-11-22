@@ -17216,7 +17216,10 @@
           "theaterId": "chatter-soldier-76",
           "lineId": "98fc577c-6ec9-4942-9892-d41e0597383d"
         },
-        "Ilegal Activities",
+        {
+          "name": "Illegal Activities",
+          "theaterId": "ac7bd131-4534-4ab4-8acb-3ab1a9b03499"
+        },
         {
           "name": "Some Tech",
           "theaterId": "40371b30-850b-4244-9c9e-21076c5adcfe"

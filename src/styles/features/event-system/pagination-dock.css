@@ -106,6 +106,12 @@
      * Trapeziums also nudge +10 pos% on collapse (mimic extra grow).
      */
     body:has(#paginationDock) {
+        /*
+         * Distance from .layout-container bottom → dock body top.
+         * (Dock is a body-level overlay above the footer; layout-container already
+         * ends at the footer, so panels here do NOT add --footer-height again.)
+         * Do not add --dock-trap-height — that left a large empty gap above the dock.
+         */
         --pagination-dock-stage-clearance: var(--pagination-dock-height-expanded, 400px);
         --side-trap-collapse-shift: 0;
         transition: --side-trap-collapse-shift
@@ -118,29 +124,49 @@
             var(--pagination-dock-height-collapsed, 200px) +
                 max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
         );
-        --side-trap-collapse-shift: 10;
+        /* Amount from UI Tweaks (--side-trap-collapse-shift-amount), default 10. */
+        --side-trap-collapse-shift: var(--side-trap-collapse-shift-amount, 10);
     }
 
+    /*
+     * Absolute side panels + stage media seat on the dock body top (not dock+trap).
+     * Two concrete `bottom` values so height eases with collapse (custom props jump).
+     * Trap chrome may lightly overlap the bottom edge — intentional.
+     */
     body:has(#paginationDock) .filters-panel,
-    body:has(#paginationDock) .event-slide {
+    body:has(#paginationDock) .event-slide,
+    body:has(#paginationDock) .music-panel,
+    body:has(#paginationDock) .event-image-overlay {
         bottom: var(--pagination-dock-height-expanded, 400px);
         overflow: visible;
-        /* Keep width open/close transitions; add bottom ease with the dock. */
         transition:
             width var(--panel-transition),
             min-width var(--panel-transition),
             max-width var(--panel-transition),
             box-shadow var(--panel-transition),
             bottom var(--pagination-dock-transition-duration, 0.42s)
-                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+                var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1)),
+            opacity 0.6s ease,
+            background 0.6s ease,
+            left var(--panel-transition, 0.3s ease),
+            right var(--panel-transition, 0.3s ease);
     }
 
     body:has(#paginationDock).pagination-dock-collapsed .filters-panel,
-    body:has(#paginationDock).pagination-dock-collapsed .event-slide {
+    body:has(#paginationDock).pagination-dock-collapsed .event-slide,
+    body:has(#paginationDock).pagination-dock-collapsed .music-panel,
+    body:has(#paginationDock).pagination-dock-collapsed .event-image-overlay {
         bottom: calc(
             var(--pagination-dock-height-collapsed, 200px) +
                 max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
         );
+    }
+
+    body:has(#paginationDock) .event-image-overlay {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: auto;
     }
 
     /*
@@ -157,11 +183,11 @@
     }
 
     /*
-     * Menu is position:relative — pad tiles clear of the dock while ::before pattern
+     * Menu is position:relative — pad tiles to the dock top while ::before pattern
      * still paints through the full host (including under the dock).
      */
     body:has(#paginationDock) .main-menu-buttons {
-        padding-bottom: calc(var(--pagination-dock-stage-clearance) * 0.9);
+        padding-bottom: var(--pagination-dock-stage-clearance);
         box-sizing: border-box;
     }
 

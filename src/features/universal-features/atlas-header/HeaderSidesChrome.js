@@ -505,8 +505,13 @@ export function applyHeaderSidesChrome(state) {
     const rimOpaque = rgbCss(rimRgb, 1);
 
     const targets = [root, document.querySelector('header')].filter(Boolean);
+    const vw = typeof window !== 'undefined' ? window.innerWidth || 1400 : 1400;
+    /* Soften large negative hub↔badge tuck when the CSS viewport is zoomed narrow. */
+    const gapPx = clean.sideGapPx < 0
+        ? Math.max(clean.sideGapPx, -Math.round(vw * 0.045))
+        : clean.sideGapPx;
     const props = {
-        '--header-badge-gap': `${clean.sideGapPx}px`,
+        '--header-badge-gap': `${gapPx}px`,
         '--header-hub-hex-y-bottom': String(clean.sideStripBottomY),
         '--header-side-grad-inner': rgbCss(inner),
         '--header-side-grad-outer': rgbCss(outer),

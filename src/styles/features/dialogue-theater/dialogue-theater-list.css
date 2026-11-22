@@ -773,10 +773,6 @@ body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryTog
 
 
 
-body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-panel-embedded .events-manage-content {
-    padding-bottom: calc(24px + var(--story-archive-dock-clearance, 0px));
-}
-
 @media (max-width: 768px) {
     .dialogue-theater-panel-embedded #dialogueTheaterBottomBar .events-manage-action-btn {
 

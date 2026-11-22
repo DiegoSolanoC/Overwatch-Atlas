@@ -62,10 +62,12 @@
     --stage-render-inset-x: 24%;
 }
 
+/*
+ * Overlay seats on the dock body top (--pagination-dock-stage-clearance).
+ * Keep a small stage-floor pad so the dialogue plate clears the trap seam visually.
+ */
 body:has(#paginationDock) .dialogue-theater-stage {
-    --dialogue-box-bottom: calc(
-        var(--dock-border-img-h, 80px) + clamp(36px, 5.5vh, 64px)
-    );
+    --dialogue-box-bottom: clamp(18px, 3vh, 36px);
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage {
