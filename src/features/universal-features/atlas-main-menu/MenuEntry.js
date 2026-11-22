@@ -4,7 +4,7 @@
 
 import { MenuButtonArrangement } from './MenuButtonArrangement.js';
 import { wireModeActivation } from './ModeActivation.js';
-import { createMenuMobileSlides } from './MenuMobileSlides.js';
+import { createMenuMobileSlides } from './MenuMobileSlides.js?v=2';
 import { navigateSeeTheLatest } from './navigateSeeTheLatest.js';
 import { refreshSeeTheLatestMenuPreview } from './seeTheLatestPreview.js';
 

@@ -15,46 +15,50 @@
 import {
     applyPaginationDockViewportMode,
     initPaginationDockCollapse,
-} from './paginationDockCollapse.js?v=4';
+} from './paginationDockCollapse.js?v=5';
 import { dockCollapseStripHtml } from './eventPaginationMarkup.js';
 import { buildOrMigrateDockTrapezoidCap } from './dockTrapezoidCap.js';
 
 const POSITION_PROPS_TO_CLEAR = ['position', 'bottom', 'left', 'right', 'transform', 'top'];
 
+function placeDockAfterFooter(dock) {
+    const footer = document.querySelector('footer');
+    const host = footer?.parentNode || document.body;
+    if (footer) {
+        if (dock.previousSibling !== footer) {
+            host.insertBefore(dock, footer.nextSibling);
+        }
+    } else if (dock.parentNode !== document.body) {
+        document.body.appendChild(dock);
+    }
+}
+
 function ensurePaginationDock() {
     let dock = document.getElementById('paginationDock');
-    if (dock) return dock;
+    if (dock) {
+        /* Late sibling of footer → fixed stacking beats layout-container panels. */
+        placeDockAfterFooter(dock);
+        return dock;
+    }
 
     dock = document.createElement('div');
     dock.id = 'paginationDock';
     dock.className = 'pagination-dock';
-
-    const layoutContainer = document.querySelector('.layout-container');
-    const footer = document.querySelector('footer');
-    if (layoutContainer && layoutContainer.parentNode) {
-        if (footer) {
-            layoutContainer.parentNode.insertBefore(dock, footer);
-        } else {
-            layoutContainer.parentNode.insertBefore(dock, layoutContainer.nextSibling);
-        }
-    }
+    placeDockAfterFooter(dock);
     return dock;
 }
 
 function ensurePaginationDockCollapseStrip(dock) {
-    const layoutContainer = document.querySelector('.layout-container');
-    if (!layoutContainer?.parentNode || dock.parentNode !== layoutContainer.parentNode) {
-        return;
-    }
+    if (!dock?.parentNode) return;
     let strip = document.getElementById('paginationDockCollapseStrip');
     if (!strip) {
         strip = document.createElement('div');
         strip.id = 'paginationDockCollapseStrip';
         strip.className = 'pagination-dock-collapse-strip';
         strip.innerHTML = dockCollapseStripHtml();
-        layoutContainer.parentNode.insertBefore(strip, dock);
+        dock.parentNode.insertBefore(strip, dock);
     } else if (strip.nextSibling !== dock) {
-        layoutContainer.parentNode.insertBefore(strip, dock);
+        dock.parentNode.insertBefore(strip, dock);
     }
 }
 

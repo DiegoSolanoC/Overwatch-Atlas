@@ -146,19 +146,27 @@ export function createFiltersChipSizeScaleControls(options = {}) {
 }
 
 export function mountFiltersChipSizeScaleControls() {
-    const content = document.querySelector('#filtersPanel .filters-panel-content');
-    if (!content || content.querySelector('.filters-chip-size-scale')) return;
+    const actions = document.querySelector('#filtersPanel .filters-actions');
+    if (!actions || actions.querySelector('.filters-chip-size-scale')) return;
 
-    /* Prefer bottom bar (event-panel style); migrate off the old toolbar slot. */
+    /* Migrate off bottom bar / old toolbar slot — match info mid-controls (top). */
     document
         .querySelector('#filtersPanel .filters-actions-buttons .filters-chip-size-scale')
         ?.remove();
+    document
+        .querySelector('#filtersPanel .filters-panel-content > .filters-chip-size-bar')
+        ?.remove();
 
-    let bar = content.querySelector('.filters-chip-size-bar');
+    let bar = actions.querySelector('.filters-chip-size-bar');
     if (!bar) {
         bar = document.createElement('div');
         bar.className = 'filters-chip-size-bar';
-        content.appendChild(bar);
+        const title = actions.querySelector('.filters-title');
+        if (title) {
+            title.insertAdjacentElement('afterend', bar);
+        } else {
+            actions.prepend(bar);
+        }
     }
     bar.append(createFiltersChipSizeScaleControls({ compact: false }));
 }

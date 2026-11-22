@@ -279,6 +279,28 @@
         align-self: auto;
     }
 
+    /*
+     * Mobile / short-edge: dock stay collapsed — hide the trapezium collapse nub
+     * (no expand control; frees SELECT / utility lip space).
+     */
+    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock-collapse-handle,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock-collapse-pill,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock-collapse-nub {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    @media (max-width: 768px) {
+        body:has(#paginationDock) .pagination-dock-collapse-handle,
+        body:has(#paginationDock) .pagination-dock-collapse-pill,
+        body:has(#paginationDock) .pagination-dock-collapse-nub {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+    }
+
     body:has(#paginationDock) .pagination-dock-collapse-pill,
     body:has(#paginationDock) .pagination-dock-collapse-nub {
         width: var(--dock-nub-width, 120px);

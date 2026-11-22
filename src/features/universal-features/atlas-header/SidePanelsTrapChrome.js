@@ -45,7 +45,10 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
 
     /** Dock trap — independent from sides (no vertical slide). */
     dockTrapHeightPx: 120,
+    /** Desktop / wide authored trap width (CSS px). */
     dockTrapWidthPx: 760,
+    /** Compact (≤768px) authored trap width — narrower so side chips clear the crop. */
+    dockTrapWidthMobilePx: 630,
     dockTrapTaperPct: 19,
     dockBorderWidth: 8,
     /** Corner rounding on dock trap path (viewBox units). */
@@ -160,6 +163,14 @@ export function sanitizeSidePanelsTrapState(s) {
 
     next.dockTrapHeightPx = clamp(Math.round(Number(next.dockTrapHeightPx)), 48, 160);
     next.dockTrapWidthPx = clamp(Math.round(Number(next.dockTrapWidthPx)), 280, 1100);
+    {
+        const mobileRaw = next.dockTrapWidthMobilePx;
+        const mobileFallback =
+            mobileRaw == null || mobileRaw === '' || Number.isNaN(Number(mobileRaw))
+                ? 630
+                : Number(mobileRaw);
+        next.dockTrapWidthMobilePx = clamp(Math.round(mobileFallback), 240, 900);
+    }
     next.dockTrapTaperPct = clamp(Number(next.dockTrapTaperPct), 0, 28);
     next.dockBorderWidth = clamp(Number(next.dockBorderWidth), 8, 36);
     next.dockBorderRadius = clamp(Number(next.dockBorderRadius), 0, 24);
@@ -496,14 +507,23 @@ function dockTrapGeometry(s, capEl) {
         (typeof document !== 'undefined' ? document.querySelector('.pagination-dock-top-cap-row') : null);
     const vw = typeof window !== 'undefined' ? window.innerWidth : 1400;
     const vh = typeof window !== 'undefined' ? window.innerHeight || 900 : 900;
+    const compact = vw <= 768;
+    const portrait = compact && vh >= vw;
     /*
      * clientWidth/Height = the SVG's 100% box. getBoundingClientRect can disagree
      * under zoom/transform and stretched the stroke away from the fill.
      */
     const dockW = Math.max(1, cap?.clientWidth || dock?.clientWidth || vw);
-    const fluidTrapH = Math.max(56, Math.min(s.dockTrapHeightPx, Math.round(vh * 0.12)));
+    const fluidTrapH = compact
+        ? Math.max(56, Math.min(portrait ? 84 : 96, Math.round(vh * (portrait ? 0.095 : 0.11))))
+        : Math.max(56, Math.min(s.dockTrapHeightPx, Math.round(vh * 0.12)));
     const trapH = Math.max(1, cap?.clientHeight || fluidTrapH);
-    const trapW = Math.min(dockW * 0.88, s.dockTrapWidthPx, Math.max(160, dockW - 48));
+    const authoredTrapW = compact ? s.dockTrapWidthMobilePx : s.dockTrapWidthPx;
+    const trapW = Math.min(
+        dockW * (portrait ? 0.96 : 0.88),
+        compact ? Math.min(authoredTrapW, Math.round(dockW * 0.98)) : authoredTrapW,
+        Math.max(160, dockW - (portrait ? 16 : 48)),
+    );
     const halfPx = trapW / 2;
     const insetPx = (trapW * s.dockTrapTaperPct) / 100;
     const leftPx = (dockW - trapW) / 2;
@@ -2976,6 +2996,7 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
             musicPos: s.musicTrapPosPct,
             dockH: s.dockTrapHeightPx,
             dockW: s.dockTrapWidthPx,
+            dockWMobile: s.dockTrapWidthMobilePx,
             dockTaper: s.dockTrapTaperPct,
             dockBorder: s.dockBorderWidth,
             dockRadius: s.dockBorderRadius,
@@ -3076,22 +3097,33 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
     /*
      * Cap trap height against live viewport so zoom-in does not leave 120px controls
      * inside a band that is visually shorter than the fixed authoring size.
+     * Compact portrait must track pagination-dock.css seam clamp (68–84) — desktop
+     * 120px trap + 22px inward lip + 13px button Y blow out the phone dock chrome.
      */
+    const vw = typeof window !== 'undefined' ? window.innerWidth || 1400 : 1400;
     const vh = typeof window !== 'undefined' ? window.innerHeight || 900 : 900;
-    const fluidDockTrapH = Math.max(
-        56,
-        Math.min(s.dockTrapHeightPx, Math.round(vh * 0.12)),
-    );
+    const compact = vw <= 768;
+    const portrait = compact && vh >= vw;
+    const fluidDockTrapH = compact
+        ? Math.max(56, Math.min(portrait ? 84 : 96, Math.round(vh * (portrait ? 0.095 : 0.11))))
+        : Math.max(56, Math.min(s.dockTrapHeightPx, Math.round(vh * 0.12)));
     root.style.setProperty('--dock-trap-height', `${fluidDockTrapH}px`);
     /* Set on :root + body — body dock rules redefine many vars and would shadow :root alone. */
-    const buttonsOffsetY = `${s.dockButtonsOffsetYPx}px`;
+    const buttonsOffsetYPx = compact
+        ? Math.min(s.dockButtonsOffsetYPx, portrait ? 36 : 6)
+        : s.dockButtonsOffsetYPx;
+    const buttonsOffsetY = `${buttonsOffsetYPx}px`;
     root.style.setProperty('--dock-buttons-offset-y', buttonsOffsetY);
     root.style.removeProperty('--stage-menu-offset-y');
     root.style.removeProperty('--globe-offset-y');
-    const inwardLineH = `${s.dockInwardLineThicknessPx}px`;
-    const inwardLineY = `${s.dockInwardLineOffsetYPx}px`;
-    const inwardClearance = `${Math.max(0, s.dockInwardSliderClearancePx)}px`;
-    const inwardClearanceCollapsed = `${Math.max(0, s.dockInwardSliderClearanceCollapsedPx)}px`;
+    const inwardLineH = `${
+        compact ? Math.min(s.dockInwardLineThicknessPx, portrait ? 12 : 16) : s.dockInwardLineThicknessPx
+    }px`;
+    const inwardLineY = `${
+        compact ? Math.min(s.dockInwardLineOffsetYPx, portrait ? 4 : 8) : s.dockInwardLineOffsetYPx
+    }px`;
+    const inwardClearance = `${Math.max(0, compact ? Math.min(s.dockInwardSliderClearancePx, 10) : s.dockInwardSliderClearancePx)}px`;
+    const inwardClearanceCollapsed = `${Math.max(0, compact ? Math.min(s.dockInwardSliderClearanceCollapsedPx, 16) : s.dockInwardSliderClearanceCollapsedPx)}px`;
     const inwardVars = {
         '--dock-inward-line-h': inwardLineH,
         '--dock-inward-line-offset-y': inwardLineY,
@@ -3135,6 +3167,7 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
         musicPos: s.musicTrapPosPct,
         dockH: s.dockTrapHeightPx,
         dockW: s.dockTrapWidthPx,
+        dockWMobile: s.dockTrapWidthMobilePx,
         dockTaper: s.dockTrapTaperPct,
         dockBorder: s.dockBorderWidth,
         dockRadius: s.dockBorderRadius,

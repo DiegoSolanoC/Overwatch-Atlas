@@ -274,7 +274,7 @@ export function createMenuMobileSlides(handlers = {}) {
     selectBtn.type = 'button';
     selectBtn.id = 'mainMenuMobileSelectBtn';
     selectBtn.className = 'main-menu-mobile-select';
-    selectBtn.textContent = 'Select';
+    selectBtn.innerHTML = '<span class="main-menu-mobile-select__label">Select</span>';
     selectBtn.setAttribute('aria-label', 'Select World');
     selectWrap.appendChild(selectBtn);
 

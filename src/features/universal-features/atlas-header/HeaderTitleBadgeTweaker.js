@@ -20,7 +20,7 @@ import {
     cloneSidePanelsTrapDefaults,
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=33';
+} from './SidePanelsTrapChrome.js?v=34';
 import {
     clearLegacyUiTweaksStorage,
     clearUiTweaksDraft,
@@ -647,14 +647,27 @@ export function applyHeaderTitleBadgeTweaks(state) {
     /*
      * Browser zoom shrinks CSS viewport px. Cap badge/slant against live width so
      * hub parallelograms still fit (fixed 406px + large slant tears STORY/INTEL).
+     * Phone / compact widths must follow mobile CSS intent (layout.css / viewport.css)
+     * — desktop floors (160 badge, ~76 heightExtra, negative hub tuck) clip mode icons
+     * on real devices even when Chrome device toolbar still looks passable.
      */
     const vw = typeof window !== 'undefined' ? window.innerWidth || 1400 : 1400;
-    const badgeW = Math.max(160, Math.min(clean.widthPx, Math.round(vw * 0.26)));
+    const vh = typeof window !== 'undefined' ? window.innerHeight || 900 : 900;
+    const compact = vw <= 768;
+    const portrait = compact && vh >= vw;
+    const badgeW = compact
+        ? Math.max(
+              portrait ? 152 : 140,
+              Math.min(clean.widthPx, Math.round(vw * (portrait ? 0.38 : 0.34))),
+          )
+        : Math.max(160, Math.min(clean.widthPx, Math.round(vw * 0.26)));
     const logoMax = Math.max(40, Math.min(clean.logoMaxPx, Math.round(badgeW * 0.3)));
-    const heightExtra = Math.max(
-        24,
-        Math.min(clean.heightExtraPx, Math.round((typeof window !== 'undefined' ? window.innerHeight || 900 : 900) * 0.09)),
-    );
+    const heightExtra = compact
+        ? Math.max(
+              portrait ? 22 : 20,
+              Math.min(portrait ? 30 : 28, Math.round(vh * (portrait ? 0.034 : 0.035))),
+          )
+        : Math.max(24, Math.min(clean.heightExtraPx, Math.round(vh * 0.09)));
     root.style.setProperty('--header-badge-outer-w', `${badgeW}px`);
     root.style.setProperty('--header-chrome-align-extra', `${heightExtra}px`);
     root.style.setProperty('--header-badge-logo-percent', `${clean.logoPercent}%`);
@@ -675,10 +688,10 @@ export function applyHeaderTitleBadgeTweaks(state) {
         leftHub?.querySelectorAll?.('.header-hub-btn')?.length || 5,
     );
     const hubW = leftHub?.clientWidth || Math.max(120, (vw - badgeW) / 2);
-    const slantCap = (hubW / hubBtnCount) * 0.42;
+    const slantCap = (hubW / hubBtnCount) * (portrait ? 0.32 : 0.42);
     root.style.setProperty(
         '--header-hub-btn-slant',
-        `${Math.max(10, Math.min(slantRaw, slantCap, 40))}px`,
+        `${Math.max(portrait ? 8 : 10, Math.min(slantRaw, slantCap, portrait ? 22 : 40))}px`,
     );
 
     return {
@@ -923,7 +936,14 @@ function mountControls(panel, bags, hooks) {
             sanitize: sanitizeSidePanelsTrapState,
             items: [
                 { key: 'dockTrapHeightPx', label: 'Dock trap height', min: 48, max: 160, step: 2 },
-                { key: 'dockTrapWidthPx', label: 'Dock trap width', min: 280, max: 1100, step: 10 },
+                { key: 'dockTrapWidthPx', label: 'Dock trap width (desktop)', min: 280, max: 1100, step: 10 },
+                {
+                    key: 'dockTrapWidthMobilePx',
+                    label: 'Dock trap width (mobile)',
+                    min: 240,
+                    max: 900,
+                    step: 10,
+                },
                 { key: 'dockTrapTaperPct', label: 'Dock taper (0=rect)', min: 0, max: 28, step: 0.5 },
                 { key: 'dockBorderWidth', label: 'Dock border thickness', min: 8, max: 36, step: 0.5 },
                 { key: 'dockBorderRadius', label: 'Dock corner rounding', min: 0, max: 24, step: 1 },
@@ -1546,17 +1566,18 @@ export function setupHeaderTitleBadgeTweaker() {
         /* Browser zoom changes CSS viewport — reflow fluid badge/hub/dock chrome. */
         if (document.documentElement.dataset.uiTweaksZoomLayout !== '1') {
             document.documentElement.dataset.uiTweaksZoomLayout = '1';
-            let zoomLayoutRaf = 0;
+            let zoomLayoutTimer = 0;
             const onZoomLayout = () => {
-                if (zoomLayoutRaf) cancelAnimationFrame(zoomLayoutRaf);
-                zoomLayoutRaf = requestAnimationFrame(() => {
-                    zoomLayoutRaf = 0;
+                /* Debounce: full chrome preview forces multiple layouts / SVG rebuilds. */
+                if (zoomLayoutTimer) window.clearTimeout(zoomLayoutTimer);
+                zoomLayoutTimer = window.setTimeout(() => {
+                    zoomLayoutTimer = 0;
                     preview();
-                });
+                }, 120);
             };
-            window.addEventListener('resize', onZoomLayout);
+            window.addEventListener('resize', onZoomLayout, { passive: true });
             if (window.visualViewport) {
-                window.visualViewport.addEventListener('resize', onZoomLayout);
+                window.visualViewport.addEventListener('resize', onZoomLayout, { passive: true });
             }
         }
 

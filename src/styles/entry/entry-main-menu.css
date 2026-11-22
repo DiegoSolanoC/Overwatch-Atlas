@@ -1435,7 +1435,7 @@ body.color-palette-gray .main-menu-label-container {
             height: calc(
                 var(--dock-border-seam-h, 48px)
                 + var(--dock-trapezoid-offset-y, 2px)
-                + clamp(140px, 22vh, 200px)
+                + clamp(180px, 28vh, 260px)
             );
             background: linear-gradient(
                 to top,
@@ -1451,10 +1451,16 @@ body.color-palette-gray .main-menu-label-container {
             position: absolute;
             left: 0;
             right: 0;
+            /*
+             * Sit above SELECT: seam + select button height + air.
+             * (Collapse nub is hidden on mobile.)
+             */
             bottom: calc(
                 var(--dock-border-seam-h, 48px)
                 + var(--dock-trapezoid-offset-y, 2px)
-                + clamp(56px, 9vh, 76px)
+                + clamp(10px, 1.6vh, 18px)
+                + clamp(56px, 8.5vh, 68px)
+                + clamp(12px, 1.8vh, 20px)
             );
             z-index: 2;
             padding: clamp(8px, 1.6vh, 16px) clamp(56px, 16vw, 88px);
@@ -1485,8 +1491,8 @@ body.color-palette-gray .main-menu-label-container {
         body .main-menu-mobile-slide__desc {
             font-family: var(--font-menu-desc, var(--font-default, 'Config', sans-serif));
             font-style: italic;
-            font-size: clamp(13px, 3.4vw, 16px);
-            line-height: 1.25;
+            font-size: clamp(18px, 4.8vw, 24px);
+            line-height: 1.3;
             text-align: center;
             color: rgba(255, 255, 255, 0.88);
             max-width: 22em;
@@ -1566,8 +1572,8 @@ body.color-palette-gray .main-menu-label-container {
         }
 
         /*
-         * Select overlays the slide, seated just above the dock trapezoid seam
-         * inside the shade band that reaches the dock.
+         * Select overlays the slide — clear the dock trap seam.
+         * Collapse nub is hidden on mobile, so do not reserve --dock-nub-height.
          */
         body .main-menu-mobile-select-wrap {
             position: absolute;
@@ -1576,7 +1582,7 @@ body.color-palette-gray .main-menu-label-container {
             bottom: calc(
                 var(--dock-border-seam-h, 48px)
                 + var(--dock-trapezoid-offset-y, 2px)
-                + clamp(6px, 1vh, 12px)
+                + clamp(10px, 1.6vh, 18px)
             );
             display: flex;
             justify-content: center;
@@ -1593,17 +1599,20 @@ body.color-palette-gray .main-menu-label-container {
             pointer-events: auto;
         }
 
-        /* Match World / dock globe-control buttons */
+        /*
+         * Match Filters/Music utility chips: white plate, black label,
+         * accent fill while pressed / focused.
+         */
         body .main-menu-mobile-select {
-            --select-skew: -11deg;
+            --select-skew: -10deg;
             appearance: none;
             -webkit-appearance: none;
-            border-style: solid;
-            border-width: 2px 2px 2px 6px;
-            border-color: rgba(255, 255, 255, 0.93);
-            border-radius: 4px;
-            background: rgba(13, 71, 161, 0.35);
-            color: #fff;
+            -moz-appearance: none;
+            border: none;
+            border-radius: 12px;
+            background: #ffffff;
+            background-color: #ffffff;
+            color: #000;
             font-family: var(--font-control-bold, var(--font-default));
             font-weight: 700;
             font-style: normal;
@@ -1616,48 +1625,53 @@ body.color-palette-gray .main-menu-label-container {
             cursor: pointer;
             clip-path: none;
             transform: skewX(var(--select-skew));
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: center bottom;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transition:
+                background 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+                color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+                filter 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        body .main-menu-mobile-select .main-menu-mobile-select__label {
+            display: inline-block;
+            transform: skewX(10deg);
         }
 
         body .main-menu-mobile-select:hover,
         body .main-menu-mobile-select:focus-visible {
-            background: rgba(13, 71, 161, 0.55);
-            border-color: #fff;
-            color: #fff;
+            background: #ffffff;
+            color: #000;
             outline: none;
+            filter: brightness(1.04);
             transform: skewX(var(--select-skew)) translateY(-3px) scale(1.04);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.48);
         }
 
-        body .main-menu-mobile-select:active {
+        body .main-menu-mobile-select:active,
+        body .main-menu-mobile-select.is-active {
             transform: skewX(var(--select-skew)) translateY(-1px) scale(1.02);
-            background: rgba(13, 71, 161, 0.55);
+            background: rgb(var(--accent-primary-rgb)) !important;
+            background-color: rgb(var(--accent-primary-rgb)) !important;
+            color: #fff !important;
+            filter: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35), 0 6px 18px rgba(0, 0, 0, 0.45);
         }
 
-        body.color-palette-gray .main-menu-mobile-select {
-            background: rgba(66, 66, 66, 0.45);
-        }
+        /* Idle stays white; accent only on press (palette does not recolor the plate). */
+        body.color-palette-gray .main-menu-mobile-select,
+        body.color-palette-crimson .main-menu-mobile-select,
+        body.color-palette-nulled .main-menu-mobile-select,
         body.color-palette-gray .main-menu-mobile-select:hover,
-        body.color-palette-gray .main-menu-mobile-select:focus-visible,
-        body.color-palette-gray .main-menu-mobile-select:active {
-            background: rgba(66, 66, 66, 0.7);
-        }
-        body.color-palette-crimson .main-menu-mobile-select {
-            background: rgba(183, 28, 28, 0.4);
-        }
         body.color-palette-crimson .main-menu-mobile-select:hover,
-        body.color-palette-crimson .main-menu-mobile-select:focus-visible,
-        body.color-palette-crimson .main-menu-mobile-select:active {
-            background: rgba(183, 28, 28, 0.65);
-        }
-        body.color-palette-nulled .main-menu-mobile-select {
-            background: rgba(103, 58, 183, 0.4);
-        }
         body.color-palette-nulled .main-menu-mobile-select:hover,
-        body.color-palette-nulled .main-menu-mobile-select:focus-visible,
-        body.color-palette-nulled .main-menu-mobile-select:active {
-            background: rgba(103, 58, 183, 0.65);
+        body.color-palette-gray .main-menu-mobile-select:focus-visible,
+        body.color-palette-crimson .main-menu-mobile-select:focus-visible,
+        body.color-palette-nulled .main-menu-mobile-select:focus-visible {
+            background: #ffffff;
+            color: #000;
         }
     }
 

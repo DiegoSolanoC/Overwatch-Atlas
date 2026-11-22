@@ -12,7 +12,7 @@
     background: var(--bg-secondary); /* Dark blue for default blue palette */
     box-shadow: none !important; /* Remove shadow to prevent overlap */
     transition: right var(--panel-transition);
-    z-index: 200;
+    z-index: var(--side-panel-z, 540);
     overflow-y: hidden; /* Hide panel scrollbar - only grid scrolls */
     color: white;
     margin: 0;
@@ -23,14 +23,7 @@
     margin-bottom: 0; /* Remove negative margin */
 }
 
-/* Mobile: Override desktop right position to ensure smooth transition */
-/* Literal 768px: `var(--)` in @media is ignored in common browsers (incl. Chrome device mode). */
-@media (max-width: 768px) {
-    .music-panel {
-        right: -100% !important; /* Start at -100% on mobile, not fixed width */
-    }
-}
-
+/* Mobile slide-up handled in viewport.css / filters shared panel (music lives in #filtersPanel). */
 .music-panel.open {
     right: 0;
 }
@@ -1790,30 +1783,30 @@ body.color-palette-gray .music-progress-bar::-moz-range-thumb {
     filter: brightness(1.08);
 }
 
-/* Mobile: transport controls stay on one row; share horizontal space so buttons stay large enough to tap */
+/* Mobile: keep desktop shared row (volume | now playing); only tighten tap targets */
 @media (max-width: 768px) {
-    /* Bottom-dock now playing: DOM stays desktop order; flex order puts sliders + grid in the middle. */
-    .music-panel-content > .music-actions {
-        order: 0;
-    }
-
-    .music-panel-content > .music-controls-section--categories,
-    .music-panel-content > .music-category-board-heading,
-    .music-panel-content > .music-category-out-toolbar,
-    .music-panel-content > .music-grid {
-        order: 1;
-    }
-
     .music-panel-content > .music-top-controls-row {
-        order: 2;
-        margin-top: auto;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 0;
     }
 
-    .music-top-controls-row > .music-controls-section--volume {
+    .music-top-controls-row > .music-controls-section {
+        flex: 1 1 0;
+        min-width: 0;
         max-width: none;
-        order: -1;
-        margin-bottom: 10px;
+        order: 0;
+        margin-bottom: 0;
+        padding: 10px 12px;
+    }
+
+    .music-top-controls-row > .music-controls-section--volume,
+    .music-top-controls-row > .music-controls-section--playback {
+        flex: 1 1 0;
+        max-width: none;
+        order: 0;
     }
 
     /* Extra bottom padding: footer Atlas News trapezoid (z-index above panel) can overlap panel bottom-left */

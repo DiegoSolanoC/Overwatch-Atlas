@@ -166,8 +166,12 @@
     /* Info-panel / gallery intel description text scale (1.45 = default; updated by JS). */
     --info-description-text-scale: 1.45;
     --info-description-font-size: calc(18px * var(--info-description-text-scale));
-    --info-description-font-size-mobile: calc(16px * var(--info-description-text-scale));
-    --info-description-font-size-mobile-compact: calc(14px * var(--info-description-text-scale));
+    /* Mobile body copy — authored larger so A−/A/A+ still reads well. */
+    --info-description-font-size-mobile: calc(22px * var(--info-description-text-scale));
+    --info-description-font-size-mobile-compact: calc(20px * var(--info-description-text-scale));
+    /* Dock must paint above open side panels (info / filters / music). */
+    --pagination-dock-z: 2200;
+    --side-panel-z: 540;
     --info-description-gallery-font-size: calc(clamp(0.92rem, 1.35vw, 1.05rem) * var(--info-description-text-scale));
     /* Accent titles keep their larger defaults at scale 1.45, then track the same control. */
     --info-title-font-size: calc(2.2rem * var(--info-description-text-scale) / 1.45);

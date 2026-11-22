@@ -388,3 +388,84 @@ body.color-palette-nulled .filters-panel .filters-panel-content::before,
 body.color-palette-nulled .filters-panel .music-panel-content::before {
     background-image: url('../../../../assets/images/Background%20Pattern/Pattern Nulled.png');
 }
+
+/*
+ * Mobile: desktop trap silhouette is off, so panels were left on transparent +
+ * pattern @ 0.62 — much glassier than desktop's solid plate @ 0.95.
+ * Match the desktop fill (bg-secondary + pattern) on the panel ::before.
+ */
+@media (max-width: 768px) {
+    :root {
+        --side-panel-silhouette-opacity: 1;
+    }
+
+    .event-slide.open::before,
+    .filters-panel::before,
+    .music-panel::before {
+        content: '' !important; /* beat panel-resize mobile content:none */
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: var(--side-panel-silhouette-opacity, 1);
+        background-color: var(--bg-secondary);
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Blue.png');
+        background-repeat: repeat, repeat;
+        background-size:
+            clamp(720px, 58vw, 1360px) auto,
+            clamp(720px, 58vw, 1360px) auto;
+        background-position: center center, center center;
+        mix-blend-mode: normal;
+    }
+
+    body.color-palette-gray .event-slide.open::before,
+    body.color-palette-gray .filters-panel::before,
+    body.color-palette-gray .music-panel::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Dark.png');
+    }
+
+    body.color-palette-crimson .event-slide.open::before,
+    body.color-palette-crimson .filters-panel::before,
+    body.color-palette-crimson .music-panel::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Crimson.png');
+    }
+
+    body.color-palette-nulled .event-slide.open::before,
+    body.color-palette-nulled .filters-panel::before,
+    body.color-palette-nulled .music-panel::before {
+        background-image:
+            linear-gradient(
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent),
+                color-mix(in srgb, var(--bg-secondary) 55%, transparent)
+            ),
+            url('../../../../assets/images/Background%20Pattern/Pattern Nulled.png');
+    }
+
+    /* Plate lives on the panel — drop weak content-layer texture so it doesn't stack glass. */
+    .filters-panel .filters-panel-content,
+    .filters-panel .music-panel-content {
+        background-image: none !important;
+    }
+
+    .filters-panel .filters-panel-content::before,
+    .filters-panel .music-panel-content::before,
+    .filters-panel .filters-panel-content::after,
+    .filters-panel .music-panel-content::after {
+        content: none !important;
+    }
+}

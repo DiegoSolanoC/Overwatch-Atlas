@@ -18,8 +18,8 @@
  */
 
 import { eventPaginationInnerHtml } from './eventPaginationMarkup.js';
-import { mountPaginationDock } from './mountPaginationDock.js?v=3';
-import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=33';
+import { mountPaginationDock } from './mountPaginationDock.js?v=4';
+import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=34';
 
 const ORPHAN_NAV_BUTTON_IDS = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn'];
 
@@ -84,7 +84,12 @@ export function createEventPagination() {
     const existing = returnExistingOrSweepOrphanNavButtons();
     if (existing) {
         ensureDockInwardLine();
-        requestAnimationFrame(() => refreshDockTrapSvgFromTweaks());
+        const syncTrap = () => refreshDockTrapSvgFromTweaks();
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(syncTrap, { timeout: 200 });
+        } else {
+            window.setTimeout(syncTrap, 50);
+        }
         return existing;
     }
 
@@ -93,13 +98,18 @@ export function createEventPagination() {
     /* Initial placement (one-time, no resize listener to avoid accumulation). */
     document.getElementById('content').appendChild(pagination);
 
-    /* Defer dock setup to ensure layout-container exists. */
+    /* Defer dock setup to ensure layout-container exists; one RAF + idle SVG sync. */
     requestAnimationFrame(() => {
         mountPaginationDock(pagination);
         ensureDockInwardLine();
-        requestAnimationFrame(() => refreshDockTrapSvgFromTweaks());
+        const syncTrap = () => refreshDockTrapSvgFromTweaks();
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(syncTrap, { timeout: 200 });
+        } else {
+            window.setTimeout(syncTrap, 50);
+        }
         /* Trigger resize so globe/map adjusts to the new container size after CSS settles. */
-        setTimeout(() => {
+        window.setTimeout(() => {
             window.dispatchEvent(new Event('resize'));
         }, 100);
     });

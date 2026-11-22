@@ -911,9 +911,10 @@ body.color-palette-nulled .filters-panel .panel-resize-handle--inner-left .panel
         display: none !important;
     }
 
-    .filters-panel::before {
-        content: none !important;
-    }
+    /*
+     * Keep ::before — panel-pattern-overlay paints the solid mobile plate there.
+     * (Previously content:none left filters/music on transparent + weak pattern.)
+     */
 }
 
 @media (min-width: 769px) {

@@ -506,10 +506,23 @@ export function applyHeaderSidesChrome(state) {
 
     const targets = [root, document.querySelector('header')].filter(Boolean);
     const vw = typeof window !== 'undefined' ? window.innerWidth || 1400 : 1400;
-    /* Soften large negative hub↔badge tuck when the CSS viewport is zoomed narrow. */
-    const gapPx = clean.sideGapPx < 0
-        ? Math.max(clean.sideGapPx, -Math.round(vw * 0.045))
-        : clean.sideGapPx;
+    const vh = typeof window !== 'undefined' ? window.innerHeight || 900 : 900;
+    const compact = vw <= 768;
+    const portrait = compact && vh >= vw;
+    /*
+     * Soften large negative hub↔badge tuck when the CSS viewport is zoomed narrow.
+     * Compact / portrait must keep a *positive* gap (mobile CSS) — desktop −65px tuck
+     * eats hub columns and clips Theater/Archive/Gallery on real phones.
+     */
+    const gapPx = compact
+        ? /* Mild tuck so the wider phone badge meets the hubs (not a black void). */
+          Math.max(
+              portrait ? -18 : 8,
+              Math.min(portrait ? -6 : 14, -Math.round(vw * (portrait ? 0.028 : -0.022))),
+          )
+        : clean.sideGapPx < 0
+          ? Math.max(clean.sideGapPx, -Math.round(vw * 0.045))
+          : clean.sideGapPx;
     const props = {
         '--header-badge-gap': `${gapPx}px`,
         '--header-hub-hex-y-bottom': String(clean.sideStripBottomY),

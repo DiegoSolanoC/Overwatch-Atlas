@@ -21,8 +21,8 @@
     /* Fill lives on ::before (trap clip) — same glass plate as filters. */
     background: transparent;
     box-shadow: none;
-    /* Above main#content stage (.event-image-overlay is z-index 500) so resize chrome can sit on the seam */
-    z-index: 540;
+    /* Above main#content stage; below pagination dock (--pagination-dock-z). */
+    z-index: var(--side-panel-z, 540);
     overflow-y: auto;
     overflow-x: hidden;
     color: white;

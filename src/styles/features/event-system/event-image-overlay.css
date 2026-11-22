@@ -160,12 +160,17 @@
         --event-mobile-image-object-position: center 6%;
         /* Info panel sits above stage (500) but below dock chrome (620+). */
         --event-mobile-image-overlay-z: 500;
-        --event-mobile-info-panel-z: 540;
+        --event-mobile-info-panel-z: var(--side-panel-z, 540);
     }
 
     body:has(#paginationDock) {
-        /* Panel may extend under dock; trapezium + border imgs paint above via dock z-index. */
-        --event-mobile-panel-bottom: var(--footer-height);
+        /*
+         * Fixed panels use the scaled body as containing block — seat on the dock
+         * body top (footer + live dock height), not under the dock band.
+         */
+        --event-mobile-panel-bottom: calc(
+            var(--footer-height, 65px) + var(--pagination-dock-height, 200px)
+        );
     }
 
     @media (orientation: portrait) {

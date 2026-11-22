@@ -20,8 +20,8 @@
 
 import { updateStatus } from "../../universal-features/atlas-mode-runtime/statusFeed.js";
 import { lookAndAddElement } from "../../universal-features/atlas-shared-ui/dom/lookAndAddElement.js";
-import { createEventPagination } from "../interface-bottom-dock/EventPaginationDom.js?v=7";
-import { createFiltersPanel } from "../interface-filter-menu/filtersPanelMarkup.js";
+import { createEventPagination } from "../interface-bottom-dock/EventPaginationDom.js?v=8";
+import { createFiltersPanel } from "../interface-filter-menu/filtersPanelMarkup.js?v=2";
 import { createHeaderHubButton } from "../../universal-features/atlas-header/HeaderHubButton.js";
 import { EventMarkerManager } from "../interface-globe-markers/EventMarkerManager.js";
 import {
@@ -43,7 +43,7 @@ import {
 import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js";
 import { wireEventSlideSectionJumps } from "../interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js";
 import { mountEventSlideInfoDescriptionTextScaleControls } from "../interface-shared/accessibility/infoDescriptionTextScale.js";
-import { mountFiltersChipSizeScaleControls } from "../interface-shared/accessibility/filtersChipSizeScale.js";
+import { mountFiltersChipSizeScaleControls } from "../interface-shared/accessibility/filtersChipSizeScale.js?v=2";
 import { clearDockEraFilter } from "../interface-bottom-dock/dockEraTimelineFilter.js";
 import {
   setupDockEraMenu,

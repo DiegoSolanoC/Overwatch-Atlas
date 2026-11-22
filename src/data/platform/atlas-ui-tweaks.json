@@ -59,6 +59,7 @@
     "sideTrapCollapseShiftPct": 10,
     "dockTrapHeightPx": 120,
     "dockTrapWidthPx": 760,
+    "dockTrapWidthMobilePx": 630,
     "dockTrapTaperPct": 19,
     "dockBorderWidth": 8,
     "dockBorderRadius": 9,

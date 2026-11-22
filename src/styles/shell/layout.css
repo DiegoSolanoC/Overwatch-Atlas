@@ -134,18 +134,84 @@ header {
     right: 0;
     bottom: var(--header-utility-dock-clearance);
     height: 0;
-    z-index: 700;
+    /*
+     * Above dock chrome when idle; drop under open info/filters/music so plates
+     * + icons never ghost through the panel (and stay unclickable).
+     */
+    z-index: calc(var(--pagination-dock-z, 2200) + 40);
     pointer-events: none;
 }
 
 @media (max-width: 768px) and (orientation: portrait) {
     .header-utility-rail {
         display: block;
+        /* Rest on the white dock border (not sunk into the dock body). */
+        --header-utility-btn-h: clamp(56px, 7.5vh, 70px);
+        --header-utility-btn-w: clamp(88px, 22vw, 112px);
+        --header-utility-dock-clearance: calc(
+            var(--footer-height, 60px)
+            + var(--pagination-dock-height, 200px)
+            + calc(var(--dock-border-seam-h, 72px) * 0.28)
+        );
+        /* Gap between trap outer foot and chip inner edge. */
+        --header-utility-trap-gap: clamp(10px, 2.4vw, 18px);
     }
 
-    /* Info slide covers the stage — park Filters/Music so they don't float above it */
-    body:has(#eventSlide.open) .header-utility-rail {
+    .header-utility-rail__slot {
+        bottom: 0;
+        align-items: flex-end;
+    }
+
+    /*
+     * Mirror off the live trap width so left/right stay symmetric
+     * (edge clamps were drifting the two chips out of sync).
+     */
+    .header-utility-rail__slot--left {
+        left: max(
+            12px,
+            calc(
+                50% - (var(--dock-trapezoid-width, 96vw) / 2)
+                - var(--header-utility-btn-w)
+                - var(--header-utility-trap-gap)
+            )
+        );
+        right: auto;
+    }
+
+    .header-utility-rail__slot--right {
+        right: max(
+            12px,
+            calc(
+                50% - (var(--dock-trapezoid-width, 96vw) / 2)
+                - var(--header-utility-btn-w)
+                - var(--header-utility-trap-gap)
+            )
+        );
+        left: auto;
+    }
+
+    /* Skew from the bottom edge so both chips share the same border seat. */
+    .header-utility-rail__slot--left .header-utility-btn.globe-control-btn,
+    .header-utility-rail__slot--right .header-utility-btn.globe-control-btn {
+        transform-origin: center bottom !important;
+    }
+
+    /*
+     * Any open side panel covers the dock lip — hide the whole rail (plates +
+     * filtered icons) and kill hits. z under the panel as a second guard.
+     */
+    body:has(#eventSlide.open) .header-utility-rail,
+    body:has(#filtersPanel.open) .header-utility-rail,
+    body:has(.music-panel.open) .header-utility-rail {
         visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        z-index: calc(var(--side-panel-z, 540) - 10) !important;
+    }
+
+    body:has(#eventSlide.open) .header-utility-rail .header-utility-btn,
+    body:has(#filtersPanel.open) .header-utility-rail .header-utility-btn,
+    body:has(.music-panel.open) .header-utility-rail .header-utility-btn {
         pointer-events: none !important;
     }
 }
@@ -228,7 +294,7 @@ body:not(:has(#paginationDock)) .header-utility-rail {
 .header-utility-rail__slot--right .header-utility-btn.globe-control-btn [id$='Icon'],
 .header-utility-rail__slot--right .header-utility-btn.globe-control-btn .header-hub-btn-label,
 .header-utility-rail__slot--right .header-utility-btn.globe-control-btn .globe-control-btn__label {
-    transform: skewX(11deg) !important;
+    transform: skewX(calc(-1 * var(--header-utility-skew-right))) !important;
 }
 
 /* Left (Filters): mirrored slant, thick border on inward (right) edge */
@@ -252,7 +318,7 @@ body:not(:has(#paginationDock)) .header-utility-rail {
 .header-utility-rail__slot--left .header-utility-btn.globe-control-btn [id$='Icon'],
 .header-utility-rail__slot--left .header-utility-btn.globe-control-btn .header-hub-btn-label,
 .header-utility-rail__slot--left .header-utility-btn.globe-control-btn .globe-control-btn__label {
-    transform: skewX(-11deg) !important;
+    transform: skewX(calc(-1 * var(--header-utility-skew-left))) !important;
 }
 
 .header-utility-rail .header-utility-btn.globe-control-btn.active {
@@ -270,6 +336,8 @@ body:not(:has(#paginationDock)) .header-utility-rail {
     justify-content: center;
     width: clamp(30px, 7vw, 38px) !important;
     height: clamp(30px, 7vw, 38px) !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
     flex-shrink: 0;
     margin: 0 !important;
 }
@@ -277,7 +345,11 @@ body:not(:has(#paginationDock)) .header-utility-rail {
 .header-utility-rail .header-utility-btn.globe-control-btn [id$='Icon'] img {
     width: 100% !important;
     height: 100% !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
     object-fit: contain !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .header-utility-rail .header-utility-btn .header-hub-btn-label,
@@ -301,7 +373,7 @@ body:not(:has(#paginationDock)) .header-utility-rail {
     }
 }
 
-/* Palette-aware utility rail fills */
+/* Palette-aware utility rail fills (desktop / non-portrait skewed chrome) */
 body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn {
     background: rgba(66, 66, 66, 0.9);
 }
@@ -319,6 +391,94 @@ body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control
 }
 body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn:hover {
     background: rgba(126, 87, 194, 0.98);
+}
+
+/*
+ * Portrait Filters/Music — match filter-tab language:
+ * white plate, black icon, rounded, accent fill when open.
+ * Keep on the dock lip (full-width trap); no side-bay geometry.
+ */
+@media (max-width: 768px) and (orientation: portrait) {
+    .header-utility-rail {
+        /*
+         * Flip vs world-button slant so plates run parallel to the dock trap legs:
+         * left leg = \, right leg = /  (bottom-wide trapezium).
+         */
+        --header-utility-skew-left: -18deg;
+        --header-utility-skew-right: 18deg;
+    }
+
+    .header-utility-rail .header-utility-btn.globe-control-btn {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        border: none !important;
+        border-width: 0 !important;
+        border-radius: 12px !important;
+        color: #000 !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    .header-utility-rail__slot--left .header-utility-btn.globe-control-btn,
+    .header-utility-rail__slot--right .header-utility-btn.globe-control-btn {
+        border-width: 0 !important;
+    }
+
+    .header-utility-rail__slot--left .header-utility-btn.globe-control-btn:hover,
+    .header-utility-rail__slot--right .header-utility-btn.globe-control-btn:hover {
+        background: #ffffff !important;
+        border-color: transparent !important;
+        filter: brightness(1.04);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.48) !important;
+    }
+
+    .header-utility-rail .header-utility-btn.globe-control-btn.active,
+    .header-utility-rail .header-utility-btn.globe-control-btn.header-hub-btn--active {
+        background: rgb(var(--accent-primary-rgb)) !important;
+        background-color: rgb(var(--accent-primary-rgb)) !important;
+        color: #fff !important;
+        filter: none;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35), 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    .header-utility-rail .header-utility-btn.globe-control-btn.active:hover,
+    .header-utility-rail .header-utility-btn.globe-control-btn.header-hub-btn--active:hover {
+        background: rgb(var(--accent-primary-rgb)) !important;
+        filter: brightness(1.08);
+    }
+
+    .header-utility-rail .header-utility-btn.globe-control-btn [id$='Icon'] {
+        width: clamp(32px, 7.5vw, 40px) !important;
+        height: clamp(32px, 7.5vw, 40px) !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+    }
+
+    .header-utility-rail .header-utility-btn.globe-control-btn img {
+        filter: brightness(0) !important;
+    }
+
+    .header-utility-rail .header-utility-btn.globe-control-btn.active img,
+    .header-utility-rail .header-utility-btn.globe-control-btn.header-hub-btn--active img {
+        filter: brightness(0) invert(1) !important;
+    }
+
+    body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn,
+    body.color-palette-crimson .header-utility-rail .header-utility-btn.globe-control-btn,
+    body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn,
+    body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn:hover,
+    body.color-palette-crimson .header-utility-rail .header-utility-btn.globe-control-btn:hover,
+    body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn:hover {
+        background: #ffffff !important;
+    }
+
+    body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn.active,
+    body.color-palette-crimson .header-utility-rail .header-utility-btn.globe-control-btn.active,
+    body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn.active,
+    body.color-palette-gray .header-utility-rail .header-utility-btn.globe-control-btn.header-hub-btn--active,
+    body.color-palette-crimson .header-utility-rail .header-utility-btn.globe-control-btn.header-hub-btn--active,
+    body.color-palette-nulled .header-utility-rail .header-utility-btn.globe-control-btn.header-hub-btn--active {
+        background: rgb(var(--accent-primary-rgb)) !important;
+    }
 }
 
 /* Center title badge (inverted trapezoid) */
@@ -1259,6 +1419,31 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
         display: none;
     }
 
+    /* Home grey-slot label is more specific on desktop — force icon-only here. */
+    #headerHubGreySlot .header-hub-btn-label {
+        display: none !important;
+    }
+
+    #headerHubGreySlot .header-hub-btn {
+        padding: 0 !important;
+        justify-content: center !important;
+        gap: 0 !important;
+    }
+
+    /* UI Tweaks is a desktop/dev control — keep the palette swatch only. */
+    .header-hub-btn--ui-tweaks,
+    #uiTweaksToggle {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    #uiTweaksPanel {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
     #headerHubButtonGroup .header-hub-icon-wrap,
     #headerHubRightButtonGroup .header-hub-icon-wrap {
         display: flex;
@@ -1293,13 +1478,13 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     }
 }
 
-/* Portrait phones: tighten the center logo further so side icons stay large */
+/* Portrait phones: wider center badge so hubs don’t float in a black void */
 @media (max-width: 768px) and (orientation: portrait) {
     body {
-        --header-chrome-align-extra: 20px;
-        --header-badge-outer-w: clamp(108px, 28vw, 136px);
+        --header-chrome-align-extra: 26px;
+        --header-badge-outer-w: clamp(152px, 38vw, 200px);
         --header-badge-half: calc(var(--header-badge-outer-w) / 2);
-        --header-badge-gap: clamp(8px, 2.4vw, 12px);
+        --header-badge-gap: clamp(-18px, -2.8vw, -6px);
     }
 
     .header-hub-btn.header-hub-btn--icon img,

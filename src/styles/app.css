@@ -4,12 +4,12 @@
    ======================================== */
 
 /* Foundation */
-@import url('foundation/variables.css?v=31');
+@import url('foundation/variables.css?v=32');
 @import url('foundation/base.css?v=11');
 @import url('foundation/animations.css?v=10');
 
 /* App shell */
-@import url('shell/layout.css?v=47');
+@import url('shell/layout.css?v=48');
 @import url('features/world/globe-map-launch-hub.css?v=4');
 
 /* World + Codex */
@@ -24,13 +24,13 @@
 @import url('themes/nulled-palette.css?v=20');
 
 /* Mobile */
-@import url('mobile.css?v=36');
+@import url('mobile.css?v=37');
 
 /* Shared UI */
 @import url('ui/modals.css?v=9');
 @import url('ui/external-link-confirm.css?v=9');
 @import url('ui/loading-asset-slot.css?v=2');
-@import url('features/system-interface/info-description-text-scale.css?v=2');
+@import url('features/system-interface/info-description-text-scale.css?v=3');
 
 /* Story */
 @import url('features/story/hero.css?v=9');
@@ -45,16 +45,16 @@
 @import url('features/event-system/event-filters.css?v=13');
 @import url('features/event-system/event-sources.css?v=22');
 @import url('features/event-system/event-buttons.css?v=15');
-@import url('features/event-system/event-image-overlay.css?v=24');
+@import url('features/event-system/event-image-overlay.css?v=25');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=183');
+@import url('features/event-system/event-pagination.css?v=184');
 @import url('features/event-system/news-ticker.css?v=12');
 
 /* Event system panels */
 @import url('features/event-system/panels/event-slide.css?v=50');
-@import url('features/event-system/panels/filters.css?v=27');
-@import url('features/music/panels/music.css?v=54');
+@import url('features/event-system/panels/filters.css?v=30');
+@import url('features/music/panels/music.css?v=55');
 @import url('features/event-system/panels/events-manage.css?v=31');
 @import url('features/event-system/panels/story-events-merge.css?v=7');
-@import url('features/event-system/panels/panel-pattern-overlay.css?v=31');
-@import url('features/event-system/panels/panel-resize.css?v=79');
+@import url('features/event-system/panels/panel-pattern-overlay.css?v=32');
+@import url('features/event-system/panels/panel-resize.css?v=80');

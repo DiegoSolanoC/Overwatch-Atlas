@@ -69,12 +69,17 @@
         /* Base tint; texture is on ::before so it always paints (see .pagination-dock > * fix below). */
         background-color: var(--bg-main, #0a1929);
         box-sizing: border-box;
-        position: absolute;
+        /*
+         * Fixed (not absolute): same containing block as mobile info/filters/music
+         * (`position:fixed` under body{transform:scale}). Absolute dock lost the
+         * z-index fight against those fixed panels.
+         */
+        position: fixed !important;
         left: 0;
         right: 0;
         bottom: var(--footer-height, 65px);
-        /* Keep dock chrome (including top border image) above event slide/image layers (~500). */
-        z-index: 620;
+        /* Keep dock chrome above open info/filters/music panels. */
+        z-index: var(--pagination-dock-z, 2200) !important;
         /* Clicks pass through the dock chrome; only .event-pagination (and its controls) receive hits */
         pointer-events: none;
         /* Cap-row sits outside (bottom: 100%) — must stay visible (overflow:hidden clips it). */
@@ -534,16 +539,206 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
 @media (max-width: 768px) and (orientation: portrait) {
     body.pagination-dock-mobile-locked:has(#paginationDock),
     body:has(#paginationDock) {
-        --dock-top-cap-lift: -3px;
-        --dock-trapezoid-offset-y: 2px;
-        --dock-trapezoid-rail-shift-y: -1px;
-        --dock-border-seam-h: clamp(68px, 9.5vh, 84px);
+        --dock-top-cap-lift: -2px;
+        --dock-trapezoid-offset-y: 0px;
+        /*
+         * Seat the pack in the trap/dock band (not under SELECT).
+         * Bottom row holds; top row lifts via a wider row-gap + lighter shift.
+         */
+        --dock-trapezoid-rail-shift-y: 28px;
+        --dock-border-seam-h: clamp(80px, 11vh, 96px);
         --dock-border-img-h: calc(var(--dock-border-seam-h) * 500 / 200);
-        --dock-trapezoid-width: min(96vw, 640px);
+        /* Fallback until SidePanelsTrapChrome writes live --dock-trapezoid-width. */
+        --dock-trapezoid-width: min(96vw, 630px);
         --dock-collapse-bottom: calc(var(--dock-border-seam-h) - 8px);
         --main-menu-trapezoid-clearance: calc(
             var(--dock-border-seam-h) + clamp(6px, 1vh, 12px)
         );
+        /* Match desktop concept chrome column language — keep the pack centered. */
+        --dock-trap-side-w: clamp(100px, 28vw, 140px);
+        --dock-trap-col-gap: 6px;
+        --dock-trap-row-gap: 18px;
+        --dock-trap-bottom-outset: 3px;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-cap-row
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center,
+    body:has(#paginationDock)
+        .pagination-dock-top-cap-row
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center {
+        --dock-trap-rail-pad-x: max(
+            28px,
+            calc(var(--dock-trap-inset-len, 48px) * 0.72 + var(--dock-edge-border-px, 14px) * 0.2)
+        );
+        /* Original 5-col centered grid (do not invent spacer columns). */
+        grid-template-columns:
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2)
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2)
+            minmax(88px, 110px)
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2)
+            calc((var(--dock-trap-side-w) - var(--dock-trap-col-gap)) / 2) !important;
+        grid-template-areas:
+            'prev-page prev-event page next-event next-page'
+            'image     image      page eras       eras' !important;
+        grid-template-rows: 38px 38px !important;
+        padding: 2px var(--dock-trap-rail-pad-x) 2px !important;
+        row-gap: var(--dock-trap-row-gap, 18px) !important;
+        column-gap: var(--dock-trap-col-gap, 6px) !important;
+        justify-content: center !important;
+        justify-items: stretch !important;
+        align-content: start !important;
+        align-items: center !important;
+        align-self: center !important;
+        flex: 0 0 auto !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        width: max-content !important;
+        max-width: calc(100% - 4px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        inset: auto !important;
+        transform: translateX(0)
+            translateY(
+                calc(
+                    var(--dock-center-rail-y, 0px)
+                    + var(--dock-trapezoid-rail-shift-y, 0px)
+                    + var(--dock-buttons-offset-y, 0px)
+                )
+            ) !important;
+    }
+
+    /* Top nav row only — lift into the open trap band; keep bottom Image/Eras put. */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew, 8deg))) translateY(-10px) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn {
+        transform: skewX(var(--dock-trap-btn-skew, 8deg)) translateY(-10px) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:not(.dock-trapezium-mid-strip):not(.page-input-container),
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        .dock-trapezium-mid-strip
+        > *:not(.page-input-container) {
+        height: 38px !important;
+        min-height: 38px !important;
+        max-height: 38px !important;
+        padding: 0 6px !important;
+        border-radius: 10px !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container {
+        max-width: 96px !important;
+        gap: 2px !important;
+        z-index: 8 !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-label,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-total,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-label,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-total {
+        display: block !important;
+        color: #fff !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        line-height: 1 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-input,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-input {
+        height: 36px !important;
+        min-height: 36px !important;
+        width: 2.8rem !important;
+        min-width: 44px !important;
+        font-size: 20px !important;
+        font-weight: 800 !important;
+        color: #fff !important;
+        text-align: center !important;
+        border: 2px solid rgba(255, 255, 255, 0.9) !important;
+        border-radius: 8px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        -webkit-text-fill-color: #fff !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn
+        [id$='Icon'],
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn
+        img {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 22px !important;
+        min-height: 22px !important;
+        max-width: 26px !important;
+        max-height: 26px !important;
+        object-fit: contain !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     body:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
@@ -552,7 +747,9 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
-        height: var(--dock-border-seam-h, 72px);
+        height: var(--dock-border-seam-h, 88px);
+        justify-content: flex-start !important;
+        align-items: center !important;
     }
 
     /* Beat viewport.css 48×42 / 32px icon caps inside the trap */
@@ -618,17 +815,54 @@ body.pagination-dock-mobile-locked:has(#paginationDock)
     overflow: visible !important;
 }
 
-body.pagination-dock-mobile-locked:has(#paginationDock)
-    .pagination-dock-top-trapezoid
-    .dock-globe-rail--center
-    > .page-input-container
-    .page-label,
-body.pagination-dock-mobile-locked:has(#paginationDock)
-    .pagination-dock-top-trapezoid
-    .dock-globe-rail--center
-    > .page-input-container
-    .page-total {
-    display: none !important;
+/* Compact non-portrait: hide Page label to save width. */
+@media (max-width: 768px) and (orientation: landscape) {
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-label,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-total {
+        display: none !important;
+    }
+}
+
+/* Portrait: always show Page label above the number (beats earlier hide rules). */
+@media (max-width: 768px) and (orientation: portrait) {
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-label,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container
+        .page-total {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #fff !important;
+        font-size: 17px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        line-height: 1.1 !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container {
+        flex-direction: column !important;
+        gap: 4px !important;
+        max-width: 120px !important;
+    }
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock)
@@ -685,31 +919,34 @@ body.pagination-dock-mobile-locked:has(#paginationDock)
     padding: 0 4px !important;
 }
 
-body.pagination-dock-mobile-locked:has(#paginationDock)
-    .pagination-dock-top-trapezoid
-    .dock-globe-rail--center
-    > .globe-control-btn
-    [id$='Icon'],
-body.pagination-dock-mobile-locked:has(#paginationDock)
-    .pagination-dock-top-trapezoid
-    .dock-globe-rail--center
-    > .globe-control-btn
-    img,
-body.pagination-dock-mobile-locked:has(#paginationDock)
-    .pagination-dock-top-trapezoid
-    .dock-globe-rail--center
-    > #globalImageToggle.dock-globe-rail__btn
-    img,
-body.pagination-dock-mobile-locked:has(#paginationDock)
-    .pagination-dock-top-trapezoid
-    .dock-globe-rail--center
-    > #erasToggle.dock-globe-rail__btn
-    img {
-    width: 36px !important;
-    height: 36px !important;
-    max-width: 36px !important;
-    max-height: 36px !important;
-    object-fit: contain !important;
+/* Landscape / short-edge compact: larger trap icons. Portrait uses the tighter rules above. */
+@media (orientation: landscape), (min-width: 769px) {
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn
+        [id$='Icon'],
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn
+        img,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn
+        img,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #erasToggle.dock-globe-rail__btn
+        img {
+        width: 36px !important;
+        height: 36px !important;
+        max-width: 36px !important;
+        max-height: 36px !important;
+        object-fit: contain !important;
+    }
 }
 
 /* Page slider visible on mobile compact (same as desktop dock) */
@@ -1036,12 +1273,14 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
  * (A prior fixed bottom: footer+dock ignored the tall border img and floated the trapezoid.)
  */
 @media (max-width: 768px) {
-    body:has(#paginationDock) .pagination-dock {
-        z-index: 680 !important;
+    body:has(#paginationDock) .pagination-dock,
+    body:has(#paginationDock) #paginationDock.pagination-dock {
+        position: fixed !important;
+        z-index: var(--pagination-dock-z, 2200) !important;
     }
 
     body:has(#paginationDock) .pagination-dock-collapse-strip {
-        z-index: 685 !important;
+        z-index: calc(var(--pagination-dock-z, 2200) + 5) !important;
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row {
@@ -1052,8 +1291,25 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
         max-width: 100% !important;
         bottom: calc(100% + var(--dock-top-cap-lift, 0px)) !important;
         align-items: flex-end !important;
-        z-index: 690 !important;
+        z-index: calc(var(--pagination-dock-z, 2200) + 10) !important;
         pointer-events: none;
+    }
+
+    /*
+     * Beat viewport.css `bottom: footer !important` so fixed panels stop at the
+     * dock top instead of painting over the dock band.
+     */
+    body:has(#paginationDock) .event-slide,
+    body:has(#paginationDock) .event-slide.open,
+    body:has(#paginationDock) .event-slide.open.full-screen,
+    body:has(#paginationDock) .filters-panel,
+    body:has(#paginationDock) .filters-panel.open,
+    body:has(#paginationDock) .music-panel,
+    body:has(#paginationDock) .music-panel.open {
+        bottom: calc(
+            var(--footer-height, 65px) + var(--pagination-dock-height, 200px)
+        ) !important;
+        z-index: var(--side-panel-z, 540) !important;
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid,

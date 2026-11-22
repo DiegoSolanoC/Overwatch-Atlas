@@ -663,31 +663,69 @@
         transform: translate(-50%, 0) !important; /* Slide down into place */
     }
 
-    /* Panels: full width, slide in/out from right */
+    /* Panels: full width; filters/music slide up like info (events-manage keeps side slide) */
     .filters-panel,
     .music-panel,
     .events-manage-panel {
         width: 100% !important;
         max-width: 100% !important;
-        right: -100% !important;
-        left: auto !important;
+        left: 0 !important;
+        right: 0 !important;
         top: 60px !important;
-        bottom: var(--footer-height) !important;
+        /* Seat above pagination dock when present; footer only as fallback. */
+        bottom: calc(
+            var(--footer-height)
+            + var(--pagination-dock-height, 0px)
+        ) !important;
         margin: 0 !important;
         padding: 0 !important;
         border: none !important;
         box-sizing: border-box !important;
+    }
+
+    body:not(:has(#paginationDock)) .filters-panel,
+    body:not(:has(#paginationDock)) .music-panel,
+    body:not(:has(#paginationDock)) .events-manage-panel {
+        bottom: var(--footer-height) !important;
+    }
+
+    .filters-panel {
+        border-bottom: var(--panel-bottom-accent-border, 5px solid #c93439) !important;
+        transform: translateY(100%) !important;
+        transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease !important;
+        -webkit-transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease !important;
+        will-change: transform !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    .music-panel {
+        transform: translateY(100%) !important;
+        transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease !important;
+        -webkit-transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease !important;
+        will-change: transform !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    .events-manage-panel {
+        right: -100% !important;
+        left: auto !important;
         transition: right 0.3s ease !important;
         -webkit-transition: right 0.3s ease !important;
         will-change: right !important;
     }
 
-    .filters-panel {
-        border-bottom: var(--panel-bottom-accent-border, 5px solid #c93439) !important;
+    .filters-panel.open,
+    .music-panel.open {
+        transform: translateY(0) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
     }
 
-    .filters-panel.open,
-    .music-panel.open,
     .events-manage-panel.open {
         right: 0 !important;
         left: 0 !important;
@@ -695,8 +733,6 @@
         transition: right 0.3s ease !important;
     }
 
-    .filters-panel:not(.open),
-    .music-panel:not(.open),
     .events-manage-panel:not(.open) {
         right: -100% !important;
         left: auto !important;
@@ -760,7 +796,7 @@
         box-sizing: border-box !important;
         visibility: hidden !important;
         opacity: 0 !important;
-        z-index: var(--event-mobile-info-panel-z, 540) !important;
+        z-index: var(--side-panel-z, 540) !important;
     }
 
     .event-slide.open {
@@ -778,7 +814,7 @@
         height: auto !important;
         visibility: visible !important;
         opacity: 1 !important;
-        z-index: var(--event-mobile-info-panel-z, 540) !important;
+        z-index: var(--side-panel-z, 540) !important;
     }
 
     /* Full screen mode when image is hidden on mobile - higher specificity */

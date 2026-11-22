@@ -34,14 +34,19 @@ export function initPaginationDockTopChromeMetrics() {
     if (dockTopChromeResizeBound) return;
     dockTopChromeResizeBound = true;
 
+    let layoutTimer = 0;
     const onLayout = () => {
-        syncPaginationDockTopChromeMetrics();
+        if (layoutTimer) window.clearTimeout(layoutTimer);
+        layoutTimer = window.setTimeout(() => {
+            layoutTimer = 0;
+            syncPaginationDockTopChromeMetrics();
+        }, 80);
     };
-    window.addEventListener('resize', onLayout);
+    window.addEventListener('resize', onLayout, { passive: true });
     if (typeof window.visualViewport !== 'undefined' && window.visualViewport) {
-        window.visualViewport.addEventListener('resize', onLayout);
+        window.visualViewport.addEventListener('resize', onLayout, { passive: true });
     }
-    requestAnimationFrame(onLayout);
+    syncPaginationDockTopChromeMetrics();
 }
 
 /** Narrow width or short edge — matches event-manager toolbar / phone landscape */

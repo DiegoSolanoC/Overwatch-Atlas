@@ -22,7 +22,7 @@
         box-sizing: border-box !important;
         visibility: hidden !important;
         opacity: 0 !important;
-        z-index: var(--event-mobile-info-panel-z, 540) !important;
+        z-index: var(--side-panel-z, 540) !important;
     }
 
     .event-slide.open {
@@ -40,7 +40,7 @@
         height: auto !important;
         visibility: visible !important;
         opacity: 1 !important;
-        z-index: var(--event-mobile-info-panel-z, 540) !important;
+        z-index: var(--side-panel-z, 540) !important;
     }
     
     /* Full screen mode when image is hidden on mobile */
@@ -85,8 +85,8 @@
     }
 
     /*
-     * Dock + trapezium paint above the panel (z-index 620 vs 540); pad scroll so
-     * description/sources clear the overlapped band.
+     * Dock + trapezium paint above the panel (--pagination-dock-z vs --side-panel-z);
+     * pad scroll so description/sources clear the overlapped band.
      */
     body:has(#paginationDock) .event-slide.open:not(.full-screen) .event-slide-scrollable {
         --event-mobile-info-dock-scroll-pad: calc(
