@@ -1,7 +1,8 @@
 {
   "kind": "atlas-ui-tweaks",
-  "version": 1,
-  "note": "Site chrome standard. Collaborators Export/Import JSON; replace this file to ship a new look.",
+  "version": 3,
+  "note": "Site chrome standard. Save in UI Tweaks (localhost) writes this file; push to ship for everyone.",
+  "exportedAt": "2026-11-23T04:22:30.258Z",
   "badge": {
     "widthPx": 406,
     "heightExtraPx": 79,

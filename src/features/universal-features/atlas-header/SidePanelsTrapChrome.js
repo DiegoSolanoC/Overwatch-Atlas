@@ -3,8 +3,8 @@
  * Sides share size; each side trap has its own vertical slide; dock sizes independently.
  * Live CSS vars on :root.
  *
- * Site look ships from `src/data/platform/atlas-ui-tweaks.json` (collaborator Export →
- * replace that file to ship). Save in the tweaker only writes a local *draft*.
+ * Site look ships from `src/data/platform/atlas-ui-tweaks.json`. On localhost,
+ * Save in UI Tweaks POSTs that file via `/api/ui-tweaks` — push to ship for everyone.
  *
  * Strokes are INLINE SVGs (not CSS background data-URLs). Background SVGs get
  * non-uniformly stretched so edges thin out and separate lip bars never join the trap.

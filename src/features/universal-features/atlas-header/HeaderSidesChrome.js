@@ -2,7 +2,7 @@
  * Header side bars (left/right of center badge): dark sideways gradient +
  * solid grey outer caps + L-rim (inward slant + fading bottom), badge-style.
  *
- * Site look ships from `src/data/platform/atlas-ui-tweaks.json` (see UiTweaksStandard).
+ * Site look ships from `src/data/platform/atlas-ui-tweaks.json` (Save on localhost writes it).
  * These DEFAULTS are the sync fallback / bake of that standard.
  */
 

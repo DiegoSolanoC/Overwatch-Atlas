@@ -314,6 +314,49 @@ function writeCodexStateJson(body, res) {
     }
 }
 
+/** Site chrome standard — same collab write path as Codex / Story archives. */
+function writeUiTweaksJson(body, res) {
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+        sendJson(res, 400, { error: 'Expected UI Tweaks object { kind, version, badge, sides, panels }' });
+        return;
+    }
+    if (body.kind != null && body.kind !== 'atlas-ui-tweaks') {
+        sendJson(res, 400, { error: 'Expected kind "atlas-ui-tweaks"' });
+        return;
+    }
+    if (!body.badge || typeof body.badge !== 'object' || Array.isArray(body.badge)) {
+        sendJson(res, 400, { error: 'Expected badge object' });
+        return;
+    }
+    if (!body.sides || typeof body.sides !== 'object' || Array.isArray(body.sides)) {
+        sendJson(res, 400, { error: 'Expected sides object' });
+        return;
+    }
+    if (!body.panels || typeof body.panels !== 'object' || Array.isArray(body.panels)) {
+        sendJson(res, 400, { error: 'Expected panels object' });
+        return;
+    }
+
+    const outPath = path.join(REPO_ROOT, 'src', 'data', 'platform', 'atlas-ui-tweaks.json');
+    const version = Number(body.version);
+    const payload = {
+        kind: 'atlas-ui-tweaks',
+        version: Number.isFinite(version) && version > 0 ? Math.floor(version) : 1,
+        note: 'Site chrome standard. Save in UI Tweaks (localhost) writes this file; push to ship for everyone.',
+        exportedAt: typeof body.exportedAt === 'string' ? body.exportedAt : new Date().toISOString(),
+        badge: body.badge,
+        sides: body.sides,
+        panels: body.panels,
+    };
+    const json = `${JSON.stringify(payload, null, 2)}\n`;
+    try {
+        writeJsonFileAtomic(outPath, json);
+        sendJson(res, 200, { ok: true, version: payload.version, path: 'src/data/platform/atlas-ui-tweaks.json' });
+    } catch (e) {
+        sendJson(res, 500, { ok: false, error: 'Write failed', detail: e?.message || String(e) });
+    }
+}
+
 const server = http.createServer((req, res) => {
     // Parse URL and decode it to handle spaces and special characters
     const parsedUrl = url.parse(req.url, true);
@@ -476,6 +519,29 @@ const server = http.createServer((req, res) => {
         if (req.method === 'POST' || req.method === 'PUT') {
             readJsonBody(req, res, (body) => {
                 writeCodexStateJson(body, res);
+            });
+            return;
+        }
+
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+
+    if (decodedPath === '/api/ui-tweaks') {
+        const tweaksPath = path.join(REPO_ROOT, 'src', 'data', 'platform', 'atlas-ui-tweaks.json');
+        if (req.method === 'GET') {
+            try {
+                const data = JSON.parse(fs.readFileSync(tweaksPath, 'utf8'));
+                sendJson(res, 200, data);
+            } catch (e) {
+                sendJson(res, 500, { ok: false, error: 'Failed to read atlas-ui-tweaks.json', detail: e?.message || String(e) });
+            }
+            return;
+        }
+
+        if (req.method === 'POST' || req.method === 'PUT') {
+            readJsonBody(req, res, (body) => {
+                writeUiTweaksJson(body, res);
             });
             return;
         }
@@ -779,6 +845,7 @@ server.listen(PORT, () => {
     console.log(`  - http://localhost:${PORT}/api/dialogue-theater → POST conversations.json`);
     console.log(`  - http://localhost:${PORT}/api/dialogue-theater/assets → GET theater asset catalog`);
     console.log(`  - http://localhost:${PORT}/api/codex → GET/POST codex-labels.json`);
+    console.log(`  - http://localhost:${PORT}/api/ui-tweaks → GET/POST atlas-ui-tweaks.json`);
     console.log(`\nPress Ctrl+C to stop the server\n`);
 });
 

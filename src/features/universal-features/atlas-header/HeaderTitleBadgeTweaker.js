@@ -3,8 +3,8 @@
  *
  * Same model as Codex / Story JSON:
  * - Site look = committed `src/data/platform/atlas-ui-tweaks.json`
- * - Export / Import = hand off proposals between collaborators
- * - Save = local draft only (cleared when the standard `version` bumps)
+ * - Save (localhost) writes that file via `/api/ui-tweaks` — push ships it for everyone
+ * - Export / Import = hand off proposals; GitHub Pages has no write API
  */
 
 import {
@@ -26,9 +26,12 @@ import {
     clearLegacyUiTweaksStorage,
     clearUiTweaksDraft,
     getCachedUiTweaksStandard,
+    isUiTweaksRepoSaveAvailable,
     loadUiTweaksStandard,
+    promoteUiTweaksDraftToRepoIfNeeded,
     readUiTweaksDraft,
     resolveUiTweaksSyncPayload,
+    saveUiTweaksStandardToRepo,
     writeUiTweaksDraft,
 } from './UiTweaksStandard.js';
 
@@ -761,12 +764,14 @@ function mountControls(panel, bags, hooks) {
     hint.className = 'header-badge-tweaker__hint';
     hint.textContent =
         activeUiTweaksSection === 'panels'
-            ? 'Side panels · Shared size · Inward line · Per-trap slide · Export JSON to propose standard'
+            ? 'Side panels · Shared size · Inward line · Per-trap slide · Save writes site standard'
             : activeUiTweaksSection === 'dock'
-                ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Export JSON to propose standard'
+                ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Save writes site standard'
                 : activeUiTweaksSection === 'world'
-                    ? 'World mode · Flank buttons · Zoom/sun stack · Reset · Export JSON to propose standard'
-                    : 'Collab chrome · Live preview · Save = local draft · Export JSON → incorporate into atlas-ui-tweaks.json';
+                    ? 'World mode · Flank buttons · Zoom/sun stack · Reset · Save writes site standard'
+                    : isUiTweaksRepoSaveAvailable()
+                        ? 'Live preview · Save writes atlas-ui-tweaks.json · Push to ship for everyone'
+                        : 'Live preview · Save needs localhost server · Export JSON as backup';
     panel.appendChild(hint);
 
     document.body.classList.toggle('ui-tweaks-side-panels', activeUiTweaksSection === 'panels');
@@ -1374,11 +1379,10 @@ function mountControls(panel, bags, hooks) {
     panel.appendChild(grid);
 
     const refreshStatus = () => {
-        const draft = readUiTweaksDraft(uiTweaksStandardVersion);
         status.textContent = hooks.isDirty()
             ? 'Unsaved changes'
-            : draft
-                ? 'Using saved draft (reload-safe)'
+            : isUiTweaksRepoSaveAvailable()
+                ? 'Using site standard (Save updates the repo file)'
                 : 'Using site standard';
         status.classList.toggle('is-dirty', hooks.isDirty());
     };
@@ -1574,16 +1578,28 @@ function mountControls(panel, bags, hooks) {
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
     saveBtn.className = 'header-badge-tweaker__save';
-    saveBtn.textContent = 'Save draft';
-    saveBtn.title =
-        'Save to this browser — reload will keep these values. Export JSON + replace atlas-ui-tweaks.json to ship for everyone.';
-    saveBtn.addEventListener('click', () => {
-        hooks.onSave();
-        saveBtn.textContent = 'Saved for reload';
-        refreshStatus();
+    saveBtn.textContent = 'Save';
+    saveBtn.title = isUiTweaksRepoSaveAvailable()
+        ? 'Write src/data/platform/atlas-ui-tweaks.json (site standard). Push to ship for everyone.'
+        : 'Needs the local Atlas server (npm start). On GitHub Pages use Export instead.';
+    saveBtn.addEventListener('click', async () => {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving…';
+        try {
+            const result = await hooks.onSave();
+            if (result?.ok === false) {
+                saveBtn.textContent = 'Save failed';
+            } else {
+                saveBtn.textContent = isUiTweaksRepoSaveAvailable() ? 'Saved to repo' : 'Saved locally';
+            }
+            refreshStatus();
+        } catch {
+            saveBtn.textContent = 'Save failed';
+        }
         setTimeout(() => {
-            saveBtn.textContent = 'Save draft';
-        }, 1400);
+            saveBtn.disabled = false;
+            saveBtn.textContent = 'Save';
+        }, 1600);
     });
 
     const resetBtn = document.createElement('button');
@@ -1605,7 +1621,7 @@ function mountControls(panel, bags, hooks) {
     const exportBtn = document.createElement('button');
     exportBtn.type = 'button';
     exportBtn.textContent = 'Export';
-    exportBtn.title = 'Download JSON for collaborators — replace src/data/platform/atlas-ui-tweaks.json to ship';
+    exportBtn.title = 'Download a JSON backup (same shape as atlas-ui-tweaks.json)';
     exportBtn.addEventListener('click', () => {
         try {
             downloadTweaksJson(buildTweaksPayload(badge, sides, panels));
@@ -1624,7 +1640,7 @@ function mountControls(panel, bags, hooks) {
     const importBtn = document.createElement('button');
     importBtn.type = 'button';
     importBtn.textContent = 'Import';
-    importBtn.title = 'Load a collaborator JSON to preview (Save draft to keep while editing)';
+    importBtn.title = 'Load a collaborator JSON to preview (Save to write the site standard)';
 
     const importInput = document.createElement('input');
     importInput.type = 'file';
@@ -1765,17 +1781,55 @@ export function setupHeaderTitleBadgeTweaker() {
             applyTweaksPayload(payload, badge, sides, panels);
         };
 
-        const persist = () => {
+        const persist = async () => {
             try {
                 Object.assign(badge, sanitizeState(badge));
                 Object.assign(sides, sanitizeSidesState(sides));
                 Object.assign(panels, sanitizeSidePanelsTrapState(panels));
+
+                const nextVersion = (Number(uiTweaksStandardVersion) || 1) + 1;
+                const payload = {
+                    ...buildTweaksPayload(badge, sides, panels),
+                    version: nextVersion,
+                    note: 'Site chrome standard. Save in UI Tweaks (localhost) writes this file; push to ship for everyone.',
+                };
+
+                if (isUiTweaksRepoSaveAvailable()) {
+                    const result = await saveUiTweaksStandardToRepo(payload);
+                    if (!result.ok) {
+                        console.error('[UI Tweaks] repo save failed:', result.error);
+                        writeUiTweaksDraft(payload);
+                        markClean();
+                        applyAllChrome();
+                        return { ok: false, error: result.error };
+                    }
+                    uiTweaksStandardVersion = nextVersion;
+                    writeUiTweaksDraft(payload);
+                    markClean();
+                    applyAllChrome();
+                    if (typeof window.updateStatus === 'function') {
+                        window.updateStatus(
+                            `✓ UI Tweaks saved to atlas-ui-tweaks.json (v${nextVersion}) — push to ship`,
+                            'success',
+                        );
+                    }
+                    return { ok: true, version: nextVersion };
+                }
+
+                /* No write API (e.g. GitHub Pages) — keep a browser draft only. */
                 writeUiTweaksDraft(buildTweaksPayload(badge, sides, panels));
                 markClean();
-                /* Always full apply on save — World-tab light preview must not skip bag commit. */
                 applyAllChrome();
+                if (typeof window.updateStatus === 'function') {
+                    window.updateStatus(
+                        'UI Tweaks saved in this browser only. On localhost, Save writes the repo file.',
+                        'warning',
+                    );
+                }
+                return { ok: true, localOnly: true };
             } catch (err) {
-                console.error('[UI Tweaks] save draft failed:', err);
+                console.error('[UI Tweaks] save failed:', err);
+                return { ok: false, error: err?.message || 'Save failed' };
             }
         };
 
@@ -1805,12 +1859,27 @@ export function setupHeaderTitleBadgeTweaker() {
         applyAllChrome();
 
         loadUiTweaksStandard()
-            .then((std) => {
+            .then(async (std) => {
                 clearLegacyUiTweaksStorage();
                 uiTweaksStandardVersion = Number(std.version) || 1;
                 applyStandardBags(std);
-                const draft = readUiTweaksDraft(uiTweaksStandardVersion);
-                if (draft) applyStandardBags(draft);
+
+                /* One-shot: turn an existing browser draft into the committed default. */
+                const promoted = await promoteUiTweaksDraftToRepoIfNeeded(std);
+                if (promoted) {
+                    uiTweaksStandardVersion = Number(promoted.version) || uiTweaksStandardVersion;
+                    applyStandardBags(promoted);
+                    if (typeof window.updateStatus === 'function') {
+                        window.updateStatus(
+                            `✓ Local UI Tweaks draft promoted to atlas-ui-tweaks.json (v${promoted.version}) — push to ship`,
+                            'success',
+                        );
+                    }
+                } else {
+                    const draft = readUiTweaksDraft(uiTweaksStandardVersion);
+                    if (draft) applyStandardBags(draft);
+                }
+
                 markClean();
                 applyAllChrome();
                 const openPanel = document.getElementById(PANEL_ID);
@@ -1839,7 +1908,7 @@ export function setupHeaderTitleBadgeTweaker() {
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-controls', PANEL_ID);
         toggle.setAttribute('aria-label', 'UI Tweaks');
-        toggle.title = 'UI Tweaks — collaborator chrome (Export JSON to ship a new standard)';
+        toggle.title = 'UI Tweaks — Save writes atlas-ui-tweaks.json on localhost; push to ship';
 
         const iconWrap = document.createElement('span');
         iconWrap.id = 'uiTweaksIcon';
