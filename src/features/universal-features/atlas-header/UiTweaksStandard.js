@@ -52,7 +52,7 @@ export async function loadUiTweaksStandard() {
 }
 
 /**
- * @param {number} standardVersion
+ * @param {number} [standardVersion] — when omitted, skip version gate (boot before JSON fetch)
  * @returns {object | null}
  */
 export function readUiTweaksDraft(standardVersion) {
@@ -71,6 +71,21 @@ export function readUiTweaksDraft(standardVersion) {
     } catch {
         return null;
     }
+}
+
+/**
+ * Sync boot source: saved draft (preferred) → cached standard → null.
+ * Used by badge/sides/panels loaders so reload applies the draft before/without
+ * waiting on the async JSON fetch.
+ * @returns {object | null}
+ */
+export function resolveUiTweaksSyncPayload() {
+    const cachedVer = Number(cachedStandard?.version);
+    const draft = readUiTweaksDraft(
+        Number.isFinite(cachedVer) ? cachedVer : undefined,
+    );
+    if (draft) return draft;
+    return cachedStandard;
 }
 
 /**

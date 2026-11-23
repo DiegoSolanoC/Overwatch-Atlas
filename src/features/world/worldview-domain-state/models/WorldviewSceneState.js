@@ -3,6 +3,7 @@
  * Handles scene, camera, renderer, globe, markers, and UI state
  */
 import { EARTH_GLOBE_LIGHT_LAYER } from '../../worldview-shared-assets/constants/WorldviewLightingConstants.js';
+import { getRendererQualityOpts } from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 
 export class WorldviewSceneState {
     constructor() {
@@ -12,7 +13,7 @@ export class WorldviewSceneState {
         this.renderer = null;
         this.globe = null;
         this.stars = null;
-        /** @type {{sprite: THREE.Sprite, light: THREE.DirectionalLight}|null} Background sun from addSunBackground */
+        /** @type {{sprite: THREE.Sprite, corona?: THREE.Sprite, nebulae?: THREE.Sprite[], light: THREE.DirectionalLight}|null} Background sun from addSunBackground */
         this.sunBackground = null;
         /** @type {THREE.AmbientLight|null} Earth-only fill (light layer 1); intensity raised in flat map when sun light is hidden. */
         this.earthAmbientLayer1 = null;
@@ -47,6 +48,10 @@ export class WorldviewSceneState {
         this.globeWeatherEffectsVisible = true;
         /** Lighting toggle state: Sun, ambient contrast, and city lights (light dots). */
         this.globeLightingVisible = true;
+        /** Static flight corridor tubes (`isPlaneRouteLine`). */
+        this.planeRoutesVisible = false;
+        /** Seaport / boat corridor tubes (`isSeaportConnectionLine`). */
+        this.boatRoutesVisible = false;
         // NOTE: eventMarker and activeFilters removed - Globe no longer handles events
         this.isMapView = false; // Earth view mode: globe (false) or flat map (true)
 
@@ -90,16 +95,17 @@ export class WorldviewSceneState {
         const isPortrait = container.clientHeight > container.clientWidth;
         const isMobilePortrait = isMobile && isPortrait;
         
-        // Default camera position: more zoomed out on mobile portrait to show panels
-        this.camera.position.z = isMobilePortrait ? 5.5 : 3.5;
+        // Mid of zoom limits so the zoom slider nub starts centered
+        this.camera.position.z = isMobilePortrait ? (1.5 + 7.0) / 2 : (1.5 + 5.0) / 2;
         
         // Store mobile state for later use
         this.isMobilePortrait = isMobilePortrait;
 
         this.camera.layers.enable(EARTH_GLOBE_LIGHT_LAYER);
 
-        // Renderer setup
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        // Renderer setup — antialias / DPR from quality tier
+        const rq = getRendererQualityOpts();
+        this.renderer = new THREE.WebGLRenderer({ antialias: rq.antialias });
         this.renderer.setSize(container.clientWidth, container.clientHeight);
         this.applyRendererPixelRatioCap();
         container.appendChild(this.renderer.domElement);
@@ -160,8 +166,8 @@ export class WorldviewSceneState {
     applyRendererPixelRatioCap() {
         if (!this.renderer) return;
         const rawDpr = window.devicePixelRatio || 1;
-        const narrow = window.innerWidth <= 768;
-        const capped = narrow ? Math.min(rawDpr, 1.75) : Math.min(rawDpr, 2.25);
+        const { dprCap } = getRendererQualityOpts();
+        const capped = Math.min(rawDpr, dprCap);
         if (typeof this.renderer.getPixelRatio === 'function' && this.renderer.getPixelRatio() === capped) {
             return;
         }
@@ -545,6 +551,22 @@ export class WorldviewSceneState {
      */
     getGlobeLightingVisible() {
         return this.globeLightingVisible !== false;
+    }
+
+    setPlaneRoutesVisible(visible) {
+        this.planeRoutesVisible = !!visible;
+    }
+
+    getPlaneRoutesVisible() {
+        return !!this.planeRoutesVisible;
+    }
+
+    setBoatRoutesVisible(visible) {
+        this.boatRoutesVisible = !!visible;
+    }
+
+    getBoatRoutesVisible() {
+        return !!this.boatRoutesVisible;
     }
 }
 

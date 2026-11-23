@@ -351,35 +351,49 @@ export class WorldviewCelestialPanels {
 
         const startScaleY = scaleHost.scale.y;
         const targetScaleY = show ? 1 : 0;
+        const wantShow = !!show;
 
         const scaleThreshold = 0.01;
         if (Math.abs(startScaleY - targetScaleY) < scaleThreshold) {
             scaleHost.scale.set(1, targetScaleY, 1);
-            this._applyCelestialScaleVisibility(plane, scaleHost, show, false);
+            this._applyCelestialScaleVisibility(plane, scaleHost, wantShow, false);
             if (plane.material) {
                 this._setCelestialPanelGlow(plane.material, 0.3);
+            }
+            if (plane.userData) {
+                plane.userData.isAnimating = false;
+                plane.userData.animatingToShow = wantShow;
             }
             scaleHost.updateMatrix();
             this._syncDomLiteCelestialPanelsFromPlaneAnimation();
             return;
         }
 
-        this._playSpacePanelSfx(show);
+        // Same target already in flight — do not cancel (repeat updatePlaneVisibility calls
+        // were killing the squash/stretch mid-tween and making panels pop).
+        if (plane.userData.isAnimating && plane.userData.animatingToShow === wantShow) {
+            return;
+        }
 
-        if (plane.userData && plane.userData.isAnimating) {
+        this._playSpacePanelSfx(wantShow);
+
+        if (plane.userData.isAnimating) {
             plane.userData.isAnimating = false;
         }
 
-        const duration = 150;
+        const duration = 420;
         const startTime = performance.now();
         const settledIntensity = 0.3;
         const peakIntensity = 2.0;
+        const animGen = (plane.userData._celestialAnimGen || 0) + 1;
+        plane.userData._celestialAnimGen = animGen;
 
-        this._applyCelestialScaleVisibility(plane, scaleHost, show, true);
+        this._applyCelestialScaleVisibility(plane, scaleHost, wantShow, true);
         plane.userData.isAnimating = true;
+        plane.userData.animatingToShow = wantShow;
 
         const animate = () => {
-            if (!plane.userData || !plane.userData.isAnimating) {
+            if (!plane.userData || !plane.userData.isAnimating || plane.userData._celestialAnimGen !== animGen) {
                 return;
             }
 
@@ -387,7 +401,7 @@ export class WorldviewCelestialPanels {
             const progress = Math.min(elapsed / duration, 1);
 
             let easeProgress;
-            if (show) {
+            if (wantShow) {
                 easeProgress = 1 - Math.pow(1 - progress, 3);
             } else {
                 easeProgress = progress * progress;
@@ -410,7 +424,7 @@ export class WorldviewCelestialPanels {
                 requestAnimationFrame(animate);
             } else {
                 scaleHost.scale.set(1, targetScaleY, 1);
-                this._applyCelestialScaleVisibility(plane, scaleHost, show, false);
+                this._applyCelestialScaleVisibility(plane, scaleHost, wantShow, false);
 
                 if (plane.material) {
                     this._setCelestialPanelGlow(plane.material, settledIntensity);
@@ -418,6 +432,7 @@ export class WorldviewCelestialPanels {
 
                 if (plane.userData) {
                     plane.userData.isAnimating = false;
+                    plane.userData.animatingToShow = wantShow;
                 }
                 scaleHost.updateMatrix();
                 this._syncDomLiteCelestialPanelsFromPlaneAnimation();

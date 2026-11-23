@@ -393,6 +393,89 @@ export class WorldviewGlobeToggles {
 
         toggleBtn.addEventListener('click', handleToggle);
     }
+
+    /**
+     * Shared click/touch wiring for route visibility toggles.
+     * @param {string} btnId
+     * @param {string} iconId
+     * @param {string} iconHtml
+     * @param {() => boolean} getVisible
+     * @param {(v: boolean) => void} setVisible
+     * @param {string} sfxKey
+     * @param {Function} [onToggle]
+     */
+    _setupRouteVisibilityToggle(btnId, iconId, iconHtml, getVisible, setVisible, sfxKey, onToggle) {
+        const toggleBtn = document.getElementById(btnId);
+        if (!toggleBtn) return;
+        const iconEl = document.getElementById(iconId);
+        const sceneModel = this.sceneModel;
+
+        if (!getVisible.call(sceneModel)) toggleBtn.classList.add('toggle-off');
+        else toggleBtn.classList.remove('toggle-off');
+        if (iconEl) iconEl.innerHTML = iconHtml;
+
+        const handleToggle = (event) => {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            if (window.SoundEffectsManager) {
+                window.SoundEffectsManager.play(sfxKey);
+            }
+            const visible = !getVisible.call(sceneModel);
+            setVisible.call(sceneModel, visible);
+            if (window.flashButton) {
+                window.flashButton(toggleBtn, visible ? 'flash-green' : 'flash-red');
+            }
+            if (visible) toggleBtn.classList.remove('toggle-off');
+            else toggleBtn.classList.add('toggle-off');
+            if (onToggle) onToggle(visible);
+        };
+
+        toggleBtn.addEventListener('mousedown', (e) => e.stopPropagation());
+        toggleBtn.addEventListener('mouseup', (e) => e.stopPropagation());
+        let touchStartTime = 0;
+        toggleBtn.addEventListener('touchstart', (e) => {
+            e.stopPropagation();
+            touchStartTime = Date.now();
+        });
+        toggleBtn.addEventListener('touchend', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            if (Date.now() - touchStartTime < 300) handleToggle(e);
+        });
+        toggleBtn.addEventListener('click', handleToggle);
+    }
+
+    /**
+     * @param {Function} [onToggle] - receives next visibility bool
+     */
+    setupPlaneRoutesToggle(onToggle) {
+        this._setupRouteVisibilityToggle(
+            'planeRoutesToggle',
+            'planeRoutesIcon',
+            '<img src="src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png" alt="Flight routes" style="width: 100%; height: 100%; object-fit: contain;">',
+            function get() { return this.getPlaneRoutesVisible(); },
+            function set(v) { this.setPlaneRoutesVisible(v); },
+            'transportToggle',
+            onToggle
+        );
+    }
+
+    /**
+     * @param {Function} [onToggle] - receives next visibility bool
+     */
+    setupBoatRoutesToggle(onToggle) {
+        this._setupRouteVisibilityToggle(
+            'boatRoutesToggle',
+            'boatRoutesIcon',
+            '<img src="src/assets/images/Icons/Filter%20Icons/Location%20Icon.png" alt="Boat routes" style="width: 100%; height: 100%; object-fit: contain;">',
+            function get() { return this.getBoatRoutesVisible(); },
+            function set(v) { this.setBoatRoutesVisible(v); },
+            'transportToggle',
+            onToggle
+        );
+    }
 }
 
 Object.assign(WorldviewGlobeToggles.prototype, globeMapViewToggleMixin);

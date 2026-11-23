@@ -1,6 +1,20 @@
 import { getTransportVehicleColors, getMarsShipEmissiveHex } from '../../worldview-shared-assets/utils/TransportPaletteColors.js';
+import { getGlobeQualitySnapshot } from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 
 const ISS_AXIS_SPIN_FACTOR = 22;
+
+const _satNormal = new THREE.Vector3();
+const _satUp = new THREE.Vector3(0, 0, 1);
+const _satRight = new THREE.Vector3();
+const _satForward = new THREE.Vector3();
+const _satPos = new THREE.Vector3();
+const _satNextPos = new THREE.Vector3();
+const _satDir = new THREE.Vector3();
+const _satUp3 = new THREE.Vector3();
+const _satRightDir = new THREE.Vector3();
+const _satCorrectedUp = new THREE.Vector3();
+const _satRotMat = new THREE.Matrix4();
+const _satTmpAxis = new THREE.Vector3(1, 0, 0);
 
 export const worldviewSatelliteOrbitRuntime = {
     setMapViewEnabled(enabled) {
@@ -205,27 +219,30 @@ export const worldviewSatelliteOrbitRuntime = {
                     : data.orbitSpeed;
             data.angle += effectiveSpeed;
             if (data.angle > Math.PI * 2) data.angle -= Math.PI * 2;
-            const normalX = Math.sin(data.inclination) * Math.sin(data.rotationAngle);
-            const normalY = Math.sin(data.inclination) * Math.cos(data.rotationAngle);
-            const normalZ = Math.cos(data.inclination);
-            const normal = new THREE.Vector3(normalX, normalY, normalZ).normalize();
-            const up = new THREE.Vector3(0, 0, 1);
-            const right = new THREE.Vector3().crossVectors(normal, up).normalize();
-            if (right.length() < 0.1) right.crossVectors(normal, new THREE.Vector3(1, 0, 0)).normalize();
-            const forward = new THREE.Vector3().crossVectors(right, normal).normalize();
-            const position3d = new THREE.Vector3().addScaledVector(right, data.orbitRadius * Math.cos(data.angle)).addScaledVector(forward, data.orbitRadius * Math.sin(data.angle));
+            _satNormal.set(
+                Math.sin(data.inclination) * Math.sin(data.rotationAngle),
+                Math.sin(data.inclination) * Math.cos(data.rotationAngle),
+                Math.cos(data.inclination)
+            ).normalize();
+            _satRight.crossVectors(_satNormal, _satUp).normalize();
+            if (_satRight.lengthSq() < 0.01) _satRight.crossVectors(_satNormal, _satTmpAxis).normalize();
+            _satForward.crossVectors(_satRight, _satNormal).normalize();
+            _satPos.set(0, 0, 0)
+                .addScaledVector(_satRight, data.orbitRadius * Math.cos(data.angle))
+                .addScaledVector(_satForward, data.orbitRadius * Math.sin(data.angle));
             if (globe && satellite.parent !== globe && globe.attach) globe.attach(satellite);
-            satellite.position.set(position3d.x, position3d.y, position3d.z);
+            satellite.position.copy(_satPos);
             if (data.type === 'ISS' || data.type === 'MarsShip') {
                 const nextAngle = data.angle + effectiveSpeed;
-                const nextPosition3d = new THREE.Vector3().addScaledVector(right, data.orbitRadius * Math.cos(nextAngle)).addScaledVector(forward, data.orbitRadius * Math.sin(nextAngle));
-                const direction = new THREE.Vector3().subVectors(nextPosition3d, position3d).normalize();
-                const up3 = satellite.position.clone().normalize();
-                const rightDir = new THREE.Vector3().crossVectors(direction, up3).normalize();
-                const correctedUp = new THREE.Vector3().crossVectors(rightDir, direction).normalize();
-                const rotationMatrix = new THREE.Matrix4();
-                rotationMatrix.makeBasis(rightDir, correctedUp, direction.negate());
-                satellite.quaternion.setFromRotationMatrix(rotationMatrix);
+                _satNextPos.set(0, 0, 0)
+                    .addScaledVector(_satRight, data.orbitRadius * Math.cos(nextAngle))
+                    .addScaledVector(_satForward, data.orbitRadius * Math.sin(nextAngle));
+                _satDir.subVectors(_satNextPos, _satPos).normalize();
+                _satUp3.copy(satellite.position).normalize();
+                _satRightDir.crossVectors(_satDir, _satUp3).normalize();
+                _satCorrectedUp.crossVectors(_satRightDir, _satDir).normalize();
+                _satRotMat.makeBasis(_satRightDir, _satCorrectedUp, _satDir.negate());
+                satellite.quaternion.setFromRotationMatrix(_satRotMat);
                 if (data.type === 'ISS') {
                     if (typeof data.stationAxisSpin !== 'number') data.stationAxisSpin = Math.random() * Math.PI * 2;
                     data.stationAxisSpin += effectiveSpeed * ISS_AXIS_SPIN_FACTOR;
@@ -233,12 +250,28 @@ export const worldviewSatelliteOrbitRuntime = {
                     satellite.quaternion.multiply(this._issLocalRollQuat);
                 }
             }
-            if (data.type === 'small' && hyperloopVisible) {
+            /* Decor sats + ISS + MarsShip share the dotted trail. */
+            if (
+                hyperloopVisible &&
+                getGlobeQualitySnapshot().trailsEnabled &&
+                (data.type === 'small' || data.type === 'ISS' || data.type === 'MarsShip')
+            ) {
+                if (data.lastTrailSpawn == null) data.lastTrailSpawn = 0;
+                if (data.trailSpawnInterval == null) {
+                    data.trailSpawnInterval = data.type === 'small'
+                        ? Math.floor(Math.random() * 7) + 3
+                        : 2;
+                }
                 data.lastTrailSpawn++;
                 if (data.lastTrailSpawn >= data.trailSpawnInterval) {
-                    if (Math.random() < 0.25) this.transportView.createSatelliteTrailDot(satellite.position);
+                    const spawnChance = data.type === 'small' ? 0.25 : 0.85;
+                    if (Math.random() < spawnChance) {
+                        this.transportView.createSatelliteTrailDot(satellite.position);
+                    }
                     data.lastTrailSpawn = 0;
-                    data.trailSpawnInterval = Math.floor(Math.random() * 7) + 3;
+                    data.trailSpawnInterval = data.type === 'small'
+                        ? Math.floor(Math.random() * 7) + 3
+                        : Math.floor(Math.random() * 3) + 2;
                 }
             }
             satellite.visible = hyperloopVisible;

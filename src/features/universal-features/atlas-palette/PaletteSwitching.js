@@ -38,23 +38,33 @@ export function changePalette(palette) {
     const normalized = normalizeSavedPalette(palette);
     const previousPalette = normalizeSavedPalette(localStorage.getItem('colorPalette'));
 
+    /* Body classes first so getMarkerColor() / CSS agree before any marker work. */
     applyPaletteBodyClasses(normalized);
+    localStorage.setItem('colorPalette', normalized);
     updateHeaderWebsiteLogo(normalized);
     updatePaletteMenuActiveState(normalized);
-    localStorage.setItem('colorPalette', normalized);
 
     const isGray = normalized === 'gray';
     const isCrimson = normalized === 'crimson';
     const isNulled = normalized === 'nulled';
 
+    /* Markers ease in the same turn as the globe — not after a late slap. */
+    if (window.globeController?.sceneModel) {
+        applyPaletteToExistingEventMarkers(window.globeController.sceneModel);
+    }
+
     if (window.globeController && window.globeController.globeView) {
-        window.globeController.globeView.changeGlobeTexture(texturePathForPalette('map', normalized));
-        if (typeof window.globeController.globeView.applyCelestialPaletteTint === 'function') {
-            window.globeController.globeView.applyCelestialPaletteTint(normalized);
+        const gv = window.globeController.globeView;
+        /* Instant accents + earth crossfade in the same turn as CSS body classes. */
+        if (typeof gv.applyCelestialPaletteTint === 'function') {
+            gv.applyCelestialPaletteTint(normalized);
         }
-        if (typeof window.globeController.globeView.updateRimGlowPalette === 'function') {
-            window.globeController.globeView.updateRimGlowPalette(normalized);
+        if (typeof gv.updateRimGlowPalette === 'function') {
+            gv.updateRimGlowPalette(normalized);
+        } else if (typeof gv.updateGlobePatternPalette === 'function') {
+            gv.updateGlobePatternPalette(normalized);
         }
+        gv.changeGlobeTexture(texturePathForPalette('map', normalized));
     }
 
     if (window.globeController && window.globeController.sceneModel) {
@@ -64,10 +74,6 @@ export function changePalette(palette) {
 
     if (window.globeController?.transportModel) {
         applyCurrentPaletteToTransportVehicles(window.globeController.transportModel);
-    }
-
-    if (window.globeController?.sceneModel) {
-        applyPaletteToExistingEventMarkers(window.globeController.sceneModel);
     }
 
     playColorChangeSound();

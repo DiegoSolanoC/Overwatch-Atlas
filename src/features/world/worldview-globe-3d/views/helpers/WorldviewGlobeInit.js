@@ -17,6 +17,7 @@ import {
     syncAtmosphereSunDirUniforms
 } from './WorldviewSunBackground.js';
 import { EARTH_POLAR_TO_EQUATORIAL_RATIO } from '../../../worldview-shared-assets/constants/WorldviewPhysicalConstants.js';
+import { getGlobeQualitySnapshot } from '../../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 import {
     createGlobeAuroraShell,
     createFlatMapAuroraShell
@@ -84,7 +85,9 @@ function _createRingGlowTexture({ size = 384 } = {}) {
  * @returns {THREE.Mesh} - Globe mesh
  */
 export function createGlobeMesh(textureLoader, renderer, initialTexturePath, normalMap, onTextureLoaded, onError) {
-    const geometry = new THREE.SphereGeometry(1, 64, 64);
+    const q = getGlobeQualitySnapshot();
+    const segs = q.earthSegments || 64;
+    const geometry = new THREE.SphereGeometry(1, segs, segs);
     
     const earthTexture = loadTexture(
         textureLoader,
@@ -99,14 +102,20 @@ export function createGlobeMesh(textureLoader, renderer, initialTexturePath, nor
         onError
     );
     
-    const material = new THREE.MeshStandardMaterial({
-        map: earthTexture,
-        normalMap: normalMap,
-        transparent: false,
-        opacity: 1.0,
-        metalness: 0.12,
-        roughness: 0.62
-    });
+    const material = q.earthUseStandardMaterial
+        ? new THREE.MeshStandardMaterial({
+            map: earthTexture,
+            normalMap: normalMap,
+            transparent: false,
+            opacity: 1.0,
+            metalness: 0.12,
+            roughness: 0.62
+        })
+        : new THREE.MeshLambertMaterial({
+            map: earthTexture,
+            transparent: false,
+            opacity: 1.0
+        });
 
     const mesh = new THREE.Mesh(geometry, material);
     mesh.name = 'earthSurface';

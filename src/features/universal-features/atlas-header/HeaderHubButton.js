@@ -128,7 +128,13 @@ function _applyResponsiveMount(button) {
         preserve.forEach(c => button.classList.add(c));
     }
 
-    const targetParent = targetParentId ? document.getElementById(targetParentId) : null;
+    let targetParent = targetParentId ? document.getElementById(targetParentId) : null;
+    if (
+        !targetParent
+        && (targetParentId === 'dockTrapFlankLeft' || targetParentId === 'dockTrapFlankRight')
+    ) {
+        targetParent = document.getElementById('dockGlobeRailLeft');
+    }
     if (targetParent && button.parentElement !== targetParent) {
         targetParent.appendChild(button);
     }
@@ -144,6 +150,14 @@ function _applyResponsiveMount(button) {
             targetParentId === 'headerHubMapStack')
     ) {
         _sortHeaderHubLeft(_getHeaderHubLeft());
+    }
+    if (
+        targetParent
+        && (targetParent.id === 'dockTrapFlankLeft'
+            || targetParent.id === 'dockTrapFlankRight'
+            || targetParent.id === 'dockGlobeRailLeft')
+    ) {
+        _sortGlobeRail(targetParent);
     }
 }
 
@@ -271,7 +285,14 @@ export function createHeaderHubButton({
         button.appendChild(labelEl);
     }
 
-    const parent = document.getElementById(resolvedParentId);
+    let parent = document.getElementById(resolvedParentId);
+    /* Trap flanks may not exist until dock cap migrates — park on left rail until reflow. */
+    if (
+        !parent
+        && (resolvedParentId === 'dockTrapFlankLeft' || resolvedParentId === 'dockTrapFlankRight')
+    ) {
+        parent = document.getElementById('dockGlobeRailLeft');
+    }
     if (parent) {
         parent.appendChild(button);
 
@@ -305,7 +326,11 @@ export function createHeaderHubButton({
         if (resolvedParentId === 'headerHubMapStack') {
             _sortHeaderHubLeft(_getHeaderHubLeft());
         }
-        if (resolvedParentId === 'dockGlobeRailLeft') {
+        if (
+            parent.id === 'dockGlobeRailLeft'
+            || parent.id === 'dockTrapFlankLeft'
+            || parent.id === 'dockTrapFlankRight'
+        ) {
             _sortGlobeRail(parent);
         }
 

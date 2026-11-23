@@ -5,7 +5,8 @@
 
 function isEventFromDevSunYawPanel(event) {
     const t = event && event.target;
-    return !!(t && typeof t.closest === 'function' && t.closest('.dev-sun-yaw-panel'));
+    if (!t || typeof t.closest !== 'function') return false;
+    return !!(t.closest('.dev-sun-yaw-panel') || t.closest('#zoomControls') || t.closest('.zoom-controls'));
 }
 
 export class WorldviewInteractionController {
@@ -364,11 +365,33 @@ export class WorldviewInteractionController {
         this.cameraService.zoomOut();
     }
 
+    /** 0 = zoomed out, 1 = zoomed in */
+    getZoomNormalized() {
+        const mapOn = this.sceneModel.getMapViewEnabled?.() ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
+        if (mapOn && window.globeController?.map2dLite?.isVisible?.()) {
+            return window.globeController.map2dLite.getZoomNormalized?.() ?? 0;
+        }
+        return this.cameraService.getZoomNormalized?.() ?? 0;
+    }
+
+    /** @param {number} t 0..1 */
+    setZoomNormalized(t) {
+        const mapOn = this.sceneModel.getMapViewEnabled?.() ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
+        if (mapOn && window.globeController?.map2dLite?.isVisible?.()) {
+            window.globeController.map2dLite.setZoomNormalized?.(t);
+            return;
+        }
+        this.cameraService.setZoomNormalized?.(t);
+    }
+
     /**
      * Reset zoom and camera to default view
      */
     resetToDefault() {
         this.uiView.resetToDefault();
+        if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+        }
     }
 
     /**

@@ -1,140 +1,353 @@
-/* Zoom Controls — bottom-right row; same right inset as .dock-globe-rail--right / Events strip (--dock-globe-rail-edge-inset 42px) */
+/* Zoom Controls — sun-slider aesthetic, reset above track, dock center-top */
 :root {
     --atlas-floating-controls-right: max(42px, env(safe-area-inset-right));
-    --atlas-floating-controls-bottom: calc(
-        var(--footer-height, 65px)
-        + var(--pagination-dock-height, 240px)
-        + var(--dock-globe-rail-gap, 10px)
-        + var(--dock-rail-lift-into-border, 0px)
-        + var(--dock-rail-side-extra, 30px)
-    );
+    /*
+     * Bottom is computed on .zoom-controls (not :root) so body.pagination-dock-collapsed
+     * --pagination-dock-height is visible — :root calc() would freeze the expanded value.
+     */
     --atlas-floating-controls-bottom-mobile: calc(var(--footer-height, 65px) + 24px);
 }
 
 .zoom-controls {
+    /* Match the live dock trapezium width */
+    --zoom-stack-width: var(--dock-trapezoid-width, min(820px, 88vw));
+    --zoom-slider-track-h: var(--world-zoom-track-h, 14px);
+    --zoom-slider-thumb: var(--world-zoom-thumb, 52px);
+    --zoom-slider-track-border: var(--world-zoom-track-border, 2px);
+    --zoom-slider-trap-fill: rgb(var(--accent-primary-rgb, 33, 150, 243));
+    /* Fallback rounded-trap chrome until SidePanelsTrapChrome applies live stroke width */
+    --zoom-slider-trap-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='%23fff'/%3E%3C/svg%3E");
+    --zoom-slider-trap-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='none' stroke='%23fff' stroke-width='10' stroke-linejoin='round'/%3E%3C/svg%3E");
+    /* Sit just above the trap top lip — tracks dock expand/collapse via body var */
+    --atlas-zoom-dock-bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + var(--dock-trap-height, 80px)
+        + var(--world-zoom-lift, 10px)
+    );
     position: fixed;
-    left: auto;
-    right: var(--atlas-floating-controls-right);
+    left: 50%;
+    right: auto;
     top: auto;
-    transform: none;
-    /* Match .dock-globe-rail--left / --right vertical position */
-    bottom: var(--atlas-floating-controls-bottom);
+    bottom: var(--atlas-zoom-dock-bottom);
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    z-index: 150; /* Above globe but below event slide (200) and overlays */
-    pointer-events: none; /* Allow clicks to pass through container */
+    align-items: stretch;
+    justify-content: center;
+    gap: var(--world-zoom-stack-gap, 28px);
+    width: var(--zoom-stack-width);
+    max-width: calc(100vw - 24px);
+    z-index: calc(var(--pagination-dock-z, 2200) + 20);
+    pointer-events: none;
     transition:
         opacity 0.3s ease,
         bottom var(--pagination-dock-transition-duration, 0.42s)
             var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
 }
 
-.zoom-btn {
-    width: 52px;
-    height: 52px;
-    border-radius: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    /* Uses palette tokens (blue default; gray / crimson / nulled from body.color-palette-*) */
-    background: var(--btn-primary-bg);
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
+/* Filters-style white plate — centered on the slider stack */
+.zoom-reset-btn {
+    pointer-events: auto;
+    appearance: none;
+    align-self: center;
+    width: auto;
+    min-width: 120px;
+    height: auto;
+    min-height: var(--world-reset-min-h, 48px);
+    margin: 0 auto;
+    padding: 10px var(--world-reset-pad-x, 28px);
+    border: none;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #000;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: var(--world-reset-font, 16px);
+    font-weight: 700;
+    letter-spacing: 0.45px;
+    text-transform: uppercase;
+    line-height: 1.15;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    pointer-events: auto; /* Enable clicks on buttons */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     user-select: none;
-    line-height: 1;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        filter 0.2s ease;
 }
 
-.zoom-btn:hover:not(:disabled) {
-    background: var(--btn-primary-bg-hover);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+.zoom-reset-btn:hover:not(:disabled) {
+    background: #ffffff;
+    filter: brightness(1.04);
+    transform: translateY(-1px);
 }
 
-.zoom-btn:active:not(:disabled) {
-    transform: scale(0.95);
+.zoom-reset-btn:active:not(:disabled) {
+    transform: translateY(0);
+    filter: none;
 }
 
-.zoom-btn:disabled {
+.zoom-reset-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
     transform: none;
 }
 
-/* Horizontal row: zoom out → reset → zoom in (left to right) */
-.zoom-out-btn {
-    order: 1;
+/* Host for the sun yaw slider — collapses when lighting/map hides it */
+.zoom-sun-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 0;
+    pointer-events: none;
 }
 
-.zoom-reset-btn {
-    order: 2;
+.zoom-sun-slot:not(.zoom-sun-slot--empty) {
+    pointer-events: auto;
 }
 
-.zoom-in-btn {
-    order: 3;
+.zoom-sun-slot--empty {
+    display: none;
 }
 
-/* Hide zoom controls initially (bottom transition defined on base .zoom-controls) */
+/*
+ * Stage slider shell — rounded trapezium chrome on ::before/::after so range
+ * thumbs are never clip-path clipped. Lengths from World mode tweaks.
+ */
+.zoom-controls .stage-slider-shell--zoom {
+    width: var(--world-zoom-slider-width, 100%);
+    max-width: 100%;
+    align-self: center;
+    box-sizing: border-box;
+}
+
+/* One length owner for sun — nested % would shrink the track twice */
+.zoom-controls .zoom-sun-slot {
+    width: var(--world-sun-slider-width, 100%);
+    max-width: 100%;
+    align-self: center;
+    box-sizing: border-box;
+}
+
+.zoom-controls .dev-sun-yaw-panel,
+.zoom-controls .stage-slider-shell--sun {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.stage-slider-shell {
+    --stage-slider-hit-h: max(var(--zoom-slider-track-h), var(--zoom-slider-thumb));
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: var(--stage-slider-hit-h);
+    pointer-events: auto;
+}
+
+/* Palette-filled rounded trapezium */
+.stage-slider-shell::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: var(--zoom-slider-track-h);
+    transform: translateY(-50%);
+    pointer-events: none;
+    background-color: var(--zoom-slider-trap-fill);
+    -webkit-mask-image: var(--zoom-slider-trap-mask);
+    mask-image: var(--zoom-slider-trap-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* White rounded-trap outline (stroke SVG; thickness from World tweaks) */
+.stage-slider-shell::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: var(--zoom-slider-track-h);
+    transform: translateY(-50%);
+    pointer-events: none;
+    background-image: var(--zoom-slider-trap-stroke);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.stage-slider-shell .zoom-slider,
+.stage-slider-shell .dev-sun-yaw-panel__range {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: var(--stage-slider-hit-h);
+    margin: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    overflow: visible;
+}
+
+.stage-slider-shell .zoom-slider::-webkit-slider-runnable-track,
+.stage-slider-shell .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
+    height: var(--zoom-slider-track-h);
+    background: transparent;
+    border: none;
+}
+
+.stage-slider-shell .zoom-slider::-moz-range-track,
+.stage-slider-shell .dev-sun-yaw-panel__range::-moz-range-track {
+    height: var(--zoom-slider-track-h);
+    background: transparent;
+    border: none;
+}
+
+/*
+ * Native thumb = invisible hit target. Visible white circle + black icon is
+ * .stage-slider-nub (see stageSliderNub.js) — same brightness(0) as flank icons.
+ */
+.stage-slider-shell--has-nub .zoom-slider::-webkit-slider-thumb,
+.stage-slider-shell--has-nub .dev-sun-yaw-panel__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--zoom-slider-thumb);
+    height: var(--zoom-slider-thumb);
+    margin-top: calc((var(--zoom-slider-track-h) - var(--zoom-slider-thumb)) / 2);
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+}
+
+.stage-slider-shell--has-nub .zoom-slider::-moz-range-thumb,
+.stage-slider-shell--has-nub .dev-sun-yaw-panel__range::-moz-range-thumb {
+    width: var(--zoom-slider-thumb);
+    height: var(--zoom-slider-thumb);
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.stage-slider-nub {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: var(--zoom-slider-thumb);
+    height: var(--zoom-slider-thumb);
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 3;
+    transform: translate3d(0, -50%, 0);
+    will-change: transform;
+}
+
+.stage-slider-nub img {
+    width: 56%;
+    height: 56%;
+    object-fit: contain;
+    filter: brightness(0);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Legacy class kept so ImageOverlay / loading locks still resolve */
+.zoom-slider-wrap {
+    display: contents;
+}
+
+.zoom-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: var(--btn-primary-bg);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    user-select: none;
+}
+
+.zoom-in-btn[hidden],
+.zoom-out-btn[hidden] {
+    display: none !important;
+}
+
 .zoom-controls:not(.visible) {
     opacity: 0;
     pointer-events: none;
 }
 
-/*
- * Loading mask (z=3000) covers chrome — do NOT visibility:hidden dock/rails here.
- * Instant hide raced the overlay fade and made trap buttons vanish before black.
- * Block clicks only; leave elements painted under the opaque mask.
- */
 body:has(.loading-overlay.active) .dev-sun-yaw-panel,
 body:has(.loading-overlay.active) .dock-globe-rail,
 body:has(.loading-overlay.active) .test-container,
 body:has(.loading-overlay.active) #zoomControls,
 body:has(.loading-overlay.active) .zoom-btn,
+body:has(.loading-overlay.active) .zoom-reset-btn,
+body:has(.loading-overlay.active) .zoom-slider,
+body:has(.loading-overlay.active) .zoom-sun-slot,
+body:has(.loading-overlay.active) .dev-sun-yaw-panel,
+body:has(.loading-overlay.active) .zoom-slider-wrap,
 body:has(.loading-overlay.active) #dockGlobeRailRight.dock-globe-rail--archive-file-actions,
 body:has(.loading-overlay.active) .globe-control-btn,
 body:has(.loading-overlay.active) .time-control-slider {
     pointer-events: none !important;
 }
 
-/* Show zoom controls when visible */
 .zoom-controls.visible {
     opacity: 1;
-    pointer-events: auto; /* Buttons are clickable */
+    pointer-events: auto;
 }
 
-/* Mobile: same bottom band as dock rails; compact row on the right */
 @media (max-width: 768px) {
     .zoom-controls {
-        left: auto !important;
-        right: var(--atlas-floating-controls-right) !important;
-        top: auto !important;
-        transform: none !important;
-        flex-direction: row !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
         bottom: var(--atlas-floating-controls-bottom-mobile) !important;
     }
 
     body:has(#paginationDock) .zoom-controls {
-        bottom: var(--atlas-floating-controls-bottom) !important;
+        bottom: var(--atlas-zoom-dock-bottom) !important;
     }
 
-    .zoom-btn {
-        width: 44px !important;
-        height: 44px !important;
-        font-size: 26px !important;
+    .zoom-controls {
+        --zoom-stack-width: var(--dock-trapezoid-width, min(96vw, 630px));
     }
 }
 
-/* Portrait: larger zoom cluster centered just above the dock trap */
 @media (max-width: 768px) and (orientation: portrait) {
     .zoom-controls,
     body:has(#paginationDock) .zoom-controls {
@@ -142,27 +355,19 @@ body:has(.loading-overlay.active) .time-control-slider {
         right: auto !important;
         transform: translateX(-50%) !important;
         justify-content: center !important;
-        gap: 10px !important;
+        gap: 6px !important;
         bottom: calc(
             var(--footer-height, 60px)
             + var(--pagination-dock-height, 200px)
-            + var(--dock-border-seam-h, 72px)
-            + clamp(10px, 1.6vh, 18px)
+            + var(--dock-trap-height, 80px)
+            + clamp(12px, 1.8vh, 20px)
         ) !important;
-        z-index: 300;
-    }
-
-    .zoom-btn {
-        width: 56px !important;
-        height: 56px !important;
-        font-size: 30px !important;
-        border-radius: 10px;
+        z-index: calc(var(--pagination-dock-z, 2200) + 20);
     }
 }
 
-/* Story / Theater file actions — live in #dockGlobeRailRight (same band as list/timeline toggle) */
+/* Story / Theater file actions — live in #dockGlobeRailRight */
 #dockGlobeRailRight.dock-globe-rail--archive-file-actions {
-    /* Above story/theater stage; match left rail presence */
     z-index: 150;
     max-width: min(720px, calc(100vw - 84px));
 }
@@ -200,7 +405,6 @@ body:has(.loading-overlay.active) .time-control-slider {
     white-space: nowrap;
     flex: 0 0 auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    /* Rail children are normally skewed; keep file labels upright */
     transform: none;
 }
 
@@ -232,7 +436,6 @@ body:has(.loading-overlay.active) #dockGlobeRailRight.dock-globe-rail--archive-f
     }
 }
 
-/* Portrait mobile: archive file actions are desktop/dev-only */
 @media (max-width: 768px) and (orientation: portrait) {
     #dockGlobeRailRight.dock-globe-rail--archive-file-actions,
     #dockGlobeRailRight.dock-globe-rail--archive-file-actions .archive-file-actions-row {
@@ -244,4 +447,3 @@ body:has(.loading-overlay.active) #dockGlobeRailRight.dock-globe-rail--archive-f
         overflow: hidden !important;
     }
 }
-

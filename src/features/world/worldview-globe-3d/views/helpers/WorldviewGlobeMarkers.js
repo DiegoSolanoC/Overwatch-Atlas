@@ -41,10 +41,14 @@ export function createMarkerWithPin({ location, radius, color, pinColor, elevati
     });
     const pinLine = new THREE.Line(pinLineGeometry, pinLineMaterial);
     pinLine.userData.isMarkerPin = true;
-    // Copy seaport marker flag to pin line if present
+    // Copy seaport / airport marker flags to pin line if present
     if (userData && userData.isSeaportMarker) {
         pinLine.userData.isSeaportMarker = true;
         pinLine.userData.isSeaportMarkerPin = true;
+    }
+    if (userData && userData.isAirportMarker) {
+        pinLine.userData.isAirportMarker = true;
+        pinLine.userData.isAirportMarkerPin = true;
     }
     pinLine.visible = visible && pinVisible;
     

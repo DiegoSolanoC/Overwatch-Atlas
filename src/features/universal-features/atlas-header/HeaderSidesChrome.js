@@ -6,6 +6,8 @@
  * These DEFAULTS are the sync fallback / bake of that standard.
  */
 
+import { resolveUiTweaksSyncPayload } from './UiTweaksStandard.js';
+
 /** Baked from atlas-ui-tweaks.json standard, Nov 2026. */
 export const HEADER_SIDES_TWEAK_DEFAULTS = Object.freeze({
     /**
@@ -86,8 +88,19 @@ export function sanitizeSidesState(s) {
     return next;
 }
 
-/** Sync fallback only — live look comes from the committed JSON standard (+ optional draft). */
+/** Sync look: local draft → cached standard → baked defaults. */
 export function loadSidesState() {
+    try {
+        const payload = resolveUiTweaksSyncPayload();
+        if (payload?.sides && typeof payload.sides === 'object') {
+            return sanitizeSidesState({
+                ...HEADER_SIDES_TWEAK_DEFAULTS,
+                ...payload.sides,
+            });
+        }
+    } catch {
+        /* fall through */
+    }
     return sanitizeSidesState(cloneDefaults());
 }
 

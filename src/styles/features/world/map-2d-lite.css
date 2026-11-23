@@ -38,6 +38,8 @@
 
 .map-2d-lite__map-img {
     display: block;
+    position: relative;
+    z-index: 0;
     width: 100%;
     height: 100%;
     object-fit: fill;
@@ -45,53 +47,59 @@
     user-select: none;
 }
 
-/* Pattern base layer - always visible at 10% opacity */
-.map-2d-lite__world::before {
-    content: '';
+/*
+ * Pattern undulation ABOVE the map image, ocean-only.
+ * Alpha.png: white = land, black = ocean → white full mask minus land = water.
+ * (CSS file URL — not a JS data-URL — so the mask always resolves.)
+ */
+.map-2d-lite__pattern {
     position: absolute;
     inset: 0;
     z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 1;
+    -webkit-mask-image:
+        linear-gradient(#fff, #fff),
+        url('../../../assets/images/Maps/Utility/Alpha.png');
+    -webkit-mask-size: 100% 100%, 100% 100%;
+    -webkit-mask-position: center, center;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    -webkit-mask-composite: source-out;
+    mask-image:
+        linear-gradient(#fff, #fff),
+        url('../../../assets/images/Maps/Utility/Alpha.png');
+    mask-size: 100% 100%, 100% 100%;
+    mask-position: center, center;
+    mask-repeat: no-repeat, no-repeat;
+    mask-composite: subtract;
+    mask-mode: luminance, luminance;
+}
+
+.map-2d-lite__pattern-base,
+.map-2d-lite__pattern-wave {
+    position: absolute;
+    inset: 0;
     pointer-events: none;
     background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
     background-repeat: repeat;
     background-size: clamp(720px, 58vw, 1360px) auto;
     background-position: center center;
-    opacity: 0.1;
     mix-blend-mode: screen;
-    /* Tint the pattern with palette color */
     background-color: rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.45);
     background-blend-mode: screen, normal;
 }
 
-/* Pattern wave layer - adds extra brightness where wave passes */
-.map-2d-lite__world::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
-    background-repeat: repeat;
-    background-size: clamp(720px, 58vw, 1360px) auto;
-    background-position: center center;
+.map-2d-lite__pattern-base {
+    opacity: 0.18;
+    /* Keep screen blend inside the ocean mask (don't wash through land) */
+    isolation: isolate;
+}
+
+.map-2d-lite__pattern-wave {
     opacity: 0.5;
-    mix-blend-mode: screen;
-    /* Tint the pattern with palette color */
-    background-color: rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.45);
-    background-blend-mode: screen, normal;
-    /* Animated wave sweep across the map */
+    isolation: isolate;
     animation: map-2d-lite-pattern-wave 12.5s linear infinite;
-    mask-image: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,0.7) 10%,
-        rgba(255,255,255,1) 50%,
-        rgba(255,255,255,0.7) 90%,
-        transparent 100%
-    );
-    mask-size: 40% 100%;
-    mask-position: -40% 0;
-    mask-repeat: no-repeat;
     -webkit-mask-image: linear-gradient(
         90deg,
         transparent 0%,
@@ -100,47 +108,51 @@
         rgba(255,255,255,0.7) 90%,
         transparent 100%
     );
+    mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.7) 10%,
+        rgba(255,255,255,1) 50%,
+        rgba(255,255,255,0.7) 90%,
+        transparent 100%
+    );
     -webkit-mask-size: 40% 100%;
+    mask-size: 40% 100%;
     -webkit-mask-position: -40% 0;
+    mask-position: -40% 0;
     -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
-/* Ensure world is positioned for absolute children */
-.map-2d-lite__world {
-    position: relative;
+/* Soft flash plate used during palette swaps (mirrors globe reveal). */
+.map-2d-lite__palette-flash {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(ellipse at center, rgba(255, 244, 230, 0.7) 0%, rgba(255, 220, 170, 0.25) 45%, transparent 72%);
+    mix-blend-mode: screen;
+    transition: none;
 }
 
-/* Palette-specific pattern images for map base layer (::before) */
-body.color-palette-blue .map-2d-lite__world::before {
+body.color-palette-blue .map-2d-lite__pattern-base,
+body.color-palette-blue .map-2d-lite__pattern-wave {
     background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
 }
 
-body.color-palette-gray .map-2d-lite__world::before {
+body.color-palette-gray .map-2d-lite__pattern-base,
+body.color-palette-gray .map-2d-lite__pattern-wave {
     background-image: url('../../../assets/images/Background%20Pattern/Pattern Dark.png');
 }
 
-body.color-palette-crimson .map-2d-lite__world::before {
+body.color-palette-crimson .map-2d-lite__pattern-base,
+body.color-palette-crimson .map-2d-lite__pattern-wave {
     background-image: url('../../../assets/images/Background%20Pattern/Pattern Crimson.png');
 }
 
-body.color-palette-nulled .map-2d-lite__world::before {
-    background-image: url('../../../assets/images/Background%20Pattern/Pattern Nulled.png');
-}
-
-/* Palette-specific pattern images for wave layer (::after) */
-body.color-palette-blue .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/Background%20Pattern/Pattern Blue.png');
-}
-
-body.color-palette-gray .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/Background%20Pattern/Pattern Dark.png');
-}
-
-body.color-palette-crimson .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/Background%20Pattern/Pattern Crimson.png');
-}
-
-body.color-palette-nulled .map-2d-lite__world::after {
+body.color-palette-nulled .map-2d-lite__pattern-base,
+body.color-palette-nulled .map-2d-lite__pattern-wave {
     background-image: url('../../../assets/images/Background%20Pattern/Pattern Nulled.png');
 }
 
@@ -159,6 +171,7 @@ body.color-palette-nulled .map-2d-lite__world::after {
 .map-2d-lite__markers {
     position: absolute;
     inset: 0;
+    z-index: 2;
 }
 
 .map-2d-lite__marker {

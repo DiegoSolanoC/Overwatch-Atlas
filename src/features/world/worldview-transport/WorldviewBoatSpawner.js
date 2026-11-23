@@ -4,6 +4,21 @@
 
 import { latLonToMapPlanePosition } from '../worldview-shared-assets/utils/WorldviewGeometry.js';
 import { getTransportVehicleColors } from '../worldview-shared-assets/utils/TransportPaletteColors.js';
+import { getGlobeQualitySnapshot, getTransportCaps } from '../worldview-shared-assets/constants/WorldviewQualitySettings.js';
+
+const _boatUp = new THREE.Vector3();
+const _boatRight = new THREE.Vector3();
+const _boatCorrectedUp = new THREE.Vector3();
+const _boatTangent = new THREE.Vector3();
+const _boatForward = new THREE.Vector3();
+const _boatRotMat = new THREE.Matrix4();
+const _boatPos = new THREE.Vector3();
+const _boatAway = new THREE.Vector3();
+const _boatOtherTangent = new THREE.Vector3();
+const _planeUpConst = new THREE.Vector3(0, 0, 1);
+
+/** Surface separation — closer than aircraft; boats halt instead of veering. */
+const BOAT_SEP = 0.038;
 
 export class WorldviewBoatSpawner {
     constructor(sceneModel, transportModel, routeController, transportView) {
@@ -134,6 +149,8 @@ export class WorldviewBoatSpawner {
             isBoat: true,
             isMultiStop: isMultiStop,
             isNewlySpawned: true,
+            isWaiting: false,
+            isCongestionWaiting: false,
             boatId: Math.random().toString(36).substr(2, 9),
             lastTrailSpawn: 0,
             trailSpawnInterval: trailSpawnInterval,
@@ -180,6 +197,61 @@ export class WorldviewBoatSpawner {
     }
 
     /**
+     * Water traffic control: halt if another boat is too close ahead or head-on.
+     * Rear / lower-priority boats wait so congested sea lanes take turns.
+     * @param {THREE.Object3D} boat
+     * @param {THREE.Object3D[]} boats
+     * @returns {boolean}
+     */
+    _boatShouldYield(boat, boats) {
+        const data = boat.userData;
+        if (!data?.curve || data.progress <= 0.03 || data.progress >= 0.97) return false;
+
+        let tangent;
+        try {
+            tangent = data.curve.getTangentAt(data.progress, _boatTangent).normalize();
+        } catch (_) {
+            return false;
+        }
+
+        const pos = boat.position;
+        for (let j = 0; j < boats.length; j++) {
+            const other = boats[j];
+            if (!other || other === boat) continue;
+            const od = other.userData;
+            if (!od?.isBoat || od.isNewlySpawned) continue;
+            if (od.progress <= 0 || od.progress > 1) continue;
+
+            _boatAway.subVectors(other.position, pos);
+            const dist = _boatAway.length();
+            if (dist >= BOAT_SEP || dist < 1e-8) continue;
+
+            const ahead = _boatAway.dot(tangent) > 0.05;
+            let otherTangentOk = false;
+            let opposing = false;
+            if (od.curve && od.progress > 0 && od.progress <= 1) {
+                try {
+                    od.curve.getTangentAt(od.progress, _boatOtherTangent).normalize();
+                    otherTangentOk = true;
+                    opposing = tangent.dot(_boatOtherTangent) < -0.25;
+                } catch (_) { /* ignore */ }
+            }
+
+            // Boat ahead on a converging path — we stop and let them clear
+            if (ahead) return true;
+
+            // Head-on meeting: stable yield by boatId so one always proceeds
+            if (opposing && otherTangentOk) {
+                if ((data.boatId || '') > (od.boatId || '')) return true;
+            } else if (!ahead && dist < BOAT_SEP * 0.7) {
+                // Side-by-side stack on crossing routes — lower priority waits
+                if ((data.boatId || '') > (od.boatId || '')) return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Update boats - handles movement, multi-stop transitions, and trail spawning
      */
     updateBoats() {
@@ -191,7 +263,8 @@ export class WorldviewBoatSpawner {
         const globe = this.sceneModel.getGlobe();
         const hyperloopVisible = this.sceneModel.getHyperloopVisible();
         const boats = this.transportModel.getBoats();
-        const planeUp = new THREE.Vector3(0, 0, 1);
+        const planeUp = _planeUpConst;
+        const trailInterval = getGlobeQualitySnapshot().boatTrailInterval || 3;
         const planeWidth = 2.0;
         const halfW = planeWidth / 2;
         const wrapX = (x) => ((x + halfW) % planeWidth + planeWidth) % planeWidth - halfW;
@@ -218,8 +291,11 @@ export class WorldviewBoatSpawner {
                 data.isNewlySpawned = false;
                 continue;
             }
+
+            // Halt for traffic ahead / head-on; route-reservation waits use isWaiting
+            data.isCongestionWaiting = this._boatShouldYield(boat, boats);
             
-            if (!data.isWaiting) {
+            if (!data.isWaiting && !data.isCongestionWaiting) {
                 data.progress += data.speed;
             }
             
@@ -264,6 +340,7 @@ export class WorldviewBoatSpawner {
                     }
                 } else {
                     this.routeController.releaseBoatRoute(data.from, data.to, data.boatId);
+                    this.transportView?.disposeBoatWake?.(boat);
                     if (boat.parent) boat.parent.remove(boat);
                     this.transportModel.removeBoat(boat);
                     continue;
@@ -272,6 +349,7 @@ export class WorldviewBoatSpawner {
                 if (data.boatId) {
                     this.routeController.releaseBoatRoute(data.from, data.to, data.boatId);
                 }
+                this.transportView?.disposeBoatWake?.(boat);
                 if (boat.parent) boat.parent.remove(boat);
                 this.transportModel.removeBoat(boat);
                 continue;
@@ -283,27 +361,37 @@ export class WorldviewBoatSpawner {
             
             if (data.progress > 0 && data.progress <= 1) {
                 const rawPos = data.curve.getPointAt(data.progress);
-                const position = isMapView ? new THREE.Vector3(wrapX(rawPos.x), rawPos.y, rawPos.z) : rawPos;
+                const position = isMapView
+                    ? _boatPos.set(wrapX(rawPos.x), rawPos.y, rawPos.z)
+                    : rawPos;
                 boat.position.copy(position);
                 
-                const tangent = data.curve.getTangentAt(data.progress).normalize();
-                const up = isMapView ? planeUp : position.clone().normalize();
-                const right = new THREE.Vector3().crossVectors(tangent, up).normalize();
-                const correctedUp = new THREE.Vector3().crossVectors(right, tangent).normalize();
-                
-                const rotationMatrix = new THREE.Matrix4();
-                rotationMatrix.makeBasis(right, correctedUp, tangent.negate());
-                boat.quaternion.setFromRotationMatrix(rotationMatrix);
+                data.curve.getTangentAt(data.progress, _boatTangent).normalize();
+                if (isMapView) _boatUp.copy(planeUp);
+                else _boatUp.copy(position).normalize();
+                _boatRight.crossVectors(_boatTangent, _boatUp).normalize();
+                _boatCorrectedUp.crossVectors(_boatRight, _boatTangent).normalize();
+                /* Travel = along path; aft = behind the hull. Wake samples at the bow tip. */
+                _boatForward.copy(_boatTangent);
+                const bowGap = this.transportView?._wakeBowGap ?? 0.018;
+                _boatPos.copy(position).addScaledVector(_boatForward, bowGap);
+                _boatForward.negate(); /* aft for Kelvin opening behind the bow */
                 
                 if (!data.lastTrailSpawn) data.lastTrailSpawn = 0;
-                if (!data.trailSpawnInterval) data.trailSpawnInterval = 1;
-                
-                data.lastTrailSpawn += 1;
-                if (data.lastTrailSpawn >= data.trailSpawnInterval) {
-                    const forward = tangent.clone().negate();
-                    this.transportView.createBoatTrailSegment(position, forward, right, correctedUp);
-                    data.lastTrailSpawn = 0;
+                if (!data.trailSpawnInterval) data.trailSpawnInterval = trailInterval;
+
+                // No wake while halted — avoids stacking foam in congested spots
+                if (!data.isWaiting && !data.isCongestionWaiting) {
+                    data.lastTrailSpawn += 1;
+                    if (data.lastTrailSpawn >= data.trailSpawnInterval) {
+                        this.transportView.createBoatTrailSegment(boat, _boatPos, _boatForward, _boatRight);
+                        data.lastTrailSpawn = 0;
+                        data.trailSpawnInterval = trailInterval;
+                    }
                 }
+
+                _boatRotMat.makeBasis(_boatRight, _boatCorrectedUp, _boatTangent.negate());
+                boat.quaternion.setFromRotationMatrix(_boatRotMat);
                 
                 boat.visible = hyperloopVisible;
             }
@@ -330,8 +418,7 @@ export class WorldviewBoatSpawner {
             
             if (!isPageVisible || !hyperloopVisible || isMapView) return;
             
-            // Limit number of boats (half the normal amount for mobile performance)
-            const MAX_BOATS = 15;
+            const MAX_BOATS = getTransportCaps().maxBoats;
             const boats = this.transportModel.getBoats();
             if (boats.length >= MAX_BOATS) return;
             

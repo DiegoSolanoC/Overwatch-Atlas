@@ -1,3 +1,5 @@
+import { getTransportCaps } from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
+
 function isEventHostSatelliteType(type) {
     return type === 'ISS' || type === 'MarsShip';
 }
@@ -58,7 +60,8 @@ export const worldviewSatelliteLifecycle = {
     initializeDecorSatellites() {
         const uniformOrbitRadius = 1.22;
         const created = [];
-        for (let i = 1; i <= 25; i++) {
+        const count = getTransportCaps().decorSatellites;
+        for (let i = 1; i <= count; i++) {
             const sat = this.createSatellite({
                 type: 'small',
                 orbitRadius: uniformOrbitRadius,

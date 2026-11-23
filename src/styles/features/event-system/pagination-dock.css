@@ -117,6 +117,7 @@
          * ends at the footer, so panels here do NOT add --footer-height again.)
          * Do not add --dock-trap-height — that left a large empty gap above the dock.
          */
+        --pagination-dock-height: var(--pagination-dock-height-expanded, 400px);
         --pagination-dock-stage-clearance: var(--pagination-dock-height-expanded, 400px);
         --side-trap-collapse-shift: 0;
         transition: --side-trap-collapse-shift
@@ -125,6 +126,10 @@
     }
 
     body:has(#paginationDock).pagination-dock-collapsed {
+        --pagination-dock-height: calc(
+            var(--pagination-dock-height-collapsed, 200px) +
+                max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+        );
         --pagination-dock-stage-clearance: calc(
             var(--pagination-dock-height-collapsed, 200px) +
                 max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
@@ -175,7 +180,9 @@
     }
 
     /*
-     * Patterned / canvas hosts fill under the dock overlay (collapse stays patterned).
+     * Patterned / WebGL hosts fill under the dock overlay.
+     * Collapse then reveals more of the same stage background instead of an empty band.
+     * Side panels still seat on the live dock top (rules above).
      */
     body:has(#paginationDock) #globe-container,
     body:has(#paginationDock) .test-container,
@@ -239,6 +246,332 @@
         background: transparent;
         pointer-events: none;
         overflow: hidden;
+    }
+
+    /*
+     * Mode flank rails — Vehicles/Weather (left) + Lighting/Rotation (right).
+     * Horizontal pair per side, ~trap height, slant from live --dock-trap-wall-skew.
+     */
+    body:has(#paginationDock) .dock-trap-flank {
+        --dock-trap-btn-skew: var(--dock-trap-wall-skew, 22deg);
+        --dock-flank-gap-border: var(--world-flank-gap-border, 18px);
+        --dock-flank-gap-lip: 2px;
+        --dock-flank-btn-h: calc(var(--dock-trap-height, 120px) - var(--dock-flank-gap-lip));
+        --dock-flank-btn-w: clamp(168px, 20vw, 220px);
+        position: relative;
+        z-index: 5;
+        flex: 0 0 auto;
+        align-self: stretch;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: center;
+        gap: var(--world-flank-pair-gap, var(--dock-flank-pair-gap, 8px));
+        width: calc(
+            2 * var(--dock-flank-btn-w)
+            + var(--world-flank-pair-gap, var(--dock-flank-pair-gap, 8px))
+        );
+        height: var(--dock-trap-height, 120px);
+        padding-bottom: var(--dock-flank-gap-lip);
+        box-sizing: border-box;
+        pointer-events: auto;
+        line-height: normal;
+        overflow: visible;
+        transform: translateY(var(--world-flank-offset-y, 0px));
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--left {
+        margin-right: var(--dock-flank-gap-border);
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--right {
+        margin-left: var(--dock-flank-gap-border);
+    }
+
+    /* Kill absolute base .globe-control-btn so pairs sit side-by-side */
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn.dock-trap-flank__btn,
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn {
+        appearance: none;
+        position: relative !important;
+        inset: auto !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        flex: 1 1 0;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        margin: 0 !important;
+        padding: 0 18px !important;
+        border: none !important;
+        border-radius: 12px !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #000 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28) !important;
+        display: inline-flex !important;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        cursor: pointer;
+        pointer-events: auto;
+        z-index: 6;
+        transform-origin: bottom center;
+        font-family: var(--font-control-bold, var(--font-default));
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease,
+            filter 0.2s ease,
+            opacity 0.2s ease;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--left > .globe-control-btn {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--right > .globe-control-btn {
+        transform: skewX(var(--dock-trap-btn-skew)) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--left > .globe-control-btn > * {
+        transform: skewX(var(--dock-trap-btn-skew)) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--right > .globe-control-btn > * {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn:hover {
+        background: #f2f2f2 !important;
+        background-color: #f2f2f2 !important;
+        filter: brightness(0.97);
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--left > .globe-control-btn:hover {
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank--right > .globe-control-btn:hover {
+        transform: skewX(var(--dock-trap-btn-skew)) translateY(-2px) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn [id$='Icon'] {
+        width: var(--world-flank-icon, 52px) !important;
+        height: var(--world-flank-icon, 52px) !important;
+        max-width: var(--world-flank-icon, 52px) !important;
+        max-height: var(--world-flank-icon, 52px) !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin: 0 !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn [id$='Icon'] img,
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn img {
+        width: var(--world-flank-icon, 52px) !important;
+        height: var(--world-flank-icon, 52px) !important;
+        max-width: var(--world-flank-icon, 52px) !important;
+        max-height: var(--world-flank-icon, 52px) !important;
+        object-fit: contain !important;
+        filter: brightness(0) !important;
+        flex-shrink: 0;
+        margin: 0 !important;
+    }
+
+    /* Match music category tab label language */
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn .globe-control-btn__label {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #000 !important;
+        font-family: var(--font-control-bold, var(--font-default));
+        font-size: var(--world-flank-font, 18px);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 1.1;
+        text-transform: uppercase;
+        white-space: nowrap;
+        max-width: none;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn.toggle-off {
+        opacity: 0.45;
+        border: none !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18) !important;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank > .globe-control-btn.active {
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.34) !important;
+        border: none !important;
+    }
+
+    /*
+     * Map/Globe desktop only — inverted trapezium under the header badge.
+     * Mobile keeps its own skewed chip in viewport.css (do not inherit this).
+     */
+    @media (min-width: 769px) {
+        body:has(#paginationDock) #dockGlobeRailLeft > #mapViewToggle.globe-control-btn.dock-trap-flank__btn,
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn {
+            --map-trap-taper: 16%;
+            appearance: none;
+            position: fixed !important;
+            top: var(--header-height, 72px) !important;
+            left: 50% !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: clamp(168px, 18vw, 220px) !important;
+            min-width: clamp(168px, 18vw, 220px) !important;
+            max-width: clamp(168px, 18vw, 220px) !important;
+            height: clamp(72px, 8.5vh, 92px) !important;
+            min-height: clamp(72px, 8.5vh, 92px) !important;
+            margin: 0 !important;
+            padding: 10px 28px 14px !important;
+            border: none !important;
+            border-radius: 0 !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.38));
+            clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                calc(100% - var(--map-trap-taper)) 100%,
+                var(--map-trap-taper) 100%
+            );
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            font-family: var(--font-control-bold, var(--font-default));
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: clamp(15px, 1.6vw, 18px) !important;
+            transform: translateX(-50%) !important;
+            transform-origin: top center;
+            pointer-events: auto;
+            cursor: pointer;
+            z-index: 700 !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn > * {
+            transform: none !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn img {
+            transform: none !important;
+            filter: brightness(0) !important;
+            object-fit: contain !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn [id$='Icon'] {
+            width: clamp(36px, 4vw, 46px) !important;
+            height: clamp(36px, 4vw, 46px) !important;
+            min-width: clamp(36px, 4vw, 46px) !important;
+            min-height: clamp(36px, 4vw, 46px) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn [id$='Icon'] img,
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn img {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn .header-hub-btn-label,
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn .globe-control-btn__label {
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            color: #000 !important;
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            white-space: nowrap !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn:hover {
+            background: #f2f2f2 !important;
+            background-color: #f2f2f2 !important;
+            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.42)) brightness(0.97);
+            transform: translateX(-50%) translateY(2px) !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn.toggle-off {
+            opacity: 0.45;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.22));
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn.active {
+            filter: drop-shadow(0 5px 16px rgba(0, 0, 0, 0.45));
+        }
+    }
+
+    /*
+     * Mobile: kill desktop inverse-trap / fixed-under-badge on Map/Globe.
+     * Lives here (loads after viewport.css) so it always wins.
+     */
+    @media (max-width: 768px) {
+        body:has(#paginationDock) #dockGlobeRailLeft > #mapViewToggle.globe-control-btn.dock-trap-flank__btn,
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn {
+            --dock-trap-btn-skew: 11deg;
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            clip-path: none !important;
+            border-radius: 14px !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.36) !important;
+            filter: none !important;
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+            transform-origin: center center !important;
+            width: var(--mode-dock-main-chip, clamp(72px, 19.5vw, 88px)) !important;
+            min-width: var(--mode-dock-main-chip, clamp(72px, 19.5vw, 88px)) !important;
+            max-width: var(--mode-dock-main-chip, clamp(72px, 19.5vw, 88px)) !important;
+            height: var(--mode-dock-main-chip-h, 88px) !important;
+            min-height: var(--mode-dock-main-chip-h, 88px) !important;
+            padding: 10px 8px !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            font-size: clamp(12px, 3.1vw, 14px) !important;
+            z-index: 7 !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn > * {
+            transform: skewX(var(--dock-trap-btn-skew)) !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn img {
+            transform: none !important;
+            filter: brightness(0) !important;
+        }
+
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn:hover {
+            filter: brightness(0.97) !important;
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
+        }
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-cap-row .dock-trap-flank,
+    body:has(#paginationDock) .pagination-dock-top-cap-row .dock-trap-flank .globe-control-btn {
+        pointer-events: auto;
     }
 
     body:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
@@ -403,16 +736,9 @@
     }
 
     /*
-     * Body-level --pagination-dock-height tracks collapse for globe/floating chrome.
-     * Codex overrides this (see below) — inheriting a changing custom property into
-     * #codex-view-root invalidates the whole board and is the main Codex dock hitch.
+     * Body-level --pagination-dock-height also set above with stage-clearance
+     * (expanded + collapsed). Codex freezes it so the board isn't invalidated.
      */
-    body:has(#paginationDock).pagination-dock-collapsed {
-        --pagination-dock-height: calc(
-            var(--pagination-dock-height-collapsed, 200px) +
-                max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
-        );
-    }
 
     /*
      * Codex: freeze body --pagination-dock-height at the expanded value so the
@@ -502,7 +828,7 @@
         overflow: hidden !important;
     }
     
-    /* Globe width still fills; bottom inset comes from --pagination-dock-stage-clearance. */
+    /* Globe width still fills; bottom seats on dock (rules above). */
     body:has(#paginationDock) #globe-container {
         width: 100% !important;
     }
@@ -1310,6 +1636,40 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
             var(--footer-height, 65px) + var(--pagination-dock-height, 200px)
         ) !important;
         z-index: var(--side-panel-z, 540) !important;
+    }
+
+    /* Stage / menu must stay under dock border + inward line. */
+    body:has(#paginationDock) .main-menu-buttons,
+    body:has(#paginationDock) .main-menu-mobile-deck,
+    body:has(#paginationDock) .main-menu-mobile-slide,
+    body:has(#paginationDock) .layout-container > main,
+    body:has(#paginationDock) .layout-container > #content {
+        z-index: 0 !important;
+    }
+
+    /* Tweaks open: stacking only — beat dock's :has(#id) 2200 !important (see layout.css). */
+    body.ui-tweaks-open:has(#paginationDock) .event-slide,
+    body.ui-tweaks-open:has(#paginationDock) .filters-panel,
+    body.ui-tweaks-open:has(#paginationDock) .music-panel {
+        z-index: 2500 !important;
+    }
+
+    body.ui-tweaks-open:has(#paginationDock) #paginationDock.pagination-dock,
+    body.ui-tweaks-open:has(#paginationDock) .pagination-dock {
+        z-index: 2600 !important;
+    }
+
+    body.ui-tweaks-open:has(#paginationDock) .pagination-dock-collapse-strip {
+        z-index: 2605 !important;
+    }
+
+    body.ui-tweaks-open:has(#paginationDock) .pagination-dock-top-cap-row {
+        z-index: 2610 !important;
+    }
+
+    body.ui-tweaks-open:has(#paginationDock) #zoomControls.zoom-controls,
+    body.ui-tweaks-open:has(#paginationDock) .zoom-controls {
+        z-index: 2620 !important;
     }
 
     body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid,

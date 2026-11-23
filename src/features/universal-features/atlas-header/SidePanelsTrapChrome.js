@@ -13,6 +13,8 @@
  * px while filled inward lips scale — Chrome/Firefox proportions then diverge.
  */
 
+import { resolveUiTweaksSyncPayload } from './UiTweaksStandard.js';
+
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 /** Baked from atlas-ui-tweaks.json standard, Nov 2026. */
@@ -130,6 +132,28 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     atlasNewsHeightPx: 88,
     /** Logo image size as % of the red badge box. */
     atlasNewsIconPct: 100,
+
+    /**
+     * World mode chrome — flank mode buttons + zoom/sun stack above the dock trap.
+     */
+    worldFlankGapBorderPx: 18,
+    worldFlankPairGapPx: 8,
+    /** Flank plate Y (CSS px). Positive = down toward dock lip. */
+    worldFlankOffsetYPx: 0,
+    worldFlankIconPx: 52,
+    worldFlankFontPx: 18,
+    worldZoomStackGapPx: 28,
+    worldZoomLiftPx: 10,
+    worldResetMinHeightPx: 48,
+    worldResetFontPx: 16,
+    worldResetPadXPx: 28,
+    worldZoomThumbPx: 52,
+    worldZoomTrackHPx: 14,
+    /** White track outline thickness (CSS px). */
+    worldZoomTrackBorderPx: 2,
+    /** Individual slider lengths as % of the zoom stack width. */
+    worldZoomSliderWidthPct: 100,
+    worldSunSliderWidthPct: 100,
 });
 
 function clamp(n, lo, hi) {
@@ -281,13 +305,39 @@ export function sanitizeSidePanelsTrapState(s) {
     next.atlasNewsWidthPx = clamp(Math.round(Number(next.atlasNewsWidthPx ?? 146)), 48, 180);
     next.atlasNewsHeightPx = clamp(Math.round(Number(next.atlasNewsHeightPx ?? 88)), 36, 140);
     next.atlasNewsIconPct = clamp(Math.round(Number(next.atlasNewsIconPct ?? 100)), 40, 100);
+    next.worldFlankGapBorderPx = clamp(Math.round(Number(next.worldFlankGapBorderPx ?? 18)), 0, 64);
+    next.worldFlankPairGapPx = clamp(Math.round(Number(next.worldFlankPairGapPx ?? 8)), 0, 48);
+    next.worldFlankOffsetYPx = clamp(Math.round(Number(next.worldFlankOffsetYPx ?? 0)), -48, 64);
+    next.worldFlankIconPx = clamp(Math.round(Number(next.worldFlankIconPx ?? 52)), 24, 72);
+    next.worldFlankFontPx = clamp(Math.round(Number(next.worldFlankFontPx ?? 18)), 12, 28);
+    next.worldZoomStackGapPx = clamp(Math.round(Number(next.worldZoomStackGapPx ?? 28)), 8, 72);
+    next.worldZoomLiftPx = clamp(Math.round(Number(next.worldZoomLiftPx ?? 10)), 0, 64);
+    next.worldResetMinHeightPx = clamp(Math.round(Number(next.worldResetMinHeightPx ?? 48)), 28, 72);
+    next.worldResetFontPx = clamp(Math.round(Number(next.worldResetFontPx ?? 16)), 11, 28);
+    next.worldResetPadXPx = clamp(Math.round(Number(next.worldResetPadXPx ?? 28)), 12, 56);
+    next.worldZoomThumbPx = clamp(Math.round(Number(next.worldZoomThumbPx ?? 52)), 28, 80);
+    next.worldZoomTrackHPx = clamp(Math.round(Number(next.worldZoomTrackHPx ?? 14)), 4, 40);
+    next.worldZoomTrackBorderPx = clamp(Math.round(Number(next.worldZoomTrackBorderPx ?? 2)), 0, 8);
+    next.worldZoomSliderWidthPct = clamp(Math.round(Number(next.worldZoomSliderWidthPct ?? 100)), 30, 100);
+    next.worldSunSliderWidthPct = clamp(Math.round(Number(next.worldSunSliderWidthPct ?? 100)), 30, 100);
     delete next.stageMenuOffsetYPx;
     delete next.globeOffsetYPx;
     return next;
 }
 
-/** Sync fallback only — live look comes from the committed JSON standard (+ optional draft). */
+/** Sync look: local draft → cached standard → baked defaults. */
 export function loadSidePanelsTrapState() {
+    try {
+        const payload = resolveUiTweaksSyncPayload();
+        if (payload?.panels && typeof payload.panels === 'object') {
+            return sanitizeSidePanelsTrapState({
+                ...SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+                ...payload.panels,
+            });
+        }
+    } catch {
+        /* fall through to defaults */
+    }
     return sanitizeSidePanelsTrapState(cloneDefaults());
 }
 
@@ -595,6 +645,9 @@ function applyDockFillFromBorder(rootStyle, s, geo) {
     rootStyle.setProperty('--dock-trap-inset-len', `${Math.round(geo.insetPx)}px`);
     rootStyle.setProperty('--dock-edge-border-px', `${s.dockBorderWidth}px`);
     rootStyle.setProperty('--dock-edge-radius-px', `${s.dockBorderRadius}px`);
+    /* True trap-wall angle — mode flank plates use this so they sit // the silhouette. */
+    const wallSkewDeg = (Math.atan2(geo.insetPx, Math.max(1, geo.trapH)) * 180) / Math.PI;
+    rootStyle.setProperty('--dock-trap-wall-skew', `${Math.round(wallSkewDeg * 10) / 10}deg`);
     /*
      * Silhouette clip in the same % space as the stroke path feet/top —
      * trapezium follows the border, not a parallel formula.
@@ -1665,6 +1718,8 @@ export function installSidePanelsTrapChromeLifecycle() {
                          * Dock collapse is owned by pagination-dock-collapse + tween.
                          * Ignore dock / tween body classes — full apply here forced
                          * 80–300ms reflows on keydown + settle (Codex longtasks).
+                         * Also ignore UI Tweaks open/tab classes — those must not
+                         * re-fit trap/dock geometry or editing preview drifts vs closed.
                          */
                         if (chromeTweening) continue;
                         if (document.body.classList.contains('side-chrome-dock-tweening')) {
@@ -1672,15 +1727,14 @@ export function installSidePanelsTrapChromeLifecycle() {
                         }
                         const was = typeof m.oldValue === 'string' ? m.oldValue : '';
                         if (/\bside-chrome-dock-tweening\b/.test(was)) continue;
+                        const stripChromeNoise = (cls) =>
+                            cls
+                                .replace(/\bpagination-dock-collapsed\b/g, '')
+                                .replace(/\bui-tweaks-[\w-]+\b/g, '')
+                                .replace(/\s+/g, ' ')
+                                .trim();
                         const now = document.body.className || '';
-                        const dockOnly =
-                            was.replace(/\bpagination-dock-collapsed\b/g, '').trim() ===
-                            now.replace(/\bpagination-dock-collapsed\b/g, '').trim();
-                        if (
-                            dockOnly &&
-                            /\bpagination-dock-collapsed\b/.test(was) !==
-                                /\bpagination-dock-collapsed\b/.test(now)
-                        ) {
+                        if (stripChromeNoise(was) === stripChromeNoise(now)) {
                             continue;
                         }
                         scheduleSidePanelsTrapChromeReflow(80);
@@ -2965,6 +3019,65 @@ function syncFloatingAtlasNewsBadge(s) {
     }
 }
 
+/** Rounded trapezium path (viewBox 0 0 1000 100) — wider at bottom, soft corners. */
+const STAGE_SLIDER_TRAP_PATH =
+    'M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z';
+
+/**
+ * @param {'mask' | 'stroke'} kind
+ * @param {number} strokeWidth
+ * @returns {string} CSS url("data:image/svg+xml,...")
+ */
+function stageSliderTrapSvgUrl(kind, strokeWidth = 2) {
+    const sw = Math.max(0.5, Number(strokeWidth) || 2);
+    const svg =
+        kind === 'mask'
+            ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="${STAGE_SLIDER_TRAP_PATH}" fill="#fff"/></svg>`
+            : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="${STAGE_SLIDER_TRAP_PATH}" fill="none" stroke="#fff" stroke-width="${sw * 5}" stroke-linejoin="round"/></svg>`;
+    return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+
+/**
+ * World-mode CSS vars only — no dock SVG / side-stroke rebuild.
+ * Use while dragging World mode tweaks so preview stays cheap.
+ * @param {object} state
+ * @param {CSSStyleDeclaration} [rootStyle]
+ */
+export function applyWorldModeChromeVars(state, rootStyle) {
+    const s = sanitizeSidePanelsTrapState({ ...SIDE_PANELS_TRAP_TWEAK_DEFAULTS, ...state });
+    /* Keep live trap bag in sync so dock refresh / reload paths see World edits. */
+    liveTrapChromeState = liveTrapChromeState
+        ? sanitizeSidePanelsTrapState({ ...liveTrapChromeState, ...s })
+        : s;
+    const root = rootStyle || document.documentElement?.style;
+    if (!root) return s;
+    const worldVars = {
+        '--world-flank-gap-border': `${s.worldFlankGapBorderPx}px`,
+        '--world-flank-pair-gap': `${s.worldFlankPairGapPx}px`,
+        '--world-flank-offset-y': `${s.worldFlankOffsetYPx}px`,
+        '--world-flank-icon': `${s.worldFlankIconPx}px`,
+        '--world-flank-font': `${s.worldFlankFontPx}px`,
+        '--world-zoom-stack-gap': `${s.worldZoomStackGapPx}px`,
+        '--world-zoom-lift': `${s.worldZoomLiftPx}px`,
+        '--world-reset-min-h': `${s.worldResetMinHeightPx}px`,
+        '--world-reset-font': `${s.worldResetFontPx}px`,
+        '--world-reset-pad-x': `${s.worldResetPadXPx}px`,
+        '--world-zoom-thumb': `${s.worldZoomThumbPx}px`,
+        '--world-zoom-track-h': `${s.worldZoomTrackHPx}px`,
+        '--world-zoom-track-border': `${s.worldZoomTrackBorderPx}px`,
+        '--world-zoom-slider-width': `${s.worldZoomSliderWidthPct}%`,
+        '--world-sun-slider-width': `${s.worldSunSliderWidthPct}%`,
+        '--dock-flank-pair-gap': `${s.worldFlankPairGapPx}px`,
+        '--zoom-slider-trap-mask': stageSliderTrapSvgUrl('mask'),
+        '--zoom-slider-trap-stroke': stageSliderTrapSvgUrl('stroke', s.worldZoomTrackBorderPx),
+    };
+    for (const [prop, value] of Object.entries(worldVars)) {
+        root.setProperty(prop, value);
+        document.body?.style.setProperty(prop, value);
+    }
+    return s;
+}
+
 /**
  * @param {object} state
  * @param {{ snapCuts?: boolean }} [opts] — default snap; dock-tween settle passes false
@@ -3144,6 +3257,8 @@ export function applySidePanelsTrapChrome(state, opts = {}) {
     const dockGeo = syncDockEdgeStroke(s, dockTrapGeometry(s)) || dockTrapGeometry(s);
     applyDockFillFromBorder(root.style, s, dockGeo);
     syncDockInwardLineShape(s, dockGeo);
+
+    applyWorldModeChromeVars(s, root.style);
 
     syncAllSideTrapStrokes(sidePaint);
     syncDockTrapSvgTaper(s.dockTrapTaperPct);

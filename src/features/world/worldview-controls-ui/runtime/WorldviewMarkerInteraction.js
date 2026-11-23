@@ -62,6 +62,8 @@ class WorldviewMarkerInteraction {
         this._domLiteHoverStub = null;
         /** Sticky hover label — cleared on hover elsewhere, click away, or drag. */
         this._pinnedCalloutMarker = null;
+        /** @type {THREE.Object3D|null} airport/seaport under cursor */
+        this._hoveredTransportMarker = null;
     }
 
     hasPinnedCallout() {
@@ -312,6 +314,97 @@ class WorldviewMarkerInteraction {
     }
 
     /**
+     * Show airport / seaport name on hover (screen-space hit so small dots are easy to target).
+     * @param {MouseEvent} event
+     * @param {HTMLElement} container
+     * @param {DOMRect} rect
+     * @param {THREE.Camera} camera
+     * @returns {boolean} true if a transport marker is under the cursor
+     */
+    _syncTransportHoverLabel(event, container, rect, camera) {
+        const markers = this.sceneModel.getMarkers();
+        if (!markers?.length || !camera || !this.uiView) {
+            this._clearTransportHoverLabel(container);
+            return false;
+        }
+
+        const mx = event.clientX - rect.left;
+        const my = event.clientY - rect.top;
+        const hitRadiusPx = 16;
+        let best = null;
+        let bestDist = hitRadiusPx;
+        const scratch = this._transportHoverScratch || (this._transportHoverScratch = new THREE.Vector3());
+
+        for (let i = 0; i < markers.length; i++) {
+            const m = markers[i];
+            const ud = m?.userData;
+            if (!m || !ud || !m.visible) continue;
+            if (!ud.isAirportMarker && !ud.isSeaportMarker) continue;
+
+            m.getWorldPosition(scratch);
+            scratch.project(camera);
+            if (scratch.z > 1) continue;
+
+            const sx = (scratch.x * 0.5 + 0.5) * rect.width;
+            const sy = (-scratch.y * 0.5 + 0.5) * rect.height;
+            const dx = sx - mx;
+            const dy = sy - my;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < bestDist) {
+                bestDist = dist;
+                best = m;
+            }
+        }
+
+        if (!best) {
+            this._clearTransportHoverLabel(container);
+            return false;
+        }
+
+        const ud = best.userData;
+        const name = ud.airportName || ud.seaportName || ud.name || '';
+        if (!name) {
+            this._clearTransportHoverLabel(container);
+            return false;
+        }
+
+        const kind = ud.isAirportMarker ? 'Airport' : 'Port';
+        const label = `${kind}: ${name}`;
+        const lx = event.clientX;
+        const ly = event.clientY - 12;
+
+        if (this._hoveredTransportMarker !== best) {
+            this._hoveredTransportMarker = best;
+            this.uiView.showCityLabel(label, lx, ly);
+            this.sceneModel.setActiveMarker?.(best);
+        } else {
+            const el = this.sceneModel.getLabelElement?.();
+            if (el) {
+                el.textContent = label;
+                el.style.left = `${lx}px`;
+                el.style.top = `${ly}px`;
+            } else {
+                this.uiView.showCityLabel(label, lx, ly);
+            }
+        }
+
+        if (container) container.style.cursor = 'pointer';
+        return true;
+    }
+
+    _clearTransportHoverLabel(container) {
+        if (this._hoveredTransportMarker) {
+            this._hoveredTransportMarker = null;
+            this.uiView?.hideCityLabel?.();
+        }
+        if (container && container.style.cursor === 'pointer') {
+            // Only clear if we aren't also on an event marker (caller may set pointer again)
+            const hoveredEvent = this.pulseService?.getHoveredMarker?.();
+            if (!hoveredEvent) container.style.cursor = '';
+        }
+    }
+
+    /**
      * Check if mouse is hovering over an event marker and create pulse effect
      */
     checkEventMarkerHover(event) {
@@ -324,11 +417,13 @@ class WorldviewMarkerInteraction {
             if (this.hasPinnedCallout()) {
                 this.dismissPinnedMarkerCallout();
             }
+            this._clearTransportHoverLabel(document.getElementById('globe-container'));
             return;
         }
 
         const isMapView = this.sceneModel.getMapViewEnabled?.() ?? !!this.sceneModel.isMapView;
         if (isMapView) {
+            this._clearTransportHoverLabel(document.getElementById('globe-container'));
             return;
         }
         
@@ -361,9 +456,9 @@ class WorldviewMarkerInteraction {
             }
         }
 
-        if (eventMarkers.length === 0) return;
-        
-        const intersects = raycaster.intersectObjects(eventMarkers);
+        const intersects = eventMarkers.length
+            ? raycaster.intersectObjects(eventMarkers)
+            : [];
         
         // Don't allow hover interactions when event image overlay is visible
         const eventImageOverlay = document.getElementById('eventImageOverlay');
@@ -452,6 +547,8 @@ class WorldviewMarkerInteraction {
             }
             // Dispatch custom event to reset image restore timer in MenuHelpers
             window.dispatchEvent(new CustomEvent('markerhover'));
+            this._clearTransportHoverLabel(container);
+            if (container) container.style.cursor = 'pointer';
         } else {
             const currentHovered = this.pulseService.getHoveredMarker();
             if (currentHovered) {
@@ -473,6 +570,12 @@ class WorldviewMarkerInteraction {
                 if (window.globeEventMarkerManager && typeof window.globeEventMarkerManager.resumeOverlapCycling === 'function') {
                     window.globeEventMarkerManager.resumeOverlapCycling();
                 }
+            }
+
+            // No event marker — show airport / port names when those toggles are on
+            const hitTransport = this._syncTransportHoverLabel(event, container, rect, camera);
+            if (!hitTransport && container && !this.hasPinnedCallout()) {
+                container.style.cursor = '';
             }
         }
     }

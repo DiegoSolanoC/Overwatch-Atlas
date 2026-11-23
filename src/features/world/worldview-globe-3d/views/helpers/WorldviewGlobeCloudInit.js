@@ -2,6 +2,7 @@
  * Cloud layers (procedural + atlas) for globe and flat map.
  */
 import { loadTexture } from './WorldviewGlobeTextures.js';
+import { getGlobeQualitySnapshot } from '../../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 
 /** 0 = neutral white clouds, 1 = full rim/palette color (keep low so atlases stay natural). */
 const GLOBE_CLOUD_PALETTE_BLEND = 0.34;
@@ -293,7 +294,8 @@ export function createGlobeCloudLayer({
     cloudTextureVariants = null,
     cloudTexturePath = null
 } = {}) {
-    const geometry = new THREE.SphereGeometry(radius, 64, 64);
+    const segs = getGlobeQualitySnapshot().shellSegments || 64;
+    const geometry = new THREE.SphereGeometry(radius, segs, segs);
     const proceduralMat = makeGlobeCloudProceduralMaterial(opacity, tintHex);
 
     const mesh = new THREE.Mesh(geometry, proceduralMat);

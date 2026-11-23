@@ -6,8 +6,11 @@
  */
 
 import { applySunBackgroundForViewport } from '../../worldview-globe-3d/views/helpers/WorldviewSunBackground.js';
+import { installStageSliderNub } from '../../worldview-controls-ui/runtime/stageSliderNub.js';
 
-const STORAGE_KEY = 'devSunYawDeg';
+const SUN_NUB_ICON = 'src/assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png';
+
+const STORAGE_KEY = 'devSunYawDeg_v2';
 
 function isDevSunUiEnabled() {
     if (typeof window === 'undefined') return false;
@@ -27,14 +30,17 @@ function isDevSunUiEnabled() {
     );
 }
 
+/** Mid-track default (180°) so the sun nub starts centered. */
+const DEFAULT_SUN_YAW_DEG = 180;
+
 function readStoredYaw() {
     try {
         const s = window.sessionStorage.getItem(STORAGE_KEY);
-        if (s == null) return 0;
+        if (s == null) return DEFAULT_SUN_YAW_DEG;
         const n = Number(s);
-        return Number.isFinite(n) ? n : 0;
+        return Number.isFinite(n) ? n : DEFAULT_SUN_YAW_DEG;
     } catch (_) {
-        return 0;
+        return DEFAULT_SUN_YAW_DEG;
     }
 }
 
@@ -60,6 +66,7 @@ function applyYawToScene(controller, deg) {
  */
 export function updateSunSliderVisibility(controller) {
     const slider = document.querySelector('.dev-sun-yaw-panel');
+    const slot = document.getElementById('zoomSunSlot');
     if (!slider) return;
 
     const lightingVisible = controller.sceneModel.getGlobeLightingVisible ? controller.sceneModel.getGlobeLightingVisible() : true;
@@ -67,9 +74,13 @@ export function updateSunSliderVisibility(controller) {
 
     // Hide slider if lighting is off OR in map mode
     const shouldShow = lightingVisible && !isMap;
+    slider.classList.toggle('dev-sun-yaw-panel--hidden', !shouldShow);
     slider.style.opacity = shouldShow ? '1' : '0';
     slider.style.pointerEvents = shouldShow ? 'auto' : 'none';
-    console.log('[DevSunYawControl] Slider visibility updated:', shouldShow, 'lightingVisible:', lightingVisible, 'isMap:', isMap);
+    if (slot) {
+        slot.classList.toggle('zoom-sun-slot--empty', !shouldShow);
+        slot.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+    }
 }
 
 let _installed = false;
@@ -83,29 +94,50 @@ export function maybeInstallDevSunYawControl(controller) {
         return;
     }
 
-    // Check if slider element already exists in DOM
-    const sliderExists = document.querySelector('.dev-sun-yaw-panel__range') !== null;
-    console.log('[DevSunYawControl] Slider exists in DOM:', sliderExists);
-    
-    if (_installed && sliderExists) {
-        console.log('[DevSunYawControl] Already installed and slider exists, skipping');
+    const slot = document.getElementById('zoomSunSlot');
+    const host = slot || document.getElementById('zoomControls') || document.getElementById('globe-container') || document.body;
+    let wrap = document.querySelector('.dev-sun-yaw-panel');
+    let range = document.querySelector('.dev-sun-yaw-panel__range');
+
+    const ensureStageShell = (panel, input) => {
+        if (!panel || !input) return;
+        let shell = input.closest('.stage-slider-shell');
+        if (!shell) {
+            shell = document.createElement('div');
+            shell.className = 'stage-slider-shell stage-slider-shell--sun';
+            input.parentElement?.insertBefore(shell, input);
+            shell.appendChild(input);
+        }
+        installStageSliderNub(shell, input, SUN_NUB_ICON);
+    };
+
+    /* Migrate an older top-of-globe install into the zoom stack. */
+    if (wrap && host && wrap.parentElement !== host) {
+        host.appendChild(wrap);
+        ensureStageShell(wrap, range);
+        _installed = true;
+        applyYawToScene(controller, Number(range?.value) || readStoredYaw());
+        updateSunSliderVisibility(controller);
         return;
     }
 
-    // Reset installed flag if slider doesn't exist (it was removed)
-    if (_installed && !sliderExists) {
-        console.log('[DevSunYawControl] Slider was removed, resetting installed flag');
+    if (_installed && range) {
+        ensureStageShell(wrap, range);
+        updateSunSliderVisibility(controller);
+        return;
+    }
+
+    if (_installed && !range) {
         _installed = false;
     }
 
     _installed = true;
-    console.log('[DevSunYawControl] Installing dev sun yaw control');
 
-    const wrap = document.createElement('div');
+    wrap = document.createElement('div');
     wrap.setAttribute('data-dev-sun-yaw', '');
     wrap.className = 'dev-sun-yaw-panel';
 
-    const range = document.createElement('input');
+    range = document.createElement('input');
     range.type = 'range';
     range.className = 'dev-sun-yaw-panel__range';
     range.min = '0';
@@ -119,16 +151,8 @@ export function maybeInstallDevSunYawControl(controller) {
 
     range.addEventListener('input', () => {
         const value = Number(range.value);
-        console.log('[DevSunYawControl] Sun slider input event, value:', value);
         writeStoredYaw(value);
         applyYawToScene(controller, value);
-        const sunBg = controller.sceneModel.getSunBackground?.() ?? controller.sceneModel.sunBackground;
-        if (sunBg && sunBg.sprite) {
-            console.log('[DevSunYawControl] Sun sprite position:', sunBg.sprite.position);
-        }
-        if (sunBg && sunBg.light) {
-            console.log('[DevSunYawControl] Sun light position:', sunBg.light.position);
-        }
     });
 
     if (typeof range.setPointerCapture === 'function') {
@@ -156,12 +180,13 @@ export function maybeInstallDevSunYawControl(controller) {
         wrap.addEventListener(ev, stopGlobeSteal, false);
     }
 
-    wrap.appendChild(range);
-
-    const host = document.getElementById('globe-container') || document.body;
+    const shell = document.createElement('div');
+    shell.className = 'stage-slider-shell stage-slider-shell--sun';
+    shell.appendChild(range);
+    wrap.appendChild(shell);
     host.appendChild(wrap);
-    console.log('[DevSunYawControl] Slider appended to host, host id:', host.id);
-    console.log('[DevSunYawControl] Slider element exists in DOM:', document.querySelector('.dev-sun-yaw-panel__range') !== null);
+    installStageSliderNub(shell, range, SUN_NUB_ICON);
 
     applyYawToScene(controller, Number(range.value));
+    updateSunSliderVisibility(controller);
 }

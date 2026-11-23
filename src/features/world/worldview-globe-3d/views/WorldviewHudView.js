@@ -413,6 +413,20 @@ export class WorldviewHudView {
     }
 
     /**
+     * @param {Function} [onToggle]
+     */
+    setupPlaneRoutesToggle(onToggle) {
+        this.toggleManager.setupPlaneRoutesToggle(onToggle);
+    }
+
+    /**
+     * @param {Function} [onToggle]
+     */
+    setupBoatRoutesToggle(onToggle) {
+        this.toggleManager.setupBoatRoutesToggle(onToggle);
+    }
+
+    /**
      * Setup globe <-> map view toggle
      */
     setupMapViewToggle() {

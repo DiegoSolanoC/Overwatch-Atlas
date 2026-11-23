@@ -595,9 +595,244 @@
       "lon": 0
     },
     {
-      "name": "South Pole Station",
-      "lat": -90,
-      "lon": 0
+      "name": "Eco-Point Antarctica",
+      "lat": -72,
+      "lon": 2.5
+    },
+    {
+      "name": "Juneau",
+      "lat": 58.3546,
+      "lon": -134.5764
+    },
+    {
+      "name": "Anchorage",
+      "lat": 61.1743,
+      "lon": -149.9962
+    },
+    {
+      "name": "Honolulu",
+      "lat": 21.3187,
+      "lon": -157.9225
+    },
+    {
+      "name": "Jakarta",
+      "lat": -6.1256,
+      "lon": 106.6559
+    },
+    {
+      "name": "Kuala Lumpur",
+      "lat": 2.7456,
+      "lon": 101.7099
+    },
+    {
+      "name": "Manila",
+      "lat": 14.5086,
+      "lon": 121.0196
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "lat": 10.8188,
+      "lon": 106.652
+    },
+    {
+      "name": "Denpasar Bali",
+      "lat": -8.7482,
+      "lon": 115.1672
+    },
+    {
+      "name": "Makassar",
+      "lat": -5.0616,
+      "lon": 119.5541
+    },
+    {
+      "name": "Port Moresby",
+      "lat": -9.4438,
+      "lon": 147.22
+    },
+    {
+      "name": "Perth",
+      "lat": -31.9403,
+      "lon": 115.9669
+    },
+    {
+      "name": "Auckland",
+      "lat": -37.0082,
+      "lon": 174.785
+    },
+    {
+      "name": "Wellington",
+      "lat": -41.3272,
+      "lon": 174.8053
+    },
+    {
+      "name": "Suva",
+      "lat": -18.0433,
+      "lon": 178.5592
+    },
+    {
+      "name": "Nuuk",
+      "lat": 64.1909,
+      "lon": -51.6781
+    },
+    {
+      "name": "Rome Fiumicino",
+      "lat": 41.8003,
+      "lon": 12.2389
+    },
+    {
+      "name": "Aatlis",
+      "lat": 34.0209,
+      "lon": -6.8416
+    },
+    {
+      "name": "Casablanca",
+      "lat": 33.3675,
+      "lon": -7.5898
+    },
+    {
+      "name": "Gothenburg",
+      "lat": 57.6628,
+      "lon": 12.2798
+    },
+    {
+      "name": "The Hague",
+      "lat": 51.9569,
+      "lon": 4.4372
+    },
+    {
+      "name": "Riyadh",
+      "lat": 24.9576,
+      "lon": 46.6988
+    },
+    {
+      "name": "Antananarivo",
+      "lat": -18.7969,
+      "lon": 47.4788
+    },
+    {
+      "name": "Harare",
+      "lat": -17.9318,
+      "lon": 31.0928
+    },
+    {
+      "name": "Maputo",
+      "lat": -25.9208,
+      "lon": 32.5726
+    },
+    {
+      "name": "Cape Town",
+      "lat": -33.9715,
+      "lon": 18.6021
+    },
+    {
+      "name": "Nairobi",
+      "lat": -1.3192,
+      "lon": 36.9278
+    },
+    {
+      "name": "Addis Ababa",
+      "lat": 8.9779,
+      "lon": 38.7993
+    },
+    {
+      "name": "Novosibirsk",
+      "lat": 55.0126,
+      "lon": 82.6507
+    },
+    {
+      "name": "Irkutsk",
+      "lat": 52.268,
+      "lon": 104.3889
+    },
+    {
+      "name": "Vladivostok",
+      "lat": 43.3989,
+      "lon": 132.148
+    },
+    {
+      "name": "Yakutsk",
+      "lat": 62.0933,
+      "lon": 129.7707
+    },
+    {
+      "name": "Tehran",
+      "lat": 35.4161,
+      "lon": 51.1522
+    },
+    {
+      "name": "Oasis",
+      "lat": 29.5918,
+      "lon": 52.5836
+    },
+    {
+      "name": "Recife",
+      "lat": -8.1264,
+      "lon": -34.9236
+    },
+    {
+      "name": "Lima",
+      "lat": -12.0219,
+      "lon": -77.1143
+    },
+    {
+      "name": "Dakar",
+      "lat": 14.7397,
+      "lon": -17.4902
+    },
+    {
+      "name": "Accra",
+      "lat": 5.6052,
+      "lon": -0.1668
+    },
+    {
+      "name": "Dar es Salaam",
+      "lat": -6.8781,
+      "lon": 39.2026
+    },
+    {
+      "name": "Colombo",
+      "lat": 7.1808,
+      "lon": 79.8841
+    },
+    {
+      "name": "Yangon",
+      "lat": 16.9073,
+      "lon": 96.1332
+    },
+    {
+      "name": "Hanoi",
+      "lat": 21.2212,
+      "lon": 105.8072
+    },
+    {
+      "name": "Busan",
+      "lat": 35.1796,
+      "lon": 128.9382
+    },
+    {
+      "name": "Taipei",
+      "lat": 25.0797,
+      "lon": 121.2342
+    },
+    {
+      "name": "Brisbane",
+      "lat": -27.3942,
+      "lon": 153.1218
+    },
+    {
+      "name": "Christchurch",
+      "lat": -43.4894,
+      "lon": 172.532
+    },
+    {
+      "name": "Reykjavik Keflavik",
+      "lat": 63.985,
+      "lon": -22.6056
+    },
+    {
+      "name": "Darwin",
+      "lat": -12.414,
+      "lon": 130.8766
     }
   ],
   "seaports": [
@@ -1095,6 +1330,116 @@
       "name": "Anchorage",
       "lat": 61.2181,
       "lon": -149.9003
+    },
+    {
+      "name": "Falklands",
+      "lat": -51.6921,
+      "lon": -57.8597
+    },
+    {
+      "name": "Eco-Point Antarctica",
+      "lat": -72,
+      "lon": 2.5
+    },
+    {
+      "name": "Recife",
+      "lat": -8.0539,
+      "lon": -34.8811
+    },
+    {
+      "name": "Belem",
+      "lat": -1.4558,
+      "lon": -48.4902
+    },
+    {
+      "name": "Santos",
+      "lat": -23.9608,
+      "lon": -46.3336
+    },
+    {
+      "name": "Montevideo",
+      "lat": -34.9011,
+      "lon": -56.1645
+    },
+    {
+      "name": "Punta Arenas",
+      "lat": -53.1638,
+      "lon": -70.9171
+    },
+    {
+      "name": "Ushuaia",
+      "lat": -54.8019,
+      "lon": -68.303
+    },
+    {
+      "name": "Walvis Bay",
+      "lat": -22.9575,
+      "lon": 14.5053
+    },
+    {
+      "name": "Maputo",
+      "lat": -25.9692,
+      "lon": 32.5732
+    },
+    {
+      "name": "Toamasina",
+      "lat": -18.1492,
+      "lon": 49.4023
+    },
+    {
+      "name": "Accra",
+      "lat": 5.556,
+      "lon": -0.1969
+    },
+    {
+      "name": "Abidjan",
+      "lat": 5.3097,
+      "lon": -4.0127
+    },
+    {
+      "name": "Luanda",
+      "lat": -8.8383,
+      "lon": 13.2344
+    },
+    {
+      "name": "Nuuk",
+      "lat": 64.1836,
+      "lon": -51.7216
+    },
+    {
+      "name": "Reykjavik",
+      "lat": 64.1466,
+      "lon": -21.9426
+    },
+    {
+      "name": "Vladivostok",
+      "lat": 43.1155,
+      "lon": 131.8855
+    },
+    {
+      "name": "Papeete",
+      "lat": -17.5516,
+      "lon": -149.5585
+    },
+    {
+      "name": "Tema",
+      "lat": 5.6698,
+      "lon": 0.0166
+    },
+    {
+      "name": "Port Elizabeth",
+      "lat": -33.9608,
+      "lon": 25.6022
+    },
+    {
+      "name": "Fortaleza",
+      "lat": -3.7319,
+      "lon": -38.5267
+    },
+    {
+      "name": "Natal",
+      "lat": -5.7793,
+      "lon": -35.2009
     }
   ]
 }

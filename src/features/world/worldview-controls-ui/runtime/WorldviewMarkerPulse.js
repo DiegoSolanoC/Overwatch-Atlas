@@ -141,7 +141,7 @@ class WorldviewMarkerPulse {
     _getDefaultPulseWaveColorHex() {
         if (typeof document !== 'undefined' && document.body) {
             if (document.body.classList.contains('color-palette-gray')) return 0x64b5f6;
-            if (document.body.classList.contains('color-palette-crimson')) return 0xffffff;
+            if (document.body.classList.contains('color-palette-crimson')) return 0xff8a65;
             if (document.body.classList.contains('color-palette-nulled')) return 0xffca28;
         }
         return 0xff6600;

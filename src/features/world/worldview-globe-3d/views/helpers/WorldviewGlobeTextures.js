@@ -2,17 +2,56 @@
  * GlobeTextureHelpers - Utilities for texture loading and configuration
  * Extracted from WorldviewGlobeView to reduce duplication
  */
+import { getGlobeQualitySnapshot } from '../../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 
 /**
- * Configures texture settings for optimal quality
+ * Downscale oversized equirect / atlas images before upload (VRAM + bandwidth).
+ * @param {THREE.Texture} texture
+ * @param {number} maxEdge - longest side in px
+ */
+export function downscaleTextureIfNeeded(texture, maxEdge) {
+    const img = texture?.image;
+    if (!img || !maxEdge || maxEdge <= 0) return;
+    const w = img.width | 0;
+    const h = img.height | 0;
+    if (w <= 0 || h <= 0) return;
+    const longest = Math.max(w, h);
+    if (longest <= maxEdge) return;
+
+    const scale = maxEdge / longest;
+    const nw = Math.max(1, Math.round(w * scale));
+    const nh = Math.max(1, Math.round(h * scale));
+    const canvas = document.createElement('canvas');
+    canvas.width = nw;
+    canvas.height = nh;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(img, 0, 0, nw, nh);
+    texture.image = canvas;
+    texture.needsUpdate = true;
+}
+
+/**
+ * Configures texture settings for quality tier (mipmaps + capped anisotropy + optional downscale).
  * @param {THREE.Texture} texture - Texture to configure
  * @param {THREE.WebGLRenderer} renderer - Renderer instance
+ * @param {{ maxEdge?: number, skipDownscale?: boolean }} [opts]
  */
-export function configureTexture(texture, renderer) {
-    texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-    texture.minFilter = THREE.LinearFilter;
+export function configureTexture(texture, renderer, opts = {}) {
+    const q = getGlobeQualitySnapshot();
+    const maxEdge = opts.maxEdge ?? q.textureMaxEdge;
+    if (!opts.skipDownscale) {
+        downscaleTextureIfNeeded(texture, maxEdge);
+    }
+
+    const maxAniso = renderer?.capabilities?.getMaxAnisotropy?.() ?? 1;
+    texture.anisotropy = Math.min(q.anisotropy, maxAniso);
+    texture.generateMipmaps = true;
+    texture.minFilter = THREE.LinearMipmapLinearFilter;
     texture.magFilter = THREE.LinearFilter;
-    texture.generateMipmaps = false;
+    texture.needsUpdate = true;
 }
 
 /**
@@ -76,4 +115,5 @@ if (typeof window !== 'undefined') {
     window.GlobeTextureHelpers.configureTexture = configureTexture;
     window.GlobeTextureHelpers.loadTexture = loadTexture;
     window.GlobeTextureHelpers.changePlaneTexture = changePlaneTexture;
+    window.GlobeTextureHelpers.downscaleTextureIfNeeded = downscaleTextureIfNeeded;
 }

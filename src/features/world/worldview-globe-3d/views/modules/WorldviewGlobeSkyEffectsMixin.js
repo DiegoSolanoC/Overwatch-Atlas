@@ -81,7 +81,8 @@ export const mixin = {
                         (tex) => {
                             tex.minFilter = THREE.LinearFilter;
                             tex.magFilter = THREE.LinearFilter;
-                            tex.generateMipmaps = false;
+                            tex.generateMipmaps = true;
+                            tex.minFilter = THREE.LinearMipmapLinearFilter;
                             resolve(tex);
                         },
                         undefined,
@@ -176,7 +177,13 @@ export const mixin = {
         const sunBg = this.sceneModel.getSunBackground();
         if (sunBg) {
             if (sunBg.sprite) sunBg.sprite.visible = v;
+            if (sunBg.corona) sunBg.corona.visible = v;
             if (sunBg.light) sunBg.light.visible = v;
+            if (sunBg.nebulae) {
+                for (let i = 0; i < sunBg.nebulae.length; i++) {
+                    if (sunBg.nebulae[i]) sunBg.nebulae[i].visible = v;
+                }
+            }
         }
         const earthAmb = this.sceneModel.earthAmbientLayer1;
         if (earthAmb) {
@@ -186,14 +193,22 @@ export const mixin = {
 
     setGlobeLightingVisible(visible) {
         const v = !!visible;
-        // 1. Sun background (sprite + light source)
+        // 1. Sun background (sprite + corona + nebulae + light)
         const sunBg = this.sceneModel.getSunBackground();
         if (sunBg) {
             if (sunBg.sprite) {
                 sunBg.sprite.visible = v;
             }
+            if (sunBg.corona) {
+                sunBg.corona.visible = v;
+            }
             if (sunBg.light) {
                 sunBg.light.visible = v;
+            }
+            if (sunBg.nebulae) {
+                for (let i = 0; i < sunBg.nebulae.length; i++) {
+                    if (sunBg.nebulae[i]) sunBg.nebulae[i].visible = v;
+                }
             }
         }
 
@@ -250,7 +265,7 @@ export const mixin = {
         group.renderOrder = -10;
 
         const isMobile = window.innerWidth <= 768;
-        const poolSize = isMobile ? 4 : 6;
+        const poolSize = isMobile ? 6 : 12;
         this._shootingStars.maxActive = poolSize;
         const trailPointCount = isMobile ? 14 : 22;
 
@@ -324,8 +339,8 @@ export const mixin = {
         }
 
         this._shootingStars.nextSpawnSec = isMobile
-            ? (8 + Math.random() * 8)
-            : (3 + Math.random() * 4);
+            ? (2.5 + Math.random() * 3.5)
+            : (0.7 + Math.random() * 1.8);
 
         this._shootingStars.group = group;
         scene.add(group);
@@ -549,16 +564,23 @@ export const mixin = {
         // Spawn timer
         this._shootingStars.nextSpawnSec -= dt;
         if (this._shootingStars.nextSpawnSec <= 0) {
-            // Keep at most N active
+            const isMobile = window.innerWidth <= 768;
             const activeCount = this._shootingStars.pool.reduce((n, s) => n + (s.active ? 1 : 0), 0);
-            if (activeCount < this._shootingStars.maxActive) {
+            const slots = this._shootingStars.maxActive - activeCount;
+            if (slots > 0) {
                 this._spawnShootingStar();
+                // Occasional twin streak in the same beat
+                if (!isMobile && slots > 1 && Math.random() < 0.35) {
+                    this._spawnShootingStar();
+                }
             }
 
-            const isMobile = window.innerWidth <= 768;
-            this._shootingStars.nextSpawnSec = isMobile
-                ? (8 + Math.random() * 10)
-                : (3 + Math.random() * 7);
+            const burst = !isMobile && Math.random() < 0.28;
+            this._shootingStars.nextSpawnSec = burst
+                ? (0.12 + Math.random() * 0.28)
+                : isMobile
+                    ? (2.2 + Math.random() * 4)
+                    : (0.45 + Math.random() * 1.8);
         }
     },
 

@@ -368,6 +368,8 @@ export class WorldviewImageOverlay {
         const zoomInBtn = document.getElementById('zoomInBtn');
         const zoomResetBtn = document.getElementById('zoomResetBtn');
         const zoomOutBtn = document.getElementById('zoomOutBtn');
+        const zoomSlider = document.getElementById('zoomSlider');
+        const zoomSliderWrap = document.querySelector('.zoom-slider-wrap');
 
         // Desktop: header controls stay usable while an event image is shown (legacy overlay lock).
         // Mobile: only palette + music stay on the header — keep those enabled; lock the rest.
@@ -396,6 +398,14 @@ export class WorldviewImageOverlay {
         setGlobeButtonState(zoomInBtn);
         setGlobeButtonState(zoomResetBtn);
         setGlobeButtonState(zoomOutBtn);
+        setGlobeButtonState(zoomSlider);
+        if (zoomSlider) {
+            zoomSlider.style.pointerEvents = disableGlobeChrome ? 'none' : '';
+            zoomSlider.style.opacity = disableGlobeChrome ? '0.45' : '';
+        }
+        if (zoomSliderWrap && zoomSliderWrap.style) {
+            zoomSliderWrap.style.pointerEvents = disableGlobeChrome ? 'none' : '';
+        }
     }
     
     /**

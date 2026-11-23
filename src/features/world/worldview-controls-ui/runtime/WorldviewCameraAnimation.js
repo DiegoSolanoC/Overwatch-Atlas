@@ -37,9 +37,11 @@ class WorldviewCameraAnimation {
             const globe = this.sceneModel.getGlobe();
             
             if (camera) {
-                // On mobile portrait, use more zoomed out position to show Moon/Mars panels
+                // Mid of zoom range so the zoom slider nub sits centered at default.
                 const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
-                const defaultZoom = isMobilePortrait ? 7.0 : 3.5;
+                const minZ = 1.5;
+                const maxZ = isMobilePortrait ? 7.0 : 5.0;
+                const defaultZoom = (minZ + maxZ) / 2;
                 const THREE = window.THREE;
                 if (THREE) {
                     const defaultPosition = new THREE.Vector3(0, 0, defaultZoom);

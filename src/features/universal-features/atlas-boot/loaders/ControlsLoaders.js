@@ -28,6 +28,7 @@ import {
     getRunOperation,
     setRunOperation
 } from '../../atlas-mode-runtime/loadingOverlayState.js';
+import { reflowDockTrapFlankButtons } from '../../../system-interface/interface-bottom-dock/dockTrapezoidCap.js';
 
 export async function loadControls(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.controls, 'Controls')) {
@@ -43,7 +44,8 @@ export async function loadControls(loadedComponents) {
 
         createHeaderHubButton({
             id: 'mapViewToggle',
-            className: 'dock-globe-rail__btn',
+            /* Same white plate class as Vehicles/Weather/Lighting/Rotation (not blue dock chip) */
+            className: 'dock-trap-flank__btn',
             title: 'Toggle Map View',
             label: 'Map',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Switch%20to%20Globe%20Icon.png',
@@ -54,23 +56,24 @@ export async function loadControls(loadedComponents) {
             headerOrder: 10,
             mobileParentId: 'dockGlobeRailLeft',
             mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'dock-globe-rail__btn'
+            mobileClassName: 'dock-trap-flank__btn'
         });
 
         createHeaderHubButton({
             id: 'autoRotateToggle',
-            className: 'dock-globe-rail__btn',
+            className: 'dock-trap-flank__btn',
             title: 'Toggle Auto-Rotation',
             label: 'Rotation',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Rotation%20Icon.png',
             iconAlt: 'Rotate',
-            parentId: 'dockGlobeRailLeft',
+            parentId: 'dockTrapFlankRight',
             baseClass: 'globe-control-btn',
             iconSpanId: 'rotateIcon',
-            headerOrder: 50,
+            headerOrder: 70,
+            /* Mobile: top mode rail with Map/Flights/Ports — keep white flank style class */
             mobileParentId: 'dockGlobeRailLeft',
             mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'dock-globe-rail__btn'
+            mobileClassName: 'dock-trap-flank__btn'
         });
 
         // Exit button needs `killGlobeComponents` from the orchestrator. We
@@ -88,6 +91,7 @@ export async function loadControls(loadedComponents) {
 
         loadSoundEffect('rotationToggle', 'src/assets/audio/sfx/Rotation Toggle.mp3', 'Loading rotation sound effect...');
 
+        reflowDockTrapFlankButtons();
         loadedComponents.controls = true;
     }, 'Controls', 'loadControlsBtn', getRunOperation());
 }

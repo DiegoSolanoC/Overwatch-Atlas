@@ -1,6 +1,12 @@
 /**
  * Worldview globe bootstrap helpers extracted from controller.
  */
+import {
+    exposeGlobeQualityGlobals,
+    getGlobeQualitySnapshot,
+    prefersReducedMotion
+} from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
+
 export function applyWebglLayersHiddenForActiveMap(sceneModel) {
     const globe = sceneModel.getGlobe();
     const moonRig = sceneModel.getMoonRig?.() ?? sceneModel.moonRig;
@@ -14,6 +20,13 @@ export function applyWebglLayersHiddenForActiveMap(sceneModel) {
 
 export function ensureGlobeWorldBuilt(controller, container, installDevSunYawControl) {
     if (controller._globeWorldBuilt) return;
+
+    exposeGlobeQualityGlobals();
+    const quality = getGlobeQualitySnapshot();
+    if (prefersReducedMotion() || quality.autoRotateAllowed === false) {
+        controller.sceneModel.setAutoRotateEnabled?.(false);
+        controller.sceneModel.setAutoRotate?.(false);
+    }
 
     controller.globeView.initGlobe(() => {
         if (!controller.sceneModel.getMapViewEnabled?.()) {
@@ -32,9 +45,12 @@ export function ensureGlobeWorldBuilt(controller, container, installDevSunYawCon
     }, 50);
 
     controller.globeView.addStarfield();
-    controller.globeView.addShootingStars();
+    if (quality.shootingStarsEnabled) {
+        controller.globeView.addShootingStars();
+    }
     controller.globeView.addCityMarkers();
     controller.globeView.addSeaportMarkers();
+    controller.globeView.addAirportMarkers?.();
     controller.globeView.addEarthCityLights();
 
     const updateVisibility = () => {
@@ -51,6 +67,7 @@ export function ensureGlobeWorldBuilt(controller, container, installDevSunYawCon
     controller.globeView.addSeaportConnectionLines((routeData) => {
         controller.transportModel.addBoatRouteCurve(routeData);
     });
+    controller.globeView.addAirportRouteLines?.();
 
     controller.routeController.buildRouteGraph();
     controller.routeController.buildBoatRouteGraph();

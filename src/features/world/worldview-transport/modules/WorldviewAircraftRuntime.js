@@ -1,4 +1,74 @@
 import { latLonToVector3 } from '../../worldview-shared-assets/utils/WorldviewGeometry.js';
+import { getTransportCaps } from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
+
+const _planeUp = new THREE.Vector3();
+const _planeRight = new THREE.Vector3();
+const _planeCorrectedUp = new THREE.Vector3();
+const _planeTangent = new THREE.Vector3();
+const _planeForward = new THREE.Vector3();
+const _planeRotMat = new THREE.Matrix4();
+const _planeBankQuat = new THREE.Quaternion();
+const _atcAway = new THREE.Vector3();
+const _atcOtherPos = new THREE.Vector3();
+
+/** Minimum center-to-center distance before ATC nudges a plane off-corridor. */
+const ATC_SEPARATION = 0.048;
+const ATC_MAX_LATERAL = 0.06;
+const ATC_MAX_ALTITUDE = 0.018;
+
+function clamp(v, lo, hi) {
+    return Math.max(lo, Math.min(hi, v));
+}
+
+/**
+ * Soft air-traffic control: when another plane is too close, accumulate a
+ * lateral / altitude detour target (planes may leave their assigned corridor).
+ */
+function computeAtcDetour(plane, planes, progress, right, up) {
+    const data = plane.userData;
+    let targetLat = 0;
+    let targetAlt = 0;
+
+    // Near airports, pull detours back so approaches still meet the runway
+    const terminalFade = Math.sin(progress * Math.PI);
+    if (terminalFade < 0.12) {
+        return { targetLat: 0, targetAlt: 0, terminalFade };
+    }
+
+    for (let j = 0; j < planes.length; j++) {
+        const other = planes[j];
+        if (!other || other === plane) continue;
+        const od = other.userData;
+        if (!od?.isPlane || od.hasLanded) continue;
+        if (od.progress <= 0 || od.progress > 1) continue;
+
+        _atcOtherPos.copy(other.position);
+        _atcAway.subVectors(plane.position, _atcOtherPos);
+        const dist = _atcAway.length();
+        if (dist >= ATC_SEPARATION || dist < 1e-6) continue;
+
+        const push = (ATC_SEPARATION - dist) * 1.15;
+        const lateral = _atcAway.dot(right);
+        if (Math.abs(lateral) < 0.002) {
+            // Head-on / stacked — pick a stable side from ATC ids
+            const side = (data.atcId || '') > (od.atcId || '') ? 1 : -1;
+            targetLat += side * push;
+        } else {
+            targetLat += Math.sign(lateral) * push;
+        }
+
+        if (dist < ATC_SEPARATION * 0.65) {
+            const climbSide = (data.atcId || '') > (od.atcId || '') ? 1 : -1;
+            targetAlt += climbSide * push * 0.35;
+        }
+    }
+
+    return {
+        targetLat: clamp(targetLat, -ATC_MAX_LATERAL, ATC_MAX_LATERAL),
+        targetAlt: clamp(targetAlt, -ATC_MAX_ALTITUDE, ATC_MAX_ALTITUDE),
+        terminalFade
+    };
+}
 
 export const worldviewAircraftRuntime = {
     updatePlanes() {
@@ -24,10 +94,16 @@ export const worldviewAircraftRuntime = {
                     data.speed = nextRoute.speed;
                     data.from = nextRoute.from;
                     data.to = nextRoute.to;
+                    data.laneIndex = nextRoute.laneIndex;
                     data.progress = 0;
                     data.hasLanded = false;
                     data.landingTimer = 0;
+                    data.detourLateral = 0;
+                    data.detourAltitude = 0;
+                    data.targetDetourLateral = 0;
+                    data.targetDetourAltitude = 0;
                 } else {
+                    this.transportView?.disposePlaneContrail?.(plane);
                     if (plane.parent) plane.parent.remove(plane);
                     this.transportModel.removePlane(plane);
                     continue;
@@ -37,6 +113,7 @@ export const worldviewAircraftRuntime = {
             if (data.hasLanded) {
                 data.landingTimer += 1;
                 if (data.landingTimer > 60) {
+                    this.transportView?.disposePlaneContrail?.(plane);
                     if (plane.parent) plane.parent.remove(plane);
                     this.transportModel.removePlane(plane);
                     continue;
@@ -61,36 +138,46 @@ export const worldviewAircraftRuntime = {
                 const position = data.curve.getPointAt(data.progress);
                 plane.position.copy(position);
 
-                data.lastTrailSpawn += 1;
-                if (data.lastTrailSpawn >= data.trailSpawnInterval) {
-                    const tangent = data.curve.getTangentAt(data.progress).normalize();
-                    const forwardDirection = tangent.clone().negate();
-                    this.transportView.createTrailSegment(position, forwardDirection);
-                    data.lastTrailSpawn = 0;
-                    if (Math.random() < 0.1) data.trailSpawnInterval = Math.random() * 10 + 5;
-                    else data.trailSpawnInterval = 2;
+                data.curve.getTangentAt(data.progress, _planeTangent).normalize();
+                _planeUp.copy(position).normalize();
+                _planeRight.crossVectors(_planeTangent, _planeUp).normalize();
+                _planeCorrectedUp.crossVectors(_planeRight, _planeTangent).normalize();
+                _planeForward.copy(_planeTangent).negate();
+
+                // ATC: ease toward a detour when traffic is too close
+                const atc = computeAtcDetour(plane, planes, data.progress, _planeRight, _planeUp);
+                data.targetDetourLateral = atc.targetLat;
+                data.targetDetourAltitude = atc.targetAlt;
+                data.detourLateral += (data.targetDetourLateral - (data.detourLateral || 0)) * 0.14;
+                data.detourAltitude += (data.targetDetourAltitude - (data.detourAltitude || 0)) * 0.12;
+
+                const fade = atc.terminalFade;
+                if (fade > 0.01 && (Math.abs(data.detourLateral) > 1e-5 || Math.abs(data.detourAltitude) > 1e-5)) {
+                    plane.position.addScaledVector(_planeRight, data.detourLateral * fade);
+                    plane.position.addScaledVector(_planeUp, data.detourAltitude * fade);
                 }
+
+                /* Sample every frame while emitting — cut-offs create the visual gaps. */
+                this.transportView.createTrailSegment(plane, plane.position, _planeForward, _planeRight);
 
                 data.bankChangeTimer += 1;
                 if (data.bankChangeTimer > 60) {
-                    data.targetBankAngle = (Math.random() - 0.5) * 0.3;
+                    // Bank toward active detour when ATC is steering
+                    if (Math.abs(data.detourLateral) > 0.01) {
+                        data.targetBankAngle = clamp(-data.detourLateral * 4.5, -0.45, 0.45);
+                    } else {
+                        data.targetBankAngle = (Math.random() - 0.5) * 0.3;
+                    }
                     data.bankChangeTimer = 0;
                 }
 
                 data.bankAngle += (data.targetBankAngle - data.bankAngle) * 0.05;
 
-                const tangent = data.curve.getTangentAt(data.progress).normalize();
-                const up = position.clone().normalize();
-                const right = new THREE.Vector3().crossVectors(tangent, up).normalize();
-                const correctedUp = new THREE.Vector3().crossVectors(right, tangent).normalize();
+                _planeRotMat.makeBasis(_planeRight, _planeCorrectedUp, _planeTangent.negate());
+                plane.quaternion.setFromRotationMatrix(_planeRotMat);
 
-                const rotationMatrix = new THREE.Matrix4();
-                rotationMatrix.makeBasis(right, correctedUp, tangent.negate());
-                plane.quaternion.setFromRotationMatrix(rotationMatrix);
-
-                const bankQuaternion = new THREE.Quaternion();
-                bankQuaternion.setFromAxisAngle(tangent, data.bankAngle);
-                plane.quaternion.multiply(bankQuaternion);
+                _planeBankQuat.setFromAxisAngle(_planeTangent, data.bankAngle);
+                plane.quaternion.multiply(_planeBankQuat);
 
                 plane.visible = hyperloopVisible;
             }
@@ -99,6 +186,8 @@ export const worldviewAircraftRuntime = {
 
     spawnPlanesRandomly() {
         const airports = this.dataModel ? this.dataModel.getAllAirports() : [];
+        const airportByName = new Map(airports.map((a) => [a.name, a]));
+        const connections = this.dataModel?.getAirportConnections?.() || [];
         const minDistance = 0.4;
         const DEPARTURE_COOLDOWN_MS = 8000;
 
@@ -109,52 +198,81 @@ export const worldviewAircraftRuntime = {
 
             if (!isPageVisible || !hyperloopVisible || isMapView) return;
 
-            const MAX_PLANES = 10;
+            const MAX_PLANES = getTransportCaps().maxPlanes;
             const planes = this.transportModel.getPlanes();
             if (planes.length >= MAX_PLANES || airports.length < 2) return;
 
             let from = null;
-            for (let attempt = 0; attempt < 10; attempt++) {
-                const candidateFrom = airports[Math.floor(Math.random() * airports.length)];
-                if (!candidateFrom) continue;
-                if (!this.transportModel.canDepart('plane', candidateFrom.name, DEPARTURE_COOLDOWN_MS)) continue;
-                from = candidateFrom;
-                break;
+            let to = null;
+
+            // Prefer authored corridors so traffic follows the network (lanes/ATC matter more)
+            if (connections.length > 0 && Math.random() < 0.82) {
+                for (let attempt = 0; attempt < 12; attempt++) {
+                    const conn = connections[Math.floor(Math.random() * connections.length)];
+                    let a = airportByName.get(conn.from);
+                    let b = airportByName.get(conn.to);
+                    if (!a || !b) continue;
+                    if (Math.random() < 0.5) {
+                        const tmp = a; a = b; b = tmp;
+                    }
+                    if (!this.transportModel.canDepart('plane', a.name, DEPARTURE_COOLDOWN_MS)) continue;
+                    if (!this.transportModel.canDepartRoutePair(a.name, b.name, DEPARTURE_COOLDOWN_MS)) continue;
+                    from = a;
+                    to = b;
+                    break;
+                }
             }
-            if (!from) return;
 
-            let to = airports[Math.floor(Math.random() * airports.length)];
-            while (to === from) to = airports[Math.floor(Math.random() * airports.length)];
+            if (!from) {
+                for (let attempt = 0; attempt < 10; attempt++) {
+                    const candidateFrom = airports[Math.floor(Math.random() * airports.length)];
+                    if (!candidateFrom) continue;
+                    if (!this.transportModel.canDepart('plane', candidateFrom.name, DEPARTURE_COOLDOWN_MS)) continue;
+                    from = candidateFrom;
+                    break;
+                }
+                if (!from) return;
 
-            if (!this.transportModel.canDepartRoutePair(from.name, to.name, DEPARTURE_COOLDOWN_MS)) return;
+                to = airports[Math.floor(Math.random() * airports.length)];
+                while (to === from) to = airports[Math.floor(Math.random() * airports.length)];
+                if (!this.transportModel.canDepartRoutePair(from.name, to.name, DEPARTURE_COOLDOWN_MS)) return;
+            }
 
             const fromPos = latLonToVector3(from.lat, from.lon, 1.0);
             const toPos = latLonToVector3(to.lat, to.lon, 1.0);
             const distance = fromPos.distanceTo(toPos);
 
-            const isMultiStop = Math.random() < 0.4;
-            if (isMultiStop && airports.length >= 3) {
-                const numStops = Math.floor(Math.random() * 3) + 2;
-                const selectedAirports = [];
-
-                let current = airports[Math.floor(Math.random() * airports.length)];
-                if (!this.transportModel.canDepart('plane', current.name, DEPARTURE_COOLDOWN_MS)) current = from;
-                selectedAirports.push(current);
-
-                for (let i = 1; i < numStops && i < airports.length; i++) {
-                    let next = airports[Math.floor(Math.random() * airports.length)];
-                    while (selectedAirports.includes(next) && airports.length > selectedAirports.length) {
-                        next = airports[Math.floor(Math.random() * airports.length)];
+            const isMultiStop = Math.random() < 0.35;
+            if (isMultiStop && connections.length >= 2) {
+                // Walk a short path along the connection graph when possible
+                const selected = [from];
+                let current = from;
+                const hops = Math.floor(Math.random() * 2) + 2;
+                for (let h = 0; h < hops; h++) {
+                    const neighbors = [];
+                    for (let c = 0; c < connections.length; c++) {
+                        const conn = connections[c];
+                        if (conn.from === current.name && airportByName.has(conn.to)) {
+                            neighbors.push(airportByName.get(conn.to));
+                        } else if (conn.to === current.name && airportByName.has(conn.from)) {
+                            neighbors.push(airportByName.get(conn.from));
+                        }
                     }
-                    if (!selectedAirports.includes(next)) selectedAirports.push(next);
+                    const unused = neighbors.filter((n) => n && !selected.includes(n));
+                    if (!unused.length) break;
+                    const next = unused[Math.floor(Math.random() * unused.length)];
+                    selected.push(next);
+                    current = next;
                 }
+                if (selected.length >= 2) {
+                    this.transportModel.markDeparted('plane', selected[0].name);
+                    this.transportModel.markDepartedRoutePair(selected[0].name, selected[1].name);
+                    this.createMultiStopPlane(selected);
+                    return;
+                }
+            }
 
-                if (selectedAirports.length >= 2) {
-                    this.transportModel.markDeparted('plane', selectedAirports[0].name);
-                    this.transportModel.markDepartedRoutePair(selectedAirports[0].name, selectedAirports[1].name);
-                    this.createMultiStopPlane(selectedAirports);
-                }
-            } else if (distance >= minDistance) {
+            if (distance >= minDistance) {
                 this.transportModel.markDeparted('plane', from.name);
                 this.transportModel.markDepartedRoutePair(from.name, to.name);
                 this.createPlane(from, to);

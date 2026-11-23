@@ -1,4 +1,12 @@
 import { latLonToMapPlanePosition } from '../../worldview-shared-assets/utils/WorldviewGeometry.js';
+import { getTransportCaps } from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
+
+const _trainUp = new THREE.Vector3();
+const _trainRight = new THREE.Vector3();
+const _trainCorrectedUp = new THREE.Vector3();
+const _trainElevated = new THREE.Vector3();
+const _trainRotMat = new THREE.Matrix4();
+const _trainTangent = new THREE.Vector3();
 
 export const worldviewTrainSpawnerRuntime = {
     updateTrains() {
@@ -102,17 +110,17 @@ export const worldviewTrainSpawnerRuntime = {
                 actualProgress = Math.max(0, Math.min(1, actualProgress));
                 const wagonPosition = data.curve.getPointAt(actualProgress);
                 if (!wagonPosition || isNaN(wagonPosition.x) || isNaN(wagonPosition.y) || isNaN(wagonPosition.z)) return;
-                let tangent = data.curve.getTangentAt(actualProgress).normalize();
-                if (data.needsReverse) tangent.negate();
+                data.curve.getTangentAt(actualProgress, _trainTangent).normalize();
+                if (data.needsReverse) _trainTangent.negate();
                 const offsetDistance = isMapView ? 0.002 : 0.006;
-                const up = isMapView ? planeUp : wagonPosition.clone().normalize();
-                const elevatedPosition = wagonPosition.clone().add(up.clone().multiplyScalar(offsetDistance));
-                const right = new THREE.Vector3().crossVectors(tangent, up.clone().normalize()).normalize();
-                const correctedUp = new THREE.Vector3().crossVectors(right, tangent).normalize();
-                const rotationMatrix = new THREE.Matrix4();
-                rotationMatrix.makeBasis(right, correctedUp, tangent.negate());
-                wagon.quaternion.setFromRotationMatrix(rotationMatrix);
-                wagon.position.copy(elevatedPosition).sub(isMapView ? rawTrainPos : train.position);
+                if (isMapView) _trainUp.copy(planeUp);
+                else _trainUp.copy(wagonPosition).normalize();
+                _trainElevated.copy(wagonPosition).addScaledVector(_trainUp, offsetDistance);
+                _trainRight.crossVectors(_trainTangent, _trainUp).normalize();
+                _trainCorrectedUp.crossVectors(_trainRight, _trainTangent).normalize();
+                _trainRotMat.makeBasis(_trainRight, _trainCorrectedUp, _trainTangent.negate());
+                wagon.quaternion.setFromRotationMatrix(_trainRotMat);
+                wagon.position.copy(_trainElevated).sub(isMapView ? rawTrainPos : train.position);
                 wagon.visible = hyperloopVisible;
                 anyWagonVisible = hyperloopVisible;
             });
@@ -160,7 +168,7 @@ export const worldviewTrainSpawnerRuntime = {
             const hyperloopVisible = this.sceneModel.getHyperloopVisible();
             const isMapView = this.sceneModel.getMapViewEnabled ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
             if (!isPageVisible || !hyperloopVisible || isMapView) return;
-            if (this.transportModel.getTrains().length >= 15 || routeCurves.length === 0) return;
+            if (this.transportModel.getTrains().length >= getTransportCaps().maxTrains || routeCurves.length === 0) return;
 
             const isMultiStop = Math.random() < 0.33;
             if (isMultiStop && Object.keys(routeGraph).length > 0) {

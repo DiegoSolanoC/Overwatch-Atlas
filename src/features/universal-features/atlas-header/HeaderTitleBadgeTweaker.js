@@ -17,16 +17,18 @@ import {
 import {
     SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
     applySidePanelsTrapChrome,
+    applyWorldModeChromeVars,
     cloneSidePanelsTrapDefaults,
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=34';
+} from './SidePanelsTrapChrome.js?v=35';
 import {
     clearLegacyUiTweaksStorage,
     clearUiTweaksDraft,
     getCachedUiTweaksStandard,
     loadUiTweaksStandard,
     readUiTweaksDraft,
+    resolveUiTweaksSyncPayload,
     writeUiTweaksDraft,
 } from './UiTweaksStandard.js';
 
@@ -35,7 +37,7 @@ const TOGGLE_ID = 'uiTweaksToggle';
 const LEGACY_PANEL_ID = 'headerTitleBadgeTweakerPanel';
 const LEGACY_TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
 
-/** @type {'sides' | 'badge' | 'panels'} */
+/** @type {'sides' | 'badge' | 'panels' | 'dock' | 'world'} */
 let activeUiTweaksSection = 'sides';
 
 /** Current committed standard version (from JSON); drafts must match. */
@@ -46,6 +48,7 @@ const UI_TWEAK_TABS = Object.freeze([
     { id: 'badge', label: 'Center badge' },
     { id: 'panels', label: 'Side panels' },
     { id: 'dock', label: 'Dock' },
+    { id: 'world', label: 'World mode' },
 ]);
 
 /** @typedef {object} BadgeTweakState */
@@ -91,8 +94,19 @@ function cloneDefaults() {
     return { ...HEADER_BADGE_TWEAK_DEFAULTS };
 }
 
-/** Sync fallback only — live look comes from the committed JSON standard (+ optional draft). */
+/** Sync look: local draft → cached standard → baked defaults. */
 function loadState() {
+    try {
+        const payload = resolveUiTweaksSyncPayload();
+        if (payload?.badge && typeof payload.badge === 'object') {
+            return sanitizeState({
+                ...HEADER_BADGE_TWEAK_DEFAULTS,
+                ...payload.badge,
+            });
+        }
+    } catch {
+        /* fall through */
+    }
     return sanitizeState(cloneDefaults());
 }
 
@@ -715,18 +729,18 @@ function mountControls(panel, bags, hooks) {
 
     const resolveBag = (name) => {
         if (name === 'sides') return sides;
-        /* Dock chrome shares the side-panels trap bag (same persisted state). */
-        if (name === 'panels' || name === 'dock') return panels;
+        /* Dock + World chrome share the side-panels trap bag (same persisted state). */
+        if (name === 'panels' || name === 'dock' || name === 'world') return panels;
         return badge;
     };
     const resolveDefaults = (name) => {
         if (name === 'sides') return HEADER_SIDES_TWEAK_DEFAULTS;
-        if (name === 'panels' || name === 'dock') return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
+        if (name === 'panels' || name === 'dock' || name === 'world') return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
         return HEADER_BADGE_TWEAK_DEFAULTS;
     };
     const resolveSanitize = (name) => {
         if (name === 'sides') return sanitizeSidesState;
-        if (name === 'panels' || name === 'dock') return sanitizeSidePanelsTrapState;
+        if (name === 'panels' || name === 'dock' || name === 'world') return sanitizeSidePanelsTrapState;
         return sanitizeState;
     };
 
@@ -750,11 +764,14 @@ function mountControls(panel, bags, hooks) {
             ? 'Side panels · Shared size · Inward line · Per-trap slide · Export JSON to propose standard'
             : activeUiTweaksSection === 'dock'
                 ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Export JSON to propose standard'
-                : 'Collab chrome · Live preview · Save = local draft · Export JSON → incorporate into atlas-ui-tweaks.json';
+                : activeUiTweaksSection === 'world'
+                    ? 'World mode · Flank buttons · Zoom/sun stack · Reset · Export JSON to propose standard'
+                    : 'Collab chrome · Live preview · Save = local draft · Export JSON → incorporate into atlas-ui-tweaks.json';
     panel.appendChild(hint);
 
     document.body.classList.toggle('ui-tweaks-side-panels', activeUiTweaksSection === 'panels');
     document.body.classList.toggle('ui-tweaks-dock', activeUiTweaksSection === 'dock');
+    document.body.classList.toggle('ui-tweaks-world', activeUiTweaksSection === 'world');
     document.body.classList.toggle('ui-tweaks-open', true);
     document.body.classList.toggle(
         'ui-tweaks-filters-music-independent',
@@ -796,7 +813,7 @@ function mountControls(panel, bags, hooks) {
     swatches.className = 'header-badge-tweaker__swatches';
     meta.appendChild(swatches);
 
-    /** @type {{ group: string, title: string, bag: 'badge' | 'sides' | 'panels' | 'dock', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number, bag?: string }[] }[]} */
+    /** @type {{ group: string, title: string, bag: 'badge' | 'sides' | 'panels' | 'dock' | 'world', defaults: object, sanitize: Function, items: { key: string, label: string, min: number, max: number, step: number, bag?: string }[] }[]} */
     const allSections = [
         {
             group: 'Side panels',
@@ -1091,6 +1108,138 @@ function mountControls(panel, bags, hooks) {
             ],
         },
         {
+            group: 'World mode',
+            title: 'Mode flank buttons',
+            bag: 'world',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'worldFlankGapBorderPx',
+                    label: 'Gap from trap border',
+                    min: 0,
+                    max: 64,
+                    step: 1,
+                },
+                {
+                    key: 'worldFlankPairGapPx',
+                    label: 'Gap between pair',
+                    min: 0,
+                    max: 48,
+                    step: 1,
+                },
+                {
+                    key: 'worldFlankOffsetYPx',
+                    label: 'Buttons Y (↓ down)',
+                    min: -48,
+                    max: 64,
+                    step: 1,
+                },
+                {
+                    key: 'worldFlankIconPx',
+                    label: 'Icon size',
+                    min: 24,
+                    max: 72,
+                    step: 1,
+                },
+                {
+                    key: 'worldFlankFontPx',
+                    label: 'Label font size',
+                    min: 12,
+                    max: 28,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'World mode',
+            title: 'Zoom / sun stack',
+            bag: 'world',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'worldZoomLiftPx',
+                    label: 'Lift above trap top',
+                    min: 0,
+                    max: 64,
+                    step: 1,
+                },
+                {
+                    key: 'worldZoomStackGapPx',
+                    label: 'Gap between sliders',
+                    min: 8,
+                    max: 72,
+                    step: 1,
+                },
+                {
+                    key: 'worldZoomTrackHPx',
+                    label: 'Slider track height',
+                    min: 4,
+                    max: 40,
+                    step: 1,
+                },
+                {
+                    key: 'worldZoomTrackBorderPx',
+                    label: 'Slider border thickness',
+                    min: 0,
+                    max: 8,
+                    step: 1,
+                },
+                {
+                    key: 'worldZoomThumbPx',
+                    label: 'Slider nub size',
+                    min: 28,
+                    max: 80,
+                    step: 1,
+                },
+                {
+                    key: 'worldSunSliderWidthPct',
+                    label: 'Sun slider length (%)',
+                    min: 30,
+                    max: 100,
+                    step: 1,
+                },
+                {
+                    key: 'worldZoomSliderWidthPct',
+                    label: 'Zoom slider length (%)',
+                    min: 30,
+                    max: 100,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'World mode',
+            title: 'Reset button',
+            bag: 'world',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'worldResetMinHeightPx',
+                    label: 'Reset height',
+                    min: 28,
+                    max: 72,
+                    step: 1,
+                },
+                {
+                    key: 'worldResetFontPx',
+                    label: 'Reset font size',
+                    min: 11,
+                    max: 28,
+                    step: 1,
+                },
+                {
+                    key: 'worldResetPadXPx',
+                    label: 'Reset horizontal pad',
+                    min: 12,
+                    max: 56,
+                    step: 1,
+                },
+            ],
+        },
+        {
             group: 'Header sides',
             title: 'Gap & layout',
             bag: 'sides',
@@ -1225,14 +1374,31 @@ function mountControls(panel, bags, hooks) {
     panel.appendChild(grid);
 
     const refreshStatus = () => {
-        status.textContent = hooks.isDirty() ? 'Unsaved draft changes' : 'Matches draft / standard';
+        const draft = readUiTweaksDraft(uiTweaksStandardVersion);
+        status.textContent = hooks.isDirty()
+            ? 'Unsaved changes'
+            : draft
+                ? 'Using saved draft (reload-safe)'
+                : 'Using site standard';
         status.classList.toggle('is-dirty', hooks.isDirty());
     };
 
     const refreshReadouts = () => {
+        /*
+         * Readout-only — do NOT re-apply chrome here. Opening/remounting Tweaks
+         * used to call applySidePanelsTrapChrome / applyWorldModeChromeVars and
+         * reshape dock/zoom/flanks vs the closed view. Painting stays on onPreview.
+         */
+        if (activeUiTweaksSection === 'world') {
+            paletteNote.textContent =
+                `World · flank gap ${panels.worldFlankGapBorderPx} · stack gap ${panels.worldZoomStackGapPx} · reset ${panels.worldResetFontPx}px`;
+            swatches.replaceChildren();
+            refreshStatus();
+            return;
+        }
+
         const badgeResult = applyHeaderTitleBadgeTweaks(badge);
         const sideResult = applyHeaderSidesChrome(sides);
-        const panelsResult = applySidePanelsTrapChrome(panels);
         if (!badgeResult || !sideResult) return;
         const { accent, fillTop, fillBottom, borderRgb } = badgeResult;
 
@@ -1258,9 +1424,9 @@ function mountControls(panel, bags, hooks) {
             activeUiTweaksSection === 'sides'
                 ? `Header sides  ·  ${sideResult.inner.join(', ')} → ${sideResult.outer.join(', ')}`
                 : activeUiTweaksSection === 'dock'
-                    ? `Dock ${panelsResult.dockH}×${panelsResult.dockW} · taper ${panelsResult.dockTaper} · border ${panelsResult.dockBorder} · r ${panelsResult.dockRadius}`
+                    ? `Dock ${panels.dockTrapHeightPx}×${panels.dockTrapWidthPx} · taper ${panels.dockTrapTaperPct} · border ${panels.dockBorderWidth} · r ${panels.dockBorderRadius}`
                     : activeUiTweaksSection === 'panels'
-                        ? `Sides h ${panelsResult.heightPx} · depth ${panelsResult.protrudePx} · taper ${panelsResult.taperPct} · border ${panelsResult.sideBorder} · r ${panelsResult.sideRadius}`
+                        ? `Sides h ${panels.trapHeightPx} · depth ${panels.trapProtrudePx} · taper ${panels.trapTaperPct} · border ${panels.sideBorderWidth} · r ${panels.sideBorderRadius}`
                         : `Center badge  ·  accent ${accent.join(', ')}  →  rim ${borderRgb.join(', ')}`;
 
         swatches.replaceChildren();
@@ -1409,14 +1575,15 @@ function mountControls(panel, bags, hooks) {
     saveBtn.type = 'button';
     saveBtn.className = 'header-badge-tweaker__save';
     saveBtn.textContent = 'Save draft';
-    saveBtn.title = 'Keep a local editing draft. Does not change the site standard — Export JSON for that.';
+    saveBtn.title =
+        'Save to this browser — reload will keep these values. Export JSON + replace atlas-ui-tweaks.json to ship for everyone.';
     saveBtn.addEventListener('click', () => {
         hooks.onSave();
-        saveBtn.textContent = 'Draft saved';
+        saveBtn.textContent = 'Saved for reload';
         refreshStatus();
         setTimeout(() => {
             saveBtn.textContent = 'Save draft';
-        }, 1000);
+        }, 1400);
     });
 
     const resetBtn = document.createElement('button');
@@ -1551,9 +1718,14 @@ export function setupHeaderTitleBadgeTweaker() {
 
         const preview = () => {
             try {
-                applyHeaderTitleBadgeTweaks(badge);
-                applyHeaderSidesChrome(sides);
-                applySidePanelsTrapChrome(panels);
+                if (activeUiTweaksSection === 'world') {
+                    /* Light path while dragging World sliders — still updates live bag. */
+                    applyWorldModeChromeVars(panels);
+                } else {
+                    applyHeaderTitleBadgeTweaks(badge);
+                    applyHeaderSidesChrome(sides);
+                    applySidePanelsTrapChrome(panels);
+                }
                 dirty =
                     JSON.stringify(sanitizeState(badge)) !== JSON.stringify(savedBadge)
                     || JSON.stringify(sanitizeSidesState(sides)) !== JSON.stringify(savedSides)
@@ -1561,6 +1733,13 @@ export function setupHeaderTitleBadgeTweaker() {
             } catch (err) {
                 console.error('[UI Tweaks] preview failed:', err);
             }
+        };
+
+        /** Full chrome paint — used after Save / standard hydrate so reload matches. */
+        const applyAllChrome = () => {
+            applyHeaderTitleBadgeTweaks(badge);
+            applyHeaderSidesChrome(sides);
+            applySidePanelsTrapChrome(panels);
         };
 
         /* Browser zoom changes CSS viewport — reflow fluid badge/hub/dock chrome. */
@@ -1593,7 +1772,8 @@ export function setupHeaderTitleBadgeTweaker() {
                 Object.assign(panels, sanitizeSidePanelsTrapState(panels));
                 writeUiTweaksDraft(buildTweaksPayload(badge, sides, panels));
                 markClean();
-                preview();
+                /* Always full apply on save — World-tab light preview must not skip bag commit. */
+                applyAllChrome();
             } catch (err) {
                 console.error('[UI Tweaks] save draft failed:', err);
             }
@@ -1608,7 +1788,7 @@ export function setupHeaderTitleBadgeTweaker() {
                 const std = getCachedUiTweaksStandard();
                 if (std) applyStandardBags(std);
                 markClean();
-                preview();
+                applyAllChrome();
             } catch (err) {
                 console.error('[UI Tweaks] reset failed:', err);
             }
@@ -1621,7 +1801,8 @@ export function setupHeaderTitleBadgeTweaker() {
             isDirty: () => dirty,
         };
 
-        preview();
+        /* Bags already hydrated from draft via load*State(); paint immediately. */
+        applyAllChrome();
 
         loadUiTweaksStandard()
             .then((std) => {
@@ -1631,7 +1812,7 @@ export function setupHeaderTitleBadgeTweaker() {
                 const draft = readUiTweaksDraft(uiTweaksStandardVersion);
                 if (draft) applyStandardBags(draft);
                 markClean();
-                preview();
+                applyAllChrome();
                 const openPanel = document.getElementById(PANEL_ID);
                 if (openPanel && !openPanel.hidden) {
                     mountControls(openPanel, bags, hooks);
@@ -1643,7 +1824,7 @@ export function setupHeaderTitleBadgeTweaker() {
                 const draft = readUiTweaksDraft(uiTweaksStandardVersion);
                 if (draft) applyStandardBags(draft);
                 markClean();
-                preview();
+                applyAllChrome();
             });
 
         const existingToggle = document.getElementById(TOGGLE_ID);
@@ -1726,6 +1907,8 @@ export function setupHeaderTitleBadgeTweaker() {
             } else {
                 document.body.classList.remove(
                     'ui-tweaks-side-panels',
+                    'ui-tweaks-dock',
+                    'ui-tweaks-world',
                     'ui-tweaks-open',
                     'ui-tweaks-filters-music-independent',
                 );

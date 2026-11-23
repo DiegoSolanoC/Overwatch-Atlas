@@ -70,7 +70,8 @@
         // We render a thin sphere "shell" over the globe and animate angular radius in shader.
         if (isAwakening && !isMapView && locationType === 'earth') {
             const sphereRadius = 1.012;
-            const geometry = new THREE.SphereGeometry(sphereRadius, 64, 64);
+            const segs = (global.globeQuality && global.globeQuality.earthSegments) || 48;
+            const geometry = new THREE.SphereGeometry(sphereRadius, segs, segs);
             const centerDir = marker.position.clone().normalize();
 
             const material = new THREE.ShaderMaterial({

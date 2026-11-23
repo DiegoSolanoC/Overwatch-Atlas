@@ -3,10 +3,9 @@
  * lighting toggle buttons that live on the globe rail.
  *
  * `loadToggles` requires the globe base to be loaded first (gated by
- * `requireGlobeBase`). It mounts three buttons (Vehicles / Weather /
- * Lighting), wires the corresponding handlers on the globe view, loads
- * the related SFX, and syncs transport visibility. `unloadToggles`
- * removes the same three buttons.
+ * `requireGlobeBase`). It mounts Vehicles / Weather / Lighting / Flights /
+ * Sea lanes buttons, wires handlers on the globe view, loads related SFX,
+ * and syncs transport visibility. `unloadToggles` removes those buttons.
  *
  * Map and Rotation buttons live in `ControlsLoaders` exclusively — they
  * used to be mirrored here as well, but that just made unload asymmetric
@@ -24,6 +23,7 @@ import { createHeaderHubButton } from '../../atlas-header/HeaderHubButton.js';
 import { requireGlobeBase } from '../../../world/worldview-mode-entry/WorldviewRequireGlobe.js';
 import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
 import { getRunOperation } from '../../atlas-mode-runtime/loadingOverlayState.js';
+import { reflowDockTrapFlankButtons } from '../../../system-interface/interface-bottom-dock/dockTrapezoidCap.js';
 
 export async function loadToggles(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.transport, 'Toggles')) {
@@ -39,48 +39,83 @@ export async function loadToggles(loadedComponents) {
 
         createHeaderHubButton({
             id: 'hyperloopToggle',
-            className: 'hyperloop-btn dock-globe-rail__btn',
+            className: 'hyperloop-btn dock-trap-flank__btn',
             title: 'Toggle hyperloop',
             label: 'Vehicles',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Train%20Icon.png',
             iconAlt: 'Transport',
-            parentId: 'dockGlobeRailLeft',
+            parentId: 'dockTrapFlankLeft',
             baseClass: 'globe-control-btn',
             iconSpanId: 'hyperloopIcon',
-            headerOrder: 20,
+            headerOrder: 40,
+            /* Mobile: top mode rail with Map/Flights/Ports — keep white flank style class */
             mobileParentId: 'dockGlobeRailLeft',
             mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'hyperloop-btn dock-globe-rail__btn'
+            mobileClassName: 'hyperloop-btn dock-trap-flank__btn'
         });
 
         createHeaderHubButton({
             id: 'weatherEffectsToggle',
-            className: 'weather-effects-btn dock-globe-rail__btn',
+            className: 'weather-effects-btn dock-trap-flank__btn',
             title: 'Toggle weather',
             label: 'Weather',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Weather%20Icon.png',
             iconAlt: 'Weather',
-            parentId: 'dockGlobeRailLeft',
+            parentId: 'dockTrapFlankLeft',
             baseClass: 'globe-control-btn',
             iconSpanId: 'weatherEffectsIcon',
-            headerOrder: 30,
-            mobileClassName: 'weather-effects-btn dock-globe-rail__btn'
+            headerOrder: 50,
+            mobileParentId: 'dockGlobeRailLeft',
+            mobileBaseClass: 'globe-control-btn',
+            mobileClassName: 'weather-effects-btn dock-trap-flank__btn'
         });
 
         createHeaderHubButton({
             id: 'lightingToggle',
-            className: 'lighting-btn dock-globe-rail__btn',
+            className: 'lighting-btn dock-trap-flank__btn',
             title: 'Toggle Lighting',
             label: 'Lighting',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png',
             iconAlt: 'Lighting',
-            parentId: 'dockGlobeRailLeft',
+            parentId: 'dockTrapFlankRight',
             baseClass: 'globe-control-btn',
             iconSpanId: 'lightingIcon',
-            headerOrder: 40,
+            headerOrder: 60,
             mobileParentId: 'dockGlobeRailLeft',
             mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'lighting-btn dock-globe-rail__btn'
+            mobileClassName: 'lighting-btn dock-trap-flank__btn'
+        });
+
+        createHeaderHubButton({
+            id: 'planeRoutesToggle',
+            className: 'plane-routes-btn dock-globe-rail__btn',
+            title: 'Toggle flight routes',
+            label: 'Flights',
+            iconPath: 'src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png',
+            iconAlt: 'Flight routes',
+            parentId: 'dockGlobeRailLeft',
+            baseClass: 'globe-control-btn',
+            iconSpanId: 'planeRoutesIcon',
+            headerOrder: 20,
+            mobileParentId: 'dockGlobeRailLeft',
+            mobileBaseClass: 'globe-control-btn',
+            mobileClassName: 'plane-routes-btn dock-globe-rail__btn'
+        });
+
+        createHeaderHubButton({
+            id: 'boatRoutesToggle',
+            className: 'boat-routes-btn dock-globe-rail__btn',
+            title: 'Toggle boat routes',
+            label: 'Sea lanes',
+            iconPath: 'src/assets/images/Icons/Filter%20Icons/Location%20Icon.png',
+            iconAlt: 'Boat routes',
+            parentId: 'dockGlobeRailLeft',
+            baseClass: 'globe-control-btn',
+            iconSpanId: 'boatRoutesIcon',
+            headerOrder: 30,
+            mobileParentId: 'dockGlobeRailLeft',
+            mobileBaseClass: 'globe-control-btn',
+            mobileClassName: 'boat-routes-btn dock-globe-rail__btn'
         });
 
         if (controller.uiView) {
@@ -101,6 +136,12 @@ export async function loadToggles(loadedComponents) {
                     controller.globeView.setGlobeLightingVisible(controller.sceneModel.getGlobeLightingVisible());
                 }
             });
+            controller.uiView.setupPlaneRoutesToggle((visible) => {
+                controller.globeView?.setTransportRoutesVisible?.('plane', visible);
+            });
+            controller.uiView.setupBoatRoutesToggle((visible) => {
+                controller.globeView?.setTransportRoutesVisible?.('boat', visible);
+            });
             updateStatus('✓ Toggles initialized', 'success');
         }
 
@@ -112,6 +153,7 @@ export async function loadToggles(loadedComponents) {
             controller.transportView.updateHyperloopVisibility();
         }
 
+        reflowDockTrapFlankButtons();
         loadedComponents.transport = true;
     }, 'Toggles', 'loadTogglesBtn', getRunOperation());
 }
@@ -123,7 +165,7 @@ export async function unloadToggles(loadedComponents) {
     }
 
     await withUnloadLifecycle(async () => {
-        ['hyperloopToggle', 'weatherEffectsToggle', 'lightingToggle'].forEach((id) => {
+        ['hyperloopToggle', 'weatherEffectsToggle', 'lightingToggle', 'planeRoutesToggle', 'boatRoutesToggle'].forEach((id) => {
             const el = document.getElementById(id);
             if (el) el.remove();
         });

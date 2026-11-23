@@ -27,13 +27,6 @@
     transform: none !important;
 }
 
-/* Map view: auto-rotate is not applicable (no globe rotation). */
-body.map-view-enabled .globe-control-btn#autoRotateToggle:not(.dock-globe-rail__btn) {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-}
-
 /* Hyperloop Toggle Button - positioned next to rotation button (second row, top-left) */
 .globe-control-btn.hyperloop-btn:not(.dock-globe-rail__btn) {
     bottom: auto !important;
@@ -41,14 +34,7 @@ body.map-view-enabled .globe-control-btn#autoRotateToggle:not(.dock-globe-rail__
     left: 110px !important; /* To the right of map toggle */
 }
 
-/* Map View Toggle Button - third row, top-left */
-.globe-control-btn#mapViewToggle:not(.dock-globe-rail__btn) {
-    bottom: auto !important;
-    top: 95px !important; /* Second row (map + transport) */
-    left: 20px !important;
-}
-
-/* Map toggle stays on row 2 in all modes. */
+/* Map/Globe lives under the header badge (see pagination-dock + viewport). */
 
 /* Top-left buttons (filters and event manager) - positioned at top left */
 .globe-control-btn.top-left-btn {

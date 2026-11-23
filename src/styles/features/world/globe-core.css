@@ -49,18 +49,15 @@
     user-select: none;
 }
 
-/* Dev-only: sun yaw — slider centered below header */
-#globe-container .dev-sun-yaw-panel {
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    transform: translateX(-50%);
-    z-index: 125;
+/* Sun yaw — stacked with zoom controls above the dock (#zoomSunSlot) */
+.dev-sun-yaw-panel {
+    position: relative;
+    inset: auto;
+    transform: none;
+    z-index: auto;
     margin: 0;
     padding: 0;
-    width: auto;
+    width: 100%;
     max-width: none;
     box-sizing: border-box;
     pointer-events: auto;
@@ -73,125 +70,13 @@
     transition: opacity 0.3s ease;
 }
 
-#globe-container .dev-sun-yaw-panel__range {
-    display: block;
-    width: min(600px, calc(100vw - 160px));
-    height: 24px;
-    margin: 0;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(0, 0, 0, 0.35);
-    border-radius: 12px;
-    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
+.dev-sun-yaw-panel--hidden {
+    display: none !important;
 }
 
-#globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
-    height: 24px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.35);
-    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
-}
-
-#globe-container .dev-sun-yaw-panel__range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 48px;
-    height: 48px;
-    margin-top: -14px;
-    border-radius: 50%;
-    background: url('../../../assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png') center/contain no-repeat;
-    border: none;
-    box-shadow: none;
-    cursor: pointer;
-}
-
-#globe-container .dev-sun-yaw-panel__range::-moz-range-track {
-    height: 24px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.35);
-    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
-}
-
-#globe-container .dev-sun-yaw-panel__range::-moz-range-thumb {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: url('../../../assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png') center/contain no-repeat;
-    border: none;
-    box-shadow: none;
-    cursor: pointer;
-}
-
-/* Sun slider track backgrounds per palette (thumb uses --accent-primary from variables.css) */
-body.color-palette-gray #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
-    background: rgba(74, 74, 74, 0.5);
-}
-
-body.color-palette-gray #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
-    background: rgba(74, 74, 74, 0.5);
-}
-
-body.color-palette-crimson #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
-    background: rgba(92, 16, 24, 0.5);
-}
-
-body.color-palette-crimson #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
-    background: rgba(92, 16, 24, 0.5);
-}
-
-body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
-    background: rgba(61, 36, 104, 0.5);
-}
-
-body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
-    background: rgba(61, 36, 104, 0.5);
-}
-
-@media (max-width: 768px) {
-    #globe-container .dev-sun-yaw-panel {
-        top: 80px;
-        left: 50%;
-        right: auto;
-        bottom: auto;
-        transform: translateX(-50%);
-    }
-
-    #globe-container .dev-sun-yaw-panel__range {
-        width: min(500px, calc(100vw - 40px));
-        height: 20px;
-    }
-
-    #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
-        height: 20px;
-    }
-
-    #globe-container .dev-sun-yaw-panel__range::-webkit-slider-thumb {
-        width: 40px;
-        height: 40px;
-        margin-top: -12px;
-    }
-
-    #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
-        height: 20px;
-    }
-
-    #globe-container .dev-sun-yaw-panel__range::-moz-range-thumb {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-@media (max-width: 768px) and (orientation: portrait) {
-    #globe-container .dev-sun-yaw-panel {
-        top: var(--sun-yaw-panel-top, calc(var(--mode-dock-rail-top, 88px) + 56px));
-        z-index: 275;
-    }
-
-    #globe-container .dev-sun-yaw-panel__range {
-        width: min(420px, calc(100dvw - clamp(24px, 6vw, 48px)));
-    }
+/* Sun range visuals live on .stage-slider-shell (entry-zoom.css); keep panel host clean. */
+.dev-sun-yaw-panel .stage-slider-shell {
+    width: 100%;
 }
 
 /* Unwrapped map edge feedback (white glow like main menu hover) */
@@ -1187,12 +1072,6 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn [id$="Icon"] {
             margin: 0 !important;
         }
-    }
-
-    body.map-view-enabled .dock-globe-rail--right > .globe-control-btn#autoRotateToggle {
-        display: none !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
     }
 
 /* Color Palette Button (bottom right) - now handled by .bottom-right-btn */

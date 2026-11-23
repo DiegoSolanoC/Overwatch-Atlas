@@ -95,6 +95,21 @@
     "dockNubArrowPx": 52,
     "atlasNewsWidthPx": 146,
     "atlasNewsHeightPx": 88,
-    "atlasNewsIconPct": 100
+    "atlasNewsIconPct": 100,
+    "worldFlankGapBorderPx": 18,
+    "worldFlankPairGapPx": 8,
+    "worldFlankOffsetYPx": 0,
+    "worldFlankIconPx": 52,
+    "worldFlankFontPx": 18,
+    "worldZoomStackGapPx": 28,
+    "worldZoomLiftPx": 10,
+    "worldResetMinHeightPx": 48,
+    "worldResetFontPx": 16,
+    "worldResetPadXPx": 28,
+    "worldZoomThumbPx": 52,
+    "worldZoomTrackHPx": 14,
+    "worldZoomTrackBorderPx": 2,
+    "worldZoomSliderWidthPct": 100,
+    "worldSunSliderWidthPct": 100
   }
 }

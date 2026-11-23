@@ -1,31 +1,24 @@
 /**
- * WorldviewZoomControls — wires the floating zoom in / reset / out buttons.
+ * WorldviewZoomControls — stylized zoom slider + reset at dock center-top.
  *
- * The buttons delegate to whichever mode is currently active:
- *   • Codex mode   → `window.CodexCanvasService.{zoomIn,resetView,zoomOut}`
- *   • Globe mode   → `window.globeController.interactionController.{zoomIn,resetToDefault,zoomOut}`
+ * Delegates to whichever mode is active:
+ *   • Codex mode   → `window.CodexCanvasService`
+ *   • Globe/map    → `window.globeController.interactionController`
  *
- * Visibility: shown only in Codex or loaded Worldview (globe/map), not on the main
- * menu or Data Archive. Archive is detected via persisted mode + story viewer shell.
- *
- * Lives in `world/worldview-controls-ui/runtime/` because the controls are owned by the
- * world/codex modes — AppInitializer only kicks the setup off at boot time.
+ * Hidden +/- buttons remain in the DOM for keyboard shortcuts.
  */
 
 import { ATLAS_MODE, isAtlasMode } from '../../../universal-features/atlas-mode-runtime/atlasModes.js';
 import { getCurrentModeOrMenu } from '../../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
 import { eventsPanelMountedInStoryArchive } from '../../../data-workshop/archive-support/ArchiveEnvironmentChecks.js';
+import { installStageSliderNub } from './stageSliderNub.js';
+
+const ZOOM_NUB_ICON = 'src/assets/images/Icons/Utility%20Icons/Zoom%20Icon.png';
 
 let zoomControlsLifecycleInitialized = false;
 let waitingForGlobeReady = false;
+let sliderSyncPaused = false;
 
-/**
- * The globe controller's `interactionController` is what powers the zoom
- * buttons in worldview mode. It only appears once the globe finishes
- * loading, which can happen after `setupZoomControls()` first runs at boot
- * time. These constants drive a short polling loop that re-runs setup once
- * the controller shows up so the buttons start working without a refresh.
- */
 const GLOBE_READY_POLL_INTERVAL_MS = 500;
 const GLOBE_READY_POLL_TIMEOUT_MS = 10_000;
 
@@ -54,7 +47,6 @@ function isCodexModeActive() {
     return typeof document !== 'undefined' && document.body.classList.contains('codex-mode-active');
 }
 
-/** Data Archive / story viewer — zoom is for panning the globe or codex board only. */
 function isDataArchiveActive() {
     if (isAtlasMode(getCurrentModeOrMenu(), ATLAS_MODE.DATA_WORKSHOP)) return true;
     const story = document.getElementById('storyViewerContainer');
@@ -67,6 +59,7 @@ function getZoomControlsElements() {
         zoomInBtn: document.getElementById('zoomInBtn'),
         zoomResetBtn: document.getElementById('zoomResetBtn'),
         zoomOutBtn: document.getElementById('zoomOutBtn'),
+        zoomSlider: document.getElementById('zoomSlider'),
         zoomControls: document.getElementById('zoomControls')
     };
 }
@@ -81,6 +74,39 @@ function isMenuVisible() {
     return parseFloat(cs.opacity) > 0;
 }
 
+function readActiveZoomNormalized() {
+    if (isCodexModeActive()) {
+        const cx = window.CodexCanvasService;
+        if (cx && typeof cx.getZoomNormalized === 'function') return cx.getZoomNormalized();
+        return 0;
+    }
+    const ic = window.globeController?.interactionController;
+    if (ic && typeof ic.getZoomNormalized === 'function') return ic.getZoomNormalized();
+    return 0;
+}
+
+function writeActiveZoomNormalized(t) {
+    if (isCodexModeActive()) {
+        const cx = window.CodexCanvasService;
+        if (cx && typeof cx.setZoomNormalized === 'function') cx.setZoomNormalized(t);
+        return;
+    }
+    const ic = window.globeController?.interactionController;
+    if (ic && typeof ic.setZoomNormalized === 'function') ic.setZoomNormalized(t);
+}
+
+function syncSliderFromScene(zoomSlider) {
+    if (!zoomSlider || sliderSyncPaused) return;
+    const t = readActiveZoomNormalized();
+    const next = Math.round(Math.max(0, Math.min(1, t)) * 100);
+    if (Number(zoomSlider.value) !== next) {
+        zoomSlider.value = String(next);
+    }
+    if (typeof zoomSlider.__stageNubSync === 'function') {
+        zoomSlider.__stageNubSync();
+    }
+}
+
 function buildVisibilityUpdater(zoomControls) {
     return function updateZoomControlsVisibility() {
         if (!zoomControls) return;
@@ -92,23 +118,28 @@ function buildVisibilityUpdater(zoomControls) {
             zoomControls.classList.remove('visible');
         } else if (codexActive || (globeLoaded && !isMenuVisible())) {
             zoomControls.classList.add('visible');
+            const { zoomSlider } = getZoomControlsElements();
+            syncSliderFromScene(zoomSlider);
         } else {
             zoomControls.classList.remove('visible');
         }
     };
 }
 
-function bindZoomButtonHandlers(zoomInBtn, zoomResetBtn, zoomOutBtn) {
-    zoomInBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (isCodexModeActive()) {
-            const cx = window.CodexCanvasService;
-            if (cx && typeof cx.zoomIn === 'function') cx.zoomIn();
-        } else if (window.globeController && window.globeController.interactionController) {
-            window.globeController.interactionController.zoomIn();
-        }
-    });
+function bindZoomButtonHandlers(zoomInBtn, zoomResetBtn, zoomOutBtn, zoomSlider) {
+    if (zoomInBtn) {
+        zoomInBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (isCodexModeActive()) {
+                const cx = window.CodexCanvasService;
+                if (cx && typeof cx.zoomIn === 'function') cx.zoomIn();
+            } else if (window.globeController?.interactionController) {
+                window.globeController.interactionController.zoomIn();
+            }
+            syncSliderFromScene(zoomSlider);
+        });
+    }
 
     if (zoomResetBtn) {
         zoomResetBtn.addEventListener('click', (e) => {
@@ -117,22 +148,43 @@ function bindZoomButtonHandlers(zoomInBtn, zoomResetBtn, zoomOutBtn) {
             if (isCodexModeActive()) {
                 const cx = window.CodexCanvasService;
                 if (cx && typeof cx.resetView === 'function') cx.resetView();
-            } else if (window.globeController && window.globeController.interactionController) {
+            } else if (window.globeController?.interactionController) {
                 window.globeController.interactionController.resetToDefault();
             }
+            syncSliderFromScene(zoomSlider);
         });
     }
 
-    zoomOutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (isCodexModeActive()) {
-            const cx = window.CodexCanvasService;
-            if (cx && typeof cx.zoomOut === 'function') cx.zoomOut();
-        } else if (window.globeController && window.globeController.interactionController) {
-            window.globeController.interactionController.zoomOut();
-        }
-    });
+    if (zoomOutBtn) {
+        zoomOutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (isCodexModeActive()) {
+                const cx = window.CodexCanvasService;
+                if (cx && typeof cx.zoomOut === 'function') cx.zoomOut();
+            } else if (window.globeController?.interactionController) {
+                window.globeController.interactionController.zoomOut();
+            }
+            syncSliderFromScene(zoomSlider);
+        });
+    }
+
+    if (zoomSlider) {
+        const applyFromSlider = () => {
+            const t = Number(zoomSlider.value) / 100;
+            writeActiveZoomNormalized(t);
+        };
+        zoomSlider.addEventListener('pointerdown', () => { sliderSyncPaused = true; });
+        zoomSlider.addEventListener('pointerup', () => { sliderSyncPaused = false; syncSliderFromScene(zoomSlider); });
+        zoomSlider.addEventListener('pointercancel', () => { sliderSyncPaused = false; });
+        zoomSlider.addEventListener('input', applyFromSlider);
+        zoomSlider.addEventListener('change', () => {
+            sliderSyncPaused = false;
+            applyFromSlider();
+        });
+    }
+
+    window.addEventListener('atlas-zoom-changed', () => syncSliderFromScene(zoomSlider));
 }
 
 function observeVisibilityChanges(updateZoomControlsVisibility) {
@@ -154,32 +206,31 @@ function observeVisibilityChanges(updateZoomControlsVisibility) {
     }
     window.addEventListener('appmodechange', updateZoomControlsVisibility);
 
-    // Belt-and-suspenders: poll every 500ms in case the observers miss a change
-    // (e.g. a class flip that happens before they're attached).
     const POLL_VISIBILITY_INTERVAL_MS = 500;
     setInterval(updateZoomControlsVisibility, POLL_VISIBILITY_INTERVAL_MS);
 }
 
 export function setupZoomControls() {
-    const { zoomInBtn, zoomResetBtn, zoomOutBtn, zoomControls } = getZoomControlsElements();
+    const { zoomInBtn, zoomResetBtn, zoomOutBtn, zoomSlider, zoomControls } = getZoomControlsElements();
 
-    if (zoomInBtn && zoomOutBtn && !zoomControlsLifecycleInitialized) {
+    if ((zoomSlider || (zoomInBtn && zoomOutBtn)) && !zoomControlsLifecycleInitialized) {
         zoomControlsLifecycleInitialized = true;
 
         const updateZoomControlsVisibility = buildVisibilityUpdater(zoomControls);
 
-        bindZoomButtonHandlers(zoomInBtn, zoomResetBtn, zoomOutBtn);
+        bindZoomButtonHandlers(zoomInBtn, zoomResetBtn, zoomOutBtn, zoomSlider);
         observeVisibilityChanges(updateZoomControlsVisibility);
     }
 
-    // Always run an immediate update so the controls match current state
-    // even on the second invocation (when the lifecycle is already wired).
+    if (zoomSlider) {
+        const shell = zoomSlider.closest('.stage-slider-shell') || zoomSlider.parentElement;
+        installStageSliderNub(shell, zoomSlider, ZOOM_NUB_ICON);
+    }
+
     const updateNow = buildVisibilityUpdater(zoomControls);
     updateNow();
+    syncSliderFromScene(zoomSlider);
 
-    // If the globe's interaction controller hasn't appeared yet, schedule
-    // a re-setup for when it does. Caller (e.g. AppInitializer at boot)
-    // doesn't have to know about this — the service owns its own readiness.
     if (!isGlobeInteractionReady()) {
         pollUntilGlobeReadyThenRebind();
     }

@@ -1756,18 +1756,42 @@ body > .header-badge-tweaker-panel {
 }
 
 /*
- * Whenever Tweaks is open, side panels + dock (trap protrudes into main space)
- * paint above the overlay so live edits stay visible.
+ * Tweaks open: stacking only (no geometry). Must beat
+ * `body:has(#paginationDock) .pagination-dock { z-index: 2200 !important }`
+ * (:has(#id) out-specs a plain .ui-tweaks-open rule).
+ * Editor 2400 < panels 2500 < dock 2600 < zoom 2620.
  */
+body.ui-tweaks-open:has(#paginationDock) .event-slide,
+body.ui-tweaks-open:has(#paginationDock) .filters-panel,
+body.ui-tweaks-open:has(#paginationDock) .music-panel,
+body.ui-tweaks-open:has(#paginationDock) .events-manage-panel,
 body.ui-tweaks-open .event-slide,
 body.ui-tweaks-open .filters-panel,
 body.ui-tweaks-open .music-panel,
-body.ui-tweaks-open .events-manage-panel,
-body.ui-tweaks-open #paginationDock,
-body.ui-tweaks-open .pagination-dock,
-body.ui-tweaks-open .pagination-dock-collapse-strip,
-body.ui-tweaks-open .pagination-dock-top-cap-row {
+body.ui-tweaks-open .events-manage-panel {
     z-index: 2500 !important;
+}
+
+body.ui-tweaks-open:has(#paginationDock) #paginationDock.pagination-dock,
+body.ui-tweaks-open:has(#paginationDock) .pagination-dock,
+body.ui-tweaks-open:has(#paginationDock) .pagination-dock-collapse-strip,
+body.ui-tweaks-open:has(#paginationDock) .pagination-dock-top-cap-row {
+    z-index: 2600 !important;
+}
+
+body.ui-tweaks-open:has(#paginationDock) .pagination-dock-collapse-strip {
+    z-index: 2605 !important;
+}
+
+body.ui-tweaks-open:has(#paginationDock) .pagination-dock-top-cap-row {
+    z-index: 2610 !important;
+}
+
+body.ui-tweaks-open:has(#paginationDock) #zoomControls.zoom-controls,
+body.ui-tweaks-open:has(#paginationDock) .zoom-controls,
+body.ui-tweaks-open #zoomControls.zoom-controls,
+body.ui-tweaks-open .zoom-controls {
+    z-index: 2620 !important;
 }
 
 body.ui-tweaks-side-panels .header-badge-tweaker__grid {

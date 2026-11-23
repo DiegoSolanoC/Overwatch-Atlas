@@ -13,6 +13,7 @@ export class WorldviewLocationCatalog {
         this.trainConnections = [];
         this.secondaryConnections = [];
         this.seaportConnections = [];
+        this.airportConnections = [];
         this.loaded = false;
         this.currentEventPage = 1; // Current page (1-indexed)
         this.eventsPerPage = 10; // Number of events per page
@@ -59,6 +60,7 @@ export class WorldviewLocationCatalog {
             this.trainConnections = connectionsData.trainConnections || [];
             this.secondaryConnections = connectionsData.secondaryConnections || [];
             this.seaportConnections = connectionsData.seaportConnections || [];
+            this.airportConnections = connectionsData.airportConnections || [];
 
             // Filter out seaports with 0 connections (for transport system only)
             this.filterSeaports();
@@ -253,6 +255,14 @@ export class WorldviewLocationCatalog {
      */
     getSeaportConnections() {
         return this.seaportConnections;
+    }
+
+    /**
+     * Get airport / flight corridor connections
+     * @returns {Array}
+     */
+    getAirportConnections() {
+        return this.airportConnections;
     }
 }
 

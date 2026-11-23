@@ -19,6 +19,7 @@ import {
 } from '../../worldview-shared-assets/debug/WorldviewDevSunControl.js';
 import { WorldviewMapLiteLayer } from '../../worldview-map-2d/WorldviewMapLiteLayer.js';
 import { applyWebglLayersHiddenForActiveMap, ensureGlobeWorldBuilt } from './WorldviewGlobeBootstrap.js';
+import { getGlobeQualitySnapshot } from '../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 export class WorldviewGlobeController {
     constructor() {
         // Initialize models
@@ -148,6 +149,13 @@ export class WorldviewGlobeController {
             this._globeResizeObserver = new ResizeObserver(() => {
                 if (this.isCleanedUp) return;
                 this._globeLayoutDirty = true;
+                /* Map mode has no continuous animate() loop — sync while dock bottom eases. */
+                const mapOn = this.sceneModel.getMapViewEnabled?.()
+                    ? this.sceneModel.getMapViewEnabled()
+                    : !!this.sceneModel.isMapView;
+                if (mapOn && this.map2dLite?.isVisible?.()) {
+                    this.requestMapLiteSync();
+                }
             });
             this._globeResizeObserver.observe(container);
             const mainContent = document.getElementById('content');
@@ -155,6 +163,12 @@ export class WorldviewGlobeController {
                 this._globeResizeObserver.observe(mainContent);
             }
         }
+
+        this._onPaginationDockCollapse = () => {
+            if (this.isCleanedUp) return;
+            this.requestStageLayoutSync();
+        };
+        window.addEventListener('pagination-dock-collapse', this._onPaginationDockCollapse);
 
         this.setupPageVisibilityTracking();
 
@@ -244,7 +258,8 @@ export class WorldviewGlobeController {
         if (!mapOn || !this.map2dLite?.isVisible?.() || this.isCleanedUp) {
             return;
         }
-        if (this._globeLayoutDirty && this.interactionController) {
+        /* Same rule as animate(): never setSize while a panel dock is still easing. */
+        if (this._globeLayoutDirty && this.interactionController && this._stageLayoutSyncTimer == null) {
             this._globeLayoutDirty = false;
             this.interactionController.onWindowResize();
         }
@@ -272,40 +287,48 @@ export class WorldviewGlobeController {
 
     /**
      * Resize globe canvas / map viewport after layout-container flex panels animate.
-     * Coalesced to rAF + a post-transition flush (ResizeObserver handles frames in between).
+     * WebGL setSize only runs on the post-transition settle flush — intermediate frames
+     * keep the old buffer and let CSS layout move around it (avoids MSAA realloc hitches).
      */
     requestStageLayoutSync() {
         if (this.isCleanedUp) return;
 
-        const flush = () => {
-            this._globeLayoutDirty = true;
-            const mapOn = this.sceneModel.getMapViewEnabled?.()
-                ? this.sceneModel.getMapViewEnabled()
-                : !!this.sceneModel.isMapView;
-            if (mapOn && this.map2dLite?.isVisible?.()) {
-                this.syncMapLiteWebGlImmediate();
-            } else if (this.interactionController) {
-                this._globeLayoutDirty = false;
-                this.interactionController.onWindowResize();
-            }
-        };
-
         this._globeLayoutDirty = true;
 
-        if (this._stageLayoutSyncRafId == null) {
-            this._stageLayoutSyncRafId = requestAnimationFrame(() => {
-                this._stageLayoutSyncRafId = null;
-                flush();
-            });
+        /* DOM map can reflow without touching the drawing buffer. */
+        const mapOn = this.sceneModel.getMapViewEnabled?.()
+            ? this.sceneModel.getMapViewEnabled()
+            : !!this.sceneModel.isMapView;
+        if (mapOn && this.map2dLite?.isVisible?.()) {
+            if (this._stageLayoutSyncRafId == null) {
+                this._stageLayoutSyncRafId = requestAnimationFrame(() => {
+                    this._stageLayoutSyncRafId = null;
+                    if (this.isCleanedUp) return;
+                    this.map2dLite?.onContainerResize?.();
+                    this.uiView?.updateLabelPosition?.();
+                    this.interactionController?.updateMarkerHoverCallout?.();
+                });
+            }
         }
 
         if (this._stageLayoutSyncTimer != null) {
             clearTimeout(this._stageLayoutSyncTimer);
         }
+        /* Match --pagination-dock-transition-duration (~0.42s) + a little settle. */
         this._stageLayoutSyncTimer = setTimeout(() => {
             this._stageLayoutSyncTimer = null;
-            flush();
-        }, 400);
+            if (this.isCleanedUp) return;
+            this._globeLayoutDirty = true;
+            const stillMap = this.sceneModel.getMapViewEnabled?.()
+                ? this.sceneModel.getMapViewEnabled()
+                : !!this.sceneModel.isMapView;
+            if (stillMap && this.map2dLite?.isVisible?.()) {
+                this.syncMapLiteWebGlImmediate();
+            } else if (this.interactionController) {
+                this._globeLayoutDirty = false;
+                this.interactionController.onWindowResize();
+            }
+        }, 480);
     }
 
     /**
@@ -347,7 +370,11 @@ export class WorldviewGlobeController {
         
         this.lastFrameTime = currentTime;
 
-        if (this._globeLayoutDirty && this.interactionController) {
+        /*
+         * While a panel/dock layout is easing, ResizeObserver fires every frame.
+         * Defer WebGL setSize until the settle flush — avoids MSAA buffer realloc hitches.
+         */
+        if (this._globeLayoutDirty && this.interactionController && this._stageLayoutSyncTimer == null) {
             this._globeLayoutDirty = false;
             this.interactionController.onWindowResize();
         }
@@ -355,9 +382,13 @@ export class WorldviewGlobeController {
         // Update Moon/Mars plane positions to stay on camera's right side
         this.planeManager.updatePlanePositions(camera);
 
+        const quality = getGlobeQualitySnapshot();
+
         if (!isMapView) {
             // Auto-rotate - if viewing event, recenter to it; otherwise normal rotation
-            this.autoRotateController.updateAutoRotate(globe, camera);
+            if (quality.autoRotateAllowed !== false) {
+                this.autoRotateController.updateAutoRotate(globe, camera);
+            }
 
             // Apply rotation momentum
             const velocity = this.sceneModel.getRotationVelocity();
@@ -406,7 +437,11 @@ export class WorldviewGlobeController {
 
         // Globe-only VFX (hidden in map view — skip uniform updates / logic)
         if (!isMapView) {
-            if (this.globeView && typeof this.globeView.updateShootingStars === 'function') {
+            if (
+                quality.shootingStarsEnabled &&
+                this.globeView &&
+                typeof this.globeView.updateShootingStars === 'function'
+            ) {
                 this.globeView.updateShootingStars(deltaTime / 1000);
             }
 
@@ -416,7 +451,11 @@ export class WorldviewGlobeController {
         }
 
         // Pattern wave animation (works for both globe and map view)
-        if (this.globeView && typeof this.globeView.updatePatternWave === 'function') {
+        if (
+            quality.patternWaveEnabled &&
+            this.globeView &&
+            typeof this.globeView.updatePatternWave === 'function'
+        ) {
             this.globeView.updatePatternWave(deltaTime / 1000);
         }
         
@@ -654,6 +693,11 @@ export class WorldviewGlobeController {
         if (this._globeResizeObserver) {
             this._globeResizeObserver.disconnect();
             this._globeResizeObserver = null;
+        }
+
+        if (this._onPaginationDockCollapse) {
+            window.removeEventListener('pagination-dock-collapse', this._onPaginationDockCollapse);
+            this._onPaginationDockCollapse = null;
         }
         
         // Cancel animation frame

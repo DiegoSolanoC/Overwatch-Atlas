@@ -13,6 +13,74 @@
         --header-height: calc(72px + env(safe-area-inset-top));
     }
 
+    /* Trap flanks empty on mobile — Vehicles/Weather/Lighting/Rotation → #dockGlobeRailLeft */
+    body:has(#paginationDock) .dock-trap-flank {
+        display: none !important;
+    }
+
+    /* Dev-only route toggles — desktop only */
+    #dockGlobeRailLeft > #planeRoutesToggle,
+    #dockGlobeRailLeft > #boatRoutesToggle {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /*
+     * Shared mobile: white flank plates (skewed). Map/Globe uses inverse trap in portrait.
+     */
+    #dockGlobeRailLeft > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) {
+        --dock-trap-btn-skew: 11deg;
+        appearance: none;
+        position: relative !important;
+        inset: auto !important;
+        flex: 0 0 auto !important;
+        border: none !important;
+        border-radius: 12px !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #000 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        margin: 0 !important;
+        font-family: var(--font-control-bold, var(--font-default));
+        font-weight: 700;
+        text-transform: uppercase;
+        transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+        pointer-events: auto;
+        z-index: 6;
+    }
+
+    #dockGlobeRailLeft > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) > * {
+        transform: skewX(var(--dock-trap-btn-skew)) !important;
+    }
+
+    #dockGlobeRailLeft > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) img {
+        transform: none !important;
+        filter: brightness(0) !important;
+        object-fit: contain !important;
+    }
+
+    #dockGlobeRailLeft > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) .header-hub-btn-label,
+    #dockGlobeRailLeft > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) .globe-control-btn__label {
+        color: #000 !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+    }
+
+    #dockGlobeRailLeft > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle).toggle-off {
+        opacity: 0.45;
+    }
+
     header {
         padding-top: env(safe-area-inset-top);
     }
@@ -146,8 +214,6 @@
             right: auto !important;
             transform: translateX(-50%) !important;
             z-index: 280;
-            display: flex !important;
-            flex-direction: row !important;
             width: calc(
                 100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
                     clamp(8px, 2vw, 16px)
@@ -159,9 +225,6 @@
             min-width: 0 !important;
             padding-inline: clamp(2px, 0.8vw, 6px);
             box-sizing: border-box;
-            flex-wrap: nowrap !important;
-            justify-content: stretch !important;
-            gap: clamp(3px, 0.8vw, 6px) !important;
             transition:
                 top var(--pagination-dock-transition-duration, 0.42s)
                     var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
@@ -180,6 +243,9 @@
         body:has(#eventSlide.open) #dockGlobeRailLeft > .globe-control-btn.dock-globe-rail__btn,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #mapViewToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #autoRotateToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #hyperloopToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #weatherEffectsToggle,
+        body:has(#eventSlide.open) #dockGlobeRailLeft > #lightingToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #dialogueTheaterEntryToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #codexToggleViewDev,
@@ -197,16 +263,19 @@
         }
 
         /*
-         * World / Codex tool chips — squared-off (not wide Codex bars).
-         * More gap under header; larger icon + label; same chip proportions.
+         * World tool chips — Map centered under header badge; 4 tools on row below.
+         * Flights / Sea lanes hidden (dev-only).
          */
         body {
-            --mode-dock-rail-height: 84px;
-            --mode-dock-rail-top: calc(var(--header-height) + clamp(14px, 2.6vh, 22px));
+            --mode-dock-rail-height: 80px;
+            --mode-dock-main-chip-h: clamp(88px, 24vw, 100px);
+            --mode-dock-rail-top: calc(var(--header-height) + clamp(6px, 1.2vh, 10px));
             --mode-dock-rail-clearance: calc(
-                var(--mode-dock-rail-top) + var(--mode-dock-rail-height) + clamp(8px, 1.4vh, 14px)
+                var(--mode-dock-rail-top) + var(--mode-dock-main-chip-h) +
+                    var(--mode-dock-rail-height) + clamp(14px, 2.2vh, 22px)
             );
-            --mode-dock-chip-max: clamp(64px, 18vw, 78px);
+            --mode-dock-chip-max: clamp(68px, 18vw, 82px);
+            --mode-dock-main-chip: clamp(84px, 22vw, 104px);
             --mode-dock-above-trap-bottom: calc(
                 var(--footer-height, 60px)
                 + var(--pagination-dock-height, 200px)
@@ -217,22 +286,28 @@
 
         #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
         #dockGlobeRailLeft.dock-globe-rail {
-            width: auto !important;
+            display: grid !important;
+            grid-template-columns: repeat(4, minmax(0, auto));
+            justify-content: center !important;
+            justify-items: center;
+            align-items: center !important;
+            column-gap: clamp(6px, 1.6vw, 10px) !important;
+            row-gap: clamp(8px, 1.6vh, 12px) !important;
+            width: 100% !important;
             max-width: calc(
                 100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
                     clamp(8px, 2vw, 16px)
             ) !important;
-            justify-content: center !important;
-            gap: clamp(5px, 1.4vw, 10px) !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+        /* Codex / Story / Gallery mode chips (non-Map) keep blue dock style sizing */
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn:not(#mapViewToggle) {
             flex: 0 0 auto !important;
             width: var(--mode-dock-chip-max) !important;
             min-width: var(--mode-dock-chip-max) !important;
             max-width: var(--mode-dock-chip-max) !important;
-            height: var(--mode-dock-rail-height, 84px) !important;
-            min-height: var(--mode-dock-rail-height, 84px) !important;
+            height: var(--mode-dock-rail-height, 80px) !important;
+            min-height: var(--mode-dock-rail-height, 80px) !important;
             padding: 8px 4px !important;
             gap: 6px !important;
             font-size: clamp(11px, 3vw, 13px) !important;
@@ -245,8 +320,8 @@
             flex-shrink: 0 !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
-        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label {
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn:not(#mapViewToggle) .header-hub-btn-label,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn:not(#mapViewToggle) .globe-control-btn__label {
             display: block !important;
             width: 100% !important;
             max-width: 100% !important;
@@ -263,13 +338,240 @@
             hyphens: auto;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn [id$='Icon'] {
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn:not(#mapViewToggle) [id$='Icon'] {
             width: clamp(32px, 8.5vw, 40px) !important;
             height: clamp(32px, 8.5vw, 40px) !important;
             min-width: clamp(32px, 8.5vw, 40px) !important;
             min-height: clamp(32px, 8.5vw, 40px) !important;
             margin-right: 0 !important;
             flex-shrink: 0;
+        }
+
+        /*
+         * Map/Globe (mobile portrait) — white skewed chip matching the four tools,
+         * larger + alone on first row under the badge. Desktop inverse-trap is separate.
+         */
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn {
+            --dock-trap-btn-skew: 11deg;
+            appearance: none;
+            position: relative !important;
+            inset: auto !important;
+            grid-column: 1 / -1;
+            justify-self: center;
+            flex: 0 0 auto !important;
+            width: var(--mode-dock-main-chip) !important;
+            min-width: var(--mode-dock-main-chip) !important;
+            max-width: var(--mode-dock-main-chip) !important;
+            height: var(--mode-dock-main-chip-h) !important;
+            min-height: var(--mode-dock-main-chip-h) !important;
+            margin: 0 !important;
+            padding: 10px 8px !important;
+            border: none !important;
+            border-radius: 14px !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #000 !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.36) !important;
+            filter: none !important;
+            clip-path: none !important;
+            display: inline-flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            font-size: clamp(12px, 3.1vw, 14px) !important;
+            line-height: 1.05 !important;
+            letter-spacing: 0.02em;
+            font-family: var(--font-control-bold, var(--font-default));
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            pointer-events: auto;
+            overflow: visible !important;
+            flex-shrink: 0 !important;
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+            transform-origin: center center;
+            z-index: 7;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn > * {
+            transform: skewX(var(--dock-trap-btn-skew)) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn img {
+            transform: none !important;
+            filter: brightness(0) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn:hover {
+            background: #f2f2f2 !important;
+            background-color: #f2f2f2 !important;
+            filter: brightness(0.97);
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn [id$='Icon'] {
+            width: clamp(38px, 10vw, 48px) !important;
+            height: clamp(38px, 10vw, 48px) !important;
+            min-width: clamp(38px, 10vw, 48px) !important;
+            min-height: clamp(38px, 10vw, 48px) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn [id$='Icon'] img,
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn img {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            object-fit: contain !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn .header-hub-btn-label,
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn .globe-control-btn__label {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            color: #000 !important;
+            font-size: inherit !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn.toggle-off {
+            opacity: 0.45;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18) !important;
+            filter: none !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn.active {
+            box-shadow: 0 3px 16px rgba(0, 0, 0, 0.4) !important;
+            filter: none !important;
+        }
+
+        /*
+         * Vehicles / Weather / Lighting / Rotation — white flank plates, full labels.
+         * Exclude #mapViewToggle (styled above as the larger primary chip).
+         */
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) {
+            --dock-trap-btn-skew: 11deg;
+            appearance: none;
+            position: relative !important;
+            inset: auto !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            flex: 0 0 auto !important;
+            width: var(--mode-dock-chip-max) !important;
+            min-width: var(--mode-dock-chip-max) !important;
+            max-width: var(--mode-dock-chip-max) !important;
+            height: var(--mode-dock-rail-height, 80px) !important;
+            min-height: var(--mode-dock-rail-height, 80px) !important;
+            max-height: none !important;
+            margin: 0 !important;
+            padding: 8px 4px !important;
+            border: none !important;
+            border-radius: 12px !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #000 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28) !important;
+            display: inline-flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 5px !important;
+            font-size: clamp(9px, 2.35vw, 11px) !important;
+            line-height: 1.05 !important;
+            letter-spacing: 0.01em;
+            font-family: var(--font-control-bold, var(--font-default));
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            pointer-events: auto;
+            overflow: visible !important;
+            flex-shrink: 0 !important;
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+            transform-origin: center center;
+            z-index: 6;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) > * {
+            transform: skewX(var(--dock-trap-btn-skew)) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) img {
+            transform: none !important;
+            filter: brightness(0) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):hover {
+            background: #f2f2f2 !important;
+            background-color: #f2f2f2 !important;
+            filter: brightness(0.97);
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) [id$='Icon'] {
+            width: clamp(28px, 7.5vw, 36px) !important;
+            height: clamp(28px, 7.5vw, 36px) !important;
+            min-width: clamp(28px, 7.5vw, 36px) !important;
+            min-height: clamp(28px, 7.5vw, 36px) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) [id$='Icon'] img,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) img {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            object-fit: contain !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) .header-hub-btn-label,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle) .globe-control-btn__label {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 1px !important;
+            color: #000 !important;
+            font-size: inherit !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.01em;
+            line-height: 1.1;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle).toggle-off {
+            opacity: 0.45;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18) !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle).active {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.34) !important;
         }
 
         /* Codex portrait: Link + Packets only — same squared chips as World */

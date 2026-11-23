@@ -27,6 +27,8 @@ if (typeof window !== 'undefined') {
         getCodexLayoutDirty: () => s.codexLayoutDirty,
         zoomIn: () => api.codexZoomInFromUi(),
         zoomOut: () => api.codexZoomOutFromUi(),
+        getZoomNormalized: () => api.getCodexZoomNormalized?.() ?? 0,
+        setZoomNormalized: (t) => api.setCodexZoomNormalized?.(t),
         resetView: () => api.codexResetView(),
         selectAll: () => api.selectAllCodexNodes(),
         applyCodexEventThumbnailFilterHover: (...args) => api.applyCodexEventThumbnailFilterHover(...args),

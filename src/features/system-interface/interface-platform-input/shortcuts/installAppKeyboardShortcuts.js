@@ -236,6 +236,20 @@ function handleLetterToggle(lower, e) {
         return true;
     }
     if (lower === 'r') { if (clickIfEnabled('autoRotateToggle')) consumeEvent(e); return true; }
+    if (lower === 'q') {
+        if (typeof window.cycleGlobeQuality === 'function') {
+            const snap = window.cycleGlobeQuality();
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus(`Globe quality: ${snap.tier}`, 'info');
+            } else {
+                console.info('[globe] quality →', snap.tier);
+            }
+            /* Geometry/texture tier applies on next globe rebuild; live caps/VFX update immediately. */
+            window.globeController?.sceneModel?.applyRendererPixelRatioCap?.();
+            consumeEvent(e);
+        }
+        return true;
+    }
     if (lower === 'z') {
         const pdc = window.PaginationDockCollapse;
         if (pdc && typeof pdc.toggle === 'function' && pdc.toggle()) consumeEvent(e);

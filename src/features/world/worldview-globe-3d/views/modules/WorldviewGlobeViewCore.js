@@ -7,9 +7,10 @@ import { mixin as globeWorldMarkersMixin } from './WorldviewGlobeWorldMarkersMix
 import { configureTexture, loadTexture, changePlaneTexture } from '../helpers/WorldviewGlobeTextures.js';
 import { applyCelestialMaterialTint } from '../helpers/WorldviewGlobePlanes.js';
 import { createGlobeMesh, setupCelestialPlanes, createGlobeRimGlowSprite, createGlobeAuroraShell, createGlobeCloudLayer, GLOBE_CLOUD_ATLAS_VARIANTS, applyGlobeCloudPaletteTint, rerandomizeGlobeCloudAtlas } from '../helpers/WorldviewGlobeInit.js';
-import { createGlobePatternOverlay, getPaletteAccentHex, updatePatternWave } from '../helpers/WorldviewPatternOverlay.js';
+import { createGlobePatternOverlay, getPaletteAccentHex, getPalettePatternPath, updatePatternWave } from '../helpers/WorldviewPatternOverlay.js';
 import { addSunBackground, assignEarthLightLayer, syncAtmosphereSunDirUniforms } from '../helpers/WorldviewSunBackground.js';
 import { EARTH_POLAR_TO_EQUATORIAL_RATIO, EARTH_OBLIQUITY_DEG } from '../../../worldview-shared-assets/constants/WorldviewPhysicalConstants.js';
+import { getGlobeQualitySnapshot } from '../../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 // THREE is loaded globally via script tag in index.html
 
 /** Globe cloud / weather baseline opacity */
@@ -51,6 +52,12 @@ export class WorldviewGlobeView {
         this._earthCityLights = null;
         /** Warm point lights at random city-light sites (same layer as Earth). */
         this._earthCityAccentLights = null;
+
+        /** Palette earth crossfade (opacity tween). */
+        this._paletteFadeToken = 0;
+        this._paletteFadeRaf = null;
+        /** @type {THREE.Mesh|null} temporary earth overlay used during palette crossfade */
+        this._paletteEarthOverlay = null;
     }
 
     /**
@@ -75,16 +82,19 @@ export class WorldviewGlobeView {
         }
         
         const textureLoader = new THREE.TextureLoader();
+        const qualityEarly = getGlobeQualitySnapshot();
         
-        // Load normal map
+        // Load normal map (skip on low — Lambert path does not use it; saves ~VRAM)
         const normalMapPath = 'src/assets/images/Maps/Utility/MAP%20Normal.png';
-        const normalMap = loadTexture(
-            textureLoader,
-            normalMapPath,
-            renderer,
-            (texture) => console.log('Normal map loaded successfully'),
-            (err) => console.warn('Normal map not found, continuing without it:', err)
-        );
+        const normalMap = qualityEarly.earthUseStandardMaterial
+            ? loadTexture(
+                textureLoader,
+                normalMapPath,
+                renderer,
+                (texture) => console.log('Normal map loaded successfully'),
+                (err) => console.warn('Normal map not found, continuing without it:', err)
+            )
+            : null;
         
         // Create globe mesh
         const earthMesh = createGlobeMesh(
@@ -124,40 +134,48 @@ export class WorldviewGlobeView {
 
         const oblate = EARTH_POLAR_TO_EQUATORIAL_RATIO;
 
+        const quality = getGlobeQualitySnapshot();
+
         // Cloud albedo: random `Cloud Map #` atlas per load, ~50% opacity, palette-tinted like rim
-        const cloudTintHex = isGray ? 0xffffff : (isCrimson ? 0xff8a80 : (isNulled ? 0xd1b3ff : 0x6fd3ff));
-        const cloudLayer = createGlobeCloudLayer({
-            textureLoader,
-            renderer,
-            radius: 1.004,
-            opacity: 0.5,
-            tintHex: cloudTintHex,
-            cloudTextureVariants: GLOBE_CLOUD_ATLAS_VARIANTS
-        });
-        if (cloudLayer) {
-            this._cloudLayer = cloudLayer;
-            cloudLayer.scale.set(1, oblate, 1);
-            globe.add(cloudLayer);
+        if (quality.cloudsEnabled) {
+            const cloudTintHex = isGray ? 0xffffff : (isCrimson ? 0xff8a80 : (isNulled ? 0xd1b3ff : 0x6fd3ff));
+            const cloudLayer = createGlobeCloudLayer({
+                textureLoader,
+                renderer,
+                radius: 1.004,
+                opacity: 0.5,
+                tintHex: cloudTintHex,
+                cloudTextureVariants: GLOBE_CLOUD_ATLAS_VARIANTS
+            });
+            if (cloudLayer) {
+                this._cloudLayer = cloudLayer;
+                cloudLayer.scale.set(1, oblate, 1);
+                globe.add(cloudLayer);
+            }
         }
 
         // Pattern overlay on globe - tinted by palette (added AFTER clouds to sit on top)
-        const patternTint = getPaletteAccentHex(paletteKey);
-        const globePattern = createGlobePatternOverlay(textureLoader, renderer, patternTint, 0.3, paletteKey);
-        if (globePattern) {
-            this._globePatternOverlay = globePattern;
-            globePattern.scale.set(1, oblate, 1);
-            globe.add(globePattern);
+        if (quality.patternWaveEnabled) {
+            const patternTint = getPaletteAccentHex(paletteKey);
+            const globePattern = createGlobePatternOverlay(textureLoader, renderer, patternTint, 0.3, paletteKey);
+            if (globePattern) {
+                this._globePatternOverlay = globePattern;
+                globePattern.scale.set(1, oblate, 1);
+                globe.add(globePattern);
+            }
         }
 
         // Polar auroras (additive shell, latitudinal bands in object space — track real poles as globe spins)
-        const aurora = createGlobeAuroraShell({
-            uIntensity: isGray ? 0.34 : (isCrimson ? 0.38 : (isNulled ? 0.36 : 0.42))
-        });
-        if (aurora) {
-            this._auroraMesh = aurora;
-            aurora.scale.set(1, oblate, 1);
-            globe.add(aurora);
-            this._seedAuroraVeilAnimIfNeeded();
+        if (quality.auroraEnabled) {
+            const aurora = createGlobeAuroraShell({
+                uIntensity: isGray ? 0.34 : (isCrimson ? 0.38 : (isNulled ? 0.36 : 0.42))
+            });
+            if (aurora) {
+                this._auroraMesh = aurora;
+                aurora.scale.set(1, oblate, 1);
+                globe.add(aurora);
+                this._seedAuroraVeilAnimIfNeeded();
+            }
         }
 
         // Rim glow: blue → light blue, gray → white, crimson → warm red, nulled → soft violet.
@@ -181,6 +199,11 @@ export class WorldviewGlobeView {
 
         const earthAssembly = new THREE.Group();
         earthAssembly.name = 'earthAssembly';
+        /*
+         * Globe container fills under the dock overlay, so geometric center sits too low
+         * in the visible band. Nudge the assembly up so Earth reads centered above the dock.
+         */
+        earthAssembly.position.y = 0.28;
         earthAssembly.add(axialTiltFixed);
 
         this.sceneModel.setGlobe(globe);
@@ -204,35 +227,9 @@ export class WorldviewGlobeView {
         }
         this._syncAtmosphereSunDirection();
 
-        // Preload other Earth map textures for quick palette switching
-        const allMapTextures = [
-            'src/assets/images/Maps/Earth%20Textures/MAP Blue.png',
-            'src/assets/images/Maps/Earth%20Textures/MAP Black.png',
-            'src/assets/images/Maps/Earth%20Textures/MAP Crimson.png',
-            'src/assets/images/Maps/Earth%20Textures/MAP Nulled.png'
-        ];
-        allMapTextures.forEach((path) => {
-            if (path === initialTexturePath || this.textureCache.has(path)) return;
-            loadTexture(textureLoader, path, renderer, (texture) => {
-                this.textureCache.set(path, texture);
-            });
-        });
+        // Soft-warm other earth maps after first paint (idle) so palette swaps are ready sooner.
+        this._schedulePaletteTextureWarm(textureLoader, renderer, initialTexturePath);
 
-        // Preload pattern textures for quick palette switching
-        const allPatternTextures = [
-            'src/assets/images/Background%20Pattern/Pattern Blue.png',
-            'src/assets/images/Background%20Pattern/Pattern Dark.png',
-            'src/assets/images/Background%20Pattern/Pattern Crimson.png',
-            'src/assets/images/Background%20Pattern/Pattern Nulled.png'
-        ];
-        const currentPatternPath = window.GlobeInitHelpers?.getPalettePatternPath?.(paletteKey) || 'src/assets/images/Background%20Pattern/Pattern Blue.png';
-        allPatternTextures.forEach((path) => {
-            if (path === currentPatternPath || this.textureCache.has(path)) return;
-            loadTexture(textureLoader, path, renderer, (texture) => {
-                this.textureCache.set(path, texture);
-            });
-        });
-        
         // Create Moon and Mars planes
         setupCelestialPlanes({
             scene,
@@ -240,6 +237,151 @@ export class WorldviewGlobeView {
             renderer,
             palette: paletteKey,
             sceneModel: this.sceneModel
+        });
+    }
+
+    _gpuUploadTexture(texture) {
+        const renderer = this.sceneModel.getRenderer();
+        if (!renderer || !texture) return;
+        try {
+            if (typeof renderer.initTexture === 'function') renderer.initTexture(texture);
+        } catch (_) { /* ignore */ }
+    }
+
+    /**
+     * Prefetch earth (+ pattern) maps and upload to GPU — call when palette menu opens or after init.
+     * @param {string[]} [paths]
+     */
+    warmPaletteTextures(paths = null) {
+        const renderer = this.sceneModel.getRenderer();
+        if (!renderer) return;
+        const textureLoader = new THREE.TextureLoader();
+        const earthPaths = paths || [
+            'src/assets/images/Maps/Earth%20Textures/MAP Blue.png',
+            'src/assets/images/Maps/Earth%20Textures/MAP Black.png',
+            'src/assets/images/Maps/Earth%20Textures/MAP Crimson.png',
+            'src/assets/images/Maps/Earth%20Textures/MAP Nulled.png',
+            getPalettePatternPath('blue'),
+            getPalettePatternPath('gray'),
+            getPalettePatternPath('crimson'),
+            getPalettePatternPath('nulled')
+        ];
+        earthPaths.forEach((path) => {
+            if (this.textureCache.has(path)) {
+                this._gpuUploadTexture(this.textureCache.get(path));
+                return;
+            }
+            loadTexture(textureLoader, path, renderer, (texture) => {
+                this.textureCache.set(path, texture);
+                this._gpuUploadTexture(texture);
+            });
+        });
+    }
+
+    _schedulePaletteTextureWarm(textureLoader, renderer, skipPath) {
+        const rest = [
+            'src/assets/images/Maps/Earth%20Textures/MAP Blue.png',
+            'src/assets/images/Maps/Earth%20Textures/MAP Black.png',
+            'src/assets/images/Maps/Earth%20Textures/MAP Crimson.png',
+            'src/assets/images/Maps/Earth%20Textures/MAP Nulled.png',
+            getPalettePatternPath('blue'),
+            getPalettePatternPath('gray'),
+            getPalettePatternPath('crimson'),
+            getPalettePatternPath('nulled')
+        ].filter((p) => p !== skipPath);
+
+        // Parallel warm — palette swaps should not wait on a serial idle chain
+        rest.forEach((path) => {
+            if (this.textureCache.has(path)) {
+                this._gpuUploadTexture(this.textureCache.get(path));
+                return;
+            }
+            const kick = typeof requestIdleCallback === 'function'
+                ? (cb) => requestIdleCallback(cb, { timeout: 900 })
+                : (cb) => setTimeout(cb, 80);
+            kick(() => {
+                if (this.textureCache.has(path)) {
+                    this._gpuUploadTexture(this.textureCache.get(path));
+                    return;
+                }
+                loadTexture(textureLoader, path, renderer, (texture) => {
+                    this.textureCache.set(path, texture);
+                    this._gpuUploadTexture(texture);
+                });
+            });
+        });
+    }
+
+    _disposePaletteEarthOverlay() {
+        const overlay = this._paletteEarthOverlay;
+        if (!overlay) return;
+        if (overlay.parent) overlay.parent.remove(overlay);
+        if (overlay.material) {
+            // Keep shared map textures in the cache; only dispose the cloned material
+            overlay.material.map = null;
+            overlay.material.dispose?.();
+        }
+        this._paletteEarthOverlay = null;
+    }
+
+    _tweenMaterialOpacity(material, from, to, ms) {
+        return new Promise((resolve) => {
+            if (!material) {
+                resolve();
+                return;
+            }
+            const token = ++this._paletteFadeToken;
+            if (this._paletteFadeRaf) {
+                cancelAnimationFrame(this._paletteFadeRaf);
+                this._paletteFadeRaf = null;
+            }
+            material.transparent = true;
+            material.opacity = from;
+            material.needsUpdate = true;
+            const t0 = performance.now();
+            const step = (now) => {
+                if (token !== this._paletteFadeToken) {
+                    resolve();
+                    return;
+                }
+                const u = Math.min(1, (now - t0) / Math.max(1, ms));
+                const eased = u * u * (3 - 2 * u);
+                material.opacity = from + (to - from) * eased;
+                if (u < 1) {
+                    this._paletteFadeRaf = requestAnimationFrame(step);
+                } else {
+                    this._paletteFadeRaf = null;
+                    material.opacity = to;
+                    resolve();
+                }
+            };
+            this._paletteFadeRaf = requestAnimationFrame(step);
+        });
+    }
+
+    /** Independent opacity tween (does not cancel sibling palette FX). */
+    _tweenOpacityParallel(material, from, to, ms) {
+        return new Promise((resolve) => {
+            if (!material) {
+                resolve();
+                return;
+            }
+            material.transparent = true;
+            material.opacity = from;
+            material.needsUpdate = true;
+            const t0 = performance.now();
+            const step = (now) => {
+                const u = Math.min(1, (now - t0) / Math.max(1, ms));
+                const eased = u * u * (3 - 2 * u);
+                material.opacity = from + (to - from) * eased;
+                if (u < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    material.opacity = to;
+                    resolve();
+                }
+            };
+            requestAnimationFrame(step);
         });
     }
 
@@ -272,39 +414,37 @@ export class WorldviewGlobeView {
      * @param {string} palette - 'blue' | 'gray' | 'crimson' | 'nulled'
      */
     updateGlobePatternPalette(palette) {
-        if (!this._globePatternOverlay || !window.GlobeInitHelpers?.getPalettePatternPath) {
+        if (!this._globePatternOverlay?.material?.uniforms) {
             return;
         }
 
         const p = String(palette).toLowerCase();
-        const patternPath = window.GlobeInitHelpers.getPalettePatternPath(p);
+        const patternPath = getPalettePatternPath(p);
         const patternTint = getPaletteAccentHex(p);
         const tintColor = new THREE.Color(patternTint);
+        const uniforms = this._globePatternOverlay.material.uniforms;
 
-        const renderer = this.sceneModel.getRenderer();
+        // Tint flips immediately with the UI; map swaps when ready
+        uniforms.uTintColor.value.set(tintColor.r, tintColor.g, tintColor.b);
 
-        // Check if texture is already cached (like changeGlobeTexture does)
         if (this.textureCache.has(patternPath)) {
             const cachedTexture = this.textureCache.get(patternPath);
-            if (this._globePatternOverlay && this._globePatternOverlay.material) {
-                this._globePatternOverlay.material.uniforms.uPatternMap.value = cachedTexture;
-                this._globePatternOverlay.material.uniforms.uTintColor.value.set(tintColor.r, tintColor.g, tintColor.b);
-            }
+            this._gpuUploadTexture(cachedTexture);
+            uniforms.uPatternMap.value = cachedTexture;
             return;
         }
 
+        const renderer = this.sceneModel.getRenderer();
         const textureLoader = new THREE.TextureLoader();
-
-        // Load new pattern texture and cache it
         loadTexture(
             textureLoader,
             patternPath,
             renderer,
             (texture) => {
                 this.textureCache.set(patternPath, texture);
-                if (this._globePatternOverlay && this._globePatternOverlay.material) {
+                this._gpuUploadTexture(texture);
+                if (this._globePatternOverlay?.material?.uniforms) {
                     this._globePatternOverlay.material.uniforms.uPatternMap.value = texture;
-                    this._globePatternOverlay.material.uniforms.uTintColor.value.set(tintColor.r, tintColor.g, tintColor.b);
                 }
             },
             (err) => {
@@ -524,7 +664,8 @@ export class WorldviewGlobeView {
     }
 
     /**
-     * Change globe texture
+     * Change globe texture with a dual-layer crossfade (old map stays fully visible;
+     * new map fades in on top). Avoids the dark dip that made the world feel late vs UI.
      * @param {string} texturePath - Path to the texture file
      * @param {Function} onTextureLoaded - Optional callback when texture loads
      */
@@ -534,9 +675,17 @@ export class WorldviewGlobeView {
             console.error('Globe not found');
             return;
         }
-        const surface = this.sceneModel.getGlobeSurfaceMesh ? this.sceneModel.getGlobeSurfaceMesh() : globe;
+        const surface = this.sceneModel.getGlobeSurfaceMesh
+            ? this.sceneModel.getGlobeSurfaceMesh()
+            : (globe.userData?.earthSurfaceMesh || globe);
         if (!surface || !surface.material) {
             console.error('Globe surface mesh not found');
+            return;
+        }
+
+        const mat = surface.material;
+        if (mat.map && this.textureCache.get(texturePath) === mat.map) {
+            if (onTextureLoaded) onTextureLoaded();
             return;
         }
 
@@ -547,29 +696,117 @@ export class WorldviewGlobeView {
             window.globeController?.map2dLite?.refreshTexturesFromScene?.();
         };
 
-        // Check if texture is already cached
-        if (this.textureCache.has(texturePath)) {
-            const cachedTexture = this.textureCache.get(texturePath);
-            surface.material.map = cachedTexture;
-            surface.material.needsUpdate = true;
+        /* Flat map should start its flash/reveal in the same beat as the globe. */
+        const mapOn = this.sceneModel.getMapViewEnabled?.()
+            ? this.sceneModel.getMapViewEnabled()
+            : !!this.sceneModel.isMapView;
+        if (mapOn) {
             applyEarthMapTexture();
-            if (onTextureLoaded) {
-                onTextureLoaded();
+        }
+
+        /**
+         * Notable palette beat: brief bright flash → longer reveal.
+         * Covers any texture-load lag so the globe never feels "late" vs CSS.
+         */
+        const runPaletteReveal = async (texture) => {
+            if (!texture || !surface.material) return;
+            this._disposePaletteEarthOverlay();
+            this._gpuUploadTexture(texture);
+
+            const parent = surface.parent || globe;
+
+            // Flash plate (additive soft white) — starts immediately
+            const flashMat = new THREE.MeshBasicMaterial({
+                color: 0xfff4e8,
+                transparent: true,
+                opacity: 0,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending
+            });
+            const flash = new THREE.Mesh(surface.geometry, flashMat);
+            flash.name = 'earthPaletteFlash';
+            flash.scale.copy(surface.scale).multiplyScalar(1.002);
+            flash.position.copy(surface.position);
+            flash.quaternion.copy(surface.quaternion);
+            flash.renderOrder = (surface.renderOrder || 0) + 6;
+            flash.layers.mask = surface.layers.mask;
+            parent.add(flash);
+
+            const overlayMat = surface.material.clone();
+            overlayMat.map = texture;
+            overlayMat.transparent = true;
+            overlayMat.opacity = 0;
+            overlayMat.depthWrite = false;
+            overlayMat.needsUpdate = true;
+
+            const overlay = new THREE.Mesh(surface.geometry, overlayMat);
+            overlay.name = 'earthPaletteCrossfade';
+            overlay.scale.copy(surface.scale);
+            overlay.position.copy(surface.position);
+            overlay.quaternion.copy(surface.quaternion);
+            overlay.renderOrder = (surface.renderOrder || 0) + 5;
+            overlay.layers.mask = surface.layers.mask;
+            parent.add(overlay);
+            this._paletteEarthOverlay = overlay;
+
+            // Concurrent soft flash + reveal — feels like one beat, not flash-then-wait
+            await Promise.all([
+                this._tweenOpacityParallel(flashMat, 0, 0.32, 70)
+                    .then(() => this._tweenOpacityParallel(flashMat, 0.32, 0, 200)),
+                this._tweenOpacityParallel(overlayMat, 0, 1, 240)
+            ]);
+
+            if (flash.parent) flash.parent.remove(flash);
+            flashMat.dispose?.();
+
+            if (this._paletteEarthOverlay !== overlay) {
+                return;
             }
+
+            mat.map = texture;
+            mat.transparent = false;
+            mat.opacity = 1;
+            mat.needsUpdate = true;
+            applyEarthMapTexture();
+            this._disposePaletteEarthOverlay();
+            if (onTextureLoaded) onTextureLoaded();
+        };
+
+        if (this.textureCache.has(texturePath)) {
+            void runPaletteReveal(this.textureCache.get(texturePath));
             return;
         }
 
+        /* Hold a soft waiting glow on the current earth until the new map uploads. */
+        const waitGlowMat = new THREE.MeshBasicMaterial({
+            color: 0xffe8c8,
+            transparent: true,
+            opacity: 0,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+        });
+        const waitGlow = new THREE.Mesh(surface.geometry, waitGlowMat);
+        waitGlow.name = 'earthPaletteWaitGlow';
+        waitGlow.scale.copy(surface.scale).multiplyScalar(1.002);
+        waitGlow.position.copy(surface.position);
+        waitGlow.quaternion.copy(surface.quaternion);
+        waitGlow.renderOrder = (surface.renderOrder || 0) + 4;
+        waitGlow.layers.mask = surface.layers.mask;
+        (surface.parent || globe).add(waitGlow);
+        void this._tweenOpacityParallel(waitGlowMat, 0, 0.18, 100);
+
         const renderer = this.sceneModel.getRenderer();
         const textureLoader = new THREE.TextureLoader();
-        
         loadTexture(textureLoader, texturePath, renderer, (texture) => {
-                this.textureCache.set(texturePath, texture);
-                surface.material.map = texture;
-                surface.material.needsUpdate = true;
-                applyEarthMapTexture();
-                if (onTextureLoaded) {
-                    onTextureLoaded();
-                }
+            this.textureCache.set(texturePath, texture);
+            this._gpuUploadTexture(texture);
+            if (waitGlow.parent) waitGlow.parent.remove(waitGlow);
+            waitGlowMat.dispose?.();
+            void runPaletteReveal(texture);
+        }, () => {
+            if (waitGlow.parent) waitGlow.parent.remove(waitGlow);
+            waitGlowMat.dispose?.();
+            console.warn('changeGlobeTexture: failed to load', texturePath);
         });
     }
 

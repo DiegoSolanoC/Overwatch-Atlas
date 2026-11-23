@@ -69,11 +69,34 @@ function getCodexViewCenterClient() {
 function codexZoomInFromUi() {
     const { cx, cy } = getCodexViewCenterClient();
     codexZoomByFactorAt(CODEX_ZOOM_FACTOR, cx, cy);
+    if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+    }
 }
 
 function codexZoomOutFromUi() {
     const { cx, cy } = getCodexViewCenterClient();
     codexZoomByFactorAt(1 / CODEX_ZOOM_FACTOR, cx, cy);
+    if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+    }
+}
+
+/** 0 = min zoom, 1 = max zoom */
+function getCodexZoomNormalized() {
+    const span = Math.max(1e-6, CODEX_ZOOM_MAX - CODEX_ZOOM_MIN);
+    return Math.max(0, Math.min(1, (s.codexViewZoom - CODEX_ZOOM_MIN) / span));
+}
+
+/** @param {number} t 0..1 */
+function setCodexZoomNormalized(t) {
+    const { cx, cy } = getCodexViewCenterClient();
+    const clamped = Math.max(0, Math.min(1, Number(t) || 0));
+    const next = CODEX_ZOOM_MIN + clamped * (CODEX_ZOOM_MAX - CODEX_ZOOM_MIN);
+    applyCodexZoomWithAnchor(cx, cy, next);
+    if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+    }
 }
 
 function codexResetView() {
@@ -84,6 +107,9 @@ function codexResetView() {
         centerCodexViewOnWorldCenter();
     }
     applyCodexViewTransform();
+    if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+    }
 }
 
 function centerCodexViewOnWorldCenter() {
@@ -114,6 +140,8 @@ api.codexZoomByFactorAt = codexZoomByFactorAt;
 api.getCodexViewCenterClient = getCodexViewCenterClient;
 api.codexZoomInFromUi = codexZoomInFromUi;
 api.codexZoomOutFromUi = codexZoomOutFromUi;
+api.getCodexZoomNormalized = getCodexZoomNormalized;
+api.setCodexZoomNormalized = setCodexZoomNormalized;
 api.codexResetView = codexResetView;
 api.centerCodexViewOnWorldCenter = centerCodexViewOnWorldCenter;
 api.centerCodexViewOnNodes = centerCodexViewOnNodes;

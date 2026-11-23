@@ -64,6 +64,13 @@ export function openPaletteMenu() {
     const toggle = document.getElementById('colorPaletteToggle');
     if (!menu) return;
 
+    /* Warm earth textures while the menu is open so a pick swaps without a load hitch. */
+    try {
+        window.globeController?.globeView?.warmPaletteTextures?.();
+    } catch {
+        /* ignore */
+    }
+
     const positionMenuUnderToggleBound = () => positionMenuUnderToggle(menu, toggle);
 
     positionMenuUnderToggleBound();

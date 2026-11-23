@@ -1,14 +1,18 @@
 /**
  * Celestial planes, city/seaport markers, and route arcs for {@link WorldviewGlobeView}.
  */
-import { createArcBetweenPoints } from '../../../worldview-shared-assets/utils/WorldviewGeometry.js';
+import { createArcBetweenPoints, latLonToVector3 } from '../../../worldview-shared-assets/utils/WorldviewGeometry.js';
 import {
     createCelestialPlane,
     getMoonTexturePath,
     getMarsTexturePath
 } from '../helpers/WorldviewGlobePlanes.js';
 import { createMarkerWithPin } from '../helpers/WorldviewGlobeMarkers.js';
-import { createConnectionLine, createConnectionGlow } from '../helpers/WorldviewGlobeConnections.js';
+import {
+    createConnectionLine,
+    createConnectionGlow,
+    normalizeViaPoint
+} from '../helpers/WorldviewGlobeConnections.js';
 import { createEarthCityLightsPoints, disposeEarthCityLights } from '../helpers/WorldviewEarthLights.js';
 
 export const mixin = {
@@ -128,7 +132,10 @@ export const mixin = {
         // Use allSeaports (before filtering) to show ports without connections too
         const seaports = this.dataModel.allSeaports || this.dataModel.getAllSeaports();
         const seaportConnections = this.dataModel.getSeaportConnections();
-        
+        const boatRoutesOn = this.sceneModel.getBoatRoutesVisible?.()
+            ? this.sceneModel.getBoatRoutesVisible()
+            : !!this.sceneModel.boatRoutesVisible;
+
         // Create a set of port names that have connections (either as "from" or "to")
         const portsWithConnections = new Set();
         seaportConnections.forEach(conn => {
@@ -138,22 +145,52 @@ export const mixin = {
 
         seaports.forEach(seaport => {
             const hasConnections = portsWithConnections.has(seaport.name);
-            const markerColor = hasConnections ? 0xff0000 : 0x00ff00; // Red or green
-            
+            const markerColor = hasConnections ? 0x4fc3f7 : 0x66bb6a;
+
             createMarkerWithPin({
                 location: seaport,
-                radius: 0.010,
+                radius: 0.008,
                 color: markerColor,
                 pinColor: markerColor,
-                elevation: 1.02,
+                elevation: 1.012,
                 userData: {
-                isSeaportMarker: true,
+                    isSeaportMarker: true,
                     seaportName: seaport.name
                 },
                 parent: globe,
                 markersArray: this.sceneModel.getMarkers(),
-                visible: false,  // Hide port markers (debug only)
-                pinVisible: false  // No loose seaport pins
+                visible: boatRoutesOn,
+                pinVisible: false
+            });
+        });
+    },
+
+    /** Airport dots shown with the Flights route toggle. */
+    addAirportMarkers() {
+        const globe = this.sceneModel.getGlobe();
+        if (!globe || !this.dataModel?.getAllAirports) return;
+        const airports = this.dataModel.getAllAirports();
+        if (!airports?.length) return;
+
+        const planeRoutesOn = this.sceneModel.getPlaneRoutesVisible?.()
+            ? this.sceneModel.getPlaneRoutesVisible()
+            : !!this.sceneModel.planeRoutesVisible;
+
+        airports.forEach((airport) => {
+            createMarkerWithPin({
+                location: airport,
+                radius: 0.007,
+                color: 0xff4444,
+                pinColor: 0xff4444,
+                elevation: 1.014,
+                userData: {
+                    isAirportMarker: true,
+                    airportName: airport.name
+                },
+                parent: globe,
+                markersArray: this.sceneModel.getMarkers(),
+                visible: planeRoutesOn,
+                pinVisible: false
             });
         });
     },
@@ -239,38 +276,191 @@ export const mixin = {
         const globe = this.sceneModel.getGlobe();
         const seaportConnections = this.dataModel.getSeaportConnections();
         const seaports = this.dataModel.getAllSeaports();
+        const boatRoutesOn = this.sceneModel.getBoatRoutesVisible?.()
+            ? this.sceneModel.getBoatRoutesVisible()
+            : !!this.sceneModel.boatRoutesVisible;
+
+        const resolvePort = (name) => seaports.find((p) => p.name === name) || null;
 
         seaportConnections.forEach(connection => {
-            const fromPort = seaports.find(p => p.name === connection.from);
-            const toPort = seaports.find(p => p.name === connection.to);
-            
+            const fromPort = resolvePort(connection.from);
+            const toPort = resolvePort(connection.to);
+
             if (!fromPort || !toPort) {
                 console.warn(`Seaport connection not found: ${connection.from} to ${connection.to}`);
                 return;
             }
-            
+
+            // Optional midpoints: via: [{lat,lon}|[lat,lon]|"PortName", ...]
+            const rawVia = connection.via || connection.waypoints || [];
+            const viaLocations = (Array.isArray(rawVia) ? rawVia : [])
+                .map((entry) => normalizeViaPoint(entry, resolvePort))
+                .filter(Boolean);
+
             // Special case: Mumbai to Anchorage - force long way (through Africa/Pacific)
-            const forceLongWay = (connection.from === 'Mumbai' && connection.to === 'Anchorage') ||
-                                 (connection.from === 'Anchorage' && connection.to === 'Mumbai');
-            
+            const forceLongWay = viaLocations.length === 0 && (
+                (connection.from === 'Mumbai' && connection.to === 'Anchorage') ||
+                (connection.from === 'Anchorage' && connection.to === 'Mumbai')
+            );
+
             createConnectionLine({
                 fromLocation: { lat: fromPort.lat, lon: fromPort.lon, from: connection.from },
                 toLocation: { lat: toPort.lat, lon: toPort.lon, to: connection.to },
+                viaLocations,
                 radius: 1.0,
-                segments: 50,
+                segments: viaLocations.length ? 72 : 50,
                 useArc: false,
                 forceLongWay,
                 parent: globe,
                 onCurveCreated: onBoatRouteCurveCreated,
                 lineConfig: {
                     radius: 0.002,
-                color: 0xff0000,
-                    opacity: 0.8,
+                    color: 0x4fc3f7,
+                    opacity: 0.75,
                     userDataKey: 'isSeaportConnectionLine',
-                    visible: false // Hide seaport connection lines
+                    visible: boatRoutesOn
                 }
             });
+
+            // Small control-point markers so curved routes are editable in the data
+            viaLocations.forEach((via, idx) => {
+                const pos = latLonToVector3(via.lat, via.lon, 1.008);
+                const geo = new THREE.SphereGeometry(0.005, 10, 10);
+                const mat = new THREE.MeshBasicMaterial({
+                    color: 0xffcc66,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                const marker = new THREE.Mesh(geo, mat);
+                marker.position.copy(pos);
+                marker.userData = {
+                    isBoatViaMarker: true,
+                    from: connection.from,
+                    to: connection.to,
+                    viaIndex: idx
+                };
+                marker.visible = boatRoutesOn;
+                globe.add(marker);
+            });
         });
+    },
+
+    /**
+     * Flight corridors from airportConnections, plus a light nearest-neighbor
+     * fill for any airport that still has no explicit edge.
+     * Hidden until plane-routes toggle is on.
+     */
+    addAirportRouteLines() {
+        const globe = this.sceneModel.getGlobe();
+        if (!globe || !this.dataModel?.getAllAirports) return;
+        const airports = this.dataModel.getAllAirports();
+        if (!airports || airports.length < 2) return;
+
+        const planeRoutesOn = this.sceneModel.getPlaneRoutesVisible?.()
+            ? this.sceneModel.getPlaneRoutesVisible()
+            : !!this.sceneModel.planeRoutesVisible;
+        const byName = new Map(airports.map((a) => [a.name, a]));
+        const edgeKeys = new Set();
+        const linked = new Set();
+
+        const drawEdge = (a, b) => {
+            if (!a || !b || a.name === b.name) return;
+            const key = [a.name, b.name].sort().join('\0');
+            if (edgeKeys.has(key)) return;
+            edgeKeys.add(key);
+            linked.add(a.name);
+            linked.add(b.name);
+            // Stagger parallel corridor tubes so stacked routes read as separate lanes
+            const lane = (edgeKeys.size % 5) - 2;
+            createConnectionLine({
+                fromLocation: { lat: a.lat, lon: a.lon, from: a.name },
+                toLocation: { lat: b.lat, lon: b.lon, to: b.name },
+                radius: 1.045,
+                segments: 48,
+                useArc: true,
+                lateralOffset: lane * 0.01,
+                parent: globe,
+                lineConfig: {
+                    radius: 0.0016,
+                    color: 0xe53935,
+                    opacity: 0.7,
+                    userDataKey: 'isPlaneRouteLine',
+                    visible: planeRoutesOn
+                }
+            });
+        };
+
+        const explicit = this.dataModel.getAirportConnections?.() || [];
+        for (let i = 0; i < explicit.length; i++) {
+            const conn = explicit[i];
+            drawEdge(byName.get(conn.from), byName.get(conn.to));
+        }
+
+        // Fill orphans so lonely airports still get a couple of corridors
+        const minD = 0.2;
+        const maxD = 1.85;
+        airports.forEach((a) => {
+            if (linked.has(a.name)) return;
+            const ranked = [];
+            for (let i = 0; i < airports.length; i++) {
+                const b = airports[i];
+                if (!b || b === a || b.name === a.name) continue;
+                const pa = latLonToVector3(a.lat, a.lon, 1);
+                const pb = latLonToVector3(b.lat, b.lon, 1);
+                const d = pa.distanceTo(pb);
+                if (d < minD || d > maxD) continue;
+                ranked.push({ b, d });
+            }
+            ranked.sort((u, v) => u.d - v.d);
+            ranked.slice(0, 2).forEach(({ b }) => drawEdge(a, b));
+        });
+    },
+
+    /**
+     * @param {'plane'|'boat'} kind
+     * @param {boolean} visible
+     */
+    setTransportRoutesVisible(kind, visible) {
+        const globe = this.sceneModel.getGlobe();
+        const scene = this.sceneModel.getScene?.() || this.sceneModel.scene;
+        const on = !!visible;
+        if (kind === 'boat') this.sceneModel.setBoatRoutesVisible?.(on);
+        else this.sceneModel.setPlaneRoutesVisible?.(on);
+
+        const lineFlag = kind === 'boat' ? 'isSeaportConnectionLine' : 'isPlaneRouteLine';
+        const markerFlags = kind === 'boat'
+            ? ['isSeaportMarker', 'isSeaportMarkerPin', 'isBoatViaMarker']
+            : ['isAirportMarker', 'isAirportMarkerPin'];
+
+        const apply = (root) => {
+            if (!root?.traverse) return;
+            root.traverse((obj) => {
+                const ud = obj?.userData;
+                if (!ud) return;
+                if (ud[lineFlag]) {
+                    obj.visible = on;
+                    return;
+                }
+                for (let i = 0; i < markerFlags.length; i++) {
+                    if (ud[markerFlags[i]]) {
+                        obj.visible = on;
+                        return;
+                    }
+                }
+            });
+        };
+        apply(globe);
+        apply(scene);
+
+        // Keep sceneModel marker list in sync (hyperloop pass reads these)
+        const markers = this.sceneModel.getMarkers?.() || [];
+        for (let i = 0; i < markers.length; i++) {
+            const m = markers[i];
+            const ud = m?.userData;
+            if (!ud) continue;
+            if (kind === 'boat' && ud.isSeaportMarker) m.visible = on;
+            if (kind === 'plane' && ud.isAirportMarker) m.visible = on;
+        }
     },
 
     addSatelliteMarkers(satellites) {

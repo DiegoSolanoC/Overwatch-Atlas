@@ -1,191 +1,2836 @@
 {
   "trainConnections": [
-    { "from": "Seattle", "to": "Toronto" },
-    { "from": "Toronto", "to": "Midtown" },
-    { "from": "Seattle", "to": "Mexico City" },
-    { "from": "Mexico City", "to": "Caracas" },
-    { "from": "Caracas", "to": "Paraiso" },
-    { "from": "Seattle", "to": "Hawaii" },
-    { "from": "Hawaii", "to": "Sydney" },
-    { "from": "Sydney", "to": "Melbourne" },
-    { "from": "Hawaii", "to": "Tokyo" },
-    { "from": "Tokyo", "to": "Busan" },
-    { "from": "Busan", "to": "Shanghai" },
-    { "from": "Tokyo", "to": "Melbourne" },
-    { "from": "Shanghai", "to": "Lijiang" },
-    { "from": "Lijiang", "to": "Nagpur" },
-    { "from": "Nagpur", "to": "Melbourne" },
-    { "from": "Nagpur", "to": "Oasis" },
-    { "from": "Oasis", "to": "Cape Town" },
-    { "from": "Cape Town", "to": "Numbani" },
-    { "from": "Numbani", "to": "Aatlis" },
-    { "from": "Aatlis", "to": "Paraiso" },
-    { "from": "Shanghai", "to": "Moscow" },
-    { "from": "Nagpur", "to": "Moscow" },
-    { "from": "Midtown", "to": "Moscow" },
-    { "from": "Moscow", "to": "Zurich" },
-    { "from": "Zurich", "to": "Aatlis" },
-    { "from": "Moscow", "to": "Kings Row" },
-    { "from": "Midtown", "to": "Kings Row" },
-    { "from": "Midtown", "to": "Atlantic Arcology" },
-    { "from": "Atlantic Arcology", "to": "Aatlis" },
-    { "from": "Aatlis", "to": "Esperança" },
-    { "from": "Esperança", "to": "Kings Row" }
+    {
+      "from": "Seattle",
+      "to": "Toronto"
+    },
+    {
+      "from": "Toronto",
+      "to": "Midtown"
+    },
+    {
+      "from": "Seattle",
+      "to": "Mexico City"
+    },
+    {
+      "from": "Mexico City",
+      "to": "Caracas"
+    },
+    {
+      "from": "Caracas",
+      "to": "Paraiso"
+    },
+    {
+      "from": "Seattle",
+      "to": "Hawaii"
+    },
+    {
+      "from": "Hawaii",
+      "to": "Sydney"
+    },
+    {
+      "from": "Sydney",
+      "to": "Melbourne"
+    },
+    {
+      "from": "Hawaii",
+      "to": "Tokyo"
+    },
+    {
+      "from": "Tokyo",
+      "to": "Busan"
+    },
+    {
+      "from": "Busan",
+      "to": "Shanghai"
+    },
+    {
+      "from": "Tokyo",
+      "to": "Melbourne"
+    },
+    {
+      "from": "Shanghai",
+      "to": "Lijiang"
+    },
+    {
+      "from": "Lijiang",
+      "to": "Nagpur"
+    },
+    {
+      "from": "Nagpur",
+      "to": "Melbourne"
+    },
+    {
+      "from": "Nagpur",
+      "to": "Oasis"
+    },
+    {
+      "from": "Oasis",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Cape Town",
+      "to": "Numbani"
+    },
+    {
+      "from": "Numbani",
+      "to": "Aatlis"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Paraiso"
+    },
+    {
+      "from": "Shanghai",
+      "to": "Moscow"
+    },
+    {
+      "from": "Nagpur",
+      "to": "Moscow"
+    },
+    {
+      "from": "Midtown",
+      "to": "Moscow"
+    },
+    {
+      "from": "Moscow",
+      "to": "Zurich"
+    },
+    {
+      "from": "Zurich",
+      "to": "Aatlis"
+    },
+    {
+      "from": "Moscow",
+      "to": "Kings Row"
+    },
+    {
+      "from": "Midtown",
+      "to": "Kings Row"
+    },
+    {
+      "from": "Midtown",
+      "to": "Atlantic Arcology"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Aatlis"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Esperança"
+    },
+    {
+      "from": "Esperança",
+      "to": "Kings Row"
+    }
   ],
   "secondaryConnections": [
-    { "from": "Los Angeles", "to": "Hawaii" },
-    { "from": "Paraiso", "to": "Cape Town" },
-    { "from": "Oasis", "to": "Moscow" },
-    { "from": "Toronto", "to": "Houston" },
-    { "from": "Seattle", "to": "Houston" },
-    { "from": "Bucharest", "to": "Moscow" },
-    { "from": "Bucharest", "to": "Cairo" },
-    { "from": "Bucharest", "to": "Colosseo" },
-    { "from": "Bucharest", "to": "Berlin" },
-    { "from": "Cairo", "to": "Oasis" },
-    { "from": "Cairo", "to": "Numbani" },
-    { "from": "Cairo", "to": "Aatlis" },
-    { "from": "Esperança", "to": "Atlantic Arcology" },
-    { "from": "Atlantic Arcology", "to": "Kings Row" },
-    { "from": "Kings Row", "to": "Paris" },
-    { "from": "Paris", "to": "Monte Carlo" },
-    { "from": "Monte Carlo", "to": "Malevento" },
-    { "from": "Malevento", "to": "Colosseo" },
-    { "from": "Malevento", "to": "Zurich" },
-    { "from": "Zurich", "to": "Paris" },
-    { "from": "Zurich", "to": "Berlin" },
-    { "from": "Berlin", "to": "Gothenburg" },
-    { "from": "Gothenburg", "to": "Moscow" },
-    { "from": "Berlin", "to": "Kings Row" },
-    { "from": "Hong Kong", "to": "Shanghai" },
-    { "from": "Hong Kong", "to": "Lijiang" },
-    { "from": "Houston", "to": "Mexico City" },
-    { "from": "Houston", "to": "Midtown" },
-    { "from": "Houston", "to": "Los Angeles" },
-    { "from": "Los Angeles", "to": "Blizzard World" },
-    { "from": "Los Angeles", "to": "Seattle" }
+    {
+      "from": "Los Angeles",
+      "to": "Hawaii"
+    },
+    {
+      "from": "Paraiso",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Oasis",
+      "to": "Moscow"
+    },
+    {
+      "from": "Toronto",
+      "to": "Houston"
+    },
+    {
+      "from": "Seattle",
+      "to": "Houston"
+    },
+    {
+      "from": "Bucharest",
+      "to": "Moscow"
+    },
+    {
+      "from": "Bucharest",
+      "to": "Cairo"
+    },
+    {
+      "from": "Bucharest",
+      "to": "Colosseo"
+    },
+    {
+      "from": "Bucharest",
+      "to": "Berlin"
+    },
+    {
+      "from": "Cairo",
+      "to": "Oasis"
+    },
+    {
+      "from": "Cairo",
+      "to": "Numbani"
+    },
+    {
+      "from": "Cairo",
+      "to": "Aatlis"
+    },
+    {
+      "from": "Esperança",
+      "to": "Atlantic Arcology"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Kings Row"
+    },
+    {
+      "from": "Kings Row",
+      "to": "Paris"
+    },
+    {
+      "from": "Paris",
+      "to": "Monte Carlo"
+    },
+    {
+      "from": "Monte Carlo",
+      "to": "Malevento"
+    },
+    {
+      "from": "Malevento",
+      "to": "Colosseo"
+    },
+    {
+      "from": "Malevento",
+      "to": "Zurich"
+    },
+    {
+      "from": "Zurich",
+      "to": "Paris"
+    },
+    {
+      "from": "Zurich",
+      "to": "Berlin"
+    },
+    {
+      "from": "Berlin",
+      "to": "Gothenburg"
+    },
+    {
+      "from": "Gothenburg",
+      "to": "Moscow"
+    },
+    {
+      "from": "Berlin",
+      "to": "Kings Row"
+    },
+    {
+      "from": "Hong Kong",
+      "to": "Shanghai"
+    },
+    {
+      "from": "Hong Kong",
+      "to": "Lijiang"
+    },
+    {
+      "from": "Houston",
+      "to": "Mexico City"
+    },
+    {
+      "from": "Houston",
+      "to": "Midtown"
+    },
+    {
+      "from": "Houston",
+      "to": "Los Angeles"
+    },
+    {
+      "from": "Los Angeles",
+      "to": "Blizzard World"
+    },
+    {
+      "from": "Los Angeles",
+      "to": "Seattle"
+    }
   ],
   "seaportConnections": [
-    { "from": "Houston", "to": "Havana" },
-    { "from": "Houston", "to": "Cartagena" },
-    { "from": "Houston", "to": "Veracruz" },
-    { "from": "Panama", "to": "Cartagena" },
-    { "from": "Panama", "to": "Port-au-Prince" },
-    { "from": "La Guaira", "to": "San Juan" },
-    { "from": "Miami", "to": "San Juan" },
-    { "from": "Charleston", "to": "Miami" },
-    { "from": "San Juan", "to": "New York" },
-    { "from": "San Juan", "to": "Halifax" },
-    { "from": "San Juan", "to": "Dakar" },
-    { "from": "Rio de Janeiro", "to": "Lagos" },
-    { "from": "New York", "to": "Cardiff" },
-    { "from": "New York", "to": "La Rochelle" },
-    { "from": "New York", "to": "Casablanca" },
-    { "from": "New York", "to": "Esperança" },
-    { "from": "Gibraltar", "to": "New York" },
-    { "from": "Gibraltar", "to": "San Juan" },
-    { "from": "Gibraltar", "to": "Miami" },
-    { "from": "Georgetown", "to": "San Juan" },
-    { "from": "Georgetown", "to": "Dakar" },
-    { "from": "Georgetown", "to": "Gibraltar" },
-    { "from": "Charleston", "to": "Gibraltar" },
-    { "from": "Charleston", "to": "Dakar" },
-    { "from": "Cape Town", "to": "Salvador" },
-    { "from": "Cape Town", "to": "Rio de Janeiro" },
-    { "from": "Algiers", "to": "Gibraltar" },
-    { "from": "Algiers", "to": "Genoa" },
-    { "from": "Algiers", "to": "Barcelona" },
-    { "from": "Algiers", "to": "Salerno" },
-    { "from": "Benghazi", "to": "Barcelona" },
-    { "from": "Benghazi", "to": "Gapolli" },
-    { "from": "Benghazi", "to": "Catania" },
-    { "from": "Catania", "to": "Alexandria" },
-    { "from": "Alexandria", "to": "Cyprus" },
-    { "from": "Cyprus", "to": "Suez" },
-    { "from": "Jeddah", "to": "Suez" },
-    { "from": "Jeddah", "to": "Assab" },
-    { "from": "Assab", "to": "Berbera" },
-    { "from": "Berbera", "to": "Socotra" },
-    { "from": "Socotra", "to": "Mumbai" },
-    { "from": "Mumbai", "to": "Muscat" },
-    { "from": "Mumbai", "to": "Karachi" },
-    { "from": "Colombo", "to": "Mombasa" },
-    { "from": "Novaya Zemlya", "to": "Hofn" },
-    { "from": "Novaya Zemlya", "to": "Murmansk" },
-    { "from": "Bergen", "to": "Hofn" },
-    { "from": "Bergen", "to": "Aberdeen" },
-    { "from": "Bergen", "to": "Rotterdam" },
-    { "from": "Hofn", "to": "Dakar" },
-    { "from": "Hofn", "to": "Atlantic Arcology" },
-    { "from": "Atlantic Arcology", "to": "Esperança" },
-    { "from": "Atlantic Arcology", "to": "Georgetown" },
-    { "from": "Atlantic Arcology", "to": "Miami" },
-    { "from": "Atlantic Arcology", "to": "San Juan" },
-    { "from": "Atlantic Arcology", "to": "New York" },
-    { "from": "Durban", "to": "Perth" },
-    { "from": "Perth", "to": "Jakarta" },
-    { "from": "Vishakhapatnam", "to": "Phuket" },
-    { "from": "Vishakhapatnam", "to": "Yangon" },
-    { "from": "Ho Chi Minh City", "to": "Pontianak" },
-    { "from": "Pontianak", "to": "Surabaya" },
-    { "from": "Surabaya", "to": "Makassar" },
-    { "from": "Pontianak", "to": "Singapore" },
-    { "from": "Manila", "to": "Hong Kong" },
-    { "from": "Manila", "to": "Zamboanga" },
-    { "from": "Zamboanga", "to": "Makassar" },
-    { "from": "Shanghai", "to": "Busan" },
-    { "from": "Busan", "to": "Osaka" },
-    { "from": "Apia", "to": "Tokyo" },
-    { "from": "Apia", "to": "Honiara" },
-    { "from": "Port Vila", "to": "Honiara" },
-    { "from": "Noumea", "to": "Sydney" },
-    { "from": "Sydney", "to": "Auckland" },
-    { "from": "Tokyo", "to": "Honolulu" },
-    { "from": "Apia", "to": "Honolulu" },
-    { "from": "Honolulu", "to": "San Francisco" },
-    { "from": "Honolulu", "to": "Vancouver" },
-    { "from": "Honolulu", "to": "Anchorage" },
-    { "from": "Buenos Aires", "to": "Kerguelen" },
-    { "from": "Kerguelen", "to": "Perth" },
-    { "from": "Kerguelen", "to": "Cape Town" },
-    { "from": "Kerguelen", "to": "Durban" },
-    { "from": "Auckland", "to": "Nuku'alofa" },
-    { "from": "Nuku'alofa", "to": "Apia" },
-    { "from": "Auckland", "to": "Port Vila" },
-    { "from": "Auckland", "to": "Noumea" },
-    { "from": "Honolulu", "to": "Acapulco" },
-    { "from": "Acapulco", "to": "Guayaquil" },
-    { "from": "Valparaiso", "to": "Auckland" },
-    { "from": "Valparaiso", "to": "Apia" },
-    { "from": "Guayaquil", "to": "Panama" },
-    { "from": "Zamboanga", "to": "Darwin" },
-    { "from": "Darwin", "to": "Port Moresby" },
-    { "from": "Port Moresby", "to": "Noumea" },
-    { "from": "Colombo", "to": "Kerguelen" },
-    { "from": "Mombasa", "to": "Perth" },
-    { "from": "Jayapura", "to": "Tokyo" },
-    { "from": "Jayapura", "to": "Shanghai" },
-    { "from": "Ilo", "to": "Honolulu" },
-    { "from": "Los Angeles", "to": "Honolulu" },
-    { "from": "Seattle", "to": "Honolulu" },
-    { "from": "Seattle", "to": "Tokyo" },
-    { "from": "Manzanillo", "to": "Apia" },
-    { "from": "Callao", "to": "Apia" },
-    { "from": "Callao", "to": "Honolulu" },
-    { "from": "Callao", "to": "Wellington" },
-    { "from": "Melbourne", "to": "Kerguelen" },
-    { "from": "Brisbane", "to": "Noumea" },
-    { "from": "Suva", "to": "Port Vila" },
-    { "from": "Suva", "to": "Noumea" },
-    { "from": "Suva", "to": "Auckland" },
-    { "from": "Suva", "to": "Honiara" },
-    { "from": "Madang", "to": "Honolulu" },
-    { "from": "Madang", "to": "Anchorage" },
-    { "from": "Chennai", "to": "Chittagong" },
-    { "from": "Chennai", "to": "Banda Aceh" },
-    { "from": "Banda Aceh", "to": "Kerguelen" },
-    { "from": "Banda Aceh", "to": "Mombasa" }
+    {
+      "from": "Houston",
+      "to": "Havana"
+    },
+    {
+      "from": "Houston",
+      "to": "Cartagena"
+    },
+    {
+      "from": "Houston",
+      "to": "Veracruz"
+    },
+    {
+      "from": "Panama",
+      "to": "Cartagena"
+    },
+    {
+      "from": "Panama",
+      "to": "Port-au-Prince"
+    },
+    {
+      "from": "La Guaira",
+      "to": "San Juan"
+    },
+    {
+      "from": "Miami",
+      "to": "San Juan"
+    },
+    {
+      "from": "Charleston",
+      "to": "Miami"
+    },
+    {
+      "from": "San Juan",
+      "to": "New York"
+    },
+    {
+      "from": "San Juan",
+      "to": "Halifax"
+    },
+    {
+      "from": "San Juan",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 18,
+          "lon": -40
+        }
+      ]
+    },
+    {
+      "from": "Rio de Janeiro",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": -5,
+          "lon": -20
+        },
+        {
+          "lat": 2,
+          "lon": -8
+        },
+        {
+          "lat": 4.5,
+          "lon": 2
+        }
+      ]
+    },
+    {
+      "from": "New York",
+      "to": "Cardiff",
+      "via": [
+        {
+          "lat": 45,
+          "lon": -40
+        }
+      ]
+    },
+    {
+      "from": "New York",
+      "to": "La Rochelle",
+      "via": [
+        {
+          "lat": 42,
+          "lon": -35
+        }
+      ]
+    },
+    {
+      "from": "New York",
+      "to": "Casablanca",
+      "via": [
+        {
+          "lat": 35,
+          "lon": -40
+        }
+      ]
+    },
+    {
+      "from": "New York",
+      "to": "Esperança"
+    },
+    {
+      "from": "Gibraltar",
+      "to": "New York",
+      "via": [
+        {
+          "lat": 38,
+          "lon": -35
+        }
+      ]
+    },
+    {
+      "from": "Gibraltar",
+      "to": "San Juan",
+      "via": [
+        {
+          "lat": 28,
+          "lon": -40
+        }
+      ]
+    },
+    {
+      "from": "Gibraltar",
+      "to": "Miami",
+      "via": [
+        {
+          "lat": 30,
+          "lon": -45
+        }
+      ]
+    },
+    {
+      "from": "Georgetown",
+      "to": "San Juan"
+    },
+    {
+      "from": "Georgetown",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 8,
+          "lon": -30
+        }
+      ]
+    },
+    {
+      "from": "Georgetown",
+      "to": "Gibraltar",
+      "via": [
+        {
+          "lat": 20,
+          "lon": -35
+        }
+      ]
+    },
+    {
+      "from": "Charleston",
+      "to": "Gibraltar",
+      "via": [
+        {
+          "lat": 32,
+          "lon": -40
+        }
+      ]
+    },
+    {
+      "from": "Charleston",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 20,
+          "lon": -35
+        }
+      ]
+    },
+    {
+      "from": "Cape Town",
+      "to": "Salvador",
+      "via": [
+        {
+          "lat": -25,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Cape Town",
+      "to": "Rio de Janeiro",
+      "via": [
+        {
+          "lat": -30,
+          "lon": -10
+        }
+      ]
+    },
+    {
+      "from": "Algiers",
+      "to": "Gibraltar"
+    },
+    {
+      "from": "Algiers",
+      "to": "Genoa"
+    },
+    {
+      "from": "Algiers",
+      "to": "Barcelona"
+    },
+    {
+      "from": "Algiers",
+      "to": "Salerno"
+    },
+    {
+      "from": "Benghazi",
+      "to": "Barcelona"
+    },
+    {
+      "from": "Benghazi",
+      "to": "Gapolli"
+    },
+    {
+      "from": "Benghazi",
+      "to": "Catania"
+    },
+    {
+      "from": "Catania",
+      "to": "Alexandria"
+    },
+    {
+      "from": "Alexandria",
+      "to": "Cyprus"
+    },
+    {
+      "from": "Cyprus",
+      "to": "Suez"
+    },
+    {
+      "from": "Jeddah",
+      "to": "Suez"
+    },
+    {
+      "from": "Jeddah",
+      "to": "Assab"
+    },
+    {
+      "from": "Assab",
+      "to": "Berbera"
+    },
+    {
+      "from": "Berbera",
+      "to": "Socotra"
+    },
+    {
+      "from": "Socotra",
+      "to": "Mumbai"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Muscat"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Karachi"
+    },
+    {
+      "from": "Colombo",
+      "to": "Mombasa"
+    },
+    {
+      "from": "Novaya Zemlya",
+      "to": "Hofn"
+    },
+    {
+      "from": "Novaya Zemlya",
+      "to": "Murmansk"
+    },
+    {
+      "from": "Bergen",
+      "to": "Hofn",
+      "via": [
+        {
+          "lat": 62,
+          "lon": 0
+        },
+        {
+          "lat": 63,
+          "lon": -8
+        },
+        {
+          "lat": 64,
+          "lon": -12
+        }
+      ]
+    },
+    {
+      "from": "Bergen",
+      "to": "Aberdeen"
+    },
+    {
+      "from": "Bergen",
+      "to": "Rotterdam"
+    },
+    {
+      "from": "Hofn",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 35,
+          "lon": -25
+        },
+        {
+          "lat": 20,
+          "lon": -22
+        }
+      ]
+    },
+    {
+      "from": "Hofn",
+      "to": "Atlantic Arcology"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Esperança"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Georgetown"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Miami"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "San Juan"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "New York"
+    },
+    {
+      "from": "Durban",
+      "to": "Perth",
+      "via": [
+        {
+          "lat": -40,
+          "lon": 55
+        }
+      ]
+    },
+    {
+      "from": "Perth",
+      "to": "Jakarta",
+      "via": [
+        {
+          "lat": -15,
+          "lon": 110
+        }
+      ]
+    },
+    {
+      "from": "Vishakhapatnam",
+      "to": "Phuket"
+    },
+    {
+      "from": "Vishakhapatnam",
+      "to": "Yangon"
+    },
+    {
+      "from": "Ho Chi Minh City",
+      "to": "Pontianak"
+    },
+    {
+      "from": "Pontianak",
+      "to": "Surabaya"
+    },
+    {
+      "from": "Surabaya",
+      "to": "Makassar"
+    },
+    {
+      "from": "Pontianak",
+      "to": "Singapore"
+    },
+    {
+      "from": "Manila",
+      "to": "Hong Kong"
+    },
+    {
+      "from": "Manila",
+      "to": "Zamboanga"
+    },
+    {
+      "from": "Zamboanga",
+      "to": "Makassar"
+    },
+    {
+      "from": "Shanghai",
+      "to": "Busan"
+    },
+    {
+      "from": "Busan",
+      "to": "Osaka"
+    },
+    {
+      "from": "Apia",
+      "to": "Tokyo"
+    },
+    {
+      "from": "Apia",
+      "to": "Honiara",
+      "via": [
+        {
+          "lat": -10,
+          "lon": -179
+        },
+        {
+          "lat": -10.5,
+          "lon": 168
+        }
+      ]
+    },
+    {
+      "from": "Port Vila",
+      "to": "Honiara",
+      "via": [
+        {
+          "lat": -13.8,
+          "lon": 162.5
+        }
+      ]
+    },
+    {
+      "from": "Noumea",
+      "to": "Sydney"
+    },
+    {
+      "from": "Sydney",
+      "to": "Auckland"
+    },
+    {
+      "from": "Tokyo",
+      "to": "Honolulu",
+      "via": [
+        {
+          "lat": 28,
+          "lon": 175
+        }
+      ]
+    },
+    {
+      "from": "Apia",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Honolulu",
+      "to": "San Francisco"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Vancouver",
+      "via": [
+        {
+          "lat": 35,
+          "lon": -150
+        }
+      ]
+    },
+    {
+      "from": "Honolulu",
+      "to": "Anchorage",
+      "via": [
+        {
+          "lat": 40,
+          "lon": -160
+        }
+      ]
+    },
+    {
+      "from": "Buenos Aires",
+      "to": "Kerguelen",
+      "via": [
+        {
+          "lat": -48,
+          "lon": -30
+        }
+      ]
+    },
+    {
+      "from": "Kerguelen",
+      "to": "Perth",
+      "via": [
+        {
+          "lat": -45,
+          "lon": 80
+        }
+      ]
+    },
+    {
+      "from": "Kerguelen",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -45,
+          "lon": 30
+        }
+      ]
+    },
+    {
+      "from": "Kerguelen",
+      "to": "Durban",
+      "via": [
+        {
+          "lat": -42,
+          "lon": 45
+        }
+      ]
+    },
+    {
+      "from": "Auckland",
+      "to": "Nuku'alofa"
+    },
+    {
+      "from": "Nuku'alofa",
+      "to": "Apia"
+    },
+    {
+      "from": "Auckland",
+      "to": "Port Vila"
+    },
+    {
+      "from": "Auckland",
+      "to": "Noumea"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Acapulco"
+    },
+    {
+      "from": "Acapulco",
+      "to": "Guayaquil"
+    },
+    {
+      "from": "Valparaiso",
+      "to": "Auckland"
+    },
+    {
+      "from": "Valparaiso",
+      "to": "Apia"
+    },
+    {
+      "from": "Guayaquil",
+      "to": "Panama"
+    },
+    {
+      "from": "Zamboanga",
+      "to": "Darwin"
+    },
+    {
+      "from": "Darwin",
+      "to": "Port Moresby"
+    },
+    {
+      "from": "Port Moresby",
+      "to": "Noumea"
+    },
+    {
+      "from": "Colombo",
+      "to": "Kerguelen"
+    },
+    {
+      "from": "Mombasa",
+      "to": "Perth"
+    },
+    {
+      "from": "Jayapura",
+      "to": "Tokyo"
+    },
+    {
+      "from": "Jayapura",
+      "to": "Shanghai"
+    },
+    {
+      "from": "Ilo",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Los Angeles",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Seattle",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Seattle",
+      "to": "Tokyo",
+      "via": [
+        {
+          "lat": 45,
+          "lon": -170
+        },
+        {
+          "lat": 42,
+          "lon": 165
+        }
+      ]
+    },
+    {
+      "from": "Manzanillo",
+      "to": "Apia",
+      "via": [
+        {
+          "lat": 5,
+          "lon": -140
+        }
+      ]
+    },
+    {
+      "from": "Callao",
+      "to": "Apia",
+      "via": [
+        {
+          "lat": -10,
+          "lon": -140
+        }
+      ]
+    },
+    {
+      "from": "Callao",
+      "to": "Honolulu",
+      "via": [
+        {
+          "lat": 5,
+          "lon": -140
+        }
+      ]
+    },
+    {
+      "from": "Callao",
+      "to": "Wellington",
+      "via": [
+        {
+          "lat": -30,
+          "lon": -140
+        }
+      ]
+    },
+    {
+      "from": "Melbourne",
+      "to": "Kerguelen",
+      "via": [
+        {
+          "lat": -48,
+          "lon": 90
+        }
+      ]
+    },
+    {
+      "from": "Brisbane",
+      "to": "Noumea"
+    },
+    {
+      "from": "Suva",
+      "to": "Port Vila",
+      "via": [
+        {
+          "lat": -20.5,
+          "lon": 173
+        }
+      ]
+    },
+    {
+      "from": "Suva",
+      "to": "Noumea"
+    },
+    {
+      "from": "Suva",
+      "to": "Auckland"
+    },
+    {
+      "from": "Suva",
+      "to": "Honiara",
+      "via": [
+        {
+          "lat": -13,
+          "lon": 168
+        }
+      ]
+    },
+    {
+      "from": "Madang",
+      "to": "Honolulu",
+      "via": [
+        {
+          "lat": 10,
+          "lon": -170
+        }
+      ]
+    },
+    {
+      "from": "Madang",
+      "to": "Anchorage",
+      "via": [
+        {
+          "lat": 30,
+          "lon": -170
+        },
+        {
+          "lat": 45,
+          "lon": -160
+        }
+      ]
+    },
+    {
+      "from": "Chennai",
+      "to": "Chittagong"
+    },
+    {
+      "from": "Chennai",
+      "to": "Banda Aceh"
+    },
+    {
+      "from": "Banda Aceh",
+      "to": "Kerguelen",
+      "via": [
+        {
+          "lat": -20,
+          "lon": 80
+        },
+        {
+          "lat": -40,
+          "lon": 70
+        }
+      ]
+    },
+    {
+      "from": "Banda Aceh",
+      "to": "Mombasa",
+      "via": [
+        {
+          "lat": 0,
+          "lon": 70
+        }
+      ]
+    },
+    {
+      "from": "Falklands",
+      "to": "Buenos Aires",
+      "via": [
+        {
+          "lat": -48.5,
+          "lon": -58
+        }
+      ]
+    },
+    {
+      "from": "Falklands",
+      "to": "Eco-Point Antarctica",
+      "via": [
+        {
+          "lat": -60,
+          "lon": -30
+        },
+        {
+          "lat": -68,
+          "lon": -10
+        }
+      ]
+    },
+    {
+      "from": "Falklands",
+      "to": "Punta Arenas"
+    },
+    {
+      "from": "Falklands",
+      "to": "Ushuaia"
+    },
+    {
+      "from": "Falklands",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -48,
+          "lon": -20
+        },
+        {
+          "lat": -40,
+          "lon": 5
+        }
+      ]
+    },
+    {
+      "from": "Falklands",
+      "to": "Montevideo"
+    },
+    {
+      "from": "Falklands",
+      "to": "Rio de Janeiro",
+      "via": [
+        {
+          "lat": -42,
+          "lon": -50
+        }
+      ]
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -55,
+          "lon": 10
+        }
+      ]
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Kerguelen",
+      "via": [
+        {
+          "lat": -60,
+          "lon": 40
+        }
+      ]
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Punta Arenas",
+      "via": [
+        {
+          "lat": -62,
+          "lon": -50
+        }
+      ]
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Ushuaia",
+      "via": [
+        {
+          "lat": -62,
+          "lon": -55
+        }
+      ]
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Durban",
+      "via": [
+        {
+          "lat": -55,
+          "lon": 25
+        }
+      ]
+    },
+    {
+      "from": "Recife",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": -2,
+          "lon": -15
+        },
+        {
+          "lat": 3,
+          "lon": -5
+        },
+        {
+          "lat": 4.5,
+          "lon": 2
+        }
+      ]
+    },
+    {
+      "from": "Recife",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 2,
+          "lon": -25
+        }
+      ]
+    },
+    {
+      "from": "Recife",
+      "to": "Accra",
+      "via": [
+        {
+          "lat": 0,
+          "lon": -15
+        },
+        {
+          "lat": 3.5,
+          "lon": -8
+        },
+        {
+          "lat": 4.5,
+          "lon": -2
+        }
+      ]
+    },
+    {
+      "from": "Recife",
+      "to": "Abidjan",
+      "via": [
+        {
+          "lat": 0,
+          "lon": -18
+        },
+        {
+          "lat": 3,
+          "lon": -10
+        },
+        {
+          "lat": 4.2,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Natal",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 5,
+          "lon": -25
+        }
+      ]
+    },
+    {
+      "from": "Natal",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": 0,
+          "lon": -15
+        },
+        {
+          "lat": 3.5,
+          "lon": -5
+        },
+        {
+          "lat": 4.5,
+          "lon": 2
+        }
+      ]
+    },
+    {
+      "from": "Fortaleza",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 8,
+          "lon": -25
+        }
+      ]
+    },
+    {
+      "from": "Fortaleza",
+      "to": "Tema",
+      "via": [
+        {
+          "lat": 5,
+          "lon": -15
+        },
+        {
+          "lat": 4.5,
+          "lon": -5
+        },
+        {
+          "lat": 4.8,
+          "lon": -1
+        }
+      ]
+    },
+    {
+      "from": "Belem",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 8,
+          "lon": -30
+        }
+      ]
+    },
+    {
+      "from": "Belem",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": 2,
+          "lon": -20
+        },
+        {
+          "lat": 3.5,
+          "lon": -5
+        },
+        {
+          "lat": 4.5,
+          "lon": 2
+        }
+      ]
+    },
+    {
+      "from": "Salvador",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": -5,
+          "lon": -15
+        },
+        {
+          "lat": 2,
+          "lon": -5
+        },
+        {
+          "lat": 4.5,
+          "lon": 2
+        }
+      ]
+    },
+    {
+      "from": "Salvador",
+      "to": "Luanda",
+      "via": [
+        {
+          "lat": -12,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Santos",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -30,
+          "lon": -10
+        }
+      ]
+    },
+    {
+      "from": "Santos",
+      "to": "Durban",
+      "via": [
+        {
+          "lat": -30,
+          "lon": 0
+        }
+      ]
+    },
+    {
+      "from": "Santos",
+      "to": "Walvis Bay",
+      "via": [
+        {
+          "lat": -25,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Rio de Janeiro",
+      "to": "Luanda",
+      "via": [
+        {
+          "lat": -15,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Buenos Aires",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -40,
+          "lon": -10
+        }
+      ]
+    },
+    {
+      "from": "Buenos Aires",
+      "to": "Walvis Bay",
+      "via": [
+        {
+          "lat": -35,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Buenos Aires",
+      "to": "Durban",
+      "via": [
+        {
+          "lat": -40,
+          "lon": 5
+        }
+      ]
+    },
+    {
+      "from": "Montevideo",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -40,
+          "lon": -5
+        }
+      ]
+    },
+    {
+      "from": "Montevideo",
+      "to": "Walvis Bay",
+      "via": [
+        {
+          "lat": -35,
+          "lon": 0
+        }
+      ]
+    },
+    {
+      "from": "Valparaiso",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -45,
+          "lon": -40
+        },
+        {
+          "lat": -45,
+          "lon": 0
+        }
+      ]
+    },
+    {
+      "from": "Punta Arenas",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -52,
+          "lon": -20
+        },
+        {
+          "lat": -45,
+          "lon": 5
+        }
+      ]
+    },
+    {
+      "from": "Punta Arenas",
+      "to": "Ushuaia"
+    },
+    {
+      "from": "Walvis Bay",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Walvis Bay",
+      "to": "Luanda",
+      "via": [
+        {
+          "lat": -18,
+          "lon": 11.5
+        },
+        {
+          "lat": -14,
+          "lon": 11.8
+        },
+        {
+          "lat": -11,
+          "lon": 12.5
+        }
+      ]
+    },
+    {
+      "from": "Maputo",
+      "to": "Durban"
+    },
+    {
+      "from": "Maputo",
+      "to": "Toamasina",
+      "via": [
+        {
+          "lat": -27.5,
+          "lon": 35
+        },
+        {
+          "lat": -33,
+          "lon": 38
+        },
+        {
+          "lat": -34,
+          "lon": 44
+        },
+        {
+          "lat": -28,
+          "lon": 48.5
+        },
+        {
+          "lat": -22,
+          "lon": 50.5
+        }
+      ]
+    },
+    {
+      "from": "Maputo",
+      "to": "Mombasa",
+      "via": [
+        {
+          "lat": -20,
+          "lon": 38
+        },
+        {
+          "lat": -12,
+          "lon": 41
+        },
+        {
+          "lat": -6,
+          "lon": 40.5
+        }
+      ]
+    },
+    {
+      "from": "Toamasina",
+      "to": "Durban",
+      "via": [
+        {
+          "lat": -22,
+          "lon": 50.5
+        },
+        {
+          "lat": -28,
+          "lon": 47
+        },
+        {
+          "lat": -32,
+          "lon": 40
+        },
+        {
+          "lat": -31,
+          "lon": 33
+        }
+      ]
+    },
+    {
+      "from": "Toamasina",
+      "to": "Mombasa",
+      "via": [
+        {
+          "lat": -15,
+          "lon": 51
+        },
+        {
+          "lat": -8,
+          "lon": 50
+        },
+        {
+          "lat": -4.5,
+          "lon": 44
+        }
+      ]
+    },
+    {
+      "from": "Toamasina",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -22,
+          "lon": 50.5
+        },
+        {
+          "lat": -30,
+          "lon": 46
+        },
+        {
+          "lat": -36,
+          "lon": 35
+        },
+        {
+          "lat": -36,
+          "lon": 22
+        }
+      ]
+    },
+    {
+      "from": "Luanda",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": -4,
+          "lon": 10
+        },
+        {
+          "lat": 0,
+          "lon": 7
+        },
+        {
+          "lat": 3.5,
+          "lon": 4.5
+        },
+        {
+          "lat": 5,
+          "lon": 3.5
+        }
+      ]
+    },
+    {
+      "from": "Luanda",
+      "to": "Cape Town",
+      "via": [
+        {
+          "lat": -14,
+          "lon": 11.5
+        },
+        {
+          "lat": -22,
+          "lon": 12
+        },
+        {
+          "lat": -30,
+          "lon": 15
+        }
+      ]
+    },
+    {
+      "from": "Accra",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": 4.6,
+          "lon": -0.5
+        },
+        {
+          "lat": 4.4,
+          "lon": 1.5
+        },
+        {
+          "lat": 4.8,
+          "lon": 2.8
+        }
+      ]
+    },
+    {
+      "from": "Accra",
+      "to": "Abidjan",
+      "via": [
+        {
+          "lat": 4.5,
+          "lon": -1.5
+        },
+        {
+          "lat": 4.3,
+          "lon": -3
+        }
+      ]
+    },
+    {
+      "from": "Tema",
+      "to": "Lagos",
+      "via": [
+        {
+          "lat": 4.8,
+          "lon": 0.5
+        },
+        {
+          "lat": 4.5,
+          "lon": 1.8
+        },
+        {
+          "lat": 5,
+          "lon": 2.8
+        }
+      ]
+    },
+    {
+      "from": "Abidjan",
+      "to": "Dakar",
+      "via": [
+        {
+          "lat": 4,
+          "lon": -6
+        },
+        {
+          "lat": 6,
+          "lon": -12
+        },
+        {
+          "lat": 10,
+          "lon": -16.5
+        },
+        {
+          "lat": 13.5,
+          "lon": -17.5
+        }
+      ]
+    },
+    {
+      "from": "Port Elizabeth",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Port Elizabeth",
+      "to": "Durban"
+    },
+    {
+      "from": "Port Elizabeth",
+      "to": "Toamasina",
+      "via": [
+        {
+          "lat": -35,
+          "lon": 30
+        },
+        {
+          "lat": -34,
+          "lon": 40
+        },
+        {
+          "lat": -30,
+          "lon": 46
+        },
+        {
+          "lat": -22,
+          "lon": 50.5
+        }
+      ]
+    },
+    {
+      "from": "Recife",
+      "to": "Salvador"
+    },
+    {
+      "from": "Recife",
+      "to": "Fortaleza"
+    },
+    {
+      "from": "Recife",
+      "to": "Santos"
+    },
+    {
+      "from": "Belem",
+      "to": "Fortaleza"
+    },
+    {
+      "from": "Belem",
+      "to": "Georgetown"
+    },
+    {
+      "from": "Santos",
+      "to": "Rio de Janeiro"
+    },
+    {
+      "from": "Santos",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "Montevideo",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "Montevideo",
+      "to": "Rio de Janeiro"
+    },
+    {
+      "from": "Nuuk",
+      "to": "Halifax",
+      "via": [
+        {
+          "lat": 60,
+          "lon": -55
+        },
+        {
+          "lat": 55,
+          "lon": -55
+        },
+        {
+          "lat": 50,
+          "lon": -58
+        }
+      ]
+    },
+    {
+      "from": "Nuuk",
+      "to": "Reykjavik",
+      "via": [
+        {
+          "lat": 60.5,
+          "lon": -52
+        },
+        {
+          "lat": 59,
+          "lon": -44
+        },
+        {
+          "lat": 60.5,
+          "lon": -35
+        },
+        {
+          "lat": 63,
+          "lon": -28
+        }
+      ]
+    },
+    {
+      "from": "Nuuk",
+      "to": "Hofn",
+      "via": [
+        {
+          "lat": 60.5,
+          "lon": -52
+        },
+        {
+          "lat": 59,
+          "lon": -44
+        },
+        {
+          "lat": 60.5,
+          "lon": -32
+        },
+        {
+          "lat": 63.5,
+          "lon": -22
+        }
+      ]
+    },
+    {
+      "from": "Reykjavik",
+      "to": "Hofn",
+      "via": [
+        {
+          "lat": 63.4,
+          "lon": -21.5
+        },
+        {
+          "lat": 63.2,
+          "lon": -18.5
+        },
+        {
+          "lat": 63.6,
+          "lon": -16
+        }
+      ]
+    },
+    {
+      "from": "Reykjavik",
+      "to": "Bergen",
+      "via": [
+        {
+          "lat": 63.5,
+          "lon": -15
+        },
+        {
+          "lat": 62.5,
+          "lon": -5
+        },
+        {
+          "lat": 61.5,
+          "lon": 2
+        }
+      ]
+    },
+    {
+      "from": "Reykjavik",
+      "to": "New York",
+      "via": [
+        {
+          "lat": 58,
+          "lon": -30
+        },
+        {
+          "lat": 50,
+          "lon": -40
+        },
+        {
+          "lat": 45,
+          "lon": -55
+        }
+      ]
+    },
+    {
+      "from": "Vladivostok",
+      "to": "Tokyo"
+    },
+    {
+      "from": "Vladivostok",
+      "to": "Busan"
+    },
+    {
+      "from": "Vladivostok",
+      "to": "Shanghai"
+    },
+    {
+      "from": "Papeete",
+      "to": "Apia",
+      "via": [
+        {
+          "lat": -22.5,
+          "lon": -160
+        }
+      ]
+    },
+    {
+      "from": "Papeete",
+      "to": "Honolulu",
+      "via": [
+        {
+          "lat": -5,
+          "lon": -155
+        }
+      ]
+    },
+    {
+      "from": "Papeete",
+      "to": "Auckland",
+      "via": [
+        {
+          "lat": -30,
+          "lon": -170
+        }
+      ]
+    },
+    {
+      "from": "Papeete",
+      "to": "Valparaiso",
+      "via": [
+        {
+          "lat": -25,
+          "lon": -120
+        }
+      ]
+    },
+    {
+      "from": "Ushuaia",
+      "to": "Valparaiso"
+    },
+    {
+      "from": "Ushuaia",
+      "to": "Buenos Aires",
+      "via": [
+        {
+          "lat": -48,
+          "lon": -62
+        }
+      ]
+    }
+  ],
+  "airportConnections": [
+    {
+      "from": "Juneau",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Juneau",
+      "to": "Seattle Tacoma"
+    },
+    {
+      "from": "Juneau",
+      "to": "Portland Oregon"
+    },
+    {
+      "from": "Juneau",
+      "to": "Calgary"
+    },
+    {
+      "from": "Juneau",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Juneau",
+      "to": "Anchorage"
+    },
+    {
+      "from": "Anchorage",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Anchorage",
+      "to": "Seattle Tacoma"
+    },
+    {
+      "from": "Anchorage",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Anchorage",
+      "to": "North Pole Station"
+    },
+    {
+      "from": "Juneau",
+      "to": "North Pole Station"
+    },
+    {
+      "from": "Nuuk",
+      "to": "North Pole Station"
+    },
+    {
+      "from": "Nuuk",
+      "to": "Reykjavik Iceland"
+    },
+    {
+      "from": "Nuuk",
+      "to": "Reykjavik Keflavik"
+    },
+    {
+      "from": "Nuuk",
+      "to": "Toronto Pearson"
+    },
+    {
+      "from": "Nuuk",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Nuuk",
+      "to": "Juneau"
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Punta Arenas"
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Christchurch"
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Sydney"
+    },
+    {
+      "from": "Eco-Point Antarctica",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "Beijing",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Beijing",
+      "to": "Seoul Incheon"
+    },
+    {
+      "from": "Tokyo Haneda",
+      "to": "Seoul Incheon"
+    },
+    {
+      "from": "Tokyo Haneda",
+      "to": "Shanghai Pudong"
+    },
+    {
+      "from": "Seoul Incheon",
+      "to": "Shanghai Pudong"
+    },
+    {
+      "from": "Tokyo Haneda",
+      "to": "Busan"
+    },
+    {
+      "from": "Seoul Incheon",
+      "to": "Busan"
+    },
+    {
+      "from": "Beijing",
+      "to": "Hong Kong"
+    },
+    {
+      "from": "Tokyo Haneda",
+      "to": "Taipei"
+    },
+    {
+      "from": "Hong Kong",
+      "to": "Taipei"
+    },
+    {
+      "from": "Singapore",
+      "to": "Jakarta"
+    },
+    {
+      "from": "Singapore",
+      "to": "Kuala Lumpur"
+    },
+    {
+      "from": "Singapore",
+      "to": "Bangkok"
+    },
+    {
+      "from": "Jakarta",
+      "to": "Kuala Lumpur"
+    },
+    {
+      "from": "Jakarta",
+      "to": "Denpasar Bali"
+    },
+    {
+      "from": "Jakarta",
+      "to": "Makassar"
+    },
+    {
+      "from": "Jakarta",
+      "to": "Ho Chi Minh City"
+    },
+    {
+      "from": "Jakarta",
+      "to": "Perth"
+    },
+    {
+      "from": "Jakarta",
+      "to": "Sydney"
+    },
+    {
+      "from": "Kuala Lumpur",
+      "to": "Bangkok"
+    },
+    {
+      "from": "Kuala Lumpur",
+      "to": "Ho Chi Minh City"
+    },
+    {
+      "from": "Manila",
+      "to": "Hong Kong"
+    },
+    {
+      "from": "Manila",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Manila",
+      "to": "Singapore"
+    },
+    {
+      "from": "Manila",
+      "to": "Ho Chi Minh City"
+    },
+    {
+      "from": "Manila",
+      "to": "Port Moresby"
+    },
+    {
+      "from": "Ho Chi Minh City",
+      "to": "Bangkok"
+    },
+    {
+      "from": "Ho Chi Minh City",
+      "to": "Hanoi"
+    },
+    {
+      "from": "Ho Chi Minh City",
+      "to": "Singapore"
+    },
+    {
+      "from": "Hanoi",
+      "to": "Hong Kong"
+    },
+    {
+      "from": "Hanoi",
+      "to": "Bangkok"
+    },
+    {
+      "from": "Yangon",
+      "to": "Bangkok"
+    },
+    {
+      "from": "Yangon",
+      "to": "Singapore"
+    },
+    {
+      "from": "Denpasar Bali",
+      "to": "Makassar"
+    },
+    {
+      "from": "Denpasar Bali",
+      "to": "Perth"
+    },
+    {
+      "from": "Denpasar Bali",
+      "to": "Sydney"
+    },
+    {
+      "from": "Makassar",
+      "to": "Port Moresby"
+    },
+    {
+      "from": "Port Moresby",
+      "to": "Brisbane"
+    },
+    {
+      "from": "Port Moresby",
+      "to": "Sydney"
+    },
+    {
+      "from": "Port Moresby",
+      "to": "Suva"
+    },
+    {
+      "from": "Perth",
+      "to": "Sydney"
+    },
+    {
+      "from": "Perth",
+      "to": "Melbourne"
+    },
+    {
+      "from": "Perth",
+      "to": "Singapore"
+    },
+    {
+      "from": "Perth",
+      "to": "Colombo"
+    },
+    {
+      "from": "Sydney",
+      "to": "Melbourne"
+    },
+    {
+      "from": "Sydney",
+      "to": "Brisbane"
+    },
+    {
+      "from": "Sydney",
+      "to": "Auckland"
+    },
+    {
+      "from": "Melbourne",
+      "to": "Auckland"
+    },
+    {
+      "from": "Auckland",
+      "to": "Wellington"
+    },
+    {
+      "from": "Auckland",
+      "to": "Christchurch"
+    },
+    {
+      "from": "Auckland",
+      "to": "Suva"
+    },
+    {
+      "from": "Wellington",
+      "to": "Christchurch"
+    },
+    {
+      "from": "Suva",
+      "to": "Apia Samoa"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Apia Samoa"
+    },
+    {
+      "from": "Apia Samoa",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Apia Samoa",
+      "to": "Santiago Chile"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Los Angeles"
+    },
+    {
+      "from": "Honolulu",
+      "to": "San Francisco"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Seattle Tacoma"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Sydney"
+    },
+    {
+      "from": "Honolulu",
+      "to": "Auckland"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Lagos"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Dakar"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Accra"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Numbani"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Aatlis"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Casablanca"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "São Paulo"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Recife"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Belem"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Atlantic Arcology",
+      "to": "New York JFK"
+    },
+    {
+      "from": "Lagos",
+      "to": "Recife"
+    },
+    {
+      "from": "Lagos",
+      "to": "São Paulo"
+    },
+    {
+      "from": "Dakar",
+      "to": "Recife"
+    },
+    {
+      "from": "Dakar",
+      "to": "Belem"
+    },
+    {
+      "from": "Cape Town",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "Cape Town",
+      "to": "São Paulo"
+    },
+    {
+      "from": "Cape Town",
+      "to": "Santiago Chile"
+    },
+    {
+      "from": "Johannesburg",
+      "to": "São Paulo"
+    },
+    {
+      "from": "Maputo",
+      "to": "Recife"
+    },
+    {
+      "from": "Accra",
+      "to": "Recife"
+    },
+    {
+      "from": "Cairo",
+      "to": "Johannesburg"
+    },
+    {
+      "from": "Cairo",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Cairo",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "Cairo",
+      "to": "Harare"
+    },
+    {
+      "from": "Cairo",
+      "to": "Maputo"
+    },
+    {
+      "from": "Cairo",
+      "to": "Nairobi"
+    },
+    {
+      "from": "Cairo",
+      "to": "Addis Ababa"
+    },
+    {
+      "from": "Cairo",
+      "to": "Lagos"
+    },
+    {
+      "from": "Cairo",
+      "to": "Dubai"
+    },
+    {
+      "from": "Johannesburg",
+      "to": "Harare"
+    },
+    {
+      "from": "Johannesburg",
+      "to": "Maputo"
+    },
+    {
+      "from": "Johannesburg",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "Johannesburg",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Nairobi",
+      "to": "Addis Ababa"
+    },
+    {
+      "from": "Nairobi",
+      "to": "Dar es Salaam"
+    },
+    {
+      "from": "Nairobi",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "Maputo",
+      "to": "Harare"
+    },
+    {
+      "from": "Maputo",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "Dar es Salaam",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "Cape Town",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Novosibirsk"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Irkutsk"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Yakutsk"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Vladivostok"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Beijing"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Shanghai Pudong"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Delhi"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Mumbai"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Dubai"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Tehran"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Oasis"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Riyadh"
+    },
+    {
+      "from": "Moscow Sheremetyevo",
+      "to": "Istanbul"
+    },
+    {
+      "from": "Novosibirsk",
+      "to": "Irkutsk"
+    },
+    {
+      "from": "Irkutsk",
+      "to": "Yakutsk"
+    },
+    {
+      "from": "Irkutsk",
+      "to": "Beijing"
+    },
+    {
+      "from": "Vladivostok",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Vladivostok",
+      "to": "Seoul Incheon"
+    },
+    {
+      "from": "Vladivostok",
+      "to": "Beijing"
+    },
+    {
+      "from": "Yakutsk",
+      "to": "Anchorage"
+    },
+    {
+      "from": "Tehran",
+      "to": "Dubai"
+    },
+    {
+      "from": "Tehran",
+      "to": "Oasis"
+    },
+    {
+      "from": "Oasis",
+      "to": "Dubai"
+    },
+    {
+      "from": "Oasis",
+      "to": "Delhi"
+    },
+    {
+      "from": "Dubai",
+      "to": "Mumbai"
+    },
+    {
+      "from": "Dubai",
+      "to": "Delhi"
+    },
+    {
+      "from": "Riyadh",
+      "to": "Dubai"
+    },
+    {
+      "from": "Riyadh",
+      "to": "Cairo"
+    },
+    {
+      "from": "Riyadh",
+      "to": "Istanbul"
+    },
+    {
+      "from": "Delhi",
+      "to": "Beijing"
+    },
+    {
+      "from": "Delhi",
+      "to": "Mumbai"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Singapore"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Colombo"
+    },
+    {
+      "from": "Colombo",
+      "to": "Singapore"
+    },
+    {
+      "from": "Colombo",
+      "to": "Jakarta"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Paris CDG"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Frankfurt"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Madrid"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Istanbul"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Cairo"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Aatlis"
+    },
+    {
+      "from": "Rome Fiumicino",
+      "to": "Amsterdam"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Casablanca"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Madrid"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Paris CDG"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Cairo"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Lagos"
+    },
+    {
+      "from": "Aatlis",
+      "to": "Numbani"
+    },
+    {
+      "from": "Casablanca",
+      "to": "Madrid"
+    },
+    {
+      "from": "Casablanca",
+      "to": "Paris CDG"
+    },
+    {
+      "from": "Casablanca",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Gothenburg",
+      "to": "Amsterdam"
+    },
+    {
+      "from": "Gothenburg",
+      "to": "The Hague"
+    },
+    {
+      "from": "Gothenburg",
+      "to": "Frankfurt"
+    },
+    {
+      "from": "Gothenburg",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Gothenburg",
+      "to": "Moscow Sheremetyevo"
+    },
+    {
+      "from": "The Hague",
+      "to": "Amsterdam"
+    },
+    {
+      "from": "The Hague",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "The Hague",
+      "to": "Paris CDG"
+    },
+    {
+      "from": "The Hague",
+      "to": "Frankfurt"
+    },
+    {
+      "from": "Amsterdam",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Amsterdam",
+      "to": "Frankfurt"
+    },
+    {
+      "from": "Reykjavik Iceland",
+      "to": "London Heathrow"
+    },
+    {
+      "from": "Reykjavik Keflavik",
+      "to": "New York JFK"
+    },
+    {
+      "from": "Seattle Tacoma",
+      "to": "Portland Oregon"
+    },
+    {
+      "from": "Seattle Tacoma",
+      "to": "San Francisco"
+    },
+    {
+      "from": "Seattle Tacoma",
+      "to": "Los Angeles"
+    },
+    {
+      "from": "Seattle Tacoma",
+      "to": "Tokyo Haneda"
+    },
+    {
+      "from": "Portland Oregon",
+      "to": "San Francisco"
+    },
+    {
+      "from": "Calgary",
+      "to": "Seattle Tacoma"
+    },
+    {
+      "from": "Calgary",
+      "to": "Winnipeg"
+    },
+    {
+      "from": "Santiago Chile",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "Santiago Chile",
+      "to": "São Paulo"
+    },
+    {
+      "from": "Santiago Chile",
+      "to": "Lima"
+    },
+    {
+      "from": "Lima",
+      "to": "Bogotá"
+    },
+    {
+      "from": "Lima",
+      "to": "Mexico City"
+    },
+    {
+      "from": "Recife",
+      "to": "São Paulo"
+    },
+    {
+      "from": "Recife",
+      "to": "Belem"
+    },
+    {
+      "from": "São Paulo",
+      "to": "Buenos Aires"
+    },
+    {
+      "from": "São Paulo",
+      "to": "Bogotá"
+    },
+    {
+      "from": "Makassar",
+      "to": "Darwin"
+    },
+    {
+      "from": "Darwin",
+      "to": "Port Moresby"
+    },
+    {
+      "from": "Darwin",
+      "to": "Jakarta"
+    },
+    {
+      "from": "Darwin",
+      "to": "Brisbane"
+    },
+    {
+      "from": "Darwin",
+      "to": "Singapore"
+    },
+    {
+      "from": "Mexico City",
+      "to": "Apia Samoa"
+    },
+    {
+      "from": "Mexico City",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Los Angeles",
+      "to": "Apia Samoa"
+    },
+    {
+      "from": "San Francisco",
+      "to": "Apia Samoa"
+    },
+    {
+      "from": "Dallas",
+      "to": "Honolulu"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Johannesburg"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Mumbai",
+      "to": "Nairobi"
+    },
+    {
+      "from": "Delhi",
+      "to": "Johannesburg"
+    },
+    {
+      "from": "Delhi",
+      "to": "Nairobi"
+    },
+    {
+      "from": "Delhi",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Roshani",
+      "to": "Johannesburg"
+    },
+    {
+      "from": "Roshani",
+      "to": "Nairobi"
+    },
+    {
+      "from": "Colombo",
+      "to": "Johannesburg"
+    },
+    {
+      "from": "Colombo",
+      "to": "Cape Town"
+    },
+    {
+      "from": "Colombo",
+      "to": "Antananarivo"
+    },
+    {
+      "from": "North Pole Station",
+      "to": "Yakutsk"
+    },
+    {
+      "from": "North Pole Station",
+      "to": "Novosibirsk"
+    },
+    {
+      "from": "North Pole Station",
+      "to": "Irkutsk"
+    },
+    {
+      "from": "North Pole Station",
+      "to": "Vladivostok"
+    },
+    {
+      "from": "North Pole Station",
+      "to": "Moscow Sheremetyevo"
+    }
   ]
 }
-
-

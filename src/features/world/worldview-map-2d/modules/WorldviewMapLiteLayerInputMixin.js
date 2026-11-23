@@ -15,10 +15,44 @@ import {
 export const mixin = {
     zoomIn() {
         this._zoomAtViewportCenter(1.12);
+        this._notifyZoomChanged();
     },
 
     zoomOut() {
         this._zoomAtViewportCenter(1 / 1.12);
+        this._notifyZoomChanged();
+    },
+
+    /** 0 = fully zoomed out (cover), 1 = max zoom in. */
+    getZoomNormalized() {
+        const min = this._minScale || 1;
+        const max = this._maxScale || min;
+        if (max <= min) return 0;
+        return Math.max(0, Math.min(1, (this._scale - min) / (max - min)));
+    },
+
+    /** @param {number} t 0..1 */
+    setZoomNormalized(t) {
+        const min = this._minScale || 1;
+        const max = this._maxScale || min;
+        const target = min + (max - min) * Math.max(0, Math.min(1, Number(t) || 0));
+        if (!this.viewport) {
+            this._scale = target;
+            return;
+        }
+        const w = this.viewport.clientWidth;
+        const h = this.viewport.clientHeight;
+        const mx = w / 2;
+        const my = h / 2;
+        const factor = this._scale > 1e-6 ? target / this._scale : 1;
+        this._zoomAt(mx, my, factor);
+        this._notifyZoomChanged();
+    },
+
+    _notifyZoomChanged() {
+        if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+        }
     },
 
     _zoomAtViewportCenter(factor) {
@@ -74,6 +108,7 @@ export const mixin = {
         const delta = e.deltaY * 0.001;
         const factor = Math.exp(-delta * 0.15);
         this._zoomAt(mx, my, factor);
+        this._notifyZoomChanged();
     },
 
     _onPointerDown(e) {

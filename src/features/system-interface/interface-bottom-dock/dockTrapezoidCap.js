@@ -49,6 +49,14 @@ function buildBorderSide(side) {
     return el;
 }
 
+function buildFlank(side) {
+    const el = document.createElement('div');
+    el.id = side === 'left' ? 'dockTrapFlankLeft' : 'dockTrapFlankRight';
+    el.className = `dock-trap-flank dock-trap-flank--${side}`;
+    el.setAttribute('aria-label', side === 'left' ? 'World mode controls left' : 'World mode controls right');
+    return el;
+}
+
 function buildCapRow() {
     const capRow = document.createElement('div');
     capRow.className = 'pagination-dock-top-cap-row';
@@ -58,10 +66,66 @@ function buildCapRow() {
 
     capRow.append(
         buildBorderSide('left'),
+        buildFlank('left'),
         trapEl,
+        buildFlank('right'),
         buildBorderSide('right')
     );
     return capRow;
+}
+
+/**
+ * Ensure flank hosts exist on an already-migrated cap row (idempotent).
+ * @param {HTMLElement} capRow
+ */
+function ensureDockTrapFlanks(capRow) {
+    if (!capRow) return;
+    const trap = capRow.querySelector('.pagination-dock-top-trapezoid');
+    if (!trap) return;
+
+    let left = document.getElementById('dockTrapFlankLeft');
+    let right = document.getElementById('dockTrapFlankRight');
+    if (!left) {
+        left = buildFlank('left');
+        capRow.insertBefore(left, trap);
+    } else if (left.parentElement !== capRow) {
+        capRow.insertBefore(left, trap);
+    }
+    if (!right) {
+        right = buildFlank('right');
+        capRow.insertBefore(right, trap.nextSibling);
+    } else if (right.parentElement !== capRow) {
+        const afterTrap = trap.nextSibling;
+        if (afterTrap) capRow.insertBefore(right, afterTrap);
+        else capRow.appendChild(right);
+    }
+}
+
+/** Mode toggles that sit outside the trapezium, parallel to its slanted edges. */
+const DOCK_TRAP_FLANK_LEFT_IDS = ['hyperloopToggle', 'weatherEffectsToggle'];
+const DOCK_TRAP_FLANK_RIGHT_IDS = ['lightingToggle', 'autoRotateToggle'];
+
+/**
+ * Move Vehicles/Weather (left) and Lighting/Rotation (right) onto the trap flanks.
+ * Desktop only — on mobile those four live in #dockGlobeRailLeft (top mode rail).
+ * Safe to call repeatedly after toggles/controls load.
+ */
+export function reflowDockTrapFlankButtons() {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
+        return;
+    }
+    const left = document.getElementById('dockTrapFlankLeft');
+    const right = document.getElementById('dockTrapFlankRight');
+    if (!left || !right) return;
+
+    DOCK_TRAP_FLANK_LEFT_IDS.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && el.parentElement !== left) left.appendChild(el);
+    });
+    DOCK_TRAP_FLANK_RIGHT_IDS.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && el.parentElement !== right) right.appendChild(el);
+    });
 }
 
 function migrateLegacyBorderWrap(dock, capRow) {
@@ -148,8 +212,10 @@ export function buildOrMigrateDockTrapezoidCap(dock, pagination) {
 
     migrateLegacyBorderWrap(dock, capRow);
     migrateOrphanTrapezoid(dock, capRow);
+    ensureDockTrapFlanks(capRow);
     applyTrapezoidSvgsAndCenterRail(capRow);
     adoptCollapseHandleOntoTrapezoid(capRow);
+    reflowDockTrapFlankButtons();
     /* Tweaks may have applied before the dock SVG existed — re-sync taper polygon. */
     refreshDockTrapSvgFromTweaks();
 }

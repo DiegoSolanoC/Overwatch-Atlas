@@ -263,11 +263,10 @@ class WorldviewCameraControl {
             this.sceneModel.autoRotateTimeout = null;
         }
 
-        // Default camera position and (optionally) globe rotation
-        // On mobile portrait, use more zoomed out position to show Moon/Mars panels
-        const isMobilePortrait = this.sceneModel.isMobilePortrait || (window.innerWidth <= 768 && window.innerHeight > window.innerWidth);
-        let defaultZoom = isMobilePortrait ? 7.0 : 3.5;
-        console.log('[WorldviewCameraControl.resetCameraToDefault] isMobilePortrait:', isMobilePortrait);
+        // Default camera Z = mid of zoom limits so the slider nub starts centered.
+        const { minZ, maxZ } = this._getGlobeZoomLimits();
+        let defaultZoom = (minZ + maxZ) / 2;
+        console.log('[WorldviewCameraControl.resetCameraToDefault] zoom limits:', { minZ, maxZ });
         console.log('[WorldviewCameraControl.resetCameraToDefault] defaultZoom:', defaultZoom);
 
         // Map view: fit whole map (same perspective 3D pipeline as Moon/Mars planes).
@@ -418,6 +417,67 @@ class WorldviewCameraControl {
             this.uiView.originalCameraPosition = null;
             this.uiView.originalGlobeRotation = null;
         }
+        if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+        }
+    }
+
+    _getGlobeZoomLimits() {
+        const camera = this.sceneModel.getCamera();
+        const earthMapPlane = this.sceneModel.getEarthMapPlane ? this.sceneModel.getEarthMapPlane() : this.sceneModel.earthMapPlane;
+        const isMapView = this.sceneModel.getMapViewEnabled ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
+        const renderer = this.sceneModel.getRenderer();
+        const isMobilePortrait = this.sceneModel.isMobilePortrait || (window.innerWidth <= 768 && window.innerHeight > window.innerWidth);
+        const minZ = 1.5;
+        let maxZ = isMobilePortrait ? 7.0 : 5.0;
+        if (isMapView && earthMapPlane && renderer && camera) {
+            const rect = renderer.domElement.getBoundingClientRect();
+            const viewportW = Math.max(1, rect.width);
+            const viewportH = Math.max(1, rect.height);
+            const aspect = viewportW / viewportH;
+            const fovRad = (camera.fov * Math.PI) / 180;
+            const tan = Math.tan(fovRad / 2);
+            const halfMapW = 1.0 * (earthMapPlane.scale?.x ?? 1);
+            const halfMapH = 0.5 * (earthMapPlane.scale?.y ?? 1);
+            const maxDistH = halfMapH / tan;
+            const maxDistW = halfMapW / (tan * aspect);
+            maxZ = Math.min(maxZ, Math.max(1.6, Math.min(maxDistH, maxDistW) * 0.98));
+        }
+        return { minZ, maxZ };
+    }
+
+    /** 0 = zoomed out, 1 = zoomed in (camera closer). */
+    getZoomNormalized() {
+        const camera = this.sceneModel.getCamera();
+        if (!camera) return 0;
+        const { minZ, maxZ } = this._getGlobeZoomLimits();
+        if (maxZ <= minZ) return 0;
+        return Math.max(0, Math.min(1, (maxZ - camera.position.z) / (maxZ - minZ)));
+    }
+
+    /** @param {number} t 0..1 */
+    setZoomNormalized(t) {
+        const camera = this.sceneModel.getCamera();
+        if (!camera) return;
+        const { minZ, maxZ } = this._getGlobeZoomLimits();
+        const clamped = Math.max(0, Math.min(1, Number(t) || 0));
+        camera.position.z = maxZ - clamped * (maxZ - minZ);
+        const earthMapPlane = this.sceneModel.getEarthMapPlane ? this.sceneModel.getEarthMapPlane() : this.sceneModel.earthMapPlane;
+        const isMapView = this.sceneModel.getMapViewEnabled ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
+        const renderer = this.sceneModel.getRenderer();
+        if (isMapView && earthMapPlane && renderer) {
+            const clampedXY = this._clampMapXY(camera.position.x, camera.position.y, camera.position.z);
+            camera.position.x = clampedXY.x;
+            camera.position.y = clampedXY.y;
+            camera.lookAt(camera.position.x, camera.position.y, 0);
+        }
+        if (this.uiView) {
+            this.uiView.originalCameraPosition = null;
+            this.uiView.originalGlobeRotation = null;
+        }
+        if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('atlas-zoom-changed'));
+        }
     }
 
     /**
@@ -425,58 +485,10 @@ class WorldviewCameraControl {
      */
     zoomIn() {
         const camera = this.sceneModel.getCamera();
-        const earthMapPlane = this.sceneModel.getEarthMapPlane ? this.sceneModel.getEarthMapPlane() : this.sceneModel.earthMapPlane;
-        const isMapView = this.sceneModel.getMapViewEnabled ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
-        const renderer = this.sceneModel.getRenderer();
-        if (camera) {
-            const delta = 0.4; // Zoom step size (increased from 0.2 for stronger zoom)
-            const isMobilePortrait = this.sceneModel.isMobilePortrait || (window.innerWidth <= 768 && window.innerHeight > window.innerWidth);
-            
-            // Different zoom limits for mobile portrait (allows more zoom out to show panels)
-            const minZoom = 1.5;
-            let maxZoom = isMobilePortrait ? 7.0 : 5.0; // Allow more zoom out on mobile portrait
-            
-            if (isMapView && earthMapPlane && renderer) {
-                const rect = renderer.domElement.getBoundingClientRect();
-                const viewportW = Math.max(1, rect.width);
-                const viewportH = Math.max(1, rect.height);
-                const aspect = viewportW / viewportH;
-                const fovRad = (camera.fov * Math.PI) / 180;
-                const tan = Math.tan(fovRad / 2);
-                const halfMapW = 1.0 * (earthMapPlane.scale?.x ?? 1);
-                const halfMapH = 0.5 * (earthMapPlane.scale?.y ?? 1);
-                const maxDistH = halfMapH / tan;
-                const maxDistW = halfMapW / (tan * aspect);
-                maxZoom = Math.min(maxZoom, Math.max(1.6, Math.min(maxDistH, maxDistW) * 0.98));
-            }
-            
-            camera.position.z -= delta;
-            camera.position.z = Math.max(minZoom, Math.min(maxZoom, camera.position.z));
-
-            if (isMapView && earthMapPlane && renderer) {
-                const rect = renderer.domElement.getBoundingClientRect();
-                const viewportW = Math.max(1, rect.width);
-                const viewportH = Math.max(1, rect.height);
-                const aspect = viewportW / viewportH;
-                const fovRad = (camera.fov * Math.PI) / 180;
-                const distance = Math.max(0.01, camera.position.z - earthMapPlane.position.z);
-                const halfViewH = Math.tan(fovRad / 2) * distance;
-                const halfViewW = halfViewH * aspect;
-                const halfMapW = 1.0 * (earthMapPlane.scale?.x ?? 1);
-                const halfMapH = 0.5 * (earthMapPlane.scale?.y ?? 1);
-                const maxPanX = Math.max(0, halfMapW - halfViewW);
-                const maxPanY = Math.max(0, halfMapH - halfViewH);
-                camera.position.x = Math.max(-maxPanX, Math.min(maxPanX, camera.position.x));
-                camera.position.y = Math.max(-maxPanY, Math.min(maxPanY, camera.position.y));
-                camera.lookAt(camera.position.x, camera.position.y, 0);
-            }
-            
-            // Clear stored original position when manually zooming (so clicking globe doesn't reset)
-            if (this.uiView) {
-                this.uiView.originalCameraPosition = null;
-                this.uiView.originalGlobeRotation = null;
-            }
-        }
+        if (!camera) return;
+        const { minZ, maxZ } = this._getGlobeZoomLimits();
+        const span = Math.max(0.01, maxZ - minZ);
+        this.setZoomNormalized(this.getZoomNormalized() + 0.4 / span);
     }
 
     /**
@@ -484,58 +496,10 @@ class WorldviewCameraControl {
      */
     zoomOut() {
         const camera = this.sceneModel.getCamera();
-        const earthMapPlane = this.sceneModel.getEarthMapPlane ? this.sceneModel.getEarthMapPlane() : this.sceneModel.earthMapPlane;
-        const isMapView = this.sceneModel.getMapViewEnabled ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
-        const renderer = this.sceneModel.getRenderer();
-        if (camera) {
-            const delta = 0.4; // Zoom step size (increased from 0.2 for stronger zoom)
-            const isMobilePortrait = this.sceneModel.isMobilePortrait || (window.innerWidth <= 768 && window.innerHeight > window.innerWidth);
-            
-            // Different zoom limits for mobile portrait (allows more zoom out to show panels)
-            const minZoom = 1.5;
-            let maxZoom = isMobilePortrait ? 7.0 : 5.0; // Allow more zoom out on mobile portrait
-            
-            if (isMapView && earthMapPlane && renderer) {
-                const rect = renderer.domElement.getBoundingClientRect();
-                const viewportW = Math.max(1, rect.width);
-                const viewportH = Math.max(1, rect.height);
-                const aspect = viewportW / viewportH;
-                const fovRad = (camera.fov * Math.PI) / 180;
-                const tan = Math.tan(fovRad / 2);
-                const halfMapW = 1.0 * (earthMapPlane.scale?.x ?? 1);
-                const halfMapH = 0.5 * (earthMapPlane.scale?.y ?? 1);
-                const maxDistH = halfMapH / tan;
-                const maxDistW = halfMapW / (tan * aspect);
-                maxZoom = Math.min(maxZoom, Math.max(1.6, Math.min(maxDistH, maxDistW) * 0.98));
-            }
-            
-            camera.position.z += delta;
-            camera.position.z = Math.max(minZoom, Math.min(maxZoom, camera.position.z));
-
-            if (isMapView && earthMapPlane && renderer) {
-                const rect = renderer.domElement.getBoundingClientRect();
-                const viewportW = Math.max(1, rect.width);
-                const viewportH = Math.max(1, rect.height);
-                const aspect = viewportW / viewportH;
-                const fovRad = (camera.fov * Math.PI) / 180;
-                const distance = Math.max(0.01, camera.position.z - earthMapPlane.position.z);
-                const halfViewH = Math.tan(fovRad / 2) * distance;
-                const halfViewW = halfViewH * aspect;
-                const halfMapW = 1.0 * (earthMapPlane.scale?.x ?? 1);
-                const halfMapH = 0.5 * (earthMapPlane.scale?.y ?? 1);
-                const maxPanX = Math.max(0, halfMapW - halfViewW);
-                const maxPanY = Math.max(0, halfMapH - halfViewH);
-                camera.position.x = Math.max(-maxPanX, Math.min(maxPanX, camera.position.x));
-                camera.position.y = Math.max(-maxPanY, Math.min(maxPanY, camera.position.y));
-                camera.lookAt(camera.position.x, camera.position.y, 0);
-            }
-            
-            // Clear stored original position when manually zooming (so clicking globe doesn't reset)
-            if (this.uiView) {
-                this.uiView.originalCameraPosition = null;
-                this.uiView.originalGlobeRotation = null;
-            }
-        }
+        if (!camera) return;
+        const { minZ, maxZ } = this._getGlobeZoomLimits();
+        const span = Math.max(0.01, maxZ - minZ);
+        this.setZoomNormalized(this.getZoomNormalized() - 0.4 / span);
     }
 }
 

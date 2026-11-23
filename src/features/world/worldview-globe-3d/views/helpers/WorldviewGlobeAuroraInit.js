@@ -1,9 +1,11 @@
 /**
  * Aurora shell meshes for globe and flat map.
  */
+import { getGlobeQualitySnapshot } from '../../../worldview-shared-assets/constants/WorldviewQualitySettings.js';
 
 export function createGlobeAuroraShell({ radius = 1.022, uIntensity = 0.42 } = {}) {
-    const geometry = new THREE.SphereGeometry(radius, 72, 72);
+    const segs = getGlobeQualitySnapshot().auroraSegments || 72;
+    const geometry = new THREE.SphereGeometry(radius, segs, segs);
     const material = new THREE.ShaderMaterial({
         uniforms: {
             uTime: { value: 0 },

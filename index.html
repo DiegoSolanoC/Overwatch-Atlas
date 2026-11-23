@@ -133,8 +133,8 @@
         } catch (e) {}
     })();
     </script>
-    <link rel="stylesheet" href="src/styles/app.css?v=189">
-    <link rel="stylesheet" href="src/styles/entry.css?v=32">
+    <link rel="stylesheet" href="src/styles/app.css?v=191">
+    <link rel="stylesheet" href="src/styles/entry.css?v=33">
 </head>
 <body class="app-timeline-default">
     <div
@@ -227,6 +227,17 @@
     <div id="dockGlobeRailLeft" class="dock-globe-rail dock-globe-rail--left" aria-label="Transport and weather"></div>
     <div id="dockGlobeRailCenter" class="dock-globe-rail dock-globe-rail--center" aria-label="Pagination and navigation"></div>
     <div id="dockGlobeRailRight" class="dock-globe-rail dock-globe-rail--right" aria-label="Map view and rotation"></div>
+
+    <!-- Stage sliders sit at body level (not under #content z-index:0) so they can stack above UI Tweaks like the dock flanks. -->
+    <div class="zoom-controls" id="zoomControls">
+        <button class="zoom-reset-btn" id="zoomResetBtn" title="Reset zoom and view" type="button" aria-label="Reset zoom and view">Reset</button>
+        <div class="zoom-sun-slot" id="zoomSunSlot" aria-hidden="true"></div>
+        <div class="stage-slider-shell stage-slider-shell--zoom">
+            <input type="range" class="zoom-slider" id="zoomSlider" min="0" max="100" value="50" step="1" aria-label="Zoom" title="Zoom" />
+        </div>
+        <button class="zoom-btn zoom-in-btn" id="zoomInBtn" title="Zoom In" type="button" hidden aria-hidden="true">+</button>
+        <button class="zoom-btn zoom-out-btn" id="zoomOutBtn" title="Zoom Out" type="button" hidden aria-hidden="true">−</button>
+    </div>
 
     <div class="layout-container">
         <!-- Event Slide Panel (left side) -->
@@ -408,12 +419,6 @@
 
         <main id="content">
             <div id="globe-container"></div>
-            <!-- Zoom Controls -->
-            <div class="zoom-controls" id="zoomControls">
-                <button class="zoom-btn zoom-in-btn" id="zoomInBtn" title="Zoom In">+</button>
-                <button class="zoom-btn zoom-reset-btn" id="zoomResetBtn" title="Reset zoom and view">=</button>
-                <button class="zoom-btn zoom-out-btn" id="zoomOutBtn" title="Zoom Out">−</button>
-            </div>
             <!-- Event Image Overlay (over globe) -->
             <div class="event-image-overlay" id="eventImageOverlay">
                 <div class="event-image-container" id="eventImageContainer">

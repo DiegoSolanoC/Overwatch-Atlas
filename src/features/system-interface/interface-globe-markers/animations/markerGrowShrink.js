@@ -61,9 +61,11 @@ export function animateMarkersGrow(markers, pinLines) {
                             marker.userData.pinLine.material.color.lerpColors(startColor, targetColor, easeProgress);
                         }
                     } else {
+                        // Soft highlight of the *current* palette accent — not a hardcoded
+                        // yellow/orange flash (that looked like the wrong palette on page change).
                         const baseColor = new THREE.Color(markerAccentHex(marker));
-                        const flashColor = new THREE.Color(0xffff00);
-                        marker.material.color.lerpColors(baseColor, flashColor, glowProgress);
+                        const flashColor = baseColor.clone().lerp(new THREE.Color(0xffffff), 0.45);
+                        marker.material.color.lerpColors(baseColor, flashColor, glowProgress * 0.55);
                         marker.material.needsUpdate = true;
                     }
                 }

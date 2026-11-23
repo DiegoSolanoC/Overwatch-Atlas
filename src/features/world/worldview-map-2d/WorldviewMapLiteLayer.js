@@ -64,6 +64,11 @@ export class WorldviewMapLiteLayer {
         this._hoverSoundInterval = null;
         /** @type {HTMLElement|null} Dock/thumb synthetic hover button */
         this._syntheticHoverBtn = null;
+        /** @type {HTMLElement|null} */
+        this.patternEl = null;
+        /** @type {HTMLElement|null} */
+        this.paletteFlashEl = null;
+        this._paletteRevealToken = 0;
     }
 
     ensureDom() {
@@ -79,6 +84,19 @@ export class WorldviewMapLiteLayer {
         this.img.className = 'map-2d-lite__map-img';
         this.img.alt = '';
         this.img.draggable = false;
+
+        this.patternEl = document.createElement('div');
+        this.patternEl.className = 'map-2d-lite__pattern';
+        this.patternEl.setAttribute('aria-hidden', 'true');
+        const patternBase = document.createElement('div');
+        patternBase.className = 'map-2d-lite__pattern-base';
+        const patternWave = document.createElement('div');
+        patternWave.className = 'map-2d-lite__pattern-wave';
+        this.patternEl.append(patternBase, patternWave);
+
+        this.paletteFlashEl = document.createElement('div');
+        this.paletteFlashEl.className = 'map-2d-lite__palette-flash';
+        this.paletteFlashEl.setAttribute('aria-hidden', 'true');
 
         const celest = document.createElement('div');
         celest.className = 'map-2d-lite__celestials';
@@ -124,6 +142,8 @@ export class WorldviewMapLiteLayer {
         this.markersEl.className = 'map-2d-lite__markers';
 
         this.world.appendChild(this.img);
+        this.world.appendChild(this.patternEl);
+        this.world.appendChild(this.paletteFlashEl);
         this.world.appendChild(this.markersEl);
         this.viewport.appendChild(this.world);
         this.root.appendChild(this.viewport);
@@ -172,10 +192,53 @@ export class WorldviewMapLiteLayer {
     refreshTexturesFromScene() {
         if (!this.isVisible() || !this.img) return;
         const palette = readPaletteKey();
-        this.img.src = this._mapTexturePath();
+        const nextSrc = this._mapTexturePath();
         if (this._moonImg) this._moonImg.src = getMoonTexturePath(palette);
         if (this._marsImg) this._marsImg.src = getMarsTexturePath(palette);
         if (this._orbitImg) this._orbitImg.src = getOrbitTexturePath();
+        if (nextSrc && nextSrc !== this.img.getAttribute('src')) {
+            this._playPaletteReveal(nextSrc);
+        } else if (nextSrc) {
+            this.img.src = nextSrc;
+        }
+    }
+
+    /**
+     * Match globe palette beat: soft flash overlapping the image swap.
+     * @param {string} nextSrc
+     */
+    _playPaletteReveal(nextSrc) {
+        const flash = this.paletteFlashEl;
+        const img = this.img;
+        if (!img || !nextSrc) return;
+
+        const token = ++this._paletteRevealToken;
+        const preload = new Image();
+        preload.decoding = 'async';
+        const ready = new Promise((resolve) => {
+            preload.onload = () => resolve(true);
+            preload.onerror = () => resolve(false);
+            preload.src = nextSrc;
+        });
+
+        void (async () => {
+            if (flash) {
+                flash.style.transition = 'none';
+                flash.style.opacity = '0';
+                void flash.offsetWidth;
+                flash.style.transition = 'opacity 70ms ease-out';
+                flash.style.opacity = '0.45';
+            }
+
+            await ready;
+            if (token !== this._paletteRevealToken) return;
+
+            img.src = nextSrc;
+            if (flash) {
+                flash.style.transition = 'opacity 200ms ease-in';
+                flash.style.opacity = '0';
+            }
+        })();
     }
 
     hide() {

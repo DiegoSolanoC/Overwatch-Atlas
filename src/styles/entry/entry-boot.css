@@ -53,11 +53,10 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container {
 }
 
 /*
- * Dock is an overlay — globe fills to the footer so collapse reveals the stage
- * pattern/canvas under the shortened dock (not a blank band).
+ * Dock is an overlay — globe/map fill under it (pagination-dock.css sets bottom:0)
+ * so collapse reveals stage background instead of an empty band.
  */
 body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
-    bottom: 0;
     height: auto;
 }
 

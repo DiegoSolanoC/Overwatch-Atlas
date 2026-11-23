@@ -331,6 +331,8 @@ export const mixin = {
             document.getElementById('hyperloopToggle'),
             document.getElementById('weatherEffectsToggle'),
             document.getElementById('lightingToggle'),
+            document.getElementById('planeRoutesToggle'),
+            document.getElementById('boatRoutesToggle'),
             document.getElementById('autoRotateToggle')
         ];
 
