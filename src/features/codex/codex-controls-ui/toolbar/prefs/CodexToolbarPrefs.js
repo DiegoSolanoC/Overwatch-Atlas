@@ -131,7 +131,7 @@ function ensureCodexToolbarModeToggle(bar) {
         const cb = document.createElement('input');
         cb.type = 'checkbox';
         cb.className = 'codex-toolbar__mode-toggle';
-        cb.title = 'Check to enable Dev Mode (edit nodes, cords, layout). Uncheck for View Mode (read-only, pan/zoom only).';
+        cb.title = 'Check to enable Edit Mode (edit nodes, cords, layout). Uncheck for View Mode (read-only, pan/zoom only).';
         cb.addEventListener('change', () => {
             s.codexMode = cb.checked ? 'dev' : 'view';
             persistCodexModePref();
@@ -140,7 +140,7 @@ function ensureCodexToolbarModeToggle(bar) {
         });
         lbl.appendChild(cb);
         const span = document.createElement('span');
-        span.textContent = 'Dev Mode';
+        span.textContent = 'Edit Mode';
         lbl.appendChild(span);
         row.appendChild(lbl);
         const firstRow = bar.querySelector('.codex-toolbar__row');

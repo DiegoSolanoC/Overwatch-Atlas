@@ -105,7 +105,7 @@ export function mountDialogueTheaterEntryToggle(options = {}) {
     if (!btn) {
         btn = createHeaderHubButton({
             id: TOGGLE_ID,
-            className: 'dock-trap-flank__btn dialogue-theater-entry-toggle',
+            className: 'dock-trap-flank__btn mode-primary-toggle dialogue-theater-entry-toggle',
             title: 'Switch to Hero Chatters',
             label: 'Chatters',
             iconPath: ICON_CHATTERS,
@@ -115,7 +115,7 @@ export function mountDialogueTheaterEntryToggle(options = {}) {
             iconSpanId: 'dialogueTheaterEntryToggleIcon',
             headerOrder: 10,
             mobileParentId: DOCK_PARENT_ID,
-            mobileClassName: 'dock-trap-flank__btn dialogue-theater-entry-toggle',
+            mobileClassName: 'dock-trap-flank__btn mode-primary-toggle dialogue-theater-entry-toggle',
         });
     } else if (!dockParent.contains(btn)) {
         dockParent.appendChild(btn);

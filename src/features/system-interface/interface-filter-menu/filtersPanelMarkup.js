@@ -79,14 +79,6 @@ export function createFiltersPanel() {
                                     </span>
                                 </button>
                             </div>
-                            <div class="filters-actions-buttons">
-                                <button type="button" id="clearFiltersBtn" class="filters-action-btn filters-action-btn--slant">
-                                    <span class="filters-action-btn__face">
-                                        <img class="filters-action-btn__icon" src="src/assets/images/Icons/Filter%20Icons/Clear%20Filter%20Icon.png" alt="" width="28" height="28" decoding="async" />
-                                        <span class="filters-action-btn__label">Clear</span>
-                                    </span>
-                                </button>
-                            </div>
                         </div>
                     </div>
                     <div class="filters-actions-side">
@@ -112,6 +104,28 @@ export function createFiltersPanel() {
                                 <img class="filters-selection-count__icon" src="src/assets/images/Icons/Filter%20Icons/Location%20Icon.png" alt="" width="36" height="36" decoding="async" />
                                 <span class="filter-count" id="countriesCount">0</span>
                             </span>
+                        </div>
+                        <div class="filters-actions-buttons">
+                            <button
+                                type="button"
+                                id="filtersMatchModeToggle"
+                                class="filters-action-btn filters-action-btn--slant filters-match-mode-toggle"
+                                data-filters-match-mode-root="1"
+                                aria-pressed="false"
+                                title="OR — match any selected filter"
+                                aria-label="Match mode OR — click to switch to AND"
+                            >
+                                <span class="filters-action-btn__face">
+                                    <span class="filters-match-mode-toggle__symbol" aria-hidden="true">∪</span>
+                                    <span class="filters-action-btn__label filters-match-mode-toggle__label">OR</span>
+                                </span>
+                            </button>
+                            <button type="button" id="clearFiltersBtn" class="filters-action-btn filters-action-btn--slant">
+                                <span class="filters-action-btn__face">
+                                    <img class="filters-action-btn__icon" src="src/assets/images/Icons/Filter%20Icons/Clear%20Filter%20Icon.png" alt="" width="28" height="28" decoding="async" />
+                                    <span class="filters-action-btn__label">Clear</span>
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -62,8 +62,9 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     bottom: var(--atlas-zoom-dock-bottom);
 }
 
-/* Filters-style white plate — centered on the slider stack */
+/* Match Filters / Map white plate language — slight skew like other mode chips */
 .zoom-reset-btn {
+    --reset-skew: -11deg;
     pointer-events: auto;
     appearance: none;
     align-self: center;
@@ -89,20 +90,26 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     user-select: none;
+    transform: skewX(var(--reset-skew));
+    transform-origin: center bottom;
     transition:
         background 0.2s ease,
         transform 0.2s ease,
         filter 0.2s ease;
 }
 
+.zoom-reset-btn > * {
+    transform: skewX(calc(-1 * var(--reset-skew)));
+}
+
 .zoom-reset-btn:hover:not(:disabled) {
     background: #ffffff;
     filter: brightness(1.04);
-    transform: translateY(-1px);
+    transform: skewX(var(--reset-skew)) translateY(-1px);
 }
 
 .zoom-reset-btn:active:not(:disabled) {
-    transform: translateY(0);
+    transform: skewX(var(--reset-skew)) translateY(0);
     filter: none;
 }
 

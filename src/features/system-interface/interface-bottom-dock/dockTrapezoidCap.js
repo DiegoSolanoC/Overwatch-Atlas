@@ -106,12 +106,18 @@ const DOCK_TRAP_FLANK_LEFT_IDS = ['hyperloopToggle', 'weatherEffectsToggle'];
 const DOCK_TRAP_FLANK_RIGHT_IDS = ['lightingToggle', 'autoRotateToggle'];
 
 /**
- * Move Vehicles/Weather (left) and Lighting/Rotation (right) onto the trap flanks.
- * Desktop only — on mobile those four live in #dockGlobeRailLeft (top mode rail).
+ * Desktop: Vehicles/Weather → left flank, Lighting/Rotation → right flank.
+ * Mobile: all four live in #dockGlobeRailLeft (top mode rail under the header).
  * Safe to call repeatedly after toggles/controls load.
  */
 export function reflowDockTrapFlankButtons() {
     if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
+        const rail = document.getElementById('dockGlobeRailLeft');
+        if (!rail) return;
+        [...DOCK_TRAP_FLANK_LEFT_IDS, ...DOCK_TRAP_FLANK_RIGHT_IDS].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el && el.parentElement !== rail) rail.appendChild(el);
+        });
         return;
     }
     const left = document.getElementById('dockTrapFlankLeft');

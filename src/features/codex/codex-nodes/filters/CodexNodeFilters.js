@@ -15,10 +15,19 @@ import {
     codexNodeElMatchesActiveFilters,
     getCodexFilterDerivedState,
     invalidateCodexFilterDerivedCache,
+    resolveCodexNodeIdsForActiveFilters,
 } from './CodexNodeFilterMatch.js';
 
 /** @type {number} */
 let filterStateApplyRaf = 0;
+/** @type {number} */
+let filterGraphRaf = 0;
+/** @type {number} */
+let filterCordDeferRaf = 0;
+/** @type {number} */
+let filterClearSecondaryRaf = 0;
+/** @type {number} */
+let filterApplyGeneration = 0;
 
 function codexNodeMatchesFilters(nodeEl) {
     return codexNodeElMatchesActiveFilters(nodeEl);
@@ -30,8 +39,12 @@ function rebuildCodexFilterDerivedSets() {
         s.codexFilterConnectionEndpointNodeIds = null;
         s.codexFilterLinkedEdgePairKeys = null;
         s.codexFilterActiveEdgePairKeys = null;
+        s.codexFilterSeedNodeIds = null;
         return;
     }
+
+    const seeds = resolveCodexNodeIdsForActiveFilters(s.codexAllNodes);
+    s.codexFilterSeedNodeIds = new Set(seeds);
 
     const linkOn = isCodexLinkFiltersEnabled();
     const state = getCodexFilterDerivedState(s.codexAllNodes, s.codexEdges, linkOn);
@@ -68,7 +81,7 @@ function applyCodexNodeFilterClassesToEl(nodeEl) {
 
     const nodeId = String(nodeEl.dataset.codexNodeId || '');
 
-    if (codexNodeMatchesFilters(nodeEl)) {
+    if (s.codexFilterSeedNodeIds?.has(nodeId) || codexNodeMatchesFilters(nodeEl)) {
         nodeEl.classList.add('codex-node--filter-match');
         return;
     }
@@ -81,76 +94,230 @@ function applyCodexNodeFilterClassesToEl(nodeEl) {
     nodeEl.classList.add('codex-node--filtered-out');
 }
 
-/** @type {number} */
-let filterCordDeferRaf = 0;
+/**
+ * Clear filter classes without re-running match logic (fast path for Clear).
+ */
+function clearCodexFilterNodeClassesFast() {
+    if (!s.root) return;
+    s.root.classList.remove('codex--filter-linking-active', 'codex--filters-active');
+    s.codexFilterReachableNodeIds = null;
+    s.codexFilterConnectionEndpointNodeIds = null;
+    s.codexFilterLinkedEdgePairKeys = null;
+    s.codexFilterActiveEdgePairKeys = null;
+    s.codexFilterSeedNodeIds = null;
+    resetCodexFilterCordSyncSignature();
+
+    const marked = s.root.querySelectorAll(
+        '.codex-node--filter-match, .codex-node--filtered-out, .codex-node--filter-connected',
+    );
+    for (let i = 0; i < marked.length; i += 1) {
+        marked[i].classList.remove(
+            'codex-node--filter-match',
+            'codex-node--filtered-out',
+            'codex-node--filter-connected',
+        );
+    }
+}
+
+/**
+ * Phase 1 — cheap seed match only (no graph). Instant feedback on chip click.
+ */
+function applyCodexFilterSeedClassesQuick() {
+    if (!s.root) return;
+    if (!codexFiltersActive()) {
+        clearCodexFilterNodeClassesFast();
+        return;
+    }
+
+    const seeds = resolveCodexNodeIdsForActiveFilters(s.codexAllNodes);
+    s.codexFilterSeedNodeIds = new Set(seeds);
+    s.root.classList.remove('codex--filter-linking-active');
+
+    const nodes = s.root.querySelectorAll('.codex-node:not(.codex-node--junction)');
+    const seedSet = s.codexFilterSeedNodeIds;
+    for (let i = 0; i < nodes.length; i += 1) {
+        const el = nodes[i];
+        const id = String(el.dataset.codexNodeId || '');
+        el.classList.remove(
+            'codex-node--filter-match',
+            'codex-node--filtered-out',
+            'codex-node--filter-connected',
+        );
+        if (seedSet.has(id)) {
+            el.classList.add('codex-node--filter-match');
+        } else {
+            el.classList.add('codex-node--filtered-out');
+        }
+    }
+}
+
+/**
+ * Phase 2 — graph-derived connected endpoints + linking class.
+ */
+function applyCodexFilterConnectedClassesFromDerived() {
+    if (!s.root || !codexFiltersActive()) return;
+
+    const linkOn = isCodexLinkFiltersEnabled() && !!(s.codexFilterLinkedEdgePairKeys?.size);
+    s.root.classList.toggle('codex--filter-linking-active', linkOn);
+
+    const endpoints = s.codexFilterConnectionEndpointNodeIds;
+    if (!endpoints?.size || linkOn) return;
+
+    const nodes = s.root.querySelectorAll(
+        '.codex-node--filtered-out:not(.codex-node--junction)',
+    );
+    for (let i = 0; i < nodes.length; i += 1) {
+        const el = nodes[i];
+        const id = String(el.dataset.codexNodeId || '');
+        if (!endpoints.has(id)) continue;
+        el.classList.remove('codex-node--filtered-out');
+        el.classList.add('codex-node--filter-connected');
+    }
+}
 
 function applyCodexFilterNodeClassesNow() {
     if (!s.root) return;
 
     if (!codexFiltersActive()) {
-        resetCodexFilterCordSyncSignature();
+        clearCodexFilterNodeClassesFast();
+        return;
     }
 
     rebuildCodexFilterDerivedSets();
 
     const linkOn = isCodexLinkFiltersEnabled() && !!(s.codexFilterLinkedEdgePairKeys?.size);
-    s.root.classList.toggle('codex--filter-linking-active', linkOn && codexFiltersActive());
+    s.root.classList.toggle('codex--filter-linking-active', linkOn);
 
-    s.root.querySelectorAll('.codex-node').forEach((nodeEl) => {
-        applyCodexNodeFilterClassesToEl(nodeEl);
-    });
+    const nodes = s.root.querySelectorAll('.codex-node:not(.codex-node--junction)');
+    for (let i = 0; i < nodes.length; i += 1) {
+        applyCodexNodeFilterClassesToEl(nodes[i]);
+    }
 }
 
-function applyCodexFilterCordsNow() {
+function applyCodexFilterCordsNow(opts = {}) {
     if (!s.root) return;
+
+    /*
+     * Shoulders (junction elbows) tint with AND/OR — keep them on the same
+     * pass as segment strokes. Only packets stay deferred.
+     */
+    const syncElbows = opts.syncElbows !== false;
 
     if (!codexFiltersActive()) {
         s.root.classList.remove('codex--filter-linking-active', 'codex--filters-active');
-        /*
-         * Clearing filters must fully restore violet cords. View-mode batches +
-         * deferred secondary elbow sync previously left grey strokes stuck.
-         */
         const synced = syncCodexFilterCordDom({
-            syncElbowsNow: true,
-            forceSecondary: true,
+            skipPackets: true,
+            syncElbowsNow: syncElbows,
+            forceSecondary: syncElbows,
         });
         if (!synced) {
-            redrawCodexEdges({ force: true });
+            if (typeof requestIdleCallback === 'function') {
+                requestIdleCallback(() => redrawCodexEdges({ force: true }), { timeout: 400 });
+            } else {
+                setTimeout(() => redrawCodexEdges({ force: true }), 0);
+            }
         }
+        if (filterClearSecondaryRaf) cancelAnimationFrame(filterClearSecondaryRaf);
+        filterClearSecondaryRaf = requestAnimationFrame(() => {
+            filterClearSecondaryRaf = 0;
+            syncCodexFilterCordDom({
+                skipPackets: false,
+                syncElbowsNow: false,
+                forceSecondary: true,
+            });
+        });
         return;
     }
 
-    if (!syncCodexFilterCordDom()) {
-        redrawCodexEdges({ force: true });
+    const light = opts.light !== false;
+    const synced = syncCodexFilterCordDom({
+        skipPackets: light,
+        syncElbowsNow: syncElbows,
+        forceSecondary: syncElbows,
+    });
+    if (!synced) {
+        requestAnimationFrame(() => {
+            if (!syncCodexFilterCordDom({
+                skipPackets: true,
+                syncElbowsNow: true,
+                forceSecondary: true,
+            })) {
+                if (typeof requestIdleCallback === 'function') {
+                    requestIdleCallback(() => redrawCodexEdges({ force: true }), { timeout: 500 });
+                }
+            }
+        });
+        return;
+    }
+
+    if (light) {
+        if (filterClearSecondaryRaf) cancelAnimationFrame(filterClearSecondaryRaf);
+        const schedule =
+            typeof requestIdleCallback === 'function'
+                ? (fn) => requestIdleCallback(fn, { timeout: 220 })
+                : (fn) => setTimeout(fn, 32);
+        schedule(() => {
+            /* Packets only — elbows already painted with the cord stroke pass. */
+            syncCodexFilterCordDom({
+                skipPackets: false,
+                syncElbowsNow: false,
+                forceSecondary: true,
+            });
+        });
     }
 }
 
-function applyCodexFilterStateNow() {
-    applyCodexFilterNodeClassesNow();
-    applyCodexFilterCordsNow();
-}
-
-function applyCodexFilterState() {
-    if (!s.root) return;
+function cancelPendingFilterApply() {
     if (filterStateApplyRaf) {
         cancelAnimationFrame(filterStateApplyRaf);
+        filterStateApplyRaf = 0;
+    }
+    if (filterGraphRaf) {
+        cancelAnimationFrame(filterGraphRaf);
+        filterGraphRaf = 0;
     }
     if (filterCordDeferRaf) {
         cancelAnimationFrame(filterCordDeferRaf);
         filterCordDeferRaf = 0;
     }
-    /* Paint nodes first; restore cords immediately on clear, else defer one frame. */
-    filterStateApplyRaf = requestAnimationFrame(() => {
-        filterStateApplyRaf = 0;
-        applyCodexFilterNodeClassesNow();
+    if (filterClearSecondaryRaf) {
+        cancelAnimationFrame(filterClearSecondaryRaf);
+        filterClearSecondaryRaf = 0;
+    }
+}
+
+/**
+ * Two-phase apply: seed dimming sync, then graph + cords/shoulders next frame.
+ */
+function applyCodexFilterState() {
+    if (!s.root) return;
+    cancelPendingFilterApply();
+
+    const gen = ++filterApplyGeneration;
+    const clearing = !codexFiltersActive();
+
+    /* Phase 1 — paint seed match/dim immediately (don't wait a frame). */
+    if (clearing) {
+        clearCodexFilterNodeClassesFast();
+    } else {
+        applyCodexFilterSeedClassesQuick();
+    }
+
+    /* Phase 2 — derived graph + cord/shoulder colors (AND green / OR violet/grey). */
+    filterGraphRaf = requestAnimationFrame(() => {
+        filterGraphRaf = 0;
+        if (gen !== filterApplyGeneration) return;
+
         if (!codexFiltersActive()) {
-            applyCodexFilterCordsNow();
+            clearCodexFilterNodeClassesFast();
+            applyCodexFilterCordsNow({ light: true, syncElbows: true });
             return;
         }
-        filterCordDeferRaf = requestAnimationFrame(() => {
-            filterCordDeferRaf = 0;
-            applyCodexFilterCordsNow();
-        });
+
+        rebuildCodexFilterDerivedSets();
+        applyCodexFilterConnectedClassesFromDerived();
+        /* Same frame as graph — shoulders must not trail segment tint. */
+        applyCodexFilterCordsNow({ light: true, syncElbows: true });
     });
 }
 

@@ -37,7 +37,7 @@ function ensureCodexToolbarDeleteSelectedButton(bar) {
     btn.type = 'button';
     btn.className = 'codex-toolbar__delete-selected';
     btn.textContent = 'Delete selected';
-    btn.title = 'Remove selected nodes from the board (Dev mode).';
+    btn.title = 'Remove selected nodes from the board (Edit mode).';
     btn.disabled = true;
     btn.addEventListener('click', (ev) => {
         ev.preventDefault();

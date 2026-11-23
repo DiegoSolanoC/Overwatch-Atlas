@@ -105,6 +105,20 @@ export function conversationMatchesHeroFilters(conversation, heroFilters) {
 
     if (!lineHeroes.length) return false;
 
+    const andMode =
+        typeof window !== 'undefined'
+        && (window.FiltersMatchMode?.isAnd?.()
+            || document.documentElement?.dataset?.filtersMatchMode === 'and');
+
+    if (andMode) {
+        /* Every selected hero must appear in at least one line. */
+        return heroFilters.every((filterHero) =>
+            lineHeroes.some((lineHero) =>
+                heroNamesMatch(lineHero, filterHero, manifestHeroes),
+            ),
+        );
+    }
+
     return lineHeroes.some((lineHero) =>
         heroFilters.some((filterHero) => heroNamesMatch(lineHero, filterHero, manifestHeroes)),
     );

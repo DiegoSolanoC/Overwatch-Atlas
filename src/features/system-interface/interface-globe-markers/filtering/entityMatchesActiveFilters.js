@@ -4,6 +4,7 @@ import {
     getStoryEventNpcTokens
 } from '../../interface-shared/storyEventFilterPlaces.js';
 import { activeFilterSetMatchesNpcId } from '../../interface-shared/npcNameAliases.js';
+import { isFiltersMatchModeAnd } from '../../interface-filter-menu/state/filtersMatchMode.js';
 
 /**
  * Legacy faction strings in events.json that don't match manifest `filename` (filter chip keys).
@@ -161,10 +162,41 @@ function characterTokensMatchActiveFilters(tokens, activeFilters) {
     return false;
 }
 
+/**
+ * True when this entity satisfies one filter chip key.
+ * @param {Object|null|undefined} entity
+ * @param {string} chip
+ * @returns {boolean}
+ */
+function entitySatisfiesFilterChip(entity, chip) {
+    const key = String(chip ?? '').trim();
+    if (!entity || !key) return false;
+    if (key.startsWith('country:')) {
+        return countryFiltersMatchEntity(entity, new Set([key]));
+    }
+    const heroFilters = getStoryEventHeroTokens(entity);
+    const npcFilters = getStoryEventNpcTokens(entity);
+    const factionFilters = getStoryEventFactionTokens(entity);
+    const solo = new Set([key]);
+    return characterTokensMatchActiveFilters(heroFilters, solo)
+        || characterTokensMatchActiveFilters(npcFilters, solo)
+        || factionFilters.some((id) => factionIdMatchesActiveFilters(id, solo));
+}
+
 export function entityMatchesActiveFilters(entity, activeFilters) {
     if (!entity || !activeFilters || activeFilters.size === 0) {
         return false;
     }
+
+    /* AND — every selected chip must be present on this entity. */
+    if (isFiltersMatchModeAnd()) {
+        for (const chip of activeFilters) {
+            if (!entitySatisfiesFilterChip(entity, chip)) return false;
+        }
+        return true;
+    }
+
+    /* OR — any category / chip match (legacy default). */
     const heroFilters = getStoryEventHeroTokens(entity);
     const npcFilters = getStoryEventNpcTokens(entity);
     const factionFilters = getStoryEventFactionTokens(entity);

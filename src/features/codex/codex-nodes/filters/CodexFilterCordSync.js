@@ -156,13 +156,16 @@ function buildCordAppearanceSyncSignature() {
     const filtersOn = codexFiltersActive() ? '1' : '0';
     const filterKeys = s.codexFilterActiveEdgePairKeys;
     const filterPart = filterKeys?.size ? `${filterKeys.size}:${[...filterKeys].sort().join('|')}` : '0';
+    /* AND linking tints shoulders green — include so OR↔AND always invalidates. */
+    const linkedKeys = s.codexFilterLinkedEdgePairKeys;
+    const linkedPart = linkedKeys?.size ? `${linkedKeys.size}:${[...linkedKeys].sort().join('|')}` : '0';
     const page = getCodexDockPageIndexSpan()?.page ?? 1;
     const lifetimePart = s.codexEntryLifetimeNodeStatuses?.size ?? 0;
     const timelinePart = `${page}:${lifetimePart}`;
     // Unsaved / pending-delete visuals must invalidate secondary elbow/packet sync.
     const unsavedPart = s.codexUnsavedEdgeKeys?.size ?? 0;
     const pendingPart = s.cordPendingDeletePairKey ? '1' : '0';
-    return `f${filtersOn}|${filterPart}|${timelinePart}|u${unsavedPart}|p${pendingPart}`;
+    return `f${filtersOn}|${filterPart}|L${linkedPart}|${timelinePart}|u${unsavedPart}|p${pendingPart}`;
 }
 
 /** @param {string} id */
@@ -429,13 +432,17 @@ export function syncCodexFilterCordDom(opts = {}) {
         if (!opts.skipPackets) {
             syncCodexFilterCordPackets();
         }
-        if (opts.syncElbowsNow || opts.forceSecondary) {
+        /*
+         * Elbows (= shoulders) drive AND/OR tint. Callers that already painted
+         * them pass syncElbowsNow:false so a packets-only follow-up stays cheap.
+         */
+        if (opts.syncElbowsNow === true) {
             if (filterCordSecondarySyncRaf) {
                 cancelAnimationFrame(filterCordSecondarySyncRaf);
                 filterCordSecondarySyncRaf = 0;
             }
             syncCodexJunctionElbowAppearance(edgeIndex);
-        } else {
+        } else if (opts.syncElbowsNow !== false) {
             if (filterCordSecondarySyncRaf) {
                 cancelAnimationFrame(filterCordSecondarySyncRaf);
             }

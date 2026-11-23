@@ -14,8 +14,18 @@
     }
 
     /* Trap flanks empty on mobile — Vehicles/Weather/Lighting/Rotation → #dockGlobeRailLeft */
-    body:has(#paginationDock) .dock-trap-flank {
+    body:has(#paginationDock) .dock-trap-flank,
+    body:has(#paginationDock) .pagination-dock-top-cap-row .dock-trap-flank,
+    body:has(#paginationDock) #dockTrapFlankLeft,
+    body:has(#paginationDock) #dockTrapFlankRight {
         display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
     }
 
     /* Dev-only route toggles — desktop only */
@@ -36,7 +46,7 @@
      * Shared mobile: white flank plates (skewed). Map/Globe uses inverse trap in portrait.
      */
     #dockGlobeRailLeft
-        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle) {
+        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev) {
         --dock-trap-btn-skew: 11deg;
         appearance: none;
         position: relative !important;
@@ -62,13 +72,13 @@
     }
 
     #dockGlobeRailLeft
-        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
         > * {
         transform: skewX(var(--dock-trap-btn-skew)) !important;
     }
 
     #dockGlobeRailLeft
-        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
         img {
         transform: none !important;
         filter: brightness(0) !important;
@@ -76,10 +86,10 @@
     }
 
     #dockGlobeRailLeft
-        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
         .header-hub-btn-label,
     #dockGlobeRailLeft
-        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
         .globe-control-btn__label {
         color: #000 !important;
         font-weight: 700 !important;
@@ -87,7 +97,7 @@
     }
 
     #dockGlobeRailLeft
-        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle).toggle-off {
+        > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev).toggle-off {
         opacity: 0.45;
     }
 
@@ -259,7 +269,6 @@
         body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #dialogueTheaterEntryToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #codexToggleViewDev,
-        body:has(#eventSlide.open) #dockGlobeRailLeft > #codexLinkFiltersToggle,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #codexTogglePackets,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #codexToggleInfo,
         body:has(#eventSlide.open) #dockGlobeRailLeft > #heroBiographyChipStripToggle,
@@ -288,14 +297,25 @@
             --mode-dock-main-chip: clamp(84px, 22vw, 104px);
             --mode-dock-above-trap-bottom: calc(
                 var(--footer-height, 60px)
-                + var(--pagination-dock-height, 200px)
+                + var(--pagination-dock-height-collapsed, 200px)
+                + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
                 + var(--dock-border-seam-h, 72px)
                 + clamp(8px, 1.4vh, 16px)
             );
         }
 
+        /*
+         * World mode rail — Map + Vehicles/Weather/Lighting/Rotation under the header.
+         * Must beat globe-core bottom pins (desktop-only now) and stay a top grid.
+         */
         #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
         #dockGlobeRailLeft.dock-globe-rail {
+            position: fixed !important;
+            top: var(--mode-dock-rail-top, calc(var(--header-height, 72px) + 6px)) !important;
+            bottom: auto !important;
+            left: 50% !important;
+            right: auto !important;
+            transform: translateX(-50%) !important;
             display: grid !important;
             grid-template-columns: repeat(4, minmax(0, auto));
             justify-content: center !important;
@@ -308,6 +328,12 @@
                 100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
                     clamp(8px, 2vw, 16px)
             ) !important;
+            z-index: 280 !important;
+            pointer-events: none;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn {
+            pointer-events: auto;
         }
 
         /* Codex / Story / Gallery mode chips (non-Map) keep blue dock style sizing */
@@ -358,10 +384,11 @@
         }
 
         /*
-         * Map/Globe (mobile portrait) — white skewed chip matching the four tools,
-         * larger + alone on first row under the badge. Desktop inverse-trap is separate.
+         * Mode primary toggles — ONE shared mobile plate for Map / Story / Theater / Codex.
+         * Tall white skewed chip under the header (desktop inverse-trap stays in pagination-dock).
          */
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn {
             --dock-trap-btn-skew: 11deg;
             appearance: none;
             position: relative !important;
@@ -404,23 +431,30 @@
             z-index: 7;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn > * {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            > * {
             transform: skewX(var(--dock-trap-btn-skew)) !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn img {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            img {
             transform: none !important;
             filter: brightness(0) !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn:hover {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn:hover {
             background: #f2f2f2 !important;
             background-color: #f2f2f2 !important;
             filter: brightness(0.97);
             transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn [id$='Icon'] {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            [id$='Icon'] {
             width: clamp(38px, 10vw, 48px) !important;
             height: clamp(38px, 10vw, 48px) !important;
             min-width: clamp(38px, 10vw, 48px) !important;
@@ -432,8 +466,13 @@
             flex-shrink: 0;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn [id$='Icon'] img,
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn img {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            [id$='Icon']
+            img,
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            img {
             width: 100% !important;
             height: 100% !important;
             max-width: 100% !important;
@@ -441,8 +480,12 @@
             object-fit: contain !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn .header-hub-btn-label,
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn .globe-control-btn__label {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            .header-hub-btn-label,
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn
+            .globe-control-btn__label {
             display: block !important;
             width: 100% !important;
             max-width: 100% !important;
@@ -460,13 +503,15 @@
             text-overflow: clip !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn.toggle-off {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn.toggle-off {
             opacity: 0.45;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18) !important;
             filter: none !important;
         }
 
-        #dockGlobeRailLeft.dock-globe-rail > #mapViewToggle.dock-trap-flank__btn.active {
+        #dockGlobeRailLeft.dock-globe-rail
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn.active {
             box-shadow: 0 3px 16px rgba(0, 0, 0, 0.4) !important;
             filter: none !important;
         }
@@ -476,7 +521,7 @@
          * Exclude mode primary toggles (Map / Story / Theater) styled separately.
          */
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle) {
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev) {
             --dock-trap-btn-skew: 11deg;
             appearance: none;
             position: relative !important;
@@ -521,20 +566,20 @@
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             > * {
             transform: skewX(var(--dock-trap-btn-skew)) !important;
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             img {
             transform: none !important;
             filter: brightness(0) !important;
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):hover {
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev):hover {
             background: #f2f2f2 !important;
             background-color: #f2f2f2 !important;
             filter: brightness(0.97);
@@ -542,7 +587,7 @@
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             [id$='Icon'] {
             width: clamp(28px, 7.5vw, 36px) !important;
             height: clamp(28px, 7.5vw, 36px) !important;
@@ -556,11 +601,11 @@
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             [id$='Icon']
             img,
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             img {
             width: 100% !important;
             height: 100% !important;
@@ -570,10 +615,10 @@
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             .header-hub-btn-label,
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle)
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev)
             .globe-control-btn__label {
             display: block !important;
             width: 100% !important;
@@ -593,33 +638,23 @@
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle).toggle-off {
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev).toggle-off {
             opacity: 0.45;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18) !important;
         }
 
         #dockGlobeRailLeft.dock-globe-rail
-            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle).active {
+            > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev).active {
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.34) !important;
         }
 
-        /* Codex portrait: Link + Packets only — same squared chips as World */
-        body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
-        body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
-            display: none !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            width: 0 !important;
-            min-width: 0 !important;
-            max-width: 0 !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            border: none !important;
-            overflow: hidden !important;
-        }
-
-        body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
-        body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn {
+        /* Codex portrait: Packets + Info only while Edit; View/Edit uses trap chrome. */
+        body.codex-mode-active:has(#codex-view-root.codex--dev-mode)
+            #dockGlobeRailLeft
+            > #codexTogglePackets.dock-globe-rail__btn,
+        body.codex-mode-active:has(#codex-view-root.codex--dev-mode)
+            #dockGlobeRailLeft
+            > #codexToggleInfo.dock-globe-rail__btn {
             flex: 0 0 auto !important;
             width: var(--mode-dock-chip-max) !important;
             min-width: var(--mode-dock-chip-max) !important;
@@ -627,144 +662,82 @@
             font-size: clamp(11px, 3vw, 13px) !important;
         }
 
-        body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn .globe-control-btn__label,
-        body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label {
+        body.codex-mode-active:has(#codex-view-root.codex--dev-mode)
+            #dockGlobeRailLeft
+            > #codexTogglePackets.dock-globe-rail__btn
+            .globe-control-btn__label,
+        body.codex-mode-active:has(#codex-view-root.codex--dev-mode)
+            #dockGlobeRailLeft
+            > #codexToggleInfo.dock-globe-rail__btn
+            .globe-control-btn__label {
             white-space: normal !important;
             overflow: visible !important;
             text-overflow: clip !important;
         }
 
         /*
-         * Story / Theater: park the single mode toggle centered above the dock trap
-         * so the content stage can use the full top of the screen.
-         * Gallery (Intel) keeps World/Codex-style top chips for panel switching.
+         * Story / Theater / Codex — same top rail as World (do not park above the dock).
+         * Primary chip styling is shared via --mode-primary below.
          */
-        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
-            #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
-        body.dialogue-theater-mode-active #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
-        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left {
-            top: auto !important;
-            bottom: var(--mode-dock-above-trap-bottom) !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            justify-content: center !important;
-            width: auto !important;
-            max-width: calc(
-                100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
-                    clamp(16px, 4vw, 32px)
-            ) !important;
-            z-index: 310;
-        }
-
         body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active),
         body.dialogue-theater-mode-active,
-        body:has(#dialogueTheaterListHost) {
-            --mode-dock-rail-clearance: calc(var(--header-height) + clamp(6px, 1.2vh, 12px));
+        body:has(#dialogueTheaterListHost),
+        body.codex-mode-active {
+            --mode-dock-rail-clearance: calc(
+                var(--mode-dock-rail-top) + var(--mode-dock-main-chip-h) + clamp(10px, 1.6vh, 16px)
+            );
         }
 
-        /* Gallery: three panel chips at top — slightly wider for “Show …” labels */
+        /* Gallery panel chips — same white plate language as mode primaries / world tools. */
         body:has(#atlasGalleryHost) #dockGlobeRailLeft > .gallery-mobile-panel-toggle.dock-globe-rail__btn {
+            --dock-trap-btn-skew: 11deg;
             flex: 0 0 auto !important;
-            width: clamp(72px, 22vw, 96px) !important;
-            min-width: clamp(72px, 22vw, 96px) !important;
-            max-width: clamp(72px, 22vw, 96px) !important;
+            width: var(--mode-dock-chip-max) !important;
+            min-width: var(--mode-dock-chip-max) !important;
+            max-width: var(--mode-dock-chip-max) !important;
+            height: var(--mode-dock-rail-height, 80px) !important;
+            min-height: var(--mode-dock-rail-height, 80px) !important;
+            padding: 8px 4px !important;
+            border: none !important;
+            border-radius: 12px !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #000 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28) !important;
             font-size: clamp(10px, 2.6vw, 12px) !important;
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            flex-direction: column !important;
+            gap: 5px !important;
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
+        }
+
+        body:has(#atlasGalleryHost)
+            #dockGlobeRailLeft
+            > .gallery-mobile-panel-toggle.dock-globe-rail__btn
+            > * {
+            transform: skewX(var(--dock-trap-btn-skew)) !important;
+        }
+
+        body:has(#atlasGalleryHost)
+            #dockGlobeRailLeft
+            > .gallery-mobile-panel-toggle.dock-globe-rail__btn
+            img {
+            transform: none !important;
+            filter: brightness(0) !important;
         }
 
         body:has(#atlasGalleryHost)
             #dockGlobeRailLeft
             > .gallery-mobile-panel-toggle.dock-globe-rail__btn
             .globe-control-btn__label {
+            display: block !important;
+            color: #000 !important;
+            font-weight: 700 !important;
             white-space: normal !important;
             overflow: visible !important;
             text-overflow: clip !important;
             line-height: 1.1 !important;
-        }
-
-        /*
-         * Story / Theater primary chip — white skewed plate (Map/Globe format),
-         * wider row layout above the dock trap.
-         */
-        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
-            #dockGlobeRailLeft
-            > #storyViewToggle.dock-trap-flank__btn,
-        body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn,
-        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn {
-            --dock-trap-btn-skew: 11deg;
-            appearance: none;
-            flex: 0 0 auto !important;
-            flex-direction: row !important;
-            width: auto !important;
-            min-width: min(168px, 48vw) !important;
-            max-width: min(240px, 70vw) !important;
-            height: 56px !important;
-            min-height: 56px !important;
-            padding: 0 clamp(14px, 3.5vw, 20px) !important;
-            border: none !important;
-            border-radius: 14px !important;
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            color: #000 !important;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.36) !important;
-            clip-path: none !important;
-            font-size: clamp(14px, 3.6vw, 16px) !important;
-            font-family: var(--font-control-bold, var(--font-default));
-            font-weight: 700;
-            text-transform: uppercase;
-            gap: 10px !important;
-            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
-        }
-
-        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
-            #dockGlobeRailLeft
-            > #storyViewToggle.dock-trap-flank__btn
-            > *,
-        body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn > *,
-        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn > * {
-            transform: skewX(var(--dock-trap-btn-skew)) !important;
-        }
-
-        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
-            #dockGlobeRailLeft
-            > #storyViewToggle.dock-trap-flank__btn
-            img,
-        body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn img,
-        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn img {
-            transform: none !important;
-            filter: brightness(0) !important;
-        }
-
-        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
-            #dockGlobeRailLeft
-            > #storyViewToggle.dock-trap-flank__btn
-            [id$='Icon'],
-        body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn [id$='Icon'],
-        body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-trap-flank__btn [id$='Icon'] {
-            width: 28px !important;
-            height: 28px !important;
-            min-width: 28px !important;
-            min-height: 28px !important;
-        }
-
-        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
-            #dockGlobeRailLeft
-            > #storyViewToggle.dock-trap-flank__btn
-            .globe-control-btn__label,
-        body.dialogue-theater-mode-active
-            #dockGlobeRailLeft
-            > #dialogueTheaterEntryToggle.dock-trap-flank__btn
-            .globe-control-btn__label,
-        body:has(#dialogueTheaterListHost)
-            #dockGlobeRailLeft
-            > #dialogueTheaterEntryToggle.dock-trap-flank__btn
-            .globe-control-btn__label {
-            max-width: none !important;
-            flex: 0 1 auto !important;
-            color: #000 !important;
-            font-weight: 700 !important;
-            text-transform: uppercase;
-            white-space: nowrap !important;
-            overflow: visible !important;
         }
 
         /* Mobile: hide Story/Theater archive file actions (Add/Save/Import/Export/Merge) */

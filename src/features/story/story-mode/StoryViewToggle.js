@@ -167,7 +167,7 @@ export function mountStoryViewToggle(eventsManagePanel) {
     if (!btn) {
         btn = createHeaderHubButton({
             id: 'storyViewToggle',
-            className: 'dock-trap-flank__btn story-view-toggle',
+            className: 'dock-trap-flank__btn mode-primary-toggle story-view-toggle',
             title: 'Switch to List view',
             label: 'List',
             iconPath: ICON_LIST,
@@ -177,7 +177,7 @@ export function mountStoryViewToggle(eventsManagePanel) {
             iconSpanId: 'storyViewToggleIcon',
             headerOrder: 10,
             mobileParentId: DOCK_PARENT_ID,
-            mobileClassName: 'dock-trap-flank__btn story-view-toggle',
+            mobileClassName: 'dock-trap-flank__btn mode-primary-toggle story-view-toggle',
         });
     } else if (dockParent && !dockParent.contains(btn)) {
         dockParent.appendChild(btn);

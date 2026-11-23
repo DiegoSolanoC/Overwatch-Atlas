@@ -38,13 +38,21 @@ export function wireStandaloneFilterButtons() {
             if (window.SoundEffectsManager) {
                 window.SoundEffectsManager.play('filterClear');
             }
-            if (window.FilterService?.updateButtonStates) {
-                window.FilterService.updateButtonStates();
-            }
-            if (window.FilterService?.updateFilterCounts) {
-                window.FilterService.updateFilterCounts();
-            }
+            /* Codex/globe first — chip grid restyle can wait a frame. */
             applyStandaloneFiltersLive({ immediate: true });
+            const paintChipChrome = () => {
+                if (window.FilterService?.updateButtonStates) {
+                    window.FilterService.updateButtonStates();
+                }
+                if (window.FilterService?.updateFilterCounts) {
+                    window.FilterService.updateFilterCounts();
+                }
+            };
+            if (typeof requestAnimationFrame === 'function') {
+                requestAnimationFrame(paintChipChrome);
+            } else {
+                paintChipChrome();
+            }
             updateStatus('Filters cleared', 'success');
         });
     }

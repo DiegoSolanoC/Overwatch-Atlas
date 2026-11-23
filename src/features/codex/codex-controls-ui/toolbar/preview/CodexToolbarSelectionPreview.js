@@ -45,7 +45,7 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
                 btnM.className = 'codex-toolbar__merge-junctions';
                 btnM.textContent = 'Merge';
                 btnM.title =
-                    'Merge two break nodes into one at the primary selection position (Dev mode, two junctions).';
+                    'Merge two break nodes into one at the primary selection position (Edit mode, two junctions).';
                 btnM.disabled = true;
                 btnM.addEventListener('click', (ev) => {
                     ev.preventDefault();
@@ -120,7 +120,7 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
     btnMergeJunctions.className = 'codex-toolbar__merge-junctions';
     btnMergeJunctions.textContent = 'Merge';
     btnMergeJunctions.title =
-        'Merge two break nodes into one at the primary selection position (Dev mode, two junctions).';
+        'Merge two break nodes into one at the primary selection position (Edit mode, two junctions).';
     btnMergeJunctions.disabled = true;
     btnMergeJunctions.addEventListener('click', (ev) => {
         ev.preventDefault();

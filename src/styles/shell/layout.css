@@ -148,9 +148,14 @@ header {
         /* Rest on the white dock border (not sunk into the dock body). */
         --header-utility-btn-h: clamp(56px, 7.5vh, 70px);
         --header-utility-btn-w: clamp(88px, 22vw, 112px);
+        /*
+         * Use the *visual* collapsed dock height — body --pagination-dock-height is
+         * frozen at expanded for World/Codex and was floating these chips ~200px up.
+         */
         --header-utility-dock-clearance: calc(
             var(--footer-height, 60px)
-            + var(--pagination-dock-height, 200px)
+            + var(--pagination-dock-height-collapsed, 200px)
+            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
             + calc(var(--dock-border-seam-h, 72px) * 0.28)
         );
         /* Gap between trap outer foot and chip inner edge. */

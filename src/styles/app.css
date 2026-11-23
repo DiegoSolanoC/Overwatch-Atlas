@@ -9,12 +9,12 @@
 @import url('foundation/animations.css?v=10');
 
 /* App shell */
-@import url('shell/layout.css?v=49');
+@import url('shell/layout.css?v=50');
 @import url('features/world/globe-map-launch-hub.css?v=4');
 
 /* World + Codex */
-@import url('features/world/globe.css?v=78');
-@import url('features/codex/codex.css?v=11');
+@import url('features/world/globe.css?v=79');
+@import url('features/codex/codex.css?v=13');
 @import url('features/world/map-2d-lite.css?v=21');
 @import url('features/event-system/preview-badge-icons.css?v=7');
 
@@ -24,7 +24,7 @@
 @import url('themes/nulled-palette.css?v=20');
 
 /* Mobile */
-@import url('mobile.css?v=41');
+@import url('mobile.css?v=45');
 
 /* Shared UI */
 @import url('ui/modals.css?v=9');
@@ -47,12 +47,12 @@
 @import url('features/event-system/event-buttons.css?v=15');
 @import url('features/event-system/event-image-overlay.css?v=25');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=193');
+@import url('features/event-system/event-pagination.css?v=196');
 @import url('features/event-system/news-ticker.css?v=12');
 
 /* Event system panels */
 @import url('features/event-system/panels/event-slide.css?v=50');
-@import url('features/event-system/panels/filters.css?v=30');
+@import url('features/event-system/panels/filters.css?v=34');
 @import url('features/music/panels/music.css?v=55');
 @import url('features/event-system/panels/events-manage.css?v=31');
 @import url('features/event-system/panels/story-events-merge.css?v=7');

@@ -9,6 +9,10 @@ import {
     normalizeAtlasMode,
 } from '../../universal-features/atlas-mode-runtime/atlasModes.js';
 import { getCurrentModeOrMenu } from '../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
+import {
+    FILTERS_MATCH_MODE_CHANGE_EVENT,
+    isFiltersMatchModeAnd,
+} from './state/filtersMatchMode.js';
 
 const APP_MODE_CHANGE_EVENT = 'appmodechange';
 
@@ -32,6 +36,11 @@ const DISCLAIMER_BY_MODE = Object.freeze({
     [ATLAS_MODE.GALLERY]:
         'Mode not implemented yet — no unique filter functionality as of now.',
 });
+
+const DISCLAIMER_AND_SUFFIX =
+    ' AND mode: only results that match every selected chip.';
+const DISCLAIMER_CODEX_AND =
+    'AND mode links shortest paths between selected chips on the board.';
 
 /**
  * Theater only uses hero chips meaningfully — other tabs fall back to Default copy.
@@ -72,10 +81,17 @@ export function resolveFiltersModeDisclaimer(mode, filterType) {
     }
 
     if (DISCLAIMER_BY_MODE[modeId]) {
+        let body = DISCLAIMER_BY_MODE[modeId];
+        if (isFiltersMatchModeAnd()) {
+            body =
+                modeId === ATLAS_MODE.CODEX
+                    ? `${body} ${DISCLAIMER_CODEX_AND}`
+                    : `${body}${DISCLAIMER_AND_SUFFIX}`;
+        }
         return {
             modeId,
             label: MODE_LABEL[modeId] || modeId,
-            body: DISCLAIMER_BY_MODE[modeId],
+            body,
         };
     }
     return {
@@ -137,5 +153,8 @@ export function wireFiltersModeDisclaimerLiveUpdates() {
     window.addEventListener(APP_MODE_CHANGE_EVENT, (event) => {
         const detailMode = event?.detail?.mode;
         syncFiltersModeDisclaimer(null, detailMode);
+    });
+    window.addEventListener(FILTERS_MATCH_MODE_CHANGE_EVENT, () => {
+        syncFiltersModeDisclaimer();
     });
 }

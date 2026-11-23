@@ -313,7 +313,7 @@ body.color-palette-gray .filters-panel-close:hover {
     background: rgba(0, 0, 0, 0.5);
 }
 
-/* Category tabs + Clear share one compact row (desktop + mobile). */
+/* Category tabs row (Clear + OR/AND live under selection counts). */
 .filters-tabs-row {
     display: flex;
     flex-direction: row;
@@ -334,19 +334,6 @@ body.color-palette-gray .filters-panel-close:hover {
     min-width: 0;
     padding: 2px 0 4px;
     box-sizing: border-box;
-}
-
-.filters-tabs-row > .filters-actions-buttons {
-    flex: 0 0 auto;
-    width: auto;
-    align-self: stretch;
-    padding: 2px 0 4px;
-}
-
-.filters-tabs-row > .filters-actions-buttons #clearFiltersBtn {
-    flex: 0 0 auto;
-    height: 100%;
-    min-width: clamp(72px, 12vw, 110px);
 }
 
 .filters-selection-count .filter-count,
@@ -1211,8 +1198,61 @@ body.color-palette-gray .filters-actions {
     padding: 2px 6px 4px;
     box-sizing: border-box;
     align-self: stretch;
-    /* Counts align with search; Clear now lives in .filters-tabs-row. */
+    /* Counts on top; OR/AND + Clear share the row underneath. */
     justify-content: flex-start;
+}
+
+.filters-actions-side > .filters-actions-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-top: 2px;
+}
+
+.filters-actions-side > .filters-actions-buttons .filters-action-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+}
+
+/* OR/AND single toggle — same white slant plate as Clear; ∪ / ∩ as icons. */
+.filters-match-mode-toggle .filters-action-btn__face {
+    flex-direction: column;
+    gap: 2px;
+}
+
+.filters-match-mode-toggle__symbol {
+    display: block;
+    width: 1.15em;
+    height: 1.15em;
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 700;
+    line-height: 1.15em;
+    text-align: center;
+    color: inherit;
+    pointer-events: none;
+    user-select: none;
+    transform-origin: center center;
+}
+
+/* Same ∪ glyph for both; AND is just flipped so metrics stay identical. */
+.filters-match-mode-toggle.is-and .filters-match-mode-toggle__symbol {
+    transform: rotate(180deg);
+}
+
+.filters-match-mode-toggle .filters-match-mode-toggle__label {
+    font-size: clamp(12px, 1.35vw, 15px);
+    letter-spacing: 0.08em;
+}
+
+.filters-match-mode-toggle.is-and {
+    background: #ffffff;
+    color: #000;
 }
 
 .filters-actions-buttons {
@@ -1224,12 +1264,6 @@ body.color-palette-gray .filters-actions {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
-}
-
-/* Confirm retired — Clear owns the full action slot. */
-.filters-actions-buttons #clearFiltersBtn {
-    flex: 1 1 auto;
-    max-width: none;
 }
 
 #confirmFiltersBtn {
@@ -1324,23 +1358,19 @@ body.color-palette-gray .filters-actions {
         min-width: 0;
     }
 
-    .filters-tabs-row > .filters-actions-buttons {
-        display: flex !important;
-        flex: 0 0 auto;
-        width: auto;
-        min-width: clamp(64px, 18vw, 88px);
-        max-width: 96px;
-        padding: 0;
-    }
-
-    .filters-tabs-row > .filters-actions-buttons #clearFiltersBtn {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: none !important;
-    }
-
     .filters-actions-side {
         margin-top: 0;
+    }
+
+    .filters-actions-side > .filters-actions-buttons {
+        display: flex !important;
+        gap: 4px;
+    }
+
+    .filters-actions-side > .filters-actions-buttons .filters-action-btn {
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
     }
 
     .filters-selection-counts {

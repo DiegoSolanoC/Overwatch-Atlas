@@ -279,26 +279,33 @@ body.codex-mode-active .zoom-sun-slot {
         );
     }
 
-    .dock-globe-rail--left {
-        left: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-left));
-        bottom: calc(
-            var(--footer-height, 65px)
-            + var(--pagination-dock-height-expanded, 400px)
-            + var(--dock-globe-rail-gap, 10px)
-            + var(--dock-rail-lift-into-border, 0px)
-            + var(--dock-rail-side-extra, 30px)
-        ) !important;
-    }
+    /*
+     * Desktop only — mobile portrait parks #dockGlobeRailLeft under the header
+     * (viewport.css). These bottoms were pinning Vehicles/Weather/Lighting/Rotation
+     * above the dock on phones.
+     */
+    @media (min-width: 769px) {
+        .dock-globe-rail--left {
+            left: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-left));
+            bottom: calc(
+                var(--footer-height, 65px)
+                + var(--pagination-dock-height-expanded, 400px)
+                + var(--dock-globe-rail-gap, 10px)
+                + var(--dock-rail-lift-into-border, 0px)
+                + var(--dock-rail-side-extra, 30px)
+            ) !important;
+        }
 
-    body.pagination-dock-collapsed:has(#paginationDock) .dock-globe-rail--left {
-        bottom: calc(
-            var(--footer-height, 65px)
-            + var(--pagination-dock-height-collapsed, 200px)
-            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
-            + var(--dock-globe-rail-gap, 10px)
-            + var(--dock-rail-lift-into-border, 0px)
-            + var(--dock-rail-side-extra, 30px)
-        ) !important;
+        body.pagination-dock-collapsed:has(#paginationDock) .dock-globe-rail--left {
+            bottom: calc(
+                var(--footer-height, 65px)
+                + var(--pagination-dock-height-collapsed, 200px)
+                + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+                + var(--dock-globe-rail-gap, 10px)
+                + var(--dock-rail-lift-into-border, 0px)
+                + var(--dock-rail-side-extra, 30px)
+            ) !important;
+        }
     }
 
     .dock-globe-rail--center {

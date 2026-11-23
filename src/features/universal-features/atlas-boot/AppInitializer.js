@@ -28,7 +28,7 @@ import { setupHeaderTitleBadgeTweaker } from '../atlas-header/HeaderTitleBadgeTw
 import { initMobilePortraitGate } from './mobilePortraitGate.js';
 import { initDesktopViewportFit } from './desktopViewportFit.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
-import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=116';
+import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=119';
 import { installAtlasNewsChrome } from '../../system-interface/interface-platform-input/news-ticker/mountAtlasNewsChrome.js?v=8';
 import {
     setRunOperation,

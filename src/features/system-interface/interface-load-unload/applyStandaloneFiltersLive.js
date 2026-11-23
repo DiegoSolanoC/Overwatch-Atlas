@@ -44,6 +44,9 @@ export function runStandaloneFilterSideEffects(opts = {}) {
 
     /* Intel owns its own dock curation — skip EM list rebuild + globe/codex thrash. */
     const intelOpen = !!document.getElementById('atlasGalleryHost');
+    const codexOpen =
+        !!document.body?.classList.contains('codex-mode-active')
+        || !!document.getElementById('codex-view-root');
 
     if (intelOpen) {
         window.syncEventManagerSearchFromFilterSelection?.({ skipApplySearch: true });
@@ -53,10 +56,19 @@ export function runStandaloneFilterSideEffects(opts = {}) {
         if (typeof window.applyCodexFilterState === 'function') {
             window.applyCodexFilterState();
         }
-        if (window.globeEventMarkerManager) {
-            window.globeEventMarkerManager.applyFilters();
-        } else if (window.globeController?.eventMarkerManager) {
-            window.globeController.eventMarkerManager.applyFilters();
+
+        /*
+         * Codex stage is opaque — globe marker locking + Story/Theater list sync
+         * still ran on every chip/Clear and stole frames from cord updates.
+         */
+        if (!codexOpen) {
+            if (window.globeEventMarkerManager) {
+                window.globeEventMarkerManager.applyFilters();
+            } else if (window.globeController?.eventMarkerManager) {
+                window.globeController.eventMarkerManager.applyFilters();
+            } else {
+                updateStandalonePaginationForFilters();
+            }
         } else {
             updateStandalonePaginationForFilters();
         }
@@ -65,6 +77,10 @@ export function runStandaloneFilterSideEffects(opts = {}) {
             ? requestAnimationFrame
             : (fn) => setTimeout(fn, 0);
         deferHeavy(() => {
+            if (codexOpen) {
+                /* Dock thumbs only — skip EM full list + Story/Theater while Codex is up. */
+                return;
+            }
             window.syncEventManagerSearchFromFilterSelection?.();
             syncStoryTimelineIfActive();
             syncDialogueTheaterListIfActive();
@@ -100,5 +116,12 @@ export function applyStandaloneFiltersLive(opts = {}) {
         return;
     }
 
-    applyTimer = window.setTimeout(run, 0);
+    /*
+     * Codex graph work is heavy — coalesce rapid chip taps (~2 frames) so we
+     * don't start a prune-graph rebuild for every intermediate selection.
+     */
+    const codexOpen =
+        !!document.body?.classList.contains('codex-mode-active')
+        || !!document.getElementById('codex-view-root');
+    applyTimer = window.setTimeout(run, codexOpen ? 32 : 0);
 }

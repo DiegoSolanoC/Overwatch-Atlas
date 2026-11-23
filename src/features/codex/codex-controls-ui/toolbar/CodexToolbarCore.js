@@ -54,7 +54,7 @@ function updateCodexToolbar() {
         const dev = s.codexMode === 'dev';
         deleteSelBtn.disabled = !dev || !hasSel;
         deleteSelBtn.title = !dev
-            ? 'Switch to Dev mode to delete nodes from the board.'
+            ? 'Switch to Edit mode to delete nodes from the board.'
             : !hasSel
                 ? 'Select one or more nodes, then delete them from the board.'
                 : selectedNodes.length > 1
@@ -70,7 +70,7 @@ function updateCodexToolbar() {
         const empty = totalNodesAll === 0 && totalEdgesAll === 0;
         clearAllBtn.disabled = !dev || empty;
         clearAllBtn.title = !dev
-            ? 'Switch to Dev mode to clear the board.'
+            ? 'Switch to Edit mode to clear the board.'
             : empty
                 ? 'Codex is already empty.'
                 : `Remove all ${totalNodesAll} node${totalNodesAll === 1 ? '' : 's'} and ${totalEdgesAll} link${totalEdgesAll === 1 ? '' : 's'} from the board. Save Codex to persist.`;
@@ -170,7 +170,7 @@ function updateCodexToolbar() {
                     btnInsertBreak.title =
                         s.codexMode === 'dev'
                             ? 'Insert break (waypoint): replace A → B with A → break → B (same direction).'
-                            : 'Switch to Dev Mode to insert a break between these nodes.';
+                            : 'Switch to Edit Mode to insert a break between these nodes.';
                 }
                 if (btnMergeJunctions) {
                     const bothJ =
@@ -179,7 +179,7 @@ function updateCodexToolbar() {
                     btnMergeJunctions.disabled = !(s.codexMode === 'dev' && bothJ);
                     btnMergeJunctions.title =
                         s.codexMode !== 'dev'
-                            ? 'Switch to Dev mode to merge break nodes.'
+                            ? 'Switch to Edit mode to merge break nodes.'
                             : bothJ
                                 ? 'Merge both break nodes into one at the primary selection (first picked / highlighted A).'
                                 : 'Select two break (junction) nodes to merge.';
@@ -204,7 +204,7 @@ function updateCodexToolbar() {
                         btnInsertBreak.title =
                             s.codexMode === 'dev'
                                 ? 'Insert break (waypoint): create A → break → B using selection order (first → second).'
-                                : 'Switch to Dev Mode to insert a break between these nodes.';
+                                : 'Switch to Edit Mode to insert a break between these nodes.';
                     }
                 }
                 if (btnMergeJunctions) {
@@ -214,7 +214,7 @@ function updateCodexToolbar() {
                     btnMergeJunctions.disabled = !(s.codexMode === 'dev' && bothJ);
                     btnMergeJunctions.title =
                         s.codexMode !== 'dev'
-                            ? 'Switch to Dev mode to merge break nodes.'
+                            ? 'Switch to Edit mode to merge break nodes.'
                             : bothJ
                                 ? 'Merge both break nodes into one at the primary selection (first picked / highlighted A).'
                                 : 'Select two break (junction) nodes to merge.';

@@ -246,11 +246,17 @@ export function resolveDockTimelineEventsForDisplay(baseEvents) {
     if (entityCurated && isHeroBiographyModeActive()) {
         const countryKeys = getSelectedCountryFilterKeys();
         if (countryKeys.length) {
-            filtered = filtered.filter((event) =>
-                countryKeys.some((ck) =>
-                    eventMatchesBioBiographyFilter(event, 'countries', ck),
-                ),
-            );
+            const andMode =
+                typeof window !== 'undefined'
+                && (window.FiltersMatchMode?.isAnd?.()
+                    || document.documentElement?.dataset?.filtersMatchMode === 'and');
+            filtered = filtered.filter((event) => {
+                const pass = (ck) =>
+                    eventMatchesBioBiographyFilter(event, 'countries', ck);
+                return andMode
+                    ? countryKeys.every(pass)
+                    : countryKeys.some(pass);
+            });
         }
     }
 

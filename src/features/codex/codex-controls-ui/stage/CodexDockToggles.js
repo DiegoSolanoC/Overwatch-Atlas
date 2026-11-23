@@ -1,10 +1,17 @@
 /**
- * Codex dock toggles — linking, packets, debug info (breaks & angles).
- * Chrome matches gallery Select Hero / world Map & Rotation toggles.
+ * Codex dock toggles — View/Edit (top inverse trap), packets + info (Edit only).
+ * Linking moved to Filters panel AND match mode (see filtersMatchMode.js).
  */
 
 import { createHeaderHubButton } from '../../../universal-features/atlas-header/HeaderHubButton.js';
 import { loadSoundEffect } from '../../../universal-features/atlas-sound-effects/loadSoundEffects.js';
+import {
+    FILTERS_MATCH_MODE_AND,
+    FILTERS_MATCH_MODE_OR,
+    getFiltersMatchMode,
+    isFiltersMatchModeAnd,
+    setFiltersMatchMode,
+} from '../../../system-interface/interface-filter-menu/state/filtersMatchMode.js';
 import { api } from '../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
 import { playSoundEffect } from '../../codex-canvas/bridge/CodexAppBridge.js';
@@ -14,8 +21,8 @@ import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedra
 const CODEX_ROOT_ID = 'codex-view-root';
 const DOCK_PARENT_ID = 'dockGlobeRailLeft';
 
+/** Retired — Linking lives on Filters AND/OR. Kept for cleanup of stale DOM. */
 const LINKING_TOGGLE_ID = 'codexLinkFiltersToggle';
-const LINKING_ICON_ID = 'codexLinkFiltersIcon';
 const PACKETS_TOGGLE_ID = 'codexTogglePackets';
 const PACKETS_ICON_ID = 'codexTogglePacketsIcon';
 const INFO_TOGGLE_ID = 'codexToggleInfo';
@@ -26,8 +33,6 @@ const MODE_ICON_ID = 'codexToggleViewDevIcon';
 /* Filenames match Mode Icons/ after the Scout/Repair → Codex/Archive rename. */
 const MODE_ICON =
     'src/assets/images/Icons/Mode%20Icons/Codex.png';
-const LINKING_ICON =
-    'src/assets/images/Icons/Filter%20Icons/Confirm%20Filter%20Icon.png';
 /* Packets / Info glyphs swapped (Archive ↔ Codex) per mobile portrait UX. */
 const PACKETS_ICON =
     'src/assets/images/Icons/Mode%20Icons/Codex.png';
@@ -35,15 +40,11 @@ const INFO_ICON =
     'src/assets/images/Icons/Mode%20Icons/Archive.png';
 
 /** @type {HTMLButtonElement | null} */
-let linkingToggleBtn = null;
-/** @type {HTMLButtonElement | null} */
 let packetsToggleBtn = null;
 /** @type {HTMLButtonElement | null} */
 let infoToggleBtn = null;
 /** @type {HTMLButtonElement | null} */
 let modeToggleBtn = null;
-
-let linkFiltersEnabled = false;
 
 function flashCodexOnOffToggle(btn, enabled) {
     if (!btn || !window.flashButton) return;
@@ -56,14 +57,11 @@ function flashCodexModeToggle(btn) {
 }
 
 /**
+ * Linking is Filters AND mode — shortest paths between confirmed filter chips.
  * @returns {boolean}
  */
 export function isCodexLinkFiltersEnabled() {
-    return linkFiltersEnabled;
-}
-
-function refreshCodexFilterCanvas() {
-    api.applyCodexFilterState?.();
+    return isFiltersMatchModeAnd();
 }
 
 function syncToggleOffClass(btn, enabled) {
@@ -72,19 +70,22 @@ function syncToggleOffClass(btn, enabled) {
     else btn.classList.add('toggle-off');
 }
 
+/**
+ * Compat: maps onto Filters match mode (AND = linking on).
+ * @param {boolean} enabled
+ */
 export function setCodexLinkFiltersEnabled(enabled) {
-    linkFiltersEnabled = !!enabled;
-    syncToggleOffClass(linkingToggleBtn, linkFiltersEnabled);
-    refreshCodexFilterCanvas();
+    setFiltersMatchMode(enabled ? FILTERS_MATCH_MODE_AND : FILTERS_MATCH_MODE_OR, {
+        apply: true,
+    });
 }
 
 /**
  * @returns {boolean}
  */
 export function toggleCodexLinkFilters() {
-    setCodexLinkFiltersEnabled(!linkFiltersEnabled);
-    flashCodexOnOffToggle(linkingToggleBtn, linkFiltersEnabled);
-    return linkFiltersEnabled;
+    setCodexLinkFiltersEnabled(getFiltersMatchMode() !== FILTERS_MATCH_MODE_AND);
+    return isCodexLinkFiltersEnabled();
 }
 
 /**
@@ -126,17 +127,28 @@ function toggleCodexInfo() {
     setCodexInfoEnabled(!s.codexDebugUiVisible, { flash: true });
 }
 
+function syncCodexEditOnlyToggleVisibility() {
+    const isEdit = s.codexMode === 'dev';
+    for (const btn of [packetsToggleBtn, infoToggleBtn]) {
+        if (!btn) continue;
+        btn.hidden = !isEdit;
+        btn.setAttribute('aria-hidden', isEdit ? 'false' : 'true');
+        btn.classList.toggle('codex-dock-toggle--edit-only-hidden', !isEdit);
+    }
+}
+
 export function syncCodexModeToggleUi() {
     if (!modeToggleBtn) return;
-    const isDev = s.codexMode === 'dev';
+    const isEdit = s.codexMode === 'dev';
     modeToggleBtn.classList.remove('toggle-off');
     const label = modeToggleBtn.querySelector('.globe-control-btn__label');
     if (label) {
-        label.textContent = isDev ? 'Dev Mode' : 'View Mode';
+        label.textContent = isEdit ? 'Edit' : 'View';
     }
-    modeToggleBtn.title = isDev
-        ? 'Dev Mode — click for read-only View Mode'
-        : 'View Mode — click for Dev Mode (edit layout)';
+    modeToggleBtn.title = isEdit
+        ? 'Edit Mode — click for read-only View Mode'
+        : 'View Mode — click for Edit Mode (layout tools)';
+    syncCodexEditOnlyToggleVisibility();
 }
 
 function toggleCodexViewDevMode() {
@@ -150,14 +162,14 @@ function toggleCodexViewDevMode() {
 }
 
 /**
- * Dev: packets off, info on. View: packets on, info off.
+ * Edit: packets off, info on. View: packets on, info off (toggles hidden in View).
  * @param {{ redraw?: boolean }} [opts]
  */
 export function applyCodexModeDockToggles(opts = {}) {
     const { redraw = true } = opts;
-    const isDev = s.codexMode === 'dev';
-    setCodexPacketsEnabled(!isDev, { persist: false, redraw: false });
-    setCodexInfoEnabled(isDev, { persist: false, redraw: false });
+    const isEdit = s.codexMode === 'dev';
+    setCodexPacketsEnabled(!isEdit, { persist: false, redraw: false });
+    setCodexInfoEnabled(isEdit, { persist: false, redraw: false });
     syncCodexModeToggleUi();
     if (redraw) {
         redrawCodexEdges({ force: true });
@@ -223,13 +235,18 @@ function mountDockToggle({
     iconAlt,
     headerOrder,
     enabled,
+    /** Primary mode toggle uses trap flank; settings chips use globe rail. */
+    rail = 'globe',
+    floatingClass = '',
 }) {
     const dockParent = document.getElementById(DOCK_PARENT_ID);
     const parentId = dockParent ? DOCK_PARENT_ID : CODEX_ROOT_ID;
+    const railClass = rail === 'trap' ? 'dock-trap-flank__btn' : 'dock-globe-rail__btn';
+    const composed = `${railClass} codex-dock-toggle ${className}`.trim();
 
     const btn = createHeaderHubButton({
         id,
-        className: `dock-globe-rail__btn codex-dock-toggle ${className}`,
+        className: composed,
         title,
         label,
         iconPath,
@@ -240,13 +257,13 @@ function mountDockToggle({
         headerOrder,
         mobileParentId: DOCK_PARENT_ID,
         mobileBaseClass: 'globe-control-btn',
-        mobileClassName: `dock-globe-rail__btn codex-dock-toggle ${className}`,
+        mobileClassName: composed,
     });
 
     if (!btn?.isConnected) return null;
 
-    if (!dockParent) {
-        btn.classList.add(`${className}--floating`);
+    if (!dockParent && floatingClass) {
+        btn.classList.add(floatingClass);
     }
 
     /* Visibility is CSS-owned so #eventSlide.open can hide these chips. */
@@ -257,8 +274,6 @@ function mountDockToggle({
 
 export function mountCodexDockToggles() {
     unmountCodexDockToggles();
-
-    linkFiltersEnabled = false;
 
     loadSoundEffect(
         'rotationToggle',
@@ -274,31 +289,22 @@ export function mountCodexDockToggles() {
 
     document.querySelector('.codex-mode-toggle-btn')?.remove();
 
-    const isDev = s.codexMode === 'dev';
+    const isEdit = s.codexMode === 'dev';
+    /* Primary mode toggle — same inverse-trap chrome as Map / Story / Theater. */
     modeToggleBtn = mountDockToggle({
         id: MODE_TOGGLE_ID,
         iconId: MODE_ICON_ID,
-        className: 'codex-toggle-view-dev',
-        title: isDev
-            ? 'Dev Mode — click for read-only View Mode'
-            : 'View Mode — click for Dev Mode (edit layout)',
-        label: isDev ? 'Dev Mode' : 'View Mode',
+        className: 'mode-primary-toggle codex-toggle-view-dev',
+        title: isEdit
+            ? 'Edit Mode — click for read-only View Mode'
+            : 'View Mode — click for Edit Mode (layout tools)',
+        label: isEdit ? 'Edit' : 'View',
         iconPath: MODE_ICON,
-        iconAlt: 'View or Dev mode',
-        headerOrder: 11,
+        iconAlt: 'View or Edit mode',
+        headerOrder: 10,
         enabled: true,
-    });
-
-    linkingToggleBtn = mountDockToggle({
-        id: LINKING_TOGGLE_ID,
-        iconId: LINKING_ICON_ID,
-        className: 'codex-toggle-linking',
-        title: 'Toggle Linking — shortest paths between all confirmed filter chips',
-        label: 'Linking',
-        iconPath: LINKING_ICON,
-        iconAlt: 'Toggle linking',
-        headerOrder: 12,
-        enabled: false,
+        rail: 'trap',
+        floatingClass: 'codex-toggle-view-dev--floating',
     });
 
     packetsToggleBtn = mountDockToggle({
@@ -311,6 +317,7 @@ export function mountCodexDockToggles() {
         iconAlt: 'Toggle packets',
         headerOrder: 13,
         enabled: s.codexPacketAnimEnabled,
+        floatingClass: 'codex-toggle-packets--floating',
     });
 
     infoToggleBtn = mountDockToggle({
@@ -323,13 +330,11 @@ export function mountCodexDockToggles() {
         iconAlt: 'Toggle info',
         headerOrder: 14,
         enabled: s.codexDebugUiVisible,
+        floatingClass: 'codex-toggle-info--floating',
     });
 
     if (modeToggleBtn) {
         wireDockToggle(modeToggleBtn, () => toggleCodexViewDevMode(), '_codexModeToggleTeardown');
-    }
-    if (linkingToggleBtn) {
-        wireDockToggle(linkingToggleBtn, () => toggleCodexLinkFilters(), '_codexLinkingToggleTeardown');
     }
     if (packetsToggleBtn) {
         wireDockToggle(packetsToggleBtn, () => toggleCodexPackets(), '_codexPacketsToggleTeardown');
@@ -360,10 +365,8 @@ export function unmountCodexDockToggles() {
         btn.remove();
     }
     modeToggleBtn = null;
-    linkingToggleBtn = null;
     packetsToggleBtn = null;
     infoToggleBtn = null;
-    linkFiltersEnabled = false;
 }
 
 /** @deprecated Use {@link mountCodexDockToggles} */

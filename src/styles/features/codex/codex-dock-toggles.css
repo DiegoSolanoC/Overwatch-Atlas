@@ -1,7 +1,6 @@
-/* Codex dock rail — view/dev, linking, packets, and info toggles */
+/* Codex dock — View/Edit inverse trap + Edit-only Packets/Info chips */
 
 #codexToggleViewDev,
-#codexLinkFiltersToggle,
 #codexTogglePackets,
 #codexToggleInfo {
     display: none !important;
@@ -9,17 +8,35 @@
     pointer-events: none !important;
 }
 
-body.codex-mode-active #codexToggleViewDev.dock-globe-rail__btn,
-body.codex-mode-active #codexLinkFiltersToggle.dock-globe-rail__btn,
-body.codex-mode-active #codexTogglePackets.dock-globe-rail__btn,
-body.codex-mode-active #codexToggleInfo.dock-globe-rail__btn {
+/* Primary Edit/View — visible whenever Codex is open (desktop trap via pagination-dock). */
+body.codex-mode-active #codexToggleViewDev.dock-trap-flank__btn,
+body.codex-mode-active #codexToggleViewDev.globe-control-btn {
+    display: inline-flex !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
+/*
+ * Packets + Info — Edit mode only (settings for layout tools).
+ * Root carries .codex--dev-mode while editing.
+ */
+body.codex-mode-active:has(#codex-view-root.codex--dev-mode) #codexTogglePackets.dock-globe-rail__btn,
+body.codex-mode-active:has(#codex-view-root.codex--dev-mode) #codexToggleInfo.dock-globe-rail__btn {
     display: flex !important;
     pointer-events: auto !important;
     visibility: visible !important;
 }
 
-body:has(#eventSlide.open) #codexToggleViewDev.dock-globe-rail__btn,
-body:has(#eventSlide.open) #codexLinkFiltersToggle.dock-globe-rail__btn,
+body.codex-mode-active #codexTogglePackets.codex-dock-toggle--edit-only-hidden,
+body.codex-mode-active #codexToggleInfo.codex-dock-toggle--edit-only-hidden,
+#codexTogglePackets[hidden],
+#codexToggleInfo[hidden] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+body:has(#eventSlide.open) #codexToggleViewDev.globe-control-btn,
 body:has(#eventSlide.open) #codexTogglePackets.dock-globe-rail__btn,
 body:has(#eventSlide.open) #codexToggleInfo.dock-globe-rail__btn {
     display: none !important;
@@ -27,26 +44,22 @@ body:has(#eventSlide.open) #codexToggleInfo.dock-globe-rail__btn {
     pointer-events: none !important;
 }
 
-/* Desktop + mobile landscape: fixed chip width. Portrait uses viewport.css single-row flex. */
+/* Edit-only chips: fixed width on desktop / landscape (mode trap is separate). */
 @media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
-body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
-body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
-body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
-body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
-    width: auto !important;
-    min-width: 112px !important;
-    max-width: 138px !important;
-    height: 48px !important;
-    padding: 0 7px !important;
-    gap: 5px !important;
-    font-size: 11px !important;
-    line-height: 1.05 !important;
-    letter-spacing: 0.01em;
-}
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
+        width: auto !important;
+        min-width: 112px !important;
+        max-width: 138px !important;
+        height: 48px !important;
+        padding: 0 7px !important;
+        gap: 5px !important;
+        font-size: 11px !important;
+        line-height: 1.05 !important;
+        letter-spacing: 0.01em;
+    }
 }
 
-body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn [id$='Icon'],
-body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn [id$='Icon'],
 body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn [id$='Icon'],
 body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn [id$='Icon'] {
     width: 22px !important;
@@ -57,8 +70,6 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
     flex-shrink: 0;
 }
 
-body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn .globe-control-btn__label,
-body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn .globe-control-btn__label,
 body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label,
 body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn .globe-control-btn__label {
     display: inline-block !important;
@@ -70,8 +81,6 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
 }
 
 @media (max-width: 1180px) and (min-width: 769px) {
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
-    body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
     body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
     body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
         width: 48px !important;
@@ -82,8 +91,6 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
         gap: 0 !important;
     }
 
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn .globe-control-btn__label,
-    body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn .globe-control-btn__label,
     body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label,
     body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn .globe-control-btn__label {
         display: none !important;
@@ -92,8 +99,6 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
         overflow: hidden !important;
     }
 
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn [id$='Icon'],
-    body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn [id$='Icon'],
     body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn [id$='Icon'],
     body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn [id$='Icon'] {
         width: 24px !important;
@@ -104,7 +109,6 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
 }
 
 #codex-view-root > #codexToggleViewDev.codex-toggle-view-dev--floating,
-#codex-view-root > #codexLinkFiltersToggle.codex-toggle-linking--floating,
 #codex-view-root > #codexTogglePackets.codex-toggle-packets--floating,
 #codex-view-root > #codexToggleInfo.codex-toggle-info--floating {
     position: fixed;
@@ -125,14 +129,17 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
     bottom: calc(var(--footer-height, 65px) + 200px);
 }
 
-#codex-view-root > #codexLinkFiltersToggle.codex-toggle-linking--floating {
-    bottom: calc(var(--footer-height, 65px) + 24px);
-}
-
 #codex-view-root > #codexTogglePackets.codex-toggle-packets--floating {
     bottom: calc(var(--footer-height, 65px) + 80px);
 }
 
 #codex-view-root > #codexToggleInfo.codex-toggle-info--floating {
     bottom: calc(var(--footer-height, 65px) + 136px);
+}
+
+/* Stale Linking dock chrome — always hidden (feature moved to Filters AND). */
+#codexLinkFiltersToggle {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }

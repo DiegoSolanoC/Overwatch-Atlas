@@ -45,7 +45,7 @@ export async function loadControls(loadedComponents) {
         createHeaderHubButton({
             id: 'mapViewToggle',
             /* Same white plate class as Vehicles/Weather/Lighting/Rotation (not blue dock chip) */
-            className: 'dock-trap-flank__btn',
+            className: 'dock-trap-flank__btn mode-primary-toggle',
             title: 'Toggle Map View',
             label: 'Map',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Switch%20to%20Globe%20Icon.png',
@@ -56,7 +56,7 @@ export async function loadControls(loadedComponents) {
             headerOrder: 10,
             mobileParentId: 'dockGlobeRailLeft',
             mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'dock-trap-flank__btn'
+            mobileClassName: 'dock-trap-flank__btn mode-primary-toggle'
         });
 
         createHeaderHubButton({
