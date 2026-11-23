@@ -942,6 +942,8 @@ let chromeTweenOverhangPx = null;
 let chromeTweenLayout = null;
 /** Suppress RO full-applies while a side panel width CSS-tweens (open/close). */
 let panelWidthTweenGuardUntil = 0;
+/** @type {ReturnType<typeof setTimeout> | 0} */
+let panelTweenBusyClearTimer = 0;
 /**
  * After dock collapse settle, RO fires on panel height change. A full
  * applySidePanelsTrapChrome (nubs + every CSS var) was ~50–120ms forced reflow
@@ -1570,6 +1572,11 @@ export function beginSideChromeDockTween(durationMs = 420) {
         /* Codex not mounted */
     }
     try {
+        window.__worldSetAnimChromeSuspended?.(true);
+    } catch (_) {
+        /* World not mounted */
+    }
+    try {
         window.DockCollapsePerf?.mark?.('side-chrome-dock-tween:start');
     } catch (_) {
         /* probe optional */
@@ -1614,6 +1621,11 @@ export function beginSideChromeDockTween(durationMs = 420) {
         } catch (_) {
             /* Codex not mounted */
         }
+        try {
+            window.__worldSetAnimChromeSuspended?.(false);
+        } catch (_) {
+            /* World not mounted */
+        }
     }, ms);
 }
 
@@ -1625,6 +1637,22 @@ export function beginSideChromePanelTween() {
     if (typeof window === 'undefined') return;
     panelWidthTweenGuardUntil = performance.now() + 380;
     window.clearTimeout(chromeResizeTimer);
+    document.body?.classList.add('side-chrome-panel-tweening');
+    try {
+        window.__worldSetAnimChromeSuspended?.(true);
+    } catch (_) {
+        /* World not mounted */
+    }
+    window.clearTimeout(panelTweenBusyClearTimer);
+    panelTweenBusyClearTimer = window.setTimeout(() => {
+        panelTweenBusyClearTimer = 0;
+        document.body?.classList.remove('side-chrome-panel-tweening');
+        try {
+            window.__worldSetAnimChromeSuspended?.(false);
+        } catch (_) {
+            /* World not mounted */
+        }
+    }, 380);
     refreshInwardCutEmphasis();
     /* One immediate side paint so the first close frame is not a stale bridged lip. */
     syncLiveEdgeChrome(undefined, { dock: false, sides: true });

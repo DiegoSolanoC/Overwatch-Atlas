@@ -415,12 +415,16 @@
     }
 
     /*
-     * Map/Globe desktop only — inverted trapezium under the header badge.
-     * Mobile keeps its own skewed chip in viewport.css (do not inherit this).
+     * Mode primary toggles (Map/Globe, Story List/Timeline, Theater Chatters/
+     * Dialogues) — desktop inverted trapezium under the header badge.
+     * Mobile keeps skewed chips in viewport.css (do not inherit this).
      */
     @media (min-width: 769px) {
-        body:has(#paginationDock) #dockGlobeRailLeft > #mapViewToggle.globe-control-btn.dock-trap-flank__btn,
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn {
+        body:has(#paginationDock)
+            #dockGlobeRailLeft
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn,
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn {
             --map-trap-taper: 16%;
             appearance: none;
             position: fixed !important;
@@ -463,19 +467,26 @@
             pointer-events: auto;
             cursor: pointer;
             z-index: 700 !important;
+            visibility: visible !important;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn > * {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            > * {
             transform: none !important;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn img {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            img {
             transform: none !important;
             filter: brightness(0) !important;
             object-fit: contain !important;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn [id$='Icon'] {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            [id$='Icon'] {
             width: clamp(36px, 4vw, 46px) !important;
             height: clamp(36px, 4vw, 46px) !important;
             min-width: clamp(36px, 4vw, 46px) !important;
@@ -487,16 +498,25 @@
             flex-shrink: 0;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn [id$='Icon'] img,
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn img {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            [id$='Icon']
+            img,
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            img {
             width: 100% !important;
             height: 100% !important;
             max-width: 100% !important;
             max-height: 100% !important;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn .header-hub-btn-label,
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn .globe-control-btn__label {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            .header-hub-btn-label,
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            .globe-control-btn__label {
             display: block !important;
             margin: 0 !important;
             padding: 0 !important;
@@ -506,30 +526,76 @@
             white-space: nowrap !important;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn:hover {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn:hover {
             background: #f2f2f2 !important;
             background-color: #f2f2f2 !important;
             filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.42)) brightness(0.97);
             transform: translateX(-50%) translateY(2px) !important;
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn.toggle-off {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn.toggle-off {
             opacity: 0.45;
             filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.22));
         }
 
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn.active {
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn.active {
             filter: drop-shadow(0 5px 16px rgba(0, 0, 0, 0.45));
+        }
+
+        /* Story / Theater: only show in their mode; hide while event slide is open. */
+        body:has(#paginationDock) #storyViewToggle.globe-control-btn.dock-trap-flank__btn {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        body:has(#paginationDock):has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+            #dockGlobeRailLeft
+            > #storyViewToggle.globe-control-btn.dock-trap-flank__btn {
+            display: inline-flex !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+
+        body:has(#paginationDock) #dialogueTheaterEntryToggle.globe-control-btn.dock-trap-flank__btn {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        body:has(#paginationDock).dialogue-theater-mode-active
+            #dockGlobeRailLeft
+            > #dialogueTheaterEntryToggle.globe-control-btn.dock-trap-flank__btn,
+        body:has(#paginationDock):has(#dialogueTheaterListHost)
+            #dockGlobeRailLeft
+            > #dialogueTheaterEntryToggle.globe-control-btn.dock-trap-flank__btn {
+            display: inline-flex !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+
+        body:has(#paginationDock):has(#eventSlide.open)
+            #dockGlobeRailLeft
+            > :is(#storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
     }
 
     /*
-     * Mobile: kill desktop inverse-trap / fixed-under-badge on Map/Globe.
+     * Mobile: kill desktop inverse-trap / fixed-under-badge on mode primary toggles.
      * Lives here (loads after viewport.css) so it always wins.
      */
     @media (max-width: 768px) {
-        body:has(#paginationDock) #dockGlobeRailLeft > #mapViewToggle.globe-control-btn.dock-trap-flank__btn,
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn {
+        body:has(#paginationDock)
+            #dockGlobeRailLeft
+            > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn,
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn {
             --dock-trap-btn-skew: 11deg;
             position: relative !important;
             top: auto !important;
@@ -542,6 +608,30 @@
             filter: none !important;
             transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) !important;
             transform-origin: center center !important;
+            z-index: 7 !important;
+        }
+
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            > * {
+            transform: skewX(var(--dock-trap-btn-skew)) !important;
+        }
+
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn
+            img {
+            transform: none !important;
+            filter: brightness(0) !important;
+        }
+
+        body:has(#paginationDock)
+            :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle).globe-control-btn.dock-trap-flank__btn:hover {
+            filter: brightness(0.97) !important;
+            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
+        }
+
+        /* Map keeps the compact column primary chip; Story/Theater stay wider row chips. */
+        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn {
             width: var(--mode-dock-main-chip, clamp(72px, 19.5vw, 88px)) !important;
             min-width: var(--mode-dock-main-chip, clamp(72px, 19.5vw, 88px)) !important;
             max-width: var(--mode-dock-main-chip, clamp(72px, 19.5vw, 88px)) !important;
@@ -551,21 +641,6 @@
             flex-direction: column !important;
             gap: 6px !important;
             font-size: clamp(12px, 3.1vw, 14px) !important;
-            z-index: 7 !important;
-        }
-
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn > * {
-            transform: skewX(var(--dock-trap-btn-skew)) !important;
-        }
-
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn img {
-            transform: none !important;
-            filter: brightness(0) !important;
-        }
-
-        body:has(#paginationDock) #mapViewToggle.globe-control-btn.dock-trap-flank__btn:hover {
-            filter: brightness(0.97) !important;
-            transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
         }
     }
 
@@ -737,18 +812,24 @@
 
     /*
      * Body-level --pagination-dock-height also set above with stage-clearance
-     * (expanded + collapsed). Codex freezes it so the board isn't invalidated.
+     * (expanded + collapsed). Stage hosts freeze it so collapse does not
+     * style-invalidate the World/Codex tree every frame of the ease.
      */
 
     /*
-     * Codex: freeze body --pagination-dock-height at the expanded value so the
-     * stage tree is not style-invalidated every collapse. Dock box + side panels
-     * still ease via their own concrete height/bottom rules. Floating Codex chrome
-     * uses explicit expanded/collapsed bottoms in codex-nodes.css.
+     * World + Codex (#globe-container): freeze body --pagination-dock-height and
+     * --pagination-dock-stage-clearance at the expanded value so the stage tree
+     * is not style-invalidated every collapse. Dock box + side panels still ease
+     * via their own concrete height/bottom rules. Floating chrome (zoom, rails,
+     * Codex panels) uses explicit expanded/collapsed bottoms.
+     * Gallery / other hosts keep the live vars above (no #globe-container).
      */
+    body:has(#globe-container):has(#paginationDock),
+    body:has(#globe-container):has(#paginationDock).pagination-dock-collapsed,
     body.codex-mode-active:has(#paginationDock),
     body.codex-mode-active:has(#paginationDock).pagination-dock-collapsed {
         --pagination-dock-height: var(--pagination-dock-height-expanded, 400px);
+        --pagination-dock-stage-clearance: var(--pagination-dock-height-expanded, 400px);
     }
     
     /* JS still inserts this node; texture is drawn on .pagination-dock::before instead. */

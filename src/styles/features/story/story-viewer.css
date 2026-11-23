@@ -508,59 +508,28 @@ body.color-palette-gray #dialogueTheaterStoryCommentaryRefs .event-item__thumb-t
     overflow: hidden;
 }
 
-/* Story List/Timeline toggle — left dock rail (matches codex / gallery mode toggles) */
+/*
+ * Story List/Timeline toggle — Map/Globe format (white inverted trap on desktop,
+ * white skewed chip on mobile). Desktop look + visibility live in pagination-dock.css.
+ */
 #storyViewToggle {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
 }
 
-body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
+body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+    #dockGlobeRailLeft
+    > #storyViewToggle.dock-trap-flank__btn {
     display: flex !important;
     pointer-events: auto !important;
     visibility: visible !important;
 }
 
-body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
+body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle.dock-trap-flank__btn {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
-}
-
-/* Desktop + mobile landscape: fixed chip width. Portrait uses viewport.css centered chip. */
-@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
-body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
-    width: auto !important;
-    min-width: 112px !important;
-    max-width: 138px !important;
-    height: 48px !important;
-    padding: 0 7px !important;
-    gap: 5px !important;
-    font-size: 11px !important;
-    line-height: 1.05 !important;
-    letter-spacing: 0.01em;
-}
-}
-
-body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn [id$='Icon'] {
-    width: 22px !important;
-    height: 22px !important;
-    min-width: 22px !important;
-    min-height: 22px !important;
-    margin-right: 0 !important;
-    flex-shrink: 0;
-}
-
-body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn .globe-control-btn__label {
-    display: inline-block !important;
-    max-width: 72px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn img {
-    transform: none !important;
 }
 
 #storyViewerContainer > #storyViewToggle.story-view-toggle--floating {
@@ -568,7 +537,7 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     left: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-left));
     bottom: calc(
         var(--footer-height, 65px)
-        + var(--pagination-dock-height, 240px)
+        + var(--pagination-dock-height-expanded, 400px)
         + var(--dock-globe-rail-gap, 10px)
         + var(--dock-rail-side-extra, 30px)
     );
@@ -576,33 +545,6 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     display: flex !important;
     pointer-events: auto !important;
     visibility: visible !important;
-    width: auto !important;
-    min-width: 112px !important;
-    max-width: 138px !important;
-    height: 48px !important;
-    padding: 0 7px !important;
-    gap: 5px !important;
-    font-size: 11px !important;
-}
-
-@media (max-width: 768px) and (orientation: landscape) {
-    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
-        min-width: 48px !important;
-        max-width: 48px !important;
-        width: 48px !important;
-        padding: 0 !important;
-    }
-
-    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn .globe-control-btn__label {
-        display: none !important;
-    }
-
-    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn [id$='Icon'] {
-        width: 24px !important;
-        height: 24px !important;
-        min-width: 24px !important;
-        min-height: 24px !important;
-    }
 }
 
 /* Story archive: always show full list — hide pagination + per-page controls */

@@ -608,15 +608,29 @@ class FilterService {
       countries: this.countries,
     };
     const t = this.currentFilterType;
-    void this.createFilterButtons(
-      tabItems[t] || this.npcs,
-      t,
-      tabFolder[t] || tabFolder.npcs,
-    );
 
-    this.updateButtonStates();
-    this.updateFilterCounts();
-    syncFiltersModeDisclaimer();
+    /*
+     * Defer grid rebuild until after the open chrome paints — sync createFilterButtons
+     * on the click tick stole frames from the width/drawbridge ease (esp. under World).
+     */
+    const fillOpenContent = () => {
+      if (!this.filtersPanel?.classList.contains("open")) return;
+      void this.createFilterButtons(
+        tabItems[t] || this.npcs,
+        t,
+        tabFolder[t] || tabFolder.npcs,
+      );
+      this.updateButtonStates();
+      this.updateFilterCounts();
+      syncFiltersModeDisclaimer();
+    };
+    if (typeof requestAnimationFrame === "function") {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(fillOpenContent);
+      });
+    } else {
+      fillOpenContent();
+    }
   }
 
   closePanel() {

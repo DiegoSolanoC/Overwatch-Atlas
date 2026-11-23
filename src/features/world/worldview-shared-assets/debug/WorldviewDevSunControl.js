@@ -60,26 +60,54 @@ function applyYawToScene(controller, deg) {
     }
 }
 
+function isCodexModeActive() {
+    return typeof document !== 'undefined' && document.body.classList.contains('codex-mode-active');
+}
+
 /**
- * Update sun slider visibility based on lighting state and map mode
- * @param {object} controller - Globe controller
+ * Update sun slider visibility based on lighting, map mode, and app mode.
+ * Sun is World/globe-only — hide in Codex (and whenever globe lighting isn't relevant).
+ * @param {object} [controller] - Globe controller (optional; falls back to window.globeController)
  */
 export function updateSunSliderVisibility(controller) {
     const slider = document.querySelector('.dev-sun-yaw-panel');
     const slot = document.getElementById('zoomSunSlot');
     if (!slider) return;
 
-    const lightingVisible = controller.sceneModel.getGlobeLightingVisible ? controller.sceneModel.getGlobeLightingVisible() : true;
-    const isMap = controller.sceneModel.getMapViewEnabled ? controller.sceneModel.getMapViewEnabled() : !!controller.sceneModel.isMapView;
+    const ctrl = controller || (typeof window !== 'undefined' ? window.globeController : null);
+    const sceneModel = ctrl?.sceneModel;
+    const lightingVisible = sceneModel?.getGlobeLightingVisible
+        ? sceneModel.getGlobeLightingVisible()
+        : true;
+    const isMap = sceneModel?.getMapViewEnabled
+        ? sceneModel.getMapViewEnabled()
+        : !!sceneModel?.isMapView;
+    const inCodex = isCodexModeActive();
+    const globeAlive = !!(sceneModel && typeof document !== 'undefined'
+        && document.getElementById('globe-container')?.classList.contains('loaded')
+        && !document.getElementById('globe-container')?.classList.contains('codex-mode'));
 
-    // Hide slider if lighting is off OR in map mode
-    const shouldShow = lightingVisible && !isMap;
+    // World globe only: lighting on, not map, not Codex, globe stage still live
+    const shouldShow = !!(globeAlive && lightingVisible && !isMap && !inCodex);
     slider.classList.toggle('dev-sun-yaw-panel--hidden', !shouldShow);
     slider.style.opacity = shouldShow ? '1' : '0';
     slider.style.pointerEvents = shouldShow ? 'auto' : 'none';
     if (slot) {
         slot.classList.toggle('zoom-sun-slot--empty', !shouldShow);
         slot.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+    }
+}
+
+let _modeVisibilityWired = false;
+
+function wireSunSliderModeVisibility(controller) {
+    if (_modeVisibilityWired || typeof window === 'undefined') return;
+    _modeVisibilityWired = true;
+    const refresh = () => updateSunSliderVisibility(controller || window.globeController);
+    window.addEventListener('appmodechange', refresh);
+    if (typeof MutationObserver !== 'undefined' && document.body) {
+        const obs = new MutationObserver(refresh);
+        obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     }
 }
 
@@ -117,12 +145,14 @@ export function maybeInstallDevSunYawControl(controller) {
         ensureStageShell(wrap, range);
         _installed = true;
         applyYawToScene(controller, Number(range?.value) || readStoredYaw());
+        wireSunSliderModeVisibility(controller);
         updateSunSliderVisibility(controller);
         return;
     }
 
     if (_installed && range) {
         ensureStageShell(wrap, range);
+        wireSunSliderModeVisibility(controller);
         updateSunSliderVisibility(controller);
         return;
     }
@@ -188,5 +218,6 @@ export function maybeInstallDevSunYawControl(controller) {
     installStageSliderNub(shell, range, SUN_NUB_ICON);
 
     applyYawToScene(controller, Number(range.value));
+    wireSunSliderModeVisibility(controller);
     updateSunSliderVisibility(controller);
 }

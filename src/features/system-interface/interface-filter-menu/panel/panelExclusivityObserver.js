@@ -15,6 +15,7 @@ export function createPanelExclusivityObserver() {
     function enforcePanelExclusivity() {
         if (enforcing) return;
         enforcing = true;
+        let skipLayoutSync = false;
         try {
             const filtersPanel = document.getElementById('filtersPanel');
             const filtersToggle = document.getElementById('filtersToggle');
@@ -31,15 +32,21 @@ export function createPanelExclusivityObserver() {
             if (musicToggle) {
                 musicToggle.classList.toggle('active', musicMode);
             }
+            /*
+             * Closing uses panel--closing + width/drawbridge tweens. A globe layout
+             * sync on that same tick steals frames from the bridge animation —
+             * FiltersPanel.finishClose already requests layout after settle.
+             * Overlay panels also do not resize the WebGL stage on open.
+             */
+            skipLayoutSync =
+                !!filtersPanel?.classList.contains('panel--closing')
+                || !!filtersPanel?.classList.contains('open')
+                || !!document.getElementById('eventSlide')?.classList.contains('panel--closing')
+                || !!document.getElementById('eventSlide')?.classList.contains('open');
         } finally {
             enforcing = false;
         }
-        /*
-         * Closing uses panel--closing + width/drawbridge tweens. A globe layout
-         * sync on that same tick steals frames from the bridge animation —
-         * FiltersPanel.finishClose already requests layout after settle.
-         */
-        if (filtersPanel?.classList.contains('panel--closing')) return;
+        if (skipLayoutSync) return;
         window.globeController?.requestStageLayoutSync?.();
     }
 

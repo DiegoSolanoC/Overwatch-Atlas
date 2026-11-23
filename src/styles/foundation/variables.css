@@ -147,6 +147,9 @@
      * Global UI scale on `body` (see foundation/base.css).
      * 0.5025 ≈ 0.67 × 0.75 — matches authoring with ~67% site scale + Chrome at 75% zoom.
      * Keep the browser at 100%; adjust only this variable for global size.
+     * Smaller desktop/laptop viewports: desktopViewportFit.js (and an early
+     * head script) may lower these on :root so 14" screens match a ~1600×900
+     * reference without manual browser zoom. Phones keep this CSS default.
      */
     --desktop-scale: 0.5025;
     --desktop-scale-inverse: 199.004975%; /* 100% / 0.5025 */

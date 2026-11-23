@@ -18,10 +18,14 @@
     /* Fallback rounded-trap chrome until SidePanelsTrapChrome applies live stroke width */
     --zoom-slider-trap-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='%23fff'/%3E%3C/svg%3E");
     --zoom-slider-trap-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='none' stroke='%23fff' stroke-width='10' stroke-linejoin='round'/%3E%3C/svg%3E");
-    /* Sit just above the trap top lip — tracks dock expand/collapse via body var */
+    /*
+     * Sit just above the trap top lip. Concrete expanded bottom — body
+     * --pagination-dock-height is frozen for World/Codex so the stage is not
+     * invalidated; collapsed override below tracks the dock ease.
+     */
     --atlas-zoom-dock-bottom: calc(
         var(--footer-height, 65px)
-        + var(--pagination-dock-height, 240px)
+        + var(--pagination-dock-height-expanded, 400px)
         + var(--dock-trap-height, 80px)
         + var(--world-zoom-lift, 10px)
     );
@@ -45,6 +49,17 @@
         opacity 0.3s ease,
         bottom var(--pagination-dock-transition-duration, 0.42s)
             var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+}
+
+body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
+    --atlas-zoom-dock-bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height-collapsed, 200px)
+        + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+        + var(--dock-trap-height, 80px)
+        + var(--world-zoom-lift, 10px)
+    );
+    bottom: var(--atlas-zoom-dock-bottom);
 }
 
 /* Filters-style white plate — centered on the slider stack */
@@ -358,11 +373,21 @@ body:has(.loading-overlay.active) .time-control-slider {
         gap: 6px !important;
         bottom: calc(
             var(--footer-height, 60px)
-            + var(--pagination-dock-height, 200px)
+            + var(--pagination-dock-height-expanded, 400px)
             + var(--dock-trap-height, 80px)
             + clamp(12px, 1.8vh, 20px)
         ) !important;
         z-index: calc(var(--pagination-dock-z, 2200) + 20);
+    }
+
+    body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
+        bottom: calc(
+            var(--footer-height, 60px)
+            + var(--pagination-dock-height-collapsed, 200px)
+            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
+            + var(--dock-trap-height, 80px)
+            + clamp(12px, 1.8vh, 20px)
+        ) !important;
     }
 }
 

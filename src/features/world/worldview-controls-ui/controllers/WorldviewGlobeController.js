@@ -170,6 +170,13 @@ export class WorldviewGlobeController {
         };
         window.addEventListener('pagination-dock-collapse', this._onPaginationDockCollapse);
 
+        /* Codex suspends cord packets during dock chrome tween; World thins animate(). */
+        this._chromeAnimSuspended = false;
+        this._onWorldChromeAnimSuspend = (suspended) => {
+            this._chromeAnimSuspended = !!suspended;
+        };
+        window.__worldSetAnimChromeSuspended = this._onWorldChromeAnimSuspend;
+
         this.setupPageVisibilityTracking();
 
         if (shouldDefaultToMapView) {
@@ -377,6 +384,28 @@ export class WorldviewGlobeController {
         if (this._globeLayoutDirty && this.interactionController && this._stageLayoutSyncTimer == null) {
             this._globeLayoutDirty = false;
             this.interactionController.onWindowResize();
+        }
+
+        const chromeBusy =
+            this._chromeAnimSuspended
+            || !!document.body?.classList.contains('side-chrome-dock-tweening')
+            || !!document.body?.classList.contains('side-chrome-panel-tweening');
+
+        /*
+         * Dock/panel chrome owns the main thread for ~420ms (SVG path rAF).
+         * Skip transport/VFX/marker work so UI chrome stays as snappy as Codex;
+         * still render so the globe doesn't freeze mid-ease.
+         */
+        if (chromeBusy) {
+            this.planeManager.updatePlanePositions(camera);
+            if (!isMapView) {
+                const qualityLite = getGlobeQualitySnapshot();
+                if (qualityLite.autoRotateAllowed !== false) {
+                    this.autoRotateController.updateAutoRotate(globe, camera);
+                }
+            }
+            renderer.render(scene, camera);
+            return;
         }
 
         // Update Moon/Mars plane positions to stay on camera's right side
@@ -699,6 +728,12 @@ export class WorldviewGlobeController {
             window.removeEventListener('pagination-dock-collapse', this._onPaginationDockCollapse);
             this._onPaginationDockCollapse = null;
         }
+
+        if (window.__worldSetAnimChromeSuspended === this._onWorldChromeAnimSuspend) {
+            delete window.__worldSetAnimChromeSuspended;
+        }
+        this._onWorldChromeAnimSuspend = null;
+        this._chromeAnimSuspended = false;
         
         // Cancel animation frame
         if (this.animationId) {

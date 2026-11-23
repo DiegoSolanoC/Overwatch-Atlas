@@ -26,6 +26,7 @@ import {
 } from '../atlas-header/HeaderModeSynchronization.js';
 import { setupHeaderTitleBadgeTweaker } from '../atlas-header/HeaderTitleBadgeTweaker.js?v=25';
 import { initMobilePortraitGate } from './mobilePortraitGate.js';
+import { initDesktopViewportFit } from './desktopViewportFit.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
 import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=116';
 import { installAtlasNewsChrome } from '../../system-interface/interface-platform-input/news-ticker/mountAtlasNewsChrome.js?v=8';
@@ -222,6 +223,7 @@ window.addEventListener('DOMContentLoaded', function () {
 // once the globe loads — no boot-side babysitting required.
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobilePortraitGate);
+    document.addEventListener('DOMContentLoaded', initDesktopViewportFit);
     document.addEventListener('DOMContentLoaded', setupHeaderHub);
     document.addEventListener('DOMContentLoaded', setupZoomControls);
     document.addEventListener('DOMContentLoaded', setupOfficialSiteLinkSound);
@@ -231,6 +233,7 @@ if (document.readyState === 'loading') {
     });
 } else {
     initMobilePortraitGate();
+    initDesktopViewportFit();
     setupHeaderHub();
     setupZoomControls();
     setupOfficialSiteLinkSound();

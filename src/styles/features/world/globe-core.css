@@ -74,6 +74,15 @@
     display: none !important;
 }
 
+/* Sun yaw is World/globe lighting only — never linger in Codex */
+body.codex-mode-active .dev-sun-yaw-panel,
+body.codex-mode-active #zoomSunSlot,
+body.codex-mode-active .zoom-sun-slot {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
 /* Sun range visuals live on .stage-slider-shell (entry-zoom.css); keep panel host clean. */
 .dev-sun-yaw-panel .stage-slider-shell {
     width: 100%;
@@ -245,10 +254,26 @@
     }
 }
 
+    /*
+     * Concrete expanded bottoms — body --pagination-dock-height is frozen for
+     * World/Codex. Collapsed overrides below keep rails riding the dock ease.
+     */
     body:has(#paginationDock) .dock-globe-rail {
         bottom: calc(
             var(--footer-height, 65px)
-            + var(--pagination-dock-height, 240px)
+            + var(--pagination-dock-height-expanded, 400px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+        );
+        transition: bottom var(--pagination-dock-transition-duration, 0.42s)
+            var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+    }
+
+    body.pagination-dock-collapsed:has(#paginationDock) .dock-globe-rail {
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height-collapsed, 200px)
+            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
             + var(--dock-globe-rail-gap, 10px)
             + var(--dock-rail-lift-into-border, 0px)
         );
@@ -258,7 +283,18 @@
         left: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-left));
         bottom: calc(
             var(--footer-height, 65px)
-            + var(--pagination-dock-height, 240px)
+            + var(--pagination-dock-height-expanded, 400px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+            + var(--dock-rail-side-extra, 30px)
+        ) !important;
+    }
+
+    body.pagination-dock-collapsed:has(#paginationDock) .dock-globe-rail--left {
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height-collapsed, 200px)
+            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
             + var(--dock-globe-rail-gap, 10px)
             + var(--dock-rail-lift-into-border, 0px)
             + var(--dock-rail-side-extra, 30px)
@@ -272,7 +308,17 @@
         z-index: 660;
         bottom: calc(
             var(--footer-height, 65px)
-            + var(--pagination-dock-height, 240px)
+            + var(--pagination-dock-height-expanded, 400px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+        ) !important;
+    }
+
+    body.pagination-dock-collapsed:has(#paginationDock) .dock-globe-rail--center {
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height-collapsed, 200px)
+            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
             + var(--dock-globe-rail-gap, 10px)
             + var(--dock-rail-lift-into-border, 0px)
         ) !important;
@@ -995,7 +1041,18 @@
         right: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-right));
         bottom: calc(
             var(--footer-height, 65px)
-            + var(--pagination-dock-height, 240px)
+            + var(--pagination-dock-height-expanded, 400px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+            + var(--dock-rail-side-extra, 30px)
+        ) !important;
+    }
+
+    body.pagination-dock-collapsed:has(#paginationDock) .dock-globe-rail--right {
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height-collapsed, 200px)
+            + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
             + var(--dock-globe-rail-gap, 10px)
             + var(--dock-rail-lift-into-border, 0px)
             + var(--dock-rail-side-extra, 30px)
