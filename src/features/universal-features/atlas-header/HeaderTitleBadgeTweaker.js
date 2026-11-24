@@ -17,18 +17,18 @@ import {
 import {
     SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
     applySidePanelsTrapChrome,
+    applyTheaterChromeVars,
     applyWorldModeChromeVars,
     cloneSidePanelsTrapDefaults,
     loadSidePanelsTrapState,
     sanitizeSidePanelsTrapState,
-} from './SidePanelsTrapChrome.js?v=35';
+} from './SidePanelsTrapChrome.js?v=41';
 import {
     clearLegacyUiTweaksStorage,
     clearUiTweaksDraft,
     getCachedUiTweaksStandard,
     isUiTweaksRepoSaveAvailable,
     loadUiTweaksStandard,
-    promoteUiTweaksDraftToRepoIfNeeded,
     readUiTweaksDraft,
     resolveUiTweaksSyncPayload,
     saveUiTweaksStandardToRepo,
@@ -40,7 +40,7 @@ const TOGGLE_ID = 'uiTweaksToggle';
 const LEGACY_PANEL_ID = 'headerTitleBadgeTweakerPanel';
 const LEGACY_TOGGLE_ID = 'headerTitleBadgeTweakerToggle';
 
-/** @type {'sides' | 'badge' | 'panels' | 'dock' | 'world'} */
+/** @type {'sides' | 'badge' | 'panels' | 'dock' | 'world' | 'theater'} */
 let activeUiTweaksSection = 'sides';
 
 /** Current committed standard version (from JSON); drafts must match. */
@@ -52,6 +52,7 @@ const UI_TWEAK_TABS = Object.freeze([
     { id: 'panels', label: 'Side panels' },
     { id: 'dock', label: 'Dock' },
     { id: 'world', label: 'World mode' },
+    { id: 'theater', label: 'Theater' },
 ]);
 
 /** @typedef {object} BadgeTweakState */
@@ -65,7 +66,7 @@ export const HEADER_BADGE_TWEAK_DEFAULTS = Object.freeze({
 
     /** Uniform rim thickness in CSS px (same on sides + horizontal edge). */
     topStrokeWidth: 3.5,
-    bottomStrokeWidth: 10.5,
+    bottomStrokeWidth: 5.5,
     /** Gap length as % of each flank. */
     borderGap: 18,
     /** Gap center along flank: 0 = near top, 100 = near bottom. */
@@ -732,18 +733,24 @@ function mountControls(panel, bags, hooks) {
 
     const resolveBag = (name) => {
         if (name === 'sides') return sides;
-        /* Dock + World chrome share the side-panels trap bag (same persisted state). */
-        if (name === 'panels' || name === 'dock' || name === 'world') return panels;
+        /* Dock + World + Theater chrome share the side-panels trap bag (same persisted state). */
+        if (name === 'panels' || name === 'dock' || name === 'world' || name === 'theater') {
+            return panels;
+        }
         return badge;
     };
     const resolveDefaults = (name) => {
         if (name === 'sides') return HEADER_SIDES_TWEAK_DEFAULTS;
-        if (name === 'panels' || name === 'dock' || name === 'world') return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
+        if (name === 'panels' || name === 'dock' || name === 'world' || name === 'theater') {
+            return SIDE_PANELS_TRAP_TWEAK_DEFAULTS;
+        }
         return HEADER_BADGE_TWEAK_DEFAULTS;
     };
     const resolveSanitize = (name) => {
         if (name === 'sides') return sanitizeSidesState;
-        if (name === 'panels' || name === 'dock' || name === 'world') return sanitizeSidePanelsTrapState;
+        if (name === 'panels' || name === 'dock' || name === 'world' || name === 'theater') {
+            return sanitizeSidePanelsTrapState;
+        }
         return sanitizeState;
     };
 
@@ -768,15 +775,18 @@ function mountControls(panel, bags, hooks) {
             : activeUiTweaksSection === 'dock'
                 ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Save writes site standard'
                 : activeUiTweaksSection === 'world'
-                    ? 'World mode · Flank buttons · Zoom/sun stack · Reset · Save writes site standard'
-                    : isUiTweaksRepoSaveAvailable()
-                        ? 'Live preview · Save writes atlas-ui-tweaks.json · Push to ship for everyone'
-                        : 'Live preview · Save needs localhost server · Export JSON as backup';
+                    ? 'World mode · Flanks · Lighting on left wing · Zoom+Reset on right wing · Save writes site standard'
+                    : activeUiTweaksSection === 'theater'
+                        ? 'Theater · Chatters hero select · Columns · Gap · Portrait fill · Save writes site standard'
+                        : isUiTweaksRepoSaveAvailable()
+                            ? 'Live preview · Save writes atlas-ui-tweaks.json · Push to ship for everyone'
+                            : 'Live preview · Save needs localhost server · Export JSON as backup';
     panel.appendChild(hint);
 
     document.body.classList.toggle('ui-tweaks-side-panels', activeUiTweaksSection === 'panels');
     document.body.classList.toggle('ui-tweaks-dock', activeUiTweaksSection === 'dock');
     document.body.classList.toggle('ui-tweaks-world', activeUiTweaksSection === 'world');
+    document.body.classList.toggle('ui-tweaks-theater', activeUiTweaksSection === 'theater');
     document.body.classList.toggle('ui-tweaks-open', true);
     document.body.classList.toggle(
         'ui-tweaks-filters-music-independent',
@@ -1158,21 +1168,21 @@ function mountControls(panel, bags, hooks) {
         },
         {
             group: 'World mode',
-            title: 'Zoom / sun stack',
+            title: 'Lighting (left) / Zoom (right)',
             bag: 'world',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
             sanitize: sanitizeSidePanelsTrapState,
             items: [
                 {
                     key: 'worldZoomLiftPx',
-                    label: 'Lift above trap top',
+                    label: 'Lift above wing lip',
                     min: 0,
                     max: 64,
                     step: 1,
                 },
                 {
                     key: 'worldZoomStackGapPx',
-                    label: 'Gap between sliders',
+                    label: 'Gap Reset ↔ Zoom',
                     min: 8,
                     max: 72,
                     step: 1,
@@ -1200,23 +1210,30 @@ function mountControls(panel, bags, hooks) {
                 },
                 {
                     key: 'worldSunSliderWidthPct',
-                    label: 'Sun slider length (%)',
-                    min: 30,
-                    max: 100,
+                    label: 'Lighting bar (% full dock)',
+                    min: 18,
+                    max: 48,
                     step: 1,
                 },
                 {
                     key: 'worldZoomSliderWidthPct',
-                    label: 'Zoom slider length (%)',
-                    min: 30,
-                    max: 100,
+                    label: 'Zoom bar (% full dock)',
+                    min: 18,
+                    max: 48,
+                    step: 1,
+                },
+                {
+                    key: 'worldSliderInsetPx',
+                    label: 'Bar inset from ends (mirrored)',
+                    min: 0,
+                    max: 220,
                     step: 1,
                 },
             ],
         },
         {
             group: 'World mode',
-            title: 'Reset button',
+            title: 'Reset (with zoom, right)',
             bag: 'world',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
             sanitize: sanitizeSidePanelsTrapState,
@@ -1240,6 +1257,50 @@ function mountControls(panel, bags, hooks) {
                     label: 'Reset horizontal pad',
                     min: 12,
                     max: 56,
+                    step: 1,
+                },
+            ],
+        },
+        {
+            group: 'Theater',
+            title: 'Chatters hero select',
+            bag: 'theater',
+            defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
+            sanitize: sanitizeSidePanelsTrapState,
+            items: [
+                {
+                    key: 'chattersHeroCols',
+                    label: 'Columns (Tank / Support)',
+                    min: 3,
+                    max: 8,
+                    step: 1,
+                },
+                {
+                    key: 'chattersHeroDamageCols',
+                    label: 'Columns (Damage)',
+                    min: 3,
+                    max: 10,
+                    step: 1,
+                },
+                {
+                    key: 'chattersHeroGapPx',
+                    label: 'Gap between cards',
+                    min: 2,
+                    max: 28,
+                    step: 1,
+                },
+                {
+                    key: 'chattersHeroNamePx',
+                    label: 'Name label size',
+                    min: 9,
+                    max: 28,
+                    step: 1,
+                },
+                {
+                    key: 'chattersPortraitBgPct',
+                    label: 'Portrait fill opacity %',
+                    min: 0,
+                    max: 100,
                     step: 1,
                 },
             ],
@@ -1396,6 +1457,13 @@ function mountControls(panel, bags, hooks) {
         if (activeUiTweaksSection === 'world') {
             paletteNote.textContent =
                 `World · flank gap ${panels.worldFlankGapBorderPx} · stack gap ${panels.worldZoomStackGapPx} · reset ${panels.worldResetFontPx}px`;
+            swatches.replaceChildren();
+            refreshStatus();
+            return;
+        }
+        if (activeUiTweaksSection === 'theater') {
+            paletteNote.textContent =
+                `Chatters · ${panels.chattersHeroCols}/${panels.chattersHeroDamageCols} cols · name ${panels.chattersHeroNamePx}px · fill ${panels.chattersPortraitBgPct}%`;
             swatches.replaceChildren();
             refreshStatus();
             return;
@@ -1737,6 +1805,8 @@ export function setupHeaderTitleBadgeTweaker() {
                 if (activeUiTweaksSection === 'world') {
                     /* Light path while dragging World sliders — still updates live bag. */
                     applyWorldModeChromeVars(panels);
+                } else if (activeUiTweaksSection === 'theater') {
+                    applyTheaterChromeVars(panels);
                 } else {
                     applyHeaderTitleBadgeTweaks(badge);
                     applyHeaderSidesChrome(sides);
@@ -1859,27 +1929,13 @@ export function setupHeaderTitleBadgeTweaker() {
         applyAllChrome();
 
         loadUiTweaksStandard()
-            .then(async (std) => {
+            .then((std) => {
                 clearLegacyUiTweaksStorage();
                 uiTweaksStandardVersion = Number(std.version) || 1;
+                /* Site file wins. Draft only applies when it matches this version (mid-edit reload). */
                 applyStandardBags(std);
-
-                /* One-shot: turn an existing browser draft into the committed default. */
-                const promoted = await promoteUiTweaksDraftToRepoIfNeeded(std);
-                if (promoted) {
-                    uiTweaksStandardVersion = Number(promoted.version) || uiTweaksStandardVersion;
-                    applyStandardBags(promoted);
-                    if (typeof window.updateStatus === 'function') {
-                        window.updateStatus(
-                            `✓ Local UI Tweaks draft promoted to atlas-ui-tweaks.json (v${promoted.version}) — push to ship`,
-                            'success',
-                        );
-                    }
-                } else {
-                    const draft = readUiTweaksDraft(uiTweaksStandardVersion);
-                    if (draft) applyStandardBags(draft);
-                }
-
+                const draft = readUiTweaksDraft(uiTweaksStandardVersion);
+                if (draft) applyStandardBags(draft);
                 markClean();
                 applyAllChrome();
                 const openPanel = document.getElementById(PANEL_ID);

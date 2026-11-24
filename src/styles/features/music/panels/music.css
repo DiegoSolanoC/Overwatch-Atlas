@@ -412,6 +412,14 @@ body.color-palette-gray .music-mute-btn:hover {
     transform: translateY(-130px) scaleX(-1);
 }
 
+/*
+ * No-era titles are shorter — the default -130px pull climbs into the header.
+ * Soften so card/dock theater hovers sit with the same under-hub band.
+ */
+.summary-info-badge--no-era .summary-info-underline {
+    transform: translateY(-72px) scaleX(-1);
+}
+
 /* 1) Number | Years */
 .summary-info-num-year {
     display: flex;

@@ -171,7 +171,7 @@
         } catch (e) {}
     })();
     </script>
-    <link rel="stylesheet" href="src/styles/app.css?v=191">
+    <link rel="stylesheet" href="src/styles/app.css?v=204">
     <link rel="stylesheet" href="src/styles/entry.css?v=33">
 </head>
 <body class="app-timeline-default">
@@ -266,15 +266,19 @@
     <div id="dockGlobeRailCenter" class="dock-globe-rail dock-globe-rail--center" aria-label="Pagination and navigation"></div>
     <div id="dockGlobeRailRight" class="dock-globe-rail dock-globe-rail--right" aria-label="Map view and rotation"></div>
 
-    <!-- Stage sliders sit at body level (not under #content z-index:0) so they can stack above UI Tweaks like the dock flanks. -->
+    <!-- Stage sliders: lighting left / zoom+reset right, above the dock trap (body-level for z-index). -->
     <div class="zoom-controls" id="zoomControls">
-        <button class="zoom-reset-btn" id="zoomResetBtn" title="Reset zoom and view" type="button" aria-label="Reset zoom and view">Reset</button>
-        <div class="zoom-sun-slot" id="zoomSunSlot" aria-hidden="true"></div>
-        <div class="stage-slider-shell stage-slider-shell--zoom">
-            <input type="range" class="zoom-slider" id="zoomSlider" min="0" max="100" value="50" step="1" aria-label="Zoom" title="Zoom" />
+        <div class="zoom-controls__side zoom-controls__side--sun">
+            <div class="zoom-sun-slot" id="zoomSunSlot" aria-hidden="true"></div>
         </div>
-        <button class="zoom-btn zoom-in-btn" id="zoomInBtn" title="Zoom In" type="button" hidden aria-hidden="true">+</button>
-        <button class="zoom-btn zoom-out-btn" id="zoomOutBtn" title="Zoom Out" type="button" hidden aria-hidden="true">−</button>
+        <div class="zoom-controls__side zoom-controls__side--zoom">
+            <button class="zoom-reset-btn" id="zoomResetBtn" title="Reset zoom and view" type="button" aria-label="Reset zoom and view">Reset</button>
+            <div class="stage-slider-shell stage-slider-shell--zoom">
+                <input type="range" class="zoom-slider" id="zoomSlider" min="0" max="100" value="50" step="1" aria-label="Zoom" title="Zoom" />
+            </div>
+            <button class="zoom-btn zoom-in-btn" id="zoomInBtn" title="Zoom In" type="button" hidden aria-hidden="true">+</button>
+            <button class="zoom-btn zoom-out-btn" id="zoomOutBtn" title="Zoom Out" type="button" hidden aria-hidden="true">−</button>
+        </div>
     </div>
 
     <div class="layout-container">
@@ -634,6 +638,6 @@
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=202"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=211"></script>
 </body>
 </html>

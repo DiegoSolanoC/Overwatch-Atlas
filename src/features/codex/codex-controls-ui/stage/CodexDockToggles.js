@@ -30,15 +30,6 @@ const INFO_ICON_ID = 'codexToggleInfoIcon';
 const MODE_TOGGLE_ID = 'codexToggleViewDev';
 const MODE_ICON_ID = 'codexToggleViewDevIcon';
 
-/* Filenames match Mode Icons/ after the Scout/Repair → Codex/Archive rename. */
-const MODE_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Codex.png';
-/* Packets / Info glyphs swapped (Archive ↔ Codex) per mobile portrait UX. */
-const PACKETS_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Codex.png';
-const INFO_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Archive.png';
-
 /** @type {HTMLButtonElement | null} */
 let packetsToggleBtn = null;
 /** @type {HTMLButtonElement | null} */
@@ -290,17 +281,17 @@ export function mountCodexDockToggles() {
     document.querySelector('.codex-mode-toggle-btn')?.remove();
 
     const isEdit = s.codexMode === 'dev';
-    /* Primary mode toggle — same inverse-trap chrome as Map / Story / Theater. */
+    /* Primary mode toggle — text-only inverse-trap (same family as Map / Story). */
     modeToggleBtn = mountDockToggle({
         id: MODE_TOGGLE_ID,
         iconId: MODE_ICON_ID,
-        className: 'mode-primary-toggle codex-toggle-view-dev',
+        className: 'mode-primary-toggle atlas-dev-text-chip codex-toggle-view-dev',
         title: isEdit
             ? 'Edit Mode — click for read-only View Mode'
             : 'View Mode — click for Edit Mode (layout tools)',
         label: isEdit ? 'Edit' : 'View',
-        iconPath: MODE_ICON,
-        iconAlt: 'View or Edit mode',
+        iconPath: null,
+        iconAlt: '',
         headerOrder: 10,
         enabled: true,
         rail: 'trap',
@@ -310,11 +301,11 @@ export function mountCodexDockToggles() {
     packetsToggleBtn = mountDockToggle({
         id: PACKETS_TOGGLE_ID,
         iconId: PACKETS_ICON_ID,
-        className: 'codex-toggle-packets',
+        className: 'atlas-dev-text-chip codex-toggle-packets',
         title: 'Toggle Packets — animate lights along cords',
         label: 'Packets',
-        iconPath: PACKETS_ICON,
-        iconAlt: 'Toggle packets',
+        iconPath: null,
+        iconAlt: '',
         headerOrder: 13,
         enabled: s.codexPacketAnimEnabled,
         floatingClass: 'codex-toggle-packets--floating',
@@ -323,11 +314,11 @@ export function mountCodexDockToggles() {
     infoToggleBtn = mountDockToggle({
         id: INFO_TOGGLE_ID,
         iconId: INFO_ICON_ID,
-        className: 'codex-toggle-info',
+        className: 'atlas-dev-text-chip codex-toggle-info',
         title: 'Toggle Info — break nodes, cord angle labels, and node coordinates',
         label: 'Info',
-        iconPath: INFO_ICON,
-        iconAlt: 'Toggle info',
+        iconPath: null,
+        iconAlt: '',
         headerOrder: 14,
         enabled: s.codexDebugUiVisible,
         floatingClass: 'codex-toggle-info--floating',

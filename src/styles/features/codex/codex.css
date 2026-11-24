@@ -1,7 +1,7 @@
 /* Connection Codex — aggregator (was in components/globe.css) */
 @import url('./codex-canvas.css?v=6');
 @import url('./codex-edges.css?v=3');
-@import url('./codex-toolbar.css?v=3');
+@import url('./codex-toolbar.css?v=5');
 @import url('./codex-stage-controls.css?v=3');
-@import url('./codex-dock-toggles.css?v=7');
+@import url('./codex-dock-toggles.css?v=8');
 @import url('./codex-nodes.css?v=5');

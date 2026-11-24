@@ -7,12 +7,15 @@ import {
     mountGalleryBiographyStage,
     unmountGalleryBiographyStage,
 } from './HeroBiographyHeroFilterBar.js';
-import {
-    closeFiltersPanelForGalleryExit,
-    openFiltersPanelForGallery,
-    pickRandomGalleryHeroOnOpen,
-} from './galleryFiltersBridge.js';
+import { closeFiltersPanelForGalleryExit } from './galleryFiltersBridge.js';
 import { initIntelEntitySwapPerfProbe } from './intelEntitySwapPerfProbe.js';
+import {
+    isIntelHeroesSelectVisible,
+    mountIntelHeroesSelect,
+    showIntelEntityView,
+    showIntelHeroesSelect,
+    unmountIntelHeroesSelect,
+} from './intelHeroesSelect.js';
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -45,9 +48,9 @@ export async function mountGalleryMode(_options = {}) {
 
     const host = document.createElement('div');
     host.id = HOST_ID;
-    host.className = 'story-viewer-container gallery-mode active';
+    host.className = 'story-viewer-container gallery-mode active gallery-mode--heroes-select';
     host.setAttribute('role', 'main');
-    host.setAttribute('aria-label', 'Gallery');
+    host.setAttribute('aria-label', 'Intel');
 
     const main = document.createElement('div');
     main.className = 'gallery-mode__main';
@@ -66,13 +69,32 @@ export async function mountGalleryMode(_options = {}) {
         main.appendChild(errNote);
     }
 
-    /* Filters replace the Select File overlay for entity picking. */
-    openFiltersPanelForGallery();
-    void pickRandomGalleryHeroOnOpen();
+    try {
+        await mountIntelHeroesSelect(host);
+    } catch (err) {
+        console.warn('[gallery] Failed to mount intel heroes select:', err);
+    }
+
+    /* Deep-link from Codex / Story / Archive — skip select and open the entity. */
+    try {
+        const { consumePendingGalleryBioFocus, focusBioEntityInOpenGallery } =
+            await import('./openBioEntityInGallery.js');
+        const pending = consumePendingGalleryBioFocus();
+        if (pending?.name) {
+            const ok = await focusBioEntityInOpenGallery(pending.kind, pending.name);
+            if (ok) showIntelEntityView();
+        }
+    } catch (err) {
+        console.warn('[gallery] Pending intel focus failed:', err);
+    }
 
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;
         e.preventDefault();
+        if (!isIntelHeroesSelectVisible()) {
+            showIntelHeroesSelect();
+            return;
+        }
         triggerHomeExit();
     };
     document.addEventListener('keydown', onEscape);
@@ -85,6 +107,7 @@ export async function unmountGalleryMode() {
         document.removeEventListener('keydown', host._heroBiographyEscape);
     }
     closeFiltersPanelForGalleryExit();
+    unmountIntelHeroesSelect();
     unmountGalleryBiographyStage();
     clearHeroBiographyDockHeroFilter();
     refreshHeroBiographyDockPagination();
@@ -96,7 +119,6 @@ export async function unmountGalleryMode() {
     }
 }
 
-/** @deprecated Use {@link mountGalleryMode} */
-export const mountHeroBiographyMode = mountGalleryMode;
-/** @deprecated Use {@link unmountGalleryMode} */
-export const unmountHeroBiographyMode = unmountGalleryMode;
+export function isGalleryModeActive() {
+    return !!document.getElementById(HOST_ID);
+}

@@ -48,7 +48,13 @@
     height: 100%;
     overflow: visible;
     background: #050a12;
-    --dialogue-box-bottom: clamp(18px, 3vh, 32px);
+    /*
+     * Sit above the upward dock trapezium (stage floor is dock body top only).
+     * Trap height + air pad keeps dialogues / chatters / commentary readable.
+     */
+    --dialogue-box-bottom: calc(
+        var(--dock-trap-height, 94px) + clamp(14px, 2.2vh, 28px)
+    );
     /* Info-panel stage renders — bigger, lower, pulled inward vs list thumbnails */
     --stage-render-bottom: -25%;
     --stage-render-bottom-extent: 25%;
@@ -64,14 +70,18 @@
 
 /*
  * Overlay seats on the dock body top (--pagination-dock-stage-clearance).
- * Keep a small stage-floor pad so the dialogue plate clears the trap seam visually.
+ * Raise the plate by trap height so it clears the white trapezium peak.
  */
 body:has(#paginationDock) .dialogue-theater-stage {
-    --dialogue-box-bottom: clamp(18px, 3vh, 36px);
+    --dialogue-box-bottom: calc(
+        var(--dock-trap-height, 94px) + clamp(16px, 2.4vh, 32px)
+    );
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage {
-    --dialogue-box-bottom: clamp(20px, 3.5vh, 36px);
+    --dialogue-box-bottom: calc(
+        var(--dock-trap-height, 94px) + clamp(18px, 2.6vh, 34px)
+    );
 }
 
 .dialogue-theater-stage__scene {

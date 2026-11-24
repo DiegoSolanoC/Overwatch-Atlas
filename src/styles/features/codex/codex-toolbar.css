@@ -1,35 +1,40 @@
 .codex-toolbar {
+    --codex-tb-chip-skew: -11deg;
     position: absolute;
     /*
-     * Edit panel — sit below the center View/Edit inverse trap, left-biased so
-     * the board stays readable on the right.
+     * Edit panel — below View/Edit trap, inset from left side-panel border
+     * (same family as World Flights/Sails menu).
      */
     top: calc(
         var(--header-height, 72px) + clamp(72px, 8.5vh, 92px) + 14px
     );
-    left: max(20px, env(safe-area-inset-left, 0px));
+    left: max(
+        88px,
+        calc(env(safe-area-inset-left, 0px) + var(--side-trap-protrude, 69px) + 24px)
+    );
     right: auto;
     bottom: auto;
     z-index: 80;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
-    padding: 18px 20px;
+    gap: 12px;
+    padding: 16px 18px;
     border-radius: 12px;
-    background: color-mix(in srgb, var(--bg-secondary) 88%, #000 12%);
-    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+    background: color-mix(in srgb, var(--bg-secondary, #0a1929) 88%, #000 12%);
+    border: 1px solid rgba(var(--accent-primary-rgb, 33, 150, 243), 0.35);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
     pointer-events: auto;
-    width: min(460px, calc(100vw - 40px));
-    max-width: min(460px, calc(100vw - 40px));
+    width: min(460px, calc(100vw - 120px));
+    max-width: min(460px, calc(100vw - 120px));
     max-height: min(
         72vh,
         calc(100% - var(--header-height, 72px) - clamp(72px, 8.5vh, 92px) - 28px)
     );
     overflow-x: hidden;
     overflow-y: auto;
-    font-size: 17px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .codex-toolbar__row {
@@ -45,16 +50,16 @@
 }
 
 .codex-toolbar__hint {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffeb3b;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255, 200, 120, 0.92);
     letter-spacing: 0.02em;
 }
 
 .codex-toolbar__network-hint {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.45;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.62);
     padding: 0 2px;
 }
 
@@ -213,24 +218,34 @@
 .codex-toolbar__mode-btn {
     flex: 1;
     min-width: 0;
-    font-size: 17px;
-    font-weight: 600;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(0, 0, 0, 0.25);
-    color: rgba(255, 255, 255, 0.88);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.95);
     cursor: pointer;
+    transform: skewX(var(--codex-tb-chip-skew));
+}
+
+.codex-toolbar__mode-btn > * {
+    transform: skewX(calc(-1 * var(--codex-tb-chip-skew)));
 }
 
 .codex-toolbar__mode-btn--active {
-    border-color: rgba(var(--accent-primary-rgb), 0.65);
-    background: rgba(var(--accent-primary-rgb), 0.28);
-    color: #fff;
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.55);
+    background: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.28);
+    color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .codex-toolbar__mode-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.45);
 }
 
 .codex-toolbar__row--select-all {
@@ -247,18 +262,23 @@
 
 .codex-toolbar__select-all {
     box-sizing: border-box;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     padding: 10px 14px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(0, 0, 0, 0.22);
-    color: rgba(255, 255, 255, 0.88);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.95);
     cursor: pointer;
+    transform: skewX(var(--codex-tb-chip-skew));
 }
 
 .codex-toolbar__select-all:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.45);
 }
 
 .codex-toolbar__select-all:disabled {
@@ -305,22 +325,26 @@
     flex: 1 1 calc(50% - 4px);
     min-width: 150px;
     box-sizing: border-box;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(0, 0, 0, 0.28);
-    color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.95);
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transform: skewX(var(--codex-tb-chip-skew));
 }
 
 .codex-toolbar__import-export-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(140, 210, 255, 0.45);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.45);
 }
 
 /* Clear all is destructive — match .codex-toolbar__delete-selected red palette. */
@@ -355,10 +379,10 @@
 
 .codex-toolbar__bg-color-label {
     flex: 0 0 auto;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: 0.02em;
-    color: rgba(220, 230, 255, 0.92);
+    color: rgba(255, 255, 255, 0.78);
     user-select: none;
 }
 
@@ -368,8 +392,8 @@
     height: 32px;
     padding: 0;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
     cursor: pointer;
 }
 
@@ -380,9 +404,9 @@
     height: 32px;
     padding: 0 10px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(0, 0, 0, 0.35);
-    color: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.92);
     font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
     font-size: 13px;
     font-weight: 600;
@@ -391,11 +415,11 @@
 }
 
 .codex-toolbar__bg-color-hex:focus {
-    border-color: rgba(var(--accent-primary-rgb), 0.55);
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.55);
 }
 
 .codex-toolbar__bg-color-hex::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .codex-bio-sync-preview-overlay {
@@ -503,16 +527,17 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 1;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.95);
     cursor: pointer;
+    transform: skewX(var(--codex-tb-chip-skew));
 }
 
 .codex-toolbar__scale-btn:hover:not(:disabled) {
-    background: rgba(255, 235, 59, 0.15);
-    border-color: rgba(255, 235, 59, 0.45);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.45);
 }
 
 .codex-toolbar__scale-btn:disabled {
@@ -526,9 +551,9 @@
     min-width: 0;
     height: 48px;
     padding: 0 8px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.28);
     color: rgba(255, 255, 255, 0.95);
     font-size: 18px;
     font-weight: 600;

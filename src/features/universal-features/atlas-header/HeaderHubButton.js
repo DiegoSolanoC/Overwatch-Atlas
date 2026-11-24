@@ -255,23 +255,25 @@ export function createHeaderHubButton({
     }
     const isHeaderHubBtn = (resolvedBaseClass || '').includes('header-hub-btn');
 
-    const iconWrap = document.createElement('span');
-    iconWrap.id = finalIconSpanId;
-    if (isHeaderHubBtn) iconWrap.className = 'header-hub-icon-wrap';
+    if (iconPath) {
+        const iconWrap = document.createElement('span');
+        iconWrap.id = finalIconSpanId;
+        if (isHeaderHubBtn) iconWrap.className = 'header-hub-icon-wrap';
 
-    const img = document.createElement('img');
-    if (isHeaderHubBtn) {
-        img.className = 'header-hub-icon';
-        img.style.objectFit = 'contain';
-    } else {
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'contain';
+        const img = document.createElement('img');
+        if (isHeaderHubBtn) {
+            img.className = 'header-hub-icon';
+            img.style.objectFit = 'contain';
+        } else {
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+        }
+        img.src = iconPath;
+        img.alt = iconAlt || '';
+        iconWrap.appendChild(img);
+        button.appendChild(iconWrap);
     }
-    img.src = iconPath;
-    img.alt = iconAlt || '';
-    iconWrap.appendChild(img);
-    button.appendChild(iconWrap);
 
     if (label) {
         const labelEl = document.createElement('span');

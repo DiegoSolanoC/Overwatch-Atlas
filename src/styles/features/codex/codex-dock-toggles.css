@@ -1,4 +1,4 @@
-/* Codex dock — View/Edit inverse trap + Edit-only Packets/Info chips */
+/* Codex dock — text-only View/Edit inverse trap + Edit-only Packets/Info chips */
 
 #codexToggleViewDev,
 #codexTogglePackets,
@@ -44,73 +44,77 @@ body:has(#eventSlide.open) #codexToggleInfo.dock-globe-rail__btn {
     pointer-events: none !important;
 }
 
+/* Text-only chips — hide any leftover icon wraps */
+body.codex-mode-active #codexToggleViewDev.atlas-dev-text-chip [id$='Icon'],
+body.codex-mode-active #codexTogglePackets.atlas-dev-text-chip [id$='Icon'],
+body.codex-mode-active #codexToggleInfo.atlas-dev-text-chip [id$='Icon'] {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
 /* Edit-only chips: fixed width on desktop / landscape (mode trap is separate). */
 @media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
-    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.atlas-dev-text-chip,
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.atlas-dev-text-chip {
+        --dev-chip-skew: -11deg;
         width: auto !important;
         min-width: 112px !important;
-        max-width: 138px !important;
-        height: 48px !important;
-        padding: 0 7px !important;
-        gap: 5px !important;
-        font-size: 11px !important;
-        line-height: 1.05 !important;
-        letter-spacing: 0.01em;
-    }
-}
-
-body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn [id$='Icon'],
-body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn [id$='Icon'] {
-    width: 22px !important;
-    height: 22px !important;
-    min-width: 22px !important;
-    min-height: 22px !important;
-    margin-right: 0 !important;
-    flex-shrink: 0;
-}
-
-body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label,
-body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn .globe-control-btn__label {
-    display: inline-block !important;
-    width: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-    margin-left: 0 !important;
-    white-space: nowrap;
-}
-
-@media (max-width: 1180px) and (min-width: 769px) {
-    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
-        width: 48px !important;
-        min-width: 48px !important;
-        max-width: 48px !important;
-        height: 48px !important;
-        padding: 0 !important;
+        max-width: 148px !important;
+        height: auto !important;
+        min-height: 44px !important;
+        padding: 10px 18px !important;
         gap: 0 !important;
+        border-radius: 12px !important;
+        background: #ffffff !important;
+        color: #000 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+        font-family: var(--font-control-bold, var(--font-default));
+        font-size: 13px !important;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 1.15;
+        transform: skewX(var(--dev-chip-skew)) !important;
     }
 
-    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label,
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn .globe-control-btn__label {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.atlas-dev-text-chip > *,
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.atlas-dev-text-chip > * {
+        transform: skewX(calc(-1 * var(--dev-chip-skew))) !important;
     }
 
-    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn [id$='Icon'],
-    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn [id$='Icon'] {
-        width: 24px !important;
-        height: 24px !important;
-        min-width: 24px !important;
-        min-height: 24px !important;
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.atlas-dev-text-chip .globe-control-btn__label,
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.atlas-dev-text-chip .globe-control-btn__label {
+        display: inline-block !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        white-space: nowrap;
+    }
+}
+
+/* Codex Edit primary — text-only; inverse-trap chrome still from pagination-dock */
+@media (min-width: 769px) {
+    body.codex-mode-active #codexToggleViewDev.atlas-dev-text-chip.dock-trap-flank__btn {
+        gap: 0 !important;
+        padding: 12px 32px 16px !important;
+    }
+
+    body.codex-mode-active #codexToggleViewDev.atlas-dev-text-chip.dock-trap-flank__btn .globe-control-btn__label {
+        display: inline-block !important;
+        margin: 0 !important;
+        font-size: inherit !important;
+        letter-spacing: 0.05em;
     }
 }
 
 #codex-view-root > #codexToggleViewDev.codex-toggle-view-dev--floating,
 #codex-view-root > #codexTogglePackets.codex-toggle-packets--floating,
 #codex-view-root > #codexToggleInfo.codex-toggle-info--floating {
+    --dev-chip-skew: -11deg;
     position: fixed;
     left: max(20px, env(safe-area-inset-left));
     z-index: 120;
@@ -118,23 +122,46 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
     pointer-events: auto !important;
     width: auto !important;
     min-width: 112px !important;
-    max-width: 138px !important;
-    height: 48px !important;
-    padding: 0 7px !important;
-    gap: 5px !important;
-    font-size: 11px !important;
+    max-width: 148px !important;
+    height: auto !important;
+    min-height: 44px !important;
+    padding: 10px 18px !important;
+    gap: 0 !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    color: #000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: 13px !important;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transform: skewX(var(--dev-chip-skew));
+}
+
+#codex-view-root > #codexToggleViewDev.codex-toggle-view-dev--floating > *,
+#codex-view-root > #codexTogglePackets.codex-toggle-packets--floating > *,
+#codex-view-root > #codexToggleInfo.codex-toggle-info--floating > * {
+    transform: skewX(calc(-1 * var(--dev-chip-skew)));
 }
 
 #codex-view-root > #codexToggleViewDev.codex-toggle-view-dev--floating {
-    bottom: calc(var(--footer-height, 65px) + 200px);
+    /* Match World Flights/Sea lanes band under the header */
+    top: calc(var(--header-height, 72px) + 10px);
+    bottom: auto;
+    min-width: 132px !important;
+    padding: 12px 26px !important;
+    font-size: 15px !important;
 }
 
 #codex-view-root > #codexTogglePackets.codex-toggle-packets--floating {
-    bottom: calc(var(--footer-height, 65px) + 80px);
+    top: calc(var(--header-height, 72px) + 66px);
+    bottom: auto;
 }
 
 #codex-view-root > #codexToggleInfo.codex-toggle-info--floating {
-    bottom: calc(var(--footer-height, 65px) + 136px);
+    top: calc(var(--header-height, 72px) + 118px);
+    bottom: auto;
 }
 
 /* Stale Linking dock chrome — always hidden (feature moved to Filters AND). */

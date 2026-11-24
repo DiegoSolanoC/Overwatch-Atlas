@@ -3070,3 +3070,253 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         pointer-events: none;
     }
 }
+
+/* -- Intel entity select (Heroes | Factions | NPCs) -- */
+.gallery-mode--heroes-select .gallery-mode__main,
+.gallery-mode--heroes-select .gallery-mode__portrait,
+.gallery-mode--heroes-select .gallery-mode__archive-description,
+.gallery-mode--heroes-select .gallery-mode__archive-connections,
+.gallery-mode--heroes-select .gallery-mode__archive-side-panel,
+.gallery-mode--heroes-select .gallery-mobile-panel-toggle {
+    display: none !important;
+}
+
+.gallery-mode--entity .intel-heroes-select,
+.gallery-mode--entity .intel-entity-select {
+    display: none !important;
+}
+
+.gallery-mode--heroes-select .intel-heroes-select__back {
+    display: none !important;
+}
+
+.intel-heroes-select.intel-entity-select {
+    --intel-entity-card: 96px; /* fallback until Heroes card is measured */
+    /*
+     * Distance from panel top → Heroes card row:
+     * stage pad + list pad + role heading band + column gap.
+     * Factions/NPCs reuse this so their top card row lines up.
+     */
+    --intel-heroes-card-top: calc(
+        12px
+        + clamp(96px, 14vh, 148px)
+        + clamp(2.6rem, 4.2vw, 3.4rem)
+        + 12px
+        + 1px
+        + 12px
+    );
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 0 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.intel-entity-select__tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+    padding-inline: calc(28px + clamp(16px, 2vw, 36px));
+}
+
+.intel-entity-select__tab {
+    appearance: none;
+    margin: 0;
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.78);
+    font-family: var(--font-title, "BigNoodleToo", Impact, sans-serif);
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.intel-entity-select__tab.is-active {
+    background: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.28);
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.55);
+    color: #fff;
+}
+
+.intel-entity-select__tab:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.intel-entity-select__panels {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.intel-entity-select__panel {
+    height: 100%;
+    overflow: hidden;
+}
+
+.intel-entity-select__panel[data-category='factions'],
+.intel-entity-select__panel[data-category='npcs'] {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-inline: calc(28px + clamp(16px, 2vw, 36px));
+    /* Match Heroes card-row Y; clear dock at bottom */
+    padding-block: var(--intel-heroes-card-top) clamp(120px, 18vh, 200px);
+    box-sizing: border-box;
+}
+
+.intel-entity-select__loading {
+    margin: 24px auto;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/*
+ * Heroes panel — same Chatters stage shell (28px + list pad).
+ * Fluid 1fr cards track this box; --hero-role-board-scale still applies.
+ */
+.intel-entity-select__heroes-stage.hero-role-select-stage {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 28px 24px 28px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.intel-entity-select__heroes-stage .hero-role-select-stage__list {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/*
+ * Factions / NPCs — same flat shared-row board as Filters:
+ * top + bottom bands; labeled subgroups hug content and pack side-by-side.
+ */
+.intel-entity-select__flat {
+    /* Slightly under Heroes card so shared Filters-style rows can pack */
+    --intel-flat-card: calc(var(--intel-entity-card) * 0.82);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.intel-entity-select__rows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(14px, 1.8vh, 24px);
+    width: 100%;
+}
+
+.intel-entity-select__subrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(18px, 1.8vw, 32px);
+    width: 100%;
+}
+
+.intel-entity-select__subgroup {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.intel-entity-select__chips-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: max-content;
+    max-width: 100%;
+    align-self: center;
+    box-sizing: border-box;
+}
+
+.intel-entity-select__subgroup .chatters-hero-card {
+    width: var(--intel-flat-card);
+    max-width: var(--intel-flat-card);
+    flex: 0 0 auto;
+    box-sizing: border-box;
+}
+
+.intel-entity-select__subgroup-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    margin: clamp(6px, 0.8vh, 10px) 0 0;
+    padding: 0;
+    width: 100%;
+    gap: clamp(4px, 0.45vw, 7px);
+    box-sizing: border-box;
+}
+
+.intel-entity-select__subgroup-label-line {
+    flex: 1 1 auto;
+    height: 2px;
+    min-width: 8px;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 999px;
+}
+
+.intel-entity-select__subgroup-label-text {
+    flex: 0 0 auto;
+    font-family: var(--font-control-bold, 'Config', sans-serif);
+    font-size: clamp(12px, 1vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+    white-space: nowrap;
+}
+
+.intel-heroes-select__back {
+    position: fixed;
+    top: calc(var(--header-height, 72px) + 12px);
+    left: max(16px, env(safe-area-inset-left, 0px) + 12px);
+    z-index: 80;
+    appearance: none;
+    margin: 0;
+    padding: 10px 16px;
+    border: 1px solid rgba(var(--accent-primary-rgb, 33, 150, 243), 0.45);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--bg-secondary, #0a1929) 88%, #000 12%);
+    color: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-title, "BigNoodleToo", Impact, sans-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.intel-heroes-select__back:hover {
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.7);
+    background: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.22);
+}

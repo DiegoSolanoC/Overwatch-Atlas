@@ -67,9 +67,13 @@ import {
     setDialogueTheaterDockStatusFromOptionId,
 } from '../dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 import { waitForLoadingOverlayInactive } from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
+import { buildChattersHeroSelectGrid } from './buildChattersHeroSelectGrid.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
 const SAVE_BTN_ID = 'dialogueTheaterSaveBtn';
+
+/** @type {number} */
+let chattersGridRenderToken = 0;
 
 /** @type {(() => void)|null} */
 let onListChange = null;
@@ -318,27 +322,41 @@ function scheduleRenderList(root) {
  */
 function getFilteredConversations(options = {}) {
     let rows = getModeConversations();
+    const isChatters = getDialogueTheaterEntryMode() === 'chatters';
 
-    const pairA = pairSearchControls?.getPairA?.() || '';
-    const pairB = pairSearchControls?.getPairB?.() || '';
-    const manifestHeroes = manifestHeroesForPairSearch();
-    const resolvedPairA = resolveExactRosterHero(pairA, manifestHeroes);
-    const resolvedPairB = resolveExactRosterHero(pairB, manifestHeroes);
-    const pairSearchActive = Boolean(resolvedPairA || resolvedPairB);
+    // Chatters: search (+ optional standalone hero chips) only — pair/status/tags/era
+    // are dialogue-list controls; line-level filters live in the chatter detail panel.
+    if (!isChatters) {
+        const pairA = pairSearchControls?.getPairA?.() || '';
+        const pairB = pairSearchControls?.getPairB?.() || '';
+        const manifestHeroes = manifestHeroesForPairSearch();
+        const resolvedPairA = resolveExactRosterHero(pairA, manifestHeroes);
+        const resolvedPairB = resolveExactRosterHero(pairB, manifestHeroes);
+        const pairSearchActive = Boolean(resolvedPairA || resolvedPairB);
 
-    if (pairSearchActive) {
-        const keyCache = new Map();
-        rows = rows.filter((row) =>
-            conversationMatchesResolvedCharacterPair(
-                row,
-                resolvedPairA,
-                resolvedPairB,
-                manifestHeroes,
-                keyCache,
-            ),
-        );
+        if (pairSearchActive) {
+            const keyCache = new Map();
+            rows = rows.filter((row) =>
+                conversationMatchesResolvedCharacterPair(
+                    row,
+                    resolvedPairA,
+                    resolvedPairB,
+                    manifestHeroes,
+                    keyCache,
+                ),
+            );
+        } else {
+            const heroFilters = getHeroFiltersFromStandaloneActiveFilters(
+                window.standaloneActiveFilters,
+            );
+            if (heroFilters.length) {
+                rows = rows.filter((row) => conversationMatchesHeroFilters(row, heroFilters));
+            }
+        }
     } else {
-        const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
+        const heroFilters = getHeroFiltersFromStandaloneActiveFilters(
+            window.standaloneActiveFilters,
+        );
         if (heroFilters.length) {
             rows = rows.filter((row) => conversationMatchesHeroFilters(row, heroFilters));
         }
@@ -353,26 +371,28 @@ function getFilteredConversations(options = {}) {
         );
     }
 
-    const statusValue =
-        options.statusOverride !== undefined && options.statusOverride !== null
-            ? String(options.statusOverride)
-            : statusFilter;
-    if (!options.skipStatus && String(statusValue || '').trim()) {
-        rows = rows.filter((row) => conversationMatchesStatusFilter(row, statusValue));
-    }
-    const eraPairValue =
-        options.eraPairOverride !== undefined && options.eraPairOverride !== null
-            ? String(options.eraPairOverride)
-            : eraPairFilter;
-    if (String(eraPairValue || '').trim()) {
-        rows = rows.filter((row) => conversationMatchesEraPairFilter(row, eraPairValue));
-    }
-    if (eraFilter.trim()) {
-        rows = rows.filter((row) => conversationMatchesEraFilter(row, eraFilter));
+    if (!isChatters) {
+        const statusValue =
+            options.statusOverride !== undefined && options.statusOverride !== null
+                ? String(options.statusOverride)
+                : statusFilter;
+        if (!options.skipStatus && String(statusValue || '').trim()) {
+            rows = rows.filter((row) => conversationMatchesStatusFilter(row, statusValue));
+        }
+        const eraPairValue =
+            options.eraPairOverride !== undefined && options.eraPairOverride !== null
+                ? String(options.eraPairOverride)
+                : eraPairFilter;
+        if (String(eraPairValue || '').trim()) {
+            rows = rows.filter((row) => conversationMatchesEraPairFilter(row, eraPairValue));
+        }
+        if (eraFilter.trim()) {
+            rows = rows.filter((row) => conversationMatchesEraFilter(row, eraFilter));
+        }
     }
 
     const sorted = [...rows].sort(compareConversationListOrder);
-    if (!incompleteFirst) return sorted;
+    if (isChatters || !incompleteFirst) return sorted;
 
     const unfinished = getUnfinishedCache(getModeConversations());
 
@@ -604,6 +624,78 @@ function progressiveAppendMissingItems(
 }
 
 /**
+ * Toggle list chrome: Chatters hides filters/search; Dialogues keep full toolbar.
+ * @param {HTMLElement} root
+ */
+function syncEntryModeChrome(root) {
+    const isChatters = getDialogueTheaterEntryMode() === 'chatters';
+    root.classList.toggle('dialogue-theater-list-host--chatters', isChatters);
+
+    if (isChatters && searchQuery) {
+        searchQuery = '';
+        const searchInput = root.querySelector('#dialogueTheaterSearchInput');
+        if (searchInput instanceof HTMLInputElement) searchInput.value = '';
+    }
+
+    const searchInput = root.querySelector('#dialogueTheaterSearchInput');
+    if (searchInput instanceof HTMLInputElement && !isChatters) {
+        searchInput.placeholder = 'By title or dialogue line...';
+    }
+
+    const controlsTitle = root.querySelector('.events-manage-controls-title');
+    if (controlsTitle) {
+        controlsTitle.textContent = 'Search & filters';
+    }
+}
+
+/**
+ * Chatters mode — role-grouped hero select (Tank | Damage | Support).
+ * @param {HTMLElement} root
+ * @param {HTMLElement} listEl
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} rows
+ */
+function renderChattersHeroSelect(root, listEl, rows) {
+    progressiveRenderToken += 1;
+    chattersGridRenderToken += 1;
+    const token = chattersGridRenderToken;
+    lastRenderedIdsKey = '';
+    lastRenderedIdsKeyByMode.set('chatters', '');
+
+    listEl.classList.add('events-list--chatters-hero-select');
+    listEl.replaceChildren();
+
+    if (rows.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'dialogue-theater-list__empty';
+        empty.textContent = searchQuery.trim()
+            ? 'No chatters match your search.'
+            : 'No chatters yet.';
+        listEl.appendChild(empty);
+        syncSaveButtonState(root);
+        return;
+    }
+
+    const loading = document.createElement('p');
+    loading.className = 'dialogue-theater-list__empty dialogue-theater-list__empty--loading';
+    loading.textContent = 'Loading heroes…';
+    listEl.appendChild(loading);
+
+    void buildChattersHeroSelectGrid(rows, (conversationId) => {
+        void openDialogueTheaterInfoPanel(conversationId, {
+            characterFilters: getActiveDialogueTheaterCharacterFilters(pairSearchControls),
+        });
+    }).then((board) => {
+        if (token !== chattersGridRenderToken) return;
+        if (getDialogueTheaterEntryMode() !== 'chatters') return;
+        listEl.replaceChildren(board);
+        syncSaveButtonState(root);
+    }).catch(() => {
+        if (token !== chattersGridRenderToken) return;
+        loading.textContent = 'Could not load hero grid.';
+    });
+}
+
+/**
  * @param {HTMLElement} root
  */
 function renderList(root) {
@@ -621,6 +713,7 @@ function renderList(root) {
     }
 
     const mode = getDialogueTheaterEntryMode();
+    syncEntryModeChrome(root);
     adoptPoolForCurrentMode();
 
     const rows = getFilteredConversations();
@@ -628,6 +721,14 @@ function renderList(root) {
     const duplicateLookup = getDuplicateLookup(allConversations);
     const unfinished = getUnfinishedCache(allConversations);
     updateListCount(root, rows.length);
+
+    if (mode === 'chatters') {
+        renderChattersHeroSelect(root, listEl, rows);
+        return;
+    }
+
+    listEl.classList.remove('events-list--chatters-hero-select');
+    chattersGridRenderToken += 1;
 
     const useIncremental = !forceFullListRebuild;
     forceFullListRebuild = false;
@@ -779,17 +880,17 @@ function syncSaveButtonState(root) {
 function updateListCount(root, visibleCount) {
     const total = getModeConversations().length;
     const visible = visibleCount ?? getFilteredConversations().length;
+    const isChatters = getDialogueTheaterEntryMode() === 'chatters';
     const q = searchQuery.trim();
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
-    const pairSearchActive = isDialogueTheaterPairSearchActive(
-        pairA,
-        pairB,
-        manifestHeroesForPairSearch(),
-    );
+    const pairSearchActive =
+        !isChatters &&
+        isDialogueTheaterPairSearchActive(pairA, pairB, manifestHeroesForPairSearch());
     const heroFilterActive =
         !pairSearchActive && isDialogueTheaterHeroFilterActive(window.standaloneActiveFilters);
-    const eraActive = Boolean(eraFilter.trim() || statusFilter.trim() || eraPairFilter.trim());
+    const eraActive =
+        !isChatters && Boolean(eraFilter.trim() || statusFilter.trim() || eraPairFilter.trim());
     const filtering = Boolean(q || pairSearchActive || heroFilterActive || eraActive);
     const { singular, plural } = entryNouns();
 

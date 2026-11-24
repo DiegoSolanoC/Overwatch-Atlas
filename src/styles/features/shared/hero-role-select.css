@@ -1,0 +1,166 @@
+/*
+ * Shared hero-role select board (Theater Chatters + Intel Heroes).
+ * Visual classes stay `.chatters-hero-*` (original Chatter look).
+ *
+ * Sizing is fluid 1fr of the stage list — same as the Chatters reference.
+ * Both modes must use the same stage pad stack so card px match:
+ *   .events-manage-content / .hero-role-select-stage → 28px sides
+ *   .events-list--chatters-hero-select / .hero-role-select-stage__list → 16–36px
+ */
+
+.chatters-hero-select {
+    --chatters-hero-cols: 5;
+    --chatters-hero-damage-cols: 6;
+    --chatters-hero-gap: 10px;
+    --chatters-hero-name-size: 18px;
+    --chatters-portrait-bg: transparent;
+    /* Shared downscale — Theater + Intel stay matched */
+    --hero-role-board-scale: 0.7;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(18px, 2vw, 36px);
+    width: calc(100% * var(--hero-role-board-scale));
+    max-width: 100%;
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+/*
+ * Role bands grow with column count so icon size stays equal
+ * (Damage 6-wide is wider than Tank/Support 5-wide).
+ */
+.chatters-hero-select__column {
+    --chatters-role-cols: var(--chatters-hero-cols, 5);
+    flex: var(--chatters-role-cols) 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.chatters-hero-select__column--damage {
+    --chatters-role-cols: var(--chatters-hero-damage-cols, 6);
+}
+
+.chatters-hero-select__heading {
+    margin: 0;
+    padding: 0 4px 12px;
+    text-align: center;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-style: normal;
+    font-size: clamp(2.6rem, 4.2vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-primary, #2196f3);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent-primary, #2196f3) 40%, transparent);
+}
+
+.chatters-hero-select__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--chatters-role-cols, 5), minmax(0, 1fr));
+    gap: var(--chatters-hero-gap, 10px);
+    width: 100%;
+    justify-items: stretch;
+}
+
+.chatters-hero-card {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 2px;
+    background: transparent;
+    color: #111;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: none;
+    transition:
+        transform 0.12s ease,
+        border-color 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+.chatters-hero-card:hover,
+.chatters-hero-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    outline: none;
+}
+
+.chatters-hero-card__portrait {
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background: var(--chatters-portrait-bg, transparent);
+    overflow: hidden;
+}
+
+.chatters-hero-card__portrait--empty {
+    background: transparent;
+}
+
+.chatters-hero-card__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    pointer-events: none;
+    background: transparent;
+}
+
+.chatters-hero-card__name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(var(--chatters-hero-name-size, 18px) * 1.55);
+    padding: 0.28em 0.35em 0.32em;
+    background: #f4f6f8;
+    color: #0a0a0a;
+    font-family: var(--font-control-bold, "BigNoodleToo", Impact, "Arial Black", sans-serif);
+    font-style: oblique;
+    font-size: var(--chatters-hero-name-size, 18px);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 900px) {
+    .chatters-hero-select {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .chatters-hero-select__column {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .chatters-hero-select__column--tank .chatters-hero-select__grid,
+    .chatters-hero-select__column--support .chatters-hero-select__grid {
+        grid-template-columns: repeat(min(var(--chatters-hero-cols, 5), 4), minmax(0, 1fr));
+    }
+
+    .chatters-hero-select__column--damage .chatters-hero-select__grid {
+        grid-template-columns: repeat(min(var(--chatters-hero-damage-cols, 6), 5), minmax(0, 1fr));
+    }
+}

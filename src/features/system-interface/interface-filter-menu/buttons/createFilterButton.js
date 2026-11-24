@@ -9,10 +9,6 @@ import {
     applyBioChipPortraitBackground,
 } from '../../../gallery/gallery-mode/bioChipPortraitBackground.js';
 import { loadCodexNodesForGalleryStyle } from '../../../gallery/gallery-mode/galleryConnectionCanvasCodexStyle.js';
-import {
-    applyGalleryExclusiveFilterPick,
-    isAtlasGalleryOpen,
-} from '../../../gallery/gallery-mode/galleryFiltersBridge.js';
 import { applyStandaloneFiltersLive } from '../../interface-load-unload/applyStandaloneFiltersLive.js';
 
 function createFilterImageForButton(filterKey, displayName, type, folder, imageService) {
@@ -39,22 +35,7 @@ function attachFilterChipClickHandler(
     filterBtn.addEventListener('click', () => {
         const isSelected = stateManager.has(filterKey);
 
-        if (isAtlasGalleryOpen()) {
-            applyGalleryExclusiveFilterPick({
-                filterBtn,
-                filterKey,
-                displayName,
-                type,
-                stateManager,
-                wasSelected: isSelected,
-            });
-            soundManager?.play?.(isSelected ? 'filterOff' : 'filterPick');
-            updateFilterCounts();
-            /* Exclusive pick already curated Intel; still sync EM search inputs. */
-            applyStandaloneFiltersLive();
-            return;
-        }
-
+        /* Intel hub owns entity pick — Filters stay normal multi-select everywhere. */
         if (isSelected) {
             stateManager.remove(filterKey);
             filterBtn.classList.remove('selected');

@@ -28,7 +28,7 @@ const DISCLAIMER_BY_MODE = Object.freeze({
     [ATLAS_MODE.STORY]:
         'Shows only events involving the filtered selection.',
     [ATLAS_MODE.INTEL]:
-        'Heroes, factions, and NPCs are single-select for biography + curated dock. Countries stay multi-select and further filter that dock.',
+        'Filters work normally. Pick a hero, faction, or NPC from the Intel hub to open their biography; filters further narrow the curated dock.',
     [ATLAS_MODE.DIALOGUE_THEATER]:
         'Shows only voice files from the filtered selection.',
     [ATLAS_MODE.OFFICIAL_ARCHIVE]:

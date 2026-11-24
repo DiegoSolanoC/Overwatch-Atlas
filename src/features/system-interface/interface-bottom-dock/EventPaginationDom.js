@@ -19,7 +19,7 @@
 
 import { eventPaginationInnerHtml } from './eventPaginationMarkup.js';
 import { mountPaginationDock } from './mountPaginationDock.js?v=4';
-import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=34';
+import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=39';
 
 const ORPHAN_NAV_BUTTON_IDS = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn'];
 

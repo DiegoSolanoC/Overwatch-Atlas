@@ -43,15 +43,15 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
      * Extra % added to each side-trap pos while the dock is collapsed
      * (`--side-trap-collapse-shift` eases 0 → this amount).
      */
-    sideTrapCollapseShiftPct: 10,
+    sideTrapCollapseShiftPct: 3,
 
     /** Dock trap — independent from sides (no vertical slide). */
-    dockTrapHeightPx: 120,
+    dockTrapHeightPx: 94,
     /** Desktop / wide authored trap width (CSS px). */
-    dockTrapWidthPx: 760,
+    dockTrapWidthPx: 720,
     /** Compact (≤768px) authored trap width — narrower so side chips clear the crop. */
     dockTrapWidthMobilePx: 630,
-    dockTrapTaperPct: 19,
+    dockTrapTaperPct: 13.5,
     dockBorderWidth: 8,
     /** Corner rounding on dock trap path (viewBox units). */
     dockBorderRadius: 9,
@@ -59,7 +59,7 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
      * Whole dock-trap button unit Y (CSS px). Positive = down into the
      * merged trap/dock band; negative = up toward the nub.
      */
-    dockButtonsOffsetYPx: 13,
+    dockButtonsOffsetYPx: 12,
 
     /**
      * Dock inward lip (thick white bar above the page slider).
@@ -77,11 +77,11 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     /** Same clearance while the dock is collapsed (often tighter). */
     dockInwardSliderClearanceCollapsedPx: 49,
     /** Thin run at each screen-side end (two clear levels: full → tip). */
-    dockInwardEndThicknessPx: 4,
-    dockInwardTipWidthPx: 388,
-    dockInwardSlopeWidthPx: 27,
+    dockInwardEndThicknessPx: 6,
+    dockInwardTipWidthPx: 232,
+    dockInwardSlopeWidthPx: 71,
     /** Fillet radius at tip ends and vertical center-cut corners (CSS px). */
-    dockInwardCornerRadiusPx: 10,
+    dockInwardCornerRadiusPx: 48,
 
     /**
      * Side-panel inward lip (parallel to continuous edge). No end shrinkage —
@@ -134,26 +134,42 @@ export const SIDE_PANELS_TRAP_TWEAK_DEFAULTS = Object.freeze({
     atlasNewsIconPct: 100,
 
     /**
-     * World mode chrome — flank mode buttons + zoom/sun stack above the dock trap.
+     * World mode chrome — flank mode buttons + lighting (left) / zoom+reset (right).
+     * Baked from atlas-ui-tweaks.json v5 site standard.
      */
-    worldFlankGapBorderPx: 18,
-    worldFlankPairGapPx: 8,
+    worldFlankGapBorderPx: 15,
+    worldFlankPairGapPx: 17,
     /** Flank plate Y (CSS px). Positive = down toward dock lip. */
-    worldFlankOffsetYPx: 0,
-    worldFlankIconPx: 52,
-    worldFlankFontPx: 18,
-    worldZoomStackGapPx: 28,
-    worldZoomLiftPx: 10,
-    worldResetMinHeightPx: 48,
-    worldResetFontPx: 16,
-    worldResetPadXPx: 28,
-    worldZoomThumbPx: 52,
-    worldZoomTrackHPx: 14,
+    worldFlankOffsetYPx: -11,
+    worldFlankIconPx: 57,
+    worldFlankFontPx: 20,
+    /** Vertical gap between Reset and Zoom on the right column. */
+    worldZoomStackGapPx: 18,
+    /** Lift above the outer wing lip (not the raised trap peak). */
+    worldZoomLiftPx: 14,
+    worldResetMinHeightPx: 31,
+    worldResetFontPx: 23,
+    worldResetPadXPx: 30,
+    worldZoomThumbPx: 45,
+    worldZoomTrackHPx: 16,
     /** White track outline thickness (CSS px). */
-    worldZoomTrackBorderPx: 2,
-    /** Individual slider lengths as % of the zoom stack width. */
-    worldZoomSliderWidthPct: 100,
-    worldSunSliderWidthPct: 100,
+    worldZoomTrackBorderPx: 8,
+    /** Side column widths as % of the full dock (outer wing ends). */
+    worldZoomSliderWidthPct: 34,
+    worldSunSliderWidthPct: 34,
+    /**
+     * Mirrored horizontal inset from each dock end (CSS px).
+     * Same value pulls sun right and zoom left toward center.
+     */
+    worldSliderInsetPx: 24,
+    /** Theater → Chatters hero-select board (Tank | Damage | Support). */
+    chattersHeroCols: 5,
+    /** Damage gets an extra column so the board fits without vertical scroll. */
+    chattersHeroDamageCols: 6,
+    chattersHeroGapPx: 10,
+    chattersHeroNamePx: 18,
+    /** Portrait well fill opacity % (0 = transparent). */
+    chattersPortraitBgPct: 0,
 });
 
 function clamp(n, lo, hi) {
@@ -318,8 +334,14 @@ export function sanitizeSidePanelsTrapState(s) {
     next.worldZoomThumbPx = clamp(Math.round(Number(next.worldZoomThumbPx ?? 52)), 28, 80);
     next.worldZoomTrackHPx = clamp(Math.round(Number(next.worldZoomTrackHPx ?? 14)), 4, 40);
     next.worldZoomTrackBorderPx = clamp(Math.round(Number(next.worldZoomTrackBorderPx ?? 2)), 0, 8);
-    next.worldZoomSliderWidthPct = clamp(Math.round(Number(next.worldZoomSliderWidthPct ?? 100)), 30, 100);
-    next.worldSunSliderWidthPct = clamp(Math.round(Number(next.worldSunSliderWidthPct ?? 100)), 30, 100);
+    next.worldZoomSliderWidthPct = clamp(Math.round(Number(next.worldZoomSliderWidthPct ?? 34)), 18, 48);
+    next.worldSunSliderWidthPct = clamp(Math.round(Number(next.worldSunSliderWidthPct ?? 34)), 18, 48);
+    next.worldSliderInsetPx = clamp(Math.round(Number(next.worldSliderInsetPx ?? 24)), 0, 220);
+    next.chattersHeroCols = clamp(Math.round(Number(next.chattersHeroCols ?? 5)), 3, 8);
+    next.chattersHeroDamageCols = clamp(Math.round(Number(next.chattersHeroDamageCols ?? 6)), 3, 10);
+    next.chattersHeroGapPx = clamp(Math.round(Number(next.chattersHeroGapPx ?? 10)), 2, 28);
+    next.chattersHeroNamePx = clamp(Math.round(Number(next.chattersHeroNamePx ?? 18)), 9, 28);
+    next.chattersPortraitBgPct = clamp(Math.round(Number(next.chattersPortraitBgPct ?? 0)), 0, 100);
     delete next.stageMenuOffsetYPx;
     delete next.globeOffsetYPx;
     return next;
@@ -641,6 +663,10 @@ function applyDockFillFromBorder(rootStyle, s, geo) {
     rootStyle.setProperty('--dock-trap-taper', String(s.dockTrapTaperPct));
     rootStyle.setProperty('--dock-trapezoid-offset-y', '0px');
     rootStyle.setProperty('--dock-trapezoid-width', `${Math.round(geo.trapW)}px`);
+    /* Full cap-row / dock width — World sun+zoom bars pin to these outer wing ends. */
+    rootStyle.setProperty('--dock-cap-width', `${Math.round(geo.dockW)}px`);
+    rootStyle.setProperty('--dock-trap-left-px', `${Math.round(geo.leftPx)}px`);
+    rootStyle.setProperty('--dock-trap-right-px', `${Math.round(geo.rightPx)}px`);
     rootStyle.setProperty('--dock-trap-half-w', `${Math.round(geo.halfPx)}px`);
     rootStyle.setProperty('--dock-trap-inset-len', `${Math.round(geo.insetPx)}px`);
     rootStyle.setProperty('--dock-edge-border-px', `${s.dockBorderWidth}px`);
@@ -3071,6 +3097,34 @@ function stageSliderTrapSvgUrl(kind, strokeWidth = 2) {
  * @param {object} state
  * @param {CSSStyleDeclaration} [rootStyle]
  */
+/**
+ * Theater → Chatters hero-select CSS vars (cols / gap / name / portrait fill).
+ * @param {object} state
+ * @param {CSSStyleDeclaration} [rootStyle]
+ */
+export function applyTheaterChromeVars(state, rootStyle) {
+    const s = sanitizeSidePanelsTrapState({ ...SIDE_PANELS_TRAP_TWEAK_DEFAULTS, ...state });
+    liveTrapChromeState = liveTrapChromeState
+        ? sanitizeSidePanelsTrapState({ ...liveTrapChromeState, ...s })
+        : s;
+    const root = rootStyle || document.documentElement?.style;
+    if (!root) return s;
+    const portraitAlpha = (Number(s.chattersPortraitBgPct) || 0) / 100;
+    const theaterVars = {
+        '--chatters-hero-cols': String(s.chattersHeroCols),
+        '--chatters-hero-damage-cols': String(s.chattersHeroDamageCols),
+        '--chatters-hero-gap': `${s.chattersHeroGapPx}px`,
+        '--chatters-hero-name-size': `${s.chattersHeroNamePx}px`,
+        '--chatters-portrait-bg':
+            portraitAlpha <= 0 ? 'transparent' : `rgba(0, 0, 0, ${portraitAlpha})`,
+    };
+    for (const [prop, value] of Object.entries(theaterVars)) {
+        root.setProperty(prop, value);
+        document.body?.style.setProperty(prop, value);
+    }
+    return s;
+}
+
 export function applyWorldModeChromeVars(state, rootStyle) {
     const s = sanitizeSidePanelsTrapState({ ...SIDE_PANELS_TRAP_TWEAK_DEFAULTS, ...state });
     /* Keep live trap bag in sync so dock refresh / reload paths see World edits. */
@@ -3095,6 +3149,7 @@ export function applyWorldModeChromeVars(state, rootStyle) {
         '--world-zoom-track-border': `${s.worldZoomTrackBorderPx}px`,
         '--world-zoom-slider-width': `${s.worldZoomSliderWidthPct}%`,
         '--world-sun-slider-width': `${s.worldSunSliderWidthPct}%`,
+        '--world-slider-inset': `${s.worldSliderInsetPx}px`,
         '--dock-flank-pair-gap': `${s.worldFlankPairGapPx}px`,
         '--zoom-slider-trap-mask': stageSliderTrapSvgUrl('mask'),
         '--zoom-slider-trap-stroke': stageSliderTrapSvgUrl('stroke', s.worldZoomTrackBorderPx),
@@ -3103,6 +3158,7 @@ export function applyWorldModeChromeVars(state, rootStyle) {
         root.setProperty(prop, value);
         document.body?.style.setProperty(prop, value);
     }
+    applyTheaterChromeVars(s, root);
     return s;
 }
 

@@ -1123,3 +1123,32 @@ body.dialogue-theater-mode-active .event-number-buttons .event-number-btn__img-w
     object-fit: cover !important;
     object-position: center center !important;
 }
+
+/* -- Chatters: no list filters/search — hero select shows everyone -- */
+.dialogue-theater-list-host--chatters #dialogueTheaterManageControls,
+.dialogue-theater-list-host--chatters #dialogueTheaterToolbarToggleBtn,
+.dialogue-theater-list-host--chatters .events-manage-header {
+    display: none !important;
+}
+
+/*
+ * Shared hero-role stage list pad (Theater Chatters + Intel Heroes shell).
+ * Same values for both — fluid card size tracks this content width.
+ * Pairs with `.events-manage-content` / `.hero-role-select-stage` (28px sides).
+ */
+.dialogue-theater-list-host--chatters #dialogueTheaterList.events-list--chatters-hero-select,
+.hero-role-select-stage__list.events-list--chatters-hero-select {
+    display: block;
+    grid-template-columns: none;
+    width: 100%;
+    max-width: 100%;
+    padding:
+        clamp(96px, 14vh, 148px)
+        clamp(16px, 2vw, 36px)
+        clamp(48px, 7vh, 88px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Board / card visuals live in features/shared/hero-role-select.css */

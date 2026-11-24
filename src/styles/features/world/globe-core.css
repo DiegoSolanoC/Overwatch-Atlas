@@ -49,7 +49,7 @@
     user-select: none;
 }
 
-/* Sun yaw — stacked with zoom controls above the dock (#zoomSunSlot) */
+/* Sun yaw — left dock end (#zoomSunSlot inside .zoom-controls__side--sun) */
 .dev-sun-yaw-panel {
     position: relative;
     inset: auto;

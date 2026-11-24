@@ -35,9 +35,10 @@
 /* Story */
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=85');
-@import url('features/gallery/gallery-mode.css?v=114');
-@import url('features/dialogue-theater/dialogue-theater-list.css?v=26');
-@import url('features/dialogue-theater/dialogue-theater-stage.css?v=22');
+@import url('features/shared/hero-role-select.css?v=4');
+@import url('features/gallery/gallery-mode.css?v=131');
+@import url('features/dialogue-theater/dialogue-theater-list.css?v=37');
+@import url('features/dialogue-theater/dialogue-theater-stage.css?v=23');
 @import url('features/dialogue-theater/dialogue-theater-edit-panel.css?v=22');
 
 /* Event system */
@@ -53,7 +54,7 @@
 /* Event system panels */
 @import url('features/event-system/panels/event-slide.css?v=50');
 @import url('features/event-system/panels/filters.css?v=34');
-@import url('features/music/panels/music.css?v=55');
+@import url('features/music/panels/music.css?v=56');
 @import url('features/event-system/panels/events-manage.css?v=31');
 @import url('features/event-system/panels/story-events-merge.css?v=7');
 @import url('features/event-system/panels/panel-pattern-overlay.css?v=32');

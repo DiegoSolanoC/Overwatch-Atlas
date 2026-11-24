@@ -1,7 +1,7 @@
 /**
  * Bridge: Filters panel ↔ Gallery (Intel) mode.
- * Heroes / factions / NPCs stay single-select and drive biography + curated dock.
- * Countries are multi-select and further filter that curated dock (normal filter-out).
+ * Entity chips drive the biography stage; deep-links use
+ * {@link applyExclusiveGallerySelection}.
  */
 
 import {
@@ -14,6 +14,7 @@ import {
 } from './loadBioFilterManifest.js';
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
 import { refreshHeroBiographyDockPagination } from './heroBiographyDockTimeline.js';
+import { showIntelEntityView } from './intelHeroesSelect.js';
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -107,31 +108,22 @@ function clearNonCountrySelections(stateManager, grid) {
 }
 
 /**
+ * Open an Intel entity (deep-link / programmatic). Does not exclusive-lock Filters.
  * @param {string} filterKey
  * @param {string} displayName
  * @param {'heroes'|'factions'|'npcs'|'locations'|'countries'|string} type
  */
 export function applyExclusiveGallerySelection(filterKey, displayName, type) {
-    const fs = window.FilterService;
-    const stateManager = fs?.stateManager;
-    if (!stateManager) return;
-
-    const grid = document.getElementById('filtersGrid');
     const t = String(type || '').toLowerCase();
 
     if (t === 'countries') {
+        const fs = window.FilterService;
+        const stateManager = fs?.stateManager;
+        if (!stateManager) return;
         if (stateManager.has(filterKey)) {
             stateManager.remove(filterKey);
         } else {
             stateManager.add(filterKey);
-        }
-        if (grid) {
-            const btn = grid.querySelector(`.filter-btn[data-filter-key="${CSS.escape(filterKey)}"]`);
-            if (btn) {
-                const on = stateManager.has(filterKey);
-                btn.classList.toggle('selected', on);
-                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-            }
         }
         syncStandaloneFromPending(stateManager);
         refreshHeroBiographyDockPagination();
@@ -139,29 +131,14 @@ export function applyExclusiveGallerySelection(filterKey, displayName, type) {
         return;
     }
 
-    clearNonCountrySelections(stateManager, grid);
-    if (typeof stateManager.add === 'function') {
-        stateManager.add(filterKey);
-    } else {
-        stateManager.selectedFilters.add(filterKey);
-    }
-
-    if (grid) {
-        const btn = grid.querySelector(`.filter-btn[data-filter-key="${CSS.escape(filterKey)}"]`);
-        if (btn) {
-            btn.classList.add('selected');
-            btn.setAttribute('aria-pressed', 'true');
-        }
-    }
-
     if (t === 'heroes' || t === 'factions' || t === 'npcs' || t === 'locations') {
         selectBioBiographyEntityFromFilter(t, filterKey, displayName);
+        if (isAtlasGalleryOpen()) showIntelEntityView();
     } else {
         clearBioBiographyEntityFromFilter();
         refreshHeroBiographyDockPagination();
     }
 
-    syncStandaloneFromPending(stateManager);
     scheduleGalleryFilterCountRefresh();
 }
 
@@ -223,6 +200,7 @@ export function applyGalleryExclusiveFilterPick({
 
     if (t === 'heroes' || t === 'factions' || t === 'npcs' || t === 'locations') {
         selectBioBiographyEntityFromFilter(t, filterKey, displayName);
+        showIntelEntityView();
     } else {
         clearBioBiographyEntityFromFilter();
         refreshHeroBiographyDockPagination();
@@ -233,61 +211,29 @@ export function applyGalleryExclusiveFilterPick({
     return true;
 }
 
-/** Clear gallery curation when Filters Clear runs in gallery mode. */
+/** Dock refresh after Filters Clear while Intel is open. */
 export function clearGalleryFilterSelectionIfOpen() {
     if (!isAtlasGalleryOpen()) return;
-    clearBioBiographyEntityFromFilter();
+    refreshHeroBiographyDockPagination();
 }
 
-/**
- * Open the filters panel for gallery (empty single-select slate).
- */
+/** @deprecated Filters open normally via the trap. */
 export function openFiltersPanelForGallery() {
-    const fs = window.FilterService;
-    if (!fs) return;
-
-    if (fs.stateManager) {
-        fs.stateManager.clear?.();
-        fs.stateManager.selectedFilters?.clear?.();
-    }
-    if (window.standaloneActiveFilters instanceof Set) {
-        window.standaloneActiveFilters.clear();
-    }
-
-    if (typeof fs.openPanelWithMode === 'function') {
-        fs.openPanelWithMode('filters');
-    } else if (typeof fs.openPanel === 'function') {
-        fs.openPanel();
-    }
-    fs.updateButtonStates?.();
+    /* no-op */
 }
 
-/**
- * Pick a random hero whenever Gallery opens so the stage is never empty.
- * Honors a pending deep-link from {@link openBioEntityInGallery}.
- */
+/** Deep-link / pending focus when Intel opens. */
 export async function pickRandomGalleryHeroOnOpen() {
     if (!isAtlasGalleryOpen()) return;
-
     try {
         const { consumePendingGalleryBioFocus, focusBioEntityInOpenGallery } =
             await import('./openBioEntityInGallery.js');
         const pending = consumePendingGalleryBioFocus();
         if (pending?.name) {
-            const ok = await focusBioEntityInOpenGallery(pending.kind, pending.name);
-            if (ok) return;
+            await focusBioEntityInOpenGallery(pending.kind, pending.name);
         }
-
-        const heroes = await loadBioFilterManifestEntries('heroes');
-        if (!heroes.length) return;
-
-        const item = heroes[Math.floor(Math.random() * heroes.length)];
-        const { filterKey, displayName } = resolveBioManifestChipIdentity('heroes', item);
-        if (!filterKey) return;
-
-        applyExclusiveGallerySelection(filterKey, displayName, 'heroes');
     } catch (err) {
-        console.warn('[gallery] Failed to pick random hero:', err);
+        console.warn('[gallery] Pending intel focus failed:', err);
     }
 }
 

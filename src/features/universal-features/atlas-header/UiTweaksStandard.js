@@ -9,7 +9,6 @@ export const UI_TWEAKS_STANDARD_URL = 'src/data/platform/atlas-ui-tweaks.json';
 export const UI_TWEAKS_REPO_API = 'api/ui-tweaks';
 
 const DRAFT_KEY = 'atlas.uiTweaks.draft.v1';
-const PROMOTE_FLAG_KEY = 'atlas.uiTweaks.promotedDraftOnce.v1';
 
 /** Legacy per-slice keys — cleared so old browser forks do not override the standard. */
 const LEGACY_STORAGE_KEYS = Object.freeze([
@@ -184,65 +183,4 @@ export function clearLegacyUiTweaksStorage() {
     } catch {
         /* ignore */
     }
-}
-
-/**
- * One-shot: if this browser still has a draft that differs from the committed
- * JSON, write that draft as the new site standard (localhost only).
- * @param {object} standard
- * @returns {Promise<object | null>} promoted payload, or null
- */
-export async function promoteUiTweaksDraftToRepoIfNeeded(standard) {
-    if (!isUiTweaksRepoSaveAvailable()) return null;
-    try {
-        if (localStorage.getItem(PROMOTE_FLAG_KEY) === '1') return null;
-    } catch {
-        /* ignore */
-    }
-
-    const draft = readUiTweaksDraft(undefined);
-    if (!draft?.badge || !draft?.sides || !draft?.panels) return null;
-
-    const stdVer = Number(standard?.version) || 1;
-    const nextVersion = stdVer + 1;
-    const payload = {
-        kind: 'atlas-ui-tweaks',
-        version: nextVersion,
-        exportedAt: new Date().toISOString(),
-        note: 'Site chrome standard. Save in UI Tweaks (localhost) writes this file; push to ship for everyone.',
-        badge: draft.badge,
-        sides: draft.sides,
-        panels: draft.panels,
-    };
-
-    const sameAsStandard =
-        standard
-        && JSON.stringify(standard.badge) === JSON.stringify(payload.badge)
-        && JSON.stringify(standard.sides) === JSON.stringify(payload.sides)
-        && JSON.stringify(standard.panels) === JSON.stringify(payload.panels);
-
-    if (sameAsStandard) {
-        try {
-            localStorage.setItem(PROMOTE_FLAG_KEY, '1');
-        } catch {
-            /* ignore */
-        }
-        clearUiTweaksDraft();
-        return null;
-    }
-
-    const result = await saveUiTweaksStandardToRepo(payload);
-    if (!result.ok) {
-        console.warn('[UI Tweaks] could not promote local draft to site standard:', result.error);
-        return null;
-    }
-
-    try {
-        localStorage.setItem(PROMOTE_FLAG_KEY, '1');
-    } catch {
-        /* ignore */
-    }
-    writeUiTweaksDraft(payload);
-    console.info(`[UI Tweaks] promoted local draft → atlas-ui-tweaks.json (v${payload.version})`);
-    return payload;
 }

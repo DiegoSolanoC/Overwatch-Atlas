@@ -1,4 +1,4 @@
-/* Zoom Controls — sun-slider aesthetic, reset above track, dock center-top */
+/* Zoom Controls — lighting on left dock wing / zoom+reset on right dock wing */
 :root {
     --atlas-floating-controls-right: max(42px, env(safe-area-inset-right));
     /*
@@ -9,8 +9,10 @@
 }
 
 .zoom-controls {
-    /* Match the live dock trapezium width */
-    --zoom-stack-width: var(--dock-trapezoid-width, min(820px, 88vw));
+    /*
+     * Full viewport dock span (same left/right as .pagination-dock) — NOT the
+     * center trapezium. Bars pin to the outer white wing ends.
+     */
     --zoom-slider-track-h: var(--world-zoom-track-h, 14px);
     --zoom-slider-thumb: var(--world-zoom-thumb, 52px);
     --zoom-slider-track-border: var(--world-zoom-track-border, 2px);
@@ -19,30 +21,36 @@
     --zoom-slider-trap-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='%23fff'/%3E%3C/svg%3E");
     --zoom-slider-trap-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='none' stroke='%23fff' stroke-width='10' stroke-linejoin='round'/%3E%3C/svg%3E");
     /*
-     * Sit just above the trap top lip. Concrete expanded bottom — body
-     * --pagination-dock-height is frozen for World/Codex so the stage is not
-     * invalidated; collapsed override below tracks the dock ease.
+     * Sit just above the dock's outer wing lip (not above the raised trap peak).
+     * Trap height is intentionally omitted so bars land on the side wings.
      */
     --atlas-zoom-dock-bottom: calc(
         var(--footer-height, 65px)
         + var(--pagination-dock-height-expanded, 400px)
-        + var(--dock-trap-height, 80px)
-        + var(--world-zoom-lift, 10px)
+        + var(--world-zoom-lift, 12px)
     );
     position: fixed;
-    left: 50%;
-    right: auto;
+    left: 0;
+    right: 0;
     top: auto;
     bottom: var(--atlas-zoom-dock-bottom);
-    transform: translateX(-50%);
+    transform: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
-    align-items: stretch;
-    justify-content: center;
-    gap: var(--world-zoom-stack-gap, 28px);
-    width: var(--zoom-stack-width);
-    max-width: calc(100vw - 24px);
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    width: auto;
+    max-width: none;
+    /* Mirrored inset from each dock end (UI Tweaks → World · bar inset). */
+    padding-inline: calc(
+            max(12px, env(safe-area-inset-left, 0px)) + var(--world-slider-inset, 24px)
+        )
+        calc(
+            max(12px, env(safe-area-inset-right, 0px)) + var(--world-slider-inset, 24px)
+        );
+    box-sizing: border-box;
     z-index: calc(var(--pagination-dock-z, 2200) + 20);
     pointer-events: none;
     transition:
@@ -51,13 +59,42 @@
             var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
 }
 
+.zoom-controls__side {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    pointer-events: none;
+    box-sizing: border-box;
+    min-width: 0;
+    /* Outer wing — allow longer bars via UI Tweaks width %. */
+    max-width: min(48vw, 560px);
+}
+
+.zoom-controls__side--sun {
+    align-items: stretch;
+    justify-content: flex-end;
+    flex: 0 1 var(--world-sun-slider-width, 34%);
+    width: var(--world-sun-slider-width, 34%);
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.zoom-controls__side--zoom {
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: var(--world-zoom-stack-gap, 18px);
+    flex: 0 1 var(--world-zoom-slider-width, 34%);
+    width: var(--world-zoom-slider-width, 34%);
+    margin-left: auto;
+    margin-right: 0;
+}
+
 body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     --atlas-zoom-dock-bottom: calc(
         var(--footer-height, 65px)
         + var(--pagination-dock-height-collapsed, 200px)
         + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
-        + var(--dock-trap-height, 80px)
-        + var(--world-zoom-lift, 10px)
+        + var(--world-zoom-lift, 12px)
     );
     bottom: var(--atlas-zoom-dock-bottom);
 }
@@ -72,7 +109,7 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     min-width: 120px;
     height: auto;
     min-height: var(--world-reset-min-h, 48px);
-    margin: 0 auto;
+    margin: 0;
     padding: 10px var(--world-reset-pad-x, 28px);
     border: none;
     border-radius: 12px;
@@ -139,20 +176,19 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
 
 /*
  * Stage slider shell — rounded trapezium chrome on ::before/::after so range
- * thumbs are never clip-path clipped. Lengths from World mode tweaks.
+ * thumbs are never clip-path clipped. Side columns own length (% of dock).
  */
 .zoom-controls .stage-slider-shell--zoom {
-    width: var(--world-zoom-slider-width, 100%);
+    width: 100%;
     max-width: 100%;
-    align-self: center;
+    align-self: stretch;
     box-sizing: border-box;
 }
 
-/* One length owner for sun — nested % would shrink the track twice */
 .zoom-controls .zoom-sun-slot {
-    width: var(--world-sun-slider-width, 100%);
+    width: 100%;
     max-width: 100%;
-    align-self: center;
+    align-self: stretch;
     box-sizing: border-box;
 }
 
@@ -161,6 +197,17 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* When lighting is off / Codex hides sun, keep zoom+reset pinned to the right end */
+body.codex-mode-active .zoom-controls__side--sun,
+.zoom-controls__side--sun:has(.zoom-sun-slot--empty),
+.zoom-controls__side--sun:has(.dev-sun-yaw-panel--hidden) {
+    width: 0;
+    max-width: 0;
+    overflow: hidden;
+    margin: 0;
+    pointer-events: none;
 }
 
 .stage-slider-shell {
@@ -355,36 +402,37 @@ body:has(.loading-overlay.active) .time-control-slider {
 
 @media (max-width: 768px) {
     .zoom-controls {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
         bottom: var(--atlas-floating-controls-bottom-mobile) !important;
     }
 
     body:has(#paginationDock) .zoom-controls {
         bottom: var(--atlas-zoom-dock-bottom) !important;
     }
-
-    .zoom-controls {
-        --zoom-stack-width: var(--dock-trapezoid-width, min(96vw, 630px));
-    }
 }
 
 @media (max-width: 768px) and (orientation: portrait) {
     .zoom-controls,
     body:has(#paginationDock) .zoom-controls {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
-        justify-content: center !important;
-        gap: 6px !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+        gap: 8px !important;
+        /* Wing lip — do not add trap height (that centered bars above the trap). */
         bottom: calc(
             var(--footer-height, 60px)
             + var(--pagination-dock-height-expanded, 400px)
-            + var(--dock-trap-height, 80px)
-            + clamp(12px, 1.8vh, 20px)
+            + clamp(8px, 1.4vh, 16px)
         ) !important;
         z-index: calc(var(--pagination-dock-z, 2200) + 20);
+    }
+
+    .zoom-controls__side--zoom {
+        gap: 6px;
     }
 
     body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
@@ -392,8 +440,7 @@ body:has(.loading-overlay.active) .time-control-slider {
             var(--footer-height, 60px)
             + var(--pagination-dock-height-collapsed, 200px)
             + max(0px, var(--dock-inward-line-clearance-collapsed, 4px) - 14px)
-            + var(--dock-trap-height, 80px)
-            + clamp(12px, 1.8vh, 20px)
+            + clamp(8px, 1.4vh, 16px)
         ) !important;
     }
 }

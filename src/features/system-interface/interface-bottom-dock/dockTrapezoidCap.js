@@ -15,7 +15,7 @@
  */
 
 import { ensureDockGlobeRailCenterRestored } from './dockChromeLifecycle.js';
-import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=34';
+import { refreshDockTrapSvgFromTweaks } from '../../universal-features/atlas-header/SidePanelsTrapChrome.js?v=39';
 
 const DOCK_BORDER_SRC = 'src/assets/images/Misc/UI/Dock%20Border.png';
 

@@ -25,6 +25,26 @@ import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
 import { getRunOperation } from '../../atlas-mode-runtime/loadingOverlayState.js';
 import { reflowDockTrapFlankButtons } from '../../../system-interface/interface-bottom-dock/dockTrapezoidCap.js';
 
+function isAtlasLocalhost() {
+    try {
+        const host = window.location.hostname || '';
+        return host === 'localhost' || host === '127.0.0.1';
+    } catch {
+        return false;
+    }
+}
+
+function ensureWorldDevRouteTogglesHost() {
+    let host = document.getElementById('worldDevRouteToggles');
+    if (host) return host;
+    host = document.createElement('div');
+    host.id = 'worldDevRouteToggles';
+    host.className = 'world-dev-route-toggles';
+    host.setAttribute('aria-label', 'Dev route toggles');
+    document.body.appendChild(host);
+    return host;
+}
+
 export async function loadToggles(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.transport, 'Toggles')) {
         return;
@@ -86,37 +106,48 @@ export async function loadToggles(loadedComponents) {
             mobileClassName: 'lighting-btn dock-trap-flank__btn'
         });
 
-        createHeaderHubButton({
-            id: 'planeRoutesToggle',
-            className: 'plane-routes-btn dock-globe-rail__btn',
-            title: 'Toggle flight routes',
-            label: 'Flights',
-            iconPath: 'src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png',
-            iconAlt: 'Flight routes',
-            parentId: 'dockGlobeRailLeft',
-            baseClass: 'globe-control-btn',
-            iconSpanId: 'planeRoutesIcon',
-            headerOrder: 20,
-            mobileParentId: 'dockGlobeRailLeft',
-            mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'plane-routes-btn dock-globe-rail__btn'
-        });
+        /*
+         * Flights / Sea lanes — localhost-only dev tools. Park under the header
+         * (same band as Codex Edit), text chips, never on GitHub Pages.
+         */
+        if (isAtlasLocalhost()) {
+            ensureWorldDevRouteTogglesHost();
+            createHeaderHubButton({
+                id: 'planeRoutesToggle',
+                className: 'atlas-dev-text-chip plane-routes-btn',
+                title: 'Toggle flight routes (dev)',
+                label: 'Flights',
+                iconPath: null,
+                iconAlt: '',
+                parentId: 'worldDevRouteToggles',
+                baseClass: 'globe-control-btn',
+                iconSpanId: 'planeRoutesIcon',
+                headerOrder: 20,
+                mobileParentId: 'worldDevRouteToggles',
+                mobileBaseClass: 'globe-control-btn',
+                mobileClassName: 'atlas-dev-text-chip plane-routes-btn',
+            });
 
-        createHeaderHubButton({
-            id: 'boatRoutesToggle',
-            className: 'boat-routes-btn dock-globe-rail__btn',
-            title: 'Toggle boat routes',
-            label: 'Sea lanes',
-            iconPath: 'src/assets/images/Icons/Filter%20Icons/Location%20Icon.png',
-            iconAlt: 'Boat routes',
-            parentId: 'dockGlobeRailLeft',
-            baseClass: 'globe-control-btn',
-            iconSpanId: 'boatRoutesIcon',
-            headerOrder: 30,
-            mobileParentId: 'dockGlobeRailLeft',
-            mobileBaseClass: 'globe-control-btn',
-            mobileClassName: 'boat-routes-btn dock-globe-rail__btn'
-        });
+            createHeaderHubButton({
+                id: 'boatRoutesToggle',
+                className: 'atlas-dev-text-chip boat-routes-btn',
+                title: 'Toggle sail routes (dev)',
+                label: 'Sails',
+                iconPath: null,
+                iconAlt: '',
+                parentId: 'worldDevRouteToggles',
+                baseClass: 'globe-control-btn',
+                iconSpanId: 'boatRoutesIcon',
+                headerOrder: 30,
+                mobileParentId: 'worldDevRouteToggles',
+                mobileBaseClass: 'globe-control-btn',
+                mobileClassName: 'atlas-dev-text-chip boat-routes-btn',
+            });
+        } else {
+            document.getElementById('planeRoutesToggle')?.remove();
+            document.getElementById('boatRoutesToggle')?.remove();
+            document.getElementById('worldDevRouteToggles')?.remove();
+        }
 
         if (controller.uiView) {
             controller.uiView.setupHyperloopToggle(() => {
@@ -136,12 +167,14 @@ export async function loadToggles(loadedComponents) {
                     controller.globeView.setGlobeLightingVisible(controller.sceneModel.getGlobeLightingVisible());
                 }
             });
-            controller.uiView.setupPlaneRoutesToggle((visible) => {
-                controller.globeView?.setTransportRoutesVisible?.('plane', visible);
-            });
-            controller.uiView.setupBoatRoutesToggle((visible) => {
-                controller.globeView?.setTransportRoutesVisible?.('boat', visible);
-            });
+            if (isAtlasLocalhost()) {
+                controller.uiView.setupPlaneRoutesToggle((visible) => {
+                    controller.globeView?.setTransportRoutesVisible?.('plane', visible);
+                });
+                controller.uiView.setupBoatRoutesToggle((visible) => {
+                    controller.globeView?.setTransportRoutesVisible?.('boat', visible);
+                });
+            }
             updateStatus('✓ Toggles initialized', 'success');
         }
 
@@ -165,9 +198,15 @@ export async function unloadToggles(loadedComponents) {
     }
 
     await withUnloadLifecycle(async () => {
-        ['hyperloopToggle', 'weatherEffectsToggle', 'lightingToggle', 'planeRoutesToggle', 'boatRoutesToggle'].forEach((id) => {
-            const el = document.getElementById(id);
-            if (el) el.remove();
+        [
+            'hyperloopToggle',
+            'weatherEffectsToggle',
+            'lightingToggle',
+            'planeRoutesToggle',
+            'boatRoutesToggle',
+            'worldDevRouteToggles',
+        ].forEach((id) => {
+            document.getElementById(id)?.remove();
         });
         updateStatus('✓ Toggles removed', 'success');
 
