@@ -40,7 +40,7 @@ import {
   readPersistedGlobalImageToggleState,
   wireGlobalImageToggleHandler,
 } from "./mountGlobalImageToggle.js";
-import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js";
+import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js?v=2";
 import { wireEventSlideSectionJumps } from "../interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js";
 import { mountEventSlideInfoDescriptionTextScaleControls } from "../interface-shared/accessibility/infoDescriptionTextScale.js";
 import { mountFiltersChipSizeScaleControls } from "../interface-shared/accessibility/filtersChipSizeScale.js?v=2";

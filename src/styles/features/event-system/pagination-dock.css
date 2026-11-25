@@ -249,15 +249,20 @@
     }
 
     /*
-     * Mode flank rails — Vehicles/Weather (left) + Lighting/Rotation (right).
-     * Horizontal pair per side, ~trap height, slant from live --dock-trap-wall-skew.
+     * Mode flank rails — 4 buttons left (Vehicles/Weather/Lighting/Rotation);
+     * right: Reset (trap-adjacent) + slider strip (Sun above Zoom, parallelogram chrome).
      */
     body:has(#paginationDock) .dock-trap-flank {
         --dock-trap-btn-skew: var(--dock-trap-wall-skew, 22deg);
         --dock-flank-gap-border: var(--world-flank-gap-border, 18px);
         --dock-flank-gap-lip: 2px;
+        --dock-flank-btn-count: 4;
         --dock-flank-btn-h: calc(var(--dock-trap-height, 120px) - var(--dock-flank-gap-lip));
-        --dock-flank-btn-w: clamp(168px, 20vw, 220px);
+        --dock-flank-btn-w: clamp(152px, 15.5vw, 196px);
+        --dock-flank-width: calc(
+            (var(--dock-flank-btn-count) * var(--dock-flank-btn-w))
+            + ((var(--dock-flank-btn-count) - 1) * var(--world-flank-pair-gap, 8px))
+        );
         position: relative;
         z-index: 5;
         flex: 0 0 auto;
@@ -267,11 +272,8 @@
         flex-wrap: nowrap;
         align-items: stretch;
         justify-content: center;
-        gap: var(--world-flank-pair-gap, var(--dock-flank-pair-gap, 8px));
-        width: calc(
-            2 * var(--dock-flank-btn-w)
-            + var(--world-flank-pair-gap, var(--dock-flank-pair-gap, 8px))
-        );
+        gap: var(--world-flank-pair-gap, 8px);
+        width: var(--dock-flank-width);
         height: var(--dock-trap-height, 120px);
         padding-bottom: var(--dock-flank-gap-lip);
         box-sizing: border-box;
@@ -283,10 +285,194 @@
 
     body:has(#paginationDock) .dock-trap-flank--left {
         margin-right: var(--dock-flank-gap-border);
+        justify-content: flex-start;
     }
 
     body:has(#paginationDock) .dock-trap-flank--right {
         margin-left: var(--dock-flank-gap-border);
+        justify-content: flex-start;
+    }
+
+    /* Hide world-only Reset on main menu / when zoom stack is off */
+    body:has(#paginationDock) .dock-trap-flank--right > #zoomResetBtn {
+        display: none !important;
+    }
+
+    body:has(#paginationDock):has(#zoomControls.visible) .dock-trap-flank--right > #zoomResetBtn.dock-trap-flank__btn {
+        display: inline-flex !important;
+    }
+
+    /* Reset = 1 button slot, trap-adjacent (mirrors Rotation on the left) */
+    body:has(#paginationDock) .dock-trap-flank--right > #zoomResetBtn.dock-trap-flank__btn {
+        flex: 0 0 var(--dock-flank-btn-w) !important;
+        width: var(--dock-flank-btn-w) !important;
+        max-width: var(--dock-flank-btn-w) !important;
+        font-size: var(--world-flank-font, 18px) !important;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        min-height: 0 !important;
+        padding: 0 14px !important;
+        gap: 10px !important;
+    }
+
+    /*
+     * Remaining 3 slots — Sun above Zoom.
+     * Flex gap alone looks wider than left buttons (tall parallelograms nest;
+     * short slider chrome also insets its top-left under skew). Pull strip in so
+     * the visible Reset→slider gutter matches the left flank’s visual tightness.
+     */
+    body:has(#paginationDock) .dock-trap-flank__slider-strip {
+        flex: 1 1 auto;
+        min-width: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: stretch;
+        box-sizing: border-box;
+        margin-left: calc(
+            -0.5 * var(--world-flank-pair-gap, 8px)
+            - tan(var(--dock-trap-btn-skew, 22deg)) * 8px
+        );
+        padding: 0;
+        pointer-events: auto;
+        overflow: visible;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip > .zoom-controls__panel {
+        --zoom-slider-track-h: 32px;
+        --zoom-slider-thumb: 56px;
+        /* Sun steps further left so its gutter matches Zoom along Reset’s slant */
+        --dock-slider-slant-nudge: calc(tan(var(--dock-trap-btn-skew, 22deg)) * 56px);
+        --dock-slider-stack-lift: 4px;
+        /*
+         * White ring = outer/inner sandwich (skew thins real CSS borders).
+         * L/R inset uses ~1/cos² so short slanted sides keep full visual weight.
+         */
+        --dock-slider-stroke: 5px;
+        --dock-slider-stroke-x: calc(
+            var(--dock-slider-stroke)
+            / (cos(var(--dock-trap-btn-skew, 22deg)) * cos(var(--dock-trap-btn-skew, 22deg)))
+        );
+        --dock-slider-radius: 12px;
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: center;
+        gap: clamp(2px, 0.35vh, 6px);
+        transform: translateY(calc(-1 * var(--dock-slider-stack-lift)));
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        pointer-events: auto;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell,
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell--zoom,
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .zoom-sun-slot,
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell--sun {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        align-self: stretch;
+        height: max(var(--zoom-slider-thumb, 56px), var(--zoom-slider-track-h, 32px));
+        /* Skew overhang only on the free end — don’t inflate Reset gap */
+        padding-inline: 0;
+        padding-inline-end: calc(var(--zoom-slider-track-h, 32px) * 0.25);
+        box-sizing: border-box;
+    }
+
+    /* Top (Sun) closer to Reset — mirrors left-flank button spacing along the slant */
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .zoom-sun-slot {
+        transform: translateX(calc(-1 * var(--dock-slider-slant-nudge, 20px)));
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell--zoom {
+        transform: none;
+    }
+
+    /*
+     * Solo Zoom (Codex / lighting off) — mild left pull only.
+     * Full Sun nudge overlaps Reset (centered Zoom sits lower on the slant).
+     */
+    body:has(#paginationDock).codex-mode-active
+        .dock-trap-flank__slider-strip
+        .stage-slider-shell--zoom,
+    body:has(#paginationDock)
+        .dock-trap-flank__slider-strip:has(.zoom-sun-slot.zoom-sun-slot--empty)
+        .stage-slider-shell--zoom,
+    body:has(#paginationDock)
+        .dock-trap-flank__slider-strip:has(.dev-sun-yaw-panel--hidden)
+        .stage-slider-shell--zoom,
+    body:has(#paginationDock)
+        .dock-trap-flank__slider-strip:not(:has(.zoom-sun-slot:not(.zoom-sun-slot--empty)))
+        .stage-slider-shell--zoom {
+        transform: translateX(calc(-0.22 * var(--dock-slider-slant-nudge, 20px)));
+    }
+
+    /*
+     * Parallelogram chrome — white outer + flush accent fill (no gap).
+     * Concentric radii so short ends don’t pinch/wrap.
+     */
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell::before {
+        background: #ffffff;
+        border: none;
+        border-radius: var(--dock-slider-radius, 12px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        transform: translateY(-50%) skewX(var(--dock-trap-btn-skew, 22deg));
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell::after {
+        left: var(--dock-slider-stroke-x, 5px);
+        right: var(--dock-slider-stroke-x, 5px);
+        height: calc(
+            var(--zoom-slider-track-h, 32px) - (2 * var(--dock-slider-stroke, 5px))
+        );
+        min-height: 0;
+        border-radius: calc(
+            var(--dock-slider-radius, 12px) - var(--dock-slider-stroke, 5px)
+        );
+        background: color-mix(
+            in srgb,
+            var(--zoom-slider-pill-fill, #2196f3) 72%,
+            #0a1524 28%
+        );
+        opacity: 1;
+        transform: translateY(-50%) skewX(var(--dock-trap-btn-skew, 22deg));
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-nub img {
+        width: 68%;
+        height: 68%;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .zoom-sun-slot:not(.zoom-sun-slot--empty) {
+        display: flex;
+        align-items: center;
+    }
+
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .dev-sun-yaw-panel,
+    body:has(#paginationDock) .dock-trap-flank__slider-strip .stage-slider-shell--sun {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Hide world-only strip on main menu */
+    body:has(#paginationDock) .dock-trap-flank--right > .dock-trap-flank__slider-strip {
+        display: none !important;
+    }
+
+    body:has(#paginationDock):has(#zoomControls.visible) .dock-trap-flank--right > .dock-trap-flank__slider-strip {
+        display: flex !important;
     }
 
     /* Kill absolute base .globe-control-btn so pairs sit side-by-side */
@@ -307,7 +493,8 @@
         min-height: 0 !important;
         max-height: none !important;
         margin: 0 !important;
-        padding: 0 18px !important;
+        padding: 0 12px !important;
+        overflow: visible !important;
         border: none !important;
         border-radius: 12px !important;
         background: #ffffff !important;
@@ -348,9 +535,10 @@
     }
 
     body:has(#paginationDock) .dock-trap-flank > .globe-control-btn:hover {
-        background: #f2f2f2 !important;
-        background-color: #f2f2f2 !important;
-        filter: brightness(0.97);
+        /* Solid bg only — filter:brightness on skewed chrome flashes blur. */
+        background: #ececec !important;
+        background-color: #ececec !important;
+        filter: none;
     }
 
     body:has(#paginationDock) .dock-trap-flank--left > .globe-control-btn:hover {
@@ -528,9 +716,9 @@
 
         body:has(#paginationDock)
             :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).globe-control-btn.dock-trap-flank__btn:hover {
-            background: #f2f2f2 !important;
-            background-color: #f2f2f2 !important;
-            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.42)) brightness(0.97);
+            background: #ececec !important;
+            background-color: #ececec !important;
+            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.42));
             transform: translateX(-50%) translateY(2px) !important;
         }
 
@@ -649,7 +837,9 @@
 
         body:has(#paginationDock)
             :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).globe-control-btn.dock-trap-flank__btn:hover {
-            filter: brightness(0.97) !important;
+            filter: none !important;
+            background: #ececec !important;
+            background-color: #ececec !important;
             transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
         }
 
@@ -1490,11 +1680,11 @@ body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-bt
 }
 
 body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail:hover:not(:disabled) {
-    transform: skewX(var(--thumb-skew)) scale(1.06) !important;
+    transform: skewX(var(--thumb-skew)) !important translateY(-2px);
 }
 
 body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail:active:not(:disabled) {
-    transform: skewX(var(--thumb-skew)) scale(0.97) !important;
+    transform: skewX(var(--thumb-skew)) !important;
 }
 
 body.pagination-dock-mobile-locked:has(#paginationDock)
@@ -1545,7 +1735,7 @@ body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--t
 body.pagination-dock-mobile-locked
     .event-number-buttons.event-number-buttons--thumbs-desktop
     .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
-    transform: skewX(var(--thumb-skew)) scale(1.06) !important;
+    transform: skewX(var(--thumb-skew)) !important translateY(-2px);
     background: #f3f7ff !important;
     border-color: rgba(255, 186, 80, 0.95) !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
@@ -1602,7 +1792,7 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobi
     }
 
     body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn:hover {
-        transform: skewX(-11deg) translateY(-3px) scale(1.04) !important;
+        transform: skewX(-11deg) translateY(-3px) !important;
         background: var(--btn-primary-bg-hover) !important;
         border-color: #fff !important;
     }

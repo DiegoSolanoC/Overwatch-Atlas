@@ -40,10 +40,15 @@ export async function refreshBioArchivesFromCodexDiskWrite(dataService, archives
             const data = await fetchJsonWithTimeout(fileUrl);
             const rawEvents = Array.isArray(data.events) ? data.events : [];
 
-            // Temporarily flip the active archive so normalization rules pick the right schema.
+            // Flip source only for normalize rules — never via setArchiveSourceOn
+            // (that would overwrite the story dock snapshot with satellite rows).
+            let normalized;
             dataService.archiveSource = arch;
-            const normalized = rawEvents.map((e) => normalizeSatelliteArchiveEntry(e, arch));
-            dataService.archiveSource = savedArch;
+            try {
+                normalized = rawEvents.map((e) => normalizeSatelliteArchiveEntry(e, arch));
+            } finally {
+                dataService.archiveSource = savedArch;
+            }
 
             try {
                 localStorage.setItem(storageKey, JSON.stringify(normalized));

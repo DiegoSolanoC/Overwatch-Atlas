@@ -1800,11 +1800,11 @@
       "name": "Specimen 28 is Born",
       "locationType": "earth",
       "cityDisplayName": "Congo Basin, Democratic Republic of the Congo",
-      "description": "On June 6th of 2047, Specimen 28, later known as Winston, was born. He was selected, alongside other Silverback Gorillas to join a captive colony of varied primates that was to live on the Horizon Lunar Colony to aid in research and genetic experimentation. Specimen 28 displayed rapid brain development following the procedures, far more than any of his peers, and was taken under the wing of Dr. Harold Winston, who would teach him about science and tales of humanity, nourishing the gorilla's young developing mind with an immense curiosity for the blue marble outside his habitat window.",
+      "description": "On June 6th of 2047, Specimen 28, later known as Winston, was born. He was selected, alongside other baby Silverback Gorillas to join a captive colony of varied primates that was to live on the Horizon Lunar Colony to aid in research and genetic experimentation. Specimen 28 displayed rapid brain development following the procedures, far more than any of his peers, and was taken under the wing of Dr. Harold Winston, who would teach him about science and tales of humanity, nourishing the gorilla's young developing mind with an immense curiosity for the blue marble outside his habitat window.",
       "image": "",
       "sources": [
         {
-          "text": "Overwatch Website: Winston",
+          "text": "Overwatch Website, Winston",
           "url": "https://overwatch.blizzard.com/en-us/heroes/winston/"
         }
       ],
@@ -1854,7 +1854,7 @@
       "name": "The Ironclad Guild",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Following his involvement in the STT Laboratories, Torbjörn would join many of his fellow engineers and found the Ironclad Guild, a Workshop meant for inventors to come together, and discuss their craft openly, sharing resources, techniques and tools to later develop their fields independently. Their mission was to create innovations that would improve the world, and become available to anyone who needs them, without restrictive patents.<br><br>Overtime, however, the guild would attract many politically minded members, Torbjörn himself included. During his time on Ironclad, Lindholm would work on the Titan units, meant for peacekeeping and defense, much like his previous work on the Bastion units. But following his work on these robots, he would begin to speak publicly against the growing reliance on Omnics and God AI, highlighting that robots were merely tools, and that needless complications could risk humanity's future. Lindholm wasn't alone, as many other members of the guild felt the same and advocated for lobbying against Omnica Corporation, while more moderates argued for better guardrails, Lindholm was particularly passionate about the topic, and his words would become poison for his career.<br><br>Many members of the guild would become ostracized from their fields over their views, and siding with Lindholm was seen as career suicide. Torbjörn would return home, to dedicate himself to raising his family with his now wife, Ingrid. As the world moved forward into developing Omnics, away from his warnings.",
+      "description": "Following his involvement in the SST Laboratories, Torbjörn would join many of his fellow engineers and found the Ironclad Guild, a Workshop meant for inventors to come together, and discuss their craft openly, sharing resources, techniques and tools to later develop their fields independently. Their mission was to create innovations that would improve the world, and become available to anyone who needs them, without restrictive patents.\n\nOvertime, however, the guild would attract many politically minded members, Torbjörn himself included. During his time on Ironclad, Lindholm would work on the Titan units, meant for peacekeeping and defense, much like his previous work on the Bastion units. But while working on these machines he continued to publically speak against AI, holding a hardline position agaisnt it, and he wasn't alone, as many other members of the guild felt the same and advocated for lobbying against Omnica Corporation, and advocating for right for repear, while more moderates argued for better guardrails, \n\nLindholm's adamant disdain for AI eventually became poison for his career, as he found himself unwelcomed in a majority of engineering firms that decided to push forward with AI and Omnics. Many members of the guild would become ostracized from their fields over their views, and siding with Lindholm was seen as career suicide. Torbjörn would return home, to dedicate himself to raising his family with his now wife, Ingrid. As the world moved forward into developing Omnics, away from his warnings.",
       "image": "",
       "sources": [
         {
@@ -1889,6 +1889,14 @@
           "locationName": "",
           "country": "Ironclad Guild,",
           "reasoning": "Guild of engineers advocating for right of repair and anti Omnica expansion policies"
+        }
+      ],
+      "commentary": [
+        "Beautiful Inventions",
+        "NO AI Mess",
+        {
+          "name": "Torbjörn · Ha! Let's go! I've got a few new inventions to try.",
+          "label": "New Inventions"
         }
       ]
     },

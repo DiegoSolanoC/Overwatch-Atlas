@@ -101,23 +101,141 @@ function ensureDockTrapFlanks(capRow) {
     }
 }
 
-/** Mode toggles that sit outside the trapezium, parallel to its slanted edges. */
-const DOCK_TRAP_FLANK_LEFT_IDS = ['hyperloopToggle', 'weatherEffectsToggle'];
-const DOCK_TRAP_FLANK_RIGHT_IDS = ['lightingToggle', 'autoRotateToggle'];
+/**
+ * Mode toggles outside the trapezium.
+ * Desktop: all four mode buttons on the left; Reset (+ spacer) on the right.
+ * Mobile: four mode buttons in #dockGlobeRailLeft; Reset stays with zoom controls.
+ */
+const DOCK_TRAP_FLANK_LEFT_IDS = [
+    'hyperloopToggle',
+    'weatherEffectsToggle',
+    'lightingToggle',
+    'autoRotateToggle',
+];
+
+const RESET_ICON_SRC = 'src/assets/images/Icons/Utility%20Icons/Reset%20Icon.png';
 
 /**
- * Desktop: Vehicles/Weather → left flank, Lighting/Rotation → right flank.
- * Mobile: all four live in #dockGlobeRailLeft (top mode rail under the header).
+ * Right flank: Reset (trap-adjacent) + shared strip for Zoom | Sun (remaining 3 slots).
+ * @param {HTMLElement} right
+ */
+function ensureRightFlankResetLayout(right) {
+    /* Tear down per-slider white bays if present; reunite shells into the panel. */
+    const panel = document.getElementById('zoomControlsPanel');
+    right.querySelectorAll(':scope > .dock-trap-flank__slider-bay').forEach((bay) => {
+        if (panel) {
+            while (bay.firstChild) panel.appendChild(bay.firstChild);
+        }
+        bay.remove();
+    });
+    right.querySelectorAll(':scope > .dock-trap-flank__spacer').forEach((el) => el.remove());
+
+    let strip = right.querySelector(':scope > .dock-trap-flank__slider-strip');
+    if (!strip) {
+        strip = document.createElement('div');
+        strip.className = 'dock-trap-flank__slider-strip';
+        strip.id = 'dockTrapFlankSliderStrip';
+        strip.setAttribute('aria-label', 'Zoom and lighting');
+    }
+
+    const resetBtn = document.getElementById('zoomResetBtn');
+    if (resetBtn) {
+        resetBtn.classList.add('globe-control-btn', 'dock-trap-flank__btn', 'zoom-reset-btn');
+
+        let iconWrap = resetBtn.querySelector(':scope > #zoomResetIcon, :scope > .zoom-reset-btn__icon');
+        if (!iconWrap) {
+            iconWrap = document.createElement('span');
+            iconWrap.id = 'zoomResetIcon';
+            iconWrap.className = 'zoom-reset-btn__icon';
+            iconWrap.setAttribute('aria-hidden', 'true');
+            const img = document.createElement('img');
+            img.src = RESET_ICON_SRC;
+            img.alt = '';
+            img.width = 36;
+            img.height = 36;
+            img.decoding = 'async';
+            iconWrap.appendChild(img);
+        }
+
+        let label = resetBtn.querySelector(':scope > .globe-control-btn__label, :scope > .zoom-reset-btn__label');
+        if (!label) {
+            label = document.createElement('span');
+            label.className = 'globe-control-btn__label zoom-reset-btn__label';
+            label.textContent = 'Reset';
+        } else {
+            label.textContent = 'Reset';
+        }
+
+        resetBtn.replaceChildren(iconWrap, label);
+    }
+
+    if (panel) {
+        const zoomShell = panel.querySelector('.stage-slider-shell--zoom')
+            || document.querySelector('.stage-slider-shell--zoom');
+        const sunSlot = panel.querySelector('#zoomSunSlot, .zoom-sun-slot')
+            || document.getElementById('zoomSunSlot');
+        if (zoomShell && zoomShell.parentElement !== panel) panel.appendChild(zoomShell);
+        if (sunSlot && sunSlot.parentElement !== panel) panel.appendChild(sunSlot);
+        /* Stack: Sun on top, Zoom below — each can use full strip width. */
+        if (sunSlot && zoomShell) {
+            panel.insertBefore(sunSlot, zoomShell);
+        }
+        if (panel.parentElement !== strip) strip.appendChild(panel);
+    }
+
+    /* Order: Reset (inner) → slider strip (outer, fills remaining 3 slots). */
+    if (resetBtn) {
+        if (resetBtn.parentElement !== right || right.firstElementChild !== resetBtn) {
+            right.insertBefore(resetBtn, right.firstChild);
+        }
+    }
+    if (strip.parentElement !== right) right.appendChild(strip);
+    else if (right.lastElementChild !== strip) right.appendChild(strip);
+    if (resetBtn && strip.previousElementSibling !== resetBtn) {
+        right.insertBefore(resetBtn, strip);
+    }
+}
+
+let flankReflowMqBound = false;
+
+function ensureFlankReflowMq() {
+    if (flankReflowMqBound || typeof window === 'undefined' || !window.matchMedia) return;
+    flankReflowMqBound = true;
+    const mq = window.matchMedia('(max-width: 768px)');
+    const onChange = () => reflowDockTrapFlankButtons();
+    if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onChange);
+    else if (typeof mq.addListener === 'function') mq.addListener(onChange);
+}
+
+/**
+ * Desktop: Vehicles/Weather/Lighting/Rotation → left flank;
+ * Reset (+ spacer) → right flank (same total width as left).
+ * Mobile: four mode toggles in #dockGlobeRailLeft.
  * Safe to call repeatedly after toggles/controls load.
  */
 export function reflowDockTrapFlankButtons() {
+    ensureFlankReflowMq();
     if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
         const rail = document.getElementById('dockGlobeRailLeft');
         if (!rail) return;
-        [...DOCK_TRAP_FLANK_LEFT_IDS, ...DOCK_TRAP_FLANK_RIGHT_IDS].forEach((id) => {
+        DOCK_TRAP_FLANK_LEFT_IDS.forEach((id) => {
             const el = document.getElementById(id);
             if (el && el.parentElement !== rail) rail.appendChild(el);
         });
+        /* Reset + slider panel return to #zoomControls on mobile. */
+        const zoomHost = document.getElementById('zoomControls');
+        const panel = document.getElementById('zoomControlsPanel');
+        const resetBtn = document.getElementById('zoomResetBtn');
+        if (zoomHost && panel && panel.parentElement !== zoomHost) {
+            zoomHost.appendChild(panel);
+        }
+        if (resetBtn && panel && resetBtn.parentElement !== panel) {
+            panel.appendChild(resetBtn);
+        }
+        const rightFlank = document.getElementById('dockTrapFlankRight');
+        rightFlank?.querySelectorAll(
+            ':scope > .dock-trap-flank__slider-bay, :scope > .dock-trap-flank__slider-strip, :scope > .dock-trap-flank__spacer',
+        ).forEach((el) => el.remove());
         return;
     }
     const left = document.getElementById('dockTrapFlankLeft');
@@ -128,10 +246,7 @@ export function reflowDockTrapFlankButtons() {
         const el = document.getElementById(id);
         if (el && el.parentElement !== left) left.appendChild(el);
     });
-    DOCK_TRAP_FLANK_RIGHT_IDS.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el && el.parentElement !== right) right.appendChild(el);
-    });
+    ensureRightFlankResetLayout(right);
 }
 
 function migrateLegacyBorderWrap(dock, capRow) {

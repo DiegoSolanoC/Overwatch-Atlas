@@ -7,12 +7,10 @@
  * `localStorage`, and the music-panel slider, and unlocks audio on the
  * first user gesture so playback works after the autoplay policy kicks in.
  *
- * Loaded as `<script type="module">` from `index.html`. The singleton is
- * still exposed on `window.SoundEffectsManager` because 50+ existing call
- * sites read that global (mostly inside event handlers, which run after
- * the module evaluates).
+ * IMPORTANT: `SoundEffectsService.js?v=N` (script tag) and bare imports are
+ * different module instances — always use `window.SoundEffectsManager`.
  *
- * Debug: set `window.DEBUG_SOUND_EFFECTS = true` to log play failures.
+ * Debug: set `window.DEBUG_SOUND_EFFECTS = true` to log play / load detail.
  */
 
 import { SFX_ROOT, SOUND_EFFECTS_BANK, getPlayVolumeMultiplier } from './primitives/sfxBank.js';
@@ -20,8 +18,32 @@ import { clearFadeTimers, scheduleFadeOut } from './primitives/sfxFadeOut.js';
 import { unlockAudioElement, installFirstGestureUnlock } from './primitives/sfxAudioUnlock.js';
 import { loadSavedSfxVolume, saveSfxVolume } from './primitives/sfxVolumeStorage.js';
 import { wireSfxVolumeSlider } from './primitives/sfxVolumeSlider.js';
+import { normalizeAssetPlaybackUrl } from '../atlas-shared-ui/media/normalizeAssetPlaybackUrl.js';
 
 const DEFAULT_VOLUME = 0.5;
+
+/** MEDIA_ERR_ABORTED — fired when a clip is replaced or the load is cancelled. */
+const MEDIA_ERR_ABORTED = 1;
+
+/**
+ * Root-absolute URL so loads do not depend on the document base path.
+ * @param {string} path
+ * @returns {string}
+ */
+function toSfxPlaybackUrl(path) {
+    const encoded = normalizeAssetPlaybackUrl(path);
+    if (!encoded) return '';
+    if (/^https?:\/\//i.test(encoded)) return encoded;
+    try {
+        const abs = encoded.startsWith('/') ? encoded : `/${encoded}`;
+        if (typeof window !== 'undefined' && window.location?.origin) {
+            return new URL(abs, window.location.origin).href;
+        }
+        return abs;
+    } catch {
+        return encoded;
+    }
+}
 
 class SoundEffectsService {
     constructor() {
@@ -29,6 +51,7 @@ class SoundEffectsService {
         this.sounds = {};
         this.volume = DEFAULT_VOLUME;
         this._audioUnlocked = false;
+        this._initialized = false;
         this._debug = () => !!(typeof window !== 'undefined' && window.DEBUG_SOUND_EFFECTS);
     }
 
@@ -40,19 +63,50 @@ class SoundEffectsService {
         if (firstKey) unlockAudioElement(this.sounds[firstKey]);
     }
 
-    /** Build an `HTMLAudioElement` for one clip and register it under `name`. */
-    _registerClip(name, path, { volumeMultiplier = 1, playbackRate = null } = {}) {
+    /**
+     * @param {string} name
+     * @param {string} path
+     * @param {{ volumeMultiplier?: number, playbackRate?: number|null }} [opts]
+     * @param {number} [attempt]
+     */
+    _registerClip(name, path, opts = {}, attempt = 0) {
+        const { volumeMultiplier = 1, playbackRate = null } = opts;
+        if (this.sounds[name] && attempt === 0) {
+            return this.sounds[name];
+        }
+
         try {
-            const audio = new Audio(path);
+            const url = toSfxPlaybackUrl(path);
+            const audio = new Audio();
             audio.preload = 'auto';
-            audio.volume = this.volume * volumeMultiplier;
+            audio.volume = Math.max(0, Math.min(1, this.volume * volumeMultiplier));
             if (playbackRate != null) audio.playbackRate = playbackRate;
-            audio.addEventListener('error', (e) => {
-                console.error(`Error loading sound "${name}" from "${path}":`, e);
+
+            audio.addEventListener('error', () => {
+                const code = audio.error?.code;
+                if (code === MEDIA_ERR_ABORTED) return;
+                if (attempt < 1) {
+                    window.setTimeout(() => {
+                        if (this.sounds[name] === audio) {
+                            delete this.sounds[name];
+                        }
+                        this._registerClip(name, path, opts, attempt + 1);
+                    }, 120);
+                    return;
+                }
+                console.error(
+                    `Error loading sound "${name}" from "${url}"` +
+                        (code != null ? ` (media error ${code})` : ''),
+                );
             });
-            audio.addEventListener('canplaythrough', () => {
-                console.log(`Sound "${name}" loaded successfully`);
-            });
+
+            if (this._debug()) {
+                audio.addEventListener('canplaythrough', () => {
+                    console.log(`Sound "${name}" loaded successfully`);
+                }, { once: true });
+            }
+
+            audio.src = url;
             this.sounds[name] = audio;
             return audio;
         } catch (error) {
@@ -61,8 +115,13 @@ class SoundEffectsService {
         }
     }
 
-    /** Public on-demand load (used by `loadSoundEffects.js` for late SFX). */
+    /**
+     * Public on-demand load (used by `loadSoundEffects.js` for late SFX).
+     * Never replaces an existing bank entry — that aborted in-flight loads and
+     * flooded the console after Event System boot re-registered the same keys.
+     */
     loadSound(name, path) {
+        if (this.sounds[name]) return this.sounds[name];
         return this._registerClip(name, path);
     }
 
@@ -86,7 +145,11 @@ class SoundEffectsService {
         const vol = Math.max(0, Math.min(1, this.volume)) * getPlayVolumeMultiplier(name);
 
         clearFadeTimers(audio);
-        audio.currentTime = 0;
+        try {
+            audio.currentTime = 0;
+        } catch (_) {
+            /* ignore seek before ready */
+        }
         const rate = options.playbackRate ?? audio.playbackRate;
         if (rate) audio.playbackRate = rate;
         audio.volume = vol;
@@ -105,10 +168,12 @@ class SoundEffectsService {
 
     /** Apply a master volume to every loaded clip + persist + sync gear-tick pool. */
     setVolume(volume) {
-        this.volume = volume;
-        saveSfxVolume(volume);
+        this.volume = Math.max(0, Math.min(1, Number(volume)));
+        saveSfxVolume(this.volume);
         Object.keys(this.sounds).forEach((name) => {
-            this.sounds[name].volume = name === 'filterConfirm' ? volume * 0.5 : volume;
+            const audio = this.sounds[name];
+            if (!audio) return;
+            audio.volume = Math.max(0, Math.min(1, this.volume * getPlayVolumeMultiplier(name)));
         });
         if (
             typeof window !== 'undefined' &&
@@ -121,6 +186,12 @@ class SoundEffectsService {
 
     /** Boot: build the bank, restore saved volume, wire slider, install unlock. */
     init() {
+        if (this._initialized) {
+            this.setupSoundEffectsSlider();
+            return;
+        }
+        this._initialized = true;
+
         const logAssetLoad =
             typeof window !== 'undefined' && typeof window.logAssetLoad === 'function'
                 ? window.logAssetLoad
@@ -130,7 +201,7 @@ class SoundEffectsService {
             logAssetLoad('SOUND_EFFECT', row.file);
             this._registerClip(row.name, SFX_ROOT + row.file, {
                 volumeMultiplier: row.volumeMultiplier ?? 1,
-                playbackRate: row.playbackRate ?? null
+                playbackRate: row.playbackRate ?? null,
             });
         }
 
@@ -143,12 +214,26 @@ class SoundEffectsService {
     setupSoundEffectsSlider() {
         wireSfxVolumeSlider({
             getVolume: () => this.volume,
-            setVolume: (v) => this.setVolume(v)
+            setVolume: (v) => this.setVolume(v),
         });
     }
 }
 
-if (typeof window !== 'undefined') {
-    /** Legacy global — 50+ call sites read `window.SoundEffectsManager`. */
-    window.SoundEffectsManager = new SoundEffectsService();
+function getOrCreateSoundEffectsManager() {
+    if (typeof window !== 'undefined' && window.SoundEffectsManager) {
+        return window.SoundEffectsManager;
+    }
+    const mgr = new SoundEffectsService();
+    if (typeof window !== 'undefined') {
+        window.SoundEffectsManager = mgr;
+        mgr.init();
+    }
+    return mgr;
+}
+
+/** Legacy global — 50+ call sites read `window.SoundEffectsManager`. */
+export const soundEffectsManager = getOrCreateSoundEffectsManager();
+
+if (typeof window !== 'undefined' && window.SoundEffectsManager && !window.SoundEffectsManager._initialized) {
+    window.SoundEffectsManager.init();
 }

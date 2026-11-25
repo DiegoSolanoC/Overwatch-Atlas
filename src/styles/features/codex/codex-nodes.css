@@ -908,8 +908,9 @@ body.pagination-dock-collapsed:has(#paginationDock) .codex-visual-panel {
 
 .codex-node--filter-connected:hover .codex-node__img,
 .codex-node--filter-connected:hover .codex-node__frame {
-    opacity: 0.9;
-    filter: brightness(0.94) grayscale(0.18);
+    /* Keep same filter as rest — changing brightness/grayscale on hover re-rasterizes soft. */
+    opacity: 1;
+    filter: brightness(0.88) grayscale(0.28);
 }
 
 /* Entry lifetime — masked portrait wash + frame-only tint (respects hex alpha) */
@@ -957,15 +958,12 @@ body.pagination-dock-collapsed:has(#paginationDock) .codex-visual-panel {
 }
 
 .codex-node--lifetime-before:not(.codex-node--junction):hover {
+    /* Wash only — keep img/frame filters unchanged so hover does not soft-rasterize. */
     --codex-lifetime-wash: rgba(58, 118, 255, 0.34);
-    --codex-lifetime-img-dim: brightness(0.78) grayscale(0.62);
-    --codex-lifetime-frame-tint: brightness(0.84) grayscale(0.35) sepia(0.38) hue-rotate(186deg) saturate(2.1);
 }
 
 .codex-node--lifetime-after:not(.codex-node--junction):hover {
     --codex-lifetime-wash: rgba(220, 58, 68, 0.34);
-    --codex-lifetime-img-dim: brightness(0.78) grayscale(0.62);
-    --codex-lifetime-frame-tint: brightness(0.84) grayscale(0.35) sepia(0.38) hue-rotate(330deg) saturate(2.1);
 }
 
 .codex-node--unsaved.codex-node--selected .codex-node__inner {

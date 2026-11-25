@@ -9,7 +9,7 @@ import {
     applyBioChipPortraitBackground,
 } from '../../../gallery/gallery-mode/bioChipPortraitBackground.js';
 import { loadCodexNodesForGalleryStyle } from '../../../gallery/gallery-mode/galleryConnectionCanvasCodexStyle.js';
-import { applyStandaloneFiltersLive } from '../../interface-load-unload/applyStandaloneFiltersLive.js';
+import { applyStandaloneFiltersLive } from '../../interface-load-unload/applyStandaloneFiltersLive.js?v=2';
 
 function createFilterImageForButton(filterKey, displayName, type, folder, imageService) {
     const pathItem = type === 'factions'

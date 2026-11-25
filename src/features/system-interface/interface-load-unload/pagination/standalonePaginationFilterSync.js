@@ -21,7 +21,6 @@ import {
     getDockTimelineEventsForPagination,
     isHeroBiographyDockFilterActive,
 } from '../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
-import { isDialogueTheaterDockActive } from '../../../dialogue-theater/dialogue-theater-mode/dialogueTheaterDockTimeline.js';
 
 /**
  * Same rule as dock thumbs / event list: first variant (or root) must have a
@@ -73,7 +72,6 @@ export function updateStandalonePaginationForFilters() {
     const eventsPerPage = 10;
     const currentPage = window.standaloneEventSlide?.currentPage || 1;
     const startIndex = (currentPage - 1) * eventsPerPage;
-    const bioCurated = isHeroBiographyDockFilterActive() || isDialogueTheaterDockActive();
 
     buttons.forEach((btn, index) => {
         const eventIndex = startIndex + index;
@@ -87,8 +85,8 @@ export function updateStandalonePaginationForFilters() {
             return;
         }
 
-        /* Gallery curated strip is already the matching set — never lock/dim. */
-        const isLocked = bioCurated ? false : shouldDockEventBeLocked(event, activeFilters);
+        /* Intel curated strip still respects Filters chips (lock within the set). */
+        const isLocked = shouldDockEventBeLocked(event, activeFilters);
 
         if (isLocked) {
             btn.disabled = true;

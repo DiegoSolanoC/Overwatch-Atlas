@@ -125,8 +125,20 @@ export async function returnToStoryArchiveCategoryHub() {
     storyContainer.classList.remove('active');
     detachEventsManagePanelFromStoryArchive(eventsManagePanel);
 
-    if (window.eventManager?.dataService?.setArchiveSource) {
-        window.eventManager.dataService.setArchiveSource('story');
+    /*
+     * Must restore story events (or reload) — only flipping archiveSource left
+     * the satellite array in memory labeled as story, and the next save wrote
+     * NPC/hero stubs into timelineEvents.
+     */
+    try {
+        if (window.eventManager?.switchStoryArchiveSource) {
+            await window.eventManager.switchStoryArchiveSource('story');
+        } else if (window.eventManager?.dataService?.setArchiveSource) {
+            window.eventManager.dataService.setArchiveSource('story');
+            await window.eventManager.loadEvents?.();
+        }
+    } catch (err) {
+        console.warn('returnToStoryArchiveCategoryHub: failed to restore story archive', err);
     }
 
     storyContainer.classList.add('story-viewer-container--hub');

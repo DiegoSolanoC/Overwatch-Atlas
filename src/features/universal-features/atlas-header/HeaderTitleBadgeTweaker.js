@@ -775,7 +775,7 @@ function mountControls(panel, bags, hooks) {
             : activeUiTweaksSection === 'dock'
                 ? 'Dock · Trapezium · Inward line · End shrinkage · Nub · Save writes site standard'
                 : activeUiTweaksSection === 'world'
-                    ? 'World mode · Flanks · Lighting on left wing · Zoom+Reset on right wing · Save writes site standard'
+                    ? 'World mode · Flanks · 4 buttons left · Reset + slider bay right · Save writes site standard'
                     : activeUiTweaksSection === 'theater'
                         ? 'Theater · Chatters hero select · Columns · Gap · Portrait fill · Save writes site standard'
                         : isUiTweaksRepoSaveAvailable()
@@ -1168,7 +1168,7 @@ function mountControls(panel, bags, hooks) {
         },
         {
             group: 'World mode',
-            title: 'Lighting (left) / Zoom (right)',
+            title: 'Sliders panel (lighting + zoom)',
             bag: 'world',
             defaults: SIDE_PANELS_TRAP_TWEAK_DEFAULTS,
             sanitize: sanitizeSidePanelsTrapState,

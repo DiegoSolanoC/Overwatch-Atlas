@@ -171,8 +171,8 @@
         } catch (e) {}
     })();
     </script>
-    <link rel="stylesheet" href="src/styles/app.css?v=204">
-    <link rel="stylesheet" href="src/styles/entry.css?v=33">
+    <link rel="stylesheet" href="src/styles/app.css?v=225">
+    <link rel="stylesheet" href="src/styles/entry.css?v=42">
 </head>
 <body class="app-timeline-default">
     <div
@@ -266,16 +266,17 @@
     <div id="dockGlobeRailCenter" class="dock-globe-rail dock-globe-rail--center" aria-label="Pagination and navigation"></div>
     <div id="dockGlobeRailRight" class="dock-globe-rail dock-globe-rail--right" aria-label="Map view and rotation"></div>
 
-    <!-- Stage sliders: lighting left / zoom+reset right, above the dock trap (body-level for z-index). -->
+    <!--
+      Stage sliders: one panel (lighting + zoom) matching the 4 left flank buttons.
+      Desktop Reset lives in #dockTrapFlankRight (spacer + Reset = left width).
+    -->
     <div class="zoom-controls" id="zoomControls">
-        <div class="zoom-controls__side zoom-controls__side--sun">
+        <div class="zoom-controls__panel" id="zoomControlsPanel">
             <div class="zoom-sun-slot" id="zoomSunSlot" aria-hidden="true"></div>
-        </div>
-        <div class="zoom-controls__side zoom-controls__side--zoom">
-            <button class="zoom-reset-btn" id="zoomResetBtn" title="Reset zoom and view" type="button" aria-label="Reset zoom and view">Reset</button>
             <div class="stage-slider-shell stage-slider-shell--zoom">
                 <input type="range" class="zoom-slider" id="zoomSlider" min="0" max="100" value="50" step="1" aria-label="Zoom" title="Zoom" />
             </div>
+            <button class="zoom-reset-btn" id="zoomResetBtn" title="Reset zoom and view" type="button" aria-label="Reset zoom and view">Reset</button>
             <button class="zoom-btn zoom-in-btn" id="zoomInBtn" title="Zoom In" type="button" hidden aria-hidden="true">+</button>
             <button class="zoom-btn zoom-out-btn" id="zoomOutBtn" title="Zoom Out" type="button" hidden aria-hidden="true">−</button>
         </div>
@@ -576,8 +577,10 @@
     <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=108"></script>
     
     <!-- Load services -->
-    <script type="module" src="src/features/universal-features/atlas-sound-effects/SoundEffectsService.js?v=10"></script>
-    <script type="module" src="src/features/universal-features/atlas-character-audio/CharacterVolumeService.js?v=1"></script>
+    <!-- No ?v= on these: feature modules import the bare paths; a query string
+         would create a second singleton and split slider vs playback volume. -->
+    <script type="module" src="src/features/universal-features/atlas-sound-effects/SoundEffectsService.js"></script>
+    <script type="module" src="src/features/universal-features/atlas-character-audio/CharacterVolumeService.js"></script>
     <script src="src/features/system-interface/interface-shared/slide-effects/GlitchTextOverlay.js?v=11"></script>
     <script type="module" src="src/features/system-interface/interface-info-display/eventSlideMetaDisplays.js?v=1"></script>
     <script src="src/features/system-interface/interface-shared/factionIdMatching.js?v=1"></script>
@@ -638,6 +641,6 @@
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=211"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=222"></script>
 </body>
 </html>

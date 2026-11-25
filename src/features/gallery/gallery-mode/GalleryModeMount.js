@@ -16,6 +16,10 @@ import {
     showIntelHeroesSelect,
     unmountIntelHeroesSelect,
 } from './intelHeroesSelect.js';
+import {
+    mountIntelDockFlankControls,
+    unmountIntelDockFlankControls,
+} from './intelDockFlankControls.js';
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -41,6 +45,22 @@ function hideMenuAndGlobe() {
 export async function mountGalleryMode(_options = {}) {
     initIntelEntitySwapPerfProbe();
     unmountGalleryMode();
+    /* Ensure no leftover Filters chip / dock curation from a prior Intel visit. */
+    try {
+        if (window.standaloneActiveFilters instanceof Set) {
+            window.standaloneActiveFilters.clear();
+        }
+        const fs = window.FilterService;
+        fs?.stateManager?.clear?.();
+        fs?.stateManager?.selectedFilters?.clear?.();
+        fs?.updateButtonStates?.();
+        fs?.updateFilterCounts?.();
+        if (typeof window.syncFiltersPanelTrapIcon === 'function') {
+            window.syncFiltersPanelTrapIcon();
+        }
+    } catch (_) {
+        /* Filters may not be mounted yet */
+    }
     hideMenuAndGlobe();
 
     const content = document.getElementById('content');
@@ -75,6 +95,12 @@ export async function mountGalleryMode(_options = {}) {
         console.warn('[gallery] Failed to mount intel heroes select:', err);
     }
 
+    try {
+        mountIntelDockFlankControls();
+    } catch (err) {
+        console.warn('[gallery] Failed to mount intel dock flanks:', err);
+    }
+
     /* Deep-link from Codex / Story / Archive — skip select and open the entity. */
     try {
         const { consumePendingGalleryBioFocus, focusBioEntityInOpenGallery } =
@@ -107,6 +133,7 @@ export async function unmountGalleryMode() {
         document.removeEventListener('keydown', host._heroBiographyEscape);
     }
     closeFiltersPanelForGalleryExit();
+    unmountIntelDockFlankControls();
     unmountIntelHeroesSelect();
     unmountGalleryBiographyStage();
     clearHeroBiographyDockHeroFilter();

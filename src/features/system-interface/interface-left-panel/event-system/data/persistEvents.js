@@ -19,6 +19,10 @@ import {
     migrateEntityDisplayNamesInStoryEvents,
 } from './entityDisplayNameMigration.js';
 import { migrateGeoConsistencyInStoryEvents } from './geoConsistencyMigration.js';
+import {
+    isSatelliteShapedTimelineRow,
+    KNOWN_MISFILED_STORY_NAMES,
+} from './repairMisfiledSatelliteRowsFromFile.js';
 
 /**
  * @param {import('./EventDataService.js').default} dataService
@@ -26,8 +30,38 @@ import { migrateGeoConsistencyInStoryEvents } from './geoConsistencyMigration.js
  *   - persistToRepo: default true. Load/migration paths pass false so a dirty
  *     localStorage cache cannot overwrite a just-restored git `timeline-events.json`.
  */
+/**
+ * Story bucket must never persist bio-archive stubs or known misfiled NPC names
+ * (Lanet/Nameless). Merge can stamp year/era onto stubs so shape checks alone miss them.
+ * @param {unknown[]} events
+ * @returns {boolean}
+ */
+function storyEventsLookSatelliteContaminated(events) {
+    if (!Array.isArray(events) || events.length === 0) return false;
+    for (let i = 0; i < events.length; i++) {
+        const row = events[i];
+        if (isSatelliteShapedTimelineRow(row)) return true;
+        const n = row?.name != null ? String(row.name).trim().toLowerCase() : '';
+        if (n && KNOWN_MISFILED_STORY_NAMES.has(n)) return true;
+    }
+    return false;
+}
+
 export function persistEvents(dataService, opts = {}) {
     const persistToRepo = opts.persistToRepo !== false;
+    if (
+        dataService._isMainTimelineArchive()
+        && storyEventsLookSatelliteContaminated(dataService.events)
+    ) {
+        console.warn(
+            'EventDataService: blocked story persist — satellite-shaped rows in timeline (refusing to overwrite timelineEvents / api/events)',
+        );
+        dataService.updateStatus?.(
+            'Blocked saving story timeline: satellite/Codex rows detected. Reload the page to auto-repair from timeline-events.json.',
+            'warning',
+        );
+        return;
+    }
     if (!dataService._isMainTimelineArchive()) {
         const arch = dataService.getArchiveSource();
         // Mirror repair runs from slide save (`syncMirrorsAfterSubjectSave`), not on every persist —
@@ -169,6 +203,12 @@ export function persistStoryDockTimelineFromSnapshot(dataService) {
     if (dataService._isMainTimelineArchive()) return;
     const dock = dataService.getStoryTimelineEventsForDock();
     if (!Array.isArray(dock) || dock.length === 0) return;
+    if (storyEventsLookSatelliteContaminated(dock)) {
+        console.warn(
+            'EventDataService: blocked dock-snapshot story persist — satellite-shaped rows in snapshot',
+        );
+        return;
+    }
     try {
         migrateAllStoryEventsFilterPlaces(dock);
     } catch (e) {

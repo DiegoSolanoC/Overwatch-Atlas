@@ -38,11 +38,26 @@ export function getArchiveSource(dataService) {
  */
 export function setArchiveSourceOn(dataService, sourceId) {
     const next = ALLOWED_SOURCES.has(sourceId) ? sourceId : 'story';
+    const prev = getArchiveSource(dataService);
     if (isMainTimelineArchive(dataService) && next !== 'story' && Array.isArray(dataService.events) && dataService.events.length > 0) {
         dataService._storyDockEventsSnapshot = dataService.events.slice();
     }
     dataService._storyDockEventsSnapshotFromLs = null;
     dataService.archiveSource = next;
+    /*
+     * Returning to story without an immediate loadEvents() used to leave the
+     * satellite array in `dataService.events` while archiveSource === 'story'.
+     * A later persist then wrote NPC/hero rows into timelineEvents / api/events
+     * (Lanet/Nameless over Specimen 28 / Ironclad). Restore the snapshot first.
+     */
+    if (
+        prev !== 'story'
+        && next === 'story'
+        && Array.isArray(dataService._storyDockEventsSnapshot)
+        && dataService._storyDockEventsSnapshot.length > 0
+    ) {
+        dataService.events = dataService._storyDockEventsSnapshot.slice();
+    }
 }
 
 /** @param {any} dataService */

@@ -434,9 +434,9 @@
 
         #dockGlobeRailLeft.dock-globe-rail
             > :is(#mapViewToggle, #storyViewToggle, #dialogueTheaterEntryToggle, #codexToggleViewDev).dock-trap-flank__btn:hover {
-            background: #f2f2f2 !important;
-            background-color: #f2f2f2 !important;
-            filter: brightness(0.97);
+            background: #ececec !important;
+            background-color: #ececec !important;
+            filter: none;
             transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
         }
 
@@ -568,9 +568,9 @@
 
         #dockGlobeRailLeft.dock-globe-rail
             > .globe-control-btn.dock-trap-flank__btn:not(#mapViewToggle):not(#storyViewToggle):not(#dialogueTheaterEntryToggle):not(#codexToggleViewDev):hover {
-            background: #f2f2f2 !important;
-            background-color: #f2f2f2 !important;
-            filter: brightness(0.97);
+            background: #ececec !important;
+            background-color: #ececec !important;
+            filter: none;
             transform: skewX(calc(-1 * var(--dock-trap-btn-skew))) translateY(-2px) !important;
         }
 

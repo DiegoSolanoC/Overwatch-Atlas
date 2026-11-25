@@ -20,6 +20,7 @@ import { FILES } from "../../../../../data/registry.js";
 import { repairMisfiledLifecycleEventsFromFile } from "./repairMisfiledLifecycleEvents.js";
 import { repairCorruptedTimelineTailFromFile } from "./repairCorruptedTimelineTailFromFile.js";
 import { repairStalePlaceholderRowsFromFile } from "./repairStalePlaceholderRowsFromFile.js";
+import { repairMisfiledSatelliteRowsFromFile } from "./repairMisfiledSatelliteRowsFromFile.js";
 import {
   buildTimelineBundleStamp,
   clearTimelineBundleStamp,
@@ -190,6 +191,29 @@ export async function loadMainTimelineEvents(dataService) {
         `EventDataService: Found ${localEvents.length} events in localStorage`,
         "success",
       );
+      /*
+       * Hard gate: if LS still has Lanet/Nameless (or other known NPC stubs) in the
+       * story bucket, heal from the bundled file immediately — before source pick —
+       * so a stale equal-length cache cannot keep showing them in the dock.
+       */
+      if (fileEvents && fileEvents.length > 0 && Array.isArray(localEvents)) {
+        const healedEarly = repairMisfiledSatelliteRowsFromFile(
+          localEvents,
+          fileEvents,
+        );
+        if (healedEarly !== localEvents) {
+          localEvents = healedEarly;
+          try {
+            localStorage.setItem("timelineEvents", JSON.stringify(localEvents));
+          } catch (_) {
+            /* ignore */
+          }
+          dataService.updateStatus(
+            "EventDataService: Purged Lanet/Nameless (misfiled NPC stubs) from timeline cache using timeline-events.json",
+            "warning",
+          );
+        }
+      }
     } catch (error) {
       console.error("EventDataService: Error parsing saved events:", error);
       dataService.updateStatus(
@@ -313,9 +337,37 @@ export async function loadMainTimelineEvents(dataService) {
       );
       dataService.saveEvents({ persistToRepo: false });
     }
+
+    const satelliteRepaired = repairMisfiledSatelliteRowsFromFile(
+      dataService.events,
+      fileEvents,
+    );
+    if (satelliteRepaired !== dataService.events) {
+      dataService.events = satelliteRepaired;
+      dataService.updateStatus(
+        "EventDataService: Restored story rows overwritten by satellite/Codex stubs (e.g. Lanet/Nameless)",
+        "warning",
+      );
+      /*
+       * Write LS directly — persistEvents refuses contaminated payloads, and a
+       * prior blocked save left Lanet/Nameless sticky across restarts.
+       */
+      try {
+        localStorage.setItem(
+          "timelineEvents",
+          JSON.stringify(dataService.events),
+        );
+      } catch (_) {
+        /* ignore quota */
+      }
+      dataService._storyDockEventsSnapshot = dataService.events.slice();
+      dataService._storyDockEventsSnapshotFromLs = null;
+      dataService.saveEvents({ persistToRepo: false });
+    }
   }
 
-  // Merge file metadata when counts match.
+  // Merge file metadata when counts match (after satellite heal so we never
+  // stamp Specimen's year onto a lingering Lanet/Nameless stub).
   if (fileEvents && fileEvents.length === dataService.events.length) {
     dataService.mergeTimelineMetadataFromFileEvents(fileEvents);
   }

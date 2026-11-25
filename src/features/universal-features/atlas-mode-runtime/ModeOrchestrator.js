@@ -35,11 +35,11 @@ import {
     killUniversalFeatures as killUniversalFeaturesImpl
 } from './universalFeaturesLifecycle.js';
 import { enterMode, exitMode } from './modeLifecycleCeremony.js?v=2';
-import { runGlobeMode, killGlobeMode } from '../../world/worldview-mode-entry/WorldviewModeLifecycle.js?v=2';
+import { runGlobeMode, killGlobeMode } from '../../world/worldview-mode-entry/WorldviewModeLifecycle.js?v=3';
 import {
     mountGalleryMode,
     unmountGalleryMode,
-} from '../../gallery/gallery-mode/GalleryModeMount.js';
+} from '../../gallery/gallery-mode/GalleryModeMount.js?v=3';
 import {
     mountGalleryHubMode,
     unmountGalleryHubMode,

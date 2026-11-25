@@ -62,9 +62,9 @@ import { runCollapseMultiToSingleRoot } from './variants/collapseMultiToSingleRo
 import { getDockTimelineEventsForPagination } from '../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import { syncStandaloneSlideEventContext } from '../../../system-interface/interface-shared/syncStandaloneSlideEventContext.js';
 import { runSetupStandalonePagination } from './pagination/setupStandalonePagination.js';
-import { runWireNumberButtons } from './pagination/wireNumberButtons.js';
+import { runWireNumberButtons } from './pagination/wireNumberButtons.js?v=2';
 import { runAnimatePageTurn } from './pagination/animatePageTurn.js';
-import { runUpdateSingleButtonContent } from './pagination/updateSingleButtonContent.js';
+import { runUpdateSingleButtonContent } from './pagination/updateSingleButtonContent.js?v=2';
 // Image overlay
 import { runToggleImageOverlay } from './image-overlay/toggleImageOverlay.js';
 import { runShowImageOverlay } from './image-overlay/showImageOverlay.js';

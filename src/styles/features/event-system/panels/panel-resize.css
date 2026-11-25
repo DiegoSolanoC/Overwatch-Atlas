@@ -450,7 +450,7 @@
     --trap-btn-hover-scale: 1.06;
     background: rgba(55, 65, 80, 0.92);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-    filter: saturate(0.35) brightness(0.92);
+    filter: none;
 }
 
 .event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-close,

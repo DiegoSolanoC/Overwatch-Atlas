@@ -305,7 +305,7 @@ body.color-palette-nulled .map-2d-lite__pattern-wave {
 .map-2d-lite__marker:not(:disabled):hover,
 .map-2d-lite__marker:not(:disabled).map-2d-lite__marker--synthetic-hover {
     transform: translate(-50%, -50%) scale(1.3);
-    filter: brightness(1.14);
+    filter: none;
     box-shadow: 0 0 22px 6px rgba(var(--map2d-fill-rgb, 255, 102, 0), 0.5);
 }
 
@@ -488,34 +488,44 @@ body.color-palette-nulled .map-2d-lite__pattern-wave {
 /* Map-mode screen-space callouts — readable at cover zoom; clamp to viewport. */
 .map-hover-callout--map {
     z-index: 20;
+    /* Height of preview; width is 3∶2 like dock thumbs */
     --callout-thumb-size: 88px;
-    --callout-stack-thumb-size: 68px;
+    --callout-thumb-width: calc(var(--callout-thumb-size) * 3 / 2);
+    --callout-stack-thumb-size: 88px;
     --callout-num-size: 13px;
-    --callout-title-size: 17px;
-    --callout-stack-title-size: 15px;
+    --callout-title-size: 22px;
+    --callout-stack-title-size: 18px;
     --callout-sub-size: 13px;
+    --callout-year-size: 16px;
     --callout-hint-size: 12px;
     --callout-stack-header-size: 12px;
     --callout-stack-footer-size: 11px;
     --callout-thumb-radius: 8px;
     --callout-inner-pad: 12px 14px 12px 12px;
-    --callout-line-width: 3.5px;
+    --callout-line-width: 5px;
+    /* Tiny left clear so the nested thumb doesn’t sit on the rim */
+    --callout-slant-inset-left: 5px;
+    --callout-slant-inset-right: calc(var(--callout-thumb-size) * 0.18 + 10px);
 }
 
 .map-hover-callout--globe {
     z-index: 25;
     --callout-thumb-size: 140px;
-    --callout-stack-thumb-size: 112px;
+    --callout-thumb-width: calc(var(--callout-thumb-size) * 3 / 2);
+    --callout-stack-thumb-size: 140px;
     --callout-num-size: 17px;
-    --callout-title-size: 26px;
-    --callout-stack-title-size: 22px;
+    --callout-title-size: 32px;
+    --callout-stack-title-size: 30px;
     --callout-sub-size: 16px;
+    --callout-year-size: 20px;
     --callout-hint-size: 14px;
     --callout-stack-header-size: 13px;
     --callout-stack-footer-size: 12px;
     --callout-thumb-radius: 10px;
     --callout-inner-pad: 14px 16px 14px 14px;
-    --callout-line-width: 5px;
+    --callout-line-width: 7px;
+    --callout-slant-inset-left: 6px;
+    --callout-slant-inset-right: calc(var(--callout-thumb-size) * 0.18 + 12px);
 }
 
 .map-hover-callout__svg {
@@ -527,8 +537,9 @@ body.color-palette-nulled .map-2d-lite__pattern-wave {
 }
 
 .map-hover-callout__line {
-    stroke-width: 3px;
-    stroke-linecap: butt;
+    stroke: rgba(255, 255, 255, 0.96);
+    stroke-width: 4.5px;
+    stroke-linecap: round;
     stroke-linejoin: round;
 }
 
@@ -570,35 +581,100 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout__panel {
-    min-width: 160px;
-    max-width: 280px;
+    /* Dock-thumb chrome: parallelogram shell + white top/bottom rims */
+    --callout-badge-skew: -11deg;
+    --callout-badge-skew-cancel: 11deg;
+    --callout-badge-rim: 11px;
+    /*
+     * Upright content needs horizontal inset or the skewed overflow:hidden
+     * chops the left thumb / right badges. ~tan(11°) × thumb height.
+     */
+    --callout-slant-inset-left: 5px;
+    --callout-slant-inset-right: calc(var(--callout-thumb-size, 52px) * 0.18 + 10px);
+    min-width: 200px;
+    max-width: 340px;
     padding: 0;
-    border: 2px solid;
-    border-radius: 6px;
+    border-style: solid;
+    border-width: var(--callout-badge-rim) 0;
+    border-color: rgba(255, 255, 255, 0.96);
+    border-radius: 12px;
     font-family: 'Segoe UI', system-ui, sans-serif;
     pointer-events: auto;
     cursor: default;
     background-clip: padding-box;
     overflow: hidden;
-    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    transform: skewX(var(--callout-badge-skew));
+    transform-origin: center center;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease, filter 0.15s ease;
     isolation: isolate;
+    outline: none;
+}
+
+/* Counter-skew so thumb / text / filter icons stay upright — no bleed (bleed was clipped). */
+.map-hover-callout__panel > .map-hover-callout__panel-inner,
+.map-hover-callout__panel > .map-hover-callout__stack-row {
+    transform: skewX(11deg);
+    transform-origin: center center;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/*
+ * Solo hover/focus highlight on the skewed panel (parallelogram).
+ * Outlines / inset shadows on the counter-skewed row read as upright rectangles.
+ */
+.map-hover-callout__panel:has(> .map-hover-callout__stack-row--solo:hover),
+.map-hover-callout__panel:has(> .map-hover-callout__stack-row--solo:focus-visible) {
+    /* No filter:brightness — flashes blur on skewed panels */
+    border-color: #ffffff;
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.55),
+        0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
 .map-hover-callout__stack-row:hover,
 .map-hover-callout__stack-row:focus-visible {
-    filter: brightness(1.08);
-    background: rgba(255, 255, 255, 0.06);
+    background: transparent;
     outline: none;
+    box-shadow: none;
 }
 
 .map-hover-callout__stack-row:focus-visible {
-    outline: 2px solid var(--callout-border, #2196f3);
-    outline-offset: -2px;
+    outline: none;
 }
 
 .map-hover-callout__stack-row--solo:hover,
 .map-hover-callout__stack-row--solo:focus-visible {
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    background: transparent;
+    box-shadow: none;
+}
+
+/*
+ * Stack row hover/current highlight: counter-skew the frame so it reads as the
+ * same parallelogram as the panel (row itself is upright via +11deg).
+ */
+.map-hover-callout__stack-row:not(.map-hover-callout__stack-row--solo):hover::before,
+.map-hover-callout__stack-row:not(.map-hover-callout__stack-row--solo):focus-visible::before,
+.map-hover-callout__stack-row--current:not(.map-hover-callout__stack-row--solo)::before {
+    content: '';
+    position: absolute;
+    inset: 4px 6px;
+    z-index: 2;
+    pointer-events: none;
+    transform: skewX(-11deg);
+    transform-origin: center center;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+}
+
+.map-hover-callout__stack-row--current:not(.map-hover-callout__stack-row--solo)::before {
+    border-color: var(--callout-border, #2196f3);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--callout-border, #2196f3) 45%, transparent);
+    background: color-mix(in srgb, var(--callout-border, #2196f3) 10%, transparent);
 }
 
 .map-hover-callout__panel--stack {
@@ -626,6 +702,7 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout__stack-row {
+    position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -634,27 +711,34 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout__stack-row--current {
-    box-shadow: inset 3px 0 0 var(--callout-border, #2196f3);
+    box-shadow: none;
 }
 
 .map-hover-callout__panel-inner--compact {
     min-height: var(--callout-stack-thumb-size, 40px);
     --callout-thumb-size: var(--callout-stack-thumb-size, 40px);
-    padding: var(--callout-inner-pad, 5px 8px 5px 6px);
+    --callout-slant-inset-left: 4px;
+    --callout-slant-inset-right: calc(var(--callout-thumb-size) * 0.18 + 8px);
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px var(--callout-slant-inset-right, 14px) 12px var(--callout-slant-inset-left, 4px);
 }
 
-.map-hover-callout__thumb--compact {
-    flex: 0 0 var(--callout-stack-thumb-size, 40px);
-    width: var(--callout-stack-thumb-size, 40px);
-    height: var(--callout-stack-thumb-size, 40px);
-}
+/* Compact size overridden with the 3∶2 thumb rules below. */
 
 .map-hover-callout__panel-inner--compact .map-hover-callout__body {
     padding: 2px 0;
+    gap: 5px;
 }
 
 .map-hover-callout__panel-inner--compact .map-hover-callout__title {
     font-size: var(--callout-stack-title-size, 10px);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.15;
+    max-height: calc(1.15em * 2);
 }
 
 .map-hover-callout__panel-inner--compact .map-hover-callout__num-year {
@@ -679,10 +763,11 @@ button.map-hover-callout__stack-row {
 .map-hover-callout__panel-inner {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    gap: 18px;
     min-height: var(--callout-thumb-size, 52px);
-    padding: var(--callout-inner-pad, 6px 8px 6px 6px);
+    /* Flush preview to the left slant; pad only the right for text/icons. */
+    padding: 8px var(--callout-slant-inset-right, 18px) 8px var(--callout-slant-inset-left, 5px);
     box-sizing: border-box;
 }
 
@@ -702,29 +787,67 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout__panel-inner--has-badges {
-    gap: 8px;
+    gap: 16px;
 }
 
 .map-hover-callout__panel-inner--has-badges.map-hover-callout__panel-inner--compact {
-    gap: 6px;
+    gap: 14px;
 }
 
+
+/* Event art — dock-thumb recipe (3∶2 parallelogram) nested in the callout */
 .map-hover-callout__thumb {
-    flex: 0 0 var(--callout-thumb-size, 52px);
-    width: var(--callout-thumb-size, 52px);
+    --callout-thumb-skew: -11deg;
+    --callout-thumb-rim: 6px;
+    --callout-thumb-width: calc(var(--callout-thumb-size, 52px) * 3 / 2);
+    position: relative;
+    flex: 0 0 var(--callout-thumb-width);
+    width: var(--callout-thumb-width);
     height: var(--callout-thumb-size, 52px);
-    align-self: flex-start;
+    align-self: center;
+    box-sizing: border-box;
+    padding: 0;
     overflow: hidden;
-    border-radius: var(--callout-thumb-radius, 6px);
-    background: rgba(0, 0, 0, 0.45);
+    border-style: solid;
+    border-width: var(--callout-thumb-rim) 0;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-radius: var(--callout-thumb-radius, 8px);
+    background: transparent;
     flex-shrink: 0;
+    transform: skewX(var(--callout-thumb-skew));
+    transform-origin: center center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.42);
+}
+
+.map-hover-callout__thumb--compact {
+    --callout-thumb-rim: 3px;
+    --callout-thumb-width: calc(var(--callout-stack-thumb-size, 40px) * 3 / 2);
+    width: var(--callout-thumb-width);
+    height: var(--callout-stack-thumb-size, 40px);
+    flex-basis: var(--callout-thumb-width);
+    border-radius: 6px;
+}
+
+.map-hover-callout__thumb-visual {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 124%;
+    height: 100%;
+    margin-left: -12%;
+    overflow: hidden;
+    transform: skewX(11deg) translateY(-2px);
+    transform-origin: center center;
+    background: #000;
 }
 
 .map-hover-callout__thumb-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
     display: block;
+    border-radius: 0;
 }
 
 .map-hover-callout__body {
@@ -733,14 +856,87 @@ button.map-hover-callout__stack-row {
     padding: 2px 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 6px;
+}
+
+/* Title + year left-stacked (same format); flag top-right; relevancies under */
+.map-hover-callout__headline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.map-hover-callout__flag-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    line-height: 0;
+    margin: 0;
+}
+
+.map-hover-callout__headline .map-hover-callout__title {
+    display: block;
+    width: 100%;
+    padding: 0 3.25em 0 0;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.map-hover-callout__headline .map-hover-callout__num-year {
+    position: static;
+    margin: 0;
+    max-width: 100%;
     justify-content: flex-start;
     text-align: left;
 }
 
+.map-hover-callout__relevancies {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    width: 100%;
+}
+
+.map-hover-callout__relevancies .map-hover-callout__variant,
+.map-hover-callout__relevancies .map-hover-callout__meta {
+    text-align: left;
+}
+
+.map-hover-callout__relevancies .map-hover-callout__badges {
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+/* Heroes / NPCs / factions — one horizontal row under the title stack */
+.map-hover-callout__relevancies .preview-badge-icons {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--preview-badge-gap, 5px);
+}
+
+.map-hover-callout__relevancies .preview-badge-icons__row {
+    align-items: center;
+}
+
 .map-hover-callout__panel-wrap--waiting .map-hover-callout__panel {
     opacity: 0;
-    transform: scaleY(0);
+    transform: skewX(var(--callout-badge-skew, -11deg)) scaleY(0);
 }
 
 .map-hover-callout__panel--enter {
@@ -750,11 +946,11 @@ button.map-hover-callout__stack-row {
 @keyframes map-hover-callout-panel-in {
     from {
         opacity: 0;
-        transform: scaleY(0);
+        transform: skewX(var(--callout-badge-skew, -11deg)) scaleY(0);
     }
     to {
         opacity: 1;
-        transform: scaleY(1);
+        transform: skewX(var(--callout-badge-skew, -11deg)) scaleY(1);
     }
 }
 
@@ -779,6 +975,17 @@ button.map-hover-callout__stack-row {
     transform-origin: top right;
 }
 
+/* Straight side attaches — panel vertically centered on the marker */
+.map-hover-callout__panel-wrap--anchor-ml {
+    transform: translate(0, -50%);
+    transform-origin: center left;
+}
+
+.map-hover-callout__panel-wrap--anchor-mr {
+    transform: translate(-100%, -50%);
+    transform-origin: center right;
+}
+
 .map-hover-callout__panel-wrap--anchor-bl .map-hover-callout__panel {
     transform-origin: bottom left;
 }
@@ -795,15 +1002,30 @@ button.map-hover-callout__stack-row {
     transform-origin: top right;
 }
 
+.map-hover-callout__panel-wrap--anchor-ml .map-hover-callout__panel {
+    transform-origin: center left;
+}
+
+.map-hover-callout__panel-wrap--anchor-mr .map-hover-callout__panel {
+    transform-origin: center right;
+}
+
 .map-hover-callout--globe .map-hover-callout__panel {
     min-width: 420px;
     max-width: 580px;
-    border-width: 3px;
+    /* Keep wide top/bottom rims — do not flatten to a thin 4-side border. */
+    border-width: var(--callout-badge-rim, 11px) 0;
     border-radius: 8px;
 }
 
 .map-hover-callout--globe .map-hover-callout__panel--stack {
     max-width: 600px;
+}
+
+.map-hover-callout--globe .map-hover-callout__panel--stack .map-hover-callout__panel-inner {
+    gap: 18px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .map-hover-callout--globe .map-hover-callout__stack-header {
@@ -817,15 +1039,14 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout--globe .map-hover-callout__title {
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .map-hover-callout--globe .map-hover-callout__num-year {
-    margin-bottom: 4px;
+    margin-bottom: 0;
 }
 
-.map-hover-callout--globe .map-hover-callout__meta,
-.map-hover-callout--globe .map-hover-callout__era {
+.map-hover-callout--globe .map-hover-callout__meta {
     margin-top: 8px;
 }
 
@@ -838,15 +1059,17 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout--globe .map-hover-callout__line {
-    stroke-width: var(--callout-line-width, 3px);
+    stroke: rgba(255, 255, 255, 0.97);
+    stroke-width: var(--callout-line-width, 7px);
 }
 
 .map-hover-callout__num-year {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-start;
     gap: 0.35em 0.45em;
-    margin-bottom: 2px;
+    margin-bottom: 0;
     line-height: 1.2;
 }
 
@@ -858,20 +1081,20 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout__num-year-flag-img {
-    width: 18px;
+    width: 28px;
     height: auto;
-    border-radius: 2px;
+    border-radius: 3px;
     display: block;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 
 .map-hover-callout--globe .map-hover-callout__num-year-flag-img {
-    width: 28px;
-    border-radius: 3px;
+    width: 42px;
+    border-radius: 4px;
 }
 
 .map-hover-callout__panel-inner--compact .map-hover-callout__num-year-flag-img {
-    width: 14px;
+    width: 22px;
 }
 
 .map-hover-callout__num-year-sep {
@@ -886,15 +1109,23 @@ button.map-hover-callout__stack-row {
 }
 
 .map-hover-callout__year {
-    font-size: var(--callout-sub-size, 9px);
-    font-weight: 500;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: var(--callout-year-size, var(--callout-sub-size, 12px));
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
 }
 
 .map-hover-callout__title {
-    font-size: var(--callout-title-size, 11px);
-    font-weight: 700;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: var(--callout-title-size, 14px);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: #f5f8ff;
-    line-height: 1.25;
+    line-height: 1.1;
+    text-align: left;
 }
 
 .map-hover-callout__variant {

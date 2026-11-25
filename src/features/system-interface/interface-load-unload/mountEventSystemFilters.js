@@ -8,7 +8,7 @@
 
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import { clearGalleryFilterSelectionIfOpen } from '../../gallery/gallery-mode/galleryFiltersBridge.js';
-import { applyStandaloneFiltersLive } from './applyStandaloneFiltersLive.js';
+import { applyStandaloneFiltersLive } from './applyStandaloneFiltersLive.js?v=2';
 
 /**
  * Replace `#clearFiltersBtn` with a cloned copy wired for live clear.

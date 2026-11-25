@@ -123,11 +123,11 @@
     }
 
     body:has(#paginationDock) .page-btn.page-btn--thumb-rail:hover:not(:disabled) {
-        transform: skewX(var(--thumb-skew)) scale(1.06);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
     }
 
     body:has(#paginationDock) .page-btn.page-btn--thumb-rail:active:not(:disabled) {
-        transform: skewX(var(--thumb-skew)) scale(0.97);
+        transform: skewX(var(--thumb-skew));
     }
 
     body:has(#paginationDock) .page-btn.page-btn--thumb-rail:disabled {
@@ -937,7 +937,7 @@ button.event-number-btn.locked,
         height: 100%;
         margin-left: -12%;
         overflow: hidden;
-        transform: skewX(11deg) scale(1.06);
+        transform: skewX(11deg) translateY(-2px);
         transform-origin: center center;
         opacity: 1;
         visibility: visible;
@@ -1219,7 +1219,7 @@ button.event-number-btn.locked,
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn:hover:not(:disabled),
     .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
-        transform: skewX(var(--thumb-skew)) scale(1.045);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
         border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) !important;
     }
@@ -1228,7 +1228,7 @@ button.event-number-btn.locked,
         .event-number-btn.event-number-btn--unfinished:hover:not(:disabled),
     .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.event-number-btn--unfinished.number-btn-marker-hover:not(:disabled):not(.locked) {
-        transform: skewX(var(--thumb-skew)) scale(1.045);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         border-color: rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) !important;
         box-shadow:
             0 10px 26px rgba(0, 0, 0, 0.55),
@@ -1237,7 +1237,7 @@ button.event-number-btn.locked,
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn:active:not(:disabled) {
-        transform: skewX(var(--thumb-skew)) scale(0.98);
+        transform: skewX(var(--thumb-skew));
     }
 
     /* Keep parallelogram when filtered/locked (global rule uses transform: none) */
@@ -1260,7 +1260,7 @@ button.event-number-btn.locked,
         .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
         background: transparent !important;
-        transform: skewX(var(--thumb-skew)) scale(1.045);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55) !important;
         border-color: rgba(100, 181, 246, 0.92) rgba(144, 202, 249, 0.95) rgba(100, 181, 246, 0.92) rgba(144, 202, 249, 0.95) !important;
     }
@@ -1270,7 +1270,7 @@ button.event-number-btn.locked,
         .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
         background: transparent !important;
-        transform: skewX(var(--thumb-skew)) scale(1.045);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55) !important;
         border-color: rgba(255, 255, 255, 0.92) rgba(255, 255, 255, 0.98) rgba(255, 255, 255, 0.92) rgba(255, 255, 255, 0.98) !important;
     }
@@ -1280,7 +1280,7 @@ button.event-number-btn.locked,
         .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
         background: transparent !important;
-        transform: skewX(var(--thumb-skew)) scale(1.045);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55) !important;
         border-color: rgba(255, 202, 40, 0.9) rgba(255, 213, 79, 0.95) rgba(255, 202, 40, 0.9) rgba(255, 213, 79, 0.95) !important;
     }
@@ -1302,7 +1302,7 @@ button.event-number-btn.locked,
         .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.event-number-btn--unfinished.number-btn-marker-hover:not(:disabled):not(.locked) {
         background: transparent !important;
-        transform: skewX(var(--thumb-skew)) scale(1.045);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         border-color: rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) !important;
         box-shadow:
             0 10px 26px rgba(0, 0, 0, 0.55),
@@ -1405,7 +1405,7 @@ button.event-number-btn.locked,
     body.pagination-dock-collapsed
         .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
-        transform: skewX(var(--thumb-skew)) scale(1.06);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         background: #f3f7ff !important;
         border-color: rgba(255, 186, 80, 0.95) !important;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
@@ -1445,7 +1445,7 @@ button.event-number-btn.locked,
         .event-number-buttons.event-number-buttons--thumbs-desktop
         .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
         background: #f3f3f3 !important;
-        transform: skewX(var(--thumb-skew)) scale(1.06);
+        transform: skewX(var(--thumb-skew)) translateY(-2px);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
     }
 }

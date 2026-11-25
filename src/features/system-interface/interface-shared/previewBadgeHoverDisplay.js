@@ -343,8 +343,32 @@ export function appendPreviewBadgeIconRow(parentEl, icons, options = {}) {
     const row = document.createElement('div');
     row.className = 'preview-badge-icons';
     if (options.compact) row.classList.add('preview-badge-icons--compact');
+    if (options.singleRow) row.classList.add('preview-badge-icons--single-row');
 
-    if (Array.isArray(icons.rows)) {
+    /* Flatten heroes / NPCs / factions into one strip — one size for every icon. */
+    if (options.singleRow) {
+        const group = document.createElement('div');
+        group.className = 'preview-badge-icons__row preview-badge-icons__row--uniform';
+        const push = (entry) => {
+            group.appendChild(createPreviewBadgeImg(entry, 'support', iconTitle(entry)));
+        };
+        if (Array.isArray(icons.rows)) {
+            icons.rows.forEach((rowDef) => {
+                if (!rowDef?.items?.length) return;
+                rowDef.items.forEach(push);
+            });
+        } else {
+            const mainList = Array.isArray(icons.main)
+                ? icons.main
+                : icons.main
+                    ? [icons.main]
+                    : [];
+            mainList.forEach(push);
+            (icons.secondary || []).forEach(push);
+            (icons.factions || []).forEach(push);
+        }
+        if (group.childElementCount) row.appendChild(group);
+    } else if (Array.isArray(icons.rows)) {
         icons.rows.forEach((rowDef) => {
             if (!rowDef?.items?.length) return;
             const group = document.createElement('div');

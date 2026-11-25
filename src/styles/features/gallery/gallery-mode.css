@@ -1163,6 +1163,66 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
 }
 
 /*
+ * Intel dock trap flanks — Back (left) + Phrase (right), World chip language.
+ * Hide World Vehicles/Weather/Lighting/Rotation + Reset/sliders while Intel is open.
+ */
+@media (min-width: 769px) {
+    body:has(#paginationDock):has(#atlasGalleryHost) .dock-trap-flank {
+        --dock-flank-btn-count: 1;
+        width: var(--dock-flank-btn-w);
+    }
+
+    body:has(#paginationDock):has(#atlasGalleryHost) .dock-trap-flank--left {
+        justify-content: flex-end;
+    }
+
+    body:has(#paginationDock):has(#atlasGalleryHost) .dock-trap-flank--right {
+        justify-content: flex-start;
+    }
+
+    body:has(#paginationDock):has(#atlasGalleryHost)
+        .dock-trap-flank--left
+        > .globe-control-btn:not(#intelDockBackBtn),
+    body:has(#paginationDock):has(#atlasGalleryHost)
+        .dock-trap-flank--right
+        > .globe-control-btn:not(#intelDockPhraseBtn),
+    body:has(#paginationDock):has(#atlasGalleryHost)
+        .dock-trap-flank--right
+        > .dock-trap-flank__slider-strip {
+        display: none !important;
+    }
+
+    body:has(#paginationDock):has(#atlasGalleryHost) #intelDockBackBtn.dock-trap-flank__btn,
+    body:has(#paginationDock):has(#atlasGalleryHost) #intelDockPhraseBtn.dock-trap-flank__btn {
+        display: inline-flex !important;
+        flex: 0 0 var(--dock-flank-btn-w) !important;
+        width: var(--dock-flank-btn-w) !important;
+        max-width: var(--dock-flank-btn-w) !important;
+        font-size: var(--world-flank-font, 18px) !important;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        min-height: 0 !important;
+        padding: 0 14px !important;
+        gap: 10px !important;
+    }
+
+    body:has(#paginationDock):has(#atlasGalleryHost) #intelDockBackBtn.dock-trap-flank__btn.toggle-off,
+    body:has(#paginationDock):has(#atlasGalleryHost) #intelDockPhraseBtn.dock-trap-flank__btn.toggle-off,
+    body:has(#paginationDock):has(#atlasGalleryHost) #intelDockBackBtn.dock-trap-flank__btn:disabled,
+    body:has(#paginationDock):has(#atlasGalleryHost) #intelDockPhraseBtn.dock-trap-flank__btn:disabled {
+        opacity: 0.45;
+        cursor: default;
+        filter: grayscale(0.35);
+    }
+}
+
+/* Legacy top-left ← Intel chip — replaced by dock Back flank */
+.intel-heroes-select__back {
+    display: none !important;
+}
+
+/*
  * Gallery dock rail: hide unrelated mode toggles.
  * Keep Select File (legacy) + mobile panel chips (Intel / Connections / Visuals).
  */
@@ -3086,10 +3146,6 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     display: none !important;
 }
 
-.gallery-mode--heroes-select .intel-heroes-select__back {
-    display: none !important;
-}
-
 .intel-heroes-select.intel-entity-select {
     --intel-entity-card: 96px; /* fallback until Heroes card is measured */
     /*
@@ -3295,28 +3351,3 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     white-space: nowrap;
 }
 
-.intel-heroes-select__back {
-    position: fixed;
-    top: calc(var(--header-height, 72px) + 12px);
-    left: max(16px, env(safe-area-inset-left, 0px) + 12px);
-    z-index: 80;
-    appearance: none;
-    margin: 0;
-    padding: 10px 16px;
-    border: 1px solid rgba(var(--accent-primary-rgb, 33, 150, 243), 0.45);
-    border-radius: 8px;
-    background: color-mix(in srgb, var(--bg-secondary, #0a1929) 88%, #000 12%);
-    color: rgba(255, 255, 255, 0.95);
-    font-family: var(--font-title, "BigNoodleToo", Impact, sans-serif);
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-}
-
-.intel-heroes-select__back:hover {
-    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.7);
-    background: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.22);
-}

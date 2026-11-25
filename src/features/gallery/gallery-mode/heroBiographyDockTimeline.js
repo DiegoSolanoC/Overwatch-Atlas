@@ -239,9 +239,10 @@ export function resolveDockTimelineEventsForDisplay(baseEvents) {
     }
 
     /*
-     * Country chips stay multi-select in Intel and further filter a curated dock
-     * (AND with the entity). Country-only picks use normal lock-out via
-     * shouldDockEventBeLocked / standaloneActiveFilters instead.
+     * Country chips stay multi-select in Intel and further shrink a curated dock
+     * (AND/OR with the entity). Other Filters chips lock thumbs within the
+     * resulting strip via shouldDockEventBeLocked / standaloneActiveFilters.
+     * With no entity selected, the full timeline is shown and chips lock as usual.
      */
     if (entityCurated && isHeroBiographyModeActive()) {
         const countryKeys = getSelectedCountryFilterKeys();

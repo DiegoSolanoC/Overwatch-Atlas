@@ -13,8 +13,21 @@ import {
     resolveBioManifestChipIdentity,
 } from './loadBioFilterManifest.js';
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
-import { refreshHeroBiographyDockPagination } from './heroBiographyDockTimeline.js';
+import {
+    isHeroBiographyDockFilterActive,
+    refreshHeroBiographyDockPagination,
+} from './heroBiographyDockTimeline.js';
+import { updateStandalonePaginationForFilters } from '../../system-interface/interface-load-unload/pagination/standalonePaginationFilterSync.js';
 import { showIntelEntityView } from './intelHeroesSelect.js';
+
+/** Country chips: rebuild only when an entity strip is curated; else shared lock. */
+function syncIntelDockAfterCountryChip() {
+    if (isHeroBiographyDockFilterActive()) {
+        refreshHeroBiographyDockPagination();
+        return;
+    }
+    updateStandalonePaginationForFilters();
+}
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -126,7 +139,7 @@ export function applyExclusiveGallerySelection(filterKey, displayName, type) {
             stateManager.add(filterKey);
         }
         syncStandaloneFromPending(stateManager);
-        refreshHeroBiographyDockPagination();
+        syncIntelDockAfterCountryChip();
         scheduleGalleryFilterCountRefresh();
         return;
     }
@@ -177,7 +190,7 @@ export function applyGalleryExclusiveFilterPick({
             filterBtn.setAttribute('aria-pressed', 'true');
         }
         syncStandaloneFromPending(stateManager);
-        refreshHeroBiographyDockPagination();
+        syncIntelDockAfterCountryChip();
         scheduleGalleryFilterCountRefresh();
         return true;
     }
@@ -251,5 +264,15 @@ export function closeFiltersPanelForGalleryExit() {
     if (fs?.stateManager) {
         fs.stateManager.clear?.();
         fs.stateManager.selectedFilters?.clear?.();
+    }
+    /* Drop sticky chip chrome so main menu does not keep a selected hero. */
+    try {
+        fs?.updateButtonStates?.();
+        fs?.updateFilterCounts?.();
+    } catch (_) {
+        /* Filters may already be torn down */
+    }
+    if (typeof window.syncFiltersPanelTrapIcon === 'function') {
+        window.syncFiltersPanelTrapIcon();
     }
 }

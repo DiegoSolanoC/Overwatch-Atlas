@@ -7,7 +7,7 @@ const HOVER_CALLOUT_RENDER_ORDER = 1000;
 const HOVER_CALLOUT_LINE_RENDER_ORDER = 999;
 /** Gap between marker and label anchor (screen px). */
 const CALLOUT_SCREEN_OFFSET = { x: 44, y: -36 };
-const CALLOUT_GLOBE_SCREEN_OFFSET = { x: 72, y: -62 };
+const CALLOUT_GLOBE_SCREEN_OFFSET = { x: 72, y: -36 };
 const CALLOUT_EDGE_MARGIN = 16;
 const CALLOUT_PANEL_ESTIMATE_W = 220;
 const CALLOUT_PANEL_ESTIMATE_H = 80;
@@ -453,10 +453,9 @@ class WorldviewMarkerHoverCallout {
         }
 
         let textH = padY;
-        const numYearLine = this._formatNumYearLine(content);
-        if (numYearLine) textH += 12;
-        if (content.eraLine) textH += 11;
-        textH += titleLines.length * 13;
+        const yearLine = this._formatNumYearLine(content);
+        textH += titleLines.length * 15;
+        if (yearLine) textH += 12;
         if (variantRows.length) textH += 3 + variantRows.length * 11;
         textH += padY;
 
@@ -487,27 +486,20 @@ class WorldviewMarkerHoverCallout {
         }
 
         let y = padY;
-        if (numYearLine) {
-            ctx.font = '700 9px "Segoe UI", system-ui, sans-serif';
-            ctx.fillStyle = accentCss;
-            ctx.textAlign = 'left';
-            ctx.textBaseline = 'top';
-            ctx.fillText(numYearLine, textX, y);
-            y += 12;
-        }
-
-        if (content.eraLine) {
-            ctx.font = subFont;
-            ctx.fillStyle = accentCss;
-            ctx.fillText(content.eraLine, textX, y);
-            y += 11;
-        }
-
         ctx.font = titleFont;
         ctx.fillStyle = '#f5f8ff';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
         for (let i = 0; i < titleLines.length; i++) {
             ctx.fillText(titleLines[i], textX, y);
-            y += 13;
+            y += 15;
+        }
+
+        if (yearLine) {
+            ctx.font = subFont;
+            ctx.fillStyle = accentCss;
+            ctx.fillText(yearLine, textX, y);
+            y += 12;
         }
 
         if (variantRows.length) {
@@ -553,6 +545,12 @@ class WorldviewMarkerHoverCallout {
                 return { left: px, right: px + w, top: py, bottom: py + h };
             case 'tr':
                 return { left: px - w, right: px, top: py, bottom: py + h };
+            case 'mr':
+                /* Panel left of marker, vertically centered (side attach). */
+                return { left: px - w, right: px, top: py - h * 0.5, bottom: py + h * 0.5 };
+            case 'ml':
+                /* Panel right of marker, vertically centered (side attach). */
+                return { left: px, right: px + w, top: py - h * 0.5, bottom: py + h * 0.5 };
             case 'bl':
             default:
                 return { left: px, right: px + w, top: py - h, bottom: py };
@@ -568,32 +566,79 @@ class WorldviewMarkerHoverCallout {
         return overflow;
     }
 
+    _nudgeCalloutIntoVisible(anchorDir, px, py, w, h, visible) {
+        const box = this._calloutPanelBBox(anchorDir, px, py, w, h);
+        let dx = 0;
+        let dy = 0;
+        if (box.left + dx < visible.left) dx = visible.left - box.left;
+        if (box.right + dx > visible.right) dx = visible.right - box.right;
+        if (box.top + dy < visible.top) dy = visible.top - box.top;
+        if (box.bottom + dy > visible.bottom) dy = visible.bottom - box.bottom;
+        /* If panel is taller/wider than the safe area, pin to the start edge. */
+        if (box.left + dx < visible.left) dx = visible.left - box.left;
+        if (box.top + dy < visible.top) dy = visible.top - box.top;
+        return { px: px + dx, py: py + dy, dx, dy };
+    }
+
     _resolveCalloutScreenLayout(mx, my, visible, panelWidth, panelHeight, offX, offY, hints = {}) {
-        const ox = Math.abs(offX);
-        const oy = Math.abs(offY);
         const layoutScale = hints.layoutScale || 1;
         const w = Math.max(80, (panelWidth || CALLOUT_PANEL_ESTIMATE_W) * layoutScale);
         const h = Math.max(40, (panelHeight || CALLOUT_PANEL_ESTIMATE_H) * layoutScale);
+        const viewW = Math.max(1, visible.right - visible.left);
+        const viewH = Math.max(1, visible.bottom - visible.top);
 
-        const bl = { anchorDir: 'bl', px: mx + ox, py: my - oy };
-        const br = { anchorDir: 'br', px: mx - ox, py: my - oy };
-        const tl = { anchorDir: 'tl', px: mx + ox, py: my + oy };
-        const tr = { anchorDir: 'tr', px: mx - ox, py: my + oy };
-        const candidates = hints.candidateOrder === 'left-first'
-            ? [br, tr, bl, tl]
-            : [bl, br, tl, tr];
+        /*
+         * Large stacks vs viewport: pull offsets in so zooming out does not sling
+         * the panel far from the marker on a long leader.
+         */
+        const sizeFactor = Math.min(1, Math.min(viewW / (w * 1.35), viewH / (h * 1.25)));
+        const ox = Math.max(22, Math.round(Math.abs(offX) * Math.max(0.35, sizeFactor)));
+        const oy = Math.max(10, Math.round(Math.abs(offY) * Math.max(0.3, sizeFactor)));
+        const shallowOy = Math.max(8, Math.round(oy * 0.28));
+        const sideOx = Math.max(ox, Math.round(ox * 1.02));
+        const tightOx = Math.max(18, Math.round(ox * 0.55));
+
+        /* Side (tight+normal) + shallow + diag — prefer short leaders after fit. */
+        const candidates = [
+            { anchorDir: 'mr', px: mx - tightOx, py: my, kind: 'side' },
+            { anchorDir: 'ml', px: mx + tightOx, py: my, kind: 'side' },
+            { anchorDir: 'mr', px: mx - sideOx, py: my, kind: 'side' },
+            { anchorDir: 'ml', px: mx + sideOx, py: my, kind: 'side' },
+            { anchorDir: 'br', px: mx - ox, py: my - shallowOy, kind: 'shallow' },
+            { anchorDir: 'bl', px: mx + ox, py: my - shallowOy, kind: 'shallow' },
+            { anchorDir: 'tr', px: mx - ox, py: my + shallowOy, kind: 'shallow' },
+            { anchorDir: 'tl', px: mx + ox, py: my + shallowOy, kind: 'shallow' },
+            { anchorDir: 'br', px: mx - ox, py: my - oy, kind: 'diag' },
+            { anchorDir: 'bl', px: mx + ox, py: my - oy, kind: 'diag' },
+            { anchorDir: 'tr', px: mx - ox, py: my + oy, kind: 'diag' },
+            { anchorDir: 'tl', px: mx + ox, py: my + oy, kind: 'diag' },
+        ];
+        if (hints.candidateOrder === 'left-first') {
+            candidates.sort((a, b) => {
+                const aLeft = a.anchorDir === 'br' || a.anchorDir === 'tr' || a.anchorDir === 'mr' ? 0 : 1;
+                const bLeft = b.anchorDir === 'br' || b.anchorDir === 'tr' || b.anchorDir === 'mr' ? 0 : 1;
+                return aLeft - bLeft;
+            });
+        }
+
+        const spaceAbove = Math.max(0, my - visible.top);
+        const spaceBelow = Math.max(0, visible.bottom - my);
+        const spaceLeft = Math.max(0, mx - visible.left - tightOx);
+        const spaceRight = Math.max(0, visible.right - mx - tightOx);
 
         const preferLeft = hints.preferLeft !== undefined
             ? hints.preferLeft
-            : mx > (visible.left + visible.right) * 0.52;
+            : spaceLeft >= spaceRight;
         const preferDown = hints.preferDown !== undefined
             ? hints.preferDown
-            : my < (visible.top + visible.bottom) * 0.48;
+            : spaceBelow >= spaceAbove;
+        const centerBand = spaceAbove > h * 0.4 && spaceBelow > h * 0.4;
         const matchBias = hints.matchBias ?? -4;
         const mismatchBias = hints.mismatchBias ?? 4;
 
         let best = candidates[0];
         let bestScore = Infinity;
+        let bestFitted = null;
 
         for (let i = 0; i < candidates.length; i++) {
             const c = candidates[i];
@@ -601,26 +646,57 @@ class WorldviewMarkerHoverCallout {
             const overflow = this._calloutPanelOverflow(box, visible);
 
             let bias = 0;
-            const opensLeft = c.anchorDir === 'br' || c.anchorDir === 'tr';
+            const opensLeft = c.anchorDir === 'br' || c.anchorDir === 'tr' || c.anchorDir === 'mr';
             const opensDown = c.anchorDir === 'tl' || c.anchorDir === 'tr';
+            const isSide = c.kind === 'side';
+            const isShallow = c.kind === 'shallow';
+
             if (preferLeft === opensLeft) bias += matchBias;
             else bias += mismatchBias;
-            if (preferDown === opensDown) bias += matchBias;
-            else bias += mismatchBias;
+            if (!isSide) {
+                if (preferDown === opensDown) bias += matchBias;
+                else bias += mismatchBias;
+            }
 
-            const score = overflow * 100 + bias;
+            if (centerBand && isSide) bias -= 28;
+            else if (centerBand && isShallow) bias -= 14;
+            else if (centerBand && c.kind === 'diag') bias += 12;
+            if (!centerBand && isSide) bias += 4;
+
+            const freeCross = opensLeft ? spaceLeft : spaceRight;
+            const freeAlong = isSide
+                ? Math.min(spaceAbove, spaceBelow) * 2
+                : (opensDown ? spaceBelow : spaceAbove);
+            const fitPenalty = Math.max(0, (isSide ? h * 0.5 : h) - freeAlong) * 12
+                + Math.max(0, w - freeCross) * 6;
+            const spareBonus = Math.min(freeAlong, h) * -0.08;
+
+            const nudged = this._nudgeCalloutIntoVisible(c.anchorDir, c.px, c.py, w, h, visible);
+            const nudgedBox = this._calloutPanelBBox(c.anchorDir, nudged.px, nudged.py, w, h);
+            const nudgeCost = (Math.abs(nudged.dx) + Math.abs(nudged.dy)) * 0.45;
+            /* Prefer placements that keep the badge near the marker after clamping. */
+            const cornerDist = Math.hypot(nudged.px - mx, nudged.py - my);
+            const centerX = (nudgedBox.left + nudgedBox.right) * 0.5;
+            const centerY = (nudgedBox.top + nudgedBox.bottom) * 0.5;
+            const centerDist = Math.hypot(centerX - mx, centerY - my);
+            const lengthCost = cornerDist * 0.55 + centerDist * 0.12;
+
+            const score = overflow * 100 + fitPenalty + nudgeCost + lengthCost + spareBonus + bias;
             if (score < bestScore) {
                 bestScore = score;
                 best = c;
+                bestFitted = nudged;
             }
         }
 
+        const fitted = bestFitted
+            || this._nudgeCalloutIntoVisible(best.anchorDir, best.px, best.py, w, h, visible);
         return {
-            px: best.px,
-            py: best.py,
+            px: fitted.px,
+            py: fitted.py,
             anchorDir: best.anchorDir,
-            cornerX: best.px,
-            cornerY: best.py,
+            cornerX: fitted.px,
+            cornerY: fitted.py,
         };
     }
 
@@ -808,13 +884,12 @@ class WorldviewMarkerHoverCallout {
         const margin = MAP_DOM_EDGE_MARGIN;
 
         if (anchor?.isEarthScreen) {
-            const w = anchor.width || anchor.parent?.clientWidth || 1;
-            const h = anchor.height || anchor.parent?.clientHeight || 1;
+            if (anchor.parent) return this._getGlobeScreenVisibleBounds(anchor.parent);
             return {
                 left: margin,
                 top: margin,
-                right: w - margin,
-                bottom: h - margin,
+                right: (anchor.width || 1) - margin,
+                bottom: (anchor.height || 1) - margin,
             };
         }
 
@@ -885,7 +960,7 @@ class WorldviewMarkerHoverCallout {
 
     _applyMapDomPanelAnchor(anchorDir) {
         if (!this._domPanelWrap) return;
-        const dirs = ['bl', 'br', 'tl', 'tr'];
+        const dirs = ['bl', 'br', 'tl', 'tr', 'ml', 'mr'];
         for (let i = 0; i < dirs.length; i++) {
             this._domPanelWrap.classList.toggle(
                 `map-hover-callout__panel-wrap--anchor-${dirs[i]}`,
@@ -932,7 +1007,7 @@ class WorldviewMarkerHoverCallout {
         this._domPanelWrap.classList.remove('map-hover-callout__panel-wrap--waiting');
         this._domPanel.classList.remove('map-hover-callout__panel--enter');
         this._domPanel.style.opacity = '1';
-        this._domPanel.style.transform = 'scaleY(1)';
+        this._domPanel.style.transform = 'skewX(-11deg) scaleY(1)';
     }
 
     _setMapDomLineGeometry(mx, my, lineEndX, lineEndY, lineLen) {
@@ -1144,7 +1219,7 @@ class WorldviewMarkerHoverCallout {
         this._domPanelWrap.style.top = `${my}px`;
 
         const stackLen = this._calloutStackMarkers?.length || 1;
-        const stackRowEstimate = anchor.isGlobeScreen ? 148 : 64;
+        const stackRowEstimate = anchor.isGlobeScreen ? 168 : 72;
         const stackEstimateH = stackLen > 1
             ? 40 + stackLen * stackRowEstimate + 32
             : (anchor.isGlobeScreen ? 180 : MAP_DOM_PANEL_ESTIMATE_H);
@@ -1202,12 +1277,15 @@ class WorldviewMarkerHoverCallout {
     _applyDomPanelChrome(style) {
         if (!this._domPanel) return;
         this._domPanel.style.background = style.bg;
-        this._domPanel.style.borderColor = style.border;
-        this._domPanel.style.boxShadow = `0 0 14px ${style.glow}`;
+        /* White top/bottom rims come from CSS (dock-thumb language); keep accent as glow. */
+        this._domPanel.style.removeProperty('border-color');
+        this._domPanel.style.boxShadow =
+            `0 5px 18px rgba(0, 0, 0, 0.42), 0 0 14px ${style.glow}`;
         this._domPanel.style.setProperty('--callout-glow', style.glow);
         this._domPanel.style.setProperty('--callout-border', style.border);
         if (this._domLine) {
-            this._domLine.style.stroke = style.border;
+            /* Match white rim chrome — not palette accent. */
+            this._domLine.style.stroke = 'rgba(255, 255, 255, 0.96)';
         }
     }
 
@@ -1220,6 +1298,9 @@ class WorldviewMarkerHoverCallout {
         thumb.className = compact
             ? 'map-hover-callout__thumb map-hover-callout__thumb--compact'
             : 'map-hover-callout__thumb';
+        /* Same shell → visual → img stack as dock event thumbs. */
+        const visual = document.createElement('div');
+        visual.className = 'map-hover-callout__thumb-visual';
         const img = document.createElement('img');
         img.className = 'map-hover-callout__thumb-img';
         img.alt = '';
@@ -1230,7 +1311,8 @@ class WorldviewMarkerHoverCallout {
             thumb.remove();
             parentEl.classList.add('map-hover-callout__panel-inner--no-thumb');
         }, { once: true });
-        thumb.appendChild(img);
+        visual.appendChild(img);
+        thumb.appendChild(visual);
         parentEl.appendChild(thumb);
     }
 
@@ -1251,74 +1333,65 @@ class WorldviewMarkerHoverCallout {
         row.appendChild(slot);
     }
 
-    _appendNumYearRow(body, content, accentCss) {
-        const numPart = content.numLine ? `#${content.numLine}` : '';
+    _appendYearRow(parentEl, content, accentCss) {
         const yearPart = content.yearLine ? String(content.yearLine).trim() : '';
-        if (!numPart && !yearPart) return;
+        if (!yearPart) return;
 
         const row = document.createElement('div');
         row.className = 'map-hover-callout__num-year';
+        const year = document.createElement('span');
+        year.className = 'map-hover-callout__year';
+        year.style.color = accentCss;
+        year.textContent = yearPart;
+        row.appendChild(year);
+        parentEl.appendChild(row);
+    }
 
-        if (numPart) {
-            const num = document.createElement('span');
-            num.className = 'map-hover-callout__num';
-            num.style.color = accentCss;
-            num.textContent = numPart;
-            row.appendChild(num);
-        }
-        if (numPart && yearPart) {
-            const sep = document.createElement('span');
-            sep.className = 'map-hover-callout__num-year-sep';
-            sep.setAttribute('aria-hidden', 'true');
-            sep.textContent = '|';
-            row.appendChild(sep);
-        }
-        if (yearPart) {
-            const year = document.createElement('span');
-            year.className = 'map-hover-callout__year';
-            year.style.color = accentCss;
-            year.textContent = yearPart;
-            row.appendChild(year);
-        }
+    _appendFlagTop(parentEl, content) {
+        if (!content.primaryRowFlag?.filename) return;
+        const row = document.createElement('div');
+        row.className = 'map-hover-callout__flag-top';
         this._appendNumYearFlag(row, content.primaryRowFlag);
-        body.appendChild(row);
+        if (row.childNodes.length) parentEl.appendChild(row);
     }
 
     _formatNumYearLine(content) {
-        const parts = [];
-        if (content.numLine) parts.push(`#${content.numLine}`);
-        if (content.yearLine) {
-            if (parts.length) parts.push('|');
-            parts.push(String(content.yearLine).trim());
-        }
-        return parts.join(' ');
+        const yearPart = content.yearLine ? String(content.yearLine).trim() : '';
+        return yearPart || '';
     }
 
     _appendPanelBody(body, content, accentCss, options = {}) {
-        const { includeVariants = true } = options;
+        const { includeVariants = true, compact = false } = options;
 
-        this._appendNumYearRow(body, content, accentCss);
+        /* Title + year centered; flag top-right; relevancies (single row) under. No # / era. */
+        const headline = document.createElement('div');
+        headline.className = 'map-hover-callout__headline';
 
-        if (content.eraLine) {
-            const era = document.createElement('div');
-            era.className = 'map-hover-callout__era';
-            era.style.color = accentCss;
-            era.textContent = content.eraLine;
-            body.appendChild(era);
-        }
+        this._appendFlagTop(headline, content);
 
         const title = document.createElement('div');
         title.className = 'map-hover-callout__title';
         title.textContent = content.title;
-        body.appendChild(title);
+        headline.appendChild(title);
+
+        this._appendYearRow(headline, content, accentCss);
+        body.appendChild(headline);
+
+        const relevancies = document.createElement('div');
+        relevancies.className = 'map-hover-callout__relevancies';
 
         if (includeVariants) {
             for (let i = 0; i < content.variants.length; i++) {
                 const row = document.createElement('div');
                 row.className = 'map-hover-callout__variant';
                 row.textContent = content.variants[i];
-                body.appendChild(row);
+                relevancies.appendChild(row);
             }
+        }
+
+        this._appendPanelBadges(relevancies, content, { compact });
+        if (relevancies.childNodes.length) {
+            body.appendChild(relevancies);
         }
     }
 
@@ -1335,6 +1408,7 @@ class WorldviewMarkerHoverCallout {
         slot.className = 'map-hover-callout__badges';
         badgeApi.appendPreviewBadgeIconRow(slot, content.previewBadges, {
             compact: !!options.compact,
+            singleRow: true,
         });
         if (!slot.firstChild) return null;
         parentEl.appendChild(slot);
@@ -1365,10 +1439,9 @@ class WorldviewMarkerHoverCallout {
             compact,
         });
         inner.appendChild(body);
-        this._appendPanelBadges(inner, content, { compact });
         inner.classList.toggle(
             'map-hover-callout__panel-inner--has-badges',
-            !!inner.querySelector('.map-hover-callout__badges')
+            !!body.querySelector('.map-hover-callout__badges')
         );
         rowBtn.appendChild(inner);
         this._wireCalloutStackRow(rowBtn, marker);
@@ -1391,11 +1464,13 @@ class WorldviewMarkerHoverCallout {
 
         this._domPanel.replaceChildren();
         this._domPanel.classList.toggle('map-hover-callout__panel--stack', isStack);
+        this._domPanel.classList.remove('map-hover-callout__panel--stack-cols');
         this._applyDomPanelChrome(style);
 
         if (isStack) {
+            /* Single column for all overlap stacks — multi-col clipped and compressed too often. */
             for (let i = 0; i < stackMarkers.length; i++) {
-                this._domPanel.appendChild(this._buildDomStackRow(stackMarkers[i], accentCss, true));
+                this._domPanel.appendChild(this._buildDomStackRow(stackMarkers[i], accentCss, false));
             }
             return;
         }
@@ -1415,10 +1490,9 @@ class WorldviewMarkerHoverCallout {
         body.className = 'map-hover-callout__body';
         this._appendPanelBody(body, content, accentCss);
         inner.appendChild(body);
-        this._appendPanelBadges(inner, content);
         inner.classList.toggle(
             'map-hover-callout__panel-inner--has-badges',
-            !!inner.querySelector('.map-hover-callout__badges')
+            !!body.querySelector('.map-hover-callout__badges')
         );
         rowBtn.appendChild(inner);
         this._wireCalloutStackRow(rowBtn, soloMarker);
@@ -1542,11 +1616,56 @@ class WorldviewMarkerHoverCallout {
         }
     }
 
+    _getOverlayInsetInContainer(container, el) {
+        if (!container || !el || typeof el.getBoundingClientRect !== 'function') return 0;
+        const cr = container.getBoundingClientRect();
+        const er = el.getBoundingClientRect();
+        if (er.bottom <= cr.top || er.top >= cr.bottom) return 0;
+        if (er.right <= cr.left || er.left >= cr.right) return 0;
+        /* How much of the container bottom is covered by this overlay. */
+        const overlap = cr.bottom - er.top;
+        if (overlap <= 0 || overlap >= cr.height) return 0;
+        return overlap;
+    }
+
     _getGlobeScreenVisibleBounds(container) {
         const m = CALLOUT_EDGE_MARGIN;
         const w = Math.max(1, container.clientWidth);
         const h = Math.max(1, container.clientHeight);
-        return { left: m, top: m, right: w - m, bottom: h - m };
+        let bottomInset = m;
+        let topInset = m;
+
+        /* Keep callouts out of the pagination dock / page chrome when those overlay the globe. */
+        const dock = typeof document !== 'undefined' ? document.getElementById('paginationDock') : null;
+        const dockOverlap = this._getOverlayInsetInContainer(container, dock);
+        if (dockOverlap > 0) bottomInset = Math.max(bottomInset, dockOverlap + 10);
+
+        const pageRow = typeof document !== 'undefined'
+            ? document.querySelector('.page-controls-row, #pageControlsRow, .dock-globe-rail')
+            : null;
+        if (pageRow && pageRow !== dock) {
+            const rowOverlap = this._getOverlayInsetInContainer(container, pageRow);
+            if (rowOverlap > 0) bottomInset = Math.max(bottomInset, rowOverlap + 10);
+        }
+
+        const header = typeof document !== 'undefined'
+            ? document.querySelector('.atlas-header, #atlasHeader, header.atlas-top-bar')
+            : null;
+        if (header) {
+            const hr = header.getBoundingClientRect();
+            const cr = container.getBoundingClientRect();
+            const topOverlap = hr.bottom - cr.top;
+            if (topOverlap > 0 && topOverlap < cr.height * 0.35) {
+                topInset = Math.max(topInset, topOverlap + 8);
+            }
+        }
+
+        return {
+            left: m,
+            top: topInset,
+            right: w - m,
+            bottom: h - bottomInset,
+        };
     }
 
     _markerScreenPosition(marker, camera, container) {
@@ -1586,6 +1705,12 @@ class WorldviewMarkerHoverCallout {
                 break;
             case 'tr':
                 center.addScaledVector(this._cameraRight, -hw).addScaledVector(this._cameraUp, -hh);
+                break;
+            case 'mr':
+                center.addScaledVector(this._cameraRight, -hw);
+                break;
+            case 'ml':
+                center.addScaledVector(this._cameraRight, hw);
                 break;
             case 'bl':
             default:

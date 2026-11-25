@@ -1,5 +1,6 @@
 /**
  * Phrase button — plays a random voiceline for the selected hero (one at a time).
+ * Mounted on the Intel dock right trap flank (World-style parallelogram chip).
  */
 
 import { HERO_BIOGRAPHY_PHRASE_ICON_PATH } from './heroBiographyPhrasePaths.js';
@@ -27,6 +28,9 @@ let activePhraseFiles = [];
 /** @type {Record<string, string[]> | null} */
 let heroPhrasesMap = null;
 
+/** When true (Intel selection screen), Phrase stays grayed regardless of hero. */
+let forceDisabled = false;
+
 async function ensureHeroPhrasesMap() {
     if (!heroPhrasesMap) {
         heroPhrasesMap = await loadHeroPhrasesMap();
@@ -39,44 +43,72 @@ function updatePhraseButtonState() {
 
     const hasPhrases = activePhraseFiles.length > 0;
     const playing = isHeroBiographyPhrasePlaying();
+    const disabled = forceDisabled || !activeHeroId || !hasPhrases || playing;
 
-    phraseBtn.disabled = !activeHeroId || !hasPhrases || playing;
+    phraseBtn.disabled = disabled;
+    phraseBtn.classList.toggle('toggle-off', disabled && !playing);
     phraseBtn.classList.toggle('is-playing', playing);
-    phraseBtn.title = !activeHeroId
-        ? 'Select a hero to play phrases'
-        : !hasPhrases
-            ? 'No voicelines for this hero yet'
-            : playing
-                ? 'Playing phrase…'
-                : 'Play a random voiceline';
+    phraseBtn.title = forceDisabled
+        ? 'Select a hero, faction, or NPC first'
+        : !activeHeroId
+            ? 'Select a hero to play phrases'
+            : !hasPhrases
+                ? 'No voicelines for this hero yet'
+                : playing
+                    ? 'Playing phrase…'
+                    : 'Play a random voiceline';
+    phraseBtn.setAttribute('aria-label', phraseBtn.title);
 }
 
 /**
- * @param {HTMLElement} controlsRow — shared row with the Look dropdown.
+ * @param {{ forceDisabled?: boolean }} [opts]
  */
-export function initHeroBiographyPhraseButton(controlsRow) {
-    if (phraseBtn) return;
+export function syncHeroBiographyPhraseButtonAvailability(opts = {}) {
+    if (typeof opts.forceDisabled === 'boolean') {
+        forceDisabled = opts.forceDisabled;
+    }
+    updatePhraseButtonState();
+}
+
+/**
+ * @param {HTMLElement} mountParent — dock right flank (or legacy controls row).
+ */
+export function initHeroBiographyPhraseButton(mountParent) {
+    if (!mountParent) return;
+
+    if (phraseBtn?.isConnected) {
+        if (phraseBtn.parentElement !== mountParent) {
+            mountParent.appendChild(phraseBtn);
+        }
+        updatePhraseButtonState();
+        return;
+    }
 
     phraseBtn = document.createElement('button');
     phraseBtn.type = 'button';
-    phraseBtn.className = 'gallery-mode__phrase-btn';
+    phraseBtn.id = 'intelDockPhraseBtn';
+    phraseBtn.className = 'globe-control-btn dock-trap-flank__btn intel-dock-flank-btn';
     phraseBtn.setAttribute('aria-label', 'Play random phrase');
     phraseBtn.disabled = true;
+    phraseBtn.classList.add('toggle-off');
 
+    const iconWrap = document.createElement('span');
+    iconWrap.id = 'intelDockPhraseIcon';
+    iconWrap.setAttribute('aria-hidden', 'true');
     const icon = document.createElement('img');
-    icon.className = 'gallery-mode__phrase-btn-icon';
     icon.src = HERO_BIOGRAPHY_PHRASE_ICON_PATH;
     icon.alt = '';
     icon.decoding = 'async';
+    iconWrap.appendChild(icon);
 
     const label = document.createElement('span');
-    label.className = 'gallery-mode__phrase-btn-label';
+    label.className = 'globe-control-btn__label';
     label.textContent = 'Phrase';
 
-    phraseBtn.append(icon, label);
+    phraseBtn.append(iconWrap, label);
 
     phraseBtn.addEventListener('click', () => {
-        if (!activeHeroId || !activePhraseFiles.length || isHeroBiographyPhrasePlaying()) {
+        if (forceDisabled || !activeHeroId || !activePhraseFiles.length || isHeroBiographyPhrasePlaying()) {
             return;
         }
 
@@ -104,7 +136,8 @@ export function initHeroBiographyPhraseButton(controlsRow) {
 
     window.addEventListener('heroBiographyPhrasePlaybackChange', updatePhraseButtonState);
 
-    controlsRow.appendChild(phraseBtn);
+    mountParent.appendChild(phraseBtn);
+    updatePhraseButtonState();
 }
 
 /**
@@ -142,4 +175,5 @@ export function destroyHeroBiographyPhraseButton() {
     activeHeroId = null;
     activePhraseFiles = [];
     heroPhrasesMap = null;
+    forceDisabled = false;
 }

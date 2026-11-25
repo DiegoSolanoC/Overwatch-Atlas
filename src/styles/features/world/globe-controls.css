@@ -280,7 +280,7 @@ body.color-palette-nulled .palette-option-btn.active {
 
 @media (max-width: 768px) {
     .globe-control-btn.weather-effects-btn #weatherEffectsIcon img {
-        transform: skewX(11deg) scale(1.14);
+        transform: skewX(11deg) translateY(-2px);
         transform-origin: center center;
     }
 }

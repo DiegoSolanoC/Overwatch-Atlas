@@ -53,7 +53,6 @@ import { clearHeroBiographyLookRangesCache } from './heroBiographyLookRangesStor
 import { clearFactionBiographyLookRangesCache } from './factionBiographyLookRangesStorage.js';
 import {
     destroyHeroBiographyPhraseButton,
-    initHeroBiographyPhraseButton,
     setHeroBiographyPhraseButtonHero,
 } from './heroBiographyPhraseButton.js';
 import {
@@ -319,8 +318,6 @@ export function initHeroBiographySelection(hostEl, mainEl) {
     initHeroBiographyArchiveDescription(hostEl);
 
     rewirePortraitCopy();
-
-    initHeroBiographyPhraseButton(controlsRowEl);
 }
 
 /**

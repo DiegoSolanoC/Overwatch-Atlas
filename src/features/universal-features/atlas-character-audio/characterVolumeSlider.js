@@ -1,26 +1,38 @@
 /**
  * Wires `#characterVolumeSlider` in the music panel volume section.
+ * Document-level delegation so remounts into `#filtersPanel` stay live.
  */
+
+/** @type {{ getVolume: () => number, setVolume: (v: number) => void } | null} */
+let activeHooks = null;
+
+function syncCharacterVolumeLabel() {
+    const slider = document.getElementById('characterVolumeSlider');
+    const valueLabel = document.getElementById('characterVolumeValue');
+    if (!slider || !valueLabel || !activeHooks) return;
+    const valuePct = Math.round(activeHooks.getVolume() * 100);
+    slider.value = String(valuePct);
+    valueLabel.textContent = `${valuePct}%`;
+}
 
 /**
  * @param {{ getVolume: () => number, setVolume: (v: number) => void }} hooks
  */
 export function wireCharacterVolumeSlider(hooks) {
-    const slider = document.getElementById('characterVolumeSlider');
-    const valueLabel = document.getElementById('characterVolumeValue');
+    activeHooks = hooks;
+    syncCharacterVolumeLabel();
 
-    if (!slider || !valueLabel) return;
+    if (typeof document === 'undefined') return;
+    if (document.documentElement.dataset.characterVolumeDelegated === 'true') return;
+    document.documentElement.dataset.characterVolumeDelegated = 'true';
 
-    const valuePct = Math.round(hooks.getVolume() * 100);
-    slider.value = String(valuePct);
-    valueLabel.textContent = `${valuePct}%`;
-
-    if (slider.dataset.characterVolumeBound === 'true') return;
-    slider.dataset.characterVolumeBound = 'true';
-
-    slider.addEventListener('input', () => {
-        const v = Number(slider.value) / 100;
-        hooks.setVolume(v);
-        valueLabel.textContent = `${slider.value}%`;
+    document.addEventListener('input', (event) => {
+        const t = event.target;
+        if (!(t instanceof HTMLInputElement) || t.id !== 'characterVolumeSlider') return;
+        if (!activeHooks) return;
+        const v = Number(t.value) / 100;
+        activeHooks.setVolume(v);
+        const valueLabel = document.getElementById('characterVolumeValue');
+        if (valueLabel) valueLabel.textContent = `${t.value}%`;
     });
 }

@@ -32570,6 +32570,7 @@
       "reasoningSubjectToLinked": "",
       "reasoningLinkedToSubject": "",
       "thisEntryLane": "A",
+      "hideInCodex": true,
       "subjectKind": "faction",
       "subjectName": "Null Sector",
       "linkedKind": "npc",
@@ -41778,6 +41779,110 @@
       "subjectName": "Doomfist",
       "linkedKind": "npc",
       "linkedName": "Vialli"
+    },
+    {
+      "kind": "hero",
+      "name": "Ramattra",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "npc",
+      "subjectName": "Lanet",
+      "linkedKind": "hero",
+      "linkedName": "Ramattra"
+    },
+    {
+      "kind": "faction",
+      "name": "Null Sector",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "B",
+      "hideInCodex": true,
+      "subjectKind": "npc",
+      "subjectName": "Lanet",
+      "linkedKind": "faction",
+      "linkedName": "Null Sector"
+    },
+    {
+      "kind": "npc",
+      "name": "Nameless",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "npc",
+      "subjectName": "Lanet",
+      "linkedKind": "npc",
+      "linkedName": "Nameless",
+      "hideInCodex": true
+    },
+    {
+      "kind": "npc",
+      "name": "Zera",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "npc",
+      "subjectName": "Lanet",
+      "linkedKind": "npc",
+      "linkedName": "Zera"
+    },
+    {
+      "kind": "hero",
+      "name": "Ramattra",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "npc",
+      "subjectName": "Nameless",
+      "linkedKind": "hero",
+      "linkedName": "Ramattra"
+    },
+    {
+      "kind": "faction",
+      "name": "Null Sector",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "B",
+      "subjectKind": "npc",
+      "subjectName": "Nameless",
+      "linkedKind": "faction",
+      "linkedName": "Null Sector"
+    },
+    {
+      "kind": "npc",
+      "name": "Lanet",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "hideInCodex": true,
+      "subjectKind": "npc",
+      "subjectName": "Nameless",
+      "linkedKind": "npc",
+      "linkedName": "Lanet"
+    },
+    {
+      "kind": "npc",
+      "name": "Zera",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "hideInCodex": true,
+      "subjectKind": "npc",
+      "subjectName": "Nameless",
+      "linkedKind": "npc",
+      "linkedName": "Zera"
+    },
+    {
+      "kind": "npc",
+      "name": "Nameless",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "hideInCodex": true,
+      "subjectKind": "npc",
+      "subjectName": "Zera",
+      "linkedKind": "npc",
+      "linkedName": "Nameless"
     }
   ]
 }

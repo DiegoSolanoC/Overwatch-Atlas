@@ -275,8 +275,8 @@ body.color-palette-crimson .filters-confirm-btn {
 }
 
 body.color-palette-crimson .filters-confirm-btn:hover {
-    background: rgb(var(--accent-primary-rgb));
-    filter: brightness(1.08);
+    background: color-mix(in srgb, rgb(var(--accent-primary-rgb)) 86%, white);
+    filter: none;
 }
 
 /* Panels - Music */

@@ -50,6 +50,11 @@ export function runStandaloneFilterSideEffects(opts = {}) {
 
     if (intelOpen) {
         window.syncEventManagerSearchFromFilterSelection?.({ skipApplySearch: true });
+        /*
+         * Same lock path as World/Codex — do not rebuild thumbs on every chip
+         * (that bounce was an Intel-only override). Entity/country curation still
+         * rebuilds via galleryFiltersBridge / heroBiographySelection.
+         */
         updateStandalonePaginationForFilters();
     } else {
         /* Paint World/Codex first — EM list rebuild was causing a visible pause. */

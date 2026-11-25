@@ -1197,9 +1197,9 @@ body.color-palette-gray .music-grid-btn .music-label {
 }
 
 .music-category-tab:hover {
-    background: #ffffff;
+    background: #ececec;
     transform: skewX(var(--category-tab-skew)) translateY(-2px);
-    filter: brightness(1.04);
+    filter: none;
 }
 
 .music-category-tab:active {
@@ -1212,8 +1212,8 @@ body.color-palette-gray .music-grid-btn .music-label {
 }
 
 .music-category-tab.active:hover {
-    background: rgb(var(--accent-primary-rgb));
-    filter: brightness(1.08);
+    background: color-mix(in srgb, rgb(var(--accent-primary-rgb)) 86%, white);
+    filter: none;
 }
 
 .music-category-tab--new {
@@ -1764,9 +1764,9 @@ body.color-palette-gray .music-progress-bar::-moz-range-thumb {
 }
 
 .music-control-btn:hover {
-    background: #ffffff;
+    background: #ececec;
     transform: translateY(-2px);
-    filter: brightness(1.04);
+    filter: none;
 }
 
 .music-control-btn:active {
@@ -1787,8 +1787,8 @@ body.color-palette-gray .music-progress-bar::-moz-range-thumb {
 }
 
 .music-control-btn.active:hover {
-    background: rgb(var(--accent-primary-rgb));
-    filter: brightness(1.08);
+    background: color-mix(in srgb, rgb(var(--accent-primary-rgb)) 86%, white);
+    filter: none;
 }
 
 /* Mobile: keep desktop shared row (volume | now playing); only tighten tap targets */

@@ -1242,7 +1242,7 @@ body:has(#eventSlide.open) #dockGlobeRailLeft > #storyViewToggle.dock-trap-flank
 }
 
 .story-archive-category-hub__tile:hover {
-    transform: skewX(var(--thumb-skew)) scale(1.04);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
     border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93);
 }
@@ -1265,7 +1265,7 @@ body.color-palette-gray .story-archive-category-hub__tile:hover {
     height: 100%;
     margin-left: -12%;
     padding: 0;
-    transform: skewX(11deg) scale(1.06);
+    transform: skewX(11deg) translateY(-2px);
     transform-origin: center center;
     overflow: hidden;
     background: #fff;

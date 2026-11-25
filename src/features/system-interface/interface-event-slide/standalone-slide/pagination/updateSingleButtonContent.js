@@ -64,6 +64,11 @@ import {
     updateEventSlideFactionTypeDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
+import {
+    applyDockOverlapKeyStyle,
+    computeOverlapIndexSet,
+    isLocalDevOverlapHost,
+} from '../../../interface-left-panel/event-system/render/overlapDetection.js';
 
 export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex, allEvents) {
         if (!event) {
@@ -104,40 +109,19 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         btn.classList.toggle('locked', isLocked);
         btn.dataset.locked = isLocked ? 'true' : 'false';
         
-        // DEV ONLY: Check for overlapping coordinates on localhost
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            const earthLatLon = (ev) => {
-                if (!ev) return { lat: null, lon: null };
-                const multi = Array.isArray(ev.variants) && ev.variants.length > 0;
-                const base = multi && ev.variants[0] ? { ...ev, ...ev.variants[0] } : ev;
-                let lat = base.lat !== undefined ? base.lat : ev.lat;
-                let lon = base.lon !== undefined ? base.lon : ev.lon;
-                if (lat == null && ev.location && typeof ev.location === 'object') {
-                    lat = ev.location.lat;
-                    lon = ev.location.lon;
-                }
-                const nLat = Number(lat);
-                const nLon = Number(lon);
-                if (!Number.isFinite(nLat) || !Number.isFinite(nLon)) return { lat: null, lon: null };
-                return { lat: nLat, lon: nLon };
-            };
-            const { lat: thisLat, lon: thisLon } = earthLatLon(event);
-            const hasOverlap = thisLat != null && thisLon != null && pageEvents.some((otherEvent, otherIndex) => {
-                if (otherIndex === (globalEventIndex % 10)) return false;
-                const { lat: oLat, lon: oLon } = earthLatLon(otherEvent);
-                if (oLat == null || oLon == null) return false;
-                return oLat === thisLat && oLon === thisLon;
-            });
-            
-            
-            const keyEl = btn.querySelector('.event-number-btn__key');
-            if (hasOverlap && keyEl) {
-                keyEl.style.color = '#ff4444';
-                keyEl.style.textShadow = '0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 12px rgba(0, 0, 0, 0.45)';
-            } else if (keyEl) {
-                keyEl.style.color = '';
-                keyEl.style.textShadow = '';
-            }
+        // DEV ONLY: same-page heavy overlap (more than 5 shared name/coord) → red key.
+        if (isLocalDevOverlapHost()) {
+            const dockForOverlap =
+                window.eventManager?.getDockTimelineEvents?.() || allEvents || [];
+            const heavyOverlapIndexSet = computeOverlapIndexSet(
+                pageEvents,
+                dockForOverlap,
+                window.eventManager,
+            );
+            applyDockOverlapKeyStyle(
+                btn.querySelector('.event-number-btn__key'),
+                heavyOverlapIndexSet.has(globalEventIndex),
+            );
         }
         
         const numEl = btn.querySelector('.event-number-btn__num');
@@ -406,12 +390,16 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
             const sceneModel = window.globeController?.sceneModel;
             const isMapView = sceneModel?.getMapViewEnabled?.() || !!sceneModel?.isMapView;
 
+            // Thumb enter pins callout + number-btn-marker-hover; always dismiss on leave
+            // (mode switches / hover elsewhere used to leave the dock highlight stuck).
+            const msLeave = window.globeController?.interactionController?.markerService;
+            msLeave?.dismissPinnedMarkerCallout?.();
+
             if (isMapView) {
                 // Map view: clear DOM-lite hover and reset to default view
-                const ms = window.globeController?.interactionController?.markerService;
-                const hoveredStub = ms?._domLiteHoverStub;
+                const hoveredStub = msLeave?._domLiteHoverStub;
                 if (hoveredStub) {
-                    ms?.releaseDomLiteMarkerHover?.(hoveredStub);
+                    msLeave?.releaseDomLiteMarkerHover?.(hoveredStub);
                 }
 
                 /*

@@ -66,7 +66,7 @@ export async function loadControls(loadedComponents) {
             label: 'Rotation',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Rotation%20Icon.png',
             iconAlt: 'Rotate',
-            parentId: 'dockTrapFlankRight',
+            parentId: 'dockTrapFlankLeft',
             baseClass: 'globe-control-btn',
             iconSpanId: 'rotateIcon',
             headerOrder: 70,

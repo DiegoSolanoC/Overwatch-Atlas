@@ -63,7 +63,7 @@
 }
 
 #globeMapCategoryHub.story-archive-category-hub--globe-map .story-archive-category-hub__tile:hover {
-    transform: skewX(var(--thumb-skew, -11deg)) scale(1.04);
+    transform: skewX(var(--thumb-skew, -11deg)) translateY(-2px);
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
     border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93);
 }

@@ -29,7 +29,34 @@
 
 .map-hover-callout--globe .preview-badge-icons--compact {
     --preview-badge-main: 48px;
+    --preview-badge-support: 36px;
+}
+
+/*
+ * Callout single-row: every relevancy (hero / NPC / faction) shares one size.
+ * Prefer the smaller support footprint so dense 3+3+3 rows stay consistent.
+ */
+.map-hover-callout .preview-badge-icons--single-row {
+    --preview-badge-main: 40px;
+    --preview-badge-support: 40px;
+    --preview-badge-gap: 5px;
+}
+
+.map-hover-callout--globe .preview-badge-icons--single-row {
+    --preview-badge-main: 44px;
+    --preview-badge-support: 44px;
+    --preview-badge-gap: 6px;
+}
+
+.map-hover-callout .preview-badge-icons--single-row.preview-badge-icons--compact {
+    --preview-badge-main: 32px;
     --preview-badge-support: 32px;
+    --preview-badge-gap: 4px;
+}
+
+.map-hover-callout--globe .preview-badge-icons--single-row.preview-badge-icons--compact {
+    --preview-badge-main: 36px;
+    --preview-badge-support: 36px;
 }
 
 .preview-badge-icons__row,
@@ -42,6 +69,17 @@
     gap: var(--preview-badge-gap);
     flex-shrink: 0;
     min-width: 0;
+}
+
+.preview-badge-icons--single-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.preview-badge-icons--single-row .preview-badge-icons__row {
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .preview-badge-icons__img {
@@ -70,15 +108,33 @@
     height: var(--preview-badge-support);
 }
 
-/* Three-column callout: Image | Summary | Badges */
+/* Single-row callouts: force identical box for every icon class */
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img,
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img--main,
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img--main.preview-badge-icons__img--hero,
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img--main.preview-badge-icons__img--npc,
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img--main.preview-badge-icons__img--faction,
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img--support,
+.map-hover-callout .preview-badge-icons--single-row .preview-badge-icons__img--secondary {
+    width: var(--preview-badge-support);
+    height: var(--preview-badge-support);
+    border-radius: 5px;
+}
+
+/* Callout width: room for dense rows without resizing icons per-event */
 .map-hover-callout__panel:has(.map-hover-callout__badges) {
-    min-width: 320px;
-    max-width: 480px;
+    min-width: 360px;
+    max-width: 560px;
 }
 
 .map-hover-callout--globe .map-hover-callout__panel:has(.map-hover-callout__badges) {
-    min-width: 420px;
-    max-width: 620px;
+    min-width: 520px;
+    max-width: 760px;
+}
+
+.map-hover-callout--globe .map-hover-callout__panel--stack:has(.map-hover-callout__badges) {
+    min-width: 520px;
+    max-width: 760px;
 }
 
 .map-hover-callout__panel-inner--compact .preview-badge-icons {

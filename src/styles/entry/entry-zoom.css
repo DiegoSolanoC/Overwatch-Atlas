@@ -1,4 +1,4 @@
-/* Zoom Controls — lighting on left dock wing / zoom+reset on right dock wing */
+/* Zoom Controls — original simple dark pill sliders (Zoom | Sun) */
 :root {
     --atlas-floating-controls-right: max(42px, env(safe-area-inset-right));
     /*
@@ -6,28 +6,25 @@
      * --pagination-dock-height is visible — :root calc() would freeze the expanded value.
      */
     --atlas-floating-controls-bottom-mobile: calc(var(--footer-height, 65px) + 24px);
+    /*
+     * On :root so pills stay thick when the panel is moved into the right flank strip
+     * (no longer a .zoom-controls descendant).
+     */
+    --zoom-slider-track-h: 28px;
+    --zoom-slider-thumb: 44px;
+    --zoom-slider-pill-bg: rgba(6, 14, 28, 0.82);
+    --zoom-slider-pill-fill: rgb(var(--accent-primary-rgb, 33, 150, 243));
 }
 
 .zoom-controls {
-    /*
-     * Full viewport dock span (same left/right as .pagination-dock) — NOT the
-     * center trapezium. Bars pin to the outer white wing ends.
-     */
-    --zoom-slider-track-h: var(--world-zoom-track-h, 14px);
-    --zoom-slider-thumb: var(--world-zoom-thumb, 52px);
-    --zoom-slider-track-border: var(--world-zoom-track-border, 2px);
-    --zoom-slider-trap-fill: rgb(var(--accent-primary-rgb, 33, 150, 243));
-    /* Fallback rounded-trap chrome until SidePanelsTrapChrome applies live stroke width */
-    --zoom-slider-trap-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='%23fff'/%3E%3C/svg%3E");
-    --zoom-slider-trap-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M82,10 H918 Q942,10 954,28 L978,72 Q990,90 966,90 H34 Q10,90 22,72 L46,28 Q58,10 82,10 Z' fill='none' stroke='%23fff' stroke-width='10' stroke-linejoin='round'/%3E%3C/svg%3E");
-    /*
-     * Sit just above the dock's outer wing lip (not above the raised trap peak).
-     * Trap height is intentionally omitted so bars land on the side wings.
-     */
     --atlas-zoom-dock-bottom: calc(
         var(--footer-height, 65px)
         + var(--pagination-dock-height-expanded, 400px)
         + var(--world-zoom-lift, 12px)
+    );
+    --zoom-panel-width: calc(
+        (3 * clamp(152px, 15.5vw, 196px))
+        + (2 * var(--world-flank-pair-gap, 8px))
     );
     position: fixed;
     left: 0;
@@ -39,11 +36,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 12px;
     width: auto;
     max-width: none;
-    /* Mirrored inset from each dock end (UI Tweaks → World · bar inset). */
     padding-inline: calc(
             max(12px, env(safe-area-inset-left, 0px)) + var(--world-slider-inset, 24px)
         )
@@ -59,6 +55,45 @@
             var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
 }
 
+/*
+ * Desktop: panel lives in the right-flank strip beside Reset — hide empty float shell.
+ */
+@media (min-width: 769px) {
+    body:has(#dockTrapFlankSliderStrip .zoom-controls__panel) #zoomControls.zoom-controls {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}
+
+/* Sun above, Zoom below — full strip width when docked beside Reset */
+.zoom-controls__panel {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(10px, 1.2vh, 16px);
+    width: var(--zoom-panel-width);
+    max-width: min(42vw, 520px);
+    margin-left: auto;
+    margin-right: 0;
+    padding: 0;
+    box-sizing: border-box;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.zoom-controls__panel > .stage-slider-shell--zoom,
+.zoom-controls__panel > .zoom-sun-slot {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Legacy side hooks (kept for older selectors / mobile fallbacks) */
 .zoom-controls__side {
     display: flex;
     flex-direction: column;
@@ -66,27 +101,15 @@
     pointer-events: none;
     box-sizing: border-box;
     min-width: 0;
-    /* Outer wing — allow longer bars via UI Tweaks width %. */
     max-width: min(48vw, 560px);
 }
 
-.zoom-controls__side--sun {
-    align-items: stretch;
-    justify-content: flex-end;
-    flex: 0 1 var(--world-sun-slider-width, 34%);
-    width: var(--world-sun-slider-width, 34%);
-    margin-right: auto;
-    margin-left: 0;
-}
-
+.zoom-controls__side--sun,
 .zoom-controls__side--zoom {
     align-items: stretch;
     justify-content: flex-end;
-    gap: var(--world-zoom-stack-gap, 18px);
-    flex: 0 1 var(--world-zoom-slider-width, 34%);
-    width: var(--world-zoom-slider-width, 34%);
-    margin-left: auto;
-    margin-right: 0;
+    width: 100%;
+    margin: 0;
 }
 
 body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
@@ -99,8 +122,18 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     bottom: var(--atlas-zoom-dock-bottom);
 }
 
-/* Match Filters / Map white plate language — slight skew like other mode chips */
-.zoom-reset-btn {
+/* Desktop: Reset lives on the right flank — never show a duplicate in the float stack */
+@media (min-width: 769px) {
+    .zoom-controls__panel > #zoomResetBtn {
+        display: none !important;
+    }
+}
+
+/*
+ * Reset — mobile / when still in the zoom panel: white skewed chip.
+ */
+.zoom-controls__panel > .zoom-reset-btn,
+.zoom-controls__side--zoom > .zoom-reset-btn {
     --reset-skew: -11deg;
     pointer-events: auto;
     appearance: none;
@@ -135,17 +168,15 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
         filter 0.2s ease;
 }
 
-.zoom-reset-btn > * {
-    transform: skewX(calc(-1 * var(--reset-skew)));
-}
-
-.zoom-reset-btn:hover:not(:disabled) {
-    background: #ffffff;
-    filter: brightness(1.04);
+.zoom-controls__panel > .zoom-reset-btn:hover:not(:disabled),
+.zoom-controls__side--zoom > .zoom-reset-btn:hover:not(:disabled) {
+    background: #ececec;
+    filter: none;
     transform: skewX(var(--reset-skew)) translateY(-1px);
 }
 
-.zoom-reset-btn:active:not(:disabled) {
+.zoom-controls__panel > .zoom-reset-btn:active:not(:disabled),
+.zoom-controls__side--zoom > .zoom-reset-btn:active:not(:disabled) {
     transform: skewX(var(--reset-skew)) translateY(0);
     filter: none;
 }
@@ -153,7 +184,6 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
 .zoom-reset-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
-    transform: none;
 }
 
 /* Host for the sun yaw slider — collapses when lighting/map hides it */
@@ -176,7 +206,7 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
 
 /*
  * Stage slider shell — rounded trapezium chrome on ::before/::after so range
- * thumbs are never clip-path clipped. Side columns own length (% of dock).
+ * thumbs are never clip-path clipped. Panel owns length (= left flank).
  */
 .zoom-controls .stage-slider-shell--zoom {
     width: 100%;
@@ -199,15 +229,11 @@ body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {
     box-sizing: border-box;
 }
 
-/* When lighting is off / Codex hides sun, keep zoom+reset pinned to the right end */
-body.codex-mode-active .zoom-controls__side--sun,
-.zoom-controls__side--sun:has(.zoom-sun-slot--empty),
-.zoom-controls__side--sun:has(.dev-sun-yaw-panel--hidden) {
-    width: 0;
-    max-width: 0;
-    overflow: hidden;
-    margin: 0;
-    pointer-events: none;
+/* Lighting off / Codex — collapse sun slot; zoom bar stays in the panel */
+body.codex-mode-active .zoom-controls .zoom-sun-slot,
+.zoom-controls .zoom-sun-slot.zoom-sun-slot--empty,
+.zoom-controls .zoom-sun-slot:has(.dev-sun-yaw-panel--hidden) {
+    display: none;
 }
 
 .stage-slider-shell {
@@ -219,41 +245,46 @@ body.codex-mode-active .zoom-controls__side--sun,
     pointer-events: auto;
 }
 
-/* Palette-filled rounded trapezium */
+/*
+ * Visible dark pill track (must stay thick — hairline tracks were from
+ * --zoom-slider-track-h falling undefined after the panel left .zoom-controls).
+ */
 .stage-slider-shell::before {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     top: 50%;
-    height: var(--zoom-slider-track-h);
+    height: var(--zoom-slider-track-h, 28px);
+    min-height: 24px;
     transform: translateY(-50%);
     pointer-events: none;
-    background-color: var(--zoom-slider-trap-fill);
-    -webkit-mask-image: var(--zoom-slider-trap-mask);
-    mask-image: var(--zoom-slider-trap-mask);
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
+    border-radius: 999px;
+    background: var(--zoom-slider-pill-bg, rgba(6, 14, 28, 0.82));
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-/* White rounded-trap outline (stroke SVG; thickness from World tweaks) */
+/* Accent fill bar inside the pill */
 .stage-slider-shell::after {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 3px;
+    right: 3px;
     top: 50%;
-    height: var(--zoom-slider-track-h);
+    height: calc(var(--zoom-slider-track-h, 28px) - 8px);
+    min-height: 14px;
     transform: translateY(-50%);
     pointer-events: none;
-    background-image: var(--zoom-slider-trap-stroke);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+    border-radius: 999px;
+    background: color-mix(
+        in srgb,
+        var(--zoom-slider-pill-fill, #2196f3) 70%,
+        #0a1524 30%
+    );
+    opacity: 0.9;
 }
 
 .stage-slider-shell .zoom-slider,
@@ -324,11 +355,11 @@ body.codex-mode-active .zoom-controls__side--sun,
     position: absolute;
     left: 0;
     top: 50%;
-    width: var(--zoom-slider-thumb);
-    height: var(--zoom-slider-thumb);
+    width: var(--zoom-slider-thumb, 44px);
+    height: var(--zoom-slider-thumb, 44px);
     border-radius: 50%;
     background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -339,8 +370,8 @@ body.codex-mode-active .zoom-controls__side--sun,
 }
 
 .stage-slider-nub img {
-    width: 56%;
-    height: 56%;
+    width: 58%;
+    height: 58%;
     object-fit: contain;
     filter: brightness(0);
     pointer-events: none;
@@ -419,7 +450,7 @@ body:has(.loading-overlay.active) .time-control-slider {
         left: 0 !important;
         right: 0 !important;
         transform: none !important;
-        justify-content: space-between !important;
+        justify-content: flex-end !important;
         align-items: flex-end !important;
         gap: 8px !important;
         /* Wing lip — do not add trap height (that centered bars above the trap). */
@@ -431,8 +462,9 @@ body:has(.loading-overlay.active) .time-control-slider {
         z-index: calc(var(--pagination-dock-z, 2200) + 20);
     }
 
-    .zoom-controls__side--zoom {
+    .zoom-controls__panel {
         gap: 6px;
+        max-width: min(70vw, 360px);
     }
 
     body.pagination-dock-collapsed:has(#paginationDock) .zoom-controls {

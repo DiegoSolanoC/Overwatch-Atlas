@@ -627,7 +627,7 @@ body.color-palette-gray .event-item-title {
     margin-left: -12%;
     margin-top: 0;
     overflow: hidden;
-    transform: skewX(11deg) scale(1.06);
+    transform: skewX(11deg) translateY(-2px);
     transform-origin: center center;
 }
 
@@ -858,13 +858,13 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item:hover .event-item__thumb-shell {
-    transform: skewX(var(--thumb-skew)) scale(1.045);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
     border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) !important;
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item:hover .event-item__thumb-chrome {
-    transform: skewX(var(--thumb-skew)) scale(1.045);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
 }
 
 body.color-palette-gray :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item:hover,
@@ -899,11 +899,11 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.dragging .event-item__thumb-shell {
-    transform: skewX(var(--thumb-skew)) scale(0.98);
+    transform: skewX(var(--thumb-skew));
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.dragging .event-item__thumb-chrome {
-    transform: skewX(var(--thumb-skew)) scale(0.98);
+    transform: skewX(var(--thumb-skew));
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.drag-over {
@@ -935,7 +935,7 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--unfinished:hover:not(.dragging) .event-item__thumb-shell {
-    transform: skewX(var(--thumb-skew)) scale(1.045);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
     border-color: rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) !important;
     box-shadow:
         0 10px 26px rgba(0, 0, 0, 0.55),
@@ -944,7 +944,7 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--unfinished:hover:not(.dragging) .event-item__thumb-chrome {
-    transform: skewX(var(--thumb-skew)) scale(1.045);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
 }
 
 /* Hero/NPC relevancy on the wrong filter group (e.g. promoted NPC still listed as NPC) */
@@ -958,7 +958,7 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--wrong-category-relevancy:hover:not(.dragging) .event-item__thumb-shell {
-    transform: skewX(var(--thumb-skew)) scale(1.045);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
     border-color: rgba(255, 183, 77, 0.98) rgba(255, 204, 128, 0.9) rgba(255, 183, 77, 0.98) rgba(255, 204, 128, 0.9) !important;
     box-shadow:
         0 10px 26px rgba(0, 0, 0, 0.55),
@@ -967,7 +967,7 @@ body.color-palette-nulled :is(#eventsList, #storyTimelineEvents, #dialogueTheate
 }
 
 :is(#eventsList, #storyTimelineEvents, #dialogueTheaterList, #dialogueTheaterStoryCommentaryRefs) .event-item.event-item--wrong-category-relevancy:hover:not(.dragging) .event-item__thumb-chrome {
-    transform: skewX(var(--thumb-skew)) scale(1.045);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
 }
 
 @media (max-width: 768px), (max-height: 599px) {

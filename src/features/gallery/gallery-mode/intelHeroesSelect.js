@@ -29,13 +29,16 @@ import {
 } from '../../system-interface/interface-filter-menu/images/filterImagePaths.js';
 import { buildFactionFilterImagePath } from '../../system-interface/interface-filter-menu/images/factionImagePaths.js';
 
+function syncDockFlanks() {
+    void import('./intelDockFlankControls.js')
+        .then((m) => m.syncIntelDockFlankControls?.())
+        .catch(() => {});
+}
+
 const HOST_ID = 'atlasGalleryHost';
 
 /** @type {HTMLElement | null} */
 let rootEl = null;
-
-/** @type {HTMLButtonElement | null} */
-let backBtn = null;
 
 /** @type {number} */
 let renderToken = 0;
@@ -338,24 +341,6 @@ function bindCardSizeSync(root) {
 }
 
 /**
- * @param {HTMLElement} host
- */
-function ensureBackButton(host) {
-    if (backBtn?.isConnected) return backBtn;
-    backBtn = document.createElement('button');
-    backBtn.type = 'button';
-    backBtn.id = 'intelHeroesSelectBackBtn';
-    backBtn.className = 'intel-heroes-select__back';
-    backBtn.textContent = '← Intel';
-    backBtn.title = 'Back to Heroes / Factions / NPCs';
-    backBtn.addEventListener('click', () => {
-        showIntelHeroesSelect();
-    });
-    host.appendChild(backBtn);
-    return backBtn;
-}
-
-/**
  * Show entity stage; hide picker.
  */
 export function showIntelEntityView() {
@@ -363,9 +348,8 @@ export function showIntelEntityView() {
     if (!host) return;
     host.classList.remove('gallery-mode--heroes-select');
     host.classList.add('gallery-mode--entity');
-    ensureBackButton(host);
     if (rootEl) rootEl.hidden = true;
-    if (backBtn) backBtn.hidden = false;
+    syncDockFlanks();
 }
 
 /**
@@ -378,7 +362,7 @@ export function showIntelHeroesSelect() {
     host.classList.add('gallery-mode--heroes-select');
     host.classList.remove('gallery-mode--entity');
     if (rootEl) rootEl.hidden = false;
-    if (backBtn) backBtn.hidden = true;
+    syncDockFlanks();
     requestAnimationFrame(() => syncCardSize?.());
 }
 
@@ -490,7 +474,6 @@ export async function mountIntelHeroesSelect(host) {
 
     rootEl = root;
     host.appendChild(root);
-    ensureBackButton(host);
     bindCardSizeSync(root);
     showIntelHeroesSelect();
 }
@@ -502,8 +485,6 @@ export function unmountIntelHeroesSelect() {
     syncCardSize = null;
     rootEl?.remove();
     rootEl = null;
-    backBtn?.remove();
-    backBtn = null;
     const host = getHost();
     host?.classList.remove('gallery-mode--heroes-select', 'gallery-mode--entity');
 }

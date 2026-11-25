@@ -122,6 +122,15 @@ export async function killGlobeMode(ctx) {
 
     teardownGlobeMapChooserHub();
 
+    // Drop dock thumb highlight / pinned callout before World tears down
+    // (thumb mouseleave may not fire when switching modes from a hover).
+    try {
+        window.globeController?.interactionController?.markerService?.dismissPinnedMarkerCallout?.();
+        document
+            .querySelectorAll('.event-number-btn.number-btn-marker-hover')
+            .forEach((btn) => btn.classList.remove('number-btn-marker-hover'));
+    } catch (_) { /* ignore */ }
+
     updateStatus('Killing all Globe Components...', 'info');
 
     const eventSystemActive = isEventSystemLoadOutActive();

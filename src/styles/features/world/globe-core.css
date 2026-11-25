@@ -49,7 +49,7 @@
     user-select: none;
 }
 
-/* Sun yaw — left dock end (#zoomSunSlot inside .zoom-controls__side--sun) */
+/* Sun yaw — inside .zoom-controls__panel (#zoomSunSlot) */
 .dev-sun-yaw-panel {
     position: relative;
     inset: auto;
@@ -175,14 +175,21 @@ body.codex-mode-active .zoom-sun-slot {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Avoid transition:all — filter/opacity flashes blur on skewed chrome */
+    transition:
+        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+        background 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
     user-select: none;
     line-height: 1;
+    backface-visibility: hidden;
 }
 
 .globe-control-btn:hover {
-    transform: skewX(-11deg) translateY(-3px) scale(1.04);
+    /* No scale/filter — skew+scale/filter re-rasterizes and flashes blur. */
+    transform: skewX(-11deg) translateY(-3px);
     background: rgba(13, 71, 161, 0.55);
     border-color: #fff;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
@@ -1107,7 +1114,7 @@ body.codex-mode-active .zoom-sun-slot {
     }
 
     .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn:hover {
-        transform: skewX(-11deg) translateY(-3px) scale(1.04) !important;
+        transform: skewX(-11deg) translateY(-3px) !important;
         background: var(--btn-primary-bg-hover) !important;
         border-color: #fff !important;
     }
@@ -1153,8 +1160,8 @@ body.codex-mode-active .zoom-sun-slot {
 .globe-control-btn:hover {
     background: rgba(13, 71, 161, 1);
     border-color: rgba(255, 255, 255, 0.6);
-    transform: scale(1.1);
-    /* Match zoom/page hover styling */
+    /* Keep skew; avoid scale — re-rasterize flash on parallelogram chrome */
+    transform: skewX(-11deg) translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 

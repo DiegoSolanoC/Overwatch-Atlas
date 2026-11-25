@@ -1,10 +1,12 @@
 /**
  * Detect events that share a location within the same globe page (10-event chronological group).
  *
- * Overlap = same `nameKey` OR same `coordKey` within a chunk of 10 consecutive events. We bucket
- * the full chronological event list into groups of 10 (`Math.floor(idx / 10)`) so the rendered
- * badges match the globe's pagination — flagging a #3 + #14 pair would be misleading because
- * they never share a globe page.
+ * Heavy overlap = same `nameKey` OR same `coordKey` for more than 5 events
+ * ({@link SAME_PAGE_OVERLAP_RED_MIN}+) within a chunk of 10 consecutive events.
+ * Five-or-fewer stacks on a page are allowed; only denser stacks go red. We bucket
+ * the full chronological list into groups of 10 (`Math.floor(idx / 10)`) so badges
+ * match dock / globe pagination — flagging a #3 + #14 pair would be misleading
+ * because they never share a page.
  *
  * For multi-variant events we always pick the **first** variant's location: the main marker on
  * the globe is the primary location, even if the manager card is previewing variant 2.
@@ -14,6 +16,9 @@
  *
  * @typedef {{ getLocationName?: (lat:number, lon:number) => string|null }} OverlapResolver
  */
+
+/** Min same-page matches (inclusive) before dock keys / EM badges turn red (>5 ⇒ 6+). */
+export const SAME_PAGE_OVERLAP_RED_MIN = 6;
 
 function normalizeLocationNameForOverlap(name) {
     if (!name || typeof name !== 'string') return null;
@@ -72,7 +77,8 @@ function getOverlapKeysForEvent(event, resolver) {
 }
 
 /**
- * Returns the set of full-list indices that overlap any sibling within their globe page.
+ * Returns the set of full-list indices in a heavy same-page overlap
+ * ({@link SAME_PAGE_OVERLAP_RED_MIN}+ siblings sharing name or coord).
  * `eventsToRender` is currently unused but kept so callers can pass the rendered slice
  * (debug logging or future per-page optimisations).
  *
@@ -105,7 +111,7 @@ export function computeOverlapIndexSet(_eventsToRender, fullList, resolver) {
     const overlaps = new Set();
     const markDuplicates = (m) => {
         for (const arr of m.values()) {
-            if (arr.length > 1) {
+            if (arr.length >= SAME_PAGE_OVERLAP_RED_MIN) {
                 arr.forEach((idx) => overlaps.add(idx));
             }
         }
@@ -117,4 +123,29 @@ export function computeOverlapIndexSet(_eventsToRender, fullList, resolver) {
     }
 
     return overlaps;
+}
+
+/**
+ * Dev-only dock key paint: red when the index is in a heavy same-page overlap set.
+ * @param {HTMLElement | null | undefined} keyEl
+ * @param {boolean} isHeavyOverlap
+ */
+export function applyDockOverlapKeyStyle(keyEl, isHeavyOverlap) {
+    if (!keyEl) return;
+    if (isHeavyOverlap) {
+        keyEl.style.color = '#ff4444';
+        keyEl.style.textShadow = '0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 12px rgba(0, 0, 0, 0.45)';
+    } else {
+        keyEl.style.color = '';
+        keyEl.style.textShadow = '';
+    }
+}
+
+/**
+ * @returns {boolean}
+ */
+export function isLocalDevOverlapHost() {
+    if (typeof window === 'undefined') return false;
+    const host = window.location?.hostname;
+    return host === 'localhost' || host === '127.0.0.1';
 }

@@ -425,9 +425,9 @@ body.color-palette-gray .filters-panel-close:hover {
 }
 
 .filter-tab:hover {
-    background: #ffffff;
+    background: #ececec;
     transform: skewX(var(--filter-tab-skew)) translateY(-2px);
-    filter: brightness(1.04);
+    filter: none;
 }
 
 .filter-tab:active {
@@ -445,8 +445,8 @@ body.color-palette-gray .filters-panel-close:hover {
 }
 
 .filter-tab.active:hover {
-    background: rgb(var(--accent-primary-rgb));
-    filter: brightness(1.08);
+    background: color-mix(in srgb, rgb(var(--accent-primary-rgb)) 86%, white);
+    filter: none;
 }
 
 .filter-tab.active .filter-tab-label {
@@ -1515,9 +1515,9 @@ body.color-palette-gray .filters-actions {
 }
 
 .filters-action-btn:hover {
-    background: #ffffff;
+    background: #ececec;
     transform: skewX(var(--filter-action-skew)) translateY(-2px);
-    filter: brightness(1.04);
+    filter: none;
 }
 
 .filters-action-btn:active {
@@ -1535,8 +1535,8 @@ body.color-palette-gray .filters-actions {
 }
 
 .filters-confirm-btn:hover {
-    background: rgb(var(--accent-primary-rgb));
-    filter: brightness(1.08);
+    background: color-mix(in srgb, rgb(var(--accent-primary-rgb)) 86%, white);
+    filter: none;
 }
 
 /* Gray palette: orange confirm button */

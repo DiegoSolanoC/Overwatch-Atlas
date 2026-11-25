@@ -166,7 +166,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     width: auto;
     height: auto;
     margin: 0;
-    transform: skewX(11deg) scale(1.04);
+    transform: skewX(11deg) translateY(-2px);
     transform-origin: center center;
 }
 
@@ -191,7 +191,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
 .main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runHeroBiographyBtn) .main-menu-image-container {
     left: -22%;
     right: -20%;
-    transform: skewX(11deg) scale(1.05);
+    transform: skewX(11deg) translateY(-2px);
 }
 
 .main-menu-layout--modes-only .main-menu-modes-row .main-menu-btn-wrapper:has(#runGlobeBtn) .main-menu-image-container img,
@@ -290,7 +290,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
 .main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn:hover,
 .main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn--see-latest:focus-visible,
 .main-menu-layout--modes-only .main-menu-see-latest-wrapper .main-menu-side-btn:focus-visible {
-    transform: translateX(var(--see-latest-skew-nudge)) skewX(var(--thumb-skew)) translateY(-2px) scale(1.02);
+    transform: translateX(var(--see-latest-skew-nudge)) skewX(var(--thumb-skew)) translateY(-2px);
 }
 
 .main-menu-side-column {
@@ -541,7 +541,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     display: block;
     border-radius: 0;
     overflow: hidden;
-    transform: skewX(11deg) scale(1.06);
+    transform: skewX(11deg) translateY(-2px);
     transform-origin: center center;
 }
 
@@ -604,7 +604,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     width: auto;
     height: auto;
     margin: 0;
-    transform: skewX(11deg) scale(1.04);
+    transform: skewX(11deg) translateY(-2px);
     transform-origin: center center;
 }
 
@@ -753,7 +753,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
 }
 
 .main-menu-side-btn-wrapper .main-menu-side-btn:hover {
-    transform: skewX(var(--thumb-skew)) translateY(-2px) scale(1.02);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
     transform-origin: center center;
 }
 
@@ -1027,7 +1027,7 @@ a.main-menu-side-btn {
     background: rgba(255, 255, 255, 0.1);
     border-top-color: rgba(255, 186, 80, 0.95);
     border-bottom-color: rgba(255, 186, 80, 0.95);
-    transform: skewX(var(--thumb-skew)) translateY(-2px) scale(1.02);
+    transform: skewX(var(--thumb-skew)) translateY(-2px);
     z-index: 12;
     animation: main-menu-btn-golden-glow 2.2s ease-in-out infinite;
 }
@@ -1642,17 +1642,17 @@ body.color-palette-gray .main-menu-label-container {
 
         body .main-menu-mobile-select:hover,
         body .main-menu-mobile-select:focus-visible {
-            background: #ffffff;
+            background: #ececec;
             color: #000;
             outline: none;
-            filter: brightness(1.04);
-            transform: skewX(var(--select-skew)) translateY(-3px) scale(1.04);
+            filter: none;
+            transform: skewX(var(--select-skew)) translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.48);
         }
 
         body .main-menu-mobile-select:active,
         body .main-menu-mobile-select.is-active {
-            transform: skewX(var(--select-skew)) translateY(-1px) scale(1.02);
+            transform: skewX(var(--select-skew)) translateY(-1px);
             background: rgb(var(--accent-primary-rgb)) !important;
             background-color: rgb(var(--accent-primary-rgb)) !important;
             color: #fff !important;

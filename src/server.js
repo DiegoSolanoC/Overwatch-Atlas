@@ -825,7 +825,8 @@ function serveFile(res, filePath, contentType) {
                 headers['Expires'] = '0';
             }
             res.writeHead(200, headers);
-            res.end(data, 'utf-8');
+            /* Buffer only — passing 'utf-8' can corrupt binary audio/images. */
+            res.end(data);
         }
     });
 }

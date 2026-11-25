@@ -97,7 +97,7 @@ export async function loadToggles(loadedComponents) {
             label: 'Lighting',
             iconPath: 'src/assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png',
             iconAlt: 'Lighting',
-            parentId: 'dockTrapFlankRight',
+            parentId: 'dockTrapFlankLeft',
             baseClass: 'globe-control-btn',
             iconSpanId: 'lightingIcon',
             headerOrder: 60,
