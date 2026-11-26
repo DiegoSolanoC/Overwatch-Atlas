@@ -26,7 +26,11 @@ const DEFAULT_VOLUME = 0.5;
 const MEDIA_ERR_ABORTED = 1;
 
 /**
- * Root-absolute URL so loads do not depend on the document base path.
+ * Resolve a repo-relative SFX path against the current page directory.
+ *
+ * Must NOT force origin-root `/src/...` — that 404s on GitHub Pages project
+ * sites (`/Overwatch-Atlas/src/...` is correct; `/src/...` is not).
+ *
  * @param {string} path
  * @returns {string}
  */
@@ -35,11 +39,11 @@ function toSfxPlaybackUrl(path) {
     if (!encoded) return '';
     if (/^https?:\/\//i.test(encoded)) return encoded;
     try {
-        const abs = encoded.startsWith('/') ? encoded : `/${encoded}`;
-        if (typeof window !== 'undefined' && window.location?.origin) {
-            return new URL(abs, window.location.origin).href;
+        if (typeof window !== 'undefined' && window.location?.href) {
+            const pageDir = new URL('.', window.location.href);
+            return new URL(encoded.replace(/^\/+/, ''), pageDir).href;
         }
-        return abs;
+        return encoded.replace(/^\/+/, '');
     } catch {
         return encoded;
     }
