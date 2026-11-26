@@ -24,6 +24,12 @@ const DEFAULT_VOLUME = 0.5;
 
 /** MEDIA_ERR_ABORTED — fired when a clip is replaced or the load is cancelled. */
 const MEDIA_ERR_ABORTED = 1;
+/** MEDIA_ERR_NETWORK — often transient when many clips preload at once. */
+const MEDIA_ERR_NETWORK = 2;
+/** Max load attempts (initial + retries) per clip. */
+const SFX_LOAD_MAX_ATTEMPTS = 3;
+/** Stagger between bank registrations to reduce parallel decode pressure. */
+const SFX_BANK_STAGGER_MS = 18;
 
 /**
  * Resolve a repo-relative SFX path against the current page directory.
@@ -89,13 +95,17 @@ class SoundEffectsService {
             audio.addEventListener('error', () => {
                 const code = audio.error?.code;
                 if (code === MEDIA_ERR_ABORTED) return;
-                if (attempt < 1) {
+                const retryable =
+                    attempt + 1 < SFX_LOAD_MAX_ATTEMPTS &&
+                    (code == null || code === MEDIA_ERR_NETWORK);
+                if (retryable) {
+                    const delayMs = code === MEDIA_ERR_NETWORK ? 180 + attempt * 120 : 120;
                     window.setTimeout(() => {
                         if (this.sounds[name] === audio) {
                             delete this.sounds[name];
                         }
                         this._registerClip(name, path, opts, attempt + 1);
-                    }, 120);
+                    }, delayMs);
                     return;
                 }
                 console.error(
@@ -201,13 +211,17 @@ class SoundEffectsService {
                 ? window.logAssetLoad
                 : () => {};
 
-        for (const row of SOUND_EFFECTS_BANK) {
-            logAssetLoad('SOUND_EFFECT', row.file);
-            this._registerClip(row.name, SFX_ROOT + row.file, {
-                volumeMultiplier: row.volumeMultiplier ?? 1,
-                playbackRate: row.playbackRate ?? null,
-            });
-        }
+        SOUND_EFFECTS_BANK.forEach((row, index) => {
+            const register = () => {
+                logAssetLoad('SOUND_EFFECT', row.file);
+                this._registerClip(row.name, SFX_ROOT + row.file, {
+                    volumeMultiplier: row.volumeMultiplier ?? 1,
+                    playbackRate: row.playbackRate ?? null,
+                });
+            };
+            if (index === 0) register();
+            else window.setTimeout(register, index * SFX_BANK_STAGGER_MS);
+        });
 
         this.setVolume(loadSavedSfxVolume(this.volume));
         this.setupSoundEffectsSlider();

@@ -28,6 +28,10 @@ export const SOUND_EFFECTS_BANK = [
     { name: 'radiate', file: 'Radiate.mp3' },
     { name: 'page', file: 'Page.mp3' },
     { name: 'eventClick', file: 'Event Click.mp3' },
+    /** Edit / cancel affordances — reuses the light pick click (no dedicated clip). */
+    { name: 'uiClick', file: 'Filter Pick.mp3' },
+    /** Save / persist confirmations — reuses filter confirm. */
+    { name: 'save', file: 'Filter Confirm.mp3', volumeMultiplier: 0.5 },
     { name: 'music', file: 'Music.mp3' },
     { name: 'hackOn', file: 'Hack On.mp3' },
     { name: 'hackOff', file: 'Hack Off.mp3' },
@@ -49,6 +53,7 @@ export const SOUND_EFFECTS_BANK = [
 /** Extra attenuation applied at `play()` time (master volume is still `service.volume`). */
 const PLAY_VOLUME_MULTIPLIER = {
     filterConfirm: 0.5,
+    save: 0.5,
     hackOn: 0.85,
     hackOff: 0.85,
     page: 0.4,

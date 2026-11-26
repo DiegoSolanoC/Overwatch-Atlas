@@ -6810,7 +6810,7 @@
       "name": "Rebuilding the Past",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "A notable trend across the world following the Crisis was the return to classical architecture. As many cities had been leveled by the war, many of them needed to rebuild from the ground up, changing greatly from how they used to look years prior. With the construction of the Temple of Anubis, Cairo gained a new Pyramid. As Lumérico built power plants across Mexico, their architecture was inspired by Aztec and Mayan architecture. And this trend can be seen across the world on many other sites. In Greece, a small Aegean island renamed itself to Illios and built a giant statue on the nearby coast, echoing stories of the Colossus of Rhodes.\n\nBut perhaps none of these rebuilt structures stands out more than the Colosseo Gladiatori. Italy had rebuilt the Colosseum and reopened it for the masses. The newly  formed Gladiator games were a pageant that became a cultural touchstone of Rome in the wake of the crisis. Within the Arena Victoriae of the Colosseo, all sorts of events would be hosted to entertain both the public and the European elite. From one-to-one gladiator matches, to robotic chariot races, mech fights and even stand-offs against machines designed for war, much like those Anubis used in The Crisis.\n\nThe Colosseo grew over the years, and the champions of the Arena would quickly become influential figures in Europe too, as the Elites visiting the Colosseo would often sponsor their fights and take in profits from their victories.",
+      "description": "A notable trend across the world following the Crisis was the return to classical architecture. As many cities had been leveled by the war, many of them needed to rebuild from the ground up, changing greatly from how they used to look years prior. With the construction of the Temple of Anubis, Cairo gained a new Pyramid. As Lumérico built power plants across Mexico, their architecture was inspired by Aztec and Mayan architecture. Runasapi as well continued to enbrace its Andean roots by rebuilding its walls slanted inwards like the Incans once did. This trend can be seen across the world on many other sites. In Greece, a small Aegean island renamed itself to Illios and built a giant statue on the nearby coast, echoing stories of the Colossus of Rhodes.\n\nIn the early days of the rebuilding Jack Morrison recalled Vincent mentioning this trend in post crisis cities, and how this deliverate echoes of the ancient past seemed to be a way to honor what was lost, and using whats left of it to shape the future. But perhaps none of these rebuilt structures stands out more than the Colosseo Gladiatori. Italy had rebuilt the Colosseum and reopened it for the masses. The newly  formed Gladiator games were a pageant that became a cultural touchstone of Rome in the wake of the crisis. \n\n\nWithin the Arena Victoriae of the Colosseo, all sorts of events would be hosted to entertain both the public and the European elite. From one-to-one gladiator matches, to robotic chariot races, mech fights and even stand-offs against machines designed for war, much like those Anubis used in The Crisis. The Colosseo grew over the years, and the champions of the Arena would quickly become influential figures in Europe too, as the Elites visiting the Colosseo would often sponsor their fights and take in profits from their victories.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -6849,8 +6849,14 @@
         }
       ],
       "commentary": [
-        "Fun fact",
-        "Circuit Maximus"
+        {
+          "name": "Fun fact",
+          "theaterId": "00af8d6f-ff26-4c29-8cfc-31332af3baae"
+        },
+        {
+          "name": "Circuit Maximus",
+          "theaterId": "3f633fcf-2e54-49cd-a2aa-14f6edb06257"
+        }
       ]
     },
     {
@@ -9835,6 +9841,89 @@
       ]
     },
     {
+      "name": "Cursed",
+      "locationType": "earth",
+      "cityDisplayName": "Akihabara, Japan",
+      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. \n\nAs the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Curse Breaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
+        },
+        {
+          "text": "Facing Demons",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
+          ]
+        }
+      ],
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2066,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        },
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": "Spared Mizuki and kept him to train personally"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Hashimoto gangsters seen wielding energy weapons",
+        "Tokyo crime rates increase twice as fast this last month"
+      ],
+      "commentary": [
+        {
+          "name": "Cursed Boy",
+          "theaterId": "34fe0783-0d09-407e-839e-417af86103c0"
+        },
+        {
+          "name": "Lucky Amulet",
+          "theaterId": "e09f263a-5b3c-4213-a74d-4fccb6264353"
+        },
+        {
+          "name": "Lost Amulet",
+          "theaterId": "36d4499a-35bb-4bf8-9e4d-de3b391347f3"
+        }
+      ]
+    },
+    {
       "name": "Project Echo Goes Online",
       "locationType": "earth",
       "cityDisplayName": "Oslo, Norway",
@@ -9989,93 +10078,10 @@
       ]
     },
     {
-      "name": "Cursed",
-      "locationType": "earth",
-      "cityDisplayName": "Akihabara, Japan",
-      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. \n\nAs the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Curse Breaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
-          ]
-        },
-        {
-          "text": "Facing Demons",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
-            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
-          ]
-        }
-      ],
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2066,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        },
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": "Spared Mizuki and kept him to train personally"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [
-        "Hashimoto gangsters seen wielding energy weapons",
-        "Tokyo crime rates increase twice as fast this last month"
-      ],
-      "commentary": [
-        {
-          "name": "Cursed Boy",
-          "theaterId": "34fe0783-0d09-407e-839e-417af86103c0"
-        },
-        {
-          "name": "Lucky Amulet",
-          "theaterId": "e09f263a-5b3c-4213-a74d-4fccb6264353"
-        },
-        {
-          "name": "Lost Amulet",
-          "theaterId": "36d4499a-35bb-4bf8-9e4d-de3b391347f3"
-        }
-      ]
-    },
-    {
       "name": "When Dragons Fall",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information.\n\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death.",
+      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information.\n\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused to follow the clan in spite of Hanzo's insistance and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. His brother left him behind, horrified at sight of his own dead brother, and he very well would have perished if it wasn't for Overwatch showing up.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -10234,6 +10240,50 @@
       ]
     },
     {
+      "name": "Honorless",
+      "description": "Hanzo had fled the scene after his confrontation with Genji, believing his brother was already dead. Having trained his whole life, wishing one day they could stand side by side, only to be forced to kill his own brother in cold blood at the orders of a bunch of old men who were supposed to serve him. His actions had broken his heart, growing resentment towards his father, thinking that the age of honor and respect that Sojiro preached about in the stories he told the brothers for years was long gone, and for all the tales of duty to their people that his father told him, it was easy to moralize and say empty words while holding a throne.\n\nHanzo left Hanamura castle, taking his father's Anima storm bow with him as a memento, swearing never to wield a blade again. After abandoning his claim as the heir of the clan, legends say the man became a vagabond, traveling the world, seeking for ways to restore his honor and put his old life behind. He was now a lone wolf traveling aimlessly as self-punishment. He tried many ways to find peace with his actions, from meditational arrow carving to poetry, but deep down he knew that wouldn't redeem his mistakes. \n\nAt first, the clan saw his abandonment as betrayal, stripping him of his finances and sending assassins to kill him, so he used the chance to hone his skills with the bow, thinking that taking care of the Shimada, the people who pushed his hand against Genji, would restore his honor. But no matter how much he tried, he could not shake the feeling of regret and shame, refusing to forgive himself, as well as others for Genji's death, completely unaware that his brother had survived.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Hanamura, Japan",
+      "yearStart": 2067,
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "Hanzo steals his father's Anima bow and leaves the Shimada",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [
+        "Shimada assassins spotted in Numbani hallway, killed by an archer"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Hanzo",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/hanzo/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hanzo",
+          "reasoning": "Travels the world seeking for a way to honor Genji's death"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shimada Clan,",
+          "reasoning": "Sents assassins to murder Hanzo after his betrayal"
+        }
+      ]
+    },
+    {
       "name": "Escalation",
       "description": "Null Sector activity continued across the world, inspiring many Omnics to follow Ramattra's teachings, especially following the groundbreaking of Turing Green, which many followers of Mondatta saw as a new start for Omnics. Null Sector, in contrast, took the idea as an insult, throwing a bone at his people to try and act like it absolved them from years worth of injustice. As momentum grew, the group radicalized from a small cell of liberators, to a fully militarized operation. The escalation meant many of his initial supporters soon began to leave the group behind, but his resolve to bring justice for all Omnics only grew stronger with each ally he lost.\n\nHe decided to bring his closest allies, Nameless, Zera and Lanet, on a journey across the depths of a freezing wasteland, where they found the very same Anubis made Omnium, where Ramattra was born. His plan was to use the facility to create an army, and use it to speak to humans in a language they can understand, violence. For the next two years, the group would produce entire battalions of Crisis-era units at Lanet's supervision, and Ramattra himself would upgrade his own design combining Shambali technology with an invention of his own, Nanites, microscopic machines capable of cooperation and assembly of different structures, including extra reinforced limbs for close combat. As his army grew, Ramattra already had his eyes on the first target of his revolution, but Lanet urged caution, noting the antiquated designs needed more work if they wanted to get things right.\n\nDuring this back-and-forward, tension built up over philosophical differences amongst the group, as Ramattra continuously refused to involve other Omnics and rally forces outside his mindless troops. While Nameless and Zera were used to appealing to the Omnic masses, and wished to allow their people to fight alongside them, Ramattra was tired of bloodshed. He saw himself as a liberator, not a general. It was because of this that he chose to manufacture an army of robots, instead of using his influence to command his supporters, as he wished to keep sentient Omnics away from active conflict as much as possible. This led to constant argument with his allies, who saw their leader radicalize further into a lonely crusade.",
       "locationType": "earth",
@@ -10286,75 +10336,6 @@
         {
           "name": "Ramattra · Now, you will see how war can be waged and won.",
           "label": "Waged and Won"
-        }
-      ]
-    },
-    {
-      "name": "Cyber Ninja",
-      "description": "After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics. Angela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. \n\nZiegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
-      "locationType": "earth",
-      "lat": 47.3744489,
-      "lon": 8.5410422,
-      "image": "",
-      "cityDisplayName": "Zurich, Switzerland",
-      "yearStart": 2066,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": "Genji is rebuilt into a Cybernetic weapon"
-        }
-      ],
-      "headlines": [
-        "Heirs of the Shimada missing following Overwatch activity in the area"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Genji, Mercy",
-          "reasoning": "Ziegler rebuilds Genji and they form a close bond"
-        },
-        {
-          "locationName": "",
-          "country": "Reaper,",
-          "reasoning": "Recruits Genji into Blackwatch in exchange for cybernetics"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Blackwatch",
-          "reasoning": "Medical division rebuilds Genji into a living weapon"
-        }
-      ],
-      "commentary": [
-        {
-          "name": "Halloween Dress up",
-          "theaterId": "23745dbb-4cd3-49c8-988e-cc0031b9e48a"
-        },
-        {
-          "name": "Like a Brother",
-          "theaterId": "c8b31412-3282-4b5e-b01c-57433c6b8862"
-        },
-        {
-          "name": "Accept Help",
-          "theaterId": "daf7bbf6-c210-4f91-a185-09955eff9999"
-        },
-        {
-          "name": "Without metal",
-          "theaterId": "bce1aca5-dcc3-4d93-8eb3-b62070dda88b"
-        },
-        {
-          "name": "Staying late",
-          "theaterId": "1f89314c-40af-40a5-8c76-7fcaabd2bf1f"
         }
       ]
     },
@@ -10436,6 +10417,75 @@
         {
           "name": "Body Counts",
           "theaterId": "9b9936f8-9bc5-41a1-987e-21829b09ad4d"
+        }
+      ]
+    },
+    {
+      "name": "Cyber Ninja",
+      "description": "Genji woke up at an Overwatch facility on life support, having lost most of his limbs to the cuts of an Anima blade, he was barely even able to breathe, and his body was only kept alive by machinery. He was visited by Gabriel Reyes, who was commanding the operation against the Shimada Clan, and after hearing his story, Gabriel Reyes pitched him the idea of joining forces. \n\nIf Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics. Allowing him to talk again and live like a person, while also taking revenge on the people who did this do him. Genji, enraged by what his brother had done and without much of a choice in his critical state, accepted the offer. Angela Ziegler, the head of the medical division and the one in charge of Genji's care, and more so were strongly opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji. The moral dispute between Angela and Reyes escalated, and she only committed to the surgery when given the direct order to do so.\n\nWith the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team. But while his kind nature showed when talking to Angela, he had been confumed by rage, not just at the Shimada clan but especially towards his brother, the one to blame for the mutilation he endured, and the first to walk away as he began to lose consciousness that night.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearStart": 2066,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": "Genji is rebuilt into a Cybernetic weapon"
+        }
+      ],
+      "headlines": [
+        "Heirs of the Shimada missing following Overwatch activity in the area"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Genji, Mercy",
+          "reasoning": "Ziegler rebuilds Genji and they form a close bond"
+        },
+        {
+          "locationName": "",
+          "country": "Reaper,",
+          "reasoning": "Recruits Genji into Blackwatch in exchange for cybernetics"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Blackwatch",
+          "reasoning": "Medical division rebuilds Genji into a living weapon"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Halloween Dress up",
+          "theaterId": "23745dbb-4cd3-49c8-988e-cc0031b9e48a"
+        },
+        {
+          "name": "Like a Brother",
+          "theaterId": "c8b31412-3282-4b5e-b01c-57433c6b8862"
+        },
+        {
+          "name": "Accept Help",
+          "theaterId": "daf7bbf6-c210-4f91-a185-09955eff9999"
+        },
+        {
+          "name": "Without metal",
+          "theaterId": "bce1aca5-dcc3-4d93-8eb3-b62070dda88b"
+        },
+        {
+          "name": "Staying late",
+          "theaterId": "1f89314c-40af-40a5-8c76-7fcaabd2bf1f"
         }
       ]
     },
@@ -10619,7 +10669,7 @@
     },
     {
       "name": "Shimada Takedown",
-      "description": "After months of treatment, Genji's body was fully reconstructed, and the man had turned into a living weapon, filled with rage and eager to take down his family's business. Taking down the Shimada, a group so deeply rooted in the local community's culture and politics, required a stealth operation that only Blackwatch could see through the end, and with Genji's intel, they would be able to get the upper hand. After months of preparation, Reyes, Lacroix, Genji and Cassidy strategized strikes to arrest several of the major players left in the clan, disrupting their operations piece by piece until the entire Empire began crumbling from within. \n\nTo make matters easier, the Clan had also lost their other heir, not long after Genji. Hanzo Shimada had abandoned his duties, feeling ashamed by his actions, since, as far as he knew, he had killed his brother in cold blood at the orders of a bunch of old men who were supposed to serve him. They say the man became a vagabond, taking his father's Anima storm bow with him as a memento, swearing to never to wield a blade again. Once he left Hanamura Castle hebegan to travel the world, seeking for ways to restore his honor and put his old life behind.\n\nWithout solid leadership, the remaining members of the clan began turning on each other and resorting to more openly illegal activities like blackmailing schemes, which slowly fractured their reputation with the Kanezaka community, fueling their decline further. The long-lasting Shimada Clan had been completely dismantled from the shadows, and although Genji craved more, and actively pursued the take-down of other rival gangs in the region like the Hashimoto, the conditions that allowed for the fall of the Shimada were ultimately too circumstantial. Overwatch would not be as lucky as they were here if they tried to take on some of the bigger clans of the broader Tokyo region.",
+      "description": "It took months for Genji's body to be stable after reconstruction, but the man was filled with rage and eager to take down his family's business. Taking down the Shimada, a group so deeply rooted in the local community's culture and politics, required a stealth operation that only Blackwatch could see through the end, and with Genji's intel, they would be able to get the upper hand. After months of preparation, Reyes, Lacroix, Genji and Cassidy strategized strikes to arrest several of the major players left in the clan, disrupting their operations piece by piece until the entire Empire began crumbling from within.\n\nTo make matters easier, the Clan had also lost their other heir, as Hanzo Shimada had abandoned his duties, driven to shame by his actions. Without solid leadership, the remaining members of the clan began turning on each other and resorting to more openly illegal activities like blackmailing schemes, which slowly fractured their reputation with the Kanezaka community, fueling their decline further.  The long-lasting Shimada Clan had been completely dismantled by the shadows, but Genji craved more. He knew well from the tales of his clan that the Shimada were a lesser evil, keeping other Yakuza groups around Tokyo at bay, and he would even actively pursue the take-down of other rival gangs in the region. \n\nThe Hashimoto especially were one of his major worries, not just because they killed his father, but because they were large enough to give the Shimada trouble in their time, and without any proper competition they could become a bigger threat to the entire country. However, the conditions that allowed for the fall of the Shimada were ultimately too circumstantial. Overwatch would not be as lucky as they were here if they tried to take on some of the bigger clans of the broader Tokyo region. And so, Overwatch left Japan. To the outside world, it looked like a band of criminals had found justice, but to the locals, they could only fear what would come next, and who would take the Shimada's place.",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
       "lat": 35.6768601,
@@ -10711,7 +10761,7 @@
       "name": "Blacklisted",
       "locationType": "earth",
       "cityDisplayName": "Dublin, Ireland",
-      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. \n\nHe came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop. While other studies such as Doctor Tamuka's cybernetic regeneration saught to use technology as a means to repair a dying body, Doctor O'Deorain instead saught to halt entropy all together, keeping the body in a cellular statis phase in which any aging or damage would immediatelly be reverted, all done purely through genetics rather than robotics.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.",
+      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extra legal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. \n\nHe came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop. While other studies such as Doctor Tamuka's cybernetic regeneration saught to use technology as a means to repair a dying body, Doctor O'Deorain instead saught to halt entropy all together, keeping the body in a cellular statis phase in which any aging or damage would immediatelly be reverted, all done purely through genetics rather than robotics.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.",
       "image": "",
       "lat": 53.3493795,
       "lon": -6.2605593,
@@ -11104,7 +11154,7 @@
     },
     {
       "name": "Hostage",
-      "description": "Overwatch had taken down the Shimada clan, but in doing so it merely caused a power vacuum in the Kanezaka region. The illegal activities were not the only priority of the clan, as they also saw themselves as the protectors of Kanezaka for generations. In the words of their late leader, if the relationship the clan has with the people of the region is anything less than mutually beneficial, they were nothing more than a parasite. This social contract had stood strong for generations, as the Shimada kept larger, more dangerous gangs at bay, but as their empire crumbled and their operations became more openly shady, the people turned their backs on them, only to soon realize they were the lesser of two evils.\n\nThe Hashimoto clan had long been the main rival crime family to the Shimada, and after Overwatch left, they began a takeover of Kanezaka, placing Keigo Kuroura in charge of overseeing the region. As a stronger, more stable group, Overwatch did not have the same level of leverage against them that they did with the Shimada, so they were essentially able to reign uncontested. \n\nIn spite of this, however, the Hashimoto quickly realized there was one potential threat lingering after the fall of the Shimada, the Yamagami Blades, particularly Toshiro himself, who was responsible for the powerful weaponry that allowed the Shimada to hold their ground for so long. The clan act quickly, kidnapping Toshiro and forcing him to supply their syndicate with Anima weapons of their own. Alone and with her hands tied, Asa saw no other choice but to send Kiriko away, changing her last name to Kamori, Asa's birth name, and taking her to live with her grandmother to protect her from the clan.",
+      "description": "Overwatch had taken down the Shimada clan, but in doing so it merely caused a power vacuum in the Kanezaka region. The illegal activities were not the only priority of the clan, as they also saw themselves as the protectors of Kanezaka for generations. In the words of their late leader, if the relationship the clan has with the people of the region is anything less than mutually beneficial, they were nothing more than a parasite. \n\n\nThis social contract had stood strong for generations, as the Shimada kept larger, more dangerous gangs at bay, but as their empire crumbled and their operations became more openly shady, the people turned their backs on them, only to soon realize they were the lesser of two evils. The Hashimoto clan had long been the main rival crime family to the Shimada, and after Overwatch left, they began a takeover of Kanezaka, placing Keigo Kuroura in charge of overseeing the region. As a stronger, more stable group, Overwatch did not have the same level of leverage against them that they did with the Shimada, so they were essentially able to reign uncontested. \n\nIn spite of this, however, the Hashimoto quickly realized there was one potential threat lingering after the fall of the Shimada, the Yamagami Blades, particularly Toshiro himself, who was responsible for the powerful weaponry that allowed the Shimada to hold their ground for so long. The clan act quickly, kidnapping Toshiro and forcing him to supply their syndicate with Anima weapons of their own. Alone and with her hands tied, Asa saw no other choice but to send Kiriko away, changing her last name to Kamori, Asa's birth name, and taking her to live with her grandmother to protect her from the clan.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -17023,7 +17073,7 @@
       "name": "Old Dragons",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "It had been around a decade since the Shimada brothers fought for the fate of the clan, a day Hanzo remembered like it was yesterday. He was now a lone wolf traveling aimlessly as self-punishment. He tried many ways to find peace with his actions, from meditational arrow carving to poetry, but deep down he knew that wouldn't redeem his mistakes. At first, the clan saw his abandonment as betrayal and sent assassins to kill him, so he used the chance to honor his skills with a bow, thinking that taking care of the Shimada would restore his honor, but once the clan died down, he found himself without purpose once more.  In spite of his roaming, every year he found time to visit Hanamura's castle on the anniversary of Genji's death, honoring him as penance. Every time he returned home, he saw more of what Hashimoto had made to the place, growing ashame of letting this happen, but too lost in his own grief to take care of the issue beyond dealing with thugs blocking his way into the castle. \n\nOn the tenth anniversary of Genji's death, Hanzo broke into the Castle and took down the Hashimoto guards as usual, but as he lit his incense offering and prayed to honor Genji, he noticed a man wearing cybernetic armor had stalked him the whole time. The ninja taunted Hanzo, aware of his hypocrisy in honoring his brother in spite of being his killer, and it led to an armed confrontation in the main room of the castle as the two continued to argue over Hanzo's actions. The ninja argued that if Hanzo truly wanted to reclaim his honor, he should do it through his own actions rather than offerings. That revelation enraged Hanzo enough to trigger the Dragon Animas from his bow and shoot a lethal blow into the intruder, but to his surprise, his opponent carried an Anima weapon himself, using his dragon to bend Hanzo's strike back at him, forcing him to take the full brunt of the attack. \n\nDefeated and with the intruder's sword against his neck, Hanzo was ready to accept his death, but the ninja refused to grant his wish, because he still had purpose in life. It was here when the ninja referred to Hanzo as his brother, and while Hanzo did not believe him at first, when Genji unlocked his mask to reveal his scared face, it finally clicked with Hanzo that all this time his brother was alive. Genji did not stay long, simply claiming he was at peace with himself now and that he had forgiven Hanzo, but now it was time for Hanzo to forgive himself, as times were changing and Hanzo soon would need to pick a side in the world's struggles. As he prepared to leave, Hanzo called him a fool to think real life was like the stories their parents told, to which Genji said that even if he was a fool for believing there was hope for his brother, he nevertheless did, before vanishing on a smoke screen. With much to contemplate, Hanzo returned to finish his offering, with a new sense of purpose and focused as to where his path to redemption would take him next.",
+      "description": "It had been around a decade since the Shimada brothers fought for the fate of the clan, a day Hanzo remembered like it was yesterday.  With the Shimada gone, Hanzo he found himself without purpose once more, unable to find a way to make ammends for Genji's death, so he continued his travels, meditatting in search for a new way to regain his honor.  In spite of his roaming, every year he found time to visit Hanamura's castle on the anniversary of Genji's death, honoring him as penance. Every time he returned home, he saw more of what Hashimoto had made to the place, growing ashame of letting this happen, but too lost in his own grief to take care of the issue beyond dealing with thugs blocking his way into the castle. \n\nOn the tenth anniversary of Genji's death, Hanzo broke into the Castle and took down the Hashimoto guards as usual, but as he lit his incense offering and prayed to honor Genji, he noticed a man wearing cybernetic armor had stalked him the whole time. The ninja taunted Hanzo, aware of his hypocrisy in honoring his brother in spite of being his killer, and it led to an armed confrontation in the main room of the castle as the two continued to argue over Hanzo's actions. The ninja argued that if Hanzo truly wanted to reclaim his honor, he should do it through his own actions rather than offerings. That revelation enraged Hanzo enough to trigger the Dragon Animas from his bow and shoot a lethal blow into the intruder, but to his surprise, his opponent carried an Anima weapon himself, using his dragon to bend Hanzo's strike back at him, forcing him to take the full brunt of the attack. \n\nDefeated and with the intruder's sword against his neck, Hanzo was ready to accept his death, but the ninja refused to grant his wish, because he still had purpose in life. It was here when the ninja referred to Hanzo as his brother, and while Hanzo did not believe him at first, when Genji unlocked his mask to reveal his scared face, it finally clicked with Hanzo that all this time his brother was alive. Genji did not stay long, simply claiming he was at peace with himself now and that he had forgiven Hanzo, but now it was time for Hanzo to forgive himself, as times were changing and Hanzo soon would need to pick a side in the world's struggles. As he prepared to leave, Hanzo called him a fool to think real life was like the stories their parents told, to which Genji said that even if he was a fool for believing there was hope for his brother, he nevertheless did, before vanishing on a smoke screen. With much to contemplate, Hanzo returned to finish his offering, with a new sense of purpose and focused as to where his path to redemption would take him next.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -20352,10 +20402,6 @@
           "theaterId": "ac531688-844a-4a00-865e-838d9eb4f92b"
         },
         {
-          "name": "Tame Emotions",
-          "theaterId": "a9e9f764-1af5-4148-92f4-464e420a10f9"
-        },
-        {
           "name": "Sounds like a nightmare",
           "theaterId": "8a73fbeb-4692-4bd4-bda7-75dc507726c1"
         }
@@ -21022,6 +21068,72 @@
         {
           "name": "Rip your Tongue",
           "theaterId": "8c978e98-fc45-418d-aa1b-e8fe6d53631a"
+        }
+      ]
+    },
+    {
+      "name": "Stolen Legacy",
+      "description": "Following the fall of the Inti Warriors, the Runasapi found itself lacking in resources and manpower, and it drove the Paqarina research group to make a difficult choice, partnering with Oasis, offering the data on solar threading and years worth of Inti research, in exchange for the vital resources their community needed. To Paqarina they saw this as a way to reclaim what was lost, and bring it back in a new way, a fair trade to make in hard times, but for a lot of the people it was a betrayal of their culture, and Oasis was not to be trusted.\n\nIllari, the last survivor of the Intis, refused to let the legacy of her people fall to outsiders, especially after they slowly spread their surveillance through Runasapi. Looking for a way to steal back the data from Oasis, she began researching how to bypass their mainframe security, which eventually led her into meeting Sombra. Illari requested a custom-made virus, and while she understood the danger that came in dealing with someone as infamous and Sombra, she believed it was the best way to honor her people.\n\nIn exchange, Sombra got the readouts from Illari's augmentation ritual, which seemed to indicate there was potential sabotaging involved. This, combined with Oasis' eagerness and swift takeover, made Sombra suspicious they might be involved, and the nature of the incident also reminded her of another similar tragedy, the destruction of Overwatch's Swiss headquarters. With this new Intel in mind, she began work on a virus for Illari, but the only solution she could come up with involved a complete wipe out of the data. Using this wouldn't just take the files off of Oasis' hands, it would erase the last remaining traces of the Inti Warriors from existence all together. A harsh solution that even Sombra seemed hesitant to provide, but Illari, keeping a Stoic exterior, insisted that it had to be done, no matter how much it hurt.",
+      "locationType": "earth",
+      "lat": -13.1631,
+      "lon": -72.545,
+      "image": "",
+      "cityDisplayName": "Runasapi, Peru",
+      "yearStart": 2079,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": "Oasis takes over the Inti Warriors research"
+        }
+      ],
+      "headlines": [
+        "Paqarina Research Group makes deal with Oasis to supply Runasapi in exchange for Solar threading technology",
+        "Peruvian locals protest Paqarina's choice to give away their cultural legacy"
+      ],
+      "sources": [
+        {
+          "text": "Future's Past",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+            "https://www.youtube.com/watch?v=9kFSMbaufn8"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Illari, Sombra,",
+          "reasoning": "Working together to find a way to corrupt Oasis' data"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Inti Warriors, Heliotech Industries,",
+          "reasoning": "The Paqarina research group gives Oasis their data on the Inti Warriors"
+        },
+        {
+          "locationName": "",
+          "country": "Oasis Ministries, The Chernobog Conspiracy,",
+          "reasoning": "Sombra seemignly links Oasis to the conspiracy"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Taking too Much",
+          "theaterId": "57a566a8-d6b6-41c5-aaa0-512e1b9506c4"
+        },
+        {
+          "name": "Tame Emotions",
+          "theaterId": "a9e9f764-1af5-4148-92f4-464e420a10f9"
+        },
+        {
+          "name": "Feeling Remorse",
+          "theaterId": "3b781d57-8854-49a1-a2f7-c1608d3828be"
         }
       ]
     },
@@ -23264,7 +23376,7 @@
     },
     {
       "name": "Together",
-      "description": "No description available.",
+      "description": "The Null Sector Invasion had calmed down by December. The IJC still allowed Overwatch some level of freedom to operate against any incoming wave, but it seemed as if the endless attacks were begging to slow down. Still by the holidays, this brief calm allowed agents at Gibraltar to enjoy the holidays at peace. The Watchpoint: was livelier than it had ever been in years, but all the cooking and decorating kept Lena's mind wondering. It had been months since the last time she was in London, the longest she had been away from Emily since they met. \n\nWhile she had been supportive of her heroic efforts at home, she never signed up for a relationship where her partner would be away traveling and risking her life on a daily basis. This weighed on her for months, making it harder for her to focus when she wasn't able to see the person she was risking everything for, and while she suffered in silence, Winston noticed, empathizing with that same loneliness not just from years living alone in Gibraltar, but because he himself was unable to see anyone from the Lunar Colony again. While Winston's support gave Lena some ease, he had bigger plans to cheer her up. He asked Vivian for some favors, and she gladly spent the rest of the preparations making several calls. By the time of the holiday party that night, several guests had arrived. \n\nThe families of several Agents, The Zaryanova sisters, the Oladeles, and the Lindholms. Dae-Hyun, Benicio, Vivian's own sister and even Sam and Ana, who most had not seen in almost a decade. And of course, among the guests was Emily, happy to see Lena again, and understanding ever since they met each other that this calling would have happened one day, that they might miss each other while Lena saved the world, but they could figure it out and make it work. As the celebrations went on, Winston gazed at the moon, longing for his few friends back in Horizon, like Hammond and Hypatia but glad to see that Overwatch had once again grown into a new family.",
       "locationType": "earth",
       "lat": 36.1407517,
       "lon": -5.345374,
@@ -23272,7 +23384,9 @@
       "cityDisplayName": "Watchpoint: Gibraltar",
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
-      "headlines": [],
+      "headlines": [
+        "Null Sector quiet during the Holidays, Christmas miracle of calm before the storm?"
+      ],
       "sources": [
         {
           "text": "Together",
@@ -23284,7 +23398,7 @@
         {
           "locationName": "Watchpoint: Gibraltar",
           "country": "Gibraltar",
-          "reasoning": "",
+          "reasoning": "Overwatch celebrates the Holidays inviting family over",
           "lat": 36.1407517,
           "lon": -5.345374
         }
@@ -23293,31 +23407,46 @@
         {
           "locationName": "",
           "country": "Winston, Tracer,",
-          "reasoning": ""
+          "reasoning": "Bond over missing their families"
         },
         {
           "locationName": "",
-          "country": "Sojourn, Cassidy, Ana, Pharah, Lúcio, D.va, Bastion, Zarya, Reinhardt, Brigitte, Torbjörn, Echo, Juno, Mei, Mercy, Genji, Baptiste,",
-          "reasoning": ""
+          "country": "Sojourn,",
+          "reasoning": "Arranges for visitors to come in for the holidays"
+        },
+        {
+          "locationName": "",
+          "country": "Cassidy, Pharah, Lúcio, D.va, Bastion, Zarya, Reinhardt, Brigitte, Echo, Juno, Mei, Mercy, Genji, Baptiste,",
+          "reasoning": "Helps prepare for the party"
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Torbjörn,",
+          "reasoning": "Come in as part of the guests"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Celebrates the Holidays with family and friends at Gibraltar"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Emily,",
-          "reasoning": ""
+          "reasoning": "Brings relief to Tracer"
         },
         {
           "locationName": "",
-          "country": "Efi, Sam, Ingrid, Benicio, Dae-Hyun,",
-          "reasoning": ""
+          "country": "Sam, Ingrid, Benicio, Dae-Hyun,",
+          "reasoning": "Come in as guests"
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Helps prepare for the party"
         }
       ],
       "commentary": [
@@ -23367,7 +23496,7 @@
       "name": "Futures Past",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "No description available.",
+      "description": "While Sombra decoded the Disc her and Jack stole in Zurich, she had another errand for Jack that would make her suspicion of Oasis clearer for him. His mission was to deliver a virus hard drive to Illari in the Andean mountains. Their initial meeting at the ruins of the Inti temple was hostile, as Illari ambushed him, expecting Sombra instead. But once he explained his involvement, Illari realized his skills could be of use. She explained how Oasis had taken over Runasapi and planned to exploit the research of her people for their own, and requested Jack join her in sabotaging their operations. Jack knew this could help him understand his true enemy more if Sombra was correct, but deep down he still harbored a deep hatred for Oasis after they took in Dr. O'Deorain when Overwatch fired her, so he was more than glad to trample their plans. \n\n\n\nAs they prepared for the attack and talked over how each came to reach Sombra, Jack saw a younger version of himself in Illari, as her demotion to her mission reminded him of how he lost Vincent, but perhaps more alarmingly, the fall of the Intis mirrored what he remembered from the Zurich HQ, possibly linking both accidents to the same culprit. Later that night, they moved into the city. Motion sensors all over rendered false alarms by herds of Llamas Illari conveniently unleashed earlier, allowing Jack to use rattler grenades to distract the guards while Illari channeled the solar energy from the compound into her, cutting the power. Inside the labs there were all sorts of experiments, from massive plants to recognizable reptiles, but their focus was on the data, not the other sins Oasis was hiding. With the hard drive inserted, the virus deleted all data on the Inti Warriors, driving Illari to tears, in spite of knowing it was the only way to make things right.\n\nAfter escaping, Illari gave Jack the readings from her ceremony, hoping it would help him figure out what happened in Zurich. He offered her help. Oasis and Moira would come after her. Perhaps joining him or Overwatch could help her find a new meaning to her life, but she felt honor bound to her city and her people, and could not let go of that cause. Before leaving, Jack reflected on how he kept holding on to Vincent, much like how Illari kept holding on to the Intis. And while she still had time to grief, Jack remembered how Vincent used to tell him all wars had to end, and he should have something for himself when his war ended. He decided to write one last letter to him, explaining how he survived, how he was happy for the life Vincent went on to have, and how he finally was ready to see what came after the war. As he stared into the sunset, he took out the photo that he had clung on to for years, letting the wind take it to the horizon never to be seen again.",
       "image": "",
       "lat": -13.1631,
       "lon": -72.545,
@@ -23377,40 +23506,44 @@
         {
           "locationName": "Runasapi, Peru",
           "country": "Peru",
-          "reasoning": ""
+          "reasoning": "Soldier: 76 and Illari break into Oasis labs and delete Inti Warrior Data"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Soldier 76, Illari,",
-          "reasoning": ""
+          "reasoning": "Work together to delete the Inti Database"
         },
         {
           "locationName": "",
           "country": "Sombra,",
-          "reasoning": ""
+          "reasoning": "Makes a custom virus to delete Oasis files"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Inti Warriors, Heliotech Industries,",
-          "reasoning": ""
+          "reasoning": "All of Paqarina's assets fall in control of Oasis"
         },
         {
           "locationName": "",
           "country": "The Sombra Collective,",
-          "reasoning": ""
+          "reasoning": "Jack connects the fall of the Inties to the Zurich HQ explosion"
         },
         {
           "locationName": "",
           "country": "Oasis Ministries, The Chernobog Conspiracy,",
-          "reasoning": ""
+          "reasoning": "Oasis expands through Runasapi setting up heavy guards and surveillance"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Oassis states all Inti Warrior data was deleted by an interloper",
+        "Paqarina Research Group refuses to comment on Oasis attack",
+        "Soldier: 76 breaks into Oasis Facility at Runasapi"
+      ],
       "sources": [
         {
           "text": "Future's Past",
@@ -23433,10 +23566,6 @@
         {
           "name": "Keeping Tabs",
           "theaterId": "10291cde-1654-4097-8dca-7a0b89cb3b65"
-        },
-        {
-          "name": "Taking too Much",
-          "theaterId": "57a566a8-d6b6-41c5-aaa0-512e1b9506c4"
         },
         {
           "name": "Holding Up",
@@ -25935,10 +26064,6 @@
         {
           "name": "Enemy in Common",
           "theaterId": "96e379cc-dbd4-4b53-a459-5b49aa295c1b"
-        },
-        {
-          "name": "Feeling Remorse",
-          "theaterId": "3b781d57-8854-49a1-a2f7-c1608d3828be"
         },
         {
           "name": "Withering Away",
