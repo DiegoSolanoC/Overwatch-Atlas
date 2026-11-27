@@ -378,6 +378,12 @@
           "country": "Soldier 76",
           "reasoning": "John Francis Morrison is Born"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Your hometown",
+          "theaterId": "3667006c-0438-45d5-b876-a6e301830626"
+        }
       ]
     },
     {
@@ -491,6 +497,10 @@
           "label": "Super Coral",
           "theaterId": "chatter-mauga",
           "lineId": "5037de02-a0c2-4309-9f78-a329ceb80671"
+        },
+        {
+          "name": "Big Fish",
+          "theaterId": "1b0056d1-28db-4b17-93e0-8e95855d54c1"
         }
       ]
     },
@@ -1212,6 +1222,12 @@
           "country": "Cassidy",
           "reasoning": "Cole Cassidy is Born"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Texas",
+          "theaterId": "6527e51f-bc01-4007-b988-b7db43714d7f"
+        }
       ]
     },
     {
@@ -1772,9 +1788,18 @@
         }
       ],
       "commentary": [
-        "Grave Wounds",
-        "Killing Machine",
-        "Good Encryption"
+        {
+          "name": "Grave Wounds",
+          "theaterId": "a67471ee-52e9-4bcc-aaab-7ad5f8100e13"
+        },
+        {
+          "name": "Killing Machine",
+          "theaterId": "ed3be022-7bd8-4076-b6a4-aefeccb1e1c2"
+        },
+        {
+          "name": "Upon your Shoulders",
+          "theaterId": "9ba39c13-8ad4-4e3c-af85-b3d9f1f1ef8f"
+        }
       ]
     },
     {
@@ -3267,6 +3292,10 @@
         {
           "name": "War Devastation",
           "theaterId": "54417ebd-1166-4b13-b8c9-4d6a129e21fb"
+        },
+        {
+          "name": "Big fan of the carnage",
+          "theaterId": "022f0eef-e68c-4a32-b5e9-40ddc98b46b3"
         }
       ]
     },
@@ -5276,8 +5305,8 @@
       ],
       "commentary": [
         {
-          "name": "Skincare Line",
-          "theaterId": "fdd5bddf-6b82-474c-b189-b55ff109bd78"
+          "name": "Cherished Blood Bond",
+          "theaterId": "3eff5590-bdb3-4512-a558-9547197384f9"
         },
         {
           "name": "Renewed Life",
@@ -5286,6 +5315,10 @@
         {
           "name": "Sacrifice",
           "theaterId": "d1f62435-37e8-44a3-b548-23e327d71741"
+        },
+        {
+          "name": "Skincare Line",
+          "theaterId": "fdd5bddf-6b82-474c-b189-b55ff109bd78"
         }
       ]
     },
@@ -8616,6 +8649,10 @@
         {
           "name": "The Best Sword master",
           "theaterId": "95db7602-e77f-4dd8-a13d-e356af2fb021"
+        },
+        {
+          "name": "Where you grew up",
+          "theaterId": "f4c9fae7-aa5a-4031-bcde-3018b639f22d"
         }
       ]
     },
@@ -10281,6 +10318,12 @@
           "country": "Shimada Clan,",
           "reasoning": "Sents assassins to murder Hanzo after his betrayal"
         }
+      ],
+      "commentary": [
+        {
+          "name": "A pity",
+          "theaterId": "ce8c0437-5d74-4bbf-be39-dab1e4f7caaf"
+        }
       ]
     },
     {
@@ -10486,6 +10529,10 @@
         {
           "name": "Staying late",
           "theaterId": "1f89314c-40af-40a5-8c76-7fcaabd2bf1f"
+        },
+        {
+          "name": "Armor Polish",
+          "theaterId": "ff40a074-0a7d-4c2b-98eb-d5004aecf3a3"
         }
       ]
     },
@@ -11429,6 +11476,14 @@
         {
           "name": "Worry about you",
           "theaterId": "8a0d9807-afb3-483b-9a8d-65af54752b9f"
+        },
+        {
+          "name": "Shards",
+          "theaterId": "bf09881b-6c48-49d0-9628-5a94d0baf83f"
+        },
+        {
+          "name": "Rough on Ears",
+          "theaterId": "d6eb9f68-4910-4c12-b28a-4fd99db895e4"
         }
       ]
     },
@@ -12417,6 +12472,10 @@
         {
           "name": "More Blood",
           "theaterId": "ab49e07b-06b3-464a-bd9d-98732fb03bac"
+        },
+        {
+          "name": "Ask me again",
+          "theaterId": "f7a610d5-dea7-47a4-9d9c-e2434271611d"
         }
       ]
     },
@@ -13894,6 +13953,10 @@
         {
           "name": "Resilient",
           "theaterId": "6c5874ad-aee2-4d15-9fab-eb70e92e3188"
+        },
+        {
+          "name": "Worthy foe",
+          "theaterId": "c430e269-1997-4637-b3d7-289e22305c41"
         }
       ]
     },
@@ -14139,6 +14202,10 @@
         {
           "name": "Enhanced Soldiers",
           "theaterId": "79cc87e3-d778-421d-a586-385c55cd5a52"
+        },
+        {
+          "name": "Why didn't you tell",
+          "theaterId": "c2ea8485-b7b3-4fb5-a097-d290a582182a"
         }
       ]
     },
@@ -16166,6 +16233,10 @@
         {
           "name": "Pick Something Up",
           "theaterId": "5bfe9dfd-98fb-4753-8577-8b6257254b78"
+        },
+        {
+          "name": "Tracking you down",
+          "theaterId": "3115c6a8-f973-4867-a5fb-1aed6d783ef2"
         }
       ]
     },
@@ -16306,6 +16377,10 @@
         {
           "name": "Two Superstars",
           "theaterId": "5b62906d-be6d-4395-93f2-dc54637b1827"
+        },
+        {
+          "name": "Too easy lately",
+          "theaterId": "17c18205-c8a4-4af1-b9a2-6e4dcc48ee48"
         }
       ]
     },
@@ -16524,10 +16599,13 @@
           "theaterId": "d8c9903d-306b-44f9-b6e0-b6b79ed3ad9b"
         },
         {
-          "name": "Brigitte · Here we go again. Shields up!",
+          "name": "Brigitte",
           "label": "Shields up",
-          "theaterId": "chatter-brigitte",
-          "lineId": "7835b5cc-1440-4588-9a33-ae23da557058"
+          "theaterId": "chatter-brigitte"
+        },
+        {
+          "name": "Not getting younger",
+          "theaterId": "0b2057c6-6d94-442e-a10e-fece0b26ffd2"
         }
       ]
     },
@@ -16637,8 +16715,8 @@
       ],
       "commentary": [
         {
-          "name": "Not getting younger",
-          "theaterId": "0b2057c6-6d94-442e-a10e-fece0b26ffd2"
+          "name": "Add a little something",
+          "theaterId": "05297ce9-ac7a-4cb5-ab06-2371a41c5bcf"
         },
         {
           "name": "Getting a Helmet",
@@ -16775,11 +16853,26 @@
       "commentary": [
         {
           "name": "Kiriko · Hanamura, Hanaoka or Neon Junction — Watch over us, grandma. We'll send those Hashimoto packing.",
-          "label": "Watch over us"
+          "label": "Watch over us",
+          "theaterId": "chatter-kiriko",
+          "lineId": "ff9ed44d-fc47-4b17-afeb-34cd0affd92d"
         },
-        "Killing for Donuts",
-        "Hashimoto Bounties",
-        "Resolving Differences"
+        {
+          "name": "Killing for Donuts",
+          "theaterId": "baed3dec-91ff-45e2-8a55-f7e9474106e1"
+        },
+        {
+          "name": "Hashimoto Bounties",
+          "theaterId": "921ff317-7ba0-4a6c-b988-65eaf50685e0"
+        },
+        {
+          "name": "Resolving Differences",
+          "theaterId": "8ac17e1d-ca57-4b7a-a67b-326326bdd8ad"
+        },
+        {
+          "name": "Asa-sensei",
+          "theaterId": "29d4ca10-0dac-4329-864a-c959187bf9ff"
+        }
       ]
     },
     {
@@ -17152,6 +17245,10 @@
         {
           "name": "Once a Poet",
           "theaterId": "cf8b6c16-56ed-4a04-b8e2-c580ffb32384"
+        },
+        {
+          "name": "Your Reunion",
+          "theaterId": "207e6682-900c-4f2e-98be-917e57204dd6"
         }
       ]
     },
@@ -17214,6 +17311,10 @@
         {
           "name": "Good Encryption",
           "theaterId": "bb32ec2b-bdee-457c-a321-ba862b69a72b"
+        },
+        {
+          "name": "Survive after the crisis",
+          "theaterId": "f7486fe4-10cd-495c-9d8d-494e163a0466"
         }
       ]
     },
@@ -18676,10 +18777,26 @@
         "Bastet Vigilante takes down Abdul Hakim's crime syndicate"
       ],
       "commentary": [
-        "Someone to Trust",
-        "That one Time",
-        "Bastet",
-        "When the Fighting is Over"
+        {
+          "name": "Someone to Trust",
+          "theaterId": "aff8b180-669d-42bb-823d-0c81d40f5630"
+        },
+        {
+          "name": "That one Time",
+          "theaterId": "6b88e471-44f4-404a-9471-bfd2123c9753"
+        },
+        {
+          "name": "Bastet",
+          "theaterId": "28a363be-b804-4248-bf82-25dac64ca188"
+        },
+        {
+          "name": "When the Fighting is Over",
+          "theaterId": "584f0aff-936e-4c0c-855d-659a6e730fb9"
+        },
+        {
+          "name": "Aliases",
+          "theaterId": "81219024-7f89-4b4e-a00d-3b2d1d4ba7b1"
+        }
       ]
     },
     {
@@ -19056,6 +19173,10 @@
         {
           "name": "Torbjörn harboring Efi",
           "theaterId": "8ee00c2a-45dc-4a69-89b7-97602b108f00"
+        },
+        {
+          "name": "Build 'Em Up",
+          "theaterId": "0b5eef2f-5bb9-4308-9aa5-9a7a7cd83198"
         }
       ]
     },
@@ -20333,6 +20454,10 @@
         {
           "name": "New Hat",
           "theaterId": "ade1c029-6d3e-4bd5-ab5b-e9f7a34ca0c7"
+        },
+        {
+          "name": "Well Informed",
+          "theaterId": "0e763926-9282-43b3-a6d2-dda3edcd4c75"
         }
       ]
     },
@@ -20400,6 +20525,10 @@
         {
           "name": "Lighten Up",
           "theaterId": "ac531688-844a-4a00-865e-838d9eb4f92b"
+        },
+        {
+          "name": "Tame Emotions",
+          "theaterId": "a9e9f764-1af5-4148-92f4-464e420a10f9"
         },
         {
           "name": "Sounds like a nightmare",
@@ -20484,6 +20613,10 @@
         {
           "name": "Enjoying Prison",
           "theaterId": "fa7efeb5-0a89-4587-b629-d9b347e7ad79"
+        },
+        {
+          "name": "Ask Efi",
+          "theaterId": "f8460eee-ead5-4fe6-aaba-5c24e41c924d"
         }
       ]
     },
@@ -20637,6 +20770,10 @@
         {
           "name": "Old School",
           "theaterId": "7aef2d07-85b3-4b5a-bcf6-1c2398571a7d"
+        },
+        {
+          "name": "Valuable Cargo",
+          "theaterId": "09597557-900a-4f5f-9578-3b2e9dc22839"
         }
       ]
     },
@@ -21837,6 +21974,10 @@
         {
           "name": "The Classics",
           "theaterId": "d5fb6ca4-44d4-4cad-a4e6-65b91f6f4fa9"
+        },
+        {
+          "name": "Careful Swinging",
+          "theaterId": "524967ed-6970-4873-b816-81d4f47942ba"
         }
       ]
     },
@@ -22619,6 +22760,71 @@
       ]
     },
     {
+      "name": "Final Failsafe",
+      "description": "Overwatch's alliance with MEKA proved to be quite beneficial for both organizations, as D.va's help on the battlefield was extremely valued, and it gave legitimacy to Overwatch's role in the new world. And while the data MEKA got from Overwatch in return aided them against Null Sector, it was still not quite enough to fill up the hole left by D.va on the Team. Captain Mying appointed D.mon as the new squad leader, confident that she would find a way to balance the team without Hana, sending the beast into Dae-Hyun's workshop for a long-overdue upgrade, worthy of the new MEKA leader.\n\nHowever, filling D.va's shoes was easier said than done. The team felt unbalanced without Hana, with formations that they had perfected for years no longer working. Her absence revealed to them just how much MEKA had grown to rely on their old leader, and the bulk of this tension rested now on Yuna's shoulders. The pressure of being in the spotlight was never her strong suit, and her own teammates, especially King, often argued with her, both due to her strategic decisions and fighting over what D.va would have done differently. It came to a point where the team was struggling even in their team simulations, and while Captain Myung seemed patient with the teams' growing pains, D.mon had overheard conversations the Captain had with her superiors at the Korean military had been planning on a final fail-safe, in case the team ever failed to fully stop the Gwishin.\n\nA giant EMP Bomb device capable of shutting down the Gwishin all together, or at least disrupting their ability to rebuild for decades. However, any attempt to map the position of the swarm's core had failed, and without that knowledge, using the bomb in the open ocean would be a waste. Seeing how the team continued to struggle without D.va, the government and military wished to relocate the bomb straight to the MEKA base, to be used in case of an emergency. Captain Myung voiced her opposition to this, believing her team would be able to adapt, but also afraid moving the bomb there opened Korea up to security risks. Still, that was not her choice to make. The bomb was moved to the base, which did not help the team's morale much, especially Yuna.",
+      "locationType": "earth",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2079,
+      "yearEnd": 2080,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": "Korea unveils an EMP Bomb capable of dealing with the Gwishin"
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, D.mon",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dmon/"
+        },
+        {
+          "text": "Growing Pains",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=psPH5Z_VJc0"
+          ]
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad, The Gwishin,",
+          "reasoning": "MEKA prepares a failsafe in case of failure to stop the Gwishin"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": "Attempts to vouch for MEKA to her superiors"
+        },
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": "Heavily modifies Beast into a new design"
+        },
+        {
+          "locationName": "",
+          "country": "King, Casino, Overlord,",
+          "reasoning": "Struggle to adapt without D.va"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": "Assigned new Squad Captain but struggling to keep up"
+        }
+      ]
+    },
+    {
       "name": "Vested Interests",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
@@ -22842,6 +23048,10 @@
         {
           "name": "None of  your Business",
           "theaterId": "3e29f7a7-1dd3-4ff6-9f00-59144934a9e0"
+        },
+        {
+          "name": "Care to listen",
+          "theaterId": "f0722e08-23a3-4dc2-ae14-ff38249e2e02"
         }
       ]
     },
@@ -22904,6 +23114,10 @@
         {
           "name": "Your grades",
           "theaterId": "c0ea51d0-bc2c-4177-86c9-849d438bfcbf"
+        },
+        {
+          "name": "Be Proud",
+          "theaterId": "833ed941-1d12-4fe2-a1eb-2195e3919458"
         }
       ]
     },
@@ -23586,59 +23800,79 @@
       ]
     },
     {
-      "name": "Final Failsafe",
-      "description": "No description available.",
+      "name": "Old Friend",
       "locationType": "earth",
-      "lat": 35.1796,
-      "lon": 129.0756,
+      "cityDisplayName": "Monte-Carlo, Monaco",
+      "description": "Freja began researching M4RQU1s, finding out it was actually Maximilien, the kingpin of Monte Carlo. She decided to send him a thread, attacking part of his cargo shipments and taking the contents as her own to make up for the lack of payment. When Max and his bodyguards went to check on the dock, they found that one of the empty cargo containers had Damian Barboza, Machete Betty and Sahil Bhediya, all of Max's targets neatly wrapped up. Freja stalked her way to the scene, surprising the guards, correcting Max as these were not gifts, and that she had come for him, no matter how much he feigned ignorance over her payment.\n\nMaximillien was quite intrigued by the hunter's skill and wished to know why she captured her bounties, but Freja did not wish to entertain his stalling attempts with stories. Disappointed by her lack of words, he decided a demonstration was in order, so he commanded his guards to open fire on Freja. She moved swiftly through the shipments, effortlessly taking down four guards on her own, destroying Max's car, removing his only way out. But to her surprise, Max applauded her, paying upfront for all three bounties, and letting her keep the cargo as a bonus.\n\nThis entire sequence of events had been orchestrated. He had always intended to pay her, but he wanted her to come to him that night, as he needed to make sure that Gefn was truly the legendary Freja of Overwatch's Search and Rescue, and that she truly meant business, because he had a job for her, a problem noone else was able to solve for him, a missing Talon agent that he needed back for his private plans to move forward. Freja was reluctant at first, but when Max called her by her real name, it made her reconsider, as he slid the holotab with her new target's information to her hand, she realized Max was chasing down Emre, her old partner in S&R, who vanished from the world after leaving Overwatch. She hadn't thought much about him for years, but the offer brought back memories of a life she never truly left behind. She accepted the offer, and began to prepare for a new hunt.",
       "image": "",
-      "cityDisplayName": "Busan, South Korea",
-      "yearStart": 2079,
-      "yearEnd": 2080,
+      "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
+      "lat": 43.7402961,
+      "lon": 7.426559,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, D.va",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "M.E.K.A Squad,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Gwishin,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Myung,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Dae-Hyun,",
-          "reasoning": ""
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": "Freja confronts Maximillien after stealing his cargo"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "D.mon,",
-          "reasoning": ""
+          "country": "Freja, Emre,",
+          "reasoning": "Freja takes Max's new offer after finding out he is looking for Emre"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "La Coterie, Talon Empire,",
+          "reasoning": "Max spends thousands of dollars paying up Freja for his facade"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien",
+          "reasoning": "Max hires Freja to find Emre and use him in Vendetta's plans"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "The Hunt Begins",
+          "url": "https://www.youtube.com/watch?v=pIKLdhMtEd0"
+        },
+        {
+          "text": "Search and Destroy",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=NSZ1t4u54DA"
+          ]
+        }
+      ],
+      "commentary": [
+        {
+          "name": "New Kid on the block",
+          "theaterId": "2932ee9e-fc19-4dc4-9370-66b79e9cd109"
+        },
+        {
+          "name": "Calling the Shots",
+          "theaterId": "c354b12e-1020-4d3a-87a1-52fb9edf140e"
+        },
+        {
+          "name": "Fight for All Omnics",
+          "theaterId": "971ab2db-e171-4e4a-9215-9d532fc38dc1"
+        },
+        {
+          "name": "Righteous Garbage",
+          "theaterId": "038bd4cc-7581-40b0-a8ff-4e6ad9f78458"
+        },
+        {
+          "name": "Outside Hire",
+          "theaterId": "00fa54a7-8e81-45a3-94cb-e4e7115d4887"
         }
       ]
     },
@@ -23646,7 +23880,7 @@
       "name": "The Upper Hand",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "No description available.",
+      "description": "Vendetta had been contacted by the Vishkar Corporation shortly after Maximilien's arrangements, but her initial conversations were with Sanjay Korpal, a man who Marzia quickly deemed nothing more than a puppet, fighting for nothing beyond his next promotion. She demanded a change for the next in-person meeting. She wished to see someone more competent to talk business. She cordially invited whoever was ordering Sanjay around to join her at the Colosseo, and the sight of Vice president Singhania was a good indication Vishkar took Marzia seriously, even if she did arrive late.\n\nThe pair observed the chariot race from the top of the Colosseo, with Vaira even placing a wager on Cloelia, against the undefeated Horatius. The two women saw eye to eye, as talented upstarts breaking the rules to make a name for themselves, but Marzia still hoped that Vaira had a better offer than what Sanjay initially proposed to her. She wished a deal, not just to give her gladiators state-of-the-art shielding, but also Vishkar's loyalty for when Marzia took over control of the Talon council. A quick jab at Vishkar's reputation got Vaira defensive, and when she took the bait, Marzia passed her hand over a Holo projection over several news headlines, from Rio to Suravasa, the riots in London and Niran's status as a fugitive, as she put it, the company was one failure away from a formal investigation, but if Marzia revealed their connection to Talon, it would ruin Vaira and Vishkar as a whole forever.\n\nVaira was impressed at the attention to detail Marzia showed in her research, but showed outwardly dismissive, simply listening to Marzia's new offer. It would take more than sponsoring the Colosseo to repair Vishkar's reputation, but Marzia had bigger plans for Talon, and if Vishkar took her side they would be able to bask in the glory of her new world order. Vaira was both uneasy at the black mail threads and enticed by the business proposition, so she accepted the offer under her own terms: Any success that came from it was for Vishkar to claim as their own, but any failures rested purely on Marzia's shoulders. Marzia accepted, too confident of her plan to question the paper-tin loyalty of Vaira's words.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -23656,7 +23890,7 @@
         {
           "locationName": "Colosseo, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Vendetta and Domina meet up to discuss an alliance",
           "lat": 41.8933203,
           "lon": 12.4829321
         }
@@ -23665,23 +23899,25 @@
         {
           "locationName": "",
           "country": "Vendetta, Domina",
-          "reasoning": ""
+          "reasoning": "Domina backs Vendetta after being blackmailed"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Colosseo Gladiatori, Vishkar Corporation,",
-          "reasoning": ""
+          "reasoning": "Vishkar sponsors the Colosseo and grants the Gladiators top rate shields"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Maximillien arranges meetings with council members to back up Vendetta"
         }
       ],
       "yearEnd": 2080,
-      "headlines": [],
+      "headlines": [
+        "Vishkar to sponsor the Roman Colosseo with new Hardlight shields and weapons"
+      ],
       "sources": [
         {
           "text": "The Upper Hand",
@@ -23696,7 +23932,7 @@
         {
           "locationName": "",
           "country": "Sanjay,",
-          "reasoning": ""
+          "reasoning": "Has his initial proposal rejected by Marzia"
         }
       ],
       "commentary": [
@@ -23718,7 +23954,7 @@
       "name": "Sentinels",
       "locationType": "earth",
       "cityDisplayName": "Buenos Aires, Argentina",
-      "description": "No description available.",
+      "description": "Null Sector attacks had become more infrequent. After attacking cities with large Omnic populations for months, most victims of the subjugator devices had been taken prisoner by Null Sector during these attacks. However, thanks to Overwatch and local forces, a small percentage of these unconscious Omnics were left behind. Overwatch allied military forces around the world to keep these Omnics in warehouse facilities, until the Ironclad guild found a way to revert to the suppression procedure, allowing them to wake up once more.\n\nHowever, Overwatch sent a small team to investigate reports of Null Sector activity in Buenos Aires. Reinhardt, Brigitte and Genji battled waves of war bots for hours until suddenly, the units entered what Brigitte described as a sentinel configuration, abruptly ceasing their attacks, forming a tight perimeter and loading the remaining subjugated Omnics onto their command ship. Behind the scenes, Efi had managed to intercept a signal that was broadcast to all war bots, decoding its Omnicode, she found that it was a retreat, altering the programming with a new strategy specifically designed to stop Overwatch interference, preventing any rescue attempt by the strike team.\n\nLater on, it was found that all thirty-seven global holding facilities holding rescued subjugated Omnics had all been breached and raided around the same time period, leaving nothing behind. Overwatch dispatched all available pilots to pursuit the command ships to their base, but they were intercepted by aerial war bots. Overwatch took care of these units at the cost of losing visuals on the ships. The Invasion had been a tremendous loss for the global Omnic community, but the loss of nearly all subjugated victims only made matters worse. Sojourn herself spoke of these attacks at an IJC briefing, formally encouraging the UN and world governments to extend all available resources to the remaining Omnic citizens, to better prepare for further attacks and injustice.",
       "image": "",
       "lat": -34.8222,
       "lon": -58.5358,
@@ -23728,26 +23964,26 @@
         {
           "locationName": "Buenos Aires, Argentina",
           "country": "Argentina",
-          "reasoning": ""
+          "reasoning": "Null Sector raids faciilities holding subjugated Omnics world wide"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Reinhardt, Brigitte, Genji, Sojourn",
-          "reasoning": ""
+          "reasoning": "Sent to Buenos Aires to investigate Null Sectors' retreat"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "retreat to their hiddne base after capturing all remaining subjugation victims"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Fails to stop Null Sector's retreat and loses track of their ships"
         }
       ],
       "yearEnd": null,
@@ -23771,11 +24007,18 @@
           "name": "Natural Leader",
           "theaterId": "b2903d8f-c24f-44b5-84a1-eab7e7c2eed8"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Efi decodes rethreat orders sent to Null Sector warbots"
+        }
       ]
     },
     {
       "name": "Ongoing Operations",
-      "description": "No description available.",
+      "description": "The reduced rate of attacks, the retrieval of subjugated Omnics, combined with Overwatch's decoding of retreat command signals led to theories around the world that the Null Sector Invasion was finally over, and with that, it also meant the end of Overwatch's extra legal activity. Overwatch had proved their worth fighting against Null Sector for months, minimizing casualties and destruction, and yet the failure to take down Null Sector all together or even keep a hold of the subjugated Omnics framed a less desirable picture for the Organization. \n\nThe IJC itself even attempted to twist this against Overwatch during Sojourn's reports of their missions, arguing Overwatch was not strong enough to stop Null Sector. Vivian quickly corrected them, noting how no single organization would have anticipated or countered such a prolonged calculated attack, as Null Sector exhausted all the world's resources for months, stretching Overwatch until it was time to run away. Overwatch may not have succeeded, but without their efforts, the world would have no idea of Null Sectors' plans to retreat, and behind the scenes, their agents were already attempting to recover corrupted satellite data that would trace the path of the command ships into their base.\n\nWithout full certainty of Null Sector's plans, Overwatch was officially placed on standby, preventing further missions without approval, but surprisingly not shutting them down just yet. Overwatch agents had broken the Petras Act during the Invasion, and while their help was appreciated when needed, if the IJC determined that the world was now safe, Overwatch would have to disband, and its agents could face legal action. Still, Vivian told reporters that, as acting Commander, she would heed the disbandment order once it was given.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Zurich, Switzerland",
@@ -23788,24 +24031,27 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "The IJC places Overwatch on standby after Null Sector's retreat"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sojourn,",
-          "reasoning": ""
+          "reasoning": "Defends Overwatch's action but braces for disbandment"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "IJC, Overwatch",
-          "reasoning": ""
+          "reasoning": "Overwatch agents fear repercusions if the IJC does not pardon them"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "IJC claims Null Sector's Invasion is coming to and end",
+        "Overwatch's future on the line after Interview with Commander chase"
+      ],
       "sources": [
         {
           "text": "Atlas Report",
@@ -23820,7 +24066,7 @@
         {
           "locationName": "",
           "country": "Osai,",
-          "reasoning": ""
+          "reasoning": "Hears Vivian's report at the IJC meetings"
         }
       ],
       "commentary": [
@@ -23831,8 +24077,91 @@
       ]
     },
     {
+      "name": "Growing Pains",
+      "description": "With Null Sectors retreat, the downtime at Gibraltar allowed Hana to finally catch up with her team back home. The constant fighting and time difference made it hard, but she still made it a point to reach out, especially Yuna, who she saw as a sister. She was eager to hear how things were going for the new squad leader, only to be shocked when Yuna told her she was stepping down. She had spent months studying the Gwishin records by heart, preparing herself for any scenario, and yet she continued to see the gaps D.va left in their team. The pressure of perfection made Yuna second guess all her plans, and become too hard on her fellow pilots. She was meant to keep the team together, but under her watch it was falling apart.\n\nHana tried to console her, noting how the more time she spent with Overwatch, the more she realized she was not great at team building, taking too much of a load on herself even if it hurt her. But she knew Yuna was different, she always paid attention to the little details, and in battle she knew everyone's strengths and weaknesses at a glance. She did not have to lead like D.va did, taking the weight head on, but instead evolving the team together, using her insight to guide them into victory. As their talk continued, the base rang the alarms of a Gwishin colossus inbound for Busan, and while Yuna did not feel ready, Hana cheered her on before hanging up the call.\n\nThe giant Gwishin appeared to fall apart into pieces quickly, but in reality, it was splitting itself into five smaller drones, each modeled after the squad's mechs, mirroring their moves to counter their strategies. However, this granted D.mon a unique advantage. The Gwishin may be stronger, more coordinated and, without D.va they outnumbered MEKA, but if they were calibrated to match their current fighting styles, a change in strategy would be their weakness. D.mon knew where each pilot excelled and faltered, and she used this to coordinate them, switching targets to counter each copycat. The new strategy was successful, and great for team morale, as the boys grew to call D.mon their boss after the mission. After that fight, Yuna decided to remain as squad leader, understanding that the team could evolve beyond D.va if they played their cards in new ways.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": "The MEKA squad defeats Gwishin mirroring their mecks"
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Growing Pains",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=psPH5Z_VJc0"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon, D.va,",
+          "reasoning": "Rekindle after months away"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad,",
+          "reasoning": "Finds their footing as a team without D.va"
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": "Adapts to mirror the MEKA squad"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": "Is proud to see the squad found its footing"
+        },
+        {
+          "locationName": "",
+          "country": "King, Overlord, Casino,",
+          "reasoning": "Continue to grow under D.mon's command"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Far from Home",
+          "theaterId": "37c9441a-d480-4265-8791-08a2cf80164b"
+        },
+        {
+          "name": "Best Pilot",
+          "theaterId": "5cb37a6d-02c6-4e5b-a26a-6f6d8580d31b"
+        },
+        {
+          "name": "Closed restaurant",
+          "theaterId": "b2f9a2b7-39ad-47ee-95a8-fd11b16bbd0d"
+        },
+        {
+          "name": "You miss me",
+          "theaterId": "f04e62d2-f390-430a-8a12-04decfec24d8"
+        },
+        {
+          "name": "You didn't leave",
+          "theaterId": "96929005-143a-46ab-beea-86655a60fb1f"
+        }
+      ]
+    },
+    {
       "name": "External Partners",
-      "description": "No description available.",
+      "description": "While Maximillien believed Dr. O'Deorain would stay neutral to a coup in Talon's leadership as long as her funding stayed intact, he knew there was a way to win her over. Her research had stalled for years with little improvement to her degenerative formula, and as her few lab rats like the Reaper and the Widowmaker grew to resent her dubious work. The desperation had driven Moira into further experimenting on herself, leading to the mutated decay of the right arm. If Talon was able to get their hands on the original SEP serum formulation, which was the original basis of Moira's work, it would not only keep her happy and loyal, but it would further Vendetta's quest for power.\n\nThe main issue was obtaining breaking into Watchpoint: Grand Mesa, the heavily guarded Helix facility that housed the serum. Max said to know a Talon agent that could know how to break into a Watchpoint, and had already hired a bounty hunter to locate them, but in order to give to have a proper shot at stealing the serum, they needed a distraction and for that, Vendetta turned to external partnerships. The renowned Deadlock Rebels operated not far from Grand Mesa and for years had salivated at the thought of getting their hands on their weapon cache, so when Vendetta extended an offer to their leader, Ashe wasted no time.\n\nThe Rebels established a temporary hold at an abandoned Powder Keg Mine right at the doors of the Watchpoint, and began gathering intel for their heist. For the plan to work, they were to take the bulk of Helix's defenses, so they needed to research the security systems and drones used at the base. Their research also tipped them for a notice of transfer, as the security chief was stepping down soon, and the redacted agent that would take their place appeared to be young, but competent enough to cause trouble. With their intel gathered and their plans for the heist laid out, all Deadlock could do was wait for Vendetta to make her move on Talon so that the joint attack could begin, and in the meantime, they could make the mine their home, something that proved a bit inconvenient for Frankie, who was working on a new bike to gift Ashe after Cassidy stole her old one in their last encounter, and the barren nature of the camp made it hard to keep the surprise secret.",
       "locationType": "earth",
       "lat": 39.1131257,
       "lon": -108.0127646,
@@ -23845,42 +24174,53 @@
         {
           "locationName": "Deadlock Gorge, United States",
           "country": "United States",
-          "reasoning": "",
+          "reasoning": "Vendetta partners with Deadlock for a future heis",
           "lat": 39.1131257,
           "lon": -108.0127646
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Helix Securities reports Deadlock activity near Watchpoint: Grand Mesa"
+      ],
+      "sources": [
+        {
+          "text": "Vengange Comes",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt230509ca48e4a621/697d4fa37a42448b0868c853/OW_Talon_EN_FNL_121825.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt230509ca48e4a621/697d4fa37a42448b0868c853/OW_Talon_EN_FNL_121825.pdf",
+            "https://www.youtube.com/watch?v=zB_nnscVC4w"
+          ]
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ashe,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": ""
+          "country": "Ashe, Vendetta,",
+          "reasoning": "Agree on a joined attack at Watchpoint: Grand Mesa"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Deadlock Rebels, Colosseo Gladiatori,",
-          "reasoning": ""
+          "reasoning": "Vendetta hires Deadlock for a mission vital to her coup"
         },
         {
           "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
+          "country": "Talon Empire, La Coterie,",
+          "reasoning": "Maximillien makes preparations to keep the council in Vendetta's control"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "B.O.B,",
-          "reasoning": ""
+          "country": "B.O.B, Bez, Bars, The Triplets,",
+          "reasoning": "Set camp at Powder Keg Mine"
+        },
+        {
+          "locationName": "",
+          "country": "Frankie,",
+          "reasoning": "Works on a gift Bike for Ashe"
         }
       ],
       "commentary": [
@@ -23896,7 +24236,7 @@
     },
     {
       "name": "The Invitation",
-      "description": "No description available.",
+      "description": "In spite of her official word to the press, Vivian had grown attached to this new team and their mission. She saw in them the spirit that was long gone in the original organization, a smaller unit made out of exceptional people who simply wanted to help make a difference. Fighting against Null Sector and seeing the team come together from all over the world inspired Vivian, now believing that this dedicated team with a singular focus could give Overwatch new life. While she intended for Overwatch's return to be temporary until the Invasion was resolved, she pushed the IJC and the UN to reconsider, requesting clearance for extending Overwatch operations.\n\nSeeing Vivian champion their cause gave the agents hope, particularly Winston, who was a little too eager to get back on track. He had reviewed reports around the world of different brave acts of resistance during the Invasion, scouting for potential new agents that could join their fight, and among the many stories, the news of a pair of siblings, fighting side by side to defend their city stood out. Winston went to his desk and began writing a formal invitation to the old-era recruitment tokens, directed toward Ye Anran and Ye Wuyang from Wuxing University.\n\nThese tokens were meant to be the first of a new generation of heroes, to join the many new faces that stood with Overwatch during the Invasion, and help them shape a new era for the organization. A new era that was still uncertain. Right before the end of his message, Winston hesitated, picturing the argument that would follow with Vivian, and how this overstepped the protocols and politics that she was already fighting to get on their side. But to Winston, that mattered little. He spent years in solitude thinking he was the only one who couldn't move on, and when the Invasion came, so many others answered, and they still believe in their cause. Besides, Null Sector was still not gone. Even if they were hiding, the world still needed them and, in his head, it was easier to beg for Vivian's forgiveness than ask for permission. He recorded the message and sent the invitations to Chengdu, hoping that if everything went well with the IJC, these new recruits would only be the start of a new age.",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
       "lat": 36.1407517,
@@ -23918,7 +24258,7 @@
         {
           "locationName": "Watchpoint: Gibraltar",
           "country": "Gibraltar",
-          "reasoning": "",
+          "reasoning": "Winston reviews articles of heroes during the Invasion to recruit to the new Overwatch",
           "lat": 36.1407517,
           "lon": -5.345374
         }
@@ -23927,28 +24267,31 @@
         {
           "locationName": "",
           "country": "Winston, Wuyang, Anran",
-          "reasoning": ""
+          "reasoning": "Winston sends invitation tokens to the Ye Siblings"
         },
         {
           "locationName": "",
           "country": "Sojourn,",
-          "reasoning": ""
+          "reasoning": "Fights to keep Overwatch alive through a new charter"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "On stanby after Null Sector's retreat"
         },
         {
           "locationName": "",
           "country": "Wuxing University,",
-          "reasoning": ""
+          "reasoning": "Recieves the tokens for the Ye Siblings"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "IJC considering a new charter for Overwatch",
+        "Wuxing University releases new application campaign displaying the Ye Siblings, saviors of Chengdu"
+      ],
       "commentary": [
         {
           "name": "Invitation",
@@ -24121,182 +24464,6 @@
         {
           "name": "Lucheng's Files",
           "theaterId": "e1cb0618-345b-4761-b028-c41f25cde388"
-        }
-      ]
-    },
-    {
-      "name": "Old Friend",
-      "locationType": "earth",
-      "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "No description available.",
-      "image": "",
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "lat": 43.7402961,
-      "lon": 7.426559,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Monte-Carlo, Monaco",
-          "country": "Monaco",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Freja",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Emre,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Moira, Reaper, Widowmaker, Mauga,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "La Coterie,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Maximillien",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "The Hunt Begins",
-          "url": "https://www.youtube.com/watch?v=pIKLdhMtEd0"
-        },
-        {
-          "text": "Search and Destroy",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=NSZ1t4u54DA"
-          ]
-        }
-      ],
-      "commentary": [
-        {
-          "name": "New Kid on the block",
-          "theaterId": "2932ee9e-fc19-4dc4-9370-66b79e9cd109"
-        },
-        {
-          "name": "Calling the Shots",
-          "theaterId": "c354b12e-1020-4d3a-87a1-52fb9edf140e"
-        },
-        {
-          "name": "Fight for All Omnics",
-          "theaterId": "971ab2db-e171-4e4a-9215-9d532fc38dc1"
-        },
-        {
-          "name": "Righteous Garbage",
-          "theaterId": "038bd4cc-7581-40b0-a8ff-4e6ad9f78458"
-        },
-        {
-          "name": "Outside Hire",
-          "theaterId": "00fa54a7-8e81-45a3-94cb-e4e7115d4887"
-        }
-      ]
-    },
-    {
-      "name": "Growing Pains",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "image": "",
-      "cityDisplayName": "Busan, South Korea",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Null Sector Invasion",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Growing Pains",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "D.mon,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "D.va,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "M.E.K.A Squad,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Gwishin,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Myung,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "King, Overlord, Casino,",
-          "reasoning": ""
-        }
-      ],
-      "commentary": [
-        {
-          "name": "Far from Home",
-          "theaterId": "37c9441a-d480-4265-8791-08a2cf80164b"
-        },
-        {
-          "name": "Best Pilot",
-          "theaterId": "5cb37a6d-02c6-4e5b-a26a-6f6d8580d31b"
-        },
-        {
-          "name": "Closed restaurant",
-          "theaterId": "b2f9a2b7-39ad-47ee-95a8-fd11b16bbd0d"
-        },
-        {
-          "name": "You miss me",
-          "theaterId": "f04e62d2-f390-430a-8a12-04decfec24d8"
-        },
-        {
-          "name": "You didn't leave",
-          "theaterId": "96929005-143a-46ab-beea-86655a60fb1f"
         }
       ]
     },
@@ -24876,7 +25043,7 @@
     },
     {
       "name": "New Charter",
-      "description": "In spite of her initial doubts about returning to Overwatch, Vivian had grown attached to this new team and their mission. She saw in them the spirit that was long gone in the original organization, a smaller unit made out of exceptional people who simply wanted to help make a difference. Fighting against Null Sector and seeing the team come together from all over the world inspired Vivian and while she intended for Overwatch's return to be temporary until the Invasion was resolved, this new passion for the team made her change her mind, now believing that this dedicated team with a singular focus could give Overwatch new life. Using her connections with the IJC and the UN, she began the process of requesting clearance for extending Overwatch operations.\n\nThe negotiations took Sojourn, piloted by Lena all the way to Zurich for a meeting with the International Justice Commission, to grant Overwatch operations global recognition in the form of a new chatter that would provide funding, resources and long-term jurisdiction without attaching it to special circumstances like the Null Sector invasion. The Secretary General of the United Nations, Osei, had been watching Overwatch's activities since the Recall and especially after the Null Sector attack, and she was the one leading the IJC panel in which Vivian was to make her case for Overwatch's continued existence. Her unreadable nature made Overwatch's future nebulous, but she had played a big role in allowing Overwatch to operate through the invasion, noting that even if the reforming of Overwatch was unsanctioned, the world undeniably benefited from their help.\n\nThe meeting did not last long, going over the history of Overwatch from its founding during the crisis, its achievements and advancements in global security, medicine, bioengineering and climate research, but also their controversies in its final years from botched missions, leadership infighting and blurred jurisdiction, as well as Petra's hearings and Vivian's own testimony regarding Overwatch's failures. Still, in light of Vivian's efforts and cooperation alongside the new team's success at aiding authorities and civilians during the Null Sector Invasion, the council was willing to deliberate on reinstating Overwatch's charter, or at the very least possibly pardoning Agents for breaking the Petra Accords by answering the recall. Now it was just a matter of waiting and hoping for the best.",
+      "description": "Months of arduous negotiations with the International Justice Commission over the continuous existence of Overwatch led to a formal meeting in Zurich, to discuss the possibility of a new charter that would provide funding, resources and long-term jurisdiction without attaching it to special circumstances like the Null Sector invasion. The Secretary General of the United Nations, Osei, had been watching Overwatch's activities since the Recall, especially after the Null Sector attack, and she was the one leading the IJC panel in which Vivian was to make her case. \n\nLena was the one who piloted Sojourn to her meeting in Zurich, optimistic as ever, but nervous about what would happen to the team if the IJC denied their request. Still, Vivian believed that if they were in legal trouble, they wouldn't even bother to hear her out, but as far as the new charter, Osei's unreadable nature made Overwatch's future nebulous. She had played a big role in allowing Overwatch to operate through the invasion, noting that even if the reforming of Overwatch was unsanctioned, the world undeniably benefited from their help. But it was not just Osei who needed to be convinced.\n\nThe meeting did not last long, going over the history of Overwatch from its founding during the crisis, its achievements and advancements in global security, medicine, bioengineering and climate research, but also their controversies in its final years from botched missions, leadership infighting and blurred jurisdiction, as well as Petra's hearings and Vivian's own testimony regarding Overwatch's failures. Still, in light of Vivian's efforts and cooperation alongside the new team's success at aiding authorities and civilians during the Null Sector Invasion, the council was willing to deliberate on reinstating Overwatch's charter, or at the very least possibly pardoning Agents for breaking the Petra Accords by answering the recall. Now it was just a matter of waiting and hoping for the best.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -27780,8 +27947,8 @@
       ],
       "commentary": [
         {
-          "name": "Swimming Lessons",
-          "theaterId": "31bcb7a2-7799-46e5-b588-0182ae82ef66"
+          "name": "Training together",
+          "theaterId": "9abe1137-0612-41c3-9943-3670207d71fe"
         },
         {
           "name": "Come a long way",
@@ -27798,6 +27965,10 @@
         {
           "name": "Turtle Tools",
           "theaterId": "a3e3dedd-3cac-4983-8a99-57fddb9e2825"
+        },
+        {
+          "name": "Swimming Lessons",
+          "theaterId": "31bcb7a2-7799-46e5-b588-0182ae82ef66"
         }
       ]
     },
